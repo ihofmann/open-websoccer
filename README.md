@@ -5,7 +5,7 @@ They set the tactics for the next match, trade players, train their team, look f
 The software simulates all matches automatically and in real-time. It produces match reports with a live ticker similar to what you know from popular news websites. 
 Setup your own football online game in order to attract new website visitors, make money through premium features or for playing against colleagues in your company intranet.
 
-**[[Download now!|releases]]**
+**[Download now!](https://github.com/ihofmann/open-websoccer/releases)**
 
 
 ## Successor of HSE WebSoccer-Sim
@@ -19,7 +19,7 @@ You can reach Ingo via: Ingo ( at ) websoccer- sim.com.
 
 ## Documentation and Issue Tracker
 
-Find out how you install, setup and enhance the software at the [[Wiki|wiki/00.-Home]].
+Find out how you install, setup and enhance the software at the [Wiki](https://github.com/ihofmann/open-websoccer/wiki/00.-Home).
 
-You found a bug or have an idea for a new feature? Then don't hesitate to open an issue at the [[Issue Tracker|issues]].
+You found a bug or have an idea for a new feature? Then don't hesitate to open an issue at the [Issue Tracker](https://github.com/ihofmann/open-websoccer/wiki/issues).
 
