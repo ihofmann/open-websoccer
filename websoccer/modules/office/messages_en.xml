@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="office_navlabel">Office</message>
+    <message id="office_title">My Office</message>
+    
+    <message id="feature_requires_team">You need to be manager of a team in order to use this feature.</message>
+    
+    <message id="myteam_navlabel">My Team</message>
+    <message id="myteam_title">My Players</message>
+    
+    <message id="myteam_player_sell">Sell</message>
+    <message id="myteam_player_extend_contract">Extend Contract</message>
+    <message id="myteam_player_contract_is_ending">The contract is about to end soon</message>
+    
+    <message id="myteam_unsellable">Mask as unsellable</message>
+    <message id="myteam_unsellable_tooltip">No transfer offers will be accepted for this player.</message>
+    <message id="myteam_unsellable_player_success">Player has been marked as unsellable.</message>
+    <message id="myteam_unsellable_unmark_tooltip">Remove unsellable marker</message>
+    <message id="myteam_remove_unsellable_player_success">Unsellable flag has been removed.</message>
+    
+    <message id="myteam_action_button">Action</message>
+    
+    <message id="myteam_captain_tooltip">Is captain and shall bring morale when being in deficit during a match</message>
+    <message id="myteam_player_select_as_captain">Nominate as captain</message>
+    <message id="myteam_player_select_as_captain_success">Your new cpatain has been successfully selected!</message>
+    <message id="myteam_player_select_as_captain_warning_old_captain">Your previous captain, %s, is quite disappointed about your decision.</message>
+    
+    
+    <message id="extend-contract_navlabel">Contract Extension</message>
+    <message id="extend-contract_title">Negotation with %s</message>
+    
+    <message id="extend-contract_existing_contract_title">Existing Contract</message>
+    <message id="extend-contract_link_profile">To Player Profile</message>
+    
+    <message id="extend-contract_decrease_satisfaction_hint">Note that the player's satisfaction will decrease for each offer that is too low.</message>
+    
+    
+    <message id="extend-contract_offer_title">Your Offer</message>
+    <message id="extend-contract_success">The contract has been successfully extended under the new conditions!</message>
+    
+    <message id="extend-contract_player_is_unhappy">The player does not feel comfortable in your team anymore and currently does not want to extend his contract.</message>
+    <message id="extend-contract_lower_than_current_salary">The player does not accept a salary decrease.</message>
+    
+    <message id="extend-contract_salary_too_low">The offered salary is to less for the player. He asks for a higher salary per match.</message>
+    
+    <message id="extend-contract_cannot_afford_offer">You cannot afford such a salary with your current budget.</message>
+    
+    <message id="extend-contract_goalbonus_too_low">The player wants a higher goal bonus.</message>
+    
+    <message id="finances_navlabel">Finances</message>
+    
+    <message id="account_statement_date">Date</message>
+    <message id="account_statement_sender">Sender / Recipient</message>
+    <message id="account_statement_subject">Subject</message>
+    <message id="account_statement_amount">Amount</message>
+    
+    <message id="tickets_navlabel">Tickets</message>
+    
+    <message id="tickets_stands">Standings</message>
+    <message id="tickets_seats">Seats</message>
+    <message id="tickets_stands_grand">Standings (grand)</message>
+    <message id="tickets_seats_grand">Seats (grand)</message>
+    <message id="tickets_vip">V.I.P. Lounges</message>
+    
+    <message id="tickets_sold_last_match">Last match sold</message>
+    
+    <message id="tickets_info_homefieldadvantage"><strong>Hint:</strong> Your team will be extra motivated when playing at home and if all tickets are sold out. Consider this when choosing new ticket prices!</message>
+    
+    <message id="notification_soon_ending_playercontracts">There are player contracts which are ending soon!</message>
+</messages>

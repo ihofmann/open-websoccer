@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("premium-exchange-confirm_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<div class="well">
+	<p>{{ i18n.getMessage("premium-exchange-confirm_question") }}</p>
+	<p><strong>{{ env.getRequestParameter("amount") }} {{ env.getConfig("premium_credit_unit") }} = {{ (env.getRequestParameter("amount") * env.getConfig("premium_exchangerate_gamecurrency"))|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</strong></p>
+</div>
+
+<form class="form-horizontal" method="post">
+
+	<div class="form-actions">
+		<button type="submit" class="btn btn-success">{{ i18n.getMessage('button_confirm') }}</button>
+		<a href="{{ env.getInternalUrl("premium-exchange", "amount=" ~ env.getRequestParameter("amount")) }}" class="btn btn-danger">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="page" value="premium-exchange-confirm"/>
+	<input type="hidden" name="validateonly" value="0"/>
+	<input type="hidden" name="action" value="exchange-premium"/>
+	<input type="hidden" name="amount" value="{{ env.getRequestParameter("amount") }}"/>
+</form>
+{% endblock %}

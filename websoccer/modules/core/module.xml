@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="2.0.0">
+  
+  <admin>
+	<adminpage id="all_settings" permissionrole="r_admin" navcategory="settings" filename="all_settings"/>
+	<adminpage id="all_logging" permissionrole="r_admin" navcategory="settings" filename="all_logging"/>
+	<adminpage id="entitylogging" permissionrole="r_admin" navcategory="settings" filename="entitylogging"/>
+	<adminpage id="jobs" permissionrole="r_admin" navcategory="settings" filename="jobs"/>
+	
+	<adminpage id="admin" permissionrole="r_adminuser" navcategory="website" entity="admin">
+		<entity dbtable="admin">
+		    <overview edit="true" delete="true">
+		    	<column id="entity_admin_name" type="text" field="name" filter="true" sort="true" />
+		    	<column id="entity_admin_email" type="email" field="email" filter="true" /> 
+		    	<column id="entity_admin_r_admin" type="boolean" field="r_admin" filter="true" /> 
+		    </overview>
+		    <editform>
+				<field id="name" type="text" required="true" />
+				<field id="passwort" type="password" required="true" converter="AdminPasswordConverter" />
+				<field id="email" type="email" required="true" />
+				<field id="r_admin" type="boolean" />
+				<field id="r_adminuser" type="boolean" />
+				<field id="r_user" type="boolean" />
+				<field id="r_daten" type="boolean" />
+				<field id="r_staerken" type="boolean" />
+				<field id="r_spiele" type="boolean" />
+				<field id="r_news" type="boolean" />
+				<field id="r_demo" type="boolean" />		        
+		    </editform>
+		    
+		</entity>    
+	</adminpage>	
+  </admin>
+  
+  <settings>
+      <setting id="projectname" category="general" type="text" default="H&amp;H WebSoccer Sim 3" />
+      <setting id="context_root" category="general" type="text" default="" />
+      <setting id="homepage" category="general" type="url" default="" />
+      <setting id="systememail" category="general" type="email" default="E-Mail" />
+      <setting id="session_lifetime" category="general" type="number" default="7200" />
+      <setting id="time_zone" category="general" type="text" default="Europe/Berlin" />
+      <setting id="time_offset" category="general" type="number" default="0" />
+      <setting id="supported_languages" category="general" type="tags" default="de,en" />
+      <setting id="date_format" category="general" type="text" default="d.m.Y" />
+      <setting id="datetime_format" category="general" type="text" default="d.m.Y, H:i" />
+      <setting id="time_format" category="general" type="text" default="H:i" />
+      <setting id="password_protected" category="general" type="boolean" default="0" />
+      <setting id="password_protected_startpage" category="general" type="boolean" default="0" />
+      <setting id="privacypolicy_url" category="general" type="url" default="" />
+      <setting id="game_currency" category="game" type="text" default="EUR" />
+      <setting id="offline" category="offlinemode" type="select" selection="online,offline" default="online" />
+      <setting id="offline_text" category="offlinemode" type="textarea" default="We are offline at the moment." />
+      <setting id="offline_times" category="offlinemode" type="tags" default="" />
+  </settings>
+</module>

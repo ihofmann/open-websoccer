@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="activities_tab">Activity</message>
+	<message id="activities_none_available_for_user">The user has not done any special activity lately.</message>
+	<message id="activitylog_box_title">User Activities</message>
+	
+	<message id="activitylog_save-formation">%s has submitted his tactics.</message>
+	<message id="activitylog_select-captain">%s has selected a new team captain.</message>
+	<message id="activitylog_extend-contract">%s has extended a player contract.</message>
+	<message id="activitylog_save-tickets">%s has chosen new ticket prices.</message>
+	<message id="activitylog_sell-player">%s offers one of his players on the transfer market.</message>
+	<message id="activitylog_transfer-bid">%s raised a bid on the transfer market.</message>
+	<message id="activitylog_extend-stadium">%s has placed an order for the improvement of his stadium.</message>
+	<message id="activitylog_upgrade-stadium">%s has ordered the maintenance of his stadium.</message>
+	<message id="activitylog_execute-training">%s has trained his team.</message>
+	<message id="activitylog_book-camp">%s has booked a training camp.</message>
+	<message id="activitylog_create-youthmatch-request">%s has posted a youth match request.</message>
+	<message id="activitylog_sell-youthplayer">%s offers one of his youth players for sale.</message>
+	<message id="activitylog_directtransfer-offer">%s has submitted a player transfer offer.</message>
+	<message id="activitylog_report-absence">%s has reported himself as absent.</message>
+	<message id="activitylog_return-from-absence">%s is back again.</message>
+</messages>

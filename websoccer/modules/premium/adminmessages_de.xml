@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	
+    <message id="settings_tab_premium">Premiumkonten</message>
+	<message id="settings_label_premium_enabled">Premium-Benutzerkonten aktivieren. Benutzer können Guthaben erwerben und damit Sonderfunktionen nutzen.</message> 
+	<message id="settings_label_premium_credit_unit">Name der Guthabenswährung</message>
+	<message id="settings_label_premium_infopage">Informationsseite</message>
+	<message id="settings_label_premium_infopage_help">Seite, die angezeigt wird wenn ein Benutzer eine Premiumfunktion nutzen möchte, aber nicht genug (oder kein) Guthaben hat. Kann eine interne Seiten-ID oder ein vollständiger URL (http://...) sein.<br/>
+	    <strong>Achtung:</strong> Wenn Sie automatisch Zahlungen durch Drittanbieter (wie PayPal) aktiviert haben, muss die Sandardseite (<em>premium-feature-requested</em>) verwendet werden.</message>
+	<message id="settings_label_premium_price_options">Einzahlungsoptionen</message>
+	<message id="settings_label_premium_price_options_help">Falls Guthaben durch Zahlungen erworben werden kann, können mehrere Umrechnungskurse angegeben werden. 5.00:10 bedeutet beispielsweise, dass es für 5,00 EUR reales Geld, 10 Einheiten Premiumguthaben gibt. Beachten Sie, Kommabeträge mit Punkt anzugegen (z.B. 4.99 statt 4,99).</message>
+	<message id="settings_label_premium_currency">Währung (real)</message>
+	
+	<message id="settings_label_premium_exchangerate_gamecurrency">Umtauschkurs Spielwährung</message>
+	<message id="settings_label_premium_exchangerate_gamecurrency_help">Wenn der Benutzer Premiumguthaben in Spielgeld für seinen Club umtauschen können soll, können Sie hier den Wert pro Premiumeinheit angeben. 0 wenn kein Umtausch möglich sein soll.</message>
+
+	<message id="settings_label_premium_initial_credit">Anfangsguthaben</message>
+	<message id="settings_label_premium_initial_credit_help">Premiumguthaben, welches ein neu angemeldeter Nutzer automatisch bei der Neuregistrierung erhält.</message>
+</messages>

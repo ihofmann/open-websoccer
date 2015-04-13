@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="home_navlabel">Home</message>
+    
+    <message id="errorpage_title">Error</message>
+    
+    <message id="error_page_not_found">The requested page does not exist (anymore). Plese check the entered address.</message>
+    
+    <message id="error_double_submit">You just executed this action a couple of seconds ago. Please try it soon again.</message>
+    
+    <message id="validation_error_box_title">Invalid Input</message>
+    <message id="validation_error_box_message">Please correct the marked fields.</message>
+    <message id="validation_error_required">must be provided.</message>
+    <message id="validation_error_min_length">must have a minimum length of %d characters.</message>
+    <message id="validation_error_max_length">must not be longer than %d characters.</message>
+    <message id="validation_error_not_a_number">must be a number.</message>
+    <message id="validation_error_email">is not a valid e-mail address.</message>
+    <message id="validation_error_password">is too unsafe. It must contain both letters and numbers.</message>
+    <message id="validation_error_min_number">must be at least %d.</message>
+    <message id="validation_error_max_number">must not be higher than %d.</message>
+    
+    <message id="validation_error_not_a_url">must be a valid URL (starting with http://...).</message>
+    <message id="validation_error_invaliddate">must match pattern '%s'.</message>
+    
+    <message id="home_title">%s</message>
+	<message id="home_teaser">Become the manager of a virtual football club, lead your team against other users and win the championship!</message>
+	<message id="home_teaser_link_register">Register Now</message>
+	
+	<message id="button_save">Save</message>
+	<message id="button_cancel">Cancel</message>
+	<message id="button_reset">Reset</message>
+	<message id="button_more">More</message>
+	<message id="button_refresh">Refresh</message>
+	<message id="button_display">Display</message>
+	<message id="button_submit">Submit</message>
+	<message id="button_close">Close</message>
+	<message id="button_edit">Edit</message>
+	<message id="button_choose">Choose</message>
+	<message id="button_confirm">Confirm</message>
+	<message id="button_delete">Delete</message>
+	
+	<message id="saved_message_title">Successfully saved.</message>
+	
+	<message id="imprint_navlabel">Imprint</message>
+	<message id="imprint_title">Imprint</message>
+	
+	<message id="results_block_title">Latest Results</message>
+	
+	<message id="unit_percent">Per cent</message>
+</messages>

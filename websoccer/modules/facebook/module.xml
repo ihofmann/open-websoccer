@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+  <settings>
+      <setting id="facebook_enable_login" category="social" type="boolean" default="0" />
+      
+      <setting id="facebook_appid" category="social" type="text" default="" />
+      
+      <setting id="facebook_appsecret" category="social" type="text" default="" />
+      
+      <setting id="facebook_enable_comments" category="social" type="boolean" default="0" />
+      
+      <setting id="facebook_enable_likebutton" category="social" type="boolean" default="0" />
+  </settings>
+  
+  <blocks>
+
+        <block
+            id="facebook-login-sidebar"
+            template="facebookloginbox"
+            model="FacebookLoginModel"
+            includepages="all"
+            area="sidebar"
+            weight="1"
+            role="guest" />
+        
+        <block
+            id="facebook-like"
+            template="facebook_like"
+            includepages="home,news-details,match,todaysmatches,highscore,freeclubs"
+            area="content_bottom"
+            weight="5"
+            role="guest,user" />
+        
+        <block
+            id="facebook-sdk"
+            template="facebook_sdk"
+            includepages="all"
+            area="content_top"
+            weight="0"
+            role="guest,user" />
+        
+        <block
+            id="facebook-comments"
+            template="facebook_comments"
+            includepages="news-details,match"
+            area="content_bottom"
+            weight="10"
+            role="guest,user" />
+        
+  </blocks>
+    
+  <actions>
+      
+     <action id="facebook-login" controller="FacebookLoginController" role="guest,user">
+		<param id="error" type="text" required="false"/>
+	</action>
+	
+     <action id="facebook-logout" controller="FacebookLogoutController" role="user,guest" />
+  </actions>
+
+</module>

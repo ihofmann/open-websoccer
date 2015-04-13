@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_notifications_max">Anzahl Benachrichtigungen</message> 
+	<message id="settings_label_notifications_max_help">Höchstanzahl an Benachrichtigungen, die im Benutzerprofil aufgelistet werden.</message> 
+</messages>

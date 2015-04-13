@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+  <settings>
+      <setting id="sim_noformation_oneteam" category="simulation" type="select" selection="computer,0_0,3_0" default="computer" />
+      <setting id="sim_noformation_bothteams" category="simulation" type="select" selection="computer,0_0" default="computer" />
+      <setting id="sim_createformation_without_manager" category="simulation" type="boolean" default="1" />
+      <setting id="sim_createformation_without_manager_offensive" category="simulation" type="number" default="50" />
+      <setting id="sim_createformation_on_invalidsubmission" category="simulation" type="boolean" default="0" />
+      <setting id="sim_createformation_strength" category="simulation" type="number" default="100" />
+      
+      <setting id="sim_income_trough_friendly" category="simulation" type="boolean" default="1" />
+      <setting id="sim_injured_after_friendly" category="simulation" type="boolean" default="1" />
+      <setting id="sim_tiredness_through_friendly" category="simulation" type="boolean" default="1" />
+      <setting id="sim_playerupdate_through_nationalteam" category="simulation" type="boolean" default="1" />
+      
+      <setting id="sim_goaly_influence" category="simulation" type="number" default="20" />
+      <setting id="sim_shootprobability" category="simulation" type="number" default="100" />
+      <setting id="sim_cardsprobability" category="simulation" type="number" default="100" />
+      <setting id="sim_injuredprobability" category="simulation" type="number" default="100" />
+      
+      <setting id="sim_weight_strength" category="simulation" type="number" default="40" />
+      <setting id="sim_weight_strengthTech" category="simulation" type="number" default="20" />
+      <setting id="sim_weight_strengthStamina" category="simulation" type="number" default="20" />
+      <setting id="sim_weight_strengthFreshness" category="simulation" type="number" default="10" />
+      <setting id="sim_weight_strengthSatisfaction" category="simulation" type="number" default="10" />
+      
+      <setting id="sim_strength_reduction_secondary" category="simulation" type="number" default="10" />
+      <setting id="sim_strength_reduction_wrongposition" category="simulation" type="number" default="50" />
+      
+      <setting id="sim_home_field_advantage" category="simulation" type="number" default="2" />
+      
+      <setting id="sim_shootstrength_defense" category="simulation" type="number" default="70" />
+      <setting id="sim_shootstrength_midfield" category="simulation" type="number" default="90" />
+      <setting id="sim_shootstrength_striker" category="simulation" type="number" default="100" />
+      
+      <setting id="sim_block_player_after_yellowcards" category="simulation" type="number" default="5" />
+      
+      <setting id="sim_played_min_minutes" category="simulation" type="number" default="10" />
+      
+      <setting id="sim_decrease_freshness" category="simulation" type="boolean" default="1" />
+      <setting id="sim_strengthchange_stamina" category="simulation" type="number" default="1" />
+      <setting id="sim_strengthchange_satisfaction" category="simulation" type="number" default="1" />
+      <setting id="sim_strengthchange_freshness_notplayed" category="simulation" type="number" default="4" />
+      
+      <setting id="sim_maxmatches_injured" category="simulation" type="number" default="12" />
+      <setting id="sim_maxmatches_blocked" category="simulation" type="number" default="5" />
+      
+      <setting id="sim_allow_livechanges" category="simulation" type="boolean" default="1" />
+      <setting id="sim_allow_offensivechanges" category="simulation" type="number" default="2" />
+      
+      <setting id="sim_interval" category="simulation_expert" type="number" default="2" />
+      <setting id="sim_max_matches_per_run" category="simulation_expert" type="number" default="15" />
+      <setting id="sim_strategy" category="simulation_expert" type="text" default="DefaultSimulationStrategy" />
+      <setting id="sim_simulation_observers" category="simulation_expert" type="tags" default="MatchReportSimulationObserver" />
+      <setting id="sim_simulator_observers" category="simulation_expert" type="tags" default="MatchReportSimulatorObserver,DataUpdateSimulatorObserver" />
+  </settings>
+</module>

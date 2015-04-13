@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="absence_navlabel">Absence</message>
+    <message id="absence_intro">You do not have time for the game for the next couple of days? Please report your absence here and enter the name of a deputy who will manage your teams while you are absent.</message>
+    
+    <message id="absence_label_days">Days</message>
+    <message id="absence_label_days_help">(estimated)</message>
+    
+    <message id="absence_err_invaliddeputy">We could not find any user with the specified user name. Please check the spelling.</message>
+    <message id="absence_err_deputyisself">Sorry, you cannot deputise for yourself.</message>
+    
+    <message id="absence_report_success">Successfully reported as absent!</message>
+    
+    <message id="absence_profile_info">The user is absent until %s.</message>
+    
+    <message id="absence_reportinfo">You are reported as absent until %s. Your deputy is <strong>%s</strong>.</message>
+    <message id="absence_return_button">I am back again</message>
+    <message id="absence_return_success">Now you can manage your teams again!</message>
+    
+    <message id="absence_warning">You are currently reported as absent and cannot manage your teams.</message>
+    
+    <message id="absence_notification">{user} has reported his absence and appointed you as deputy for his teams.</message>
+    <message id="absence_comeback_notification">{user} has returned from his absence and manages his teams again.</message>
+</messages>

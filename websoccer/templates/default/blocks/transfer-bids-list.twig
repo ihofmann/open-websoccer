@@ -1,0 +1,35 @@
+{% if bids is defined and bids|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("transfer_bid_date") }}</th>
+				<th>{{ i18n.getMessage("entity_player") }}</th>
+				<th>{{ i18n.getMessage("transfermarket_head_deadline") }}</th>
+				<th>{{ i18n.getMessage("transfer_bid_amount") }}</th>
+				<th>{{ i18n.getMessage("transfer_bid_handmoney") }}</th>
+				<th>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+  
+	  	{% for bid in bids %}
+			<tr>
+				<td><a class="btn btn-mini {% if bid.ishighest %}btn-success{% else %}btn-danger{% endif %} wstooltip" 
+					href="{{ env.getInternalUrl("transfer-bid", "id=" ~ bid.player_id) }}"
+					title="{% if bid.ishighest %}{{ i18n.getMessage("transfer_bids_ishighest") }}{% else %}{{ i18n.getMessage("transfer_bids_overbidden") }}{% endif %}"><i class="icon-hand-up"></i> {{ env.getFormattedDatetime(bid.date) }}</a></td>
+				<td><a href="{{ env.getInternalUrl("player", "id=" ~ bid.player_id) }}">{{ bid.player_firstname }} {{ bid.player_lastname }}</a></td>
+				<td>{{ env.getFormattedDatetime(bid.auction_end) }}</td>
+				<td>{{ bid.amount|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</td>
+				<td>{{ bid.hand_money|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</td>
+				<td>{{ bid.contract_salary|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</td>
+			</tr>
+	  	{% endfor %}
+	  	
+		</tbody>
+	</table>
+
+
+{% else %}
+	<p>{{ i18n.getMessage("transfer_bids_nobids") }}</p>
+{% endif %}

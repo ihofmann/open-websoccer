@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="cup_firstround_only_date">Datum</message>
+    <message id="cup_firstround">Hinspiel</message>
+    <message id="cup_secondround">Rückspiel</message>
+    <message id="cup_created_from_winners_of_round">Gewinner aus <strong>%s</strong>.</message>
+    <message id="cup_created_from_loosers_of_round">Verlierer aus <strong>%s</strong>.</message>
+    <message id="cup_cuproundaward_perround_subject">Prämie für Pokalrunde</message>
+    <message id="cup_cuproundaward_winner_subject">Gewinn des Pokals</message>
+    <message id="cup_cuproundaward_second_subject">Prämie für zweiten Platz</message>
+    
+    <message id="cup_title_groups">Gruppen</message>
+    <message id="cup_group_noteamsavailable">Dieser Gruppe wurden noch keine Teams zugeteilt.</message>
+    <message id="cup_group_select_group_placeholder">Bitte wählen Sie eine Gruppe aus.</message>
+    
+</messages>

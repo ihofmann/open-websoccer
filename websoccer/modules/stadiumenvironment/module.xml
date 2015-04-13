@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="clubs" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="stadiumbuilding"
+            entity="stadiumbuilding"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="stadiumbuilding AS BuildingTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_stadiumbuilding_name"
+                        field="BuildingTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilding_required_building_id"
+                        field="RequiredBuildingTab.name"
+                        type="text"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilding_costs"
+                        field="BuildingTab.costs"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilding_premiumfee"
+                        field="BuildingTab.premiumfee"
+                        type="number"
+                        sort="true" />
+                    
+                	<join type="LEFT" jointable="stadiumbuilding AS RequiredBuildingTab" 
+                	    joincondition="RequiredBuildingTab.id = BuildingTab.required_building_id" />
+                </overview>
+
+                <editform>
+                    <field id="name" type="text" required="true" />
+                    <field id="description" type="text" />
+                    <field id="picture" type="file" />
+                    
+					<field id="required_building_id" type="foreign_key" entity="stadiumbuilding" 
+					    jointable="stadiumbuilding" labelcolumns="name" />
+					
+					<field id="costs" type="number" required="true" />
+					<field id="construction_time_days" type="number" required="true" default="0" />
+					<field id="premiumfee" type="number" required="true" default="0" />
+					
+					<field id="effect_training" type="number" required="true" default="0" />
+					<field id="effect_youthscouting" type="number" required="true" default="0" />
+					<field id="effect_tickets" type="number" required="true" default="0" />
+					<field id="effect_fanpopularity" type="number" required="true" default="0" />
+					<field id="effect_injury" type="number" required="true" default="0" />
+					<field id="effect_income" type="number" required="true" default="0" />
+                </editform>
+            </entity>
+        </adminpage>
+	</admin>
+	
+    <pages>
+        <page
+            id="stadiumenvironment"
+            template="stadiumenvironment"
+            model="StadiumEnvironmentModel"
+            parentItem="office"
+            navitem="true"
+            navweight="7"
+            role="user">
+        </page>
+
+    </pages>
+    
+    <actions>
+	    <action id="order-building" controller="OrderBuildingController" role="user" log="true">
+			<param id="id" type="number" required="true" />
+		</action>
+	</actions>
+	
+    <plugins>
+		<eventlistener event="PlayerTrainedEvent" class="StadiumEnvironmentPlugin" method="addTrainingBonus" />
+		<eventlistener event="YouthPlayerScoutedEvent" class="StadiumEnvironmentPlugin" method="addYouthPlayerSkillBonus" />
+		<eventlistener event="TicketsComputedEvent" class="StadiumEnvironmentPlugin" method="addTicketsBonus" />
+		<eventlistener event="MatchCompletedEvent" class="StadiumEnvironmentPlugin" method="creditAndDebitAfterHomeMatch" />
+		<eventlistener event="MatchCompletedEvent" class="StadiumEnvironmentPlugin" method="handleInjuriesAfterMatch" />
+	</plugins>
+</module>

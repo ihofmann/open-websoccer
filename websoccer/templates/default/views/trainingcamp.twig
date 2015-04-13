@@ -1,0 +1,72 @@
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/profileelements.twig" as profile %}
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("trainingcamp_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if bookedCamp is defined and bookedCamp|length > 0 %}
+
+	<h3>{{ i18n.getMessage("trainingcamp_bookedcamp") }}</h3>
+	
+	{{ profile.infofield(i18n.getMessage("entity_trainingcamp_name"), bookedCamp.name) }}
+	{{ profile.infofield(i18n.getMessage("trainingcamp_startdate"), env.getFormattedDate(bookedCamp.date_start)) }}
+	{{ profile.infofield(i18n.getMessage("trainingcamp_enddate"), env.getFormattedDate(bookedCamp.date_end)) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_staerke"), bookedCamp.effect_strength) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_technik"), bookedCamp.effect_strength_technique) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_kondition"), bookedCamp.effect_strength_stamina) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_frische"), bookedCamp.effect_strength_freshness) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_zufriedenheit"), bookedCamp.effect_strength_satisfaction) }}
+	
+	<p style="margin-top: 10px; margin-bottom: 20px;"><i class="icon-warning-sign"></i> {{ i18n.getMessage('trainingcamp_delete_note') }}</p>
+	
+	<form method="post">
+		<div class="form-actions">
+			<button type="submit" class="btn"><i class="icon-remove-sign"></i> {{ i18n.getMessage('trainingcamp_delete') }}</button>
+		</div>
+		<input type="hidden" name="page" value="trainingcamp"/>
+		<input type="hidden" name="action" value="cancel-camp"/>
+		<input type="hidden" name="bookingid" value="{{ bookedCamp.id }}"/>
+	</form>
+{% else %}
+
+	{% if camps is not defined or camps|length < 1 %}
+		<p>{{ i18n.getMessage("trainingcamp_nocamps") }}</p>
+	{% else %}
+	
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ i18n.getMessage("entity_trainingcamp_name") }}</th>
+					<th>{{ i18n.getMessage("entity_trainingcamp_preis_spieler_tag") }}</th>
+					<th>{{ i18n.getMessage("entity_trainingcamp_p_staerke") }}</th>
+					<th>{{ i18n.getMessage("entity_trainingcamp_p_technik") }}</th>
+					<th>{{ i18n.getMessage("entity_trainingcamp_p_kondition") }}</th>
+					<th>{{ i18n.getMessage("entity_trainingcamp_p_frische") }}</th>
+					<th>{{ i18n.getMessage("entity_trainingcamp_p_zufriedenheit") }}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for camp in camps %}
+				<tr>
+					<td><p>{{ camp.name }} ({{ camp.country }})</p>
+					<p><a href="{{ env.getInternalUrl("camp-details", "id=" ~ camp.id) }}" class="btn"><i class="icon-hand-right"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
+					<td>{{ camp.costs|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+					<td>{{ camp.effect_strength }}</td>
+					<td>{{ camp.effect_strength_technique }}</td>
+					<td>{{ camp.effect_strength_stamina }}</td>
+					<td>{{ camp.effect_strength_freshness }}</td>
+					<td>{{ camp.effect_strength_satisfaction }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	
+	{% endif %}
+{% endif %}
+{% endblock %}

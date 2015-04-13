@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		{% set pageId = env.getPageId() %}
+		<atom:link href="{{ env.getInternalUrl(pageId, "lang=" ~ i18n.getCurrentLanguage() ~ "&id=" ~ env.getRequestParameter("id"), TRUE) }}" rel="self" type="application/rss+xml" />
+		<title>{{ env.getConfig("projectname") }} - {{ i18n.getMessage(pageId ~ "_rss_title") }}</title>
+		<link>{{ env.getInternalUrl("home", null, TRUE) }}</link>
+		<description>{{ i18n.getMessage(pageId ~ "_rss_description") }}</description>
+		<language>{{ i18n.getCurrentLanguage() }}</language>
+		<ttl>120</ttl>
+		{% for item in items %}
+			<item>
+				<title>{{ item.title }}</title>
+				<guid isPermaLink="true">{{ item.url }}</guid>
+				<link>{{ item.url }}</link>
+				<pubDate>{{ item.date }}</pubDate>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>

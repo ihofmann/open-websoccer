@@ -1,0 +1,12 @@
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("myschedule_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% include 'blocks/results-list.twig' %}
+
+{% endblock %}

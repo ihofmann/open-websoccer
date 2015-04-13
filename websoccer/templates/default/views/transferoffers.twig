@@ -1,0 +1,111 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% block page_title %}
+{{ i18n.getMessage("transferoffers_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<ul class="nav nav-tabs" id="offersTab">
+  <li class="active"><a href="#received" data-toggle="tab">{{ i18n.getMessage("transferoffers_tab_received") }}</a></li>
+  <li><a href="#sent" data-toggle="tab"
+  	data-ajaxtarget="sent" data-ajaxblock="directtransfer-sentoffers" class="ajaxLink">{{ i18n.getMessage("transferoffers_tab_sent") }}</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="received">
+	{% if offers|length > 0 %}
+	
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ i18n.getMessage("entity_transfer_offer_submitted_date") }}</th>
+					<th>{{ i18n.getMessage("entity_transfer_offer_player_id") }}</th>
+					<th>{{ i18n.getMessage("entity_transfer_offer_sender_club_id") }}</th>
+					<th>{{ i18n.getMessage("entity_transfer_offer_offer_amount") }}</th>
+					<th>{{ i18n.getMessage("transferoffers_offer_reaction") }}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for offer in offers %}
+				<tr>
+					<td><p>{{ env.getFormattedDatetime(offer.offer_submitted_date) }}</p>
+					{% if offer.offer_message|length > 0 %}
+					<a href="#" class="btn btn-mini wspopover" data-toggle="popover" 
+						data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.sender_user_name) }}" 
+						data-content="{{ offer.offer_message }}">{{ i18n.getMessage("transferoffers_offer_showcomment") }}</a>
+					{% endif %}
+					</td>
+					<td><a href="{{ env.getInternalUrl("player", "id=" ~ offer.player_id) }}">{% if offer.player_pseudonym|length > 0 %}{{ offer.player_pseudonym }}{% else %}{{ offer.player_firstname }} {{ offer.player_lastname }}{% endif %}</a>
+						{% if offer.player_position_main|length > 0 %}({{ i18n.getMessage("player_mainposition_" ~ offer.player_position_main) }}){% endif %}<br>
+					<small>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}: {{ offer.player_salary|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}<br>
+					{{ i18n.getMessage("entity_player_marktwert") }}: {{ offer.player_marketvalue|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</small></td>
+					<td><a href="{{ env.getInternalUrl("team", "id=" ~ offer.sender_club_id) }}">{{ offer.sender_club_name }}</a><br> (<a href="{{ env.getInternalUrl("user", "id=" ~ offer.sender_user_id) }}">{{ offer.sender_user_name }}</a>)</td>
+					<td>
+						<span>{{ offer.offer_amount|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</span>
+						{% if offer.explayer1_id > 0 or offer.explayer2_id > 0 %}
+							<ul class="unstyled">
+								{% if offer.explayer1_id > 0  %}
+								<li><small>+ <a href="{{ env.getInternalUrl("player", "id=" ~ offer.explayer1_id) }}">{% if offer.explayer1_pseudonym|length > 0 %}{{ offer.explayer1_pseudonym }}{% else %}{{ offer.explayer1_firstname }} {{ offer.explayer1_lastname }}{% endif %}</a></small></li>
+								{% endif %}
+								
+								{% if offer.explayer2_id > 0  %}
+								<li><small>+ <a href="{{ env.getInternalUrl("player", "id=" ~ offer.explayer2_id) }}">{% if offer.explayer2_pseudonym|length > 0 %}{{ offer.explayer2_pseudonym }}{% else %}{{ offer.explayer2_firstname }} {{ offer.explayer2_lastname }}{% endif %}</a></small></li>
+								{% endif %}
+							</ul>
+						{% endif %}
+					</td>
+					<td>
+						{% if offer.offer_admin_approval_pending %}
+							<span class="label label-info">{{ i18n.getMessage("transferoffers_offer_status_adminapprovalpending") }}</span>
+						{% else %}
+							<p><a href="#" class="btn btn-success btn-small btn-block ajaxLink"
+								data-ajaxtarget="pagecontent"
+								data-ajaxquerystr="page=transferoffers&action=directtransfer-accept&id={{ offer.offer_id }}">{{ i18n.getMessage("transferoffers_offer_reaction_accept") }}</a></p>
+							
+							<p><a href="#rejectModal{{ offer.offer_id }}" role="button" data-toggle="modal" class="btn btn-danger btn-small btn-block">{{ i18n.getMessage("transferoffers_offer_reaction_reject") }}</a></p>
+							
+							<form method="post" class="form-horizontal">
+								<div id="rejectModal{{ offer.offer_id }}" class="modal hide fade" tabindex="-1" role="dialog" 
+									aria-labelledby="rejectModalLabel{{ offer.offer_id }}" aria-hidden="true">
+								  <div class="modal-header">
+								    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								    <h3 id="rejectModalLabel{{ offer.offer_id }}">{{ i18n.getMessage("transferoffer_reject_modal_title") }}</h3>
+								  </div>
+								  <div class="modal-body">
+								  	{{ formelements.textarea("comment", i18n.getMessage("transferoffer_reject_label_comment"), "") }}
+								  	{{ formelements.checkbox("allow_alternative", i18n.getMessage("transferoffer_reject_label_allow_alternative"), "1", true) }}
+								  </div>
+								  <div class="modal-footer">
+								  	<button type="submit" class="btn btn-primary ajaxSubmit"
+								  	data-ajaxtarget="pagecontent"
+								  	data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_submit") }}</button>
+								    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_cancel") }}</a>
+								  </div>
+								</div>
+								
+								<input type="hidden" name="page" value="transferoffers">
+								<input type="hidden" name="id" value="{{ offer.offer_id }}">
+								<input type="hidden" name="action" value="directtransfer-reject">
+							</form>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	
+		{{ pagination.paginator(paginator) }}
+	{% else %}
+		{{ messagebox.box(i18n.getMessage("transferoffers_no_received_offers"), "", "info") }}
+	{% endif %}
+	</div>
+	<div class="tab-pane" id="sent">
+	...
+	</div>
+</div>
+
+{% endblock %}

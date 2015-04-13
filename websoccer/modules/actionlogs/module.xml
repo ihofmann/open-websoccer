@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+    <blocks>
+
+        <block
+            id="user-activities"
+            template="user-activities-list"
+            model="UserActivitiesModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+        <block
+            id="user-activities-all"
+            template="user-activities-box"
+            model="AllUserActivitiesModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+    </blocks>
+
+</module>

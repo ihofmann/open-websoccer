@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_league">League</message>
+	<message id="entity_league_name">Name</message>
+	<message id="entity_league_kurz">Short</message>
+	<message id="entity_league_land">Country</message>
+	<message id="entity_league_p_steh">Avg. utilisation of stands</message>
+	<message id="entity_league_p_sitz">Avg. utilisation of seats</message>
+	<message id="entity_league_p_haupt_steh">Avg. utilisation of stands (grandstand)</message>
+	<message id="entity_league_p_haupt_sitz">Avg. utilisation of seats (grandstand)</message>
+	<message id="entity_league_p_vip">Avg. utilisation of VIP seats</message>
+	<message id="entity_league_preis_steh">Avg. price for stands</message>
+	<message id="entity_league_preis_sitz">Avg. price for seats</message>
+	<message id="entity_league_preis_vip">Avg. price for VIP seats</message>
+</messages>

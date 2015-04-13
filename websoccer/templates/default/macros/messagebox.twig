@@ -1,0 +1,8 @@
+{% macro box(title, message, type) %}
+
+<div class="alert alert-block alert-{{ type|default('error') }}">
+  <h4>{{ title }}</h4>
+  {{ message }}
+</div>
+
+{% endmacro %}

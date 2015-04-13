@@ -1,0 +1,54 @@
+
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% if leagues|length == 0 and cups|length == 0 %}
+	{{ messagebox.box("", i18n.getMessage("history_no_records"), "info") }}
+{% else %}
+
+	{% for leagueName,seasons in leagues %}
+		<h4>{{ leagueName }}</h4>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ i18n.getMessage("entity_season") }}</th>
+					<th>{{ i18n.getMessage("entity_club") }}</th>
+					<th>{{ i18n.getMessage("leaguetable_head_place") }}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for season in seasons %}
+				<tr>
+					<td>{{ season.season_name }}</td>
+					<td><a href="{{ env.getInternalUrl("team", "id=" ~ season.team_id) }}">{{ season.team_name }}</a></td>
+					<td>{{ season.season_rank }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% endfor %}
+	
+	{% if cups|length > 0 %}
+		<h4>{{ i18n.getMessage("entity_cup") }}</h4>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ i18n.getMessage("entity_cup") }}</th>
+					<th>{{ i18n.getMessage("entity_club") }}</th>
+					<th>{{ i18n.getMessage("entity_cup_rounds") }}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for cup in cups %}
+				<tr>
+					<td>{{ cup.cup_name }}</td>
+					<td><a href="{{ env.getInternalUrl("team", "id=" ~ cup.team_id) }}">{{ cup.team_name }}</a></td>
+					<td>{{ cup.cup_round_name }}<br>{{ env.getFormattedDate(cup.achievement_date) }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+
+{% endif %}

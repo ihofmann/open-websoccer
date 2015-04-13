@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="leagues" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage id="schedulegenerator" permissionrole="r_spiele" navcategory="season" filename="schedulegenerator"/>
+        
+        <adminpage
+            id="season"
+            entity="season"
+            navcategory="season"
+            permissionrole="r_spiele" >
+
+            <entity dbtable="saison AS SeasonTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_season_name"
+                        field="SeasonTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_season_liga_id"
+                        field="LeagueTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_season_beendet"
+                        field="SeasonTab.beendet"
+                        type="boolean"
+                        filter="true" />
+                    
+                    
+                	<join type="LEFT" jointable="liga AS LeagueTab" joincondition="LeagueTab.id = SeasonTab.liga_id" />
+                </overview>
+
+                <editform>
+                    
+                    <field id="name" type="text" required="true" />
+                    <field id="liga_id" type="foreign_key" entity="league" jointable="liga" cascade="delete" labelcolumns="land, name" required="true" />
+                    <field id="beendet" type="boolean" />
+                    
+                    <field id="platz_1_id" type="foreign_key" entity="club" jointable="verein" labelcolumns="name" />
+                    <field id="platz_2_id" type="foreign_key" entity="club" jointable="verein" labelcolumns="name" />
+                    <field id="platz_3_id" type="foreign_key" entity="club" jointable="verein" labelcolumns="name" />
+                    <field id="platz_4_id" type="foreign_key" entity="club" jointable="verein" labelcolumns="name" />
+                    <field id="platz_5_id" type="foreign_key" entity="club" jointable="verein" labelcolumns="name" />
+					
+                </editform>
+            </entity>
+        </adminpage>
+        
+        <adminpage
+            id="complete-season"
+            filename="season-complete"
+            navcategory="season"
+            permissionrole="r_spiele" />
+    </admin>
+    
+    <blocks>
+
+        <block
+            id="season-picker"
+            template="season-picker"
+            model="SeasonsOfLeagueModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+        <block
+            id="results-list"
+            template="results-list"
+            model="MatchDayResultsModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+        <block
+            id="latest-results"
+            template="results-list"
+            model="LatestResultsModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+    </blocks>
+    
+</module>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	
+    <message id="settings_tab_premium">Premium Accounts</message>
+	<message id="settings_label_premium_enabled">Enable premium user accounts. Users can get premium credit and use special features with it.</message> 
+	<message id="settings_label_premium_credit_unit">Credit currency name</message>
+	<message id="settings_label_premium_infopage">Information Page</message>
+	<message id="settings_label_premium_infopage_help">Page that shall be shown when a user requested a premium feature but has no or not enough balance on his premium account. Can be either a page ID or a complete URL (http://...).<br/>
+	    <strong>Note:</strong> If you enabled the automatic payment registration for third party vednors (such as PayPal), you need to use the default information page (<em>premium-feature-requested</em>).</message>
+	<message id="settings_label_premium_price_options">Buy-in options</message>
+	<message id="settings_label_premium_price_options_help">If users can buy credit with money, then you can offer several exchange rates. E.g. 5.00:10 means, that 5,00 EUR of real money will be exchanged to 10 units of premium credit. Note that amounts with comma use a dot instead of comma (e.g. 4.99 instead of 4,99)</message>
+	<message id="settings_label_premium_currency">Currency (real)</message>
+	
+	<message id="settings_label_premium_exchangerate_gamecurrency">Exchange rate game currency</message>
+	<message id="settings_label_premium_exchangerate_gamecurrency_help">If user may convert premium credit into play money for his team, then provide the value of one premium credit point in play money. 0 if exchange shall be disabled.</message>
+	
+	<message id="settings_label_premium_initial_credit">Initial credit</message>
+	<message id="settings_label_premium_initial_credit_help">Premium credit that a user gets on new registration.</message>
+</messages>

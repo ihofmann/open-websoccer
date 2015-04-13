@@ -1,0 +1,42 @@
+{% import "macros/formelements.twig" as formelements %}
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("profile_title") }}
+{% endblock %}
+
+{% block page_content %}
+<form class="form-horizontal" method="post">
+
+	{{ formelements.readonly(i18n.getMessage('entity_users_nick'), env.user.username) }}
+
+	{{ formelements.readonly(i18n.getMessage('entity_users_email'), env.user.email) }}
+
+	{% if env.getConfig("login_method") == "DefaultUserLoginMethod" %}
+		{{ formelements.textfield('newemail', i18n.getMessage('profile_field_newemail'), env.getRequestParameter('newemail'), false, validationMsg, 'email') }}
+		
+		{{ formelements.textfield('newpassword', i18n.getMessage('profile_field_newpassword'), '', false, validationMsg, 'password') }}
+	{% endif %}
+	
+	{{ formelements.checkbox("c_hideinonlinelist", i18n.getMessage('entity_users_c_hideinonlinelist'), user.c_hideinonlinelist, true) }}
+	<hr>
+	
+	{{ formelements.textfield('realname', i18n.getMessage('entity_users_name'), user.realname, false, validationMsg) }}
+	{{ formelements.textfield('place', i18n.getMessage('entity_users_wohnort'), user.place, false, validationMsg) }}
+	{{ formelements.textfield('country', i18n.getMessage('entity_users_land'), user.country, false, validationMsg) }}
+	{{ formelements.textfield('birthday', i18n.getMessage('entity_users_geburtstag'), user.birthday, false, validationMsg, "text") }}
+	{{ formelements.textfield('occupation', i18n.getMessage('entity_users_beruf'), user.occupation, false, validationMsg) }}
+	{{ formelements.textfield('interests', i18n.getMessage('entity_users_interessen'), user.interests, false, validationMsg) }}
+	{{ formelements.textfield('favorite_club', i18n.getMessage('entity_users_lieblingsverein'), user.favorite_club, false, validationMsg) }}
+	{{ formelements.textfield('homepage', i18n.getMessage('entity_users_homepage'), user.homepage, false, validationMsg, "url") }}
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+		<a href="{{ env.getInternalUrl("profile") }}" class="btn">{{ i18n.getMessage('button_reset') }}</a>
+	</div>
+	<input type="hidden" name="page" value="profile"/>
+	<input type="hidden" name="action" value="save-profile"/>
+</form>
+
+{% endblock %}

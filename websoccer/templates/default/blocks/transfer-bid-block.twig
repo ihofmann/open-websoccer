@@ -1,0 +1,69 @@
+{% import "macros/formelements.twig" as formelements %}
+
+<h3 name="highestbid">{{ i18n.getMessage("transfer_bid_existing_max_bid") }}</h3>
+
+{% if highestbid is defined and highestbid|length > 0 %}
+
+<dl class="dl-horizontal">
+  <dt>{{ i18n.getMessage("entity_club") }}</dt>
+  <dd><a href="{{ env.getInternalUrl("team", "id=" ~ highestbid.team_id) }}">{{ highestbid.team_name }}</a></dd>
+  
+  <dt>{{ i18n.getMessage("entity_users") }}</dt>
+  <dd><a href="{{ env.getInternalUrl("user", "id=" ~ highestbid.user_id) }}">{{ highestbid.user_name }}</a></dd>
+  
+  <dt>{{ i18n.getMessage("transfer_bid_date") }}</dt>
+  <dd>{{ env.getFormattedDatetime(highestbid.date) }}</dd>
+
+  {% if player.team_id > 0 %}
+  <dt>{{ i18n.getMessage("transfer_bid_amount") }}</dt>
+  <dd>{{ highestbid.amount|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+  {% else %}
+  <dt>{{ i18n.getMessage("transfer_bid_handmoney") }}</dt>
+  <dd>{{ highestbid.hand_money|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+  {% endif %}
+  <dt>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}</dt>
+  <dd>{{ highestbid.contract_salary|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+  
+  <dt>{{ i18n.getMessage("entity_player_vertrag_torpraemie") }}</dt>
+  <dd>{{ highestbid.contract_goalbonus|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+  
+  <dt>{{ i18n.getMessage("entity_player_vertrag_spiele") }}</dt>
+  <dd>{{ highestbid.contract_matches  }} {{ i18n.getMessage("player_details_unit_matches") }}</dd>
+</dl>
+
+{% else %}
+	<p>{{ i18n.getMessage("transfer_bid_no_existing_max_bid") }}</p>
+
+	{% if env.user.clubId > 0 and player.team_id == env.user.clubId %}
+		<p><a href="{{ env.getInternalActionUrl("remove-player-from-transfermarket", "id=" ~ player.player_id) }}" class="btn btn-danger"><i class="icon-remove-circle"></i> {{ i18n.getMessage("transfermarket_remove_label") }}</a></p>
+	{% endif %}
+{% endif %}
+
+<p><a href="#highestbid" style="margin-top: 30px" class="btn ajaxLink" data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid"
+	data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"><i class="icon-refresh"></i> {{ i18n.getMessage("button_refresh") }}</a></p>
+
+<h3>{{ i18n.getMessage("transfer_bid_yourbid") }}</h3>
+
+<form class="form-horizontal" method="post">
+
+	{% if player.team_id > 0 %}
+	{{ formelements.textfield('amount', i18n.getMessage('transfer_bid_amount'), env.getRequestParameter('amount'), true, validationMsg, 'number') }}
+	{% else %}
+	{{ formelements.textfield('handmoney', i18n.getMessage('transfer_bid_handmoney'), env.getRequestParameter('handmoney'), false, validationMsg, 'number') }}
+	{% endif %}
+	
+	{{ formelements.textfield('contract_salary', i18n.getMessage('entity_player_vertrag_gehalt'), env.getRequestParameter('contract_salary'), true, validationMsg, 'number') }}
+	
+	{{ formelements.textfield('contract_goal_bonus', i18n.getMessage('entity_player_vertrag_torpraemie'), env.getRequestParameter('contract_goal_bonus'), false, validationMsg, 'number') }}
+	
+	{{ formelements.textfield('contract_matches', i18n.getMessage('entity_player_vertrag_spiele'), env.getRequestParameter('contract_matches'), true, validationMsg, 'number') }}
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary ajaxSubmit" 
+		data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid" data-messagetarget="bidmessages">{{ i18n.getMessage('transfermarket_bid') }}</button>
+		<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="page" value="transfer-bid"/>
+	<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>
+	<input type="hidden" name="action" value="transfer-bid"/>
+</form>

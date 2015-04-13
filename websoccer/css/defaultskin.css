@@ -1,0 +1,26 @@
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+.box {
+	padding: 8px 10px;
+	background: #fdfdfd;
+	border: 1px solid #eeeeee;
+	border-bottom: 3px solid #eee;
+	border-radius: 6px;
+	margin-bottom: 30px;
+}
+
+.box table {
+	margin-bottom: 10px;
+}
+
+.box > h4 {
+	border-bottom: 1px solid #eeeeee;
+	padding-bottom: 7px;
+}

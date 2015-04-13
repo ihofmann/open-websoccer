@@ -1,0 +1,4 @@
+{% set adcode = env.getConfig('frontend_ads_code_top') %}
+{% if adcode|length %}
+	{{ adcode|raw }}
+{% endif %}

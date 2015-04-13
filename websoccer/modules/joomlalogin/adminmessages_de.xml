@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="settings_label_joomlalogin_tableprefix">Login über Joomla: Tabellenpräfix</message>
+    <message id="settings_label_joomlalogin_tableprefix_help">Präfix der Datenbanktabellen Ihrer Joomla-Installation, falls Benutzer sich nur mit dem Benutzernamen und Passwort ihres Joomla-Accounts anmelden sollen. <em>Hinweis:</em> Aktivieren Sie den Log-In über Joomla durch Eingabe von "JoomlaUserLoginMethod" oben bei "Log-In Methode".</message>
+</messages>

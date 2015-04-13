@@ -1,0 +1,66 @@
+
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% block page_title %}
+{{ i18n.getMessage("topscorers_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<form class="form-inline" method="post">
+
+	<label class="control-label" for="country">{{ i18n.getMessage("entity_league") }}</label> 
+	<select id="leagueid" name="leagueid">
+		<option></option>
+	{% for leagueItem in leagues %}
+		<option value="{{ leagueItem.league_id }}"{% if env.getRequestParameter("leagueid") == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>
+	{% endfor %}
+	</select>
+
+	<button type="submit" class="btn btn-primary ajaxSubmit" 
+		data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_display') }}</button>
+
+	<input type="hidden" name="page" value="topscorers" />
+</form>
+
+{% if players is defined and players|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+				<th>{{ i18n.getMessage("entity_player_verein_id") }}</th>
+				<th>{{ i18n.getMessage("player_details_statistic_goals") }}</th>
+				<th>{{ i18n.getMessage("player_details_statistic_assists") }}</th>
+				<th>{{ i18n.getMessage("topscorers_head_score") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+			{% for player in players %}
+			<tr>
+				<td><strong>{{ loop.index }}</strong></td>
+				<td><p><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a></p></td>
+				<td>
+				{% if player.team_id > 0 %}
+				<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
+				{% else %}
+				-
+				{% endif %}
+				</td>
+				<td>{{ player.goals }}</td>
+				<td>{{ player.assists }}</td>
+				<td>{{ player.score }}</td>
+			</tr>
+			{% endfor %}
+		
+		</tbody>
+	</table>
+
+{% else %}
+	{{ messagebox.box(i18n.getMessage("no_players_found"), "", "info") }}
+{% endif %}
+
+{% endblock %}

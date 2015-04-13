@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <admin>
+        <adminpage
+            id="badge"
+            entity="badge"
+            navcategory="website"
+            permissionrole="r_user" >
+
+            <entity dbtable="badge AS BadgeTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_badge_name"
+                        field="BadgeTab.name"
+                        type="text"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_badge_level"
+                        field="BadgeTab.level"
+                        type="text"
+                        sort="true" />
+                    
+           			<column
+                        id="entity_badge_event"
+                        field="BadgeTab.event"
+                        type="text"
+                        sort="true" />
+           			
+           			<column
+                        id="entity_badge_event_benchmark"
+                        field="BadgeTab.event_benchmark"
+                        type="number"
+                        sort="true" />
+                </overview>
+
+                <editform>
+                    <field id="name" type="text" required="true" />
+                    <field id="description" type="text" required="false" />
+					<field id="level" type="select" required="true" 
+					    selection="bronze,silver,gold" />
+					<field id="event" type="select" required="true" 
+					    selection="membership_since_x_days,win_with_x_goals_difference,completed_season_at_x,x_trades,stadium_construction_by_x,cupwinner" />
+					<field id="event_benchmark" type="number" required="true" default="0" />
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+    <pages>
+        <page
+            id="badges"
+            template="badges"
+            model="BadgesModel"
+            role="user,guest"
+            parentItem="user"  />
+    </pages> 
+</module>

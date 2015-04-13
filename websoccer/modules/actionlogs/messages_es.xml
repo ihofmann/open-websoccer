@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="activities_tab">Actividad</message>
+	<message id="activities_none_available_for_user">El usuario no ha hecho ninguna actividad especial últimamente.</message>
+	<message id="activitylog_box_title">Actividades del Usuario</message>
+	
+	<message id="activitylog_save-formation">%s ha enviado sus tácticas.</message>
+	<message id="activitylog_select-captain">%s ha seleccionado a un nuevo capitán del equipo.</message>
+	<message id="activitylog_extend-contract">%s ha ampliado el contrato de un jugador.</message>
+	<message id="activitylog_save-tickets">%s ha cambiado los precios de las entradas.</message>
+	<message id="activitylog_sell-player">%s ofrece uno de sus jugadores en el mercado de fichajes.</message>
+	<message id="activitylog_transfer-bid">%s ha echo una oferta en el mercado de fichajes.</message>
+	<message id="activitylog_extend-stadium">%s ha realizado un pedido de la mejora de su estadio.</message>
+	<message id="activitylog_upgrade-stadium">%s ha ordenado el mantenimiento de su estadio.</message>
+	<message id="activitylog_execute-training">%s ha entrenado a su equipo.</message>
+	<message id="activitylog_book-camp">%s ha reservado un campo de entrenamiento.</message>
+	<message id="activitylog_create-youthmatch-request">%s ha publicado una solicitud de partido de Juveniles.</message>
+	<message id="activitylog_sell-youthplayer">%s ofrece uno de sus jugadores juveniles para vender.</message>
+	<message id="activitylog_directtransfer-offer">%s ha echo una oferta para un jugador.</message>
+	<message id="activitylog_report-absence">%s ha informado que estara ausente.</message>
+	<message id="activitylog_return-from-absence">%s está de vuelta otra vez.</message>
+</messages>

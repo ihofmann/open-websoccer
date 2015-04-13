@@ -1,0 +1,35 @@
+{% import "macros/badges.twig" as badgesmacros %}
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("badges_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>{{ i18n.getMessage('entity_badge') }}</th>
+			<th>{{ i18n.getMessage('entity_badge_description') }}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for badge in badges %}
+		<tr>
+			<td>
+				{{ badgesmacros.badge(badge.name, badge.level) }}
+			</td>
+			<td>
+				{% if badge.description|length and i18n.hasMessage(badge.description) %}
+					{{ i18n.getMessage(badge.description) }}
+				{% else %}
+					{{ badge.description }}
+				{% endif %}
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}

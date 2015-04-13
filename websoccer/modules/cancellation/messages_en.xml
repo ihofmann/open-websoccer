@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="cancellation_navlabel">Cancellation</message>
+    <message id="cancellation_title">Close Your User Account</message>
+    
+    <message id="cancellation_intro">You do not want to play with us anymore? What a pity! Here you can quit the game. You will lose your team and your user account will be closed.</message>
+    <message id="cancellation_button">Quit</message>
+    <message id="cancellation_modal_title">Confirm Cancellation</message>
+    <message id="cancellation_modal_content">Do you really want to close your user account?</message>
+    <message id="cancellation_modal_confirm">Yes, quit</message>
+    
+    <message id="cancellation_success">Your user account has been successfully closed. Goodbye!</message>
+</messages>

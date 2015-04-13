@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_league">liga</message>
+	<message id="entity_league_name">Nombre</message>
+	<message id="entity_league_kurz">Siglas</message>
+	<message id="entity_league_land">País</message>
+	<message id="entity_league_p_steh">Avg. utilización de gradas</message>
+	<message id="entity_league_p_sitz">Avg. utilización de los asientos</message>
+	<message id="entity_league_p_haupt_steh">Avg. utilización de gradas (tribuna)</message>
+	<message id="entity_league_p_haupt_sitz">Avg. utilización de los asientos (tribuna)</message>
+	<message id="entity_league_p_vip">Avg. utilización de los asientos VIP</message>
+	<message id="entity_league_preis_steh">Avg. precio de gradas</message>
+	<message id="entity_league_preis_sitz">Avg. precio de asientos</message>
+	<message id="entity_league_preis_vip">Avg. precio de asientos VIP</message>
+</messages>

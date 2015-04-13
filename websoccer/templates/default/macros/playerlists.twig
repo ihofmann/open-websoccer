@@ -1,0 +1,157 @@
+
+{% macro teamlistItem(player) %}
+	{% import _self as playerlists %}
+
+			<tr>
+				<td><img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
+					alt="{{ i18n.getMessage("player_position_" ~ player.position) }}" title="{{ i18n.getMessage("player_position_" ~ player.position) }}" />
+					{% if player.position_main|length > 0 %}<abbr title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</abbr>{% endif %}
+					{% if player.position_second|length > 0 %}/ <abbr title="{{ i18n.getMessage("option_" ~ player.position_second) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_second) }}</abbr>{% endif %}
+				</td>
+				<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a>
+					{% if env.getRequestParameter("captain") == player.id %}
+						<i class="icon-group wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>
+					{% endif %}
+					{% if player.unsellable %}
+						<i class="icon-eye-close" title="{{ i18n.getMessage("entity_player_unsellable") }}"></i>
+					{% endif %}
+					{% if player.lending_owner_id > 0 %}
+						<i class="icon-star-empty" title="{{ i18n.getMessage("lending_player_marker_tooltip") }}"></i>
+					{% elseif player.lending_fee > 0 and env.getConfig("lending_enabled") %}
+						<i class="icon-share-alt" title="{{ i18n.getMessage("lending_player_marker_lendable") }}"></i>
+					{% endif %}
+				</td>
+				
+				{% if env.getConfig("hide_strength_attributes") != "1" %}
+				<td {{ playerlists.strengthClass(player.strength) }} title="{{ i18n.getMessage("playertable_head_strength") }}"><strong>{{ player.strength }}</strong></td>
+				<td {{ playerlists.strengthClass(player.strength_technic) }} title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ player.strength_technic }}</td>
+				<td {{ playerlists.strengthClass(player.strength_freshness) }} title="{{ i18n.getMessage("playertable_head_strength_freshness") }}">{{ player.strength_freshness }}</td>
+				<td {{ playerlists.strengthClass(player.strength_stamina) }} title="{{ i18n.getMessage("playertable_head_strength_stamina") }}">{{ player.strength_stamina }}</td>
+				<td {{ playerlists.strengthClass(player.strength_satisfaction) }} title="{{ i18n.getMessage("playertable_head_strength_satisfaction") }}">{{ player.strength_satisfaction }}</td>
+				{% endif %}
+				
+				<td>{{ player.age }}</td>
+				<td>
+				{% if player.matches_injured > 0 %}
+					<i class="icon-medkit" title="{{ i18n.getMessage("player_injured") }}"></i> {{ player.matches_injured }}
+				{% elseif player.matches_blocked > 0 %}
+					<img src="{{ skin.getImage("icons/blocked_cards.png") }}" alt="{{ i18n.getMessage("formation_team_blocked_cards") }}" title="{{ i18n.getMessage("formation_team_blocked_cards") }}" /> {{ player.matches_blocked }}
+				{% endif %}
+				</td>
+			</tr>
+{% endmacro %}
+
+{% macro matchResultPlayers(match, players) %}
+	{% if players is defined and players|length > 0 %}
+		{% set ageSum = 0 %}
+		{% set strengthSum = 0 %}
+		{% set gradeSum = 0 %}
+		<table class="table table-striped table-condensed">
+			<colgroup>
+				<col style="width: 40px" />
+				<col />
+				<col style="width: 70px" />
+			</colgroup>
+			<thead>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("match_details_players_name") }}</th>
+				<th>{{ i18n.getMessage("match_details_players_grade") }} <i class="icon-question-sign wstooltip" title="{{ i18n.getMessage("match_details_players_grade_helptext") }}"></i></th>
+			</thead>
+			<tbody>
+			{% for player in players %}
+				{% set ageSum = ageSum + player.age %}
+				{% set strengthSum = strengthSum + player.strength %}
+				{% set gradeSum = gradeSum + player.grade %}
+				<tr>
+					{% if player.position_main is not empty %}
+					<td title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</td>
+					{% else %}
+					<td title="{{ i18n.getMessage("option_" ~ player.position) }}">{{ i18n.getMessage("option_" ~ player.position)|slice(0, 2)|upper }}</td>
+					{% endif %}
+					<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{% if player.pseudonym|length > 0 %}{{ player.pseudonym }}{% else %}{{ player.firstName }} {{ player.lastName }}{% endif %}</a>
+					
+					{% if player.yellowCards > 0 %}
+					<img src="{{ skin.getImage("icons/card_yellow.png") }}" style="width: 16px; height: 16px" alt="{{ i18n.getMessage("player_yellowcard") }}" title="{{ i18n.getMessage("player_yellowcard") }}" />
+					
+						{% if player.yellowCards > 1 %}
+						<img src="{{ skin.getImage("icons/card_red.png") }}" style="width: 16px; height: 16px" alt="{{ i18n.getMessage("player_yellowredcard") }}" title="{{ i18n.getMessage("player_yellowredcard") }}" />
+						{% endif %}
+					{% endif %}
+					
+					{% if player.redCard > 0 %}
+						<img src="{{ skin.getImage("icons/card_red.png") }}" width="16" height="16" alt="{{ i18n.getMessage("player_redcard") }}" title="{{ i18n.getMessage("player_redcard") }}" />
+					{% endif %}
+					
+					{% if player.goals > 0 %}
+					{% for i in 1..player.goals %}
+					<img src="{{ skin.getImage("icons/goal_scorer.png") }}" style="width: 16px; height: 15px" alt="{{ i18n.getMessage("player_goalscorer") }}" title="{{ i18n.getMessage("player_goalscorer") }}" />
+					{% endfor %}
+					{% endif %}
+					
+					{% if player.assists %}
+					<span title="{{ i18n.getMessage("player_assists") }}">
+						{% for i in 1..player.assists %}
+						<i class="icon-star"></i>
+						{% endfor %}
+					</span>
+					{% endif %}
+					
+					{% if player.injured > 0 %}
+						<i class="icon-medkit" title="{{ i18n.getMessage("player_injured") }}"></i>
+					{% endif %}
+					
+					{% if player.playstatus == 'Ausgewechselt' %}
+					<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_out") }}"><i class="icon-arrow-down"></i>{{ player.minutesPlayed + 1 }}'</span>
+					{% elseif player.minutesPlayed < match.match_minutes %}
+					<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_in") }}"><i class="icon-arrow-up"></i>{{ match.match_minutes - player.minutesPlayed + 1 }}'</span>
+					{% endif %}
+					
+					{% if player.is_best_player_of_day is defined and player.is_best_player_of_day %}
+						<a href="{{ env.getInternalUrl("teamoftheday", "leagueid=" ~ match.match_league_id ~ "&seasonid=" ~ match.match_season_id ~ "&matchday=" ~ match.match_matchday) }}" title="{{ i18n.getMessage("teamoftheday_matchreport_tooltip") }}"><i class="icon-heart-empty darkIcon"></i></a>
+					{% endif %}
+					<div id="playerstatistics{{ player.id }}" class="collapse">
+						<dl>
+							<dt>{{ i18n.getMessage("match_details_statistic_shoots") }}</dt>
+							<dd>{{ player.shoots }}</dd>
+							
+							<dt>{{ i18n.getMessage("match_details_statistic_ballcontacts_player") }}</dt>
+							<dd>{{ player.ballcontacts }}</dd>
+							
+							<dt>{{ i18n.getMessage("match_details_statistic_successfulpasses") }}</dt>
+							<dd>{{  player.passes_successed }}/{{ (player.passes_successed + player.passes_failed) }}</dd>
+							
+							<dt>{{ i18n.getMessage("match_details_statistic_tackles_player") }}</dt>
+							<dd>{{ player.wontackles }}{% if player.losttackles|length %}/{{ (player.losttackles + player.wontackles) }}{% endif %}</dd>
+						</dl>
+					</div>
+					</td>
+					<td><a href="#playerstatistics{{ player.id }}" data-toggle="collapse"><i class="icon-zoom-in darkIcon"></i></a> {{ player.grade }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		
+		<p><strong>&#216; {{ i18n.getMessage("match_details_players_grade") }}:</strong> {{ (gradeSum/players|length)|number_format(2) }}</p>
+		<p><strong>&#216; {{ i18n.getMessage("match_details_players_age") }}:</strong> {{ (ageSum/players|length)|number_format(2) }}</p>
+		{% if env.getConfig("hide_strength_attributes") != "1" %}
+		<p><strong>&#216; {{ i18n.getMessage("entity_player_w_staerke") }}:</strong> {{ (strengthSum/players|length)|number_format(0) }}%</p>
+		{% endif %}
+	{% else %}
+	<p>{{ i18n.getMessage("match_details_noplayersset") }}</p>
+	{% endif %}
+{% endmacro %}
+
+{% macro strengthClass(strengthValue) %}
+
+{% if strengthValue > 80 %}
+	{% set strength_status = 'success' %}
+{% elseif strengthValue > 50 %}
+	{% set strength_status = 'info' %}
+{% elseif strengthValue > 30 %}
+	{% set strength_status = 'warning' %}
+{% else %}
+	{% set strength_status = 'danger' %}
+{% endif %}
+
+ class="strength_{{ strength_status }}"
+{% endmacro %}

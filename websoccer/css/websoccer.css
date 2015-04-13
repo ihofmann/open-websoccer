@@ -1,0 +1,313 @@
+/* layout */
+.inforow {
+	margin-top: 10px;
+}
+
+.infolabel {
+	font-weight: bold;
+	background: #f5f5f5;
+	padding: 8px;
+	border-radius: 4px;
+}
+
+.infovalue {
+	padding: 8px;
+}
+
+.noBottomMargin{
+	margin-bottom: 0;
+}
+
+.darkIcon {
+	color: black;
+}
+
+.darkIcon:hover, .darkIcon:active {
+	color: #444444;
+	text-decoration: none;
+}
+
+/* bootstrap fixes */
+.collapse {
+	overflow: hidden;
+}
+
+.dl-horizontal dt {
+  white-space: normal;
+}
+
+.tab-content {
+    overflow: visible;
+}
+
+.popover {
+	max-width: 500px;
+}
+
+/* Ajax loader */
+#ajaxLoaderPage {
+	display: none;
+	background: url('../img/ajaxloaderbar.gif') no-repeat center center;
+	height: 15px;
+	width: 100%;
+	position: fixed;
+	bottom: 10px;
+}
+
+/* language switcher */
+.languageswitcher {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+.languageswitcher li {
+	display: inline;
+	padding-right: 20px;
+}
+
+/* strengt indicators */
+.strength_success {
+	color: #5eb95e;
+}
+
+.strength_info {
+	color: #4bb1cf;
+}
+
+.strength_warning {
+	color: #faa732;
+}
+
+.strength_danger {
+	color: #dd514c;
+}
+
+.incell-strength-label {
+	width: 30px;
+	display: inline-block;
+}
+
+/* match report */
+#report_result {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+
+#report_goals_home, #report_goals_separator, #report_goals_guest {
+	padding: 30px;
+	display: inline-block;
+	font-size: 36px;
+	font-weight: bold;
+}
+#report_goals_home {
+	padding-left: 0;
+}
+#report_goals_guest {
+	padding-right: 0;
+}
+
+#reportarea {
+	border: 1px solid black;
+	padding: 5px;
+	border: 1px solid #dde2e4;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.report_minute {
+	font-weight: bold;
+	color: black;
+}
+.report_comment {
+	color: #666666;
+}
+
+.report_team_home {
+	color: #006699;
+}
+
+.report_team_guest {
+	color: #FF6600;
+}
+
+#reporttable {
+	table-layout: fixed;
+}
+#reporttable td {
+	padding-top: 10px;
+}
+
+.minutesPlayed {
+	font-weight: bold;
+	font-size: 80%;
+	cursor: default;
+}
+
+.youthmatchreporticon {
+	max-height: 14px;
+}
+
+/* WS icons by SchedioArt */
+.websoccericon-goal {
+	background: url('../img/icons-websoccer-32.png') no-repeat -95px -32px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-yellowcard {
+	background: url('../img/icons-websoccer-32.png') no-repeat -223px -96px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-redcard {
+	background: url('../img/icons-websoccer-32.png') no-repeat -160px -96px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-substitution {
+	background: url('../img/icons-websoccer-32.png') no-repeat -223px -163px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-injury {
+	background: url('../img/icons-websoccer-32.png') no-repeat -222px -224px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-shoot {
+	background: url('../img/icons-websoccer-32.png') no-repeat -95px -225px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-attempt {
+	background: url('../img/icons-websoccer-32.png') no-repeat -31px -225px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-penalty {
+	background: url('../img/icons-websoccer-32.png') no-repeat -160px -224px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-matchcompleted {
+	background: url('../img/icons-websoccer-32.png') no-repeat -159px -30px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-corner {
+	background: url('../img/icons-websoccer-32.png') no-repeat -31px -160px;
+	width: 34px;
+	height: 32px;
+	display: inline-block;
+}
+
+.websoccericon-tacticschange {
+	background: url('../img/icons-websoccer-32.png') no-repeat -95px -160px;
+	width: 34px;
+	height: 34px;
+	display: inline-block;
+}
+
+/* fixing label position in series charts */
+.yAxis .tickLabel {
+  	left: -20px !important;
+ }
+ 
+#stadium {
+ 	background: url('../img/pitch_bg.png') no-repeat 110px 90px;
+}
+ 
+#notificationspopup {
+ 	width: 350px;
+}
+
+/* sign in buttons */
+.btn-facebook {
+	background-color: #4e69a2;
+	background-image: none;
+	border-color: #435a8b #3c5488 #334c83;
+	color: white;
+	text-shadow: none;
+}
+
+.btn-facebook:hover {
+	background-color: #435a8b;
+	color: white;
+}
+
+.btn-googleplus {
+	background-color: #dd4b39;
+	background-image: none;
+	color: white;
+	text-shadow: none;
+	border-color: #dd4b39;
+}
+
+.btn-googleplus:hover {
+	background-color: #e74b37;
+	color: white;
+}
+
+/* shout box */
+.shoutboxmessages {
+	height: 250px;
+	overflow-y: scroll;
+	padding: 10px 5px;
+	margin-bottom: 5px;
+	background-color: #f9f9f9;
+	border: 1px solid #dde2e4;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+/* modal dialog height fixes */
+@media all and (min-height: 100px) {
+	.modal-body {
+		max-height: 50px;
+	}
+}
+
+@media all and (min-height: 300px) {
+	.modal-body {
+		max-height: 150px;
+	}
+}
+
+@media all and (min-height: 450px) {
+	.modal-body {
+		max-height: 300px;
+	}
+}
+
+@media all and (min-height: 700px) {
+	.modal-body {
+		max-height: 550px;
+	}
+}

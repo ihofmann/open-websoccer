@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="matches" version="1.0.0" />
+    </dependencies>
+    
+    <pages>
+        <page
+            id="rss-results"
+            template="rss"
+            model="RssResultsOfUserModel"
+            role="user,guest"/>
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="rss-results-link"
+            template="rss_results_link"
+            includepages="results"
+            area="content_top"
+            weight="1"
+            role="user" />
+        
+    </blocks>
+    
+</module>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="termsandconditions_navlabel">Teilnahmebedingungen</message>
+	
+	<message id="termsandconditions_introduction">Ändern Sie hier die Teilnahmebedingungen, die bei jeder Benutzerregistrierung akzeptiert werden müssen. <strong>Achtung:</strong> Der Standardtext, der bei der Softwareinstallation mit ausgeliefert wird, wurde nicht von einem Rechtsanwalt überprüft und könnte sowohl Rechtslücken aufweisen als auch unzutreffend für Ihren Einsatzzweck sein.</message>
+	<message id="termsandconditions_label_language">Sprachversion</message>
+	
+	<message id="termsandconditions_err_filenotwritable">Die Datei <em>%s</em> hat keine Schreibrechte!</message>
+</messages>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="premium-feature-requested_navlabel">Premiumfunktionen</message>
+	<message id="premium_info_title">Jetzt Premiumkonto aufladen!</message>
+	<message id="premium_info_notenoughcredit_alert">Die angeforderte Funktion erfordert mindestens %d %s auf Ihrem Premiumkonto.</message>
+	<message id="premium_info_description">
+		<p>Die Teilnahme an diesem Spiel ist kostenlos. Vereinzelte Seiten und Funktionen stehen jedoch nur zur Verfügung, wenn ausreichend Premiumguthaben in Ihrem Benutzerkonto vorhanden sind.</p>
+	</message>
+	
+	<message id="premium_info_price_options">Einzahlungsoptionen</message>
+	
+	<message id="premiumaccount_navlabel">Premiumkonto</message>
+	<message id="premiumaccount_recharge_button">Guthaben erwerben</message>
+	
+	<message id="premium-confirm-action_navlabel">Premiumfunktion bestätigen</message>
+	<message id="premium-confirm-action_title">Premiumfunktion ausführen?</message>
+	<message id="premium-confirm-action_question">Diese Aktion belastet Ihr Premiumkonto um <strong>%d %s</strong>! Wirklich ausführen?</message>
+	<message id="premium-confirm-action_confirm">Belastung bestätigen</message>
+	
+	<message id="premiumaccount_exchange_link">In Spielgeld eintauschen</message>
+	
+	<message id="premium-exchange_navlabel">Premiumguthaben eintauschen</message>
+	<message id="premium-exchange_intro">Sie können Ihr Premiumguthaben in Spielgeld umwandeln. Geben Sie dazu an, wieviel Guthaben Sie eintauschen möchten.</message>
+	<message id="premium-exchange_amount_label">Einzutauschendes Guthaben</message>
+	
+	<message id="premium-exchange_err_balancenotenough">Ihr Premiumguthaben reicht für die angegebene Menge leider nicht aus.</message>
+	
+	<message id="premium-exchange_success">Ihr Premiumguthaben wurde erfolgreich eingetauscht!</message>
+	
+	<message id="premium-exchange-confirm_navlabel">Eintausch bestätigen</message>
+	<message id="premium-exchange-confirm_question">Bitte bestätigen Sie diese Transaktion.</message>
+	
+	<message id="actionsubject_exchange-premium">Eintausch Spielgeld</message>
+	<message id="premium-exchange_team_subject">Eintausch Premiumguthaben</message>
+	
+	<message id="premium_balance_notenough">Ihr Premiumguthaben reicht für diese Aktion leider nicht aus. Bitte laden Sie Ihr Konto auf.</message>
+	<message id="premium_fature_fee_tooltip">Belastet Ihr Premiumkonto</message>
+	
+	<message id="actionsubject_choose-trainer">Buchung eines Premiumtrainers</message>
+	<message id="actionsubject_extend-stadium">Stadionausbau mit Premiumbauträger</message>
+</messages>

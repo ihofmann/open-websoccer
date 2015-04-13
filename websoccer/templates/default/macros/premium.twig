@@ -1,0 +1,3 @@
+{% macro premiumbadge(fee) %}
+	<span class="badge badge-important wstooltip" title="{{ i18n.getMessage("premium_fature_fee_tooltip") }}" style="cursor: default;"><i class="icon-key"></i> {{ fee }} {{ env.getConfig("premium_credit_unit") }}</span>
+{% endmacro %}

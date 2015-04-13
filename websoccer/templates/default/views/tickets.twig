@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("tickets_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+
+{% if env.getConfig("sim_home_field_advantage") > 0 %}
+	<p><i class="icon-info-sign"></i> {{ i18n.getMessage("tickets_info_homefieldadvantage")|raw }}</p>
+{% endif %}
+
+<form class="form-horizontal" method="post">
+
+	{{ formelements.textfield('p_stands', i18n.getMessage('tickets_stands'), tickets.p_stands, true, validationMsg, 'number', 
+		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_stands|number_format(0, ',', ' ') ~ "/" ~ tickets.s_stands|number_format(0, ',', ' ')) }}
+	
+	{{ formelements.textfield('p_seats', i18n.getMessage('tickets_seats'), tickets.p_seats, true, validationMsg, 'number',
+		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_seats|number_format(0, ',', ' ') ~ "/" ~ tickets.s_seats|number_format(0, ',', ' ')) }}
+	
+	{{ formelements.textfield('p_stands_grand', i18n.getMessage('tickets_stands_grand'), tickets.p_stands_grand, true, validationMsg, 'number',
+		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_stands_grand|number_format(0, ',', ' ') ~ "/" ~ tickets.s_stands_grand|number_format(0, ',', ' ')) }}
+	
+	{{ formelements.textfield('p_seats_grand', i18n.getMessage('tickets_seats_grand'), tickets.p_seats_grand, true, validationMsg, 'number',
+		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_seats_grand|number_format(0, ',', ' ') ~ "/" ~ tickets.s_seats_grand|number_format(0, ',', ' ')) }}
+	
+	{{ formelements.textfield('p_vip', i18n.getMessage('tickets_vip'), tickets.p_vip, true, validationMsg, 'number',
+		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_vip|number_format(0, ',', ' ') ~ "/" ~ tickets.s_vip|number_format(0, ',', ' ')) }}
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary ajaxSubmit"
+			data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_save') }}</button>
+		
+		<a href="{{ env.getInternalUrl("office") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="page" value="tickets"/>
+	<input type="hidden" name="action" value="save-tickets"/>
+</form>
+
+{% endblock %}

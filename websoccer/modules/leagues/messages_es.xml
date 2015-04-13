@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="leagues_navlabel">Ligas</message>
+    <message id="leagues_title">Clasificaciones</message>
+    
+    <message id="league_navlabel">Clasificación</message>
+    
+    <message id="leaguetable_block_title">Últimas Clasificaciones</message>
+    <message id="leaguetable_block_noteamsavailable">No hay equipos en esta liga.</message>
+    
+    <message id="leaguetable_head_place">Posición</message>
+    <message id="leaguetable_head_place_abbr">P</message>
+    <message id="leaguetable_head_club">Equipo</message>
+    <message id="leaguetable_head_matches">Partidos</message>
+    <message id="leaguetable_head_matches_abbr">PJ</message>
+    <message id="leaguetable_head_wins">Ganados</message>
+    <message id="leaguetable_head_wins_abbr">PG</message>
+    <message id="leaguetable_head_draws">Empatados</message>
+    <message id="leaguetable_head_draws_abbr">PE</message>
+    <message id="leaguetable_head_defeats">Perdidos</message>
+    <message id="leaguetable_head_defeats_abbr">PP</message>
+    <message id="leaguetable_head_goals">Goles</message>
+    <message id="leaguetable_head_goalsdiff">Diferencia de Goles</message>
+    <message id="leaguetable_head_goalsdiff_abbr">DG</message>
+    <message id="leaguetable_head_score">Puntos</message>
+    
+    <message id="leaguetable_button_type">Tipo de Clasificacion</message>
+    <message id="leaguetable_button_type_total">Total</message>
+    <message id="leaguetable_button_type_home">Clasificación Locales</message>
+    <message id="leaguetable_button_type_guest">Clasificación Visitante</message>
+    
+    <message id="leaguetable_timedelay_info">Puede haber un retraso en la visualización de la tabla de posiciones más actuales.</message>
+</messages>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_tab_youth">Jugendbereich</message> 
+	
+	<message id="settings_label_youth_enabled">Jugendteams aktivieren. Benutzer können Jugendspieler scouten und für die Profimannschaft verpflichten.</message>
+	<message id="settings_label_youth_scouting_enabled">Benutzer können nach neuen Talenten scouten lassen.</message>
+	<message id="settings_label_youth_matchrequests_enabled">Benutzer können Spielgesuche veröffentlichen und akzeptieren.</message>
+	
+	<message id="settings_label_youth_salary_per_strength">Gehalt pro Stärkepunkt</message>
+	<message id="settings_label_youth_salary_per_strength_help">Höhe des Spielergehalts pro Spiel und pro Stärkepunkt.</message>
+	
+	<message id="settings_label_youth_min_age_professional">Mindestalter für Profimannschaft</message>
+	
+	<message id="settings_label_youth_scouting_break_hours">Pause zwischen Scoutings</message>
+	<message id="settings_label_youth_scouting_break_hours_help">in Stunden; Erst nach so vielen Stunden darf nach einem Scouting wieder gescoutet werden. 0 für keine Pause.</message>
+
+	<message id="settings_label_youth_professionalmove_matches">Profivertragsspiele</message>
+	<message id="settings_label_youth_professionalmove_matches_help">Anzahl Vertragsspiele wenn ein Jugendspieler für die Profimannschaft verpflichtet wird.</message>
+	
+	<message id="settings_label_youth_professionalmove_technique">Profistärke: Technik</message>
+	<message id="settings_label_youth_professionalmove_technique_help">%; wenn ein Jugendspieler für die Profimannschaft verpflichtet wird.</message>
+	
+	<message id="settings_label_youth_professionalmove_stamina">Profistärke: Kondition</message>
+	<message id="settings_label_youth_professionalmove_stamina_help">%</message>
+	
+	<message id="settings_label_youth_professionalmove_freshness">Profistärke: Frische</message>
+	<message id="settings_label_youth_professionalmove_freshness_help">%</message>
+	
+	<message id="settings_label_youth_professionalmove_satisfaction">Profistärke: Zufriedenheit</message>
+	<message id="settings_label_youth_professionalmove_satisfaction_help">%</message>
+	
+	<message id="settings_label_youth_scouting_success_probability">Scouting: Erfolgswahrscheinlichkeit</message>
+	<message id="settings_label_youth_scouting_success_probability_help">in Prozent; Wie wahrscheinlich ist es, dass ein Scout irgendein Spieler findet (unabhängig der Stärke).</message>
+	
+	<message id="settings_label_youth_scouting_min_strength">Scouting: Mindestspielerstärke</message>
+	<message id="settings_label_youth_scouting_min_strength_help">in Prozent; Wie stark ein gefundener Spieler mindestens sein darf.</message>
+	
+	<message id="settings_label_youth_scouting_max_strength">Scouting: Höchstspielerstärke</message>
+	<message id="settings_label_youth_scouting_max_strength_help">in Prozent; Wie stark ein gefundener Spieler höchstens sein darf.</message>
+	
+	<message id="settings_label_youth_scouting_standard_deviation">Scouting: Standardabweichung</message>
+	<message id="settings_label_youth_scouting_standard_deviation_help">in Prozent; Wie stark die tatsächliche Spielerstärke zufällig von der genau berechneten Stärke abweichen soll. 0 für keine Abweichung.</message>
+	
+	<message id="settings_label_youth_scouting_min_age">Scouting: Mindestalter</message>
+	
+	<message id="settings_label_youth_matchrequest_max_open_requests">Spielgesuche: Höchstanzahl pro Team</message>
+	<message id="settings_label_youth_matchrequest_max_open_requests_help">Wieviele offene Spielgesuche ein Team zur selben Zeit haben darf.</message>
+	
+	<message id="settings_label_youth_matchrequest_max_futuredays">Spielgesuche: Tage in der Zukunft</message>
+	<message id="settings_label_youth_matchrequest_max_futuredays_help">Bis zu wieviel Tagen in der Zukunft ein Gesuch platziert werden kann.</message>
+	
+	<message id="settings_label_youth_matchrequest_allowedtimes">Spielgesuche: Erlaubte Uhrzeiten</message>
+	<message id="settings_label_youth_matchrequest_allowedtimes_help">in Komma getrennt (z.B. '14:00,17:00'). Soll eine Überlastung des Servers verhindern, wenn ansonsten zur selben Zeit auch Ligaspiele laufen.</message>
+
+	<message id="settings_label_youth_matchrequest_accept_hours_in_advance">Spielgesuche: Späteste Annahme</message>
+	<message id="settings_label_youth_matchrequest_accept_hours_in_advance_help">in Stunden; Bis zu wieviele Stunden vor der Spielaustragung das Gesuch angenommen werden muss. Den Teilnehmenden soll noch genügend Zeit zum Aufstellen gegeben werden.</message>
+
+	<message id="settings_label_youth_match_maxperday">Höchstanzahl erlaubte Spiele pro Tag pro Team</message>
+	
+	<message id="settings_label_youth_strengthchange_verygood">Stärkeänderung: Sehr gute Leistung</message>
+	<message id="settings_label_youth_strengthchange_verygood_help">Veränderung der Spielerstärke in Punkten bei einer Note von 1.3 und besser.</message>
+	
+	<message id="settings_label_youth_strengthchange_good">Stärkeänderung: Gute Leistung</message>
+	<message id="settings_label_youth_strengthchange_good_help">Veränderung der Spielerstärke in Punkten bei einer Note zwischen 1.4 und 2.3.</message>
+	
+	<message id="settings_label_youth_strengthchange_bad">Stärkeänderung: Schlechte Leistung</message>
+	<message id="settings_label_youth_strengthchange_bad_help">Veränderung der Spielerstärke in Punkten bei einer Note zwischen 4.3 und 5.</message>
+	
+	<message id="settings_label_youth_strengthchange_verybad">Stärkeänderung: Sehr schlechte Leistung</message>
+	<message id="settings_label_youth_strengthchange_verybad_help">Veränderung der Spielerstärke in Punkten bei einer Note schlechter als 5.</message>
+
+	<message id="season_complete_label_youthplayers_age_delete">Höchstalter Jugendspieler</message>
+	<message id="season_complete_label_youthplayers_age_delete_help">Ab diesem Alter werden Jugendspieler gelöscht.</message>
+</messages>

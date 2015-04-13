@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="gravatar_edit_picture">Upload a different picture on Gravatar.com.</message>
+	<message id="gravatar_edit_picture_button">Gravatar.com</message>
+</messages>

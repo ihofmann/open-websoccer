@@ -1,0 +1,33 @@
+{% import "macros/profileelements.twig" as profile %}
+
+<h3>{{ player.firstname }} {{ player.lastname }}</h3>
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_position"), i18n.getMessage("option_" ~ player.position)) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_age"), player.age) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_nation"), player.nation) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_strength"), player.strength ~ "%") }}
+
+{{ profile.infofield(i18n.getMessage("entity_player_vertrag_gehalt"), (player.strength * env.getConfig("youth_salary_per_strength"))|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+
+{% if player.transfer_fee > 0 %}
+	{{ profile.infofield(i18n.getMessage("entity_youthplayer_transfer_fee"), 
+		player.transfer_fee|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+{% endif %}
+
+<p style="margin-top: 10px"><a href="#playerstatistics" class="btn btn-small" data-toggle="collapse"><i class="icon-zoom-in"></i> {{ i18n.getMessage("youthteam_showstatistics_tooltip") }}</a></p>
+<div id="playerstatistics" class="collapse">
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_st_matches"), player.st_matches) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_st_goals"), player.st_goals) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_st_assists"), player.st_assists) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_st_cards_yellow"), player.st_cards_yellow) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_st_cards_yellow_red"), player.st_cards_yellow_red) }}
+
+{{ profile.infofield(i18n.getMessage("entity_youthplayer_st_cards_red"), player.st_cards_red) }}
+</div>

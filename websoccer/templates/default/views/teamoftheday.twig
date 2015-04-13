@@ -1,0 +1,133 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% block page_title %}
+{{ i18n.getMessage("teamoftheday_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<h4>{{ i18n.getMessage("entity_league") }}</h4>
+<form class="form-inline" method="post">
+
+	<select id="leagueid" name="leagueid" class="span3">
+		<option></option>
+	{% for leagueItem in leagues %}
+		<option value="{{ leagueItem.league_id }}"{% if leagueId == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>
+	{% endfor %}
+	</select>
+
+	<button type="submit" class="btn btn-primary ajaxSubmit" 
+		data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_display') }}</button>
+
+	<input type="hidden" name="page" value="teamoftheday" />
+</form>
+
+{% if seasons|length > 0 %}
+	<h4>{{ i18n.getMessage("entity_season") }}</h4>
+	<ul class="nav nav-pills">
+		{% for season in seasons %}
+		<li{% if seasonId == season.id %} class="active"{% endif %}><a href="#season{{ loop.index }}" class="ajaxLink"
+			data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ season.id }}">{{ season.name }}</a></li>
+		{% endfor %}
+	</ul>
+	
+	{% if maxMatchDay > 0 %}
+		<h4>{{ i18n.getMessage("entity_match_spieltag") }}</h4>
+		<ul class="nav nav-pills">
+			{% for matchdayOfSeason in 1..maxMatchDay %}
+			<li{% if matchday == matchdayOfSeason %} class="active"{% endif %}><a href="#matchday{{ loop.index }}" class="ajaxLink"
+				data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ seasonId }}&matchday={{ matchdayOfSeason }}">{{ matchdayOfSeason }}</a></li>
+			{% endfor %}
+			<li{% if matchday == -1 %} class="active"{% endif %}><a href="#all" class="ajaxLink"
+				data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ seasonId }}&matchday=-1">{{ i18n.getMessage("teamoftheday_teamoftheseason") }}</a></li>
+		</ul>
+		
+		{% if openMatchesExist %}
+			{{ messagebox.box("", i18n.getMessage("teamoftheday_openmatchesexist"), "info") }}
+		{% else %}
+		
+			{% if players|length > 0 %}
+				<div id="pitch">
+				
+				{% set ivSet = FALSE %}
+				{% set dmSet = FALSE %}
+				{% set zmSet = FALSE %}
+				{% set omSet = FALSE %}
+				{% set forwardSet = FALSE %}
+				
+				{% for player in players %}
+				
+					{% set frontPosition = player.position_main %}
+					
+					{% if frontPosition == "IV" %}
+						{% if ivSet %}
+							{% set frontPosition = "IV rightPos" %}
+						{% else %}
+							{% set frontPosition = "IV leftPos" %}
+							{% set ivSet = TRUE %}
+						{% endif %}
+					{% elseif frontPosition == "DM" %}
+						{% if dmSet %}
+							{% set frontPosition = "ZM" %}
+						{% else %}
+							{% set dmSet = TRUE %}
+						{% endif %}
+					{% elseif frontPosition == "ZM" %}
+						{% if zmSet %}
+							{% set frontPosition = "OM" %}
+						{% else %}
+							{% set zmSet = TRUE %}
+						{% endif %}
+					{% elseif frontPosition == "OM" %}
+						{% if omSet %}
+							{% set frontPosition = "ZM" %}
+						{% else %}
+							{% set omSet = TRUE %}
+						{% endif %}
+					{% elseif frontPosition == "LS" or frontPosition == "MS" or frontPosition == "RS" %}
+						{% if forwardSet %}
+							{% set frontPosition = "MS rightPos" %}
+						{% else %}
+							{% set frontPosition = "MS leftPos" %}
+							{% set forwardSet = TRUE %}
+						{% endif %}
+					{% endif %}
+				
+					<div class="position {{ frontPosition }} text-center">
+						{% if player.memberoftopteam > 1 %}
+							<span class="badge positionPlayerIcons wstooltip" 
+								title="{{ i18n.getMessage("teamoftheday_known_member_tooltip", player.memberoftopteam) }}" 
+								data-container="body"><small>{{ player.memberoftopteam }}</small></span>
+						{% endif %}
+						<a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}" title="{{ i18n.getMessage("player_navlabel") }}">
+							{% if player.picture|length > 0 %}
+								<img src="{{ env.getConfig("context_root") }}/uploads/player/{{ player.picture }}" style="max-width: 90px; max-height: 60px;">
+							{% elseif player.team_picture|length > 0 %}
+								<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" style="max-width: 90px; max-height: 60px;">
+							{% else %}
+								<i class="icon-user" style="font-size: 60px; color: white;"></i>
+							{% endif %}
+						</a>
+						{% if player.grade is defined %}
+							<div class="positionPlayer wstooltip"
+								title="{{ i18n.getMessage("match_details_players_grade") }}: {{ player.grade }}, {{ i18n.getMessage("player_details_statistic_goals") }}: {{ player.goals }}, {{ i18n.getMessage("player_details_statistic_assists") }}: {{ player.assists }}">
+						{% else %}
+							<div class="positionPlayer">
+						{% endif %}
+							{{ player.player_name }}<br>
+							{{ player.team_name }}
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+			{% endif %}
+		
+		{% endif %}
+		
+	{% elseif seasonId > 0 %}
+		{{ messagebox.box("", i18n.getMessage("teamoftheday_no_matches_in_season"), "info") }}
+	{% endif %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("transfer_bid_title", player.player_firstname ~ " " ~ player.player_lastname) }}
+{% endblock %}
+
+{% block page_content %}
+
+<h3>{{ i18n.getMessage("transfermarket_head_deadline") }}: 
+	<span class="countdown" data-date="{{ player.transfer_end|date("Y/m/d H:i:s") }}">
+	        <span id="days"></span>
+	        {{ i18n.getMessage("transfermarket_countdown_days") }}, 
+	        <span id="hours"></span>:<span id="minutes"></span>:<span id="seconds"></span>
+	</span>
+</h3>
+
+<p>{{ env.getFormattedDatetime(player.transfer_end) }}</p>
+
+<h3>{{ i18n.getMessage("transfer_bid_playerinfo") }}</h3>
+
+<dl class="dl-horizontal">
+
+	<dt>{{ i18n.getMessage("entity_player_transfer_mindestgebot") }}</dt>
+  <dd>{{ player.transfer_min_bid|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+
+  <dt>{{ i18n.getMessage("entity_player_marktwert") }}</dt>
+  <dd>{{ player.player_marketvalue|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+
+  <dt>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}</dt>
+  <dd>{{ player.player_contract_salary|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+  
+  <dt>{{ i18n.getMessage("entity_player_vertrag_torpraemie") }}</dt>
+  <dd>{{ player.player_contract_goalbonus|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+  
+  <dt>{{ i18n.getMessage("entity_player_vertrag_spiele") }}</dt>
+  <dd>{{ player.player_contract_matches  }} {{ i18n.getMessage("player_details_unit_matches") }}</dd>
+</dl>
+
+<p style="margin-top: 30px"><i class="icon-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("extend-contract_link_profile") }}</a></p>
+
+	<div id="bidmessages">{% block messages_block %}
+	{{ parent() }}
+	{% endblock %}</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="userprofile_block_title">My Profile</message>
+    <message id="userprofile_block_loggedin_as">Logged in as:</message>
+    <message id="userprofile_block_link_logout">Log Out</message>
+    <message id="userprofile_block_link_profile">Edit Profile</message>
+    <message id="userprofile_block_popularity">Popularity with Fans</message>
+    <message id="userprofile_block_highscore">Highscore</message>
+    <message id="userprofile_block_link_table">Table</message>
+    
+    <message id="userprofile_block_tooltip_popularity">Depends on your success und influences the ticket sales.</message>
+    
+    <message id="profile_navlabel">User Profile</message>
+    <message id="profile_title">Edit Profile</message>
+    
+    <message id="profile_field_newemail">New E-Mail</message>
+    <message id="profile_field_newpassword">New Password</message>
+    
+    <message id="profile_changedemail_message_title">Confirm the changed E-Mail Address</message>
+    <message id="profile_changedemail_message_content">Your account has been temporarily disabled. Please check your e-mails and follow the instructions in the e-mail that has been sent to you.</message>
+
+	<message id="activation_changedemail_subject">Reactivating your user account</message>
+	<message id="activation_changedemail_greeting">Hello,</message>
+	<message id="activation_changedemail_introduction">Please visit the below internet address in order to re-activate your user account:</message>
+	<message id="activation_changedemail_ending">If you did not register at our website and assume some kind of abuse, please reply to this e-mail.</message>
+	
+	<message id="sendpassword_email_subject">Your new Password</message>
+	<message id="sendpassword_email_greeting">Hello,</message>
+	<message id="sendpassword_email_introduction">Please find below your new password that you have requested via our website and which you can and shall change on our website:</message>
+	<message id="sendpassword_email_newpassword_label">Your new Password:</message>
+	<message id="sendpassword_email_ending">Note that the new password only gets active as soon as you log on with it for the first time. If you have not requested a new password and assume some kind of abuse, please reply to this e-mail.</message>
+	
+	<message id="enter-username_navlabel">Enter Username</message>
+	<message id="enter-username_intro">Now we only need a name which identifies you on our website, and then we are ready to go!</message>
+	
+	<message id="change-profile-picture_navlabel">Upload profile picture</message>
+	<message id="change-profile-picture_intro">You can upload a PNG or JPEG picture here. It must be <strong>rectangular</strong> with a minimum width of <strong>120 pixels</strong> and a maximum file size of <strong>%d KBytes</strong>.</message>
+	<message id="change-profile-picture_success">The new profile picture has been successfully uploaded!</message>
+	
+	<message id="change-profile-picture_err_notprovied">You need to select a picture.</message>
+	<message id="change-profile-picture_err_illegalfiletype">Only PNG or JPEG image files will be accepted.</message>
+	<message id="change-profile-picture_err_illegalfilesize">The selected file is too big.</message>
+	<message id="change-profile-picture_err_failed">The file could not be uploaded. Please try again.</message>
+	
+	<message id="user_deletepicture_button">Delete picture</message>
+	<message id="delete-profile-picture_success">The profile picture has been successfully deleted.</message>
+</messages>

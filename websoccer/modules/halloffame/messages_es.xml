@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="halloffame_navlabel">Salón de la Fama</message>
+    <message id="halloffame_no_seasons">Todavía no hay temporadas completas.</message>
+    <message id="halloffame_no_cups">No hay competiciones de copa completadas.</message>
+    
+</messages>

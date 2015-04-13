@@ -1,0 +1,28 @@
+{% macro paginator(paginatorModel, ajaxTarget = "pagecontent") %}
+{% if paginatorModel.pages > 1 %}
+<div class="pagination">
+  <ul>
+  	{% if paginatorModel.pageNo > 1 %}
+    <li><a href="#p{{ paginatorModel.pageNo - 1 }}"
+    	class="ajaxLink" data-ajaxtarget="{{ ajaxTarget }}" data-ajaxquerystr="page={{ env.getPageId() }}&{{ paginatorModel.getQueryString() }}&pageno={{ paginatorModel.pageNo - 1 }}">&laquo;</a></li>
+    {% endif %}
+    
+    {% for pageNo in 1..paginatorModel.pages %}
+    
+    {% if pageNo == paginatorModel.pageNo - 5 or pageNo == paginatorModel.pageNo + 5  %}
+    <li class="disabled"><a>...</a></li>
+    {% elseif pageNo == 1 or pageNo == paginatorModel.pages or pageNo > paginatorModel.pageNo - 5 and pageNo < paginatorModel.pageNo + 5 %}
+    <li{% if pageNo == paginatorModel.pageNo %} class="active"{% endif %}><a href="#p{{ pageNo }}"
+    	class="ajaxLink" data-ajaxtarget="{{ ajaxTarget }}" data-ajaxquerystr="page={{ env.getPageId() }}&{{ paginatorModel.getQueryString() }}&pageno={{ pageNo }}">{{ pageNo }}</a></li>
+    {% endif %}
+    
+    {% endfor %}
+    
+    {% if paginatorModel.pageNo < paginatorModel.pages %}
+    <li><a href="#{{ paginatorModel.pageNo + 1 }}"
+    	class="ajaxLink" data-ajaxtarget="{{ ajaxTarget }}" data-ajaxquerystr="page={{ env.getPageId() }}&{{ paginatorModel.getQueryString() }}&pageno={{ paginatorModel.pageNo + 1 }}">&raquo;</a></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+{% endmacro %}

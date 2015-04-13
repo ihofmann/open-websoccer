@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  <admin>
+	<adminpage id="users" permissionrole="r_user" navcategory="website" entity="users">
+		<entity dbtable="user AS UserTab">
+		    <overview edit="true" delete="true">
+		    	<column id="entity_users_nick" type="text" field="UserTab.nick" filter="true" sort="true" />
+		    	<column id="entity_users_lastonline" type="timestamp" field="UserTab.lastonline" sort="true"/>    
+		    	<column id="entity_users_highscore" type="number" field="UserTab.highscore" sort="true" />   
+		    	<column id="entity_users_clubname" type="text" field="ClubTab.name" filter="true" sort="true" /> 
+		    	<column id="entity_users_datum_anmeldung" type="timestamp" field="UserTab.datum_anmeldung" sort="true" /> 
+		    	<column id="entity_users_premium_balance" type="number" field="UserTab.premium_balance" sort="true" /> 
+		    	<column id="entity_users_email" type="email" field="UserTab.email" filter="true" /> 
+		    	<column id="entity_user_inactivity" type="text" converter="InactivityConverter" 
+		    	    field="(ActTab.login+ActTab.aufstellung+ActTab.transfer+ActTab.vertragsauslauf)" sort="true" /> 
+		    	<column id="entity_users_status" type="boolean" field="UserTab.status" /> 
+		    	
+		    	<column id="entity_user_inactivity_login" type="text" field="ActTab.login" hidden="true"/> 
+		    	<column id="entity_user_inactivity_aufstellung" type="text" field="ActTab.aufstellung" hidden="true"/>
+		    	<column id="entity_user_inactivity_transfer" type="text" field="ActTab.transfer" hidden="true"/> 
+		    	<column id="entity_user_inactivity_vertragsauslauf" type="text" field="ActTab.vertragsauslauf " hidden="true"/> 
+		    	<column id="entity_user_inactivity_transfer_check" type="text" field="ActTab.transfer_check " hidden="true"/> 
+		    	
+		    	<join type="LEFT" jointable="verein AS ClubTab" joincondition="ClubTab.user_id = UserTab.id" />
+		    	<join type="LEFT" jointable="user_inactivity AS ActTab" joincondition="ActTab.user_id = UserTab.id" />
+		    </overview>
+		    <editform>
+		        <field id="datum_anmeldung" type="timestamp" readonly="true"/>
+		        <field id="nick" type="text" required="true" />
+		        <field id="email" type="email" required="true" />
+		        <field id="passwort" type="password" required="true" converter="UserPasswordConverter" />
+		        <field id="premium_balance" type="number" />
+		        <field id="picture" type="file" />
+		        <field id="name" type="text" />
+		        <field id="wohnort" type="text" />
+		        <field id="land" type="text" />
+		        <field id="geburtstag" type="date" />
+		        <field id="beruf" type="text" />
+		        <field id="interessen" type="text" />
+		        <field id="lieblingsverein" type="text" />
+		        <field id="homepage" type="url" />
+		        <field id="highscore" type="number" />
+		        <field id="fanbeliebtheit" type="percent" />
+		        <field id="history" type="textarea"/>
+		        <field id="status" type="boolean" />
+		    </editform>
+		    
+		</entity>    
+	</adminpage>
+  </admin>
+  
+  <settings>
+      <setting id="user_picture_upload_enabled" category="users" type="boolean" default="1" />
+      <setting id="user_picture_upload_maxsize_kb" category="users" type="number" default="512" />
+      <setting id="highscore_win" category="users" type="number" default="5" />
+      <setting id="highscore_draw" category="users" type="number" default="3" />
+      <setting id="highscore_loss" category="users" type="number" default="1" />
+  </settings>
+  
+    <pages>
+        <page
+            id="highscore"
+            model="HighscoreModel"
+            navitem="true"
+            navweight="3"
+            template="users-highscore"
+            role="guest,user">
+	        <page
+	            id="user"
+	            model="UserDetailsModel"
+	            navitem="false"
+	            template="user-details"
+	            role="user" />
+        </page>
+    </pages>
+    
+    <blocks>
+
+        <block
+            id="user-results"
+            template="results-list"
+            model="UserResultsModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="user-history"
+            template="user_history"
+            model="UserHistoryModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user" />
+        
+    </blocks>
+
+</module>

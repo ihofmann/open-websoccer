@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="players" version="1.0.0"/>
+    </dependencies>
+    
+  <settings>
+      <setting id="transfermarket_enabled" category="transfermarket" type="boolean" default="1" />
+      <setting id="transfermarket_duration_days" category="transfermarket" type="number" default="7" />
+      <setting id="transfermarket_computed_marketvalue" category="transfermarket" type="boolean" default="1" />
+      <setting id="transfermarket_value_per_strength" category="transfermarket" type="number" default="10000" />
+      <setting id="transfermarket_min_teamsize" category="transfermarket" type="number" default="18" />
+      <setting id="transfermarket_max_transactions_between_users" category="transfermarket" type="number" default="2" />
+  </settings>
+  
+    <pages>
+        <page
+            id="transfermarket"
+            template="transfermarket-overview"
+            model="TransfermarketOverviewModel"
+            role="user"
+            navitem="true"
+            navweight="2"
+            parentItem="office"
+            navitemOnlyForConfigEnabled="transfermarket_enabled">
+	        <page
+	            id="sell-player"
+	            template="sell-player"
+	            model="PlayerDetailsModel"
+	            role="user" />
+	        
+	        <page
+	            id="transfer-bid"
+	            template="transfer-bid"
+	            model="PlayerDetailsModel"
+	            role="user">
+	            <script file="jquery.countdown.min.js" />
+	         </page>
+        </page>
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="transfer-bid"
+            template="transfer-bid-block"
+            model="TransferBidModel"
+            includepages="transfer-bid"
+            area="content_bottom"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="transfermarket-mybids"
+            template="transfer-bids-list"
+            model="MyTransferBidsModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+        <block
+            id="transfermarket-mytransfers"
+            template="transfers-list"
+            model="MyTransfersModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+        <block
+            id="transfermarket-lasttransfers"
+            template="transfers-list"
+            model="LastTransfersModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+        <block
+            id="teamtransfers"
+            template="transfers-list"
+            model="TeamTransfersModel"
+            includepages="none"
+            area="custom"
+            role="user,guest" />
+        
+        <block
+            id="usertransfers"
+            template="transfers-list"
+            model="UserTransfersModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+    </blocks>
+    
+  <actions>
+	<action id="sell-player" controller="SellPlayerController" role="user" log="true">
+		<param id="min_bid" type="number" required="true" max="1000000000" />
+		<param id="id" type="number" required="true" />
+	</action>
+	
+	<action id="transfer-bid" controller="TransferBidController" role="user" log="true">
+		<param id="amount" type="number" max="1000000000" min="1" />
+		<param id="handmoney" type="number" max="1000000000" min="1" />
+		<param id="contract_salary" type="number" max="1000000000" required="true" />
+		<param id="contract_goal_bonus" type="number" max="1000000000" min="1"/>
+		<param id="contract_matches" type="number" min="20" max="100" required="true" />
+		<param id="id" type="number" required="true" />
+	</action>
+	
+	<action id="remove-player-from-transfermarket" controller="RemovePlayerFromTransfermarketController" role="user">
+		<param id="id" type="number" required="true" />
+	</action>
+  </actions>
+    
+</module>

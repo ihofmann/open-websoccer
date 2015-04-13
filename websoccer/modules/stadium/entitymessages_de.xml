@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_stadium">Stadion</message>
+	<message id="entity_stadium_name">Name</message>
+	<message id="entity_stadium_verein">Verein</message>
+	<message id="entity_stadium_stadt">Stadt</message>
+	<message id="entity_stadium_land">Land</message>
+	<message id="entity_stadium_picture">Bild</message>
+	<message id="entity_stadium_p_steh">Stehplätze</message>
+	<message id="entity_stadium_p_sitz">Sitzplätze</message>
+	<message id="entity_stadium_p_haupt_steh">Stehplätze (Haupttribüne)</message>
+	<message id="entity_stadium_p_haupt_sitz">Sitzplätze (Haupttribüne)</message>
+    <message id="entity_stadium_p_vip">VIP Logen</message>
+    
+    <message id="entity_stadiumbuilder">Stadionbauträger</message>
+    <message id="entity_stadiumbuilder_name">Name</message>
+    <message id="entity_stadiumbuilder_picture">Firmenlogo</message>
+    <message id="entity_stadiumbuilder_fixedcosts">Fixkosten</message>
+    <message id="entity_stadiumbuilder_fixedcosts_help">Kosten, die unabhäng von der Anzahl zu bauender Plätze berechnet werden.</message>
+    <message id="entity_stadiumbuilder_cost_per_seat">Kosten pro Platz</message>
+    <message id="entity_stadiumbuilder_cost_per_seat_help">Werden zu den in "Einstellungen" konfigurierten Kosten addiert. Kann auch negativ sein.</message>
+    <message id="entity_stadiumbuilder_construction_time_days">Bauzeit pro 5000 Plätze</message>
+    <message id="entity_stadiumbuilder_construction_time_days_help">in Tagen</message>
+    <message id="entity_stadiumbuilder_construction_time_days_min">Mindestbauzeit</message>
+    <message id="entity_stadiumbuilder_construction_time_days_min_help">in Tagen</message>
+    <message id="entity_stadiumbuilder_min_stadium_size">Mindeststadiongrösse</message>
+    <message id="entity_stadiumbuilder_min_stadium_size_help">Wieviele Plätze das Stadion bisher mindestens haben muss, damit dieser Bauunternehmer Interesse an dem Auftrag hat. Ermöglicht das schrittweise Ausbauen von Stadien.</message>
+	<message id="entity_stadiumbuilder_max_stadium_size">Höchststadiongrösse</message>
+	<message id="entity_stadiumbuilder_max_stadium_size_help">0 für keine Einschränkung.</message>
+	<message id="entity_stadiumbuilder_reliability">Zuverlässigkeit</message>
+	<message id="entity_stadiumbuilder_reliability_help">100% bedeutet, dass das Stadion nach der kalkulierten Bauzeit auf jeden Fall ausgebaut ist. Bei Angaben unter 100% kann sich der Stadionausbau (wiederholt) verzögern.</message>
+	<message id="entity_stadiumbuilder_premiumfee">Premiumgebühr</message>
+
+	<message id="entity_stadiumconstruction">Stadionausbau</message>
+	<message id="entity_stadiumconstruction_team_id">Verein</message>
+	<message id="entity_stadiumconstruction_builder_id">Bauträger</message>
+	<message id="entity_stadiumconstruction_started">Auftrag erteilt</message>
+	<message id="entity_stadiumconstruction_deadline">Geplante Fertigstellung</message>
+	<message id="entity_stadiumconstruction_p_steh">Anzahl Stehplätze</message>
+	<message id="entity_stadiumconstruction_p_sitz">Anzahl Sitzplätze</message>
+	<message id="entity_stadiumconstruction_p_haupt_steh">Anzahl Stehplätze (Haupttribüne)</message>
+	<message id="entity_stadiumconstruction_p_haupt_sitz">Anzahl Sitzplätze (Haupttribüne)</message>
+	<message id="entity_stadiumconstruction_p_vip">Anzahl VIP-Logen</message>
+	
+	<message id="entity_stadium_level_pitch">Rasenzustand</message>
+	<message id="entity_stadium_level_pitch_help">Zwischen 0 und 5.</message>
+	<message id="entity_stadium_level_videowall">Aktualität Videowand</message>
+	<message id="entity_stadium_level_videowall_help">Zwischen 0 und 5.</message>
+	<message id="entity_stadium_level_seatsquality">Zustand der Sitze</message>
+	<message id="entity_stadium_level_seatsquality_help">Zwischen 0 und 5.</message>
+	<message id="entity_stadium_level_vipquality">Zustand der VIP-Logen</message>
+	<message id="entity_stadium_level_vipquality_help">Zwischen 0 und 5.</message>
+	
+	<message id="entity_stadium_maintenance_pitch">Nächste Wartung: Rasenzustand</message>
+	<message id="entity_stadium_maintenance_pitch_help">Anzahl Heimspiele.</message>
+	
+	<message id="entity_stadium_maintenance_videowall">Nächste Wartung: Videowand</message>
+	<message id="entity_stadium_maintenance_videowall_help">Anzahl Heimspiele.</message>
+	
+	<message id="entity_stadium_maintenance_seatsquality">Nächste Wartung: Sitze</message>
+	<message id="entity_stadium_maintenance_seatsquality_help">Anzahl Heimspiele.</message>
+	
+	<message id="entity_stadium_maintenance_vipquality">Nächste Wartung: VIP-Logen</message>
+	<message id="entity_stadium_maintenance_vipquality_help">Anzahl Heimspiele.</message>
+</messages>

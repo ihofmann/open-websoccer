@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="stadium_navlabel">Stadion</message>
+    <message id="stadium_nostadium">Sie haben noch kein Stadion.</message>
+    
+    <message id="stadium_capacity">Kapazität</message>
+    
+    <message id="stadium_extend_title">Stadion ausbauen</message>
+    <message id="stadium_extend_button">Ausbauen</message>
+    <message id="stadium_extend_cost_help">Kosten pro Platz:</message>
+    
+    <message id="stadium_extend_err_too_expensive">Den Ausbau können Sie sich im Moment nicht leisten.</message>
+    <message id="stadium_extend_err_exceed_max_side">Die Nebentribüne darf insgesamt maximal nur %d Plätze fassen.</message>
+    <message id="stadium_extend_err_exceed_max_grand">Die Haupttribüne darf insgesamt maximal nur %d Plätze fassen.</message>
+    <message id="stadium_extend_err_exceed_max_vip">Das Stadium darf nur %d VIP-Logen haben.</message>
+    <message id="stadium_extend_err_constructionongoing">Am Stadion wird derzeit bereits gebaut. Warten Sie bis die Arbeiten abgeschlossen sind.</message>
+    
+    <message id="stadium_extend_transaction_subject">Stadionausbau</message>
+    <message id="stadium_extend_success">Der Stadionausbau wurde in Auftrag gegeben.</message>
+    
+    <message id="stadium-extend-confirm_navlabel">Stadionausbau bestätigen</message>
+    <message id="stadium_extend_confirmation_title">Ausbau bestätigen</message>
+    <message id="stadium_extend_totalcost_label">Gesamtkosten</message>
+    
+    <message id="stadium_extend_limitation_intro">Sie können Ihr Stadion maximal noch wie folgt ausbauen</message>
+    <message id="stadium_extend_limitation_side">Plätze Nebentribüne</message>
+    <message id="stadium_extend_limitation_grand">Plätze Haupttribüne</message>
+    <message id="stadium_extend_limitation_vip">VIP Logen</message>
+    <message id="stadium_extend_limitation_instruction">Geben Sie zum Ausbau die gewünschte Anzahl neuer Plätze ein und wählen Sie danach ein Angebot von interessierten Bauträgern aus.</message>
+	<message id="stadium_extend_impossible">Sie können Ihr Stadion nicht mehr ausbauen, da es nicht Maximalgrösse bereits erreicht hat.</message>
+
+	<message id="stadium_extend_nobuilders">Im Moment gibt es keine Bauträger, die Interesse an diesem Auftrag haben.</message>
+	<message id="stadium_extend_builders_intro">Folgende Bauträger bieten Ihnen ein Angebot an. <strong>Achtung:</strong> Bei der Bauzeitangabe handelt es sich um eine Schätzung des Anbieters. Die tatsächliche Bauzeit kann je nach Kompetenz der Firma später abweichen.</message>
+	<message id="stadium_extend_builders_totalcosts">Gesamtkosten</message>
+	<message id="stadium_extend_builders_details">Angebotsdetails</message>
+	<message id="stadium_extend_builders_constructiontime">%d Tage</message>
+	
+	<message id="stadium_construction_ongoing">Im Moment wird Ihr Stadion erweitert. Details:</message>
+	<message id="stadium_construction_checkstatuslater">Kommen Sie nach der geplanten Fertigstellung vorbei und überprüfen Sie den Bauzustand!</message>
+	<message id="stadium_construction_verifystatus">Bauzustand überprüfen</message>
+	
+	<message id="stadium_acceptconstruction_err_nonedue">Im Moment gibt es keine Ausbauarbeiten, die fällig sind.</message>
+	
+	<message id="stadium_acceptconstruction_notcompleted_title">Die Arbeiten sind leider noch nicht abgeschlossen.</message>
+	<message id="stadium_acceptconstruction_notcompleted_details">Der Bauträger entschuldigt sich für die Umstände und hat ein neues Fertigstellungsdatum berechnet.</message>
+	
+	<message id="stadium_acceptconstruction_completed_title">Glückwunsch!</message>
+	<message id="stadium_acceptconstruction_completed_details">Die Arbeiten wurden erfolgreich abgeschlossen. Die neuen Plätze stehen ab sofort für Ihre Zuschauer zur Verfügung.</message>
+	
+	<message id="stadium_construction_notification_delay">Die Ausbauarbeiten am Stadion verzögern sich leider. Der Bauträger hat ein neues Fertigstellungsdatum ermittelt.</message>
+	<message id="stadium_construction_notification_completed">Ihr Stadion wurde erfolgreich ausgebaut.</message>
+	
+	<message id="stadium_maintenance_title">Wartung und Aufwertung</message>
+	<message id="stadium_maintenance_upgradecost_label">Ausbaukosten</message>
+	<message id="stadium_upgrade_button">Aufwerten</message>
+	
+	<message id="stadium_maintenance_pitch_tooltip">Ein schlechter Zustand kann die Leistung Ihrer Mannschaft schwächen.</message>
+	<message id="stadium_maintenance_videowall_tooltip">Wirkt sich auf die Zuschauerzahlen aus.</message>
+	<message id="stadium_maintenance_seatsquality_tooltip">Wirkt sich auf die Ticketverkäufe für Sitze aus.</message>
+	<message id="stadium_maintenance_vipquality_tooltip">Wirkt sich auf die Ticketverkäufe für VIP-Logen aus.</message>
+	
+	<message id="stadium_upgrade_err_not_upgradable">Es wurde bereits die maximale Ausbaustufe erreicht.</message>
+	
+	<message id="stadium_upgrade_transaction_subject">Wartungsarbeiten am Stadion</message>
+	<message id="stadium_upgrade_success">Die Wartungsarbeiten wurden erfolgreich abgeschlossen!</message>
+	<message id="stadium_upgrade_success_details">Beachten Sie, dass sich die Qualität mit der Zeit verschlechtert. Prüfen Sie den Status daher von Zeit zu Zeit.</message>
+</messages>

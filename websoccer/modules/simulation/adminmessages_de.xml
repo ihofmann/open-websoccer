@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_tab_simulation">Simulation</message> 
+	<message id="settings_tab_simulation_expert">Simulation (für Experten)</message> 
+	
+	<message id="settings_label_sim_interval">Simulationsintervall</message> 
+	<message id="settings_label_sim_interval_help">Minuten; Wieviele Spielminuten pro Ausführung simuliert werden sollen. 150 bedeutet, dass das komplette Spiel auf einmal berechnet wird.</message> 
+	
+	<message id="settings_label_sim_max_matches_per_run">Max. Spiele pro Minute</message> 
+	<message id="settings_label_sim_max_matches_per_run_help">Höchstanzahl an Spiele, die pro Berechnungslauf simuliert werden. Auf langsamen Servern sollte dieser Wert reduziert werden, um grössere Zeitverzögerungen bei der Berechnungen zu vermeiden.</message> 
+	
+	<message id="settings_label_sim_noformation_oneteam">Keine Aufstellung durch User</message> 
+	<message id="settings_label_sim_noformation_oneteam_help">Folge, wenn ein User keine Aufstellung für das Spiel abgegeben hat.</message>
+	
+	<message id="settings_label_sim_noformation_bothteams">Keine Aufstellung bei beiden Teams</message> 
+	<message id="settings_label_sim_noformation_bothteams_help">Folge, wenn beide Teams eines Spiels keine gesetzte Aufstellung haben.</message>
+	
+	<message id="option_computer">Aufstellung durch System generieren</message> 
+	<message id="option_0_0">Spiel 0:0 werten</message> 
+	<message id="option_3_0">Spiel 3:0 für das gegenerische Team werten</message> 
+	
+	<message id="settings_label_sim_createformation_without_manager">Das System soll eine Aufstellung automatisch generieren, wenn das Team keinen Manager hat.</message> 
+	
+	<message id="settings_label_sim_createformation_without_manager_offensive">Offensivtaktik bei Computeraufstellung</message> 
+	<message id="settings_label_sim_createformation_without_manager_offensive_help">Offensivität in Prozent bei Aufstellungen, die vom System generiert werden.</message> 
+	
+	<message id="settings_label_sim_income_trough_friendly">Ticketverkäufe auch bei Freundschaftsspielen zulassen. Damit können Vereine Einnahmen durch Freundschaftsspiele generieren.</message>
+	
+	<message id="settings_label_sim_strategy">Simulationstrategie</message> 
+	<message id="settings_label_sim_strategy_help">Klassenname einer eigenen Spielberechnung.</message> 
+	
+	<message id="settings_label_sim_goaly_influence">Einfluss des Torwarts</message> 
+	<message id="settings_label_sim_goaly_influence_help">in Prozent; Einfluss der Stärke des Torwarts bei Torschüssen.</message> 
+	
+	<message id="settings_label_sim_shootprobability">Torschusshäufigkeit</message>
+	<message id="settings_label_sim_shootprobability_help">in Prozent; 100% bedeutet normale Häufigkeit.</message>
+	
+	<message id="settings_label_sim_cardsprobability">Kartenhäufigkeit nach Fouls</message>
+	<message id="settings_label_sim_cardsprobability_help">in Prozent; 100% bedeutet normale Häufigkeit.</message>
+	
+	<message id="settings_label_sim_injuredprobability">Verletzungshäufigkeit</message>
+	<message id="settings_label_sim_injuredprobability_help">in Prozent; 100% bedeutet normale Häufigkeit.</message>
+	
+	<message id="settings_label_sim_weight_strength">Gewichtung Stärke</message> 
+	<message id="settings_label_sim_weight_strength_help">in Prozent; Anteil des Spielerattributs Stärke an der Gesamtspielerstärke.</message> 
+	
+	<message id="settings_label_sim_weight_strengthTech">Gewichtung Technik</message> 
+	<message id="settings_label_sim_weight_strengthTech_help">in Prozent; Anteil des Spielerattributs Technik an der Gesamtspielerstärke.</message> 
+
+	<message id="settings_label_sim_weight_strengthStamina">Gewichtung Kondition</message> 
+	<message id="settings_label_sim_weight_strengthStamina_help">in Prozent; Anteil des Spielerattributs Kondition an der Gesamtspielerstärke.</message> 
+
+	<message id="settings_label_sim_weight_strengthFreshness">Gewichtung Frische</message> 
+	<message id="settings_label_sim_weight_strengthFreshness_help">in Prozent; Anteil des Spielerattributs Frische an der Gesamtspielerstärke.</message>
+
+	<message id="settings_label_sim_weight_strengthSatisfaction">Gewichtung Zufriedenheit</message> 
+	<message id="settings_label_sim_weight_strengthSatisfaction_help">in Prozent; Anteil des Spielerattributs Zufriedenheit an der Gesamtspielerstärke.</message>
+
+	<message id="settings_label_sim_shootstrength_defense">Schusskraft: Abwehrspieler</message> 
+	<message id="settings_label_sim_shootstrength_defense_help">in Prozent der Gesamtspielerstärke.</message> 
+	
+	<message id="settings_label_sim_shootstrength_midfield">Schusskraft: Mittelfeldspieler</message> 
+	<message id="settings_label_sim_shootstrength_midfield_help">in Prozent der Gesamtspielerstärke.</message>
+	
+	<message id="settings_label_sim_shootstrength_striker">Schusskraft: Stürmer</message> 
+	<message id="settings_label_sim_shootstrength_striker_help">in Prozent der Gesamtspielerstärke.</message> 
+	
+	<message id="settings_label_sim_played_min_minutes">Mindestspielminuten für Stärkeauswirkungen</message> 
+	<message id="settings_label_sim_played_min_minutes_help">in Minuten; ab wievielen Minuten ein Spieler als "hat gespielt" markiert wird. Wirkt sich auf Zufriedenheit und Kondition aus.</message> 
+	
+	<message id="settings_label_sim_block_player_after_yellowcards">Sperre nach Anzahl gelber Karten</message> 
+	<message id="settings_label_sim_block_player_after_yellowcards_help">Nach wievielen gelben Karten ein Spieler für ein Spiel gesperrt wird. 0 für nie sperren. Die Gelbsperre wird nach jedem Vielfachen wiederholt (z.B. wenn Wert=5, dann Sperre nach 5, 10, 15, ... Karten)</message> 
+
+	<message id="settings_label_sim_allow_livechanges">Änderungen an der Taktik während einer Live-Spielberechnung durch den User erlauben.</message> 
+	<message id="settings_label_sim_allow_offensivechanges">Erlaubte Live-Änderungen der Taktik</message>
+	<message id="settings_label_sim_allow_offensivechanges_help">Wie oft ein Benutzer während dem Spiel die Offensivtaktik und andere Optionen ändern darf. 0 für gar nicht.</message>
+
+	<message id="settings_label_sim_decrease_freshness">Spieler ermüden (verlieren an Frische), wenn sie spielen. Die Höhe ist abhängig von gespielten Minuten, Alter, Kondition und Offensivität.</message> 
+	<message id="settings_label_sim_strengthchange_stamina">Änderung Kondition</message> 
+	<message id="settings_label_sim_strengthchange_stamina_help">Wieviel Punkte der Spieler gewinnt bzw. verliert, wenn er spielt bzw. nicht spielt.</message> 
+	<message id="settings_label_sim_strengthchange_satisfaction">Änderung Zufriedenheit</message> 
+	<message id="settings_label_sim_strengthchange_satisfaction_help">Wieviel Punkte der Spieler gewinnt bzw. verliert, wenn er spielt bzw. nicht spielt.</message> 
+	<message id="settings_label_sim_strengthchange_freshness_notplayed">Frischegewinn bei Nichtspielen</message> 
+	<message id="settings_label_sim_strengthchange_freshness_notplayed_help">Wieviele Punkte der Spieler gewinnt, wenn er nicht gespielt hat.</message> 
+
+	<message id="settings_label_sim_strength_reduction_secondary">Stärkeschwächung auf Nebenposition</message>
+	<message id="settings_label_sim_strength_reduction_secondary_help">in Prozent; Schwächung der Spieler, die auf ihrer Nebenposition spielen.</message>
+	
+	<message id="settings_label_sim_strength_reduction_wrongposition">Stärkeschwächung auf fremder Position</message>
+	<message id="settings_label_sim_strength_reduction_wrongposition_help">in Prozent; Schwächung der Spieler, die weder auf ihrer Haupt- noch Nebenposition spielen.</message>
+	
+	<message id="settings_label_sim_home_field_advantage">Heimvorteil</message>
+	<message id="settings_label_sim_home_field_advantage_help">Anzahl Stärkepunkte, die die Spieler der Heimmannschaft gewinnen, wenn das Stadion ausverkauft ist. 0 für kein Heimvorteil.</message>
+	
+	<message id="settings_label_sim_maxmatches_injured">Max. Spiele verletzt</message>
+	<message id="settings_label_sim_maxmatches_injured_help">Höchstanzahl an Spiele, für die ein Spieler verletzt ausfällt. Beachten Sie, dass die Wahrscheinlichkeit, dass ein Spieler für mehr als 7 Spiele gesperrt wird nur bei 1% liegt.</message>
+	
+	<message id="settings_label_sim_maxmatches_blocked">Max. Spiele gesperrt</message>
+	<message id="settings_label_sim_maxmatches_blocked_help">Höchstanzahl an Spiele, für die ein Spieler wegen einer roten Karte gesperrt wird.</message>
+
+	<message id="settings_label_sim_injured_after_friendly">Spieler können sich auch in einem Freundschaftsspiel verletzen und fallen danach für einige Spiele aus.</message>
+	
+	<message id="settings_label_sim_simulation_observers">Simulation Observers</message>
+	<message id="settings_label_sim_simulation_observers_help">Kommaseparierte Liste von PHP-Klassen, die die Schnittstelle <em>ISimulationObserver</em> implementieren und in der Spielesimulation aktiv sein sollen.</message>
+	
+	<message id="settings_label_sim_simulator_observers">Simulator Observers</message>
+	<message id="settings_label_sim_simulator_observers_help">Kommaseparierte Liste von PHP-Klassen, die die Schnittstelle <em>ISimulatorObserver</em> implementieren und in der Spielesimulation aktiv sein sollen.</message>
+
+	<message id="settings_label_sim_createformation_on_invalidsubmission">Eine neue Aufstellung generieren, wenn der Benutzer weniger als 11 Spieler aufgestellt hat (z.B. weil sich ein Spieler in der Zwischenzeit verletzt hat).</message>
+	
+	<message id="settings_label_sim_tiredness_through_friendly">Spieler verlieren auch durch Freundschaftsspiele an Frische und können Kondition aufbauen.</message>
+	
+	<message id="settings_label_sim_createformation_strength">Spielerstärke bei Computeraufstellung</message>
+	<message id="settings_label_sim_createformation_strength_help">in Prozent; Weniger als 100% bedeutet eine Schwächung von Spielern, die vom System aufgestellt werden.</message>
+	
+	<message id="settings_label_sim_playerupdate_through_nationalteam">Spieler verändern auch in Nationalmannschaftsspielen Frische, Kondition und Zufriedenheit.</message>
+</messages>

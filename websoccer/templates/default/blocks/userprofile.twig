@@ -1,0 +1,75 @@
+{% extends "box.twig" %}
+
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% block box_title %}
+{{ i18n.getMessage('userprofile_block_title') }}
+{% endblock %}
+
+{% block box_content %}
+
+{% if env.user.profilepicture|length > 0 %}
+	<a href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}">
+		<img src="{{ env.user.profilepicture }}" class="pull-left" style="width: 40px; height: 40px; margin-right: 10px" alt="{{ env.user.username }}"/>
+	</a>
+{% endif %}
+
+<p><em>{{ i18n.getMessage('userprofile_block_loggedin_as') }}</em><br/>
+<a href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}"><strong>{{ env.user.username }}</strong></a>
+{% if unseenMessages > 0 %}
+(<a href="{{ env.getInternalUrl("messages") }}" title="{{ i18n.getMessage("messages_new_messages", unseenMessages) }}"><i class="icon-envelope"></i><small>{{ unseenMessages }}</small></a>)
+{% endif %}
+
+<a id="notificationsLink" href="#" title="{{ i18n.getMessage('userprofile_block_notifications') }}"
+	class="ajaxLink" data-ajaxtarget="notificationspopup" data-ajaxblock="notifications"><span class="badge{% if unseenNotifications > 0 %} badge-important{% endif %}"><i class="icon-bell icon-white"></i>{% if unseenNotifications > 0 %} {{ unseenNotifications }}{% endif %}</span></a>
+</p>
+<div id="notificationspopupwrapper" style="display: none"><div id="notificationspopup">...</div></div>
+
+<p><em>{{ i18n.getMessage('userprofile_block_popularity') }}</em> <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('userprofile_block_tooltip_popularity') }}"></i></p>
+{{ statisticelements.progressbar(profile.user_popularity) }}
+
+<p><em>{{ i18n.getMessage('userprofile_block_highscore') }}</em><br/>
+<a href="{{ env.getInternalUrl("highscore") }}">{{ profile.user_highscore|number_format(0, ',', ' ') }}</a></p>
+
+{% if env.getUser().clubId > 0 %}
+<p><em>{{ i18n.getMessage('entity_club') }}</em>
+{% if userteam.team_picture|length %}
+	{% set teamPicture = "<img src=\""~ env.getConfig("context_root") ~ "/uploads/club/" ~ userteam.team_picture ~ "\" style=\"width: 20px; height: 20px;\" />" %}
+{% else %}
+	{% set teamPicture = "" %}
+{% endif %}
+
+{% if env.getConfig("max_number_teams_per_user") > 1 %}
+</p>
+
+<div class="dropdown" style="margin-top: -11px; margin-bottom: 12px;">
+  {{ teamPicture|raw }} <a class="dropdown-toggle ajaxLink" data-toggle="dropdown" href="#" data-ajaxblock="user-clubs-selection" data-ajaxtarget="clubsSelectionList">
+    {{ userteam.team_name }}
+    <b class="caret"></b>
+  </a>
+  <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}" style="margin: 0 5px"><i class="icon-info-sign darkIcon"></i></a> 
+  <a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="icon-table darkIcon"></i></a>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="clubsSelectionList">
+    
+  </ul>
+</div>
+{% else %}
+	<br>
+	{{ teamPicture|raw }} <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}">{{ userteam.team_name }}</a> 
+	<a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="icon-table darkIcon"></i></a>
+	</p>
+{% endif %}
+
+<p><em>{{ i18n.getMessage('entity_club_finanz_budget') }}</em><br/>
+<a href="{{ env.getInternalUrl("finances") }}">{{ userteam.team_budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</a></p>
+{% endif %}
+
+{% if env.getConfig("premium_enabled") %}
+	<p><em>{{ i18n.getMessage('entity_users_premium_balance') }}</em><br/>
+	<a href="{{ env.getInternalUrl("premiumaccount") }}">{{ env.user.premiumBalance|number_format(0, ',', ' ') }} {{ env.getConfig("premium_credit_unit") }}</a></p>
+{% endif %}
+
+<p><i class="icon-off"></i> <a href="{{ env.getInternalActionUrl("logout") }}"> {{ i18n.getMessage('userprofile_block_link_logout') }}</a>
+| <i class="icon-user"></i> <a href="{{ env.getInternalUrl("profile") }}"> {{ i18n.getMessage('userprofile_block_link_profile') }}</a></p>
+
+{% endblock %}

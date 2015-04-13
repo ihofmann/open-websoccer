@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_club">Verein</message>
+	<message id="entity_club_name">Name</message>
+	<message id="entity_club_kurz">Kürzel</message>
+	<message id="entity_club_liga_id">Liga</message>
+	<message id="entity_club_user_id">Benutzer</message>
+	<message id="entity_club_user_id_actual">Eigentlicher Manager</message>
+	<message id="entity_club_user_id_actual_help">Falls Benutzer nur Stellvertreter während einer Abwesenheit ist.</message>
+	<message id="entity_club_bild">Logo</message>
+	<message id="entity_club_stadion_id">Stadion</message>
+	<message id="entity_club_sponsor_id">Sponsor</message>
+	<message id="entity_club_sponsor_spiele">Restliche Spiele mit Sponsor</message>
+	<message id="entity_club_training_id">Trainingseinheit</message>
+	<message id="entity_club_finanz_budget">Budget</message>
+	<message id="entity_club_finanz_sponsor">Sponsoreneinnahmen</message>
+	<message id="entity_club_finanz_transfer">Transferüberschuss</message>
+	<message id="entity_club_finanz_gehalt">Gehaltszahlungen</message>
+	<message id="entity_club_finanz_zuschauer">Zuschauereinnahmen</message>
+	<message id="entity_club_finanz_sonstiges">Sonstige Einnahmen</message>
+	<message id="entity_club_preis_stehen">Ticketpreis Stehplätze</message>
+	<message id="entity_club_preis_sitz">Ticketpreis Sitzplätze</message>
+	<message id="entity_club_preis_haupt_stehen">Ticketpreis Stehplätze (Haupttribüne)</message>
+	<message id="entity_club_preis_haupt_sitze">Ticketpreis Sitzplätze (Haupttribüne)</message>
+	<message id="entity_club_preis_vip">Ticketpreis V.I.P.-Lounge</message>
+	<message id="entity_club_last_steh">Zuschauer letztes Spiel: Stehplätze</message>
+	<message id="entity_club_last_sitz">Zuschauer letztes Spiel: Sitzplätze</message>
+	<message id="entity_club_last_haupt_steh">Zuschauer letztes Spiel: Stehplätze (Haupt)</message>
+	<message id="entity_club_last_haupt_sitz">Zuschauer letztes Spiel: Sitzplätze (Haupt)</message>
+	<message id="entity_club_last_vip">Zuschauer letztes Spiel: VIP-Lounge</message>
+	<message id="entity_club_meisterschaften">Gewonnene Meisterschaften</message>
+	<message id="entity_club_st_tore">Tore (gesamt)</message>
+	<message id="entity_club_st_gegentore">Gegentore (gesamt)</message>
+	<message id="entity_club_st_spiele">Spiele (gesamt)</message>
+	<message id="entity_club_st_siege">Siege (gesamt)</message>
+	<message id="entity_club_st_niederlagen">Niederlagen (gesamt)</message>
+	<message id="entity_club_st_unentschieden">Unentschieden (gesamt)</message>
+	<message id="entity_club_st_punkte">Punkte (gesamt)</message>
+	<message id="entity_club_sa_tore">Tore (Saison)</message>
+	<message id="entity_club_sa_gegentore">Gegentore (Saison)</message>
+	<message id="entity_club_sa_spiele">Spiele (Saison)</message>
+	<message id="entity_club_sa_siege">Siege (Saison)</message>
+	<message id="entity_club_sa_niederlagen">Niederlagen (Saison)</message>
+	<message id="entity_club_sa_unentschieden">Unentschieden (Saison)</message>
+	<message id="entity_club_sa_punkte">Punkte (Saison)</message>
+	<message id="entity_club_history">Historie</message>
+	<message id="entity_club_status">Aktiv</message>
+	<message id="entity_club_min_target_rank">Saisonziel</message>
+	<message id="entity_club_min_target_rank_help">Erwartete Mindestplatzierung in der Liga am Ende der Saison. 0 für kein Saisonziel. Beim Beenden einer Saison können die Auswirkungen bei Nichterreichen (Reduzierung Fanbeliebtheit, Strafzahlung, Kündigung) festgelegt werden.</message>
+	<message id="entity_club_nationalteam">Ist Nationalmannschaft</message>
+	<message id="entity_club_captain_id">Kapitän</message>
+	<message id="entity_club_interimmanager">Wird von Interims-Manager betreut</message>
+</messages>

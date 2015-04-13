@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="teamsgenerator_navlabel">Vereine generieren</message>
+    
+    <message id="teamsgenerator_intro">In der Regel erlauben die bekannten Fussballverbände keine Benutzung von realen Namen in Spielen, es sei denn der Betreiber hat bei dem jeweiligen Verband eine entsprechende Lizenz erworben. Mit diesem Tool können Sie ganz einfach Vereine mit zufällig generierten Fantasienamen erzeugen, die zwar im Einzelfall den Originalnamen ähneln, aber grundsätzlich nicht identisch sind.</message>
+    
+    <message id="generator_label_league">Liga</message>
+    <message id="generator_label_numberofteams">Anzahl Teams</message>
+    <message id="generator_label_budget">Budget pro Team</message>
+    <message id="generator_label_generatestadium">Für jedes Team auch ein Stadion generieren</message>
+    <message id="generator_label_stadiumpattern">Stadionname</message>
+    <message id="generator_label_stadiumpattern_help">wobei "%s" ein Platzhalter für den Stadtnamen ist.</message>
+    
+    <message id="generator_label">Datensätze automatisch generieren</message>
+    <message id="generator_button">Generieren</message>
+    
+    <message id="generator_label_stadium_p_stands">Stehplätze Nebentribüne</message>
+    <message id="generator_label_stadium_p_seats">Sitzplätze Nebentribüne</message>
+    <message id="generator_label_stadium_p_stands_grand">Stehplätze Haupttribüne</message>
+    <message id="generator_label_stadium_p_seats_grand">Sitzplätze Haupttribüne</message>
+    <message id="generator_label_stadium_p_vip">VIP Logen</message>
+    
+    <message id="generator_validationerror_numberofitems">Sie müssen mindestens ein Datensatz generieren lassen.</message>
+    <message id="generator_validationerror_numberofitems_max">Sie können höchstens 100 Datensätze af einmal generieren lassen.</message>
+    <message id="generator_validationerror_noleague">Es muss eine Liga ausgewählt werden.</message>
+    
+    <message id="generator_success">Daten wurden erfolgreich generiert.</message>
+    
+	<message id="generator_err_filedoesnotexist">Um Daten für diese Liga generieren zu können, benötigen Sie die Datei: %s</message>
+	<message id="generator_err_emptyfile">Die folgende Datei hat keine gültigen Einträge: %s</message>
+	
+	<message id="playersgenerator_navlabel">Spieler generieren</message>
+	<message id="playersgenerator_noteams">In der ausgewählten Liga sind noch keine Teams vorhanden.</message>
+	<message id="playersgenerator_create_for_all_teams">Spieler für alle Teams generieren</message>
+	<message id="playersgenerator_create_for_single_teams">Spieler für ausgewählte Teams separat erzeugen</message>
+	
+	<message id="playersgenerator_label_deviation">Max. Stärkeabweichung</message>
+	<message id="playersgenerator_label_deviation_help">Wenn Stärkewerte zufällig abweichen sollen, kann z.B. 10% für Abweichungen von -10 bis +10 Stärkepunkten gewählt werden.</message>
+	
+	<message id="playersgenerator_head_playerscount">Anzahl vorhandener Spieler</message>
+	<message id="player_age">Spieleralter</message>
+	<message id="player_age_help">in Jahren</message>
+	
+	<message id="player_age_deviation">Max. Altersabweichung</message>
+	<message id="player_age_deviation_help">Wenn das Spieleralter zufällig schwanken soll, kann z.B. 5 für eine Abweichung zwischen -5 und +5 Jahren gewählt werden.</message>
+	
+	<message id="playersgenerator_generator_for_transfermarket">Für den Transfermarkt generieren</message>
+</messages>

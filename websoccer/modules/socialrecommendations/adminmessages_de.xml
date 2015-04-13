@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_social_likebutton_twitter">Empfehlungsbutton von Twitter einbinden.</message> 
+	<message id="settings_label_social_likebutton_werkenntwen">Empfehlungsbutton von wer-kennt-wen.de einbinden.</message> 
+	<message id="settings_label_social_likebutton_xing">Empfehlungsbutton von XING einbinden.</message> 
+</messages>

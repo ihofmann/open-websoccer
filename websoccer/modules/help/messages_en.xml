@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="help_button">Help</message>
+    <message id="help_dialog_title">Information about Usage</message>
+    
+    <message id="help_formation">
+        <p>Set your tactics for the next match here.</p>
+        
+        <p><strong>Choosing the right tactic</strong></p>
+        <p>Both the formation and the value of &quot;Playing offensive&quot; will influence how offensive and risky your team will play. You should decide for each match individually since the results depend on the opponent team.</p>
+        
+        <p><strong>Set players</strong></p>
+        <p>You can drag players onto the pitch with your mouse. Or you simply tap on the appropriate buttons or doubleclick on the player rows. Note that doubleclick only works when the player has an assigned main position and this main position is not occupied yet.</p>
+        
+    	<p><strong>Substitution players</strong></p>
+    	<p>Add players to the bench by clicking on the appropriate button at the players selection. Players on the bench can substitute players during the match, e.g. when a player is injured or due to tactical reasons.</p>
+    </message>
+    
+<message id="help_training">
+<p>Train your team regularly in order to improve stamina, technique and freshness of your players.</p>
+
+<p>How you train your team:</p>
+<ul>
+<li>Choose a trainer and hire him for a number of training units.</li>
+<li>If you have hired a trainer, you can determine the intensity and training focus.</li>
+<li>Click on button &quot;Execute training&quot;. The players will be trained immediately under the supervision of the trainer, considering your preferences.</li>
+</ul>
+
+<p>You cannot execute trainings during a match.</p>
+
+<p><strong>Choosing a trainer</strong></p>
+
+<p>The figures for &quot;Effectivity&quot; indicate how successful the trainer can train your team. 50% means, for instance, that players will be improved during a training session by a chance of 50%.</p>
+
+<p>Note that the trainer's fee will be debitted immediately after you have hired him.</p>
+
+<p><strong>Execute training</strong></p>
+
+<p>If you execute a training session, the players' strengths will be improved according to the trainer's effectivity and configured intensitiy. The higher the intensity is, the more freshness your players will loose, but the higher is the chance of improvements.</p>
+
+<p>Injured players cannot train, but regenerate during training sessions.</p>
+</message>
+
+<message id="help_sponsor">
+<p>Choose a sponsor company which pays you a premium for each mandatory match.</p>
+
+<p>The selection of sponsors depend on your current success. You can wait with accepting a sponsor if you expect that you will win the next matches and hence get even better offers in future. Or you choose a sponsor now in order to start getting premium payments.</p>
+
+<p>A valid contract with a sponsor cannot be cancelled before the contract ends.</p>
+</message>
+
+<message id="help_tickets">
+<p>Set the ticket prices for home matches here. In order to support your decision making, it is indicated how many visitors attended your last match.</p>
+
+<p>The number of sold tickets depends on the following factors:</p>
+<ul>
+<li>The ticket prices. These should not be considerably higher than the league average (initial value).</li>
+<li>Popularity with fans. It depends on your current success.</li>
+<li>The attractiveness of the match. E.g., if you play against a &quot;table neighbour&quot; you can try increasing the prices and decrease afterwards again.</li>
+</ul>
+</message>
+
+<message id="help_stadium">
+<p>You will find the current size and seats distribution of your stadium on this site.</p>
+<p>The gray area behind the seats indicate the theoretical maximum size to which you may extend the stadium.</p>
+
+<p>Fill the form below the stadium image in order to extend it by new seats. After submitting the form, you will get offers from builder companies, containing total costs and an estimated completion time. Once you select one of the offers, the total costs will be debitted from your account immediately and the constructions will start.</p>
+
+<p>You need to manually accept the construction work once the completion time is up. Note that very cheap builders might give wrong estimations about the deadline.</p>
+
+<p>It is not possible to shrink your stadium.</p>
+</message>
+
+<message id="help_myteam">
+<p>Here you find an overview of all your players. You should check this site regularly in order to prevent the unwanted loss of players due to ended contracts.</p>
+
+<p><strong>Sell players</strong></p>
+
+<p>You can sell players to any time by clicking on the button &quot;Sell&quot; next to the appropriate player. Afterwards you will enter a minimum bid. The player will be moved to the transfer market and other users can bid for him. As long as the player is not sold, he will remain in your team.</p>
+
+<p>Note that you cannot remove a player from the transfer market once you have added him.</p>
+
+<p><strong>Extend contracts</strong></p>
+
+<p>Players whose contract is about to end and can be extended, will be marked red and with a danger sign in the overview. It also appears a button &quot;Extend Contract&quot;. On click on this button you will be forwarded to a contract extension negotiation page.</p>
+
+<p>If you do not extend an ending contract, the player will be moved automatically to the transfer market and does not belong to your team anymore.</p>
+
+<p><strong>Nominate a team captain</strong></p>
+<p>The captain can improve the team morale when your team is in deficit during a match. The more experience a player has, the more respekt he gets from other players.</p>
+<p>Be careful if you want to change the captain. Your current captain might become mad with you.</p>
+</message>
+
+<message id="help_trainingcamp">
+<p>If there is a time without matches, you can send your team to a training camp.</p>
+<p>You do not need to hire a trainer for that since the training camp will provide one for you. They take care that all your players will be trained by the specified attributes on a daily basis.</p>
+
+<p>The total costs of a training camp booking will be debitted immediately after booking.</p>
+<p>You can book only one training camp at the same time. Only after returning from one camp, you can book the next camp.</p>
+</message>
+
+<message id="help_transfermarket">
+<p>Buy new players or see if anyone has set a bit on one of your players.</p>
+
+<p><strong>Buy players</strong></p>
+
+<p>The transfer market is the only place where you can buy new players. They will be sold through auctions, even when players are not assigned to a team anymore. For such players, the best salary offer including hand money counts.</p>
+
+
+<p>In order to bid on a player, or simply to get information about the current maximum bid, you can click on the button &quot;bid&quot; next to the appropriate player.</p>
+
+<p>By the way, the number of permitted transactions between the same user is limit. Hence, avoid bidding on several players of the same team.</p>
+
+<p><strong>Sell players</strong></p>
+
+<p>You can sell your own players by going to &quot;My Team&quot; in the navigation bar.</p>
+</message>
+
+<message id="help_transfer-bid">
+<p>Get information about the current maximum bid of a player or set a bid by yourself.</p>
+
+<p><strong>Bidding on players of a different team</strong></p>
+<p>The highest fee wins. The salary should just be accepted by the player, but does not need to be higher than the one from other bids.</p>
+
+<p><strong>Players without fee</strong></p>
+
+<p>Players without currently having a team will be given to the team which offers the best contract to the player. It is considered as best according to the total income for the player, including awards and hand money. The goal bonus is irrelevant for goalkeepers and defense players.</p>
+
+<p>&quot;Hand money&quot; is money which you would pay to the player, independent on the contract length.</p>
+</message>
+
+<message id="help_messages">
+<p>Send short messages to other users here.</p>
+<p>Due to security reasons you need to know the user name of the recipient. Copy his or her name to the recipient field or just enter the first two or three characters and click on one of the from the system suggested users.</p>
+
+
+<p>Note that sending advertisement is prohibitted.</p>
+
+<p>Also note that the messages are stored in our database without any encryption. Hence, do not send intimate or sensitive data.</p>
+
+<p>HTML is not supported.</p>
+</message>
+	
+</messages>

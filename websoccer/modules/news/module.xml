@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  <admin>
+	<adminpage id="news" permissionrole="r_news" navcategory="website" entity="news">
+		<entity dbtable="news AS NewsTab">
+		    <overview edit="true" delete="true">
+		    	<column id="entity_news_titel" type="text" field="NewsTab.titel" filter="true" sort="true" />
+		    	<column id="entity_news_datum" type="timestamp" field="NewsTab.datum" sort="true"/>    
+		    	<column id="entity_admin_name" type="text" field="AdminTab.name" filter="true" sort="true" />   
+		    	<column id="entity_news_status" type="boolean" field="NewsTab.status" />   
+		    	<join type="LEFT" jointable="admin AS AdminTab" joincondition="AdminTab.id = NewsTab.autor_id" />
+		    </overview>
+		    <editform>
+		        <field id="autor_id" type="foreign_key" jointable="admin" labelcolumns="name" required="true"/>
+				<field id="titel" type="text" required="true" />
+				<field id="datum" type="timestamp" required="true"/>
+				<field id="nachricht" type="textarea" required="true" />
+				<field id="linktext1" type="text" />
+				<field id="linkurl1" type="url" />
+				<field id="linktext2" type="text" />
+				<field id="linkurl2" type="url" />
+				<field id="linktext3" type="text" />
+				<field id="linkurl3" type="url" />
+				<field id="c_br" type="boolean" />
+				<field id="c_links" type="boolean" />
+				<field id="status" type="boolean" />        
+		    </editform>
+		    
+		</entity>    
+	</adminpage>
+  </admin>
+  
+    <pages>
+        <page
+            id="news"
+            model="NewsListModel"
+            navitem="true"
+            navweight="1"
+            template="news-overview"
+            role="guest,user">
+	        <page
+	            id="news-details"
+	            model="NewsDetailsModel"
+	            navitem="false"
+	            template="news-details"
+	            role="guest,user" />
+        </page>
+    </pages>
+    
+    <blocks>
+
+        <block
+            id="news"
+            template="topnews"
+            model="TopNewsListModel"
+            includepages="home"
+            area="custom"
+            weight="0"
+            role="guest,user" />
+        
+    </blocks>
+</module>

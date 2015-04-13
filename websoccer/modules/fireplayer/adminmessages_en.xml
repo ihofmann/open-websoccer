@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_enable_player_resignation">Users may fire players.</message> 
+	<message id="settings_label_player_resignation_compensation_matches">Compensation for loss of job</message> 
+	<message id="settings_label_player_resignation_compensation_matches_help">Number of matches for which a player asks a compensation in case of contract resignation. 0 for no compensation.</message> 
+	
+</messages>

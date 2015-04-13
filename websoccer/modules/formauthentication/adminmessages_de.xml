@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_login_type">Log-In Typ</message>  
+	
+	<message id="option_email">Anmeldung durch E-Mail</message>  
+	<message id="option_username">Anmeldung durch Benutzername</message>  
+	
+	<message id="settings_label_login_method">Log-In Methode</message>
+	<message id="settings_label_login_method_help">Name der Klasse, die IUserLoginMethod implementiert. Ermöglicht die Integration anderer Softwareprodukte.</message>
+	
+	<message id="settings_label_login_allow_sendingpassword">Benutzer können sich ein neues Passwort zusenden lassen. Sollte deaktiviert werden, wenn nicht die Standard-Login-Methode benutzt wird.</message>
+</messages>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="transfermarket" version="1.0.0"/>
+    </dependencies>
+    
+  <settings>
+      <setting id="enable_player_resignation" category="game" type="boolean" default="1" />
+      <setting id="player_resignation_compensation_matches" category="game" type="number" default="10" />
+  </settings>
+  
+  <actions>
+	<action id="fire-player" controller="FirePlayerController" role="user">
+		<param id="id" type="number" required="true" />
+	</action>
+  </actions>
+    
+</module>

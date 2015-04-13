@@ -1,0 +1,73 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/paginator.twig" as pagination %}
+
+{% block page_title %}
+{{ i18n.getMessage("youthmatches_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if matches is defined and matches|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_youthmatch_matchdate") }}</th>
+				<th>{{ i18n.getMessage("entity_youthmatch_home_team_id") }}</th>
+				<th>{{ i18n.getMessage("entity_youthmatch_guest_team_id") }}</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for match in matches %}
+			<tr>
+				<td>{{ env.getFormattedDatetime(match.date, i18n) }}</td>
+				<td>
+					{% if match.home_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.home_team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a>
+					
+					{% if match.home_user_id > 0 %}
+						<br>
+						{% if match.home_user_picture|length > 0 %}
+							<a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}"><img src="{{ match.home_user_picture }}" style="width: 20px; height: 20px"/></a>
+						{% endif %}
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}">{{ match.home_user_nick }}</a></small>
+					{% endif %}
+				</td>
+				<td>
+					{% if match.guest_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.guest_team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a>
+					
+					{% if match.guest_user_id > 0 %}
+						<br>
+						{% if match.guest_user_picture|length > 0 %}
+							<a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}"><img src="{{ match.guest_user_picture }}" style="width: 20px; height: 20px"/></a>
+						{% endif %}
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}">{{ match.guest_user_nick }}</a></small>
+					{% endif %}
+				</td>
+				<td>
+					{% if match.simulated == 1 %}
+						<a href="{{ env.getInternalUrl("youth-match", "id=" ~ match.match_id) }}" 
+							title="{{ i18n.getMessage("match_navlabel") }}">{{ match.home_goals }} - {{ match.guest_goals }}</a>
+					{% else %}
+						<a href="{{ env.getInternalUrl("youth-formation", "matchid=" ~ match.match_id) }}" class="btn btn-small"><i class="icon-sitemap"></i> {{ i18n.getMessage("formation_navlabel") }}</a>
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+	{{ pagination.paginator(paginator) }}
+
+{% else %}
+	{{ messagebox.box(i18n.getMessage("youthmatches_no_matches"), "", "info") }}
+{% endif %}
+
+{% endblock %}

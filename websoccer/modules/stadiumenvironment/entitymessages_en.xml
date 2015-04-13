@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_stadiumbuilding">Buildings</message>
+	<message id="entity_stadiumbuilding_name">Name</message>
+	<message id="entity_stadiumbuilding_name_help">Can also be a messages key.</message>
+	<message id="entity_stadiumbuilding_description">Description</message>
+	<message id="entity_stadiumbuilding_description_help">Can also be a messages key.</message>
+	<message id="entity_stadiumbuilding_picture">Picture</message>
+	
+	<message id="entity_stadiumbuilding_required_building_id">Required building</message>
+	<message id="entity_stadiumbuilding_required_building_id_help">A selected building must be constructed before. Note that previously constructed buildings remain active. The effects filled in below will be added together.</message>
+	
+	<message id="entity_stadiumbuilding_costs">Construction costs</message>
+	<message id="entity_stadiumbuilding_premiumfee">Premium fee</message>
+	<message id="entity_stadiumbuilding_premiumfee_help">The user's premium account will be debited additionally to the club's virtual account.</message>
+	<message id="entity_stadiumbuilding_construction_time_days">Construction time (days)</message>
+	<message id="entity_stadiumbuilding_effect_training">Effect: Training</message>
+	<message id="entity_stadiumbuilding_effect_training_help">Additional number of skill points added to morale and fitness after every training session.</message>
+	<message id="entity_stadiumbuilding_effect_youthscouting">Effect: Youth Scouting</message>
+	<message id="entity_stadiumbuilding_effect_youthscouting_help">Additional skill points added to skill of a scouted youth player.</message>
+	<message id="entity_stadiumbuilding_effect_tickets">Effect: Ticket sales</message>
+	<message id="entity_stadiumbuilding_effect_tickets_help">Number of per cent points by that the ticket sales will be increased. Bonus will not be considered if no tickets would be sold without this building.</message>
+	<message id="entity_stadiumbuilding_effect_fanpopularity">Effect: Popularity (once)</message>
+	<message id="entity_stadiumbuilding_effect_fanpopularity_help">Number of per cent points by that the user's popularity will be changed once. <strong>Important:</strong> The change takes effect immediately once the building construction is ordered without waiting for the construction ending.</message>
+	<message id="entity_stadiumbuilding_effect_injury">Effect: Injuries</message>
+    <message id="entity_stadiumbuilding_effect_injury_help">Number of matches that will decrease the number of suspended matches due to an injury, additonally to the standard reduction. Example: With value 1, the duration of an injury is cut down to the half.</message>
+    <message id="entity_stadiumbuilding_effect_income">Revenue/costs per home match</message>
+    <message id="entity_stadiumbuilding_effect_income_help">Amount that will be credited (if positive) or debited (if negative) at every home match.</message>
+</messages>

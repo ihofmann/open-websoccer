@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="formation_navlabel">Alineación</message>
+    <message id="formation_title">Alineación y Tácticas</message>
+    
+    <message id="next_match_block_title">Próximo Partido</message>
+    <message id="next_match_block_previous_matches">Últimos Partidos</message>
+    <message id="next_match_block_no_previous_matches">Usted está jugando por primera vez contra este equipo.</message>
+    <message id="next_match_block_no_nextmatch">Actualmente no hay ningún partido programado para usted.</message>
+    
+    <message id="formation_playground_title">Establecer Alineación</message>
+    <message id="formation_team_title">Tu Equipo</message>
+    <message id="formation_team_noplayers">No hay jugadores disponibles.</message>
+    <message id="formation_bench">Banquillo</message>
+    
+    <message id="formation_team_collapsehead_tooltip">Expandir o contraer la lista</message>
+    
+    <message id="formation_team_blocked_cards">Bloqueado debido a las tarjetas rojas o amarillas</message>
+    <message id="formation_team_blocked_injured">El Jugador esta lesionado</message>
+    
+    <message id="formation_dragging_note_title">Instrucciones:</message>
+    <message id="formation_dragging_note">Arrastra los jugadores sobre el campo de juego con el fin de ajustarlos para el partido.</message>
+    
+    <message id="formation_substitutions_title">Sustituciones</message>
+    <message id="formation_substitutions_out">Fuera</message>
+    <message id="formation_substitutions_in">Dentro</message>
+    <message id="formation_substitutions_minute">Minuto</message>
+    
+    <message id="formation_substitutions_condition">Condición</message>
+    <message id="formation_substitutions_condition_none">Ninguna</message>
+    <message id="formation_substitutions_condition_tie">empatando</message>
+    <message id="formation_substitutions_condition_leading">minutos más importantes</message>
+    <message id="formation_substitutions_condition_deficit">al final del partido</message>
+    
+    <message id="formation_substitutions_position">Posición</message>
+    <message id="formation_substitutions_position_default">(Posición principal del jugador)</message>
+    
+    <message id="formation_err_player_already_set">Este jugador ya está establecido.</message>
+    <message id="formation_err_already_enough_players">Ya hay 11 jugadores establecidos.</message>
+    <message id="formation_err_only_one_goaly_allowed">Sólo un portero permitido.</message>
+    <message id="formation_err_only_x_players_per_area_allowed">Usted no debe establecer más de {0} jugadores por zona.</message>
+    <message id="formation_err_only_x_players_on_bench_allowed">No más de {0} jugadores en el banquillo permitido.</message>
+    <message id="formation_err_no_goaly_set">No eligió ningún portero.</message>
+    <message id="formation_err_not_enough_players">Menos de 11 jugadores no esta permitido.</message>
+    <message id="formation_tooltip_remove_player">Doble click para eliminar {0}</message>
+    
+    <message id="formation_err_nonextmatch">No hay un partido todavía.</message>
+    <message id="formation_err_invalidplayer">Jugadores no válidos establecidos.</message>
+    <message id="formation_err_duplicateplayer">Algunos jugadores establecidos varias veces.</message>
+    <message id="formation_err_blockedplayer">Jugadores lesionados o bloqueados establecidos.</message>
+    
+    <message id="formation_err_invalidsubstitutionminute">Se le permite sustituir a los jugadores sólo entre el segundo 0 y 90 minutos.</message>
+    
+    <message id="formation_offensive_title">Juego ofensivo</message>
+    
+    <message id="formation_setup_title">Disposición</message>
+    
+    <message id="formation_bench_placeholder">Arrastrar jugador aquí...</message>
+    <message id="formation_bench_sub_in">Sustituir</message>
+    <message id="formation_bench_sub_title">Sustitución del jugador</message>
+    
+    <message id="formation_setup_button">Establecer</message>
+    <message id="formation_setup_strongest">Jugadores más fuertes</message>
+    <message id="formation_setup_freshest">Jugadores más frescos</message>
+    <message id="formation_setup_motivated">Jugadores más motivados</message>
+    
+    <message id="formation_setup_altered_warn_title">¡La configuración seleccionada ha sido alterada por el sistema!</message>
+    <message id="formation_setup_altered_warn_details">Su configuración no consiste en 10 jugadores de campo, por lo tanto, el sistema automáticamente modificado su selección.</message>
+
+	<message id="formation_clearall">Borrar todo</message>
+	
+	<message id="formation_switch_on">Si</message>
+	<message id="formation_switch_off">No</message>
+	
+	<message id="formation_option_longpasses">Pases Largos</message>
+	<message id="formation_option_longpasses_help">Puede conducir a más tiros de gol, pero también a más pérdidas de balón.</message>
+	
+	<message id="formation_option_counterattacks">Contraataques</message>
+	<message id="formation_option_counterattacks_help">Puede prevenir intentos de gol del oponente, sino que también reduce el número de los propios intentos.</message>
+	
+	<message id="formation_freekickplayer">Lanzador de Faltas</message>
+	
+	<message id="formation_templatename_field">Nombre de la plantilla</message>
+	<message id="formation_templatename_field_help">Proporcione un nombre con el fin de salvar a esta formación, además, como plantilla.</message>
+	
+	<message id="formation_load_from_template">Cargar Plantilla</message>
+	<message id="formation_load_from_template_none_available">No hay plantillas disponibles. Puede crear una nueva plantilla, proporcionando un nombre de plantilla cuando se guarda una nueva formación.</message>
+	
+	<message id="formation_template_saving_failed_because_boundary_title">Usted puede tener sólo hasta %d plantillas guardadas.</message>
+	<message id="formation_template_saving_failed_because_boundary_details">Esta formación no se ha guardado como plantilla. Eliminar las plantillas sin usar.</message>
+	
+	<message id="formation_submitted_tooltip">Formación Enviada</message>
+	<message id="formation_notsubmitted_tooltip">Formación no enviada todavía</message>
+</messages>

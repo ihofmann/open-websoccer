@@ -1,0 +1,19 @@
+{% if templates|length == 0 %}
+	<p>{{ i18n.getMessage("formation_load_from_template_none_available") }}</p>
+{% else %}
+
+	<table class="table table-striped">
+		<tbody>
+			{% for template in templates %}
+				<tr>
+					<td>{{ env.getFormattedDate(template.date) }}</td>
+					<td><a href="{{ env.getInternalUrl("formation", "id=" ~ env.getRequestParameter("id") ~ "&templateid=" ~ template.id) }}">{{ template.templatename }}</a></td>
+					<td><a href="#" class="darkIcon ajaxLink" 
+						data-ajaxblock="formation_templates" data-ajaxtarget="formation-templates-content" 
+						data-ajaxquerystr="action=remove-formation-template&templateid={{ template.id }}&id={{ env.getRequestParameter("id") }}"><i class="icon-trash"></i></a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endif %}

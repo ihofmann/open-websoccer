@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_facebook_enable_login">Enable Facebook Log-In. Requires a valid APP ID and App Secret (see below).</message> 
+
+	<message id="settings_label_facebook_appid">Facebook App ID</message> 
+	<message id="settings_label_facebook_appid_help">You can get this information when you <a href="https://developers.facebook.com/apps" target="_blank">register your website as App</a>.</message> 
+	
+	<message id="settings_label_facebook_appsecret">Facebook App Secret</message> 
+	<message id="settings_label_facebook_appsecret_help">You get this information from the registration process as well.</message> 
+	
+	<message id="settings_label_facebook_enable_comments">Allow user discussions (e.g. in news and match reports) via a Facebook plugin. Requires that you have entered a valid Facebook App ID above.</message>
+
+	<message id="settings_label_facebook_enable_likebutton">Display the Facebook Like button.</message>
+</messages>

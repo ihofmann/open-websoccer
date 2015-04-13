@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="error_access_denied">Sie verfügen nicht über die nötige Berechtigung für diese Seite.</message>
+    <message id="logout_message_title">Sie haben sich erfolgreich abgemeldet. Bis zum nächsten mal!</message>
+    
+</messages>

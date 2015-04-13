@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="freeclubs_navlabel">Freie Vereine</message>
+    <message id="freeclubs_title">Vereine ohne Manager</message>
+    <message id="freeclubs_no_free_clubs_available">Derzeit gibt es keine freien Vereine.</message>
+    <message id="freeclubs_head_choose">Auswahl</message>
+    <message id="freeclubs_button_choose">Team übernehmen</message>
+    <message id="freeclubs_button_choose_another">Weiteres Team übernehmen</message>
+    <message id="freeclubs_msg_success">Glückwunsch! Sie sind jetzt der Manager des ausgewählten Teams.</message>
+    <message id="freeclubs_msg_error">Das Team ist wohl inzwischen bereits vergeben.</message>
+    <message id="freeclubs_msg_error_user_is_already_manager">Sie sind bereits Manager eines Teams.</message>
+    <message id="freeclubs_msg_error_max_number_of_teams">Sie dürfen derzeit höchstens %d Teams managen.</message>
+    <message id="freeclubs_msg_error_no_club_from_same_league">Sie dürfen nicht mehrere Teams aus der selben Liga managen.</message>
+    <message id="freeclubs_msg_error_minhighscore">Sie benötigen eine Highscore von mindestens %d, um einen weiteren Verein managen zu dürfen.</message>
+</messages>

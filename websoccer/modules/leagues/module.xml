@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <admin>
+        <adminpage
+            id="league"
+            entity="league"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="liga" >
+
+                <overview
+                    delete="true"
+                    edit="true" >
+
+                    <column
+                        id="entity_league_name"
+                        field="name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+
+                    <column
+                        id="entity_league_kurz"
+                        field="kurz"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_league_land"
+                        field="land"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                </overview>
+
+                <editform>
+
+                    <field
+                        id="name"
+                        type="text"
+                        required="true"  />
+
+                    <field
+                        id="kurz"
+                        type="text"
+                        required="true"  />
+                    
+                    <field
+                        id="land"
+                        type="text"
+                        required="true"  />
+                    
+                    <field
+                        id="p_steh"
+                        type="percent"
+                        required="true"  />
+                    <field
+                        id="p_sitz"
+                        type="percent"
+                        required="true"  />
+                    <field
+                        id="p_haupt_steh"
+                        type="percent"
+                        required="true"  />
+                    <field
+                        id="p_haupt_sitz"
+                        type="percent"
+                        required="true"  />
+                    <field
+                        id="p_vip"
+                        type="percent"
+                        required="true"  />
+                    <field
+                        id="preis_steh"
+                        type="number"
+                        required="true"  />
+                    <field
+                        id="preis_sitz"
+                        type="number"
+                        required="true"  />
+                    <field
+                        id="preis_vip"
+                        type="number"
+                        required="true"  />
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+    <pages>
+        <page
+            id="leagues"
+            template="league-details"
+            navitem="true"
+            navweight="3"
+            model="LeagueDetailsModel"
+            role="user,guest">
+	        <page
+	            id="results"
+	            template="results-overview"
+	            navitem="true"
+	            model="LeaguesListModel"
+	            navweight="0"
+	            role="user,guest"/>
+	        
+   
+        </page>
+        
+        <!-- Deprecated page. Only have it for backwards compatibility. -->
+        <page
+	            id="league"
+	            template="league-details"
+	            model="LeagueDetailsModel"
+	            role="user,guest"/>	     
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="leaguetable"
+            template="league_table"
+            model="LeagueTableModel"
+            includepages="leagues,league"
+            area="content_bottom"
+            weight="2"
+            role="user,guest" />
+        
+    </blocks>
+    
+</module>

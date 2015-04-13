@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  <admin>
+	<adminpage id="userabsence" permissionrole="r_user" navcategory="website" entity="userabsence">
+		<entity dbtable="userabsence AS AbsenceTab">
+		    <overview edit="true" delete="true">
+		    	<column id="entity_userabsence_user_id" type="text" field="UserTab.nick" filter="true" sort="true" />
+		    	<column id="entity_userabsence_deputy_id" type="text" field="DeputyTab.nick" filter="true" sort="true" />
+		    	<column id="entity_userabsence_from_date" type="timestamp" field="AbsenceTab.from_date" sort="true"/>    
+		    	<column id="entity_userabsence_to_date" type="timestamp" field="AbsenceTab.to_date" sort="true"/> 
+		    	
+		    	<join type="INNER" jointable="user AS UserTab" joincondition="AbsenceTab.user_id = UserTab.id" />
+		    	<join type="LEFT" jointable="user AS DeputyTab" joincondition="AbsenceTab.deputy_id = DeputyTab.id" />
+		    </overview>
+		    <editform>
+		        <field id="user_id" type="foreign_key" entity="users" jointable="user" labelcolumns="nick" required="true" />
+		        <field id="from_date" type="timestamp" required="true"/>
+		        <field id="to_date" type="timestamp" required="true"/>
+		        <field id="deputy_id" type="foreign_key" entity="users" jointable="user" labelcolumns="nick" />
+		    </editform>
+		    
+		</entity>    
+	</adminpage>
+  </admin>
+  
+    <pages>
+        <page
+            id="absence"
+            model="AbsenceModel"
+            navitem="true"
+            navweight="10"
+            template="absence"
+            parentItem="office"
+            role="user">
+        </page>
+    </pages>
+    
+    <blocks>
+
+        <block
+            id="absence-alert"
+            template="absence_alert"
+            model="AbsenceAlertModel"
+            includepages="office"
+            area="content_top"
+            weight="-1"
+            role="user" />
+        
+    </blocks>
+    
+    <actions>
+        <action id="report-absence"
+            controller="ReportAbsenceController"
+            role="user"
+            log="true">
+            <param id="days" type="number" required="true" min="2" max="30" />
+            <param id="deputynick" type="text" required="true" />
+        </action>
+        
+        <action id="return-from-absence"
+            controller="ReturnFromAbsenceController"
+            role="user"
+            log="true"/>
+        
+    </actions>
+
+</module>

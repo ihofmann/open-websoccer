@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="team_navlabel">Team Details</message>
+    
+    <message id="team_details_tab_general">Summary</message>
+    <message id="team_details_tab_statistic">Statistics</message>
+    <message id="team_details_tab_victories">Victories</message>
+    <message id="team_details_tab_players">Players</message>
+    
+    <message id="team_details_manager">Manager</message>
+    
+    <message id="team_details_statistic_season">This Season</message>
+    <message id="team_details_statistic_total">Total</message>
+    
+        <message id="team_details_statistic_goals">Goals</message>
+	<message id="team_details_statistic_againsts">Goals received</message>
+	<message id="team_details_statistic_matches">Matches</message>
+	<message id="team_details_statistic_wins">Wins</message>
+	<message id="team_details_statistic_losses">Losses</message>
+	<message id="team_details_statistic_draws">Draws</message>
+	<message id="team_details_statistic_score">Score</message>
+	
+	<message id="team_details_noleaguevictories">This team has no victories in its league, yet.</message>
+	
+	<message id="team_details_season_place">Place %d</message>
+</messages>

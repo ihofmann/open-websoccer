@@ -1,0 +1,67 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("results_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<ul class="nav nav-tabs" id="resultsTab">
+  <li class="active"><a href="#leagues" data-toggle="tab">{{ i18n.getMessage("results_tab_leagues") }}</a></li>
+  <li><a href="#cups" data-toggle="tab" class="ajaxLink"
+  	data-ajaxblock="cups-list" data-ajaxtarget="cups-content">{{ i18n.getMessage("results_tab_cups") }}</a></li>
+  <li><a href="#latest" data-toggle="tab" class="ajaxLink"
+  	data-ajaxblock="latest-results" data-ajaxtarget="latest-results_block">{{ i18n.getMessage("results_tab_latest_results") }}</a></li>
+</ul>
+
+<div class="tab-content">
+	<div class="tab-pane active" id="leagues">
+	
+		<div class="row-fluid">
+			<div class="span3">
+
+				
+				{% if countries is defined and countries|length > 0 %}
+				<div class="accordion" id="countries">
+					{% for countryName, leagues in countries %}
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#countries" href="#collapse{{ loop.index }}"><strong>{{ countryName }}</strong></a>
+							</div>
+							<div id="collapse{{ loop.index }}" class="accordion-body collapse">
+								<div class="accordion-inner">
+									<ul class="unstyled">
+									{% for league in leagues %}
+										<li><a href="#league{{ league.id }}" class="ajaxLink"
+											data-ajaxblock="season-picker" data-ajaxtarget="season-picker_block" 
+											data-ajaxquerystr="leagueid={{ league.id }}">{{ league.name }}</a></li>
+									{% endfor %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+				
+				
+			</div>
+			<div class="span9">
+			
+				<span id="season-picker_block">{{ viewHandler.renderBlock("season-picker")|raw }}</span>
+				
+			</div>
+		</div>
+	
+	</div>
+	
+	<div class="tab-pane" id="cups">
+		<div id="cups-content"></div>
+	</div>
+	
+	<div class="tab-pane" id="latest">
+		<span id="latest-results_block">{{ viewHandler.renderBlock("latest-results")|raw }}</span>
+	</div>
+</div>
+
+{% endblock %}

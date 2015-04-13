@@ -1,0 +1,14 @@
+{% if breadcrumbItems is defined %}
+<ul class="breadcrumb">
+	{% for breadcrumbItemKey,breadcrumbItemLabel in breadcrumbItems %}
+		{% if loop.last %}
+		<li class="active">{{ breadcrumbItemLabel }}</li>
+		{% else %}
+		<li>
+			<a href="{{ env.getInternalUrl(breadcrumbItemKey) }}">{{ breadcrumbItemLabel }}</a> 
+			<span class="divider">/</span>
+		</li>
+		{% endif %}
+	{% endfor %}
+</ul>
+{% endif %}

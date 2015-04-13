@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="settings_label_joomlalogin_tableprefix">Log-In with Joomla: Table prefix</message>
+    <message id="settings_label_joomlalogin_tableprefix_help">Joomla's database table prefix, in case users shall log-in only with their Joomla account. <em>Note:</em> Enable log-in with Joomla by typing "JoomlaUserLoginMethod" at field "Log-In method".</message>
+</messages>

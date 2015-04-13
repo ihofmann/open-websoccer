@@ -1,0 +1,25 @@
+{% if majorPositions|length > 0 %}
+<table class="table table-striped">
+	<tbody>
+		{% for majorPosition in majorPositions %}
+			<tr>
+				<td><strong>
+					{% if i18n.hasMessage(majorPosition.subject) %}
+						{{ i18n.getMessage(majorPosition.subject) }}
+					{% else %}
+						{{ majorPosition.subject }}
+					{% endif %}		
+				</strong></td>
+				<td>
+					{% if majorPosition.balance < 0 %}<span style="color: red">{% endif %}
+					{{ majorPosition.balance|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
+					{% if majorPosition.balance < 0 %}</span>{% endif %}<br/>
+					(&empty; {% if majorPosition.avgAmount < 0 %}<span style="color: red">{% endif %}
+					{{ majorPosition.avgAmount|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
+					{% if majorPosition.avgAmount < 0 %}</span>{% endif %})		
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_tablemarker">Tabellenmarkierung</message>
+	<message id="entity_tablemarker_bezeichnung">Bezeichnung</message>
+	<message id="entity_tablemarker_bezeichnung_help">Kann auch ein Messages-Schlüssel sein.</message>
+	<message id="entity_tablemarker_liga_id">Liga</message>
+	<message id="entity_tablemarker_platz_von">Platzierung von</message>
+	<message id="entity_tablemarker_platz_bis">Platzierung bis</message>
+	<message id="entity_tablemarker_farbe">Farbe</message>
+	<message id="entity_tablemarker_farbe_help">HTML-Farbwert. Wird kein Farbwähler in Ihrem Browser angezeigt, können Sie <a href="http://html-color-codes.info/webfarben_hexcodes/" target="_blank">online einen Wert auswählen</a>.</message>
+	<message id="entity_tablemarker_target_league_id">Zielliga</message>
+	<message id="entity_tablemarker_target_league_id_help">Vereine dieser Platzierungen werden am Ende einer Saison automatisch in die ausgewählte Zielliga verschoben (z.B. Auf- und Absteiger).</message>
+</messages>

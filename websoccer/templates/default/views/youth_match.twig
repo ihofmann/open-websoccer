@@ -1,0 +1,179 @@
+{% extends "base.twig" %}
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as msgbox %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% block page_title %}
+{{ match.home_team_name }} - {{ match.guest_team_name }}
+{% endblock %}
+
+{% block page_content %}
+
+	{{ profile.infofield(i18n.getMessage("entity_youthmatch_matchdate"), env.getFormattedDatetime(match.matchdate)) }}
+
+	{% if match.simulated %}
+	
+		<h3>{{ i18n.getMessage("match_details_report_title") }}</h3>
+		
+		<div id="report_result">
+			<span id="report_goals_home">{{ match.home_goals }}</span>
+			<span id="report_goals_separator">-</span>
+			<span id="report_goals_guest">{{ match.guest_goals }}</span>
+		</div>
+		
+		<div style="margin-top: 10px">
+		{% if match.home_noformation %}
+		{{ msgbox.box("", i18n.getMessage("match_details_noformation", match.home_team_name), "warning") }}
+		{% endif %}
+		{% if match.guest_noformation %}
+		{{ msgbox.box("", i18n.getMessage("match_details_noformation", match.guest_team_name), "warning") }}
+		{% endif %}
+		</div>
+		
+		{% if reportMessages|length > 0 %}
+			<span class="report_team_home">{{ match.home_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.home_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+		  	<span style="margin-left: 20px" class="report_team_guest">{{ match.guest_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+	  
+			<div id="reportarea">
+				<ul class="unstyled" style="margin: 1px 10px">
+					{% for reportMessage in reportMessages %}
+					
+						{% set teamMarkerClass = (reportMessage.active_home) ? "report_team_home" : "report_team_guest" %}
+						<li style="margin-top: 10px">
+						
+						{% if reportMessage.message_key == "ymreport_goal" or reportMessage.message_key == "ymreport_penalty_success"  %}
+							<i class="websoccericon-goal pull-right" style="margin-right: 10px;"></i>
+						{% elseif reportMessage.message_key == "ymreport_card_yellow" %}
+							<i class="websoccericon-yellowcard pull-right" style="margin-right: 10px;"></i>
+						{% elseif reportMessage.message_key == "ymreport_card_yellowred" or reportMessage.message_key == "ymreport_card_red" %}
+							<i class="websoccericon-redcard pull-right" style="margin-right: 10px;"></i>
+						{% elseif reportMessage.message_key == "ymreport_substitution" %}
+							<i class="websoccericon-substitution pull-right" style="margin-right: 10px;"></i>
+						{% elseif reportMessage.message_key == "ymreport_injury" %}
+							<i class="websoccericon-injury pull-right" style="margin-right: 10px;"></i>
+						{% endif %}
+						
+						<span class="report_minute {{ teamMarkerClass }}">{{ i18n.getMessage("match_report_minute", reportMessage.minute) }}</span>
+						
+						<br>
+						{{ reportMessage.message|raw }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	
+		<h3>{{ i18n.getMessage("match_details_players_title") }}</h3>
+		
+		<div class="row-fluid">
+			{% for teamPrefix,teamPlayers in players %}
+			<div class="span6">
+				<h5><a href="{{ env.getInternalUrl("team", "id=" ~ match[teamPrefix ~ "_team_id"]) }}" title="{{ i18n.getMessage("team_navlabel") }}">{{ match[teamPrefix ~ "_team_name"] }}</a></h5>
+				
+				{% if teamPlayers|length > 0 %}
+					<table class="table table-striped table-condensed">
+						<colgroup>
+							<col style="width: 40px" />
+							<col />
+							<col style="width: 50px" />
+						</colgroup>
+						<thead>
+							<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+							<th>{{ i18n.getMessage("match_details_players_name") }}</th>
+							<th>{{ i18n.getMessage("match_details_players_grade") }}</th>
+						</thead>
+						<tbody>
+						{% for player in teamPlayers %}
+							<tr>
+							
+								{% if player.position_main is not empty %}
+								<td title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</td>
+								{% else %}
+								<td title="{{ i18n.getMessage("option_" ~ player.position) }}">{{ i18n.getMessage("option_" ~ player.position)|slice(0, 2)|upper }}</td>
+								{% endif %}
+								<td>{{ player.name }}
+								
+								{% if player.card_yellow > 0 %}
+								<img src="{{ skin.getImage("icons/card_yellow.png") }}" width="16" height="16" alt="{{ i18n.getMessage("player_yellowcard") }}" title="{{ i18n.getMessage("player_yellowcard") }}" />
+								
+									{% if player.card_yellow > 1 %}
+									<img src="{{ skin.getImage("icons/card_red.png") }}" width="16" height="16" alt="{{ i18n.getMessage("player_yellowredcard") }}" title="{{ i18n.getMessage("player_yellowredcard") }}" />
+									{% endif %}
+								{% endif %}
+								
+								{% if player.card_red > 0 %}
+									<img src="{{ skin.getImage("icons/card_red.png") }}" width="16" height="16" alt="{{ i18n.getMessage("player_redcard") }}" title="{{ i18n.getMessage("player_redcard") }}" />
+								{% endif %}
+								
+								{% if player.goals > 0 %}
+								{% for i in 1..player.goals %}
+								<img src="{{ skin.getImage("icons/goal_scorer.png") }}" width="16" height="16" alt="{{ i18n.getMessage("player_goalscorer") }}" title="{{ i18n.getMessage("player_goalscorer") }}" />
+								{% endfor %}
+								{% endif %}
+								
+								{% if player.assists %}
+								<span title="{{ i18n.getMessage("player_assists") }}">
+									{% for i in 1..player.assists %}
+									<i class="icon-star"></i>
+									{% endfor %}
+								</span>
+								{% endif %}
+								
+								{% if player.state == 'Ausgewechselt' %}
+								<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_out") }}"><i class="icon-arrow-down"></i></span>
+								{% elseif player.minutes_played < 90 %}
+								<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_in") }}"><i class="icon-arrow-up"></i></span>
+								{% endif %}
+								
+								</td>
+								<td
+									{% if player.grade <= 2.3 %}class="text-success"
+									{% elseif player.grade >= 4.3 and player.grade <= 5 %}class="text-warning"
+									{% elseif player.grade > 5 %}class="text-error"
+									{% endif %}
+								>{{ player.grade }}</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<p>{{ i18n.getMessage("match_details_noplayersset") }}</p>
+				{% endif %}
+							
+			</div>
+			{% endfor %}
+		</div>
+		
+		<h3>{{ i18n.getMessage("match_details_statistic_title") }}</h3>
+		
+		<div class="row-fluid">
+			{% for teamPrefix,teamStatistics in statistics %}
+			<div class="span6">
+				<h5><a href="{{ env.getInternalUrl("team", "id=" ~ match[teamPrefix ~ "_team_id"]) }}" title="{{ i18n.getMessage("team_navlabel") }}">{{ match[teamPrefix ~ "_team_name"] }}</a></h5>
+				
+				{% if teamStatistics|length > 0 %}
+					<p><em>{{ i18n.getMessage("match_details_statistic_shoots") }}:</em> {{ teamStatistics.shoots }}</p>
+					
+					<p><em>{{ i18n.getMessage("youthmatch_statistic_avg_strength") }}</em></p>
+					{{ statisticelements.progressbar(teamStatistics.avg_strength) }}
+					
+					<p><em>{{ i18n.getMessage("match_details_statistic_ballcontacts") }}</em></p>
+					{{ statisticelements.progressbar(teamStatistics.ballpossession) }}
+					
+					<p><em>{{ i18n.getMessage("match_details_statistic_tackles") }}</em></p>
+					{% set tackles = (teamStatistics.wontackles * 100 / (teamStatistics.wontackles + teamStatistics.losttackles))|number_format %}
+					{{ statisticelements.progressbar(tackles) }}
+					
+					{% if teamStatistics.passes_successed > 0 or teamStatistics.passes_failed > 0 %}
+						{% set succesfulPasses = (teamStatistics.passes_successed * 100 / (teamStatistics.passes_successed + teamStatistics.passes_failed))|number_format %}
+						<p><em>{{ i18n.getMessage("match_details_statistic_successfulpasses") }}</em></p>
+						{{ statisticelements.progressbar(succesfulPasses) }}
+					{% endif %}
+				{% endif %}
+							
+			</div>
+			{% endfor %}
+		</div>
+	
+	{% endif %}
+
+{% endblock %}

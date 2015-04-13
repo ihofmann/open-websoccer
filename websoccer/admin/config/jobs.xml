@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE jobs SYSTEM "jobs.dtd">
+<jobs>
+    <job id="addplyr" name="Add players without team to transfer market" name_de="Vereinslose Spieler auf die Transferliste setzen" class="AddPlayerWithoutTeamToTransfermarketJob" interval="5" last_ping="" stop="1" error="" inittime="0"/>
+    
+    <job id="extransf" name="Execute open transfers" name_de="Offene Spielertransfers ausführen" class="ExecuteTransfersJob" interval="5" last_ping="" stop="1" error="" inittime="0"/>
+    
+    <job id="sim" name="Simulate open matches" name_de="Offene Spiele simulieren" class="SimulateMatchesJob" interval="1" last_ping="" stop="1" error="" inittime="0"/>
+    
+    <job id="usractv" name="Compute and update user inactivity" name_de="Benutzerinaktivität berechnen und aktualisieren" class="UserInactivityCheckJob" interval="20" last_ping="" stop="1" error="" inittime="0"/>
+    
+    <job id="stats" name="Compute and update league statistics" name_de="Ligastatistiken berechnen und aktualisieren" class="UpdateStatisticsJob" interval="30" last_ping="" stop="1" error="" inittime="0"/>
+    
+    <job id="stadium" name="Accept stadium construction works and training camp bookings" name_de="Fällige Stadionerweiterungen und Trainingslager ausführen" class="AcceptStadiumConstructionWorkJob" interval="30" last_ping="" stop="1" error="" inittime="0"/>
+</jobs>

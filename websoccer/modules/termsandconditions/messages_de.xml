@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="termsandconditions_navlabel">Teilnahmebedingungen</message>
+    <message id="termsandconditions_err_notavilable">Die Teilnahmebedingungen sind in Ihrer Sprache nicht verfügbar.</message>
+    
+    <message id="termsandconditions_accept">Ich habe die <a href="%s" target="_blank">Teilnahmebedingungen</a> gelesen und akzeptiere sie.</message>
+</messages>

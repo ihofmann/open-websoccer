@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_sofortcom_enabled">Premiumguthaben durch Zahlungen über <a href="https://www.sofort.com" target="_blank">Sofort.com</a> erwerben.</message> 
+	
+	<message id="settings_label_sofortcom_configkey">Sofort.com Konfigurationsschlüsssel</message> 
+	<message id="settings_label_sofortcom_configkey_help">Erhalten Sie bei der Registrierung auf sofort.com als Verkäufer.</message> 
+</messages>

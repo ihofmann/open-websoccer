@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="lending_player_marker_tooltip">Player is borrowed</message>
+    <message id="lending_player_marker_lendable">Player can be borrowed</message>
+    
+    <message id="lending_lend_button">Offer to borrow</message>
+    <message id="lending_lendable_unmark">Player is offered for borrowing (Fee: %d). Cancel lending offer.</message>
+    
+    <message id="lend-player_navlabel">Lend player</message>
+    <message id="lend-player_intro">Offer this player for borrowing. Any interested club can hire the player for the specified lending fee and at a maximum duration of <strong>%d</strong> matches. The trade will be automatically done as soon as a club accepts the conditions. The salary will be paid by the borrower.</message>
+
+	<message id="lend_player_success">The player is now ready for lending.</message>
+	
+	<message id="lending_err_notownplayer">The player dow not belong to your team (anymore).</message>
+	<message id="lending_err_alreadyoffered">The player is already marked as ready for lending.</message>
+	<message id="lending_err_borrowed_player">You cannot lend this player since you only borrowed him.</message>
+	<message id="lending_err_on_transfermarket">The player is currently on the transfer market. Hence, you cannot lend him.</message>
+	<message id="lending_err_teamsize_too_small">You currently have an insufficient number of players in your team (%d) for giving away more players.</message>
+	<message id="lending_err_contract_too_short">The player's contract is ending soon. Hence, you cannot lend him anymore.</message>
+
+	<message id="lending_lendable_unmark_success">The player is not lendable anymore.</message>
+	
+	<message id="lending_player_lendable_info">The player can be borrowed for <strong>%s</strong> per match.</message>
+	<message id="lending_player_hire_button">Hire</message>
+	
+	<message id="borrow-player_navlabel">Hire player</message>
+	<message id="borrow-player_intro">Enter the desired number of matches and the player is going to move in your team for this duration. The lending fee for the whole duration will be deducted immediately. Additionally you will need to pay the player's salary.</message>
+
+	<message id="lending_matches_durationhelp">Number between %d and %d.</message>
+	
+	<message id="lending_hire_err_ownplayer">The player belongs already to your team.</message>
+	<message id="lending_hire_err_borrowed_player">The player is already lent to another team. Probably someone else has been faster than you.</message>
+	<message id="lending_hire_err_notoffered">The player is not offered (anymore) for hiring.</message>
+	<message id="lending_hire_err_illegalduration">The rental period must be between %d and %d matches.</message>
+	<message id="lending_hire_err_contractendingtoosoon">The player's contract is going to end after %d matches. Hence, the rental period must be shorter.</message>
+	<message id="lending_hire_err_budget_too_low">You cannot afford the player's salary and lending fee at the moment.</message>
+	
+	<message id="lending_hire_success">The player is now temporarily playing for your team!</message>
+	
+	<message id="lending_fee_subject">Player Lending Fee</message>
+	
+	<message id="lending_notification_lent">The player <strong>{player}</strong> is lent for <em>{matches}</em> matches to <strong>{newteam}</strong>.</message>
+	<message id="lending_notification_return">The borrowed player <strong>{player}</strong> returned from <strong>{borrower}</strong> to <strong>{lender}</strong>.</message>
+	
+	<message id="lent_players">Lent Players</message>
+</messages>

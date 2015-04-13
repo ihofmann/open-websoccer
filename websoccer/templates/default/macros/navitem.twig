@@ -1,0 +1,3 @@
+{% macro item(pageId, label, isActive) %}
+<li role="menuitem"{% if isActive %} class="active"{% endif %}><a href="{{ env.getInternalUrl(pageId) }}">{{ label }}</a></li>
+{% endmacro %}

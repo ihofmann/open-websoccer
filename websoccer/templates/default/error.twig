@@ -1,0 +1,10 @@
+{% import "macros/messagebox.twig" as messagebox %}
+{% extends "layout.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("errorpage_title") }}
+{% endblock %}
+
+{% block page_content %}
+{{ messagebox.box(title, message) }}
+{% endblock %}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_frontend_ads_hide_for_premiumusers">Hide ads for premium users.</message> 
+	<message id="settings_label_frontend_ads_code_sidebar">Ads HTML Code: Sidebar</message>
+	<message id="settings_label_frontend_ads_code_top">Ads HTML Code: Page Top</message>
+	<message id="settings_label_frontend_ads_code_bottom">Ads HTML Code: Page Bottom</message>
+</messages>

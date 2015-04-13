@@ -1,0 +1,15 @@
+{% extends "box.twig" %}
+
+{% block box_title %}
+{{ i18n.getMessage('langswitcher_block_title') }}
+{% endblock %}
+
+{% block box_content %}
+
+<ul class="languageswitcher">
+{% for language in i18n.supportedLanguages %}
+	<li><a href="{{ env.getInternalActionUrl("switch-language", "lang=" ~ language ~ "&id=" ~ env.getRequestParameter("id")) }}"><img src="{{ skin.getImage("flags/" ~ language ~ ".png") }}" width="24" height="24" alt="{{ i18n.getMessage('lang_label_' ~ language) }}" title="{{ i18n.getMessage('lang_label_' ~ language) }}" /></a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

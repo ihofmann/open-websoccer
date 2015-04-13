@@ -1,0 +1,34 @@
+{% import "macros/formelements.twig" as formelements %}
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("registration_title") }}
+{% endblock %}
+
+{% block page_content %}
+<form class="form-horizontal" method="post">
+
+	{{ formelements.textfield('nick', i18n.getMessage('entity_users_nick'), env.getRequestParameter('nick'), true, validationMsg) }}
+	
+	{{ formelements.textfield('email', i18n.getMessage('entity_users_email'), env.getRequestParameter('email'), true, validationMsg, 'email') }}
+	
+	{{ formelements.textfield('email_repeat', i18n.getMessage('registration_email_repeat'), env.getRequestParameter('email_repeat'), true, validationMsg, 'email') }}
+	
+	{{ formelements.textfield('pswd', i18n.getMessage('entity_users_passwort'), '', true, validationMsg, 'password') }}
+	
+	{{ formelements.textfield('pswd_repeat', i18n.getMessage('registration_password_repeat'), '', true, validationMsg, 'password') }}
+	
+	{{ formelements.checkbox('termsandconditions', i18n.getMessage('termsandconditions_accept', env.getInternalUrl("termsandconditions")), env.getRequestParameter("termsandconditions"), true, validationMsg) }}
+	
+	{% if captchaCode is defined and captchaCode|length > 0 %}
+	{{ captchaCode|raw }}
+	{% endif %}
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('registration_submit_button') }}</button>
+	</div>
+	<input type="hidden" name="page" value="register"/>
+	<input type="hidden" name="action" value="userregistration"/>
+</form>
+{% endblock %}

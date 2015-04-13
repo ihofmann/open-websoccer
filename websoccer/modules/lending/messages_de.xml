@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="lending_player_marker_tooltip">Spieler ist ausgeliehen</message>
+    <message id="lending_player_marker_lendable">Spieler kann ausgeliehen werden</message>
+    
+    <message id="lending_lend_button">Zum Leihen anbieten</message>
+    <message id="lending_lendable_unmark">Spieler ist zur Ausleihe angeboten (Leihgebühr: %d). Angebot entfernen.</message>
+    
+    <message id="lend-player_navlabel">Spieler verleihen</message>
+    <message id="lend-player_intro">Geben Sie hier den Spieler zum Ausleihen frei. Jeder beliebige Verein kann dann bei Interesse den Spieler zur angegebenen Leihgebühr bis zu <strong>%d</strong> Spielen verpflichten. Das Leihgeschäft kommt sofort zustande, sobald ein Verein mit den Bedingungen einverstanden ist. Das Gehalt wird vom Leihenden bezahlt.</message>
+
+	<message id="lend_player_success">Der Spieler steht nun zum Leihen zur Verfügung.</message>
+	
+	<message id="lending_err_notownplayer">Der Spieler gehört nicht (mehr) zu Ihrem Kader.</message>
+	<message id="lending_err_alreadyoffered">Der Spieler steht bereits zum Leihen zur Verfügung.</message>
+	<message id="lending_err_borrowed_player">Sie können den Spieler nicht verleihen, da Sie ihn selbst nur geliehen haben.</message>
+	<message id="lending_err_on_transfermarket">Der Spieler steht im Moment auf dem Transfermarkt. Sie können ihn daher nicht leihen oder verleihen.</message>
+	<message id="lending_err_teamsize_too_small">Sie haben im Moment zu wenig Spieler im Kader (%d), um weitere Spieler abgeben zu können.</message>
+	<message id="lending_err_contract_too_short">Der Vertrag des Spielers läuft bald aus. Sie können den Spieler daher nicht mehr verleihen.</message>
+
+	<message id="lending_lendable_unmark_success">Der Spieler steht nicht mehr zum Leihen zur Verfügung.</message>
+	
+	<message id="lending_player_lendable_info">Der Spieler kann für <strong>%s</strong> pro Spieltag ausgeliehen werden.</message>
+	<message id="lending_player_hire_button">Ausleihen</message>
+	
+	<message id="borrow-player_navlabel">Spieler ausleihen</message>
+	<message id="borrow-player_intro">Geben Sie die gewünschte Anzahl an Spiele an und der Spieler wechselt für diese Dauer umgehend in Ihr Team. Die Leihgebühr für die gesamte Dauer wird sofort fällig. Zusätzlich zahlen Sie für die Leihdauer auch das Spielergehalt.</message>
+
+	<message id="lending_matches_durationhelp">Zahl zwischen %d und %d.</message>
+	
+	<message id="lending_hire_err_ownplayer">Der Spieler befindet sich bereits in Ihrem Team.</message>
+	<message id="lending_hire_err_borrowed_player">Der Spieler ist bereits an ein anderes Team ausgeliehen. Vermutlich war ein anderer Manager schneller.</message>
+	<message id="lending_hire_err_notoffered">Der Spieler wird nicht (mehr) zum Ausleihen angeboten.</message>
+	<message id="lending_hire_err_illegalduration">Die Leihdauer muss zwischen %d und %d Spielen betragen.</message>
+	<message id="lending_hire_err_contractendingtoosoon">Der Vertrag des Spielers endet bereits nach %d Spielen. Die Leihdauer muss daher kürzer sein.</message>
+	<message id="lending_hire_err_budget_too_low">Die Leihgebühr und das Spielergehalt können Sie sich im Moment nicht leisten.</message>
+	
+	<message id="lending_hire_success">Der Spieler spielt nun vorübergehend in Ihrem Team!</message>
+	
+	<message id="lending_fee_subject">Gebühr für Spielerleihe</message>
+	
+	<message id="lending_notification_lent">Der Spieler <strong>{player}</strong> wird für <em>{matches}</em> Spiele an <strong>{newteam}</strong> ausgeliehen.</message>
+	<message id="lending_notification_return">Der ausgeliehene Spieler <strong>{player}</strong> ist von <strong>{borrower}</strong> zu <strong>{lender}</strong> zurückgekehrt.</message>
+	
+	<message id="lent_players">Verliehene Spieler</message>
+</messages>

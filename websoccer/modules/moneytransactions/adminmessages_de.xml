@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_no_transactions_for_teams_without_user">Vereine ohne Manager sollen weder Einnahmen noch Ausgaben haben. Damit bleibt für diese Mannschaften das eingestellte Budget konstant.</message> 
+</messages>

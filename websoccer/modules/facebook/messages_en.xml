@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="facebooklogin_failure">The Log In via Facebook has been cancelled.</message>
+    <message id="facebooklogin_success">Successfully signed in!</message>
+    <message id="facebook_login_button">Log In with Facebook</message>
+    
+    <message id="facebooklogout_failure">You could not be logged out! Please try again.</message>
+    <message id="facebooklogout_success">Successfully logged out!</message>
+    <message id="facebooklogout_success_details">Please note that you have been also logged out of Facebook as well.</message>
+</messages>

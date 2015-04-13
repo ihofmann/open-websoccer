@@ -1,0 +1,431 @@
+{% extends "layoutwithoutsidebar.twig" %}
+
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("formation_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% block formation_setup %}
+{% endblock %}
+
+<form id="formationForm" method="post">
+	{% for playerNo in 1..11 %}
+		<input type="hidden" id="player{{ playerNo }}" name="player{{ playerNo }}" class="playerField" value="{{ formation['player' ~ playerNo] }}">
+		<input type="hidden" id="player{{ playerNo }}_pos" name="player{{ playerNo }}_pos"  value="{{ formation['player' ~ playerNo ~ '_pos'] }}">
+	{% endfor %}
+	
+	{% for benchNo in 1..5 %}
+		<input type="hidden" id="bench{{ benchNo }}" name="bench{{ benchNo }}" value="{{ formation['bench' ~ benchNo] }}">
+	{% endfor %}
+	
+	{% for subsNo in 1..3 %}
+		<input type="hidden" id="sub{{ subsNo }}_out" name="sub{{ subsNo }}_out" class="subsInputOutPlayer" data-subno="{{ subsNo }}"
+			 value="{{ formation['sub' ~ subsNo ~ "_out"] }}">
+		<input type="hidden" id="sub{{ subsNo }}_in" name="sub{{ subsNo }}_in"
+			value="{{ formation['sub' ~ subsNo ~ "_in"] }}">
+		<input type="hidden" id="sub{{ subsNo }}_minute" name="sub{{ subsNo }}_minute"
+			value="{{ formation['sub' ~ subsNo ~ "_minute"] }}">
+		<input type="hidden" id="sub{{ subsNo }}_condition" name="sub{{ subsNo }}_condition"
+			value="{{ formation['sub' ~ subsNo ~ "_condition"] }}">
+			<input type="hidden" id="sub{{ subsNo }}_position" name="sub{{ subsNo }}_position"
+			value="{{ formation['sub' ~ subsNo ~ "_position"] }}">
+	{% endfor %}
+  
+
+
+<h4>{{ i18n.getMessage("formation_playground_title") }}</h4> 
+
+
+<div class="row" style="margin-top:10px">
+	<div class="span5 pitchColumn">
+	
+		<div id="pitch">
+		
+			<div class="position T freePosition" data-position="goaly" data-mainposition="T">
+				<div class="positionLabel">{{ i18n.getMessage("player_mainposition_T") }}</div>
+			</div>
+			
+			{% if setup.defense > 3 %}
+				<div class="position LV freePosition{% if setup.defense > 4 %} goalyRow{% endif %}" data-position="defense" data-mainposition="LV">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_LV") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.defense == 4 or setup.defense == 2 %}
+				<div class="position IV leftPos freePosition" data-position="defense" data-mainposition="IV.leftPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_IV") }}</div>
+				</div>
+				<div class="position IV rightPos freePosition" data-position="defense" data-mainposition="IV.rightPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_IV") }}</div>
+				</div>
+			{% elseif setup.defense == 3 or setup.defense > 4 %}
+				<div class="position IV leftWing freePosition" data-position="defense" data-mainposition="IV.leftWing">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_IV") }}</div>
+				</div>
+				<div class="position IV centre freePosition" data-position="defense" data-mainposition="IV.centre">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_IV") }}</div>
+				</div>
+				<div class="position IV rightWing freePosition" data-position="defense" data-mainposition="IV.rightWing">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_IV") }}</div>
+				</div>
+			{% else %}
+				<div class="position IV freePosition" data-position="defense" data-mainposition="IV">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_IV") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.defense > 3 %}
+				<div class="position RV freePosition{% if setup.defense > 4 %} goalyRow{% endif %}" data-position="defense" data-mainposition="RV">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_RV") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.dm == 2 %}
+				<div class="position DM leftPos freePosition" data-position="midfield" data-mainposition="DM.leftPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_DM") }}</div>
+				</div>
+				<div class="position DM rightPos freePosition" data-position="midfield" data-mainposition="DM.rightPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_DM") }}</div>
+				</div>
+			{% elseif setup.dm == 1 %}
+				<div class="position DM freePosition" data-position="midfield" data-mainposition="DM">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_DM") }}</div>
+				</div>
+			{% elseif setup.dm == 3 %}
+				<div class="position DM leftOuterPos freePosition" data-position="midfield" data-mainposition="DM.leftOuterPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_DM") }}</div>
+				</div>
+				<div class="position DM innerPos freePosition" data-position="midfield" data-mainposition="DM.innerPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_DM") }}</div>
+				</div>
+				<div class="position DM rightOuterPos freePosition" data-position="midfield" data-mainposition="DM.rightOuterPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_DM") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.midfield > 1 %}
+				<div class="position LM freePosition" data-position="midfield" data-mainposition="LM">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_LM") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.midfield == 4 %}
+				<div class="position ZM leftPos freePosition" data-position="midfield" data-mainposition="ZM.leftPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_ZM") }}</div>
+				</div>
+				<div class="position ZM rightPos freePosition" data-position="midfield" data-mainposition="ZM.rightPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_ZM") }}</div>
+				</div>
+			{% elseif setup.midfield != 2 and setup.midfield != 0 %}
+				<div class="position ZM freePosition" data-position="midfield" data-mainposition="ZM">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_ZM") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.midfield > 1 %}
+				<div class="position RM freePosition" data-position="midfield" data-mainposition="RM">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_RM") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.om == 2 %}
+				<div class="position OM leftPos freePosition" data-position="midfield" data-mainposition="OM.leftPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_OM") }}</div>
+				</div>
+				<div class="position OM rightPos freePosition" data-position="midfield" data-mainposition="OM.rightPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_OM") }}</div>
+				</div>
+			{% elseif setup.om == 1 %}
+				<div class="position OM freePosition" data-position="midfield" data-mainposition="OM">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_OM") }}</div>
+				</div>
+			{% elseif setup.om == 3 %}
+				<div class="position OM leftOuterPos freePosition" data-position="midfield" data-mainposition="OM.leftOuterPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_OM") }}</div>
+				</div>
+				<div class="position OM innerPos freePosition" data-position="midfield" data-mainposition="OM.innerPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_OM") }}</div>
+				</div>
+				<div class="position OM rightOuterPos freePosition" data-position="midfield" data-mainposition="OM.rightOuterPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_OM") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.striker == 1 %}
+				<div class="position MS freePosition" data-position="striker" data-mainposition="MS">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_MS") }}</div>
+				</div>
+			{% elseif setup.striker == 2 %}
+				<div class="position MS leftPos freePosition" data-position="striker" data-mainposition="MS.leftPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_MS") }}</div>
+				</div>
+				<div class="position MS rightPos freePosition" data-position="striker" data-mainposition="MS.rightPos">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_MS") }}</div>
+				</div>
+			{% elseif setup.striker == 3 %}
+				<div class="position LS freePosition" data-position="striker" data-mainposition="LS">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_LS") }}</div>
+				</div>
+				<div class="position MS freePosition" data-position="striker" data-mainposition="MS">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_MS") }}</div>
+				</div>
+				<div class="position RS freePosition" data-position="striker" data-mainposition="RS">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_RS") }}</div>
+				</div>
+			{% endif %}
+			
+			{% if setup.outsideforward is defined and setup.outsideforward == 2 %}
+				<div class="position LS freePosition" data-position="striker" data-mainposition="LS">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_LS") }}</div>
+				</div>
+				<div class="position RS freePosition" data-position="striker" data-mainposition="RS">
+					<div class="positionLabel">{{ i18n.getMessage("player_mainposition_RS") }}</div>
+				</div>
+			{% endif %}
+		
+		</div>
+		
+		<h4>{{ i18n.getMessage("formation_bench") }}</h4>
+		
+		<table class="table table-bordered" style="width: 450px">
+			<thead>
+				<tr>
+					<th>{{ i18n.getMessage("entity_player") }}</th>
+					<th>{{ i18n.getMessage("formation_substitutions_title") }}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for benchNo in 1..5 %}
+					<tr class="benchposition freePosition">
+						<td class="benchPlayerInfo">
+							<span class="benchPlaceholder">{{ i18n.getMessage("formation_bench_placeholder") }}</span>
+							<a class="benchPlayerRemove" href="#" title="{{ i18n.getMessage("player_button_remove_from_pitch") }}"><i class="icon-remove darkIcon"></i></a>
+						</td>
+						<td>
+							<a class="benchPlayerSubAdd btn btn-small" href="#subModal{{ benchNo }}" role="button" data-toggle="modal"><i class="icon-circle-arrow-right"></i> {{ i18n.getMessage("formation_bench_sub_in") }}</a>
+							
+							<div id="subModal{{ benchNo }}" class="modal hide fade" tabindex="-1" role="dialog" 
+								aria-labelledby="subModal{{ benchNo }}Label" aria-hidden="true">
+							  <div class="modal-header">
+							    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							    <h3 id="subModal{{ benchNo }}Label">{{ i18n.getMessage("formation_bench_sub_title") }}</h3>
+							  </div>
+							  <div class="modal-body form-horizontal">
+							  	{{ formelements.textfield("sub_minute" ~ benchNo, i18n.getMessage("formation_substitutions_minute"), "", false, null, "number") }}
+							  	
+							  	<div class="control-group">
+									<label class="control-label" for="sub_out{{ benchNo }}">{{ i18n.getMessage("formation_substitutions_out") }}</label>
+									<div class="controls">
+										<select name="sub_out{{ benchNo }}" id="sub_out{{ benchNo }}" class="playersOutSelection">
+											<option> </option>
+										</select>
+									</div>
+								</div>
+								
+						  		<div class="control-group">
+									<label class="control-label" for="sub_condition{{ benchNo }}">{{ i18n.getMessage("formation_substitutions_condition") }}</label>
+									<div class="controls">
+										<select name="sub_condition{{ benchNo }}" id="sub_condition{{ benchNo }}">
+											<option value="">{{ i18n.getMessage("formation_substitutions_condition_none") }}</option>
+											<option value="Tie">{{ i18n.getMessage("formation_substitutions_condition_tie") }}</option>
+											<option value="Leading">{{ i18n.getMessage("formation_substitutions_condition_leading") }}</option>
+											<option value="Deficit">{{ i18n.getMessage("formation_substitutions_condition_deficit") }}</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="control-group">
+									<label class="control-label" for="sub_position{{ benchNo }}">{{ i18n.getMessage("formation_substitutions_position") }}</label>
+									<div class="controls">
+										<select name="sub_position{{ benchNo }}" id="sub_position{{ benchNo }}">
+											<option value="">{{ i18n.getMessage("formation_substitutions_position_default") }}</option>
+											{% for subPosition in ['T','LV','IV', 'RV', 'LM', 'DM', 'ZM', 'OM', 'RM', 'LS', 'MS', 'RS'] %}
+												<option value="{{ subPosition }}">{{ i18n.getMessage("option_" ~ subPosition) }}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+							  </div>
+							  <div class="modal-footer">
+							  	<a href="#" class="btn btn-primary saveSubstitutionBtn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_save") }}</a>
+							    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_cancel") }}</a>
+							  </div>
+							</div>
+							
+							
+							<small class="benchPlayerSubInfo">
+								{{ i18n.getMessage("formation_substitutions_minute") }}: <strong class="benchPlayerSubInfoMinute"></strong>, <br>
+								{% if validationMsg["sub" ~ benchNo ~ "_minute"] is defined %}
+									<span class="text-error"><strong>{{ validationMsg["sub" ~ benchNo ~ "_minute"] }}</strong></span><br>
+								{% endif %}
+								
+								{{ i18n.getMessage("formation_substitutions_out") }}: <strong class="benchPlayerSubInfoPlayer"></strong>
+								<span class="benchPlayerSubInfoConditionTie">,<br> {{ i18n.getMessage("formation_substitutions_condition_tie") }}</span>
+								<span class="benchPlayerSubInfoConditionLeading">,<br> {{ i18n.getMessage("formation_substitutions_condition_leading") }}</span>
+								<span class="benchPlayerSubInfoConditionDeficit">,<br> {{ i18n.getMessage("formation_substitutions_condition_deficit") }}</span>
+								<span class="benchPlayerSubInfoPosition" style="display: none">,<br> <span class="subPositionLabel"></span></span>
+								<a href="#" class="removeSubstitutionBtn" title="{{ i18n.getMessage("player_button_remove_from_pitch") }}"><i class="icon-remove"></i></a>
+							</small>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="span5 playersColumn">
+	
+	
+		{% if players is defined and players|length > 0 %}
+		
+			<div class="accordion" id="playersSelection">
+				{% for playerPosition, positionPlayers in players %}
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							{% set typeImage = skin.getImage("icons/playertype_" ~ playerPosition ~ ".png") %}
+							{% if typeImage != null %}
+							<img src="{{ typeImage }}" class="pull-left" style="margin: 5px 5px 0px 2px" alt="{{ i18n.getMessage("player_position_" ~ playerPosition) }}">
+							{% endif %}
+							<a class="accordion-toggle" data-toggle="collapse" 
+								data-parent="#playersSelection" href="#collapse{{ playerPosition }}">{{ i18n.getMessage("player_position_" ~ playerPosition) }}</a>
+						</div>
+						<div id="collapse{{ playerPosition }}" class="accordion-body collapse{% if loop.last %} in{% endif %}">
+							{% for player in positionPlayers %}
+								{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
+									{% set playerName = player.pseudonym %}
+								{% else %}
+									{% set playerName = player.firstname|slice(0, 1) ~ ". " ~ player.lastname %}
+								{% endif %}
+								
+								<div id="playerinfo{{ player.id }}" class="playerinfo{% if (player.matches_injured is not defined or player.matches_injured == 0) and (player.matches_blocked is not defined or player.matches_blocked == 0) %} playerDraggable{% else %} playerBlocked{% endif %}"
+									data-playerid="{{ player.id }}"
+									data-pname="{{ playerName }}"
+									data-position="{{ player.position }}"
+									data-mainposition="{% if player.position_main is defined %}{{ player.position_main }}{% endif %}"
+									data-secondposition="{% if player.position_second is defined %}{{ player.position_second }}{% endif %}"
+									data-matchesblocked="{% if player.matches_injured is defined and player.matches_blocked is defined %}{{ player.matches_injured + player.matches_blocked }}{% else %}0{% endif %}"
+									{% if env.getConfig("hide_strength_attributes") != "1" or youthFormation is defined and youthFormation %}
+									data-strength="{{ player.strength }}"
+									data-strengthsecondary="{{ (player.strength * (1 - env.getConfig("sim_strength_reduction_secondary") / 100))|number_format }}"
+									data-strengthwrong="{{ (player.strength * (1 - env.getConfig("sim_strength_reduction_wrongposition") / 100))|number_format }}"
+									{% endif %}
+									{% if player.picture is defined and player.picture|length > 0 %}
+									data-picture="{{ env.getConfig("context_root") }}/uploads/player/{{ player.picture }}"
+									{% endif %}
+									>
+									<div class="playerinfoBar">
+									
+										{% if playerPosition != "bench" and (player.matches_injured is not defined or player.matches_injured == 0) and (player.matches_blocked is not defined or player.matches_blocked == 0) %}
+											<div class="playerinfoIcons text-right ">
+													<a id="addLink{{ player.id }}" href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle playerAddToPitchLink"><i class="icon-plus-sign"></i> {{ i18n.getMessage("player_button_to_pitch") }}</a>
+													<ul class="dropdown-menu text-left" role="menu" aria-labelledby="addLink{{ player.id }}">
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="T" >{{ i18n.getMessage("option_T") }}</a></li>
+														<li class="divider"></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="LV" >{{ i18n.getMessage("option_LV") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="IV" >{{ i18n.getMessage("option_IV") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="RV" >{{ i18n.getMessage("option_RV") }}</a></li>
+														<li class="divider"></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="DM" >{{ i18n.getMessage("option_DM") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="LM" >{{ i18n.getMessage("option_LM") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="ZM" >{{ i18n.getMessage("option_ZM") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="RM" >{{ i18n.getMessage("option_RM") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="OM" >{{ i18n.getMessage("option_OM") }}</a></li>
+														<li class="divider"></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="LS" >{{ i18n.getMessage("option_LS") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="MS" >{{ i18n.getMessage("option_MS") }}</a></li>
+														<li><a href="#" class="playerAddToPitchLinkItem" data-target="RS" >{{ i18n.getMessage("option_RS") }}</a></li>
+													</ul>
+												<a href="#" class="btn btn-mini playerRemoveLink"><i class="icon-remove"></i> {{ i18n.getMessage("player_button_remove_from_pitch") }}</a>
+												<a href="#" class="btn btn-mini playerAddToBenchLink"><i class="icon-retweet"></i> {{ i18n.getMessage("player_button_to_bench") }}</a>
+												{% if youthFormation is not defined or not youthFormation %}
+												<a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}" class="btn btn-mini" target="_blank"><i class="icon-info-sign"></i> {{ i18n.getMessage("player_navlabel") }}</a>
+												{% endif %}
+											</div>
+										{% endif %}
+										{% if (player.position_main is defined and player.position_main|length > 0) %}
+											<span class="mainposition" title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</span> 
+											{% if (player.position_second|length > 0) %}
+											/ <span class="secondposition" title="{{ i18n.getMessage("option_" ~ player.position_second) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_second) }}</span>
+											{% endif %}
+										{% endif %}
+										
+										{% if player.player_nationality_filename is defined %}
+											{% set nationImg = skin.getImage("flags/players/" ~ player.player_nationality_filename ~ ".png") %}
+											{% if nationImg %}<img src="{{ nationImg }}" title="{{ player.player_nationality }}" alt="{{ player.player_nationality }}"  
+												style="width: 15px; height: 10px; vertical-align: baseline"/>{% endif %}
+										{% endif %}
+											
+										{% if player.matches_injured is defined and player.matches_injured > 0 %}
+											<span class="playerBlockedLabel" title="{{ i18n.getMessage("formation_team_blocked_injured") }}">
+												<i class="icon-medkit"></i> {{ player.matches_injured }}
+											</span>
+										{% elseif player.matches_blocked is defined and player.matches_blocked > 0 %}
+											<span class="playerBlockedLabel" title="{{ i18n.getMessage("formation_team_blocked_cards") }}">
+												<img src="{{ skin.getImage("icons/blocked_cards.png") }}" alt="{{ i18n.getMessage("formation_team_blocked_cards") }}" style="width: 13px; height: 13px" /> {{ player.matches_blocked }}
+											</span>
+										{% endif %}
+										
+									</div>
+								
+									<span>{{ playerName }} ({{ player.age }}) {% if captain_id is defined and captain_id == player.id %}<i class="icon-group wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>{% endif %}</span>
+									
+									<br>
+									<small>
+										{{ i18n.getMessage("player_details_statistic_matches") }}: {{ player.st_matches }}
+										| {{ i18n.getMessage("player_details_statistic_goals") }}: {{ player.st_goals }}
+										| {{ i18n.getMessage("player_details_statistic_yellow") }}: {{ player.st_cards_yellow }}
+										{% if player.marketvalue is defined %}
+										| {{ i18n.getMessage("entity_player_marktwert") }}: {{ player.marketvalue|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}
+										{% endif %}
+									</small>
+									
+									{% if env.getConfig("hide_strength_attributes") != "1" or youthFormation is defined and youthFormation %}
+										<div class="playerinfoStrengthRow">
+											<div class="playerinfoStrengthLabelFull">{{ i18n.getMessage("entity_player_w_staerke") }}</div>
+											{{ statisticelements.progressbar(player.strength, "playerinfoStrength") }}
+										</div>
+										{% if player.strength_technique is defined %}
+										<div class="playerinfoStrengthRow">
+											<div class="playerinfoStrengthLabelFull">{{ i18n.getMessage("entity_player_w_technik") }}</div>
+											{{ statisticelements.progressbar(player.strength_technique, "playerinfoStrength") }}
+										</div>
+										<div class="playerinfoStrengthRow">
+											<div class="playerinfoStrengthLabelFull">{{ i18n.getMessage("entity_player_w_kondition") }}</div>
+											{{ statisticelements.progressbar(player.strength_stamina, "playerinfoStrength") }}
+										</div>
+										<div class="playerinfoStrengthRow">
+											<div class="playerinfoStrengthLabelFull">{{ i18n.getMessage("entity_player_w_frische") }}</div>
+											{{ statisticelements.progressbar(player.strength_freshness, "playerinfoStrength") }}
+										</div>
+										<div class="playerinfoStrengthRow">
+											<div class="playerinfoStrengthLabelFull">{{ i18n.getMessage("entity_player_w_zufriedenheit") }}</div>
+											{{ statisticelements.progressbar(player.strength_satisfaction, "playerinfoStrength") }}
+										</div>
+										{% endif %}
+									{% endif %}
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				{% endfor %}
+			
+			</div>
+			
+		{% else %}
+			<p>{{ i18n.getMessage("formation_team_noplayers") }}</p>
+		{% endif %}
+	
+	</div>
+</div>
+
+<p><em>{{ i18n.getMessage("formation_dragging_note_title") }}</em><br/>
+			{{ i18n.getMessage("formation_dragging_note") }}</p>
+
+	{% block form_footer %}
+	{% endblock %}
+</form>
+{% endblock %}
+

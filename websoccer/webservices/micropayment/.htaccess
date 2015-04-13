@@ -1,0 +1,4 @@
+Order deny,allow
+Deny from all
+Allow from service.micropayment.ch
+Allow from proxy.micropayment.de

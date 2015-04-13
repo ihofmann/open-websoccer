@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_googleplus_enable_login">Log-In über Google+ aktivieren. Erfordert das Ausfüllen der nachfolgenden Felder. Ausserdem muss die PHP-Erweiterung CURL auf dem Server aktiviert sein.</message> 
+
+	<message id="settings_label_googleplus_appname">Google+ Projektname</message> 
+	
+	<message id="settings_label_googleplus_clientid">Google+ Client ID</message> 
+	<message id="settings_label_googleplus_clientid_help">Erhalten Sie, wenn Sie Ihre Webseite <a href="https://code.google.com/apis/console?api=plus" target="_blank">als App auf Google+ registrieren</a>. Klicken Sie dort auf "API Access", und dann auf "Create an OAuth 2.0 client ID". Geben Sie Bei "Redirect URIs" den vollen URL in folgender Form an: <strong>http://www.meineDomain.de/websoccerordner/?page=home&amp;action=googleplus-login</strong>.</message> 
+	
+	<message id="settings_label_googleplus_clientsecret">Google+ Client secret</message> 
+	<message id="settings_label_googleplus_clientsecret_help">Erhalten Sie ebenfalls bei der Registrierung Ihrer Webseite auf Google+.</message> 
+	
+	<message id="settings_label_googleplus_developerkey">Google+ API key</message> 
+	<message id="settings_label_googleplus_developerkey_help">Erhalten Sie ebenfalls bei der Registrierung Ihrer Webseite auf Google+. Wird als "API key" unter "Simple API Access" angezeigt.</message> 
+	
+	
+	<message id="settings_label_googleplus_enable_likebutton">Zeige auf bestimmten Seiten den +1-Button (Google+) an.</message>
+</messages>

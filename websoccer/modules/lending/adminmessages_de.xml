@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_lending_enabled">Benutzer können Spieler von anderen Vereinen ausleihen.</message> 
+	<message id="settings_label_lending_matches_min">Mindestleihdauer</message>
+	<message id="settings_label_lending_matches_min_help">Anzahl Spiele</message>  
+	<message id="settings_label_lending_matches_max">Höchstleihdauer</message> 
+	<message id="settings_label_lending_matches_max_help">Anzahl Spiele</message> 
+</messages>

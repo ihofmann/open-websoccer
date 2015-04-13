@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("termsandconditions_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+{{ terms|raw }}
+
+{% endblock %}

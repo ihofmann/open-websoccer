@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="formauthentication" version="1.0.0" />
+    </dependencies>
+    
+    <pages>
+        <page
+            id="profile"
+            template="profile"
+            model="ProfileModel"
+            role="user">
+            <page
+	            id="enter-username"
+	            template="enter_username"
+	            role="user" />
+            
+            <page
+	            id="change-profile-picture"
+	            template="change_profile_picture"
+	            role="user" />
+        </page>
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="userprofile"
+            template="userprofile"
+            model="ProfileBlockModel"
+            includepages="all"
+            area="sidebar"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="user-clubs-selection"
+            template="user_clubs_selection"
+            model="UserClubsSelectionModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user" />
+        
+    </blocks>
+    
+  <actions>
+	<action id="save-profile" controller="SaveProfileController" role="user">
+		<param id="newemail" type="text" required="false" validator="EmailValidator"/>
+		<param id="newpassword" type="text" required="false" min="6" max="32" validator="PasswordValidator" />
+		
+		<param id="realname" type="text" required="false" max="80" />
+		<param id="place" type="text" required="false" max="50" />
+		<param id="country" type="text" required="false" max="40" />
+		<param id="birthday" type="date" required="false" max="20" />
+		<param id="occupation" type="text" required="false" max="50" />
+		<param id="interests" type="text" required="false" max="250" />
+		<param id="favorite_club" type="text" required="false" max="100" />
+		<param id="homepage" type="url" required="false" max="250" />
+		<param id="c_hideinonlinelist" type="boolean" required="false" />
+	</action>
+	
+	<action id="save-username" controller="SaveUsernameController" role="user">
+		<param id="nick" type="text" required="true" min="3" max="24" />
+		<param id="termsandconditions" type="boolean" required="true" />
+	</action>
+	
+	<action id="upload-profile-picture" controller="UploadProfilePictureController" role="user">
+	</action>
+	
+	<action id="delete-profile-picture" controller="DeleteProfilePictureController" role="user">
+	</action>
+	
+	<action id="select-team" controller="SelectTeamController" role="user">
+		<param id="id" type="number" required="true" min="1" max="2000000000" />
+	</action>
+	
+  </actions>
+    
+</module>

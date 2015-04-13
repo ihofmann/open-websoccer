@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+  <settings>
+      <setting id="upload_clublogo_max_size" category="game" type="number" default="0" />
+  </settings>
+
+    <pages>
+        <page
+            id="upload-clublogo"
+            template="upload_clublogo"
+            role="user"
+            parentItem="team" />
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="upload-clublogo-link"
+            template="upload_clublogo_link"
+            includepages="team"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+    </blocks>
+    
+    <actions>
+        <action id="upload-club-picture" controller="UploadClubPictureController" role="user" log="true"/>
+        
+    </actions>
+</module>

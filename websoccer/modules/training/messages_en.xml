@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="training_navlabel">Training</message>
+    <message id="training_no_trainers_available">There are no trainers available at the moment.</message>
+    <message id="training_choose_trainer">Choose a Trainer</message>
+	
+    <message id="trainer-details_navlabel">Choose Trainer</message>
+    <message id="training_choose_trainer_title">Hire This Trainer</message>
+    <message id="training_choose_trainer_units">Number of Training Units</message>
+    
+    <message id="training_choose_trainer_err_existing_units">You still have open training units. They must be executed first before you hire a new trainer.</message>
+    <message id="training_choose_trainer_err_too_expensive">This trainer is too expensive for you at the moment.</message>
+
+	<message id="training_trainer_salary_subject">Fee for booked training units</message>
+	
+	<message id="training_units_count">Open Training Units</message>
+	<message id="training_last_execution">Last Training Session</message>
+	
+	<message id="training_trainer_details">Booked Trainer</message>
+	<message id="training_execute_training_title">Train Team Now</message>
+	<message id="training_execute_button">Execute training</message>
+	
+	<message id="training_execute_focus">Focus</message>
+    <message id="training_execute_focus_technique">Technique</message>
+    <message id="training_execute_focus_stamina">Stamina</message>
+    <message id="training_execute_focus_motivation">Motivation</message>
+    <message id="training_execute_focus_regeneration">Regeneration</message>
+    
+    <message id="training_execute_intensity">Intensity</message>
+    <message id="training_execute_training_note">You can execute another training unit every %d hours.</message>
+    
+    <message id="training_execute_success">The team got trained.</message>
+    <message id="training_execute_err_already_executed">The training unit has been already executed. Refresh the page and try it again.</message>
+    
+    <message id="training_execute_err_too_early">The time break after the last training session is too short. The next training unit may be executed: %s</message>
+
+	<message id="training_execute_err_match_simulating">Your team is currently at a match. The players can train only after the match has completed again.</message>
+
+	<message id="training_execute_effects_title">Effects of this training unit</message>
+	
+	<message id="training_execute_err_team_in_training_camp">The team is currently at a training camp and therefore ordinary training units cannot be executed.</message>
+</messages>

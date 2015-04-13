@@ -1,0 +1,36 @@
+{% if lentplayers|length > 0 %}
+	<h3>{{ i18n.getMessage("lent_players") }}</h3>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_age") }}</th>
+				<th>{{ i18n.getMessage("entity_player_verein_id") }}</th>
+				<th>{{ i18n.getMessage("entity_player_lending_matches") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for player in lentplayers %}
+			<tr>
+				<td style="text-align: center"><img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
+					alt="{{ i18n.getMessage("player_position_" ~ player.position) }}" title="{{ i18n.getMessage("player_position_" ~ player.position) }}" />
+					{% if (player.position_main|length > 0) %}
+					<p title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</p>
+					{% endif %}
+				</td>
+				<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a></td>
+				<td>{{ player.age }}</td>
+				<td>
+					<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
+				</td>
+				<td>
+					{{ player.lending_matches }}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% endif %}

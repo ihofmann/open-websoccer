@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_upload_clublogo_max_size">Vereinslogo Upload: Maximalgröse</message> 
+	<message id="settings_label_upload_clublogo_max_size_help">Falls Benutzer ein eigenes Vereinslogo hochladen dürfen, können Sie hier die Maximalgrösse der Bilddatei in KBytes angeben. 0 wenn kein Bildupload möglich sein soll.</message> 
+</messages>

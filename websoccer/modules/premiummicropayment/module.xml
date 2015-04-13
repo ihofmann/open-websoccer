@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  	<settings>
+      	<setting id="micropayment_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="micropayment_project" category="premium" type="text" default="" />
+      	<setting id="micropayment_accesskey" category="premium" type="text" default="" />
+      	
+      	<setting id="micropayment_call2pay_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="micropayment_handypay_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="micropayment_ebank2pay_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="micropayment_creditcard_enabled" category="premium" type="boolean" default="false" />
+  	</settings>
+  	
+	<actions>
+	    
+	    <action id="micropayment-redirect" controller="MicropaymentRedirectController" role="user">
+	        <param id="amount" type="number" required="true" />
+	    </action>
+	    
+	</actions>
+	
+	<blocks>
+      
+       <block
+            id="micropaymentlink"
+            template="micropaymentlink"
+            includepages="premium-feature-requested"
+            area="content_bottom"
+            weight="1"
+            role="user" />
+        
+	</blocks>
+  
+</module>

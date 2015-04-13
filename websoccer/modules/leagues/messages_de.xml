@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="leagues_navlabel">Ligen</message>
+    <message id="leagues_title">Tabellen</message>
+    
+    <message id="league_navlabel">Tabelle</message>
+    
+    <message id="leaguetable_block_title">Aktuelle Tabelle</message>
+    <message id="leaguetable_block_noteamsavailable">In dieser Liga sind keine Teams vorhanden.</message>
+    
+    <message id="leaguetable_head_place">Platz</message>
+    <message id="leaguetable_head_place_abbr">P</message>
+    <message id="leaguetable_head_club">Verein</message>
+    <message id="leaguetable_head_matches">Spiele</message>
+    <message id="leaguetable_head_matches_abbr">SP</message>
+    <message id="leaguetable_head_wins">Siege</message>
+    <message id="leaguetable_head_wins_abbr">S</message>
+    <message id="leaguetable_head_draws">Unentschieden</message>
+    <message id="leaguetable_head_draws_abbr">U</message>
+    <message id="leaguetable_head_defeats">Niederlagen</message>
+    <message id="leaguetable_head_defeats_abbr">N</message>
+    <message id="leaguetable_head_goals">Tore</message>
+    <message id="leaguetable_head_goalsdiff">Tordifferenz</message>
+    <message id="leaguetable_head_goalsdiff_abbr">TD</message>
+    <message id="leaguetable_head_score">Punkte</message>
+    
+    <message id="leaguetable_button_type">Tabellentyp</message>
+    <message id="leaguetable_button_type_total">Gesamttabelle</message>
+    <message id="leaguetable_button_type_home">Heimtabelle</message>
+    <message id="leaguetable_button_type_guest">Auswärtstabelle</message>
+    
+    <message id="leaguetable_timedelay_info">Die aktuellen Zwischenstände können zeitverzögert dargestellt werden.</message>
+    
+    
+</messages>

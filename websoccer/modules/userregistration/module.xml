@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="formauthentication" version="1.0.0" />
+    </dependencies>
+
+    <pages>
+
+        <page
+            id="register"
+            model="RegisterFormModel"
+            navitem="true"
+            navweight="1"
+            template="register-form"
+            role="guest" 
+            navitemOnlyForConfigEnabled="allow_userregistration">
+
+            <page
+                id="register-success"
+                template="register-success"
+                role="guest" />
+        </page>
+    </pages>
+    
+  <settings>
+      <setting id="allow_userregistration" category="users" type="boolean" default="1" />
+      <setting id="registration_url" category="users" type="text" default="" />
+      
+      <setting id="register_use_captcha" category="users" type="boolean" default="0" />
+      <setting id="register_captcha_publickey" category="users" type="text" default="-" />
+      <setting id="register_captcha_privatekey" category="users" type="text" default="-" />
+      
+      <setting id="max_number_of_users" category="users" type="number" default="0" />
+      <setting id="illegal_usernames" category="users" type="tags" default="admin,administrator,test" />
+  </settings>
+    
+  <actions>
+	<action id="userregistration" controller="RegisterFormController" role="guest">
+		<param id="nick" type="text" required="true" min="3" max="24" />
+		<param id="email" type="text" required="true" validator="EmailValidator"/>
+		<param id="email_repeat" type="text" required="true"/>
+		<param id="pswd" type="text" required="true" min="6" max="32" validator="PasswordValidator"/>
+		<param id="pswd_repeat" type="text" required="true" />
+		<param id="termsandconditions" type="boolean" required="true" />
+	</action>
+  </actions>
+
+</module>

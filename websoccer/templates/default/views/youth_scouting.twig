@@ -1,0 +1,75 @@
+{% extends "base.twig" %}
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("youth-scouting_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+	{% if lastExecutionTimestamp == 0 %}
+		{% set lastScouting = i18n.getMessage("youthteam_scouting_lastexecution_never") %}
+	{% else %}
+		{% set lastScouting = env.getFormattedDatetime(lastExecutionTimestamp) %}
+	{% endif %}
+	{{ profile.infofield(i18n.getMessage("youthteam_scouting_lastexecution"), lastScouting) }}
+	
+	{% if not scoutingPossible %}
+		<hr>
+		{{ messagebox.box(i18n.getMessage("youthteam_scouting_nextpossibleexecution", 
+			env.getFormattedDatetime(nextPossibleExecutionTimestamp)), "", "warning") }}
+	{% else %}
+	
+		{% if env.getRequestParameter("scoutid") == null %}
+			<h3>{{ i18n.getMessage("youthteam_scouting_schoosescout") }}</h3>
+			
+			{% if scouts|length == 0 %}
+				<p>{{ i18n.getMessage("youthteam_scouting_noscoutavailable") }}</p>
+			{% else %}
+			
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>{{ i18n.getMessage("entity_youthscout_name") }}</th>
+							<th>{{ i18n.getMessage("entity_youthscout_expertise") }}</th>
+							<th>{{ i18n.getMessage("entity_youthscout_fee") }}</th>
+							<th>{{ i18n.getMessage("entity_youthscout_speciality") }}</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for scout in scouts %}
+						<tr>
+							<td>{{ scout.name }}</td>
+							<td>{{ statisticelements.progressbar(scout.expertise) }}</td>
+							<td>{{ scout.fee|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</td>
+							<td>{% if scout.speciality|length %}{{ i18n.getMessage("option_" ~ scout.speciality) }}{% else %}-{% endif %}</td>
+							<td><a href="{{ env.getInternalUrl("youth-scouting", "scoutid=" ~ scout.id) }}" class="btn btn-small"><i class="icon-hand-right"></i> {{ i18n.getMessage("button_choose") }}</a></td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			
+			{% endif %}
+		{% else %}
+			<h3>{{ i18n.getMessage("youthteam_scouting_schoosecountry") }}</h3>
+		
+			{% for country in countries %}
+				{% set nationImg = skin.getImage("flags/players/" ~ country ~ ".png") %}
+				{% if i18n.hasMessage("option_" ~ country) %}
+					{% set countryLabel = i18n.getMessage("option_" ~ country) %}
+				{% else %}
+					{% set countryLabel = country %}
+				{% endif %}
+				<a href="{{ env.getInternalActionUrl("scout-youthplayer", "scoutid=" ~ env.getRequestParameter("scoutid") ~ "&country=" ~ country) }}" class="btn btn-large btn-block">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %}{{ countryLabel }}</a>
+			{% endfor %}
+			
+			<p style="margin-top: 10px"><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn">{{ i18n.getMessage("button_cancel") }}</a></p>
+		
+		{% endif %}
+	
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_tab_youth">Youth Teams</message> 
+	
+	<message id="settings_label_youth_enabled">Enable youth teams. Users can scout for new youth players and hire them for their professional team.</message>
+	<message id="settings_label_youth_scouting_enabled">Users can scout for new talents.</message>
+	<message id="settings_label_youth_matchrequests_enabled">Users can post and accept match requests.</message>
+	
+	<message id="settings_label_youth_salary_per_strength">Salary per strength point</message>
+	<message id="settings_label_youth_salary_per_strength_help">Amount of salary per match and per strength point.</message>
+	
+	<message id="settings_label_youth_min_age_professional">Minimum age for professional team</message>
+	
+	<message id="settings_label_youth_scouting_break_hours">Break between scouting executions</message>
+	<message id="settings_label_youth_scouting_break_hours_help">in hours; Only after this many hours after a scouting execution, a user can execute another scouting. 0 for no break.</message>
+
+	<message id="settings_label_youth_professionalmove_matches">Professional contract matches</message>
+	<message id="settings_label_youth_professionalmove_matches_help">Number of contract matches when a youth player is moved to professional team.</message>
+	
+	<message id="settings_label_youth_professionalmove_technique">Professional strength: Technique</message>
+	<message id="settings_label_youth_professionalmove_technique_help">%; when a youth player is moved to professional team.</message>
+	
+	<message id="settings_label_youth_professionalmove_stamina">Professional strength: Stamina</message>
+	<message id="settings_label_youth_professionalmove_stamina_help">%</message>
+	
+	<message id="settings_label_youth_professionalmove_freshness">Professional strength: Freshness</message>
+	<message id="settings_label_youth_professionalmove_freshness_help">%</message>
+	
+	<message id="settings_label_youth_professionalmove_satisfaction">Professional strength: Satisfaction</message>
+	<message id="settings_label_youth_professionalmove_satisfaction_help">%</message>
+	
+	<message id="settings_label_youth_scouting_success_probability">Scouting: Chance of success</message>
+	<message id="settings_label_youth_scouting_success_probability_help">per cent; Probability that a scout will find any new talent (indeoendent from player strength).</message>
+	
+	<message id="settings_label_youth_scouting_min_strength">Scouting: Minimum player strength</message>
+	<message id="settings_label_youth_scouting_min_strength_help">per cent; How strong a scouted player must be at least.</message>
+	
+	<message id="settings_label_youth_scouting_max_strength">Scouting: Höchstspielerstärke</message>
+	<message id="settings_label_youth_scouting_max_strength_help">per cent; How strong a scouted player must be at maximum.</message>
+	
+	<message id="settings_label_youth_scouting_standard_deviation">Scouting: Standard deviation</message>
+	<message id="settings_label_youth_scouting_standard_deviation_help">per cent; How much the actual player strength shall deviate from the calculated strength. 0 for no deviation.</message>
+
+	<message id="settings_label_youth_scouting_min_age">Scouting: Minimum age</message>
+	
+	<message id="settings_label_youth_matchrequest_max_open_requests">Match requests: Max. number per team</message>
+	<message id="settings_label_youth_matchrequest_max_open_requests_help">Maximum number of unanswered open match requests per team.</message>
+	
+	<message id="settings_label_youth_matchrequest_max_futuredays">Match requests: Days in future</message>
+	<message id="settings_label_youth_matchrequest_max_futuredays_help">Up to how many days in future a match request can be placed.</message>
+	
+	<message id="settings_label_youth_matchrequest_allowedtimes">Match requests: Allowed times</message>
+	<message id="settings_label_youth_matchrequest_allowedtimes_help">separated by comma (e.g. '14:00,17:00'). In order to prevent overstressing of the server if there were also league matches at the same time.</message>
+
+	<message id="settings_label_youth_matchrequest_accept_hours_in_advance">Match requests: Latest approval</message>
+	<message id="settings_label_youth_matchrequest_accept_hours_in_advance_help">in hours; Up to how many hours in advance a match request can be approved. Shall give the opportunity to participants to set their tactics.</message>
+	
+	<message id="settings_label_youth_match_maxperday">Max. number of allowed matches per day per team</message>
+	
+	<message id="settings_label_youth_strengthchange_verygood">Strength change: Very good performance</message>
+	<message id="settings_label_youth_strengthchange_verygood_help">Change of player strength in points if mark in match is 1.3 or better.</message>
+	
+	<message id="settings_label_youth_strengthchange_good">Strength change: Good performance</message>
+	<message id="settings_label_youth_strengthchange_good_help">Change of player strength in points if mark in match is between 1.4 and 2.3.</message>
+	
+	<message id="settings_label_youth_strengthchange_bad">Strength change: Bad performance</message>
+	<message id="settings_label_youth_strengthchange_bad_help">Change of player strength in points if mark in match is between 4.3 and 5.</message>
+	
+	<message id="settings_label_youth_strengthchange_verybad">Strength change: Very bad performance</message>
+	<message id="settings_label_youth_strengthchange_verybad_help">Change of player strength in points if mark in match is worse than 5.</message>
+
+	<message id="season_complete_label_youthplayers_age_delete">Youth players' maximum age</message>
+	<message id="season_complete_label_youthplayers_age_delete_help">Youth players who become this age or are older will be deleted.</message>
+</messages>

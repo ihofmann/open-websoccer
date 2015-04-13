@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="team_navlabel">Vereinsprofil</message>
+    
+    <message id="team_details_tab_general">Kurzprofil</message>
+    <message id="team_details_tab_statistic">Statistik</message>
+    <message id="team_details_tab_victories">Erfolge</message>
+    <message id="team_details_tab_players">Kader</message>
+    
+    <message id="team_details_manager">Manager</message>
+    
+    <message id="team_details_statistic_season">Diese Saison</message>
+    <message id="team_details_statistic_total">Gesamt</message>
+    
+    <message id="team_details_statistic_goals">Tore</message>
+	<message id="team_details_statistic_againsts">Gegentore</message>
+	<message id="team_details_statistic_matches">Spiele</message>
+	<message id="team_details_statistic_wins">Siege</message>
+	<message id="team_details_statistic_losses">Niederlagen</message>
+	<message id="team_details_statistic_draws">Unentschieden</message>
+	<message id="team_details_statistic_score">Punkte</message>
+	
+	<message id="team_details_noleaguevictories">Es sind noch keine Erfolge in der Liga vorhanden.</message>
+    
+	<message id="team_details_season_place">Platz %d</message>
+	
+	
+	
+</messages>

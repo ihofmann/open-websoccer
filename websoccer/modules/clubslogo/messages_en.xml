@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="upload-clublogo_navlabel">Upload new club logo</message>
+    
+    <message id="upload-clublogo_intro">You can upload a PNG or JPEG picture here. It must be <strong>rectangular</strong> with a minimum width of <strong>120 pixels</strong> and a maximum file size of <strong>%d KBytes</strong>.</message>
+	<message id="upload-clublogo_success">The new club picture has been successfully uploaded!</message>
+	
+	<message id="activitylog_upload-club-picture">%s has uploaded a new club logo.</message>
+    
+</messages>

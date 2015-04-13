@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <blocks>
+
+        <block
+            id="help_formation"
+            template="help_formation"
+            includepages="formation"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_messages"
+            template="help_messages"
+            includepages="messages"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_myteam"
+            template="help_myteam"
+            includepages="myteam"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_tickets"
+            template="help_tickets"
+            includepages="tickets"
+            area="content_top"
+            weight="0"
+            role="user" />
+     
+        <block
+            id="help_sponsor"
+            template="help_sponsor"
+            includepages="sponsor"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_stadium"
+            template="help_stadium"
+            includepages="stadium"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_training"
+            template="help_training"
+            includepages="training"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_trainingcamp"
+            template="help_trainingcamp"
+            includepages="trainingcamp"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_transfermarket"
+            template="help_transfermarket"
+            includepages="transfermarket"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="help_transfer-bid"
+            template="help_transfer-bid"
+            includepages="transfer-bid"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        
+        
+    </blocks>    
+    
+</module>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="sponsor_navlabel">Sponsor</message>
+    <message id="sponsor_contractduraction_info">Choose a sponsor for the next %d matches.</message>
+    <message id="sponsor_no_offers">There is currently no company interested in sponsoring your team.</message>
+    
+    <message id="sponsor_choose_tooearly">You may choose a new sponsor only after the %dth match day.</message>
+    
+    <message id="sponsor_choose_novalidsponsor">The selected sponsor does not want to collaborate any more. Probably another team was faster than you.</message>
+    <message id="sponsor_choose_stillcontract">You still have a contract with a sponsor. This contract must end first.</message>
+    <message id="sponsor_choose_success">Congratulations, you have a new sponsor now!</message>
+    
+    <message id="sponsor_championship_bonus_subject">Sponsor premium for won championship</message>
+</messages>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="teamsgenerator_navlabel">Generate Clubs</message>
+    
+    <message id="teamsgenerator_intro">Usually it is prohibited by the appropriate league associations to use original names in football games, except the provider has obtained a special licence for this purpose from the association. This tool generates for you randomly picked fantasy names which might be similar to original names, but not identical.</message>
+    
+    <message id="generator_label_league">League</message>
+    <message id="generator_label_numberofteams">Number of Teams</message>
+    <message id="generator_label_budget">Budget per team</message>
+    <message id="generator_label_generatestadium">Also generate a stadium for every team.</message>
+    <message id="generator_label_stadiumpattern">Stadium name</message>
+    <message id="generator_label_stadiumpattern_help">whereas "%s" is placeholder for the city name.</message>
+    
+    <message id="generator_label_stadium_p_stands">Standing room Sides</message>
+    <message id="generator_label_stadium_p_seats">Seats Sides</message>
+    <message id="generator_label_stadium_p_stands_grand">Standing room Grandstanding</message>
+    <message id="generator_label_stadium_p_seats_grand">Seats Grandstanding</message>
+    <message id="generator_label_stadium_p_vip">VIP Lounges</message>
+    
+    <message id="generator_label">Generate records automatically</message>
+    <message id="generator_button">Generate</message>
+    
+    <message id="generator_validationerror_numberofitems">You need to let generating at least one record.</message>
+    <message id="generator_validationerror_numberofitems_max">You can generate a maximum number of 100 records only at once.</message>
+    <message id="generator_validationerror_noleague">You need to select a league.</message>
+    
+    <message id="generator_success">Records have been successfully generated.</message>
+    
+	<message id="generator_err_filedoesnotexist">In order to generate data for this league, you need the file: %s</message>
+	<message id="generator_err_emptyfile">The following file has no valid entries: %s</message>
+	
+	<message id="playersgenerator_label_deviation">Max. Strength Deviation</message>
+	<message id="playersgenerator_label_deviation_help">If strength attributes shall deviate, you can specify a maximum deviation of, for instance, 10% for deviations from -10 to +10 points.</message>
+	
+	
+	<message id="playersgenerator_navlabel">Generate Players</message>
+	<message id="playersgenerator_noteams">There are no players in this league.</message>
+	<message id="playersgenerator_create_for_all_teams">Create players for all teams</message>
+	<message id="playersgenerator_create_for_single_teams">Create players separately for selected teams</message>
+	<message id="playersgenerator_head_playerscount">Number of existing players</message>
+	<message id="player_age">Players Age</message>
+	
+	<message id="player_age_help">in years</message>
+	
+	<message id="player_age_deviation">Max. Age Deviation</message>
+	<message id="player_age_deviation_help">If the players age shall deviate randomly, you can enter, for instance, 5 for a deviation of between -5 and +5 years.</message>
+	
+	<message id="playersgenerator_generator_for_transfermarket">Generator for transfer market</message>
+</messages>

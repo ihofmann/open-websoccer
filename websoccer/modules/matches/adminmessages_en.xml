@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="match_manage_reportitems">Report messages</message>
+    <message id="match_manage_playerstatistics">Formation and player statistics</message>
+    <message id="match_manage_complete">Complete match without simulation</message>
+    
+    <message id="match_manage_reportitems_noitems">There are no match report messages for this messages.</message>
+    <message id="match_manage_playerstatistics_noitems">There are no players set for this match, yet.</message>
+    
+    <message id="match_manage_minuten_gespielt">Minutes played</message>
+    <message id="match_manage_note">Grade</message>
+    <message id="match_manage_tore">Goals</message>
+    <message id="match_manage_assists">Assists</message>
+    <message id="match_manage_karte_gelb">Yellow cards</message>
+    <message id="match_manage_karte_rot">Red card</message>
+    <message id="match_manage_verletzt">Matches injured</message>
+    <message id="match_manage_gesperrt">Maches blocked</message>
+    <message id="match_manage_ballcontacts">Ball contacts</message>
+    <message id="match_manage_wontackles">Tackles won</message>
+    <message id="match_manage_shoots">Shots</message>
+    <message id="match_manage_passes_successed">Passes success</message>
+    <message id="match_manage_passes_failed">Passes failed</message>
+    
+    <message id="match_manage_position_field_1">On pitch</message>
+    <message id="match_manage_position_field_bench">Bench</message>
+    <message id="match_manage_position_field_substituted">Substituted</message>
+    
+    <message id="match_manage_createplayer_title">Add Player</message>
+    <message id="match_manage_createplayer_label_playerid">Player</message>
+    
+    <message id="formation_home_offensive">Offensive</message>
+    <message id="formation_home_longpasses">Long passes</message>
+    <message id="formation_home_counterattacks">Counterattacks</message>
+    <message id="formation_guest_offensive">Offensive</message>
+    <message id="formation_guest_longpasses">Long passes</message>
+    <message id="formation_guest_counterattacks">Counterattacks</message>
+    
+    <message id="match_manage_playerstatistics_createfromfrmation">Generate from current formation</message>
+    <message id="match_manage_playerstatistics_noformationavailable">There is no saved formation available for this team.</message>
+    
+    <message id="match_manage_substitutions">Substitutions</message>
+    <message id="match_manage_substitutions_out">Out</message>
+    <message id="match_manage_substitutions_in">In</message>
+    <message id="match_manage_substitutions_minute">Minute</message>
+    <message id="match_manage_substitutions_condition">Condition</message>
+    
+    <message id="match_manage_substitutions_condition_tie">Tie</message>
+    <message id="match_manage_substitutions_condition_leading">Leading</message>
+    <message id="match_manage_substitutions_condition_deficit">Deficit</message>
+	
+    <message id="match_manage_createmessage_title">Add message</message>
+    <message id="match_manage_reportitems_noitems">There are no match report messages, yet.</message>
+    <message id="match_manage_reportmsg_minute">Minute</message>
+    <message id="match_manage_reportmsg_playernames">Players</message>
+    <message id="match_manage_reportmsg_playernames_help">Separated with semicolon (;). First name stands for {sp1}, second name {sp2}.</message>
+    <message id="match_manage_reportmsg_intermediateresult">Intermediate result</message>
+    <message id="match_manage_reportmsg_message_id">Message</message>
+    
+    <message id="match_manage_complete_alreadysimulated">This match has been already marked as simulated.</message>
+    <message id="match_manage_complete_intro">By clicking on the button below, you complete this match and following actions will be executed:
+        <ul>
+            <li>The match will be marked as simulated.</li>
+            <li>If enabled, the ticket sales will be computed and the income credited.</li>
+            <li>Points will be credited for league matches. For cup matches, the system will check if the teams shall be moved to the next round and generates the matches accordingly.</li>
+            <li>Update of stamina, satisfaction, contract details and statistics.</li>
+        </ul>
+    </message>
+    <message id="match_manage_complete_computetickets">Compute ticket sales.</message>
+    <message id="match_manage_complete_button">Complete Match</message>
+    <message id="match_manage_complete_success">The match has been successfully completed.</message>
+</messages>

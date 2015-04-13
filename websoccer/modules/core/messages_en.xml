@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="offline_title">We are temporarily offline</message>
+	<message id="error_action_required_team">You need to be manager of a team in order to execute this action.</message>
+	
+	<message id="requireslogin_box_title">Access denied</message>
+	<message id="requireslogin_box_message">You need to be logged on in order to see the site content.</message>
+	
+	<message id="date_yesterday">Yesterday</message>
+	<message id="date_today">Today</message>
+	<message id="date_tomorrow">Tomorrow</message>
+	
+	<message id="privacypolicy_navlabel">Privacy policy</message>
+</messages>

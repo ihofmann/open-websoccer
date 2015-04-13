@@ -1,0 +1,60 @@
+{% import "macros/paginator.twig" as pagination %}
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("who_is_online_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if users|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_users") }}</th>
+				<th>{{ i18n.getMessage("entity_club") }}</th>
+				<th>{{ i18n.getMessage("entity_users_lastonline") }}</th>
+				<th>{{ i18n.getMessage("entity_users_lastaction") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for user in users %}
+		<tr>
+			<td>
+				{% if user.hideinonlinelist %}
+					{{ i18n.getMessage("who_is_online_anonymous") }}
+				{% else %}
+					{% if user.picture|length > 0 %}
+						<a href="{{ env.getInternalUrl("user", "id=" ~ user.id) }}" 
+						title="{{ i18n.getMessage("user_navlabel") }}"><img src="{{ user.picture }}" alt="{{ user.nick }}" style="width: 40px; height: 40px"/></a>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("user", "id=" ~ user.id) }}">{{ user.nick }}</a>
+				{% endif %}
+
+			</td>
+			<td>
+				{% if user.team_id > 0 and not user.hideinonlinelist %}
+					{% if user.team_picture|length > 0 %}
+						<a href="{{ env.getInternalUrl("team", "id=" ~ user.team_id) }}" 
+						title="{{ i18n.getMessage("team_navlabel") }}"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ user.team_picture }}" alt="{{ user.team_name }}" style="max-width: 40px;"/></a>
+					{% endif %}
+					
+					<a href="{{ env.getInternalUrl("team", "id=" ~ user.team_id) }}" 
+						title="{{ i18n.getMessage("team_navlabel") }}">{{ user.team_name }}</a>
+				{% else %}
+					-
+				{% endif %}
+			</td>
+			<td>{{ env.getFormattedDatetime(user.lastonline) }}</td>
+			<td>{% if i18n.hasMessage(user.lastaction ~ "_navlabel") %}{{ i18n.getMessage(user.lastaction ~ "_navlabel") }}{% else %}-{% endif %}</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ pagination.paginator(paginator) }}
+
+{% endif %}
+
+{% endblock %}

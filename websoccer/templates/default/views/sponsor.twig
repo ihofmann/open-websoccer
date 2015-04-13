@@ -1,0 +1,72 @@
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("sponsor_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+{# show current sponsor details #}
+{% if sponsor is defined and sponsor|length > 0 %}
+
+
+	{% if sponsor.picture|length > 0 %}
+	<div style="text-align: center; margin-bottom: 10px;">
+	<img src="{{ env.getConfig("context_root") }}/uploads/sponsor/{{ sponsor.picture }}" class="img-rounded">
+	</div>
+	{% endif %}
+
+	{{ profile.infofield(i18n.getMessage("entity_sponsor_name"), sponsor.name) }}
+	{{ profile.infofield(i18n.getMessage("entity_sponsor_b_spiel"), sponsor.amount_match|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+	{{ profile.infofield(i18n.getMessage("entity_sponsor_b_heimzuschlag"), sponsor.amount_home_bonus|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+	{{ profile.infofield(i18n.getMessage("entity_sponsor_b_sieg"), sponsor.amount_win|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+	{{ profile.infofield(i18n.getMessage("entity_sponsor_b_meisterschaft"), sponsor.amount_championship|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+	{{ profile.infofield(i18n.getMessage("entity_club_sponsor_spiele"), sponsor.matchdays) }}
+
+{# choose sponsor #}
+{% else %}
+
+	{% if teamMatchday < env.getConfig("sponsor_earliest_matchday") %}
+		{{ messagebox.box(i18n.getMessage("sponsor_choose_tooearly", env.getConfig("sponsor_earliest_matchday")), "", "warning") }}
+	{% else %}
+
+		<p style="margin-top: 10px; margin-bottom: 20px;">{{ i18n.getMessage('sponsor_contractduraction_info', env.getConfig("sponsor_matches")) }}</p>
+	
+		{% if sponsors|length > 0 %}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ i18n.getMessage("entity_sponsor_name") }}</th>
+					<th>{{ i18n.getMessage("entity_sponsor_b_spiel") }}</th>
+					<th>{{ i18n.getMessage("entity_sponsor_b_heimzuschlag") }}</th>
+					<th>{{ i18n.getMessage("entity_sponsor_b_sieg") }}</th>
+					<th>{{ i18n.getMessage("entity_sponsor_b_meisterschaft") }}</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for sponsor in sponsors %}
+			
+				<tr>
+					<td><p>{{ sponsor.name }}</p>
+					<p><a href="#" class="btn ajaxLink"
+						data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&amp;action=choose-sponsor&amp;id={{ sponsor.sponsor_id }}"><i class="icon-hand-right"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
+					<td>{{ sponsor.amount_match|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+					<td>{{ sponsor.amount_home_bonus|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+					<td>{{ sponsor.amount_win|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+					<td>{{ sponsor.amount_championship|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+			{{ messagebox.box(i18n.getMessage("sponsor_no_offers"), "", "info") }}
+		{% endif %}
+	{% endif %}
+
+{% endif %}
+
+{% endblock %}

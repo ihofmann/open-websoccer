@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="transfermarket" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="transfer_offer"
+            entity="transfer_offer"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="transfer_offer AS OfferTab" >
+
+                <overview add="false" delete="true" edit="false" >
+
+                    <column
+                        id="entity_transfer_offer_submitted_date"
+                        field="OfferTab.submitted_date"
+                        type="timestamp"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_player_id"
+                        field="CONCAT(PlayerTab.vorname, ' ', IF(PlayerTab.kunstname IS NOT NULL, CONCAT('\'', PlayerTab.kunstname, '\' '), ''), PlayerTab.nachname)"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_receiver_club_id"
+                        field="ClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_sender_club_id"
+                        field="SenderClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_offer_amount"
+                        field="OfferTab.offer_amount"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_offer_player1"
+                        field="CONCAT(ExPlayer1Tab.vorname, ' ', ExPlayer1Tab.nachname)"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_offer_player2"
+                        field="CONCAT(ExPlayer2Tab.vorname, ' ', ExPlayer2Tab.nachname)"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_rejected_date"
+                        field="OfferTab.rejected_date"
+                        type="timestamp"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_admin_approval_pending"
+                        field="OfferTab.admin_approval_pending"
+                        type="boolean"
+                        sort="true" 
+                        filter="true"
+                        converter="TransferOfferApprovalLinkConverter" />
+
+                    <join type="INNER" jointable="spieler AS PlayerTab" joincondition="OfferTab.player_id = PlayerTab.id" />
+                	<join type="INNER" jointable="verein AS ClubTab" joincondition="OfferTab.receiver_club_id = ClubTab.id" />
+                	<join type="INNER" jointable="verein AS SenderClubTab" 
+                	    joincondition="OfferTab.sender_club_id = SenderClubTab.id" />
+                	<join type="LEFT" jointable="spieler AS ExPlayer1Tab" joincondition="OfferTab.offer_player1 = ExPlayer1Tab.id" />
+                	<join type="LEFT" jointable="spieler AS ExPlayer2Tab" joincondition="OfferTab.offer_player2 = ExPlayer2Tab.id" />
+                </overview>
+
+                <editform>
+                    <field id="submitted_date" type="timestamp" required="true" />
+                    <field id="player_id" type="foreign_key" entity="player" 
+					    jointable="spieler" labelcolumns="nachname, vorname" required="true" />
+					<field id="receiver_club_id" type="foreign_key" entity="club" 
+					    jointable="verein" labelcolumns="name" required="true" />
+					<field id="sender_club_id" type="foreign_key" entity="club" 
+					    jointable="verein" labelcolumns="name" required="true" />
+					<field id="sender_user_id" type="foreign_key" entity="users" 
+					    jointable="user" labelcolumns="nick" required="true" />
+					
+					<field id="offer_amount" type="number" required="true" />
+					<field id="offer_message" type="textarea" required="false" />
+					
+					<field id="offer_player1" type="foreign_key" entity="player" 
+					    jointable="spieler" labelcolumns="nachname, vorname" required="false" />
+					
+					<field id="offer_player2" type="foreign_key" entity="player" 
+					    jointable="spieler" labelcolumns="nachname, vorname" required="false" />
+					
+                </editform>
+            </entity>
+        </adminpage>
+        
+    </admin>
+    
+	<settings>
+	    <setting id="transferoffers_enabled" category="transfermarket" type="boolean" default="1" />
+	    <setting id="transferoffers_transfer_stop_days" category="transfermarket" type="number" default="30" />
+	    <setting id="transferoffers_adminapproval_required" category="transfermarket" type="boolean" default="0" />
+	    <setting id="transferoffers_contract_matches" category="transfermarket" type="number" default="20" />
+	</settings>
+	
+    <pages>
+        <page
+            id="transferoffers"
+            template="transferoffers"
+            model="TransferOffersModel"
+            role="user"
+            navitem="true"
+            navweight="2"
+            parentItem="office" 
+            navitemOnlyForConfigEnabled="transferoffers_enabled" />
+    </pages> 
+  
+    <blocks>
+        
+        <block
+            id="directtransfer-sentoffers"
+            template="directtransfer-sentoffers"
+            model="TransferOffersSentModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+
+        <block
+            id="directtransfer-offer"
+            template="directtransfer-offer"
+            model="DirectTransferOfferModel"
+            includepages="player"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+        <block
+            id="directtransfer-offer-form"
+            template="directtransfer-offer-form"
+            model="DirectTransferOfferModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+    </blocks>
+    
+	<actions>
+		<action id="directtransfer-offer" controller="DirectTransferOfferController" role="user" log="true">
+			<param id="id" type="number" required="true" />
+			<param id="amount" type="number" required="true" min="1" max="1000000000" />
+			<param id="exchangeplayer1" type="number" />
+			<param id="exchangeplayer2" type="number" />
+			<param id="comment" type="text" max="255" />
+		</action>
+		
+		<action id="directtransfer-accept" controller="DirectTransferAcceptController" role="user">
+			<param id="id" type="number" required="true" />
+		</action>
+		
+		<action id="directtransfer-cancel" controller="DirectTransferCancelController" role="user">
+			<param id="id" type="number" required="true" />
+		</action>
+		
+		<action id="directtransfer-reject" controller="DirectTransferRejectController" role="user">
+			<param id="id" type="number" required="true" />
+			<param id="comment" type="text" max="255" />
+			<param id="allow_alternative" type="boolean" />
+		</action>
+		
+	</actions>
+  
+</module>

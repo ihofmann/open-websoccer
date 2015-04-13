@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+  <settings>
+      <setting id="rename_club_enabled" category="game" type="boolean" default="0" />
+  </settings>
+
+    <pages>
+        <page
+            id="rename-club"
+            template="rename_club"
+            role="user"
+            parentItem="team" />
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="rename-club-link"
+            template="rename_club_link"
+            includepages="team"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+    </blocks>
+    
+    <actions>
+        <action id="rename-club" controller="RenameClubController" role="user" log="true">
+        	<param id="name" type="text" required="true" min="8" max="24"/>    
+        	<param id="kurz" type="text" required="true" min="3" max="4"/>    
+        	<param id="stadium" type="text" required="true" min="8" max="24"/>
+        </action>
+        
+    </actions>
+</module>

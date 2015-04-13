@@ -1,0 +1,59 @@
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% if players|length == 0 %}
+	<p>{{ i18n.getMessage("youthteam_no_players_in_team") }}</p>
+{% else %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_age") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_strength") }}</th>
+				<th>{{ i18n.getMessage("entity_youthplayer_transfer_fee") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+		{% for player in players %}
+			
+			{% if player.position == "Torwart" %}
+				{% set positionId = "goaly" %}
+			{% elseif player.position == "Abwehr" %}
+				{% set positionId = "defense" %}
+			{% elseif player.position == "Mittelfeld" %}
+				{% set positionId = "midfield" %}
+			{% else %}
+				{% set positionId = "striker" %}
+			{% endif %}
+		
+		
+			<tr{% if player.transfer_fee %} class="info"{% endif %}>
+				<td style="text-align: center">
+					<img src="{{ skin.getImage("icons/playertype_" ~ positionId ~ ".png") }}"
+					alt="{{ i18n.getMessage("player_position_" ~ positionId) }}" title="{{ i18n.getMessage("player_position_" ~ positionId) }}" />
+					<br>
+					<small>{{ i18n.getMessage("option_" ~ player.position) }}</small>
+				</td>
+				<td>{{ player.firstname }} {{ player.lastname }}</td>
+				<td>{{ player.age }}</td>
+				<td>{{ statisticelements.progressbar(player.strength, "noBottomMargin") }}</td>
+				<td>
+					{% if player.transfer_fee == 0 %}
+						-
+					{% else %}
+						<p>{{ player.transfer_fee|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</p>
+						
+						{% if env.user.clubId > 0 and player.team_id != env.user.clubId %}
+							<a href="{{ env.getInternalUrl("youthplayer-buy", "id=" ~ player.id) }}" class="btn btn-small"><i class="icon-shopping-cart"></i> {{ i18n.getMessage("youthteam_action_buy") }}</a>
+						{% endif %}
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		
+		</tbody>
+	</table>
+
+{% endif %}

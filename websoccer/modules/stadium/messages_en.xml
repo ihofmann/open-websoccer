@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="stadium_navlabel">Stadium</message>
+    <message id="stadium_nostadium">You do not have any stadium.</message>
+    
+    <message id="stadium_capacity">Capacity</message>
+    
+    <message id="stadium_extend_title">Extend Stadium</message>
+    <message id="stadium_extend_button">Construct</message>
+    <message id="stadium_extend_cost_help">Costs per seat:</message>
+    
+    <message id="stadium_extend_err_too_expensive">You cannot afford the construction costs at the moment.</message>
+    <message id="stadium_extend_err_exceed_max_side">The sides must not exceed %d places in total.</message>
+    <message id="stadium_extend_err_exceed_max_grand">The grandstand must not exceed %d places in total.</message>
+    <message id="stadium_extend_err_exceed_max_vip">The stadium must not have more than %d VIP lounges.</message>
+    <message id="stadium_extend_err_constructionongoing">There is already a construction on-going. Please wait until the work has been completed.</message>
+    
+    <message id="stadium_extend_transaction_subject">Stadium Extension</message>
+    <message id="stadium_extend_success">The construction order has been successfully placed.</message>
+    
+    <message id="stadium-extend-confirm_navlabel">Confirm stadium extension</message>
+    <message id="stadium_extend_confirmation_title">Confirm construction order</message>
+    <message id="stadium_extend_totalcost_label">Total Costs</message>
+    
+    <message id="stadium_extend_limitation_intro">You can extend your stadium by the following listed maximum number of new seats</message>
+    <message id="stadium_extend_limitation_side">Sides</message>
+    <message id="stadium_extend_limitation_grand">Grandstand</message>
+    <message id="stadium_extend_limitation_vip">VIP lunges</message>
+    <message id="stadium_extend_limitation_instruction">In order to extend your stadium, enter the desired number of new seats below and select a builder company on the next page.</message>
+    <message id="stadium_extend_impossible">You cannot extend your stadium anymore because it has exceeded the maximum capacity.</message>
+    
+    <message id="stadium_extend_nobuilders">There are currently no builder company which show interest in this order.</message>
+    <message id="stadium_extend_builders_intro">Find offers of builder companies below. <strong>Note</strong> The provided completion time is only an estimation. The actual time might differ later, depending on the company's skills.</message>
+    <message id="stadium_extend_builders_totalcosts">Total costs</message>
+    <message id="stadium_extend_builders_details">Offer details</message>
+    <message id="stadium_extend_builders_constructiontime">%d days</message>
+    
+    <message id="stadium_construction_ongoing">There is a construction on-going at the moment. Details:</message>
+    <message id="stadium_construction_checkstatuslater">Come here again once the construction has been completed and verify the completion!</message>
+    <message id="stadium_construction_verifystatus">Accept the construction work</message>
+    
+    <message id="stadium_acceptconstruction_err_nonedue">There is currently no construction work which is due.</message>
+    
+    <message id="stadium_acceptconstruction_notcompleted_title">Unfortunately, the work has not been completed, yet.</message>
+	<message id="stadium_acceptconstruction_notcompleted_details">The builder is sorry and estimated a new completion date.</message>
+	
+	<message id="stadium_acceptconstruction_completed_title">Congratulations!</message>
+	<message id="stadium_acceptconstruction_completed_details">The work has been successfully completed. The new seats are now available for your audience.</message>
+	
+	<message id="stadium_construction_notification_delay">Unfortunately, there is a delay in your stadium construction work. The builder provided a new estimation for the completion date.</message>
+	<message id="stadium_construction_notification_completed">Your stadium has been successfully extended.</message>
+	
+	<message id="stadium_maintenance_title">Maintenance and Upgrading</message>
+	<message id="stadium_maintenance_upgradecost_label">Upgrade costs</message>
+	<message id="stadium_upgrade_button">Upgrade</message>
+	
+	<message id="stadium_maintenance_pitch_tooltip">A bad quality can influence your team's performance.</message>
+	<message id="stadium_maintenance_videowall_tooltip">Influences ticket sales.</message>
+	<message id="stadium_maintenance_seatsquality_tooltip">Influences the sales for seat tickets.</message>
+	<message id="stadium_maintenance_vipquality_tooltip">Influences the sales for VIP tickets.</message>
+	
+	<message id="stadium_upgrade_err_not_upgradable">The quality level cannot be upgraded anymore.</message>
+	
+	<message id="stadium_upgrade_transaction_subject">Stadium maintenance</message>
+	<message id="stadium_upgrade_success">The maintenance work has been successfully completed!</message>
+	<message id="stadium_upgrade_success_details">Note that the quality might decrease over time. Hence, check the status from time to time.</message>
+</messages>

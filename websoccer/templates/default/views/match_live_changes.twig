@@ -1,0 +1,169 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% block page_title %}
+	{{ i18n.getMessage("match-live-changes_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+<form id="formationForm" method="post">
+	<h3>{{ i18n.getMessage("match_report_minute", minute) }} (<a href="{{ env.getInternalUrl("match", "id=" ~ env.getRequestParameter("id")) }}">{{ i18n.getMessage("match_navlabel") }}</a>)</h3>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_player") }}</th>
+				<th>{{ i18n.getMessage("entity_player_position_main") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for player in players['field'] %}
+				{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
+					{% set playerName = player.pseudonym %}
+				{% else %}
+					{% set playerName = player.firstname|slice(0, 1) ~ ". " ~ player.lastname %}
+				{% endif %}
+				<tr>
+					<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}" target="_blank" title="{{ i18n.getMessage("player_navlabel") }}">{{ playerName }}</a> ({{ player.grade }})</td>
+					<td>
+						<input type="hidden" name="player{{ loop.index }}" class="playerField" value="{{ formation['player' ~ loop.index] }}">
+						{% if player.match_position == "Torwart" %}
+							<input type="hidden" name="player{{ loop.index }}_pos" value="T">
+							{{ i18n.getMessage("option_T") }}
+						{% else %}
+							{% set playerPos = formation['player' ~ loop.index ~ '_pos'] %}
+							<select name="player{{ loop.index }}_pos">
+								<option value=""></option>
+								{% for mainPos in ["LV", "IV", "RV", "DM", "LM", "ZM", "RM", "OM", "LS", "MS", "RS"] %}
+									<option value="{{ mainPos }}"{% if playerPos == mainPos %} selected{% endif %}>{{ i18n.getMessage("option_" ~ mainPos) }}</option>
+								{% endfor %}
+							</select>
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	{% if players['bench'] is defined and players['bench']|length > 0  %}
+	<h4>{{ i18n.getMessage("formation_substitutions_title") }}</h4>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("formation_substitutions_out") }}</th>
+				<th>{{ i18n.getMessage("formation_substitutions_in") }}</th>
+				<th>{{ i18n.getMessage("formation_substitutions_minute") }}</th>
+				<th>{{ i18n.getMessage("formation_substitutions_condition") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for subsNo in 1..3 %}
+				{% if formation["sub" ~  subsNo ~ "_minute"] > 0 and formation["sub" ~  subsNo ~ "_minute"] <= minute %}
+					{% set subIsDisabled = true %}
+				{% else %}
+					{% set subIsDisabled = false %}
+				{% endif %}
+				<tr>
+					<td>
+						<select name="sub{{ subsNo }}_out" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+							<option value=""></option>
+							{% for player in players['field'] %}
+								{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
+									{% set playerName = player.pseudonym %}
+								{% else %}
+									{% set playerName = player.firstname|slice(0, 1) ~ ". " ~ player.lastname %}
+								{% endif %}
+								<option value="{{ player.id }}"{% if player.id == formation["sub" ~  subsNo ~ "_out"] %} selected{% endif %}>{{ playerName }}</option>
+							{% endfor %}
+						</select>
+					</td>
+					<td>
+						<select name="sub{{ subsNo }}_in" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+							<option value=""></option>
+							{% for player in players['bench'] %}
+								{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
+									{% set playerName = player.pseudonym %}
+								{% else %}
+									{% set playerName = player.firstname|slice(0, 1) ~ ". " ~ player.lastname %}
+								{% endif %}
+								<option value="{{ player.id }}"{% if player.id == formation["sub" ~  subsNo ~ "_in"] %} selected{% endif %}>{{ playerName }}</option>
+							{% endfor %}
+						</select>
+						
+							<select name="sub{{ subsNo }}_position" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+								<option value="">{{ i18n.getMessage("formation_substitutions_position_default") }}</option>
+								{% for subPosition in ['T','LV','IV', 'RV', 'LM', 'DM', 'ZM', 'OM', 'RM', 'LS', 'MS', 'RS'] %}
+									<option value="{{ subPosition }}"{% if subPosition == formation["sub" ~  subsNo ~ "_position"] %} selected{% endif %}>{{ i18n.getMessage("option_" ~ subPosition) }}</option>
+								{% endfor %}
+							</select>
+					</td>
+					<td>
+						<input type="number" class="input-mini" name="sub{{ subsNo }}_minute" value="{{ formation["sub" ~  subsNo ~ "_minute"] }}"{% if subIsDisabled %} disabled{% endif %} />
+					</td>
+					<td>
+						<select name="sub{{ subsNo }}_condition" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+							{% for condition in ["none", "Tie", "Leading", "Deficit"] %}
+								<option value="{{ condition }}"{% if formation["sub" ~  subsNo ~ "_condition"] == condition %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_" ~ condition|lower) }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endif %}
+	
+	<h4>{{ i18n.getMessage("formation_freekickplayer") }}</h4>
+	
+	<select name="freekickplayer" id="freekickplayer" class="span4">
+		<option value=""></option>
+		{% for player in players['field'] %}
+			{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
+				{% set playerName = player.pseudonym %}
+			{% else %}
+				{% set playerName = player.firstname|slice(0, 1) ~ ". " ~ player.lastname %}
+			{% endif %}
+			<option value="{{ player.id }}"{% if player.id == formation.freekickplayer %} selected{% endif %}>{{ playerName }}</option>
+		{% endfor %}
+	</select>
+	
+	<h4>{{ i18n.getMessage("formation_offensive_title") }}</h4>
+	
+	<p>{{ i18n.getMessage("match_details_changes_max_help", env.getConfig("sim_allow_offensivechanges")) }}</p>
+	
+	{{ formelements.slider("offensive", formation.offensive) }}
+	
+		<div class="form-horizontal" style="margin-top: 10px">
+			<div class="control-group">
+				<label class="control-label" for="longpasses">{{ i18n.getMessage("formation_option_longpasses") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_longpasses_help') }}"></i></label>
+				<div class="controls">
+					<div class="make-switch" 
+						data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
+						data-on="success" data-off="warning">
+						<input type="checkbox" id="longpasses" name="longpasses" value="1"{% if formation.longpasses is defined and formation.longpasses %} checked{% endif %}>
+					</div>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="counterattacks">{{ i18n.getMessage("formation_option_counterattacks") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_counterattacks_help') }}"></i></label>
+				<div class="controls">
+					<div class="make-switch" 
+						data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
+						data-on="success" data-off="warning">
+						<input type="checkbox" id="counterattacks" name="counterattacks" value="1"{% if formation.counterattacks is defined and formation.counterattacks %} checked{% endif %}>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-actions" style="text-align: center">
+			<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+			<a href="{{ env.getInternalUrl("match", "id=" ~ env.getRequestParameter("id")) }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+		</div>
+		<input type="hidden" name="page" value="match-live-changes"/>
+		<input type="hidden" name="action" value="save-live-formation"/>
+</form>
+{% endblock %}

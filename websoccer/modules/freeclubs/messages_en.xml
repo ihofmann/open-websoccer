@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="freeclubs_navlabel">Free Clubs</message>
+    <message id="freeclubs_title">Teams without Manager</message>
+    <message id="freeclubs_no_free_clubs_available">There are currently no free clubs.</message>
+    <message id="freeclubs_head_choose">Selection</message>
+    <message id="freeclubs_button_choose">Choose Team</message>
+    <message id="freeclubs_button_choose_another">Choose another team</message>
+    <message id="freeclubs_msg_success">Congratulations! You are now manager of the selected team.</message>
+    <message id="freeclubs_msg_error">The team is probably already assigned to another user.</message>
+    <message id="freeclubs_msg_error_user_is_already_manager">You are already manager of a team.</message>
+    <message id="freeclubs_msg_error_max_number_of_teams">You must not manage more than %d teams at the moment.</message>
+    <message id="freeclubs_msg_error_no_club_from_same_league">You must not manage several teams from the same league.</message>
+    <message id="freeclubs_msg_error_minhighscore">You need a highscore of at least %d in order to manage an additional team.</message>
+</messages>

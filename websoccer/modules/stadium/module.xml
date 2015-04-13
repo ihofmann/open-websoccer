@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="clubs" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="stadium"
+            entity="stadium"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="stadion AS StadiumTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_stadium_name"
+                        field="StadiumTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_stadium_land"
+                        field="StadiumTab.land"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_stadium_verein"
+                        field="ClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    
+                	<join type="LEFT" jointable="verein AS ClubTab" joincondition="StadiumTab.id = ClubTab.stadion_id" />
+                </overview>
+
+                <editform>
+                    
+                    <field id="name" type="text" required="true" />
+                    <field id="stadt" type="text" />
+                    <field id="land" type="text" required="true" />
+                    <field id="picture" type="file" />
+                    
+					<field id="p_steh" type="number" required="true" />
+					<field id="p_sitz" type="number" required="true" />
+					<field id="p_haupt_steh" type="number" required="true" />
+					<field id="p_haupt_sitz" type="number" required="true" />
+					<field id="p_vip" type="number" required="true" />
+					
+					<field id="level_pitch" type="number" required="true" default="0" />
+					<field id="level_videowall" type="number" required="true" default="0" />
+					<field id="level_seatsquality" type="number" required="true" default="0" />
+					<field id="level_vipquality" type="number" required="true" default="0" />
+					<field id="maintenance_pitch" type="number" required="true" default="0" />
+					<field id="maintenance_videowall" type="number" required="true" default="0" />
+					<field id="maintenance_seatsquality" type="number" required="true" default="0" />
+					<field id="maintenance_vipquality" type="number" required="true" default="0" />
+					
+                </editform>
+            </entity>
+        </adminpage>
+        
+        <adminpage
+            id="stadiumbuilder"
+            entity="stadiumbuilder"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="stadium_builder AS BuilderTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_stadiumbuilder_name"
+                        field="BuilderTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_fixedcosts"
+                        field="BuilderTab.fixedcosts"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_cost_per_seat"
+                        field="BuilderTab.cost_per_seat"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_construction_time_days"
+                        field="BuilderTab.construction_time_days"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_min_stadium_size"
+                        field="BuilderTab.min_stadium_size"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_max_stadium_size"
+                        field="BuilderTab.max_stadium_size"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_reliability"
+                        field="BuilderTab.reliability"
+                        type="percent"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumbuilder_premiumfee"
+                        field="BuilderTab.premiumfee"
+                        type="number"
+                        sort="true" />
+                    
+                </overview>
+
+                <editform>
+                    
+                    <field id="name" type="text" required="true" />
+                    <field id="picture" type="file" />
+					<field id="fixedcosts" type="number" required="true" default="0" />
+					<field id="cost_per_seat" type="number" required="true" default="0" />
+					<field id="construction_time_days" type="number" required="true" default="5" />
+					<field id="construction_time_days_min" type="number" required="true" default="14" />
+					<field id="min_stadium_size" type="number" required="true" default="0" />
+					<field id="max_stadium_size" type="number" required="true" default="0" />
+					<field id="reliability" type="percent" required="true" default="100" />
+					<field id="premiumfee" type="number" required="false" default="0" />
+                </editform>
+            </entity>
+        </adminpage>
+        
+        <adminpage
+            id="stadiumconstruction"
+            entity="stadiumconstruction"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="stadium_construction AS ConstructionTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_stadiumconstruction_team_id"
+                        field="ClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_stadiumconstruction_builder_id"
+                        field="BuilderTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_stadiumconstruction_started"
+                        field="ConstructionTab.started"
+                        type="timestamp"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_stadiumconstruction_deadline"
+                        field="ConstructionTab.deadline"
+                        type="timestamp"
+                        sort="true" />
+                    
+                    <join type="LEFT" jointable="verein AS ClubTab" joincondition="ConstructionTab.team_id = ClubTab.id" />
+                    <join type="INNER" jointable="stadium_builder AS BuilderTab" joincondition="ConstructionTab.builder_id = BuilderTab.id" />
+                </overview>
+
+                <editform>
+                    
+                    <field id="team_id" type="foreign_key" entity="club" jointable="verein" cascade="delete" labelcolumns="name" required="true"/>
+                    <field id="builder_id" type="foreign_key" entity="stadiumbuilder" jointable="stadium_builder" labelcolumns="name" required="true" />
+					<field id="started" type="timestamp" required="true" />
+					<field id="deadline" type="timestamp" required="true" />
+					<field id="p_steh" type="number" required="true" default="0" />
+					<field id="p_sitz" type="number" required="true" default="0" />
+					<field id="p_haupt_steh" type="number" required="true" default="0" />
+					<field id="p_haupt_sitz" type="number" required="true" default="0" />
+					<field id="p_vip" type="number" required="true" default="0" />
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+  <settings>
+      <setting id="stadium_max_grand" category="stadium" type="number" default="60000" />
+      <setting id="stadium_max_side" category="stadium" type="number" default="30000" />
+      <setting id="stadium_max_vip" category="stadium" type="number" default="1000" />
+      
+      <setting id="stadium_cost_standing" category="stadium" type="number" default="100" />
+      <setting id="stadium_cost_seats" category="stadium" type="number" default="200" />
+      <setting id="stadium_cost_standing_grand" category="stadium" type="number" default="150" />
+      <setting id="stadium_cost_seats_grand" category="stadium" type="number" default="300" />
+      <setting id="stadium_cost_vip" category="stadium" type="number" default="2000" />
+      
+      <setting id="stadium_construction_delay" category="stadium" type="number" default="7" />
+      <setting id="stadium_hide_builders_reliability" category="stadium" type="boolean" default="1" />
+      
+      <setting id="stadium_maintenanceinterval_pitch" category="stadium" type="number" default="2" />
+      <setting id="stadium_maintenanceinterval_videowall" category="stadium" type="number" default="10" />
+      <setting id="stadium_maintenanceinterval_seatsquality" category="stadium" type="number" default="5" />
+      <setting id="stadium_maintenanceinterval_vipquality" category="stadium" type="number" default="5" />
+      
+      <setting id="stadium_pitch_price" category="stadium" type="number" default="10000" />
+      <setting id="stadium_videowall_price" category="stadium" type="number" default="100000" />
+      <setting id="stadium_seatsquality_price" category="stadium" type="number" default="10" />
+      <setting id="stadium_vipquality_price" category="stadium" type="number" default="50" />
+      
+      <setting id="stadium_maintenance_priceincrease_per_level" category="stadium" type="number" default="10" />
+      
+      <setting id="stadium_pitch_effect" category="stadium" type="number" default="1" />
+      <setting id="stadium_videowall_effect" category="stadium" type="number" default="1" />
+      <setting id="stadium_seatsquality_effect" category="stadium" type="number" default="2" />
+      <setting id="stadium_vipquality_effect" category="stadium" type="number" default="5" />
+  </settings>
+    
+    <pages>
+        <page
+            id="stadium"
+            template="stadium"
+            model="StadiumModel"
+            parentItem="office"
+            navitem="true"
+            navweight="6"
+            role="user">
+	        <page
+	            id="stadium-extend-confirm"
+	            template="stadium-extend-confirm"
+	            model="StadiumExtensionModel"
+	            role="user"/>
+	        
+	        <script file="stadium.js" />
+        </page>
+
+    </pages>
+    
+  <actions>
+	<action id="extend-stadium" controller="ExtendStadiumController" role="user">
+	    <param id="validate-only" type="boolean" />
+		<param id="side_standing" type="number" min="1" max="10000" />
+		<param id="side_seats" type="number" min="1" max="10000" />
+		<param id="grand_standing" type="number" min="1" max="10000" />
+		<param id="grand_seats" type="number" min="1" max="10000" />
+		<param id="vip" type="number" min="1" max="1000" />
+		<param id="offerid" type="number" max="100000000" />
+	</action>
+	
+	<action id="accept-stadium-construction-work" controller="AcceptStadiumConstructionWorkController" role="user" />
+	
+	<action id="upgrade-stadium" controller="UpgradeStadiumController" role="user" log="true">
+	    <param id="type" type="text" required="true" />
+	</action>
+	
+  </actions>
+    
+</module>

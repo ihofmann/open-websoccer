@@ -1,0 +1,58 @@
+
+<h4>{{ env.getRequestParameter("group") }}</h4>
+
+{% if groupteams is defined and groupteams|length > 0 %}
+	
+	<table class="table table-striped">
+		<colgroup>
+			<col style="width: 40px" />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+			<col />
+		</colgroup>
+		<thead>
+			<tr>
+				<th><abbr title="{{ i18n.getMessage("leaguetable_head_place") }}">{{ i18n.getMessage("leaguetable_head_place_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("leaguetable_head_club") }}</th>
+				<th><abbr title="{{ i18n.getMessage("leaguetable_head_matches") }}">{{ i18n.getMessage("leaguetable_head_matches_abbr") }}</abbr></th>
+				<th><abbr title="{{ i18n.getMessage("leaguetable_head_wins") }}">{{ i18n.getMessage("leaguetable_head_wins_abbr") }}</abbr></th>
+				<th><abbr title="{{ i18n.getMessage("leaguetable_head_draws") }}">{{ i18n.getMessage("leaguetable_head_draws_abbr") }}</abbr></th>
+				<th><abbr title="{{ i18n.getMessage("leaguetable_head_defeats") }}">{{ i18n.getMessage("leaguetable_head_defeats_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("leaguetable_head_goals") }}</th>
+				<th>{{ i18n.getMessage("leaguetable_head_score") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for team in groupteams %}
+				{% set place = loop.index %}
+			
+				<tr>
+					<td>{{ place }}</td>
+					<td>{% if (env.getUser().id > 0 and team.user_id == env.getUser().id) %}<strong>{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ team.id) }}">{{ team.name }}</a>
+					{% if team.user_id > 0 %}
+					<br><small>(<a href="{{ env.getInternalUrl("user", "id=" ~ team.user_id) }}">{{ team.user_name }}</a>)</small>
+					{% endif %}
+					{% if (env.getUser().id > 0 and team.user_id == env.getUser().id) %}<strong>{% endif %}
+					</td>
+					<td>{{ team.wins + team.draws + team.defeats }}</td>
+					<td>{{ team.wins }}</td>
+					<td>{{ team.draws }}</td>
+					<td>{{ team.defeats }}</td>
+					<td>{{ team.goals }}:{{ team.goals_received }}</td>
+					<td>{{ team.score }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+{% else %}
+	<p>{{ i18n.getMessage("cup_group_noteamsavailable") }}</p>
+{% endif %}
+
+<hr>
+{% include 'blocks/results-list.twig' %}

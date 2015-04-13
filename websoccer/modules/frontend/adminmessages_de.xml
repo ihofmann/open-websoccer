@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_tab_frontend">Frontend</message> 
+	
+	<message id="imprint_navlabel">Impressum</message>
+	<message id="imprint_label_content">Seiteninhalt</message>
+	<message id="imprint_label_content_help">HTML ist erlaubt. Zeilenumbrüche werden automatisch umgewandelt.</message>
+	<message id="imprint_introduction">In der Regel ist es aus rechtlichen Gründen erforderlich, den verantwortlichen Webseitenbetreiber auf der Webseite öffentlich anzugeben. Tragen Sie dazu die Kontaktdaten des Seitenbetreibers unten ein. Sie erscheinen auf der Webseite unter "Impressum".</message>
+	
+	<message id="imprint_validationerror_content">Es muss ein Inhalt angegeben werden.</message>
+	
+	<message id="settings_label_head_code">HTML-Code für den &lt;head&gt;-Bereich</message>
+	
+</messages>

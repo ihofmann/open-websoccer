@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <settings>
+    	<setting id="frontend_ads_hide_for_premiumusers" category="frontend" type="boolean" default="0" />
+    	<setting id="frontend_ads_code_sidebar" category="frontend" type="textarea" />
+    	<setting id="frontend_ads_code_top" category="frontend" type="textarea" />
+    	<setting id="frontend_ads_code_bottom" category="frontend" type="textarea" />
+	</settings>
+  
+    <blocks>
+
+        <block
+            id="ads_sidebar"
+            template="ads_sidebar"
+            model="AdsModel"
+            includepages="all"
+            area="sidebar"
+            weight="10"
+            role="user,guest" />
+        
+        <block
+            id="ads_top"
+            template="ads_top"
+            model="AdsModel"
+            includepages="all"
+            area="content_top"
+            weight="-10"
+            role="user,guest" />
+        
+        <block
+            id="ads_bottom"
+            template="ads_bottom"
+            model="AdsModel"
+            includepages="all"
+            area="content_bottom"
+            weight="10"
+            role="user,guest" />
+        
+    </blocks>
+
+</module>

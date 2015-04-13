@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <pages>
+        <page
+            id="playerssearch"
+            template="playerssearch"
+            navitem="true"
+            navweight="5"
+            parentItem="leagues"
+            role="user,guest" />     
+    </pages> 
+    
+    <blocks>
+        
+        <block
+            id="clubsearch"
+            template="autocomplete-resultlist"
+            model="ClubSearchModel"
+            includepages="none"
+            area="custom"
+            role="user,guest" />
+        
+        <block
+            id="playerssearch-results"
+            template="playerssearch-results"
+            model="PlayersSearchModel"
+            includepages="playerssearch"
+            area="content_bottom"
+            role="user,guest" />
+        
+    </blocks>
+    
+    
+</module>

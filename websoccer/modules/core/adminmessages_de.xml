@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="main_title">WebSoccer AdminCenter</message>
+    
+    <message id="error_page_not_found">Die aufgerufene Seite existiert nicht (mehr). Haben Sie die korrekte Adresse eingegeben?</message>
+    <message id="error_access_denied">Keine Berechtigung.</message>
+    <message id="validationerror_no_changes_as_demo">Der Demozugang erlaubt keine Datenänderungen.</message>
+    <message id="validationerror_email">Die angegebene E-Mail-Adresse ist ungültig.</message>
+    <message id="validationerror_url">Für %s wurde kein gültiger URL eingegeben.</message>
+    <message id="validationerror_number">Für %s wurde keine gültige Zahl eingegeben.</message>
+    <message id="validationerror_percent">Für %s muss eine gültige Zahl eingegeben werden.</message>
+    <message id="validationerror_text_too_long">Der Text für %s ist zu lange.</message>
+    <message id="validationerror_date">Für %s wurde kein gültiges Datum angegeben. Es muss im Format '%s' sein.</message>
+    <message id="validationerror_required">%s benötigt eine Eingabe.</message>
+    <message id="validationerror_imageupload_noimagefile">Die zu hochladende Datei ist keine gültige Grafikdatei.</message>
+    <message id="error_file_upload_failed">Die ausgewählte Datei konnte nicht hochgeladen werden. Überprüfen Sie, ob der Ordner existiert und Schreibrechte hat.</message>
+    
+    <message id="subpage_save_title">Speichern</message>
+    <message id="subpage_error_title">Fehler</message>
+    <message id="alert_save_success">Die Daten wurden erfolgreich gespeichert.</message>
+    <message id="subpage_error_alertbox_title">Es sind folgende Fehler aufgetreten:</message>
+    <message id="back_label">Zurück</message>
+    
+    <message id="button_save">Speichern</message>
+    <message id="button_reset">Zurücksetzen</message>
+    <message id="button_delete">Löschen</message>
+    <message id="button_close">Schliessen</message>
+    <message id="button_search">Suchen</message>
+    <message id="button_cancel">Abbrechen</message>
+    <message id="button_display">Anzeigen</message>
+    
+    <message id="option_yes">Ja</message>
+    <message id="option_no">Nein</message>
+    
+    <message id="unit_days">Tage</message>
+    <message id="unit_hours">Stunden</message>
+    <message id="unit_minutes">Minuten</message>
+    <message id="unit_matches">Spiele</message>
+    <message id="unit_seats">Plätze</message>
+    
+    <message id="empty_list">Keine Einträge gefunden.</message>
+    
+    <message id="alert_error_title">Fehler.</message>
+    
+    <message id="internetexplorer_warning_title">Lieber einen anderen Web Browser benutzen!</message>
+    <message id="internetexplorer_warning_message">Die Seiten des AdminCenters funktionieren besser und schneller wenn Sie einen HTML5-fähigen Web Browser benutzen, zum Beispiel Google Chrome. Probieren Sie es aus!</message>
+    
+    <message id="login_title">AdminCenter Anmeldung</message>
+    <message id="login_error_nousername">Es wurde kein Benutzername angegeben.</message>
+    <message id="login_error_nopassword">Es wurde kein Passwort angegeben.</message>
+    <message id="login_error_unknownusername">Benutzername unbekannt.</message>   
+    <message id="login_error_invalidpassword">Falsches Passwort.</message> 
+    <message id="login_alert_accessdenied_title">Sie müssen sich einloggen!</message>
+    <message id="login_alert_accessdenied_content">Bitte geben Sie unten Ihre Zugangsdaten ein.</message>
+    <message id="login_alert_logoutsuccess_title">Erfolgreich abgemeldet.</message>
+    <message id="login_alert_logoutsuccess_content">Bis zum nächsten mal!</message>
+    <message id="login_alert_sentpassword_title">Die Zugansdaten wurden versandt.</message>
+    <message id="login_alert_sentpassword_content">Überprüfen Sie Ihre E-Mails!</message>
+    <message id="login_alert_error_title">Anmeldung fehlgeschlagen!</message>
+    <message id="login_alert_error_content">Überprüfen Sie Ihre Eingabedaten.</message>
+    
+    <message id="login_label_user">Username</message>
+    <message id="login_label_password">Passwort</message>
+    <message id="login_button_logon">Anmelden</message>    
+    
+    <message id="login_link_forgotpassword">Passwort vergessen?</message>    
+    
+    <message id="admincenter_brand">AdminCenter</message>
+    <message id="admincenter_homelink_tooltip">Zur AdminCenter Startseite</message>
+    <message id="admincenter_loggedin_as">Angemeldet als</message>
+    <message id="admincenter_editprofile_tooltip">Profil bearbeiten</message>
+    <message id="admincenter_logout">Abmelden</message>
+    <message id="admincenter_link_clear_cache">Cache leeren</message>
+    
+    
+    <message id="category_website_navlabel">Website</message>
+    <message id="category_settings_navlabel">Allgemein</message>
+	
+	<message id="admincenter_link_website">Website</message>
+	<message id="admincenter_link_profile">Profil</message>
+	
+	<message id="all_settings_navlabel">Einstellungen</message>
+	<message id="all_logging_navlabel">Login Protokoll</message>
+	
+	<message id="profile_title">Profil Bearbeiten</message>
+	<message id="profile_label_name">Name</message>
+	<message id="profile_label_email">E-Mail</message>
+	<message id="profile_label_newpassword">Neues Passwort</message>
+	<message id="profile_label_repeatpassword">Neues Passwort wiederholen</message>
+	<message id="profile_label_language">Sprache</message>
+	
+	<message id="all_logging_title">Anmeldeprotokoll</message>
+	<message id="all_logging_intro">Hier werden die letzten LogIns in das AdminCenter aufgeführt.</message>
+	<message id="all_logging_filesize"><strong>Größe der Protokolldatei:</strong> %s KBytes</message>
+	<message id="all_logging_button_empty_file">Datei leeren</message>
+	<message id="all_logging_filenotfound">Die Protokolldatei wurde nicht gefunden.</message>
+	<message id="all_logging_alert_logfile_truncated">Die Protokolldatei wurde erfolgreich geleert.</message>
+	<message id="all_logging_error_not_truncated">Die Protokolldatei konnte nicht geleert werden. Hat die Datei Schreibrechte?</message>
+	<message id="all_logging_only_last_entries_shown">Es werden nur die letzten 50 Einträge angezeigt.</message>
+	
+	<message id="all_logging_label_no">Nr</message>
+	<message id="all_logging_label_user">User</message>
+	<message id="all_logging_label_ip">IP</message>
+	<message id="all_logging_label_time">Systemzeit</message>	
+	
+	<message id="clearcache_title">Cache leeren</message>	
+	<message id="clearcache_success_title">Der Zwischenspeicher wurde neu aufgebaut.</message>	
+	<message id="clearcache_success_message">Führen Sie diese Aktion immer aus, wenn Sie Einstellungen an den Softwaremodulen vorgenommen haben.</message>
+	
+	<message id="profile_validationerror_email">Keine E-Mail Adresse angegeben.</message>
+	<message id="profile_validationerror_password_too_short">Das Passwort ist zu kurz.</message>
+	<message id="profile_validationerror_wrong_repeated_password">Das wiederholte Passwort stimmt nicht mit dem ersten Passwort überein.</message>
+	
+	<message id="home_title">Willkommen %s!</message>
+	<message id="home_intro">Schön, Sie im AdminCenter von <strong>OpenWebSoccer-Sim</strong> begrüßen zu dürfen. Bitte vergessen Sie nicht, sich nach Ihrer Sitzung <a href="logout.php">abzumelden</a>, wenn weitere Benutzer an Ihrem PC arbeiten.</message>
+	<message id="home_softwareinfo_title">Informationen zur Software</message>
+	<message id="home_softwareinfo_name">Name</message>
+	<message id="home_softwareinfo_version">Version</message>
+	<message id="home_softwareinfo_developer">Entwickler</message>
+	<message id="home_softwareinfo_copyright">Copyright</message>
+	<message id="home_projectinfo_title">Informationen zum Projekt</message>
+	<message id="home_projectinfo_name">Name</message>
+	<message id="home_projectinfo_adminemail">Admin E-Mail</message>  
+	
+	<message id="all_settings_title">Systemeinstellungen</message>	
+	
+	<message id="settings_tab_general">Allgemein</message>  
+	<message id="settings_tab_offlinemode">Offline-Modus</message> 
+	<message id="settings_tab_game">Spiel</message> 
+	<message id="settings_tab_social">Soziale Netzwerke</message> 
+	
+	<message id="settings_label_context_root">Relativer Pfad auf Server (Context Root)</message> 
+	<message id="settings_label_context_root_help">Ohne "/" am Ende.</message> 
+	<message id="settings_label_projectname">Projektname</message> 
+	<message id="settings_label_systememail">System-E-Mail</message> 
+	<message id="settings_label_homepage">Offizielle Website</message> 
+	<message id="settings_label_homepage_help">URL zum Skript ohne Context Root</message> 
+	<message id="settings_label_time_offset">Zeitunterschied zur Serverzeit</message> 
+	<message id="settings_label_time_offset_help">in Sekunden (3600 ist eine Stunde)</message> 
+	<message id="settings_label_password_protected">Alle Seiten schützen.</message> 
+	<message id="settings_label_password_protected_help">Nur angemeldete Benutzer können auf Seiten zugreifen.</message> 
+	<message id="settings_label_password_protected_startpage">Auch Startseite schützen.</message> 
+	<message id="settings_label_entries_per_page">Anzahl Einträge pro Seite</message> 
+	<message id="settings_label_entries_per_page_help">in Listen</message> 
+	<message id="settings_label_supported_languages">Unterstützte Sprachen</message> 
+	<message id="settings_label_supported_languages_help">Mit Komma getrennt</message> 
+	<message id="settings_label_date_format">Datumsformat</message> 
+	<message id="settings_label_date_format_help">Gemäss PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-Funktion</message> 
+	<message id="settings_label_datetime_format">Format für Datum und Zeit</message> 
+	<message id="settings_label_datetime_format_help">Gemäss PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-Funktion</message> 
+	<message id="settings_label_time_format">Format für nur Zeit</message> 
+	<message id="settings_label_time_format_help">Gemäss PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-Funktion</message> 
+	<message id="settings_label_skin">Skin</message> 
+	<message id="settings_label_skin_help">Name einer Skin-Klasse. Mitgeliefert sind <em>DefaultBootstrapSkin</em>, <em>GreenBootstrapSkin</em> und <em>SchedioartFootballSkin</em>.</message> 
+	<message id="settings_label_session_lifetime">Dauer einer Benutzersitzung</message> 
+	<message id="settings_label_session_lifetime_help">in Sekunden. Wie lange ein Benutzer inaktiv sein kann bis seine Sitzung automatisch deaktiviert wird.</message> 
+	
+	<message id="settings_label_time_zone">Zeitzone</message> 
+	<message id="settings_label_time_zone_help">Zeitzone des Servers. Muss ein von <a href="http://php.net/manual/de/timezones.php" target="_blank">PHP unterstützter Wert</a> sein.</message> 
+	
+	<message id="settings_label_privacypolicy_url">URL zur Datenschutzerklärung</message> 
+	<message id="settings_label_privacypolicy_url_help">Interne oder externe URL (Internetadresse) zu einer Datenschutzerklärung.</message> 
+	
+	<message id="settings_label_game_currency">Spielgeldwährung</message> 
+	
+	<message id="settings_label_offline_help">Website an- oder ausschalten. Wenn Sie den Modus "Offline" wählen, erscheint bei den Besuchern bei allen Seitenaufrufen nur die Meldung, die Sie unten eingeben.</message>
+  	<message id="settings_label_offline">Modus</message>
+	<message id="settings_label_offline_text">Offline-Nachricht</message>
+	
+	<message id="settings_label_offline_times">Regelmässiges Abschalten</message>
+	<message id="settings_label_offline_times_help">Kommagetrennte Zeiträume im 24-Stunden-Format, in denen die Webseite täglich in den Offline-Modus wechseln soll. Beispiel: 09:00-12:00, 13:00-17:00</message>
+	
+	<message id="settings_saved_note_restartjobs">Starten Sie die Jobs neu!</message>
+	<message id="settings_saved_note_restartjobs_details">Änderungen, die Jobs betreffen, werden erst nach deren Neustart wirksam.</message>
+	
+	<message id="manage_add">Neuen Eintrag erstellen</message>
+	<message id="manage_edit">Bearbeiten</message>
+	<message id="manage_delete">Löschen</message>
+	<message id="manage_no_records_found">Es wurden keine Datensätze gefunden.</message>
+	<message id="manage_number_of_records"><b>%d</b> Datensätze gefunden. Zeige %d bis %d:</message>
+	<message id="manage_select_all_label">Alle Einträge auswählen.</message>
+	<message id="manage_selected_items_label">Ausgewählte Datensätze:</message>
+	<message id="manage_status_active">Status: aktiv</message>
+	<message id="manage_status_blocked">Status: gesperrt</message>
+	<message id="manage_show_details">Details anzeigen</message>
+	<message id="manage_sort_column_asc">Aufsteigend nach %s sortieren</message>	
+	<message id="manage_sort_column_desc">Absteigend nach %s sortieren</message>	
+	<message id="manage_sort_column_reset">Sortierung entfernen</message>	
+	<message id="manage_search_title">Suche</message>
+	<message id="manage_search_collapse">Suchformular ein- und ausblenden</message>
+	<message id="manage_delete_multiselect_confirm">Wollen Sie die ausgewählten Einträge wirklich löschen?</message>
+	<message id="manage_delete_link_confirm">Wollen Sie diesen Eintrag wirklich löschen?</message>
+	<message id="manage_success_delete">Erfolgreich gelöscht.</message>
+	<message id="manage_add_title">Erstellen</message>
+	<message id="manage_edit_title">Bearbeiten</message>
+	
+	<message id="manage_select_placeholder">Kein</message>
+	
+	<message id="jobs_navlabel">Jobs</message>
+	<message id="jobs_introduction">Jobs sind Prozesse, die regelmässig im Hintergrund ablaufen, wie zum Beispiel die automatische Spielberechnung. Diese müssen immer manuell gestartet werden, wenn der Server einen Neustart hatte oder
+	    sonst ein Fehler aufgetreten ist.</message>
+	 <message id="jobs_warning">Überprüfen Sie regelmässig (mindestens täglich), ob die Jobs noch laufen!</message>  
+	
+	<message id="jobs_head_name">Bezeichnung</message>
+	<message id="jobs_head_status">Status</message>
+	<message id="jobs_head_startstop">Start/Stop</message> 
+	<message id="jobs_head_class">Klasse</message> 
+	<message id="jobs_head_last_execution">Letzte Ausführung</message> 
+	<message id="jobs_head_interval">Intervall</message> 
+	<message id="jobs_status_running">Läuft</message> 
+	<message id="jobs_status_notrunning">Läuft nicht</message> 
+	<message id="jobs_button_stop">Anhalten</message>
+	<message id="jobs_button_start">Starten</message>
+	<message id="jobs_button_execute_once">Einmalig ausführen</message>
+	<message id="jobs_executed">Erfolgreich ausgeführt.</message>
+	
+	<message id="sendpassword_admin_email_subject">Ihr neues Passwort zum AdminCenter</message>
+	<message id="sendpassword_admin_email_greeting">Guten Tag,</message>
+	<message id="sendpassword_admin_email_introduction">dies ist Ihr neues Passwort, das Sie über das AdminCenter angefordert haben und in Ihrem Profil ändern können und sollten:</message>
+	<message id="sendpassword_admin_email_newpassword_label">Ihr neues Passwort:</message>
+	<message id="sendpassword_admin_email_ending">Beachten Sie, dass Ihr neues Passwort erst aktiv wird, sobald Sie sich zum ersten mal damit anmelden.</message>
+	
+	<message id="sendpassword_admin_usernotfound">Benutzer nicht bekannt.</message>
+	<message id="sendpassword_admin_alreadysent">Sie haben erst kürzlich ein Passwort angefordert. Probieren Sie es später noch einmal.</message>
+	
+	<message id="sendpassword_admin_title">Passwort anfordern</message>
+	<message id="sendpassword_admin_intro">Sie haben Ihr Passwort vergessen? Geben Sie einfach Ihre E-Mail-Adresse an und wir senden Ihnen ein neues Passwort zu.</message>
+	<message id="sendpassword_admin_label_email">E-Mail</message>
+	<message id="sendpassword_admin_button">Passwort zusenden</message>
+	<message id="sendpassword_admin_loginlink">Zum Log-In</message>
+	
+	<message id="entitylogging_nologgingcolumns">Wenn Sie Logging für diese Entität aktivieren, müssen Sie Datenbankspalten im Attribut <em>loggingcolumns</em> angeben.</message>
+	<message id="entitylogging_navlabel">Datenänderungen</message>
+	<message id="entitylogging_intro">Dies sind die letzten 50 Änderungen an wichtigen Datentypen. Die Änderungsnachverfolgung können Sie für jedes Modul separat ein- oder ausschalten. Zum Einschalten fügen Sie in der <em>module.xml</em>-Datei einfach die Attribute <em>logging</em> und <em>loggingcolumns</em> hinzu, wie im Beispiel gezeigt.</message>
+	<message id="entitylogging_label_no">Nr.</message>
+	<message id="entitylogging_label_time">Zeit</message>
+	<message id="entitylogging_label_user">Benutzer (IP)</message>
+	<message id="entitylogging_label_type">Aktion</message>
+	<message id="entitylogging_label_data">Datensatz</message>
+	
+	<message id="entitylogging_action_edit">Bearbeitung</message>
+	<message id="entitylogging_action_delete">Löschung</message>
+</messages>

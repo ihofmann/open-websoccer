@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_paypal_enabled">Premiumguthaben durch Zahlungen über PayPal erwerben.</message> 
+	<message id="settings_label_paypal_receiver_email">PayPal: Kontoname (E-Mail)</message>
+	<message id="settings_label_paypal_receiver_email_help">Empfänger-E-Mail. Muss die Adresse sein, die auf PayPal hinterlegt ist.</message>
+	<message id="settings_label_paypal_host">PayPal: Host</message>
+	<message id="settings_label_paypal_host_help">Für gewöhnlich <em>www.paypal.com</em>. Für Testbetrieb: <em>www.sandbox.paypal.com</em></message>
+	<message id="settings_label_paypal_url">URL zu PayPal</message>
+	<message id="settings_label_paypal_url_help">Interner URL zur Zahlungsüberprüfung. Für gewöhnlich <em>ssl://www.paypal.com</em>. Für Testbetrieb: <em>ssl://www.sandbox.paypal.com</em>.</message>
+	<message id="settings_label_paypal_buttonhtml">PayPal: Buttoncode (HTML)</message>
+	<message id="settings_label_paypal_buttonhtml_help"><strong>Unbearbeiteter</strong> HTML-Code des Buttons, der über das Händlerportal auf PayPal von Ihnen erzeugt wurde. Der Button muss die oben konfigurierten Einzahlungsoptionen in der angegebenen Währung beinhalten. Lesen Sie dazu auch die Produktdokumentation.</message>
+</messages>

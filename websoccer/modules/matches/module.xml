@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="leagues" version="1.0.0" />
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="match"
+            entity="match"
+            navcategory="season"
+            permissionrole="r_spiele" >
+
+            <entity dbtable="spiel As MatchTab" >
+
+                <overview
+                    delete="true"
+                    edit="true" >
+
+                    <column
+                        id="entity_match_datum"
+                        field="MatchTab.datum"
+                        type="timestamp"
+                        sort="true" />
+
+                    <column
+                        id="entity_match_home_verein"
+                        field="HomeTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_gast_verein"
+                        field="GuestTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_saison_id"
+                        field="SeasonTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_spieltag"
+                        field="MatchTab.spieltag"
+                        type="number"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_pokalname"
+                        field="MatchTab.pokalname"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_pokalrunde"
+                        field="MatchTab.pokalrunde"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_berechnet"
+                        field="MatchTab.berechnet"
+                        type="boolean"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_match_matchreportitems"
+                        field="1"
+                        type="number"
+                        converter="MatchReportLinkConverter"  />
+                    
+                    <join type="INNER" jointable="verein AS HomeTab" joincondition="HomeTab.id = MatchTab.home_verein" />
+                    <join type="INNER" jointable="verein AS GuestTab" joincondition="GuestTab.id = MatchTab.gast_verein" />
+                    <join type="LEFT" jointable="saison AS SeasonTab" joincondition="SeasonTab.id = MatchTab.saison_id" />
+                </overview>
+
+                <editform>
+
+                    <field id="datum" type="timestamp" required="true"  />
+
+                    <field id="spieltyp" type="select" selection="Ligaspiel,Pokalspiel,Freundschaft" required="true"  />
+                    
+                    <field id="saison_id" type="foreign_key" entity="season" jointable="saison" cascade="delete" labelcolumns="id,name" />
+                    
+                    <field id="spieltag" type="number" />
+                    
+                    <field id="pokalname" type="text" />
+                    
+                    <field id="pokalrunde" type="text" />
+                    
+                    <field id="pokalgruppe" type="text" />
+                    
+                    <field id="elfmeter" type="boolean" />
+                    
+                    <field id="home_verein" type="foreign_key" entity="club" jointable="verein" cascade="delete" labelcolumns="name" />
+                    
+                    <field id="gast_verein" type="foreign_key" entity="club" jointable="verein" cascade="delete" labelcolumns="name" />
+                    
+                    <field id="stadion_id" type="foreign_key" entity="stadium" jointable="stadion" labelcolumns="id,name" />
+                    
+                    <field id="berechnet" type="boolean" />
+                    
+                    <field id="home_tore" type="number" />
+                    
+                    <field id="gast_tore" type="number" />
+                    
+                    <field id="zuschauer" type="number" />
+                    
+                    <field id="soldout" type="boolean" />
+                    
+                    <field id="bericht" type="textarea" />
+                    
+                    <field id="blocked" type="boolean" />
+                </editform>
+            </entity>
+        </adminpage>
+        
+        <adminpage
+            id="matchtext"
+            entity="matchtext"
+            navcategory="season"
+            permissionrole="r_daten" >
+
+            <entity dbtable="spiel_text" >
+
+                <overview
+                    delete="true"
+                    edit="true" >
+
+                    <column
+                        id="entity_matchtext_aktion"
+                        field="aktion"
+                        type="text"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_matchtext_nachricht"
+                        field="nachricht"
+                        type="text"
+                        filter="true" />
+
+                </overview>
+
+                <editform>
+
+                    <field
+                        id="aktion"
+                        type="select"
+                        selection="Tor,Tor_mit_vorlage,Auswechslung,Zweikampf_gewonnen,Zweikampf_verloren,Pass_daneben,Torschuss_daneben,Torschuss_auf_Tor,Karte_gelb,Karte_rot,Karte_gelb_rot,Verletzung,Elfmeter_erfolg,Elfmeter_verschossen,Ecke,Freistoss_daneben,Freistoss_treffer,Taktikaenderung"
+                        required="true"  />
+
+                    <field
+                        id="nachricht"
+                        type="text"
+                        required="true"  />
+                    
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+    <pages>
+        <page
+            id="match"
+            template="match-details"
+            model="MatchDetailsModel"
+            navitem="true"
+            navweight="0"
+            role="user,guest"
+            parentItem="results">
+            
+            <page
+	            id="match-live-changes"
+	            template="match_live_changes"
+	            model="MatchChangesModel"
+	            role="user">
+                <script file="jquery-ui-1.10.2.custom.min.js" debugonly="true"/>
+	            <script file="formationws4.js" debugonly="true"/>
+	            <script file="formation.min.js" productiononly="true"/>
+	            
+	            <script file="bootstrap-slider.js" />
+	            <script file="bootstrap-switch.js" />
+	            
+	            <css file="slider.css"/>
+	        	<css file="formation.css"/>
+	        	<css file="bootstrap-switch.css"/>
+            </page>
+            
+            <script file="flot/jquery.flot.min.js" />
+            <script file="flot/jquery.flot.pie.min.js" />
+            <script file="charts.js" />
+        </page>
+        
+        <page
+            id="todaysmatches"
+            template="todaysmatches"
+            navitem="true"
+            navweight="4"
+            role="user,guest"
+            parentItem="leagues" />
+        
+        <page
+            id="myschedule"
+            template="myschedule"
+            navitem="true"
+            navweight="4"
+            role="user"
+            parentItem="office"
+            model="MyScheduleModel" />
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="lastmatch"
+            template="lastmatch"
+            model="LastMatchModel"
+            includepages="office"
+            area="content_top"
+            weight="2"
+            role="user" />
+        
+        <block
+            id="livematch"
+            template="livematch"
+            model="LiveMatchBlockModel"
+            includepages="all"
+            area="sidebar"
+            weight="2"
+            role="user" />
+        
+        <block
+            id="match-result-players"
+            template="match_result_players"
+            model="MatchPlayersModel"
+            includepages="none"
+            area="custom"
+            role="user,guest" />
+        
+        <block
+            id="match-statistics"
+            template="match_result_statistics"
+            model="MatchStatisticsModel"
+            includepages="none"
+            area="custom"
+            role="user,guest" />
+        
+        <block
+            id="cups-list"
+            template="cups-list"
+            model="CupsListModel"
+            includepages="none"
+            area="custom"
+            role="user,guest" />
+        
+        <block
+            id="cup-results"
+            template="cup-results"
+            model="CupResultsModel"
+            includepages="none"
+            area="custom"
+            role="user,guest" />
+        
+        <block
+            id="todays-matches"
+            template="results-list"
+            model="TodaysMatchesModel"
+            includepages="todaysmatches"
+            area="content_top"
+            role="user,guest" />
+        
+        <block
+            id="match-preview"
+            template="match_preview"
+            model="MatchPreviewModel"
+            includepages="match"
+            area="content_bottom"
+            role="user,guest"
+            weight="0" />
+        
+    </blocks>
+    
+  <actions>
+	<action id="save-live-formation" controller="SaveMatchChangesController" role="user">
+	    <param id="id" type="number" required="true" min="1" />
+	    
+		<param id="offensive" type="number" required="true" min="1" max="100" />
+		<param id="longpasses" type="boolean" />
+		<param id="counterattacks" type="boolean" />
+		<param id="freekickplayer" type="number" />
+		
+		<param id="player1" type="number" />
+		<param id="player2" type="number" />
+		<param id="player3" type="number" />
+		<param id="player4" type="number" />
+		<param id="player5" type="number" />
+		<param id="player6" type="number" />
+		<param id="player7" type="number" />
+		<param id="player8" type="number" />
+		<param id="player9" type="number" />
+		<param id="player10" type="number" />
+		<param id="player11" type="number" />
+
+		<param id="player1_pos" type="text" />
+		<param id="player2_pos" type="text"  />
+		<param id="player3_pos" type="text" />
+		<param id="player4_pos" type="text" />
+		<param id="player5_pos" type="text" />
+		<param id="player6_pos" type="text" />
+		<param id="player7_pos" type="text" />
+		<param id="player8_pos" type="text" />
+		<param id="player9_pos" type="text" />
+		<param id="player10_pos" type="text" />
+		<param id="player11_pos" type="text" />
+		
+		<param id="sub1_out" type="number" />
+		<param id="sub1_in" type="number" />
+		<param id="sub1_minute" type="number"/>
+		<param id="sub1_condition" type="text" />
+		<param id="sub1_position" type="text" />
+		
+		<param id="sub2_out" type="number" />
+		<param id="sub2_in" type="number" />
+		<param id="sub2_minute" type="number" />
+		<param id="sub2_condition" type="text" />
+		<param id="sub2_position" type="text" />
+		
+		<param id="sub3_out" type="number" />
+		<param id="sub3_in" type="number" />
+		<param id="sub3_minute" type="number" />
+		<param id="sub3_condition" type="text" />
+		<param id="sub3_position" type="text" />
+	</action>
+  </actions>
+    
+</module>

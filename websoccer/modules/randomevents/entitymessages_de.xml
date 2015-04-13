@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_randomevent">Zufallsereignisse</message>
+	<message id="entity_randomevent_message">Nachricht</message>
+	<message id="entity_randomevent_message_help">Kann auch ein Messages-Key sein. Nachricht kann Platzhalter "{playername}" enthalten bei spielerspezifischen Ereignissen.</message>
+	<message id="entity_randomevent_effect">Auswirkung</message>
+	<message id="entity_randomevent_effect_money_amount">Auswirkung: Geldbetrag</message>
+	<message id="entity_randomevent_effect_money_amount_help">Positiver oder negativer Betrag, der beim entsprechenden Ereignis vom bzw. auf das Vereinskonto gebucht wird.</message>
+	<message id="entity_randomevent_effect_blocked_matches">Auswirkung: Anzahl gesperrte Spiele</message>
+	<message id="entity_randomevent_effect_skillchange">Auswirkung: Stärkenänderung</message>
+	<message id="entity_randomevent_effect_skillchange_help">Positive oder negative Änderung des entsprechenden Spielerattributs.</message>
+	<message id="entity_randomevent_weight">Gewichtung</message>
+	<message id="entity_randomevent_weight_help">Wirkt sich auf die Wahrscheinlichkeit des Eintretens aus. 1 bedeutet normale Wahrscheinlichkeit; 5 bedeutet, dass es fünf mal so wahrscheinlich eintreten kann. 0 deaktiviert das Ereignis.</message>
+
+	<message id="option_money">Vereinskonto wird verändert</message>
+	<message id="option_player_injured">Ein Spieler fällt verletzt aus</message>
+	<message id="option_player_blocked">Ein Spieler fällt gesperrt aus</message>
+	<message id="option_player_happiness">Zufriedenheit eines Spielers verändert sich</message>
+	<message id="option_player_fitness">Frische eines Spielers verändert sich</message>
+	<message id="option_player_stamina">Kondition eines Spielers verändert sich</message>
+</messages>

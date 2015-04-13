@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="fireplayer_button">Dismiss</message>
+    
+    <message id="fireplayer_modal_title">Really fire this player?</message>
+    <message id="fireplayer_modal_content">Do you really want to resign %s's contract?</message>
+    <message id="fireplayer_modal_confirm">Yes, lay him off</message>
+    
+    <message id="fireplayer_modal_compensation">The player demands a compensation of <strong>%s %s</strong>!</message>
+    <message id="fireplayer_tooexpensive">You cannot pay the requested compensation at the moment.</message>
+    
+    <message id="fireplayer_success">The player has been successfully layed off.</message>
+    
+    <message id="fireplayer_compensation_subject">Compensation for loss of job</message>
+    
+</messages>

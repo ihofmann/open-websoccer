@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="profile" version="1.0.0" />
+    </dependencies>
+    
+    <settings>
+      <setting id="notifications_max" category="frontend" type="number" default="5" />
+	</settings>
+    
+    <blocks>
+
+        <block
+            id="notifications"
+            template="notifications"
+            model="NotificationsModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+    </blocks>
+    
+</module>

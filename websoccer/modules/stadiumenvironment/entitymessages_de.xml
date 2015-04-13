@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_stadiumbuilding">Gebäude</message>
+	<message id="entity_stadiumbuilding_name">Name</message>
+	<message id="entity_stadiumbuilding_name_help">Kann auch ein Messages-Key sein.</message>
+	<message id="entity_stadiumbuilding_description">Beschreibung</message>
+	<message id="entity_stadiumbuilding_description_help">Kann auch ein Messages-Key sein.</message>
+	<message id="entity_stadiumbuilding_picture">Bild</message>
+	
+	<message id="entity_stadiumbuilding_required_building_id">Erforderliches Gebäude</message>
+	<message id="entity_stadiumbuilding_required_building_id_help">Ein ausgewähltes Gebäude muss dann vorher gebaut werden. Beachten Sie, dass das vorher gebaute Gebäude auch nach Bau des neuen Gebäudes erhalten bleibt. Die unten eingegebenen Auswirkungen werden dann aufaddiert.</message>
+	
+	<message id="entity_stadiumbuilding_costs">Baukosten</message>
+	<message id="entity_stadiumbuilding_premiumfee">Premiumkosten</message>
+	<message id="entity_stadiumbuilding_premiumfee_help">Das Premiumkonto des Benutzers wird dann zusätzlich zum Vereinskonto belastet.</message>
+	<message id="entity_stadiumbuilding_construction_time_days">Bauzeit (Tage)</message>
+	<message id="entity_stadiumbuilding_effect_training">Auswirkung: Training</message>
+	<message id="entity_stadiumbuilding_effect_training_help">Wieviele Stärkepunkte an Frische und Zufriedenheit pro Trainingseinheit zusätzlich gewonnen werden kann.</message>
+	<message id="entity_stadiumbuilding_effect_youthscouting">Auswirkung: Jugendscouting</message>
+	<message id="entity_stadiumbuilding_effect_youthscouting_help">Stärkebonus bei gefundenen Jugendspielern.</message>
+	<message id="entity_stadiumbuilding_effect_tickets">Auswirkung: Zuschauer</message>
+	<message id="entity_stadiumbuilding_effect_tickets_help">Um wieviel Prozentpunkte mehr Tickets verkauft werden bei Heimspielen. Bonus verfällt wenn ohne Gebäudebonus gar keine Tickets verkauft würden.</message>
+	<message id="entity_stadiumbuilding_effect_fanpopularity">Auswirkung: Fanbeliebtheit (einmalig)</message>
+	<message id="entity_stadiumbuilding_effect_fanpopularity_help">Um wieviel Prozentpunkte die Fanbeliebtheit des Benutzers einmalig geändert wird. <strong>Achtung:</strong> Die Auswirkung wird sofort bei Bauerteilung gutgeschrieben. Die Bauzeit wird hier nicht berücksichtigt.</message>
+    <message id="entity_stadiumbuilding_effect_injury">Auswirkung: Verletzungen</message>
+    <message id="entity_stadiumbuilding_effect_injury_help">Um wieviele Spiele die Verletzung von Spielern nach jedem Spiel zusätzlich zur normalen Genesung reduziert werden soll. Beispiel: Wert 1 halbiert die Genesungszeit.</message>
+    <message id="entity_stadiumbuilding_effect_income">Einnahmen/Kosten pro Heimspiel</message>
+    <message id="entity_stadiumbuilding_effect_income_help">Betrag wird bei jedem Heimspiel dem Verein gutgeschrieben (falls Betrag positiv) bzw. abgebucht (falls Betrag negativ).</message>
+</messages>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="settings_tab_stadium">Stadium</message>
+    <message id="settings_label_stadium_max_side">Max. Side</message>
+	<message id="settings_label_stadium_max_side_help">Maximum number of places at the sides.</message>
+	
+	<message id="settings_label_stadium_max_grand">Max. Grandstand</message>
+	<message id="settings_label_stadium_max_grand_help">Maximum number of places at the grandstands.</message>
+
+	<message id="settings_label_stadium_max_vip">Max. VIP lounges</message>
+	<message id="settings_label_stadium_max_vip_help">Maximum number of VIP lounges.</message>
+	
+	<message id="settings_label_stadium_cost_standing">Construction costs standing room side</message>
+	<message id="settings_label_stadium_cost_standing_help">per seat. Will be added to the individual prices of builder companies.</message>
+	<message id="settings_label_stadium_cost_seats">Construction costs seat side</message>
+	<message id="settings_label_stadium_cost_seats_help">per seat</message>
+	<message id="settings_label_stadium_cost_standing_grand">Construction costs standing room grand</message>
+	<message id="settings_label_stadium_cost_standing_grand_help">per seat</message>
+	<message id="settings_label_stadium_cost_seats_grand">Construction costs seat grand</message>
+	<message id="settings_label_stadium_cost_seats_grand_help">per seat</message>
+	<message id="settings_label_stadium_cost_vip">Construction costs VIP lounge</message>
+	<message id="settings_label_stadium_cost_vip_help">per seat</message>
+	
+	<message id="settings_label_stadium_construction_delay">Construction delay in days</message>
+	<message id="settings_label_stadium_construction_delay_help">Possible delay of a stadium extension work completion when an unreliable builder has been chosen by the user. Should be high enough so that users find more expensive (but also more reliable) providers more interesting.</message>
+
+	<message id="settings_label_stadium_hide_builders_reliability">Hide builder's reliability from user.</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_pitch">Maintenance interval grass</message>
+	<message id="settings_label_stadium_maintenanceinterval_pitch_help">Home matches. After how many matches at home does the level of quality decrease?</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_videowall">Maintenance interval video wall</message>
+	<message id="settings_label_stadium_maintenanceinterval_videowall_help">Home matches</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_seatsquality">Maintenance interval seats</message>
+	<message id="settings_label_stadium_maintenanceinterval_seatsquality_help">Home matches</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_vipquality">Maintenance interval VIP lounges</message>
+	<message id="settings_label_stadium_maintenanceinterval_vipquality_help">Home matches</message>
+	
+	<message id="settings_label_stadium_pitch_price">Maintenance costs grass</message>
+	<message id="settings_label_stadium_pitch_price_help">Costs for getting first level. Next levels will get an additional charge as configured below.</message>
+	
+	<message id="settings_label_stadium_videowall_price">Maintenance costs video wall</message>
+	<message id="settings_label_stadium_seatsquality_price">Maintenance costs seats (per seat)</message>
+	<message id="settings_label_stadium_vipquality_price">Maintenance costs VIP lounges (per lounge)</message>
+	
+	<message id="settings_label_stadium_maintenance_priceincrease_per_level">Maintenance costs additional charge per level</message>
+	<message id="settings_label_stadium_maintenance_priceincrease_per_level_help">per cent; Cumulative addition to waintenance costs per level. Example: 10% means an addition of 40% when building level 5 (Costs of level 1 + 10% + 10% + 10% + 10%). 0 for no additional charge.</message>
+
+	<message id="settings_label_stadium_pitch_effect">Effect of grass quality</message>
+	<message id="settings_label_stadium_pitch_effect_help">Decrease of how many percentage points in technique for the own team when playing at home for each level below 5.</message>
+	
+	<message id="settings_label_stadium_videowall_effect">Effect of video wall</message>
+	<message id="settings_label_stadium_videowall_effect_help">Increase of how many percentage points in ticket sales for each level.</message>
+	
+	<message id="settings_label_stadium_seatsquality_effect">Effect of seats quality</message>
+	<message id="settings_label_stadium_seatsquality_effect_help">Decrease of how many percentage points in ticket sales for each level below 5.</message>
+	
+	<message id="settings_label_stadium_vipquality_effect">Effect of VIP lounges quality</message>
+	<message id="settings_label_stadium_vipquality_effect_help">Decrease of how many percentage points in ticket sales for each level below 5.</message>
+</messages>

@@ -1,0 +1,55 @@
+{% extends "base.twig" %}
+
+{% import "macros/paginator.twig" as pagination %}
+
+{% block page_title %}
+{{ i18n.getMessage("finances_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<h3>{{ i18n.getMessage("entity_club_finanz_budget") }}: {{ budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</h3>
+
+{% if statements is defined and statements|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("account_statement_date") }}</th>
+				<th>{{ i18n.getMessage("account_statement_sender") }}</th>
+				<th>{{ i18n.getMessage("account_statement_subject") }}</th>
+				<th>{{ i18n.getMessage("account_statement_amount") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for statement in statements %}
+		<tr>
+			<td>{{ env.getFormattedDate(statement.date) }}</td>
+			<td>
+				{% if i18n.hasMessage(statement.sender) %}
+					{{ i18n.getMessage(statement.sender) }}
+				{% else %}
+					{{ statement.sender }}
+				{% endif %}
+			</td>
+			<td>
+				{% if i18n.hasMessage(statement.subject) %}
+					{{ i18n.getMessage(statement.subject) }}
+				{% else %}
+					{{ statement.subject }}
+				{% endif %}
+			</td>
+			<td>
+				{% if statement.amount < 0 %}<span style="color: red">{% endif %}
+				{{ statement.amount|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
+				{% if statement.amount < 0 %}</span>{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ pagination.paginator(paginator) }}
+
+{% endif %}
+{% endblock %}

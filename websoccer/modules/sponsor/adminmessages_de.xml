@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_sponsor_matches">Sponsorvertrag Spieltage</message>
+	<message id="settings_label_sponsor_matches_help">Vertragsdauer in Spieltagen für neu abgeschlossene Sponsorenverträge.</message>
+
+	<message id="settings_label_sponsor_earliest_matchday">Sponsorenangebote: Frühester Spieltag</message>
+	<message id="settings_label_sponsor_earliest_matchday_help">Erst ab diesem Spieltag können die Manager einen Sponsor auswählen.</message>
+</messages>

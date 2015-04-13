@@ -1,0 +1,44 @@
+{% extends "box.twig" %}
+
+{% block box_title %}
+{{ i18n.getMessage('shoutbox_title') }}
+{% endblock %}
+
+{% block box_content %}
+<div id="shoutboxvalmessages"></div>
+
+<div style="text-align: right;">
+	<a href="#shrefresh" id="shrefresh" class="btn btn-mini ajaxLink" 
+		data-ajaxtarget="shoutbox_block" data-ajaxblock="shoutbox" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"
+		style="margin-bottom: 5px;"><i class="icon-refresh"></i> {{ i18n.getMessage("button_refresh") }}</a>
+</div>
+<div class="shoutboxmessages">
+
+	{% for message in messages %}
+	<div>
+		{% if env.user.isAdmin() %}<a href="#" class="ajaxLink" 
+		data-ajaxtarget="shoutbox_block" data-ajaxblock="shoutbox" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}&action=delete-shoutbox-message&mid={{ message.message_id }}" title="{{ i18n.getMessage("button_delete") }}"><i class="icon-trash"></i></a>{% endif %} <small class="muted" style="font-size: 9px">[{{ env.getFormattedDatetime(message.date, i18n) }}] <a href="{{ env.getInternalUrl("match", "id=" ~ message.match_id) }}" class="muted">{{ message.home_name }} - {{ message.guest_name }}</a></small>
+		<br>
+		<a href="{{ env.getInternalUrl("user", "id=" ~ message.user_id) }}">{{ message.user_name }}</a>: {{ message.message }}
+	</div>
+	{% endfor %}
+
+</div>
+{% if env.user.id and (hidesubmit is not defined or not hidesubmit) %}
+<form class="form form-inline" method="post">
+	<input type="hidden" name="action" value="send-shoutbox-msg"/>
+	<input type="hidden" name="block" value="shoutbox"/>
+	<input type="hidden" name="id" value="{{ env.getRequestParameter("id") }}"/>
+	
+	<input class="span3" id="msgtext" name="msgtext" type="text" placeholder="{{ i18n.getMessage("shoutbox_messageinput_placeholder") }}" required="true" 
+		value="{% if validationMsg["msgtext"] is defined %}{{ env.getRequestParameter("msgtext") }}{% endif %}">
+	<input type="submit" class="btn ajaxSubmit"
+		data-ajaxtarget="shoutbox_block" data-messagetarget="shoutboxvalmessages" value="{{ i18n.getMessage("shoutbox_button_go") }}"/>
+		
+	{% if validationMsg["msgtext"] is defined %}<p class="text-error">{{ validationMsg["msgtext"] }}</p>{% endif %}
+</form>
+{% else %}
+	<p><small>{{ i18n.getMessage('shoutbox_hiddensubmit_note') }}</small></p>
+{% endif %}
+
+{% endblock %}

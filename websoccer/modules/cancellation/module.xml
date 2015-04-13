@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <pages>
+        <page
+            id="cancellation"
+            template="cancellation"
+            navitem="true"
+            navweight="20"
+            role="user" 
+            parentItem="office"/>
+
+    </pages> 
+    
+  <actions>
+	<action id="disable-account" 
+	    controller="DisableAccountController" 
+	    role="user" />
+	
+  </actions>
+    
+</module>

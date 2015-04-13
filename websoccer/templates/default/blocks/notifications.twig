@@ -1,0 +1,19 @@
+{% if notifications|length == 0 %}
+	{{ i18n.getMessage("userprofile_block_notifications_noneavailable") }}
+{% else %}
+
+<ul class="unstyled">
+	{% for notification in notifications %}
+		<li>
+			{% if notification.link|length >0 %}
+				<a href="{{ notification.link }}">{{ notification.message|raw }}</a>
+			{% else %}
+				<span>{{ notification.message|raw }}</span>
+			{% endif %}
+			<br>
+			<small class="{% if notification.seen == 0 %}text-error{% else %}muted{% endif %}">{{ env.getFormattedDateTime(notification.eventdate) }}</small>
+		</li>
+	{% endfor %}
+</ul>
+
+{% endif %}

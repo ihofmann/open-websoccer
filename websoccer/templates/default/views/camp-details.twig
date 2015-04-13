@@ -1,0 +1,38 @@
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/profileelements.twig" as profile %}
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ camp.name }}
+{% endblock %}
+
+{% block page_content %}
+
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_name"), camp.name) }}
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_preis_spieler_tag"), camp.costs|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_staerke"), camp.effect_strength) }}
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_technik"), camp.effect_strength_technique) }}
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_kondition"), camp.effect_strength_stamina) }}
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_frische"), camp.effect_strength_freshness) }}
+{{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_zufriedenheit"), camp.effect_strength_satisfaction) }}
+
+<form class="form-horizontal" method="post">
+	<fieldset>
+    	<legend>{{ i18n.getMessage('camp-detail_form_title') }}</legend>
+		{{ formelements.textfield('start_date', i18n.getMessage('camp-detail_start_date'), (env.getRequestParameter("start_date")) ? env.getRequestParameter("start_date") : env.getFormattedDate(defaultDate), true, validationMsg) }}
+		
+		{% set daysLabel = i18n.getMessage('camp-detail_days_help')|format(env.getConfig("trainingcamp_min_days"), env.getConfig("trainingcamp_max_days")) %}
+		{{ formelements.textfield('days', i18n.getMessage('camp-detail_days'), env.getRequestParameter("days"), true, validationMsg, "number", daysLabel) }}
+	
+	</fieldset>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+		<a href="{{ env.getInternalUrl("trainingcamp") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="id" value="{{ camp.id }}"/>
+	<input type="hidden" name="page" value="camp-details"/>
+	<input type="hidden" name="action" value="book-camp"/>
+</form>
+
+{% endblock %}

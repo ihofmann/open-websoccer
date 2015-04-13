@@ -1,0 +1,135 @@
+/* Websoccer-theme by Jenil (jenil@schedioart.in)
+   Bootstrap 2.3.2
+   -----------------------------------------------------
+*/
+
+/* bootstrap fixes */
+html {
+  height: 100%;
+}
+body {
+    min-height: -webkit-calc(100% - 60px);
+    min-height: -moz-calc(100% - 60px);
+    min-height: calc(100% - 60px);
+    height: -webkit-calc(100% - 60px);
+    height: -moz-calc(100% - 60px);
+    height: calc(100% - 60px);
+    background: url(../../img/schedioartskin/cream_pixels.png) repeat;
+}
+
+#wrapper { /* this is required for sticky footer*/
+        min-height: -webkit-calc(100% - 60px);
+        min-height: -moz-calc(100% - 60px);
+        min-height: calc(100% - 60px);
+        height: auto !important;
+        height: -webkit-calc(100% - 60px);
+        height: -moz-calc(100% - 60px);
+        height: calc(100% - 60px);
+        /* Negative indent footer by it's height */
+        margin: 0px auto;
+        background: url(../../img/schedioartskin/players-bg.png) repeat-x center bottom;
+}
+
+#wrapper > .container:nth-child(2), #wrapper > .master-head:nth-child(2)  {
+    margin-top: 60px;
+}
+
+.navbar-inner {
+  background-image: url(../../img/schedioartskin/nav-bg.png);
+  background-repeat: repeat;
+}
+
+
+@media (max-width: 767px) {
+    body {
+        padding: 0;
+    }
+
+    .container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    
+    .main-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width: 979px) {
+        body {
+        padding: 0;
+    }
+}
+
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+.collapse {
+    overflow: hidden;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.modal-body {
+    max-height: 600px;
+}
+
+.tab-content {
+    overflow: visible;
+}
+
+.popover {
+    max-width: 500px;
+}
+
+.master-head {
+    background-color: #ffffff;
+	border: 3px solid #ebedee;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.master-head .hero-unit{
+    background: url(../../img/schedioartskin/crowd-banner.png) no-repeat center center;
+    background-size: cover;
+	text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.main-container {
+    padding: 20px 0;
+}
+
+.box {
+    background-color: #ffffff;
+    padding: 10px;
+    border: 1px #ebedee solid;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.box > h4 {
+    border-bottom: 1px #ebedee solid;
+    padding-bottom: 10px;
+}
+@media (max-width: 767px) {
+    .box {
+        margin-top: 10px;
+    }
+}
+footer {
+    height: 40px;
+    padding: 20px 0 0;
+    background-color: #EAF6F0;
+    text-align: center;
+}

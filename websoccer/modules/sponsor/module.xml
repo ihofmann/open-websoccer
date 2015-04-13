@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="clubs" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="sponsor"
+            entity="sponsor"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="sponsor AS SponsorTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_sponsor_name"
+                        field="SponsorTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_sponsor_liga_id"
+                        field="LeagueTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_sponsor_min_platz"
+                        field="SponsorTab.min_platz"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_sponsor_max_teams"
+                        field="SponsorTab.max_teams"
+                        type="number"
+                        sort="true" />
+                    
+                    
+                	<join type="LEFT" jointable="liga AS LeagueTab" joincondition="SponsorTab.liga_id = LeagueTab.id" />
+                </overview>
+
+                <editform>
+                    <field id="name" type="text" required="true" />
+                    <field id="liga_id" type="foreign_key" entity="league" jointable="liga" cascade="delete" labelcolumns="land, name" required="true" />
+					
+					<field id="b_spiel" type="number" required="true" />
+					<field id="b_heimzuschlag" type="number" required="true" />
+					<field id="b_sieg" type="number" required="true" />
+					<field id="b_meisterschaft" type="number" required="true" />
+					<field id="max_teams" type="number" required="true" />
+					<field id="min_platz" type="number" required="true" />
+					<field id="bild" type="file" />
+					
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+  <settings>
+      <setting id="sponsor_matches" category="game" type="number" default="15" />
+      <setting id="sponsor_earliest_matchday" category="game" type="number" default="4" />
+  </settings>
+  
+  <actions>
+	<action id="choose-sponsor" controller="ChooseSponsorController" role="user">
+	    <param id="id" type="number" required="true" min="1" max="2000000000" />
+	</action>
+	
+  </actions>
+    
+    <pages>
+        <page
+            id="sponsor"
+            template="sponsor"
+            model="SponsorModel"
+            parentItem="office"
+            navitem="true"
+            navweight="5"
+            role="user">
+        </page>
+
+    </pages>
+    
+</module>

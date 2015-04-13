@@ -1,0 +1,129 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("youthteam_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if env.getConfig("youth_scouting_enabled") %}
+<p><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn"><i class="icon-search"></i> {{ i18n.getMessage("youthteam_scout_button") }}</a></p>
+{% endif %}
+
+{% if players is defined and players|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_age") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_strength") }}</th>
+				<th>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}</th>
+				<th>{{ i18n.getMessage("entity_youthplayer_st_matches") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+		{% for player in players %}
+			
+			{% if player.position == "Torwart" %}
+				{% set positionId = "goaly" %}
+			{% elseif player.position == "Abwehr" %}
+				{% set positionId = "defense" %}
+			{% elseif player.position == "Mittelfeld" %}
+				{% set positionId = "midfield" %}
+			{% else %}
+				{% set positionId = "striker" %}
+			{% endif %}
+			
+			{% if i18n.hasMessage("option_" ~ player.nation) %}
+				{% set countryLabel = i18n.getMessage("option_" ~ player.nation) %}
+			{% else %}
+				{% set countryLabel = player.nation %}
+			{% endif %}
+		
+		
+			<tr{% if player.transfer_fee %} class="info"{% endif %}>
+				<td style="text-align: center">
+					<img src="{{ skin.getImage("icons/playertype_" ~ positionId ~ ".png") }}"
+					alt="{{ i18n.getMessage("player_position_" ~ positionId) }}" title="{{ i18n.getMessage("player_position_" ~ positionId) }}" />
+					<br>
+					<small>{{ i18n.getMessage("option_" ~ player.position) }}</small>
+				</td>
+				<td><p>{{ player.firstname }} {{ player.lastname }}
+					{% if player.nation_flagfile|length > 0 %}
+						{% set nationImg = skin.getImage("flags/players/" ~ player.nation_flagfile ~ ".png") %}
+						{% if nationImg %}<img src="{{ nationImg }}" title="{{ countryLabel }}" alt="{{ countryLabel}}" />{% else %}({{ countryLabel }}){% endif %}
+					{% endif %}
+					{% if player.transfer_fee > 0 %}
+						<a href="{{ env.getInternalActionUrl("remove-youthplayer-from-market", "id=" ~ player.id) }}"
+							title="{{ i18n.getMessage("youthteam_action_removefrommarket") }}"><i class="icon-share darkIcon"></i></a>
+					{% endif %}</p>
+				
+					<div class="btn-group">
+						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }} <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						
+							{% if player.age >= env.getConfig("youth_min_age_professional") %}
+							<li><a href="{{ env.getInternalUrl("youthplayer-makeprofessional", "id=" ~ player.id) }}"><i class="icon-briefcase"></i> {{ i18n.getMessage("youthteam_action_make_professional") }}</a></li>
+							<li class="divider"></li>
+							{% endif %}
+							
+							{% if player.transfer_fee == 0 %}
+								<li><a href="{{ env.getInternalUrl("youthplayer-sell", "id=" ~ player.id) }}"><i class="icon-share"></i> {{ i18n.getMessage("youthteam_action_sell") }}</a></li>
+							{% endif %}
+							
+							<li><a href="{{ env.getInternalUrl("youthplayer-fire", "id=" ~ player.id) }}"><i class="icon-remove-circle"></i> {{ i18n.getMessage("youthteam_action_fire") }}</a></li>
+						</ul>
+					</div>
+				</td>
+				<td>{{ player.age }}{% if player.age < env.getConfig("youth_min_age_professional") %} *{% endif %}</td>
+				<td>{{ statisticelements.progressbar(player.strength, "noBottomMargin") }}
+					{% set changeLabel = player.strength_last_change %}
+					{% if player.strength_last_change > 0 %}
+						{% set changeCssClass = "badge-success" %}
+						{% set changeLabel = "+" ~ changeLabel %}
+					{% elseif player.strength_last_change < 0 %}
+						{% set changeCssClass = "badge-important" %}
+					{% else %}
+						{% set changeCssClass = "" %}
+					{% endif %}
+					<span class="badge {{ changeCssClass }}" title="{{ i18n.getMessage("entity_youthplayer_strength_last_change") }}">{{ changeLabel }}</span>
+				</td>
+				<td>{{ (player.strength * env.getConfig("youth_salary_per_strength"))|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+				<td>{{ player.st_matches }} <a href="#statistics{{ player.id }}" data-toggle="collapse" title="{{ i18n.getMessage("youthteam_showstatistics_tooltip") }}"><i class="icon-zoom-in darkIcon"></i></a>
+					<div id="statistics{{ player.id }}" class="collapse">
+					<dl>
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_goals") }}</dt>
+						<dd>{{ player.st_goals }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_assists") }}</dt>
+						<dd>{{ player.st_assists }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_cards_yellow") }}</dt>
+						<dd>{{ player.st_cards_yellow }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_cards_yellow_red") }}</dt>
+						<dd>{{ player.st_cards_yellow_red }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_cards_red") }}</dt>
+						<dd>{{ player.st_cards_red }}</dd>
+					</dl>
+					</div>
+				</td>
+			</tr>
+		{% endfor %}
+		
+		</tbody>
+	</table>
+	
+	<p>* <em>{{ i18n.getMessage("youthteam_min_age_info", env.getConfig("youth_min_age_professional")) }}</em></p>
+
+{% else %}
+	{{ messagebox.box(i18n.getMessage("youthteam_no_players"), "", "info") }}
+{% endif %}
+
+{% endblock %}

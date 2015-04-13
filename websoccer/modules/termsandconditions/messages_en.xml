@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="termsandconditions_navlabel">Terms and Conditions</message>
+    <message id="termsandconditions_err_notavilable">The terms and conditions are not available in your language.</message>
+    
+    <message id="termsandconditions_accept">I have read the <a href="%s" target="_blank">terms and conditions</a> and accept them.</message>
+    
+</messages>

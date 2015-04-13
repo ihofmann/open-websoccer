@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="freeclubs_navlabel">Clubs Libres</message>
+    <message id="freeclubs_title">Equipos sin Manager</message>
+    <message id="freeclubs_no_free_clubs_available">Actualmente no hay clubes libres.</message>
+    <message id="freeclubs_head_choose">Selección</message>
+    <message id="freeclubs_button_choose">Seleccione Equipo</message>
+    <message id="freeclubs_button_choose_another">Escoja otro equipo</message>
+    <message id="freeclubs_msg_success">¡Felicitaciones! Usted es ahora Manager del equipo seleccionado.</message>
+    <message id="freeclubs_msg_error">El equipo probablemente ya esta asignado a otro usuario.</message>
+    <message id="freeclubs_msg_error_user_is_already_manager">Tú ya eres manager de un equipo.</message>
+    <message id="freeclubs_msg_error_max_number_of_teams">Usted no puede manejar más de %d equipos en este momento</message>
+    <message id="freeclubs_msg_error_no_club_from_same_league">Usted no puede manejar varios equipos de la misma liga.</message>
+    <message id="freeclubs_msg_error_minhighscore">Es necesario un mejor puntaje de al menos %d  con el fin de gestionar un equipo adicional.</message>
+</messages>

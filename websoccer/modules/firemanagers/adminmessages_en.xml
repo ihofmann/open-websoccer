@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="firemanagers_navlabel">Fire managers</message> 
+	<message id="firemanagers_introduction">Search for clubs managed by users you want to dismiss. A dismissal means that the user is going to loose his club. The selected user accounts will <strong>not</strong> be deleted, but can be disabled if you wish. If a user ran his club economically down, the system can make it attractive to other users again.</message>
+
+	<message id="firemanagers_search_label">Find clubs</message>
+	
+	<message id="firemanagers_search_maxbudget">Minimum budget</message>
+	<message id="firemanagers_search_maxbudget_help">Find clubs which have a lower account balance.</message>
+	
+	<message id="firemanagers_search_lastlogindays">Last Log-In</message>
+	<message id="firemanagers_search_lastlogindays_help">days. Find clubs with managers who have not been signed in within the last X days.</message>
+	
+	<message id="firemanagers_search_maxplayers">Minimum team size</message>
+	<message id="firemanagers_search_maxplayers_help">Find clubs with less than X players.</message>
+	
+	<message id="firemanagers_search_userid">User</message>
+	
+	<message id="firemanagers_search_nohits">No clubs found.</message>
+	<message id="firemanagers_dismiss_button">Dismiss selected users</message>
+	
+	<message id="firemanagers_dismiss_noneselected">You need to select at least one team.</message>
+	
+	<message id="firemanagers_dismiss_label">Options for dismissal</message>
+	<message id="firemanagers_dismiss_disableusers">Disable user accounts</message>
+	<message id="firemanagers_dismiss_minbudget">Minimum team budget</message>
+	<message id="firemanagers_dismiss_minbudget_help">If the team's account balance is lower, it will be set to the minimum budget.</message>
+	<message id="firemanagers_dismiss_message_subject">Message to user: Subject</message>
+	<message id="firemanagers_dismiss_message_subject_help">If user shall get a private message. Note that disabled users cannot receive private messages.</message>
+	<message id="firemanagers_dismiss_message_content">Message to user: content</message>
+	
+	<message id="firemanagers_dismiss_label_players">Effects on team players</message>
+	<message id="firemanagers_dismiss_strength_min_freshness">Min. strength: Freshness</message>
+	<message id="firemanagers_dismiss_strength_min_stamina">Min. strength: Stamina</message>
+	<message id="firemanagers_dismiss_strength_min_satisfaction">Min. strength: Satisfaction</message>
+	<message id="firemanagers_dismiss_mincontractmatches">Minimum contract matches</message>
+	
+	<message id="firemanagers_dismiss_label_minteamsize">Minimum team size: Adding players</message>
+	<message id="firemanagers_dismiss_label_minteamsize_intro">If there are too few players for a particular position, the system will generate new ones.</message>
+
+	<message id="firemanagers_dismiss_success">The selected users have been succesfully removed from their team.</message>
+</messages>

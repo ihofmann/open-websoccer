@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="users" version="1.0.0"/>
+    </dependencies>
+    
+    <settings>
+      <setting id="messages_enabled" category="users" type="boolean" default="1" />
+      <setting id="messages_break_minutes" category="users" type="number" default="2" />
+  </settings>
+    
+    <pages>
+        <page
+            id="messages"
+            template="messages"
+            model="MessagesInboxModel"
+            parentItem="office"
+            navitem="true"
+            navweight="1"
+            role="user">
+        </page>
+
+    </pages> 
+    
+    <blocks>
+        
+        <block
+            id="message-details"
+            template="message-details"
+            model="MessageDetailsModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+        <block
+            id="messages-outbox"
+            template="messages-outbox"
+            model="MessagesOutboxModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+        <block
+            id="usernick-search"
+            template="autocomplete-resultlist"
+            model="UserNickSearchModel"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+        <block
+            id="compose-message-body"
+            template="message-compose"
+            includepages="none"
+            area="custom"
+            role="user" />
+        
+    </blocks>
+    
+  <actions>
+	<action id="delete-message" controller="DeleteMessageController" role="user">
+	    <param id="id" type="number" required="true" min="1" max="2000000000" />
+	</action>
+      
+	<action id="send-message" controller="SendMessageController" role="user">
+	    <param id="nick" type="text" required="true" min="1" max="50" />
+		<param id="subject" type="text" required="true" min="3" max="50" />
+		<param id="msgcontent" type="text" required="true" min="3" max="1024" />
+	</action>
+	
+  </actions>
+    
+</module>

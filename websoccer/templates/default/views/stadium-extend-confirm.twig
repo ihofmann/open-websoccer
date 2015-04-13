@@ -1,0 +1,82 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as msgbox %}
+{% import "macros/premium.twig" as premium %}
+
+{% block page_title %}
+{{ i18n.getMessage("stadium_extend_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+	{% if offers|length == 0 %}
+		{{ msgbox.box(i18n.getMessage("stadium_extend_nobuilders"), "", "info") }}
+	{% else %}
+		<div class="well">
+			<p>{{ i18n.getMessage("stadium_extend_builders_intro")|raw }}</p>
+		</div>
+		
+		<div class="row-fluid">
+			{% for offer in offers %}
+				<div class="span4"{% if not loop.last %} style="border-right: 1px solid grey;"{% endif %}>
+					<h4>{{ offer.builder_name }}</h4>
+					
+					{% if offer.builder_picture|length > 0 %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/stadiumbuilder/{{ offer.builder_picture }}" style="max-width: 140px;">
+					{% endif %}
+					{% if offer.builder_premiumfee > 0 %}
+						<p>{{ premium.premiumbadge(offer.builder_premiumfee) }}</p>
+					{% endif %}
+					
+					<dl>
+						<dt>{{ i18n.getMessage("entity_stadiumconstruction_deadline") }}</dt>
+						<dd>{{ env.getFormattedDate(offer.deadline) }} ({{ i18n.getMessage("stadium_extend_builders_constructiontime", offer.deadline_days) }})</dd>
+						
+						<dt>{{ i18n.getMessage("stadium_extend_builders_totalcosts") }}</dt>
+						<dd>{{ offer.totalCosts|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+						
+						{% if env.getConfig("stadium_hide_builders_reliability") != "1" %}
+							<dt>{{ i18n.getMessage("entity_stadiumbuilder_reliability") }}</dt>
+							<dd>{{ offer.reliability }}%</dd>
+						{% endif %}
+					</dl>
+					
+					<p><a href="#details{{ offer.builder_id }}" data-toggle="collapse" class="btn btn-small"><i class="icon-zoom-in"></i> {{ i18n.getMessage("stadium_extend_builders_details") }}</a></p>
+					<div id="details{{ offer.builder_id }}" class="collapse">
+						<dl>
+							<dt>{{ i18n.getMessage("entity_stadiumbuilder_fixedcosts") }}</dt>
+							<dd>{{ offer.fixedcosts|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+							
+							<dt>{{ i18n.getMessage("entity_stadium_p_steh") }}</dt>
+							<dd>{{ offer.costsSideStanding|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+							
+							<dt>{{ i18n.getMessage("entity_stadium_p_sitz") }}</dt>
+							<dd>{{ offer.costsSideSeats|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+							
+							<dt>{{ i18n.getMessage("entity_stadium_p_haupt_steh") }}</dt>
+							<dd>{{ offer.costsGrandStanding|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+							
+							<dt>{{ i18n.getMessage("entity_stadium_p_haupt_sitz") }}</dt>
+							<dd>{{ offer.costsGrandSeats|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+							
+							<dt>{{ i18n.getMessage("entity_stadium_p_vip") }}</dt>
+							<dd>{{ offer.costsVip|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</dd>
+						</dl>
+					</div>
+					
+					<p><a href="{{ env.getInternalActionUrl("extend-stadium", "offerid=" ~ offer.builder_id
+																				~ "&side_standing=" ~ env.getRequestParameter("side_standing")
+																				~ "&side_seats=" ~ env.getRequestParameter("side_seats")
+																				~ "&grand_standing=" ~ env.getRequestParameter("grand_standing")
+																				~ "&grand_seats=" ~ env.getRequestParameter("grand_seats")
+																				~ "&vip=" ~ env.getRequestParameter("vip")) }}" class="btn btn-primary"><i class="icon-hand-right"></i> {{ i18n.getMessage("stadium_extend_button") }}</a></p>
+				</div>
+			{% endfor %}		
+		</div>
+		
+		
+	{% endif %}
+	
+	<hr/>
+	<p><a class="btn" href="{{ env.getInternalUrl("stadium") }}">{{ i18n.getMessage("button_cancel") }}</a></p>
+
+{% endblock %}

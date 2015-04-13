@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="match_manage_reportitems">Berichtsmeldungen</message>
+    <message id="match_manage_playerstatistics">Aufstellung und Spielerstatistiken</message>
+    <message id="match_manage_complete">Ohne Simulation beenden</message>
+    
+    <message id="match_manage_reportitems_noitems">Es sind noch keine Spielberichtsmeldungen zu diesem Spiel vorhanden.</message>
+    <message id="match_manage_playerstatistics_noitems">Es sind noch keine Spieler für dieses Spiel aufgestellt worden.</message>
+	
+    <message id="match_manage_minuten_gespielt">Gespielte Minuten</message>
+    <message id="match_manage_note">Note</message>
+    <message id="match_manage_tore">Tore</message>
+    <message id="match_manage_assists">Vorlagen</message>
+    <message id="match_manage_karte_gelb">Gelbe Karten</message>
+    <message id="match_manage_karte_rot">Rote Karte</message>
+    <message id="match_manage_verletzt">Spiele verletzt</message>
+    <message id="match_manage_gesperrt">Spiele gesperrt</message>
+    <message id="match_manage_ballcontacts">Ballkontakte</message>
+    <message id="match_manage_wontackles">Gew. Zweikämpfe</message>
+    <message id="match_manage_shoots">Torschüsse</message>
+    <message id="match_manage_passes_successed">Pässe erfolgr.</message>
+    <message id="match_manage_passes_failed">Pässe daneben</message>
+    
+    <message id="match_manage_position_field_1">Auf dem Platz</message>
+    <message id="match_manage_position_field_bench">Ersatzbank</message>
+    <message id="match_manage_position_field_substituted">Ausgewechselt</message>
+    
+    <message id="match_manage_createplayer_title">Spieler hinzufügen</message>
+    <message id="match_manage_createplayer_label_playerid">Spieler</message>
+    
+    <message id="formation_home_offensive">Offensivität</message>
+    <message id="formation_home_longpasses">Lange Pässe</message>
+    <message id="formation_home_counterattacks">Konterspiel</message>
+    <message id="formation_guest_offensive">Offensivität</message>
+    <message id="formation_guest_longpasses">Lange Pässe</message>
+    <message id="formation_guest_counterattacks">Konterspiel</message>
+    
+    <message id="match_manage_playerstatistics_createfromfrmation">Aus aktueller Aufstellung generieren</message>
+    <message id="match_manage_playerstatistics_noformationavailable">Für diesen Verein wurde keine Aufstellung gesetzt.</message>
+    
+    <message id="match_manage_substitutions">Spielerwechsel</message>
+    <message id="match_manage_substitutions_out">Raus</message>
+    <message id="match_manage_substitutions_in">Rein</message>
+    <message id="match_manage_substitutions_minute">Minute</message>
+    <message id="match_manage_substitutions_condition">Bedingung</message>
+    
+    <message id="match_manage_substitutions_condition_tie">Bei Gleichstand</message>
+    <message id="match_manage_substitutions_condition_leading">Bei Führung</message>
+    <message id="match_manage_substitutions_condition_deficit">Bei Rückstand</message>
+    
+    <message id="match_manage_createmessage_title">Meldung hinzufügen</message>
+    <message id="match_manage_reportitems_noitems">Es wurden noch keine Spielberichtsmeldungen hinzugefügt.</message>
+    <message id="match_manage_reportmsg_minute">Minute</message>
+    <message id="match_manage_reportmsg_playernames">Spieler</message>
+    <message id="match_manage_reportmsg_playernames_help">Mit Semikolon (;) getrennt. Erster Name steht für {sp1}, zweiter Name für {sp2}.</message>
+    <message id="match_manage_reportmsg_intermediateresult">Zwischenstand</message>
+    <message id="match_manage_reportmsg_message_id">Nachricht</message>
+    
+    <message id="match_manage_complete_alreadysimulated">Das Spiel wurde bereits als simuliert markiert.</message>
+    <message id="match_manage_complete_intro">Bei Beendigung des Spiels durch Drücken des unten stehenden Buttons werden folgende Aktionen durchgeführt:
+        <ul>
+            <li>Das Spiel wird als simuliert markiert.</li>
+            <li>Wenn aktiviert, werden die Zuschauerzahlen errechnet und die Einnahmen dadurch gutgeschrieben.</li>
+            <li>Bei Ligaspielen werden Punkte verteilt. Bei Pokalspielen wird geprüft, ob die Teams in eine neue Runden kommen und es werden dann die entsprechenden Spiele generiert.</li>
+            <li>Kondition, Frische, Spielergehälter und Statistiken werden aktualisiert.</li>
+        </ul>
+    </message>
+    <message id="match_manage_complete_computetickets">Ticketverkäufe berechnen.</message>
+    <message id="match_manage_complete_button">Spiel beenden</message>
+    <message id="match_manage_complete_success">Das Spiel wurde erfolgreich beendet.</message>
+</messages>

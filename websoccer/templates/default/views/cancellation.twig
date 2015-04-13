@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("cancellation_title") }}
+{% endblock %}
+
+{% block page_content %}
+<p>{{ i18n.getMessage("cancellation_intro") }}</p>
+
+<p><a href="#cancelModal" role="button" data-toggle="modal" class="btn btn-primary">{{ i18n.getMessage("cancellation_button") }}</a></p>
+
+<div id="cancelModal" class="modal hide fade" tabindex="-1" role="dialog" 
+	aria-labelledby="cancelModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="cancelModalLabel">{{ i18n.getMessage("cancellation_modal_title") }}</h3>
+  </div>
+  <div class="modal-body">
+  	<p>{{ i18n.getMessage("cancellation_modal_content") }}</p>
+  </div>
+  <div class="modal-footer">
+  	<a href="{{ env.getInternalActionUrl("disable-account") }}" class="btn btn-primary">{{ i18n.getMessage("cancellation_modal_confirm") }}</a>
+    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_cancel") }}</a>
+  </div>
+</div>
+{% endblock %}

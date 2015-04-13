@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  	<settings>
+      	<setting id="sofortcom_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="sofortcom_configkey" category="premium" type="text" default="" />
+  	</settings>
+  	
+	<actions>
+	    <action id="sofortcom-notify" controller="SofortComPaymentNotificationController" role="guest,user">
+	        <param id="u" type="number" required="true" />
+	    </action>
+	    
+	    <action id="sofortcom-redirect" controller="SofortComRedirectController" role="user">
+	        <param id="amount" type="number" required="true" min="1" />
+	    </action>
+	    
+	</actions>
+	
+	<blocks>
+      
+       <block
+            id="sofortcompaymentlink"
+            template="sofortcompaymentlink"
+            includepages="premium-feature-requested"
+            area="content_bottom"
+            weight="1"
+            role="user" />
+        
+	</blocks>
+  
+</module>

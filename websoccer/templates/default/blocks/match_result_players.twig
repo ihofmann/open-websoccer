@@ -1,0 +1,14 @@
+{% import "macros/playerlists.twig" as playerlists %}
+
+<div class="row-fluid">
+	<div class="span6">
+		<h4>{{ match.match_home_name }}</h4>
+		
+		{{ playerlists.matchResultPlayers(match, home_players)  }}
+	</div>
+	<div class="span6">
+		<h4>{{ match.match_guest_name }}</h4>
+		
+		{{ playerlists.matchResultPlayers(match, guest_players)  }}
+	</div>
+</div>

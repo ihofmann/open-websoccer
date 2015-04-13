@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="teamoftheday_navlabel">Elf des Tages</message>
+    <message id="teamoftheday_no_matches_in_season">In dieser Saison wurden noch keine Spiele ausgetragen.</message>
+    <message id="teamoftheday_openmatchesexist">An diesem Spieltag gibt es Spiele, die noch nicht ausgetragen wurden.</message>
+    <message id="teamoftheday_known_member_tooltip">War in dieser Saison schon %d mal in der Elf des Tages.</message>
+    <message id="teamoftheday_matchreport_tooltip">Steht in der Elf des Spieltages.</message>
+    <message id="teamoftheday_teamoftheseason">Elf der Saison</message>
+</messages>

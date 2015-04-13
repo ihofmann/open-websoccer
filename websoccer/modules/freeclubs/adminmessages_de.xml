@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="settings_label_assign_team_automatically">Automatische Teamzuordnung: Benutzer können selbst einen freien Verein auswählen.</message> 
+    <message id="settings_label_max_number_teams_per_user">Höchstanzahl Teams pro Benutzer</message> 
+    <message id="settings_label_max_number_teams_per_user_help">Wieviele Teams ein Benutzer mit einem Account managen darf.</message> 
+    <message id="settings_label_additional_team_min_highscore">Mindesthighscore für zusätzliche Teams</message>
+    <message id="settings_label_additional_team_min_highscore_help">Wieviel Highscore-Punkte ein Benutzer mindestens haben muss, um einen weiteren Verein übernehmen zu können.</message>
+</messages>

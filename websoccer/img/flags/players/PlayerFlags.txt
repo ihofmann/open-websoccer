@@ -1,0 +1,3 @@
+Flags taken from http://www.famfamfam.com/lab/icons/flags/.
+
+File names must match player's field "nationality". Umlauts will be converted, e.g. "Österreich" => "Oesterreich".

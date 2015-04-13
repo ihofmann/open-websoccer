@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_club">Club</message>
+	<message id="entity_club_name">Name</message>
+	<message id="entity_club_kurz">Short</message>
+	<message id="entity_club_liga_id">League</message>
+	<message id="entity_club_user_id">User</message>
+	<message id="entity_club_user_id_actual">Actual manager</message>
+	<message id="entity_club_user_id_actual_help">In case manager is only deputy during actual manager's absence.</message>
+	<message id="entity_club_bild">Logo</message>
+	<message id="entity_club_stadion_id">Stadium</message>
+	<message id="entity_club_sponsor_id">Sponsor</message>
+	<message id="entity_club_sponsor_spiele">Remaining matches with sponsor</message>
+	<message id="entity_club_training_id">Training Unit</message>
+	<message id="entity_club_finanz_budget">Budget</message>
+	<message id="entity_club_finanz_sponsor">Income through sponsor</message>
+	<message id="entity_club_finanz_transfer">Income through transfer of players</message>
+	<message id="entity_club_finanz_gehalt">Salary payments</message>
+	<message id="entity_club_finanz_zuschauer">Icome through tickets</message>
+	<message id="entity_club_finanz_sonstiges">Other Income</message>
+	<message id="entity_club_preis_stehen">Ticket fees standing</message>
+	<message id="entity_club_preis_sitz">Ticket fees seats</message>
+	<message id="entity_club_preis_haupt_stehen">Ticket fees standing (grandstand)</message>
+	<message id="entity_club_preis_haupt_sitze">Ticket fees seats (grandstand)</message>
+	<message id="entity_club_preis_vip">Ticket fees VIP lounge</message>
+	<message id="entity_club_last_steh">Previously sold tickets: Standing</message>
+	<message id="entity_club_last_sitz">Previously sold tickets: Seats</message>
+	<message id="entity_club_last_haupt_steh">Previously sold tickets: Standing (grandstand)</message>
+	<message id="entity_club_last_haupt_sitz">Previously sold tickets: Seats (grandstand)</message>
+	<message id="entity_club_last_vip">Previously sold tickets: Seats: VIP lounge</message>
+	<message id="entity_club_meisterschaften">Won Championships</message>
+	<message id="entity_club_st_tore">Goals (total)</message>
+	<message id="entity_club_st_gegentore">Goals received (total)</message>
+	<message id="entity_club_st_spiele">Matches (total)</message>
+	<message id="entity_club_st_siege">Wins (total)</message>
+	<message id="entity_club_st_niederlagen">Losses (total)</message>
+	<message id="entity_club_st_unentschieden">Draws (total)</message>
+	<message id="entity_club_st_punkte">Score (total)</message>
+	<message id="entity_club_sa_tore">Goals (season)</message>
+	<message id="entity_club_sa_gegentore">Goals received (season)</message>
+	<message id="entity_club_sa_spiele">Matches (season)</message>
+	<message id="entity_club_sa_siege">Wins (season)</message>
+	<message id="entity_club_sa_niederlagen">Losses (season)</message>
+	<message id="entity_club_sa_unentschieden">Draws (season)</message>
+	<message id="entity_club_sa_punkte">Score (season)</message>
+	<message id="entity_club_history">History</message>
+	<message id="entity_club_status">Sctive</message>
+	<message id="entity_club_min_target_rank">Season Target</message>
+	<message id="entity_club_min_target_rank_help">Expecteded minimum rank in the league at the end of the season. 0 for no target rank. You can speciy the consequences of not hitting the target (fire manager, penalty fee, reducing fan popularity) when completing a season.</message>
+	<message id="entity_club_nationalteam">Is national team</message>
+	<message id="entity_club_captain_id">Captain</message>
+	<message id="entity_club_interimmanager">Is managed by an interim manager</message>
+</messages>

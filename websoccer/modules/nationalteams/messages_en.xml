@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="nationalteam_navlabel">National Team</message>
+    <message id="nationalmatches_navlabel">Matches</message>
+    <message id="nominate-national-players_navlabel">Nominate Players</message>
+    <message id="nationalteams_user_requires_team">You need to be the manager of a national team in order to use this feature.</message>
+    <message id="nationalteams_no_players">You have not nominated any players, yet.</message>
+    <message id="nationalteams_addplayer">Nominate</message>
+    <message id="nationalteams_addplayer_err_alreadyinteam">The player already belongs to your team.</message>
+    <message id="nationalteams_addplayer_err_toomanyplayer">You may nominate only up to %d players.</message>
+    <message id="nationalteams_addplayer_success">The player has been successfully added to your team.</message>
+    <message id="nationalteams_remove_from_team">Remove</message>
+    <message id="nationalteams_removeplayer_success">The player has been successfully removed from your team.</message>
+    <message id="nationalteams_team_label">National Team</message>
+    <message id="nationalmatches_title">National Team Matches</message>
+    <message id="nationalmatches_next_title">Next Matches</message>
+	<message id="nationalmatches_results_title">Results</message>
+	
+	<message id="nationalmatches_nextmatch_title">Next national team match</message>
+</messages>

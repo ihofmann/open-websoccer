@@ -1,0 +1,24 @@
+
+{% extends "blocks/table_base.twig" %}
+
+{% block table_header %}
+	<div class="btn-group" style="margin-bottom: 10px;">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#showAll">
+			{{ i18n.getMessage("leaguetable_button_type") }}
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li{% if env.getRequestParameter("type") == null %} class="active"{% endif %}><a href="#wholeTable" class="ajaxLink"
+				data-ajaxtarget="alltimetable-table_block" data-ajaxblock="alltimetable-table" data-ajaxquerystr="id={{ leagueId }}"><i class="icon-list-alt"></i> {{ i18n.getMessage("leaguetable_button_type_total") }}</a></li>
+			<li{% if env.getRequestParameter("type") == "home" %} class="active"{% endif %}><a href="#homeTable" class="ajaxLink"
+				data-ajaxtarget="alltimetable-table_block" data-ajaxblock="alltimetable-table" data-ajaxquerystr="id={{ leagueId }}&type=home"><i class="icon-arrow-right"></i> {{ i18n.getMessage("leaguetable_button_type_home") }}</a></li>
+			<li{% if env.getRequestParameter("type") == "guest" %} class="active"{% endif %}><a href="#guestTable"class="ajaxLink"
+				data-ajaxtarget="alltimetable-table_block" data-ajaxblock="alltimetable-table" data-ajaxquerystr="id={{ leagueId }}&type=guest"><i class="icon-arrow-left"></i> {{ i18n.getMessage("leaguetable_button_type_guest") }}</a></li>
+		</ul>
+	  
+		
+	</div>
+
+	<p><i class="icon-info-sign"></i> <em>{{ i18n.getMessage("leaguetable_timedelay_info") }}</em></p>
+{% endblock %}
+

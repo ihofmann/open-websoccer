@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_league">Liga</message>
+	<message id="entity_league_name">Name</message>
+	<message id="entity_league_kurz">Kürzel</message>
+	<message id="entity_league_land">Land</message>
+	<message id="entity_league_p_steh">Durch. Auslastung Stehplätze</message>
+	<message id="entity_league_p_sitz">Durch. Auslastung Sitzplätze</message>
+	<message id="entity_league_p_haupt_steh">Durch. Auslastung Stehplätze (Haupttribüne)</message>
+	<message id="entity_league_p_haupt_sitz">Durch. Auslastung Sitzplätze (Haupttribüne)</message>
+	<message id="entity_league_p_vip">Durch. Auslastung VIP-Loge</message>
+	<message id="entity_league_preis_steh">Durch. Preis für Stehplätze</message>
+	<message id="entity_league_preis_sitz">Durch. Preis für Sitzplätze</message>
+	<message id="entity_league_preis_vip">Durch. Preis für VIP-Logen</message>
+</messages>

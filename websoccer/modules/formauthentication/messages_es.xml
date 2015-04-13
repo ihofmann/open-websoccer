@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="formlogin_block_title">Iniciar Sesión</message>
+    <message id="formlogin_option_rememberme">Recordar</message>
+    <message id="formlogin_submit_button">Iniciar Sesión</message>
+    <message id="formlogin_link_register">Registrarse</message>
+    <message id="formlogin_link_forgot_password">¿Olvidaste tu contraseña?</message>
+    
+    <message id="formlogin_invalid_data">Los datos no son correctos.</message>
+    
+    <message id="login_navlabel">Iniciar Sesión</message>
+    <message id="login_title">Iniciar Sesión</message>
+    
+    <message id="forgot-password_navlabel">Enviar nueva contraseña</message>
+    <message id="forgot-password_title">Generar nueva contraseña</message>
+    <message id="forgot-password_submit_button">Enviar nueva contraseña</message>
+    
+    <message id="forgot-password_email-not-found">Ningún usuario activo con este e-mail se ha encontrado. Por favor verificar la ortografía.</message>
+    <message id="forgot-password_already-sent">Usted ya ha solicitado una nueva contraseña en las últimas 24 horas. Podemos enviarle una nueva contraseña sólo una vez por día.</message>
+    
+    <message id="forgot-password_message_title">Una nueva contraseña ha sido enviada</message>
+    <message id="forgot-password_message_content">Por favor revise su correo electrónico ahora.</message>
+    
+    <message id="activate-user_navlabel">Activar cuentas de usuario</message>
+    <message id="activate-user_title">Activar cuentas de usuario</message>
+    <message id="activate-user_content">¿Tiene algún problema con su cuenta de usuario? No dude en contactar con nosotros.</message>
+    <message id="activate-user_user-not-found">Puede ser que su cuenta de usuario ya está activa, o que ha introducido una dirección incorrecta. Por favor compruebe la URL proporcionada en el correo electrónico de activación.</message>
+    <message id="activate-user_message_title">Su cuenta de usuario ha sido activada con éxito!</message>
+    <message id="activate-user_message_content">Usted puede iniciar sesión con tu correo electrónico y contraseña ahora. ¡Pasa un buen rato!</message>
+    
+</messages>

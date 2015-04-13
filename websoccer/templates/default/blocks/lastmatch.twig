@@ -1,0 +1,10 @@
+<h4>{{ i18n.getMessage("last_match_block_title") }}</h4>
+{% if last_match.match_id is defined %}
+
+<p><em>{{ env.getFormattedDatetime(last_match.match_date) }} | {{ i18n.getMessage("matchtype_" ~ last_match.match_type) }}</em></p>
+<p><a href="{{ env.getInternalUrl("team", "id=" ~ last_match.match_home_id) }}">{{ last_match.match_home_name }}</a> - <a href="{{ env.getInternalUrl("team", "id=" ~ last_match.match_guest_id) }}">{{ last_match.match_guest_name }}</a>: 
+<a href="{{ env.getInternalUrl("match", "id=" ~ last_match.match_id) }}" title="{{ i18n.getMessage("match_navlabel") }}"><strong>{{ last_match.match_goals_home }} - {{ last_match.match_goals_guest }}</strong></a></p>
+
+{% else %}
+<p>{{ i18n.getMessage("last_match_block_no_lastmatch") }}</p>
+{% endif %}

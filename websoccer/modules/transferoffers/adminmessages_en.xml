@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_transferoffers_enabled">Enable direct transfers: Users may submit transfer offers directly to other managers, outside of the transfer market.</message> 
+	<message id="settings_label_transferoffers_transfer_stop_days">Transfer Stop</message> 
+	<message id="settings_label_transferoffers_transfer_stop_days_help">in days. Players must not change the team within the specified period of time from his last transfer.</message> 
+	<message id="settings_label_transferoffers_adminapproval_required">An agreed transfer transaction must be manually approved by an administrator.</message> 
+	<message id="settings_label_transferoffers_contract_matches">Contract duration for direct transfers</message> 
+	<message id="settings_label_transferoffers_contract_matches_help">number of matches.</message> 
+	
+	<message id="button_approve">Approve</message> 
+	
+	<message id="transferoffer_approval_success">The player transfer has been successfully executed.</message> 
+</messages>

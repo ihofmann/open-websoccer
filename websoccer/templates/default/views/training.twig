@@ -1,0 +1,188 @@
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/premium.twig" as premium %}
+
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("training_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+{# last training execution #}
+
+{{ profile.infofield(i18n.getMessage("training_units_count"), unitsCount) }}
+
+{% if lastExecution > 0 %}
+	{{ profile.infofield(i18n.getMessage("training_last_execution"), env.getFormattedDatetime(lastExecution)) }}
+{% endif %}
+
+{% if env.getConfig("training_min_hours_between_execution") > 0 %}
+<p style="margin-top: 10px; margin-bottom: 20px;"><i class="icon-info-sign"></i> {{ i18n.getMessage('training_execute_training_note', env.getConfig("training_min_hours_between_execution")) }}</p>
+{% endif %}	
+
+{# Show result of executed training unit #}
+{% if trainingEffects|length > 0 %}
+	<h3>{{ i18n.getMessage("training_execute_effects_title") }}</h3>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_player") }}</th>
+				<th>{{ i18n.getMessage("entity_player_w_technik") }}</th>
+				<th>{{ i18n.getMessage("entity_player_w_kondition") }}</th>
+				<th>{{ i18n.getMessage("entity_player_w_frische") }}</th>
+				<th>{{ i18n.getMessage("entity_player_w_zufriedenheit") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for playerId,effect in trainingEffects %}
+			<tr>
+				<td><a href="{{ env.getInternalUrl("player", "id=" ~ playerId) }}" target="_blank" title="{{ i18n.getMessage("player_navlabel") }}">{{ effect.name }}</a></td>
+				<td>
+					{% set changeLabel = effect.technique %}
+					{% if changeLabel > 0 %}
+						{% set changeCssClass = "badge-success" %}
+						{% set changeLabel = "+" ~ changeLabel %}
+					{% elseif changeLabel < 0 %}
+						{% set changeCssClass = "badge-important" %}
+					{% else %}
+						{% set changeCssClass = "" %}
+					{% endif %}
+					<span class="badge {{ changeCssClass }}">{{ changeLabel }}</span>
+				</td>
+				<td>
+					{% set changeLabel = effect.stamina %}
+					{% if changeLabel > 0 %}
+						{% set changeCssClass = "badge-success" %}
+						{% set changeLabel = "+" ~ changeLabel %}
+					{% elseif changeLabel < 0 %}
+						{% set changeCssClass = "badge-important" %}
+					{% else %}
+						{% set changeCssClass = "" %}
+					{% endif %}
+					<span class="badge {{ changeCssClass }}">{{ changeLabel }}</span>
+				</td>
+				<td>
+					{% set changeLabel = effect.freshness %}
+					{% if changeLabel > 0 %}
+						{% set changeCssClass = "badge-success" %}
+						{% set changeLabel = "+" ~ changeLabel %}
+					{% elseif changeLabel < 0 %}
+						{% set changeCssClass = "badge-important" %}
+					{% else %}
+						{% set changeCssClass = "" %}
+					{% endif %}
+					<span class="badge {{ changeCssClass }}">{{ changeLabel }}</span>
+				</td>
+				<td>
+					{% set changeLabel = effect.satisfaction %}
+					{% if changeLabel > 0 %}
+						{% set changeCssClass = "badge-success" %}
+						{% set changeLabel = "+" ~ changeLabel %}
+					{% elseif changeLabel < 0 %}
+						{% set changeCssClass = "badge-important" %}
+					{% else %}
+						{% set changeCssClass = "" %}
+					{% endif %}
+					<span class="badge {{ changeCssClass }}">{{ changeLabel }}</span>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+{% endif %}
+
+{# Select trainer #}
+{% if training_unit is not defined or training_unit|length == 0 %}
+
+	<h3>{{ i18n.getMessage("training_choose_trainer") }}</h3>
+
+	{% if trainers is defined and trainers|length > 0 %}
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_trainer_name") }}</th>
+				<th>{{ i18n.getMessage("entity_trainer_salary") }}</th>
+				<th>{{ i18n.getMessage("entity_trainer_p_technique") }}</th>
+				<th>{{ i18n.getMessage("entity_trainer_p_stamina") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for trainer in trainers %}
+			<tr>
+				<td><p>{{ trainer.name }}</p>
+				{% if trainer.premiumfee %}
+					<p>{{ premium.premiumbadge(trainer.premiumfee) }}</p>
+				{% endif %}
+				<p><a href="{{ env.getInternalUrl("trainer-details", "id=" ~ trainer.id) }}" class="btn"><i class="icon-hand-right"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
+				<td>{{ trainer.salary|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
+				<td>{{ statisticelements.progressbar(trainer.p_technique) }}</td>
+				<td>{{ statisticelements.progressbar(trainer.p_stamina) }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	
+	{{ pagination.paginator(paginator) }}
+	
+	{% else %}
+		<p>{{ i18n.getMessage("training_no_trainers_available") }}</p>
+	{% endif %}
+
+{# execute unit details #}
+{% else %}
+
+	<h3>{{ i18n.getMessage("training_trainer_details") }}</h3>
+
+	{% set bar_tech = statisticelements.progressbar(training_unit.trainer.p_technique) %}
+	{% set bar_stamina = statisticelements.progressbar(training_unit.trainer.p_stamina) %}
+	
+	{{ profile.infofield(i18n.getMessage("entity_trainer_name"), training_unit.trainer.name) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainer_p_technique"), bar_tech|raw, true) }}
+	{{ profile.infofield(i18n.getMessage("entity_trainer_p_stamina"), bar_stamina|raw, true) }}
+	
+	<form class="form-horizontal" method="post">
+		<fieldset>
+	    	<legend>{{ i18n.getMessage('training_execute_training_title') }}</legend>
+		
+			<div class="control-group">
+				<label class="control-label" for="focus">
+					<strong>{{ i18n.getMessage('training_execute_focus') }}</strong>
+				</label>
+				<div class="controls">
+					<select id="focus" name="focus">
+  						<option value="TE"{% if env.getRequestParameter("focus") == "TE" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_technique') }}</option>
+  						<option value="STA"{% if env.getRequestParameter("focus") == "STA" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_stamina') }}</option>
+  						<option value="MOT"{% if env.getRequestParameter("focus") == "MOT" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_motivation') }}</option>
+  						<option value="FR"{% if env.getRequestParameter("focus") == "FR" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_regeneration') }}</option>
+  					</select>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="intensity">
+					<strong>{{ i18n.getMessage('training_execute_intensity') }}</strong>
+				</label>
+				<div class="controls">
+					{{ formelements.slider("intensity", (env.getRequestParameter("intensity") > 0) ? env.getRequestParameter("intensity") : 90 ) }}
+				</div>
+			</div>
+			
+		</fieldset>
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">{{ i18n.getMessage('training_execute_button') }}</button>
+			<a href="{{ env.getInternalUrl("office") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+		</div>
+		<input type="hidden" name="id" value="{{ training_unit.id }}"/>
+		<input type="hidden" name="page" value="training"/>
+		<input type="hidden" name="action" value="execute-training"/>
+	</form>
+
+{% endif %}
+{% endblock %}

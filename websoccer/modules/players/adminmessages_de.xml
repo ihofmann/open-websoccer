@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_hide_strength_attributes">Stärkeattribute der Fussballspieler verstecken. Die tatsächliche Stärke eines Spielers ist den Benutzern dann nicht ersichtlich.</message> 
+	<message id="settings_label_players_aging">Alterung der Spieler</message>
+	
+	<message id="option_birthday">Nach Geburtstag des Spielers</message>
+	<message id="option_static">Beim Beenden der Saison</message>
+</messages>

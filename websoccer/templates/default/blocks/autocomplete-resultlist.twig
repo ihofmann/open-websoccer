@@ -1,0 +1,9 @@
+{
+    "options": [
+    	{% if items is defined and items|length > 0 %}
+    		{% for item in items %}
+    		"{{ item }}"{% if not loop.last %},{% endif %}
+    		{% endfor %}
+    	{% endif %}
+    ]
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="messages_navlabel">Nachrichten</message>
+    
+    <message id="messages_err_messagesdisabled">Der Administrator hat das Versenden von Nachrichten deaktiviert.</message>
+    
+    
+    <message id="messages_tab_inbox">Posteingang</message>
+    <message id="messages_tab_outbox">Postausgang</message>
+    
+    <message id="messages_empty_inbox">Es sind keine empfangenen Nachrichten vorhanden.</message>
+    <message id="messages_empty_outbox">Es sind keine gesendeten Nachrichten vorhanden.</message>
+    
+    <message id="messages_date">Datum</message>
+    <message id="messages_sender">Absender</message>
+    <message id="messages_recipient">Empfänger</message>
+    <message id="messages_subject">Betreff</message>
+    <message id="messages_content">Nachricht</message>
+    
+    <message id="messages_delete">Diese Nachricht löschen</message>
+    <message id="messages_delete_invalidid">Ungültige Nachricht. Die ausgewählte Nachricht wurde eventuell bereits gelöscht.</message>
+    <message id="messages_delete_success">Nachricht gelöscht</message>
+    
+    <message id="messages_details_title">Nachricht lesen</message>
+    
+    <message id="messages_compose_button">Neue Nachricht</message>
+    <message id="messages_compose_title">Nachricht schreiben</message>
+    
+    <message id="messages_send_err_invalidrecipient">Es konnte kein Benutzer mit diesem Benutzernamen gefunden werden.</message>
+    <message id="messages_send_err_sendtoyourself">Sie können sich selbst keine Nachrichten zusenden.</message>
+    <message id="messages_send_err_timebreak">Es müssen mindestens %d Minuten zwischen Ihrer zuletzt versendeten Nachricht liegen.</message>
+    
+    <message id="messages_reply_button">Antworten</message>
+    
+    <message id="messages_send_success">Nachricht versendet</message>
+    <message id="messages_send_button">Senden</message>
+    
+    <message id="messages_new_messages">Sie haben %d neue Nachrichten</message>
+    
+</messages>

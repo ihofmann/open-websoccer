@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <pages>
+        <page
+            id="teamoftheday"
+            template="teamoftheday"
+            model="TeamOfTheDayModel"
+            parentItem="leagues"
+            navitem="true"
+            navweight="4"
+            role="user,guest">
+            <css file="formation.css"/>
+        </page>
+
+    </pages>
+    
+</module>

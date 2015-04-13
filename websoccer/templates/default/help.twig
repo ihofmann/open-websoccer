@@ -1,0 +1,15 @@
+<div class="text-right"><a href="#helpModal" class="btn btn-info" role="button" data-toggle="modal">{{ i18n.getMessage("help_button") }}</a></div>
+
+<div id="helpModal" class="modal hide fade" tabindex="-1" role="dialog" 
+	aria-labelledby="helpModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="helpModalLabel">{{ i18n.getMessage("help_dialog_title") }}</h3>
+  </div>
+  <div class="modal-body">
+	{{ block("help_content") }}
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_close") }}</a>
+  </div>
+</div>

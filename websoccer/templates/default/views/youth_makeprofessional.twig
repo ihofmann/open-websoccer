@@ -1,0 +1,53 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("youthplayer-makeprofessional_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+<form class="form-horizontal" method="post">
+
+	<fieldset>
+		<legend>{{ i18n.getMessage("youthplayer-makeprofessional_formlabel") }}</legend>
+		
+		<p>{{ i18n.getMessage("youthplayer-makeprofessional_form_intro")|raw }}</p>
+		
+		<div class="control-group{% if validationMsg['mainposition'] is defined %} error{% endif %}">
+			<label class="control-label" for="mainposition">
+				<strong>{{ i18n.getMessage("entity_player_position_main") }}</strong>
+			</label>
+			<div class="controls">
+		  		<select name="mainposition" id="mainposition">
+		  			<option></option>
+		  			
+		  			{% if player.position == "Torwart" %}
+		  				<option value="T" selected>{{ i18n.getMessage("option_T") }}</option>
+		  			{% elseif player.position == "Abwehr" %}
+		  				<option value="LV">{{ i18n.getMessage("option_LV") }}</option>
+		  				<option value="IV">{{ i18n.getMessage("option_IV") }}</option>
+		  				<option value="RV">{{ i18n.getMessage("option_RV") }}</option>
+		  			{% elseif player.position == "Mittelfeld" %}
+		  				<option value="LM">{{ i18n.getMessage("option_LM") }}</option>
+		  				<option value="ZM">{{ i18n.getMessage("option_ZM") }}</option>
+		  				<option value="RM">{{ i18n.getMessage("option_RM") }}</option>
+		  				<option value="DM">{{ i18n.getMessage("option_DM") }}</option>
+		  				<option value="OM">{{ i18n.getMessage("option_OM") }}</option>
+		  			{% else %}
+		  				<option value="LS">{{ i18n.getMessage("option_LS") }}</option>
+		  				<option value="MS">{{ i18n.getMessage("option_MS") }}</option>
+		  				<option value="RS">{{ i18n.getMessage("option_RS") }}</option>
+		  			{% endif %}
+		  		</select>
+			</div>
+		</div>
+		
+	</fieldset>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
+		<a href="{{ env.getInternalUrl("youth-team") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="page" value="youthplayer-makeprofessional"/>
+	<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>
+	<input type="hidden" name="action" value="move-youthplayer-to-professional"/>
+</form>
+{% endblock %}

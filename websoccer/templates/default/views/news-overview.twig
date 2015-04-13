@@ -1,0 +1,25 @@
+{% import "macros/paginator.twig" as pagination %}
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("news_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if articles|length == 0 %}
+{{ i18n.getMessage("news_no_items") }}
+{% endif %}
+
+{% for article in articles %}
+<h4><a href="{{ env.getInternalUrl("news-details", "id=" ~ article.id) }}">{{ article.title }}</a></h4>
+<p><em>{{ article.date }}</em></p>
+
+<p>{{ article.teaser|raw }}</p>
+
+<p style="margin-bottom: 30px;"><a href="{{ env.getInternalUrl("news-details", "id=" ~ article.id) }}">Mehr</a></p>
+{% endfor %}
+
+{{ pagination.paginator(paginator) }}
+
+{% endblock %}

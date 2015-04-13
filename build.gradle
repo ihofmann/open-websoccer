@@ -1,0 +1,77 @@
+def releaseVersion = "5.2.2"
+def targetDirBase = './release/' + releaseVersion + '/'
+def targetDir = targetDirBase + "/websoccer"
+def targetUpdateDir = targetDirBase + '/update/websoccer'
+
+task release << {
+    println 'Starting release. Make sure you disabled DEBUG mode in software.'
+}
+
+release << {
+
+	versionfile = new File('./websoccer/admin/config/version.txt')
+    versionfile.text = releaseVersion
+
+    println 'Updated version file'
+}
+
+release << {
+
+    copy {
+        from './websoccer'
+        into targetDir
+        exclude '.gradle'
+        exclude '.settings'
+        exclude '.buildpath'
+        exclude '.project'
+        exclude 'dberrorlog.txt'
+        exclude 'admin/dberrorlog.txt'
+        exclude 'build.gradle'
+        exclude 'cache/*'
+        exclude 'update'
+        exclude 'uploads/club/*'
+	    exclude 'uploads/cup/*'
+	    exclude 'uploads/player/*'
+	    exclude 'uploads/sponsor/*'
+	    exclude 'uploads/stadiumbuilder/*'
+	    exclude 'uploads/stadium/*'
+	    exclude 'uploads/stadiumbuilding/*'
+	    exclude 'uploads/users/*'
+    }
+
+    println 'Copied files'
+}
+
+release << {
+
+	configfile = new File(targetDir + '/admin/config/config.inc.php')
+    configfile.text = ''
+
+    imprintfile = new File(targetDir + '/admin/config/imprint.php')
+    imprintfile.text = 'n.a.'
+    
+    adminlog = new File(targetDir + '/admin/config/adminlog.php')
+    adminlog.text = ''
+    
+    entitylog = new File(targetDir + '/admin/config/entitylog.php')
+    entitylog.text = ''
+
+    println 'Emptied files'
+}
+
+release << {
+
+    copy {
+        from './websoccer'
+        include 'classes/**'
+        include 'admin/config/version.txt'
+        include 'update/**'
+        into targetUpdateDir
+    }
+    
+    println 'Copied files for update'
+}
+
+task build(dependsOn: release) {
+
+}

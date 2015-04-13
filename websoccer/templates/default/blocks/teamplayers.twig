@@ -1,0 +1,34 @@
+{% import "macros/playerlists.twig" as playerlists %}
+
+{% if players is defined and players|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+				
+				{% if env.getConfig("hide_strength_attributes") != "1" %}
+					<th><abbr title="{{ i18n.getMessage("playertable_head_strength") }}">{{ i18n.getMessage("playertable_head_strength_abbr") }}</abbr></th>
+					<th><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr></th>
+					<th><abbr title="{{ i18n.getMessage("playertable_head_strength_freshness") }}">{{ i18n.getMessage("playertable_head_strength_freshness_abbr") }}</abbr></th>
+					<th><abbr title="{{ i18n.getMessage("playertable_head_strength_stamina") }}">{{ i18n.getMessage("playertable_head_strength_stamina_abbr") }}</abbr></th>
+					<th><abbr title="{{ i18n.getMessage("playertable_head_strength_satisfaction") }}">{{ i18n.getMessage("playertable_head_strength_satisfaction_abbr") }}</abbr></th>
+				{% endif %}
+				
+				<th>{{ i18n.getMessage("playertable_head_age") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_blocked") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+			{% for player in players %}
+				{{ playerlists.teamlistItem(player)  }}
+			{% endfor %}
+		
+		</tbody>
+	</table>
+
+{% else %}
+	<p>{{ i18n.getMessage("no_players_found") }}</p>
+{% endif %}

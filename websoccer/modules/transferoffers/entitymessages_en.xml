@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_transfer_offer">Transfer Offer</message>
+	<message id="entity_transfer_offer_submitted_date">Offer Date</message>
+	<message id="entity_transfer_offer_player_id">Player</message>
+	<message id="entity_transfer_offer_receiver_club_id">Receiver Club</message>
+	<message id="entity_transfer_offer_sender_club_id">Sender Club</message>
+	<message id="entity_transfer_offer_offer_amount">Amount</message>
+	<message id="entity_transfer_offer_admin_approval_pending">requires approval</message>
+	<message id="entity_transfer_offer_sender_user_id">Sender</message>
+	<message id="entity_transfer_offer_offer_message">Comment</message>
+	<message id="entity_transfer_offer_offer_player1">Exchange player 1</message>
+	<message id="entity_transfer_offer_offer_player2">Exchange player 2</message>
+	<message id="entity_transfer_offer_rejected_date">Rejected on</message>
+</messages>

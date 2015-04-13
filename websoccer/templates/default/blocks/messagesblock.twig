@@ -1,0 +1,8 @@
+{% import "macros/messagebox.twig" as msgbox %}
+
+
+{% if frontMessages is defined %}
+	{% for message in frontMessages %}
+		{{ msgbox.box(message.title, message.message, message.type) }}
+	{% endfor %}
+{% endif %}

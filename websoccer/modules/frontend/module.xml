@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+  <admin>
+	<adminpage id="imprint" permissionrole="r_admin" navcategory="settings" filename="imprint"/>
+  </admin>
+  
+  <settings>
+      <setting id="skin" category="frontend" type="text" default="DefaultBootstrapSkin" />
+      <setting id="entries_per_page" category="frontend" type="number" default="20" />
+      <setting id="head_code" category="frontend" type="textarea" />
+  </settings>
+  
+    <blocks>
+
+        <block
+            id="messagesblock"
+            template="messagesblock"
+            includepages="all"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+        <block
+            id="latest-results-summary"
+            template="results-list-smallblock"
+            model="LatestResultsBlockModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+    </blocks>
+    
+    <pages>
+        
+        <page
+            id="home"
+            navitem="true"
+            navweight="0"
+            template="home"
+            role="guest,user" />
+        
+        <page
+            id="imprint"
+            template="imprint"
+            model="ImprintModel"
+            role="user,guest" />
+
+    </pages> 
+  
+</module>

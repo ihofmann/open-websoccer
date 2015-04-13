@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_users">User</message>
+	<message id="entity_users_nick">Username</message>
+	<message id="entity_users_lastonline">Last Login</message>
+	<message id="entity_users_lastaction">Last Action</message>
+	<message id="entity_users_highscore">Highscore</message>
+	<message id="entity_users_clubname">Club</message>
+	<message id="entity_users_datum_anmeldung">Registration Date</message>
+	<message id="entity_users_email">E-Mail</message>
+	
+    <message id="entity_users_passwort">Password</message>
+    <message id="entity_users_wunschverein">Wished Clubs</message>
+    <message id="entity_users_name">Name</message>
+    <message id="entity_users_wohnort">Residence</message>
+    <message id="entity_users_land">Country</message>
+    <message id="entity_users_geburtstag">Birthday</message>
+    <message id="entity_users_beruf">Occupation</message>
+    <message id="entity_users_interessen">Interests</message>
+    <message id="entity_users_lieblingsverein">Favorite Club</message>
+    <message id="entity_users_homepage">Website</message>
+    <message id="entity_users_fanbeliebtheit">Popularity</message>
+    <message id="entity_users_history">History</message>
+    <message id="entity_users_status">Active</message>
+    
+    <message id="entity_users_c_hideinonlinelist">Hide activities in "who is currently online?" list.</message>
+    <message id="entity_users_premium_balance">Premium Balance</message>
+    
+    <message id="entity_users_picture">Profile Picture</message>
+    <message id="entity_users_picture_help">Size must be exact 120px x 120px.</message>
+	
+	<message id="entity_user_inactivity">Inactivity</message>
+	<message id="entity_user_inactivity_login">Logins</message>
+   	<message id="entity_user_inactivity_aufstellung">Submitted tactics</message>
+   	<message id="entity_user_inactivity_transfer">Player transers</message>
+   	<message id="entity_user_inactivity_vertragsauslauf">Extended player contracts</message>
+   	<message id="entity_user_inactivity_transfer_check">Last action on %s</message>
+</messages>

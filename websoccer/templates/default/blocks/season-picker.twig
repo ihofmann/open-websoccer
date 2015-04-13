@@ -1,0 +1,64 @@
+<h3>{{ league_name }}</h3>
+
+<form class="form-horizontal">
+	<div class="control-group">
+  		<label class="control-label" for="seasonid">{{ i18n.getMessage("entity_season") }}</label>
+  		<div class="controls">
+	  		<select name="seasonid" id="seasonid" required>
+	  			<option></option>
+	  			{% for season in seasons %}
+	  				<option value="{{ season.id }}"{% if env.getRequestParameter("seasonid") == season.id %} selected{% endif %}>{{ season.name }}</option>
+	  			{% endfor %}
+	  		</select>
+  		</div>
+  	</div>
+  	
+  	{% if env.getRequestParameter("seasonid") > 0 %}
+	<div class="control-group">
+  		<label class="control-label" for="matchday">{{ i18n.getMessage("entity_match_spieltag") }}</label>
+  		<div class="controls">
+	  		<input id="matchday" name="matchday" type="number" value="{{ env.getRequestParameter("matchday") }}" required/>
+  		</div>
+  	</div>
+  	{% endif %}
+  	
+  	<div class="control-group">
+  		<div class="controls">
+	  		<button type="submit" class="btn btn-primary ajaxSubmit" 
+		data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker">{{ i18n.getMessage("button_display") }}</button>
+	  	
+	  		{% if currentMatchDay > 0 %}
+	  			<a href="#" class="btn ajaxLink"
+	data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
+	data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ currentMatchDay }}">{{ i18n.getMessage("seasonpicker_currentmachday") }}</a>
+	  		{% endif %}
+	  	
+	  	</div>
+  	</div>
+  	<input type="hidden" name="page" value="results" />
+  	<input type="hidden" name="leagueid" value="{{ env.getRequestParameter("leagueid") }}" />
+</form>
+
+<ul class="pager">
+	{% if env.getRequestParameter("matchday") > 1 %}
+  <li class="previous">
+    <a href="#" class="ajaxLink"
+	data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
+	data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ env.getRequestParameter("matchday") - 1 }}">&larr; {{ i18n.getMessage("seasonpicker_previous") }}</a>
+  </li>
+  {% endif %}
+
+  {% if env.getRequestParameter("matchday") < maxMatchDay %}
+  <li class="next">
+    <a href="#" class="ajaxLink"
+	data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
+	data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ env.getRequestParameter("matchday") + 1 }}">{{ i18n.getMessage("seasonpicker_next") }} &rarr;</a>
+  </li>
+  {% endif %}
+</ul>
+
+{% if env.getRequestParameter("matchday") > 0 %}
+	<h4>{{ i18n.getMessage("entity_match_spieltag") }}: {{ env.getRequestParameter("matchday") }}</h4>
+	<p><a href="{{ env.getInternalUrl("teamoftheday", "leagueid=" ~ env.getRequestParameter("leagueid") ~ "&seasonid=" ~ env.getRequestParameter("seasonid") ~ "&matchday=" ~ env.getRequestParameter("matchday")) }}" class="btn btn-small"><i class="icon-heart-empty"></i> {{ i18n.getMessage("teamoftheday_navlabel") }}</a></p>
+{% endif %}
+<span id="results-list_block">{{ viewHandler.renderBlock("results-list")|raw }}</span>

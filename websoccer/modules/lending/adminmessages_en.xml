@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_lending_enabled">Users can lend and borrow players.</message> 
+	<message id="settings_label_lending_matches_min">Minimum lending duration</message>
+	<message id="settings_label_lending_matches_min_help">Number of matches</message>  
+	<message id="settings_label_lending_matches_max">Maximum lending duration</message> 
+	<message id="settings_label_lending_matches_max_help">Number of matches</message> 
+</messages>

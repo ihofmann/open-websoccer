@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block browser_title %}{{ block("page_title") }} - {{ env.getConfig("projectname") }}{% endblock %}</title>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		{% if env.getRequestParameter("id") != null %}
+			{% set url = env.getInternalUrl(null, "id=" ~ env.getRequestParameter("id"), TRUE) %}
+		{% else %}
+			{% set url = env.getInternalUrl(null, null, TRUE) %}
+		{% endif %}
+		<link rel="canonical" href="{{ url }}"/>
+		
+		{% for cssSource in skin.getCssSources() %}
+		<link href="{{ cssSource }}" media="all" rel="stylesheet" type="text/css" />
+		{% endfor %}
+		{% if cssReferences is defined %}
+			{% for cssSource in cssReferences %}
+			<link href="{{ env.getConfig("context_root") }}/css/{{ cssSource }}" media="all" rel="stylesheet" type="text/css" />
+			{% endfor %}
+		{% endif %}
+		
+		<link rel="shortcut icon" type="image/x-icon" href="{{ env.getConfig("context_root") }}/favicon.ico" />
+		
+		{% if env.getConfig("facebook_appid") %}
+		<meta property="fb:app_id" content="{{ env.getConfig("facebook_appid") }}"/>
+		{% endif %}
+		{{ env.getConfig("head_code")|raw }}
+	</head>
+	<body>
+	
+		<div id="wrapper">
+			{% block navigation %}
+			{% include 'navigationbar.twig' %}
+			{% endblock %}
+		
+			
+			{% block page_header %}
+			{% endblock %}
+			
+			{% block page_columns %}
+				<div class="container main-container">
+					<div class="row">
+						<div class="span8" id="contentArea">
+							<div class="box">
+							
+								{% include 'breadcrumb.twig' %}
+							
+								<div class="page-header">
+								<h1>{{ block("page_title") }}</h1>
+								</div>
+								
+								<div id="messages">
+								{% block messages_block %}
+								{{ viewHandler.renderBlock("messagesblock")|raw }}
+								{% endblock %}
+								</div>
+								
+								<div id="pagecontent">
+								{% if blocks.content_top is defined %}
+									{% for uiBlock in blocks.content_top %}
+										<div id="{{ uiBlock.id }}_block">
+										{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+										</div>
+									{% endfor %}
+								{% endif %}
+						
+								
+								{{ block("page_content") }}
+								
+								{% if blocks.content_bottom is defined %}
+									{% for uiBlock in blocks.content_bottom %}
+										<div id="{{ uiBlock.id }}_block">
+										{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+										</div>
+									{% endfor %}
+								{% endif %}
+								</div>
+							
+							</div>
+						</div>
+						<div class="span4">
+						
+							{% if blocks.sidebar is defined %}
+								{% for uiBlock in blocks.sidebar %}
+									<div id="{{ uiBlock.id }}_block">
+									{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+									</div>
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				{% endblock %}
+		</div>
+		<footer>
+			{# 
+			DER SOFTWARE-HINWEIS UND DER LINK DARF NICHT ENTFERNT ODER UNKENNTLICH GEMACHT WERDEN OHNE GESONDERTE LIZENZ!
+			
+			THE SOFTWARE HINT MUST NOT BE REMOVED OR GARBLED WITHOUT HAVING OBTAINED A SEPARATE SPECIAL LICENCE!
+			#}
+        	<p><a href="{{ env.getInternalUrl("termsandconditions") }}">{{ i18n.getMessage("termsandconditions_navlabel") }}</a> 
+        	{% if env.getConfig("privacypolicy_url")|length > 0 %}| <a href="{{ env.getConfig("privacypolicy_url") }}">{{ i18n.getMessage("privacypolicy_navlabel") }}</a>{% endif %}
+        	| <a href="{{ env.getInternalUrl("imprint") }}">{{ i18n.getMessage("imprint_navlabel") }}</a> 
+        	| Powered by <a href="http://www.websoccer-sim.com" target="_blank">OpenWebSoccer-Sim</a>
+        	| <i class="icon-time"></i> {{ env.getFormattedDatetime(null) }}
+        	</p>
+		</footer>
+		
+		<div id="ajaxLoaderPage"></div>
+		
+		{% for jsSource in skin.getJavaScriptSources() %}
+		<script src="{{ jsSource }}" ></script>
+		{% endfor %}
+		{% if scriptReferences is defined %}
+			{% for jsSource in scriptReferences %}
+			<script src="{{ env.getConfig("context_root") }}/js/{{ jsSource }}" ></script>
+			{% endfor %}
+		{% endif %}
+		
+		<!--[if lt IE 9]>
+		<script src="js/extcanvas/excanvas.compiled.js"></script>
+		<![endif]-->
+	</body>
+</html>

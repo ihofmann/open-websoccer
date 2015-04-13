@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_youthplayer">Jugendspieler</message>
+	<message id="entity_youthplayer_lastname">Nachname</message>
+	<message id="entity_youthplayer_firstname">Vorname</message>
+	<message id="entity_youthplayer_team_id">Verein</message>
+	<message id="entity_youthplayer_position">Spielposition</message>
+	<message id="entity_youthplayer_age">Alter</message>
+	<message id="entity_youthplayer_strength">Stärke</message>
+	<message id="entity_youthplayer_strength_last_change">Stärkeänderung seit dem letzten Spiel</message>
+	<message id="entity_youthplayer_nation">Nationalität</message>
+	<message id="entity_youthplayer_nation_ehlp">Ländername</message>
+	
+	<message id="entity_youthplayer_st_goals">Tore</message>
+	<message id="entity_youthplayer_st_matches">Spiele</message>
+	<message id="entity_youthplayer_st_assists">Vorlagen</message>
+	<message id="entity_youthplayer_st_cards_yellow">Gelbe Karten</message>
+	<message id="entity_youthplayer_st_cards_yellow_red">Gelb-Rote Karten</message>
+	<message id="entity_youthplayer_st_cards_red">Rote Karten</message>
+	<message id="entity_youthplayer_transfer_fee">Ablösesumme</message>
+	<message id="entity_youthplayer_transfer_fee_help">Wenn grösser als 0, wird der Spieler zu dieser Summe auf dem Marktplatz angeboten.</message>
+
+	<message id="entity_youthscout">Talentscout</message>
+	<message id="entity_youthscout_name">Name</message>
+	<message id="entity_youthscout_expertise">Kompetenz</message>
+	<message id="entity_youthscout_fee">Honorar</message>
+	<message id="entity_youthscout_speciality">Spezialgebiet</message>
+	
+	<message id="entity_youthmatch">Jugendspiel</message>
+	<message id="entity_youthmatch_matchdate">Datum</message>
+	<message id="entity_youthmatch_home_team_id">Heimmannschaft</message>
+	<message id="entity_youthmatch_guest_team_id">Gastmannschaft</message>
+	<message id="entity_youthmatch_simulated">Berechnet</message>
+	<message id="entity_youthmatch_home_goals">Tore Heimmannschaft</message>
+	<message id="entity_youthmatch_guest_goals">Tore Gastmannschaft</message>
+</messages>

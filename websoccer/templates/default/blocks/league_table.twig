@@ -1,0 +1,38 @@
+
+{% extends "blocks/table_base.twig" %}
+
+{% block table_header %}
+	<ul class="nav nav-pills">
+		<li{% if env.getRequestParameter("seasonid") == null %} class="active"{% endif %}>
+			<a href="#currentTable" class="ajaxLink"
+			data-ajaxtarget="leaguetable_block" data-ajaxblock="leaguetable" data-ajaxquerystr="id={{ leagueId }}">{{ i18n.getMessage("leaguetable_block_title") }}</a>
+		</li>
+		{% for season in seasons %}
+		<li{% if env.getRequestParameter("seasonid") == season.id %} class="active"{% endif %}><a href="#season{{ loop.index }}" class="ajaxLink"
+			data-ajaxtarget="leaguetable_block" data-ajaxblock="leaguetable" data-ajaxquerystr="id={{ leagueId }}&seasonid={{ season.id }}">{{ season.name }}</a></li>
+		{% endfor %}
+	</ul>
+	
+	<div class="btn-group" style="margin-bottom: 10px;">
+		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#showAll">
+			{{ i18n.getMessage("leaguetable_button_type") }}
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li{% if env.getRequestParameter("type") == null %} class="active"{% endif %}><a href="#wholeTable" class="ajaxLink"
+				data-ajaxtarget="leaguetable_block" data-ajaxblock="leaguetable" data-ajaxquerystr="id={{ leagueId }}&seasonid={{ env.getRequestParameter("seasonid") }}"><i class="icon-list-alt"></i> {{ i18n.getMessage("leaguetable_button_type_total") }}</a></li>
+			<li{% if env.getRequestParameter("type") == "home" %} class="active"{% endif %}><a href="#homeTable" class="ajaxLink"
+				data-ajaxtarget="leaguetable_block" data-ajaxblock="leaguetable" data-ajaxquerystr="id={{ leagueId }}&seasonid={{ env.getRequestParameter("seasonid") }}&type=home"><i class="icon-arrow-right"></i> {{ i18n.getMessage("leaguetable_button_type_home") }}</a></li>
+			<li{% if env.getRequestParameter("type") == "guest" %} class="active"{% endif %}><a href="#guestTable"class="ajaxLink"
+				data-ajaxtarget="leaguetable_block" data-ajaxblock="leaguetable" data-ajaxquerystr="id={{ leagueId }}&seasonid={{ env.getRequestParameter("seasonid") }}&type=guest"><i class="icon-arrow-left"></i> {{ i18n.getMessage("leaguetable_button_type_guest") }}</a></li>
+		</ul>
+	  
+		
+	</div>
+	<a class="btn" style="margin-bottom: 10px;" href="{{ env.getInternalUrl("results", "leagueid=" ~ leagueId ~ "&seasonid=" ~ env.getRequestParameter("seasonid")) }}"><i class="icon-list"></i> {{ i18n.getMessage("results_navlabel") }}</a>
+	
+	{% if env.getRequestParameter("seasonid") == null and env.getRequestParameter("type") != null %}
+	<p><i class="icon-info-sign"></i> <em>{{ i18n.getMessage("leaguetable_timedelay_info") }}</em></p>
+	{% endif %}
+{% endblock %}
+

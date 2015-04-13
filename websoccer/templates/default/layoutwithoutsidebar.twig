@@ -1,0 +1,45 @@
+{% extends "base.twig" %}
+
+
+{% block page_columns %}
+	<div class="row">
+		<div class="span12" id="contentArea">
+			<div class="box">
+			
+				{% include 'breadcrumb.twig' %}
+			
+				<div class="page-header">
+				<h1>{{ block("page_title") }}</h1>
+				</div>
+				
+				<div id="messages">
+				{% block messages_block %}
+				{{ viewHandler.renderBlock("messagesblock")|raw }}
+				{% endblock %}
+				</div>
+				
+				<div id="pagecontent">
+				{% if blocks.content_top is defined %}
+					{% for uiBlock in blocks.content_top %}
+						<div id="{{ uiBlock.id }}_block">
+						{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+						</div>
+					{% endfor %}
+				{% endif %}
+		
+				
+				{{ block("page_content") }}
+				
+				{% if blocks.content_bottom is defined %}
+					{% for uiBlock in blocks.content_bottom %}
+						<div id="{{ uiBlock.id }}_block">
+						{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+						</div>
+					{% endfor %}
+				{% endif %}
+				</div>
+			
+			</div>
+		</div>
+	</div>
+{% endblock %}

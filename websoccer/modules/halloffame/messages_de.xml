@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="halloffame_navlabel">Hall of Fame</message>
+    <message id="halloffame_no_seasons">Bisher wurden noch keine Saisons abgeschlossen.</message>
+    <message id="halloffame_no_cups">Bisher wurden noch keine Pokalwettbewerbe ausgetragen.</message>
+    
+</messages>

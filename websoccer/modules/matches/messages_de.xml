@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="results_navlabel">Ergebnisse und Spielplan</message>
+    <message id="match_navlabel">Spieldetails</message>
+    
+    <message id="matchtype_league">Ligaspiel</message>
+    <message id="matchtype_cup">Pokalspiel</message>
+    <message id="matchtype_friendly">Freundschaftsspiel</message>
+    
+    <message id="last_match_block_title">Mein letztes Spiel</message>
+    <message id="last_match_block_no_lastmatch">Ihr Team hat noch kein Spiel bestritten.</message>
+    
+    <message id="match_details_date">Datum</message>
+    <message id="match_details_type">Typ</message>
+    <message id="match_details_stadium">Austragungsort</message>
+    
+    <message id="match_details_matchday">%d. Spieltag</message>
+    <message id="match_details_audience">Zuschauer</message>
+    
+    
+    <message id="match_details_notyetsimulated">Das Spiel wurde noch nicht ausgetragen.</message>
+    <message id="match_details_match_completed">Das Spiel ist beendet.</message>
+    
+    <message id="match_details_noformation">%s hat keine Aufstellung abgegeben.</message>
+    
+    
+    <message id="match_details_report_title">Spielbericht</message>
+    
+    <message id="match_details_comments_title">Live-Kommentar</message>
+    <message id="match_details_players_title">Spieler</message>
+    <message id="match_details_statistic_title">Statistik</message>
+    
+    <message id="match_details_nostatistics_available">Für dieses Spiel sind keine Statistiken verfügbar. Schauen Sie im Spielbericht nach.</message>
+    
+    <message id="match_details_noplayersset">Keine Aufstellung vorhanden.</message>
+    <message id="match_details_no_players_on_bench">Es wurden keine Spieler auf die Ersatzbank gesetzt.</message>
+    
+    <message id="match_details_commenttitle_penalty">Elfmeter</message>
+    <message id="match_details_commenttitle_goal">Tor!</message>
+    
+    <message id="match_details_players_name">Name</message>
+    <message id="match_details_players_grade">Note</message>
+    <message id="match_details_players_grade_helptext">Benotung von 1.00 (sehr gut) bis 6.00 (sehr schlecht)</message>
+    
+    <message id="match_details_statistic_shoots">Schüsse</message>
+    <message id="match_details_statistic_tackles">Zweikämpfe</message>
+    <message id="match_details_statistic_ballcontacts">Ballbesitz</message>
+    <message id="match_details_statistic_successfulpasses">Passquote</message>
+    
+    <message id="results_tab_leagues">Ligen</message>
+    <message id="results_tab_cups">Pokale</message>
+    <message id="results_tab_latest_results">Neuste Ergebnisse</message>
+    
+    <message id="results_no_matches_found">Keine Spiele gefunden.</message>
+    <message id="match_result">Ergebnis</message>
+    
+    <message id="match_report_minute">%d. Minute</message>
+    
+    <message id="player_yellowcard">Hat eine gelbe Karte erhalten</message>
+    <message id="player_yellowredcard">Hat eine gelb-rote Karte erhalten</message>
+    <message id="player_redcard">Hat eine rote Karte erhalten</message>
+    <message id="player_goalscorer">Ist Torschütze</message>
+    <message id="player_assists">Ist Vorlagengeber</message>
+    <message id="player_injured">Hat sich verletzt</message>
+    <message id="player_substitute_out">Musste das Spielfeld verlassen</message>
+    <message id="player_substitute_in">Wurde eingewechselt</message>
+    
+    <message id="match_salarypayment_sender">Buchhaltung</message>
+    <message id="match_salarypayment_subject">Spielergehälter</message>
+    
+    <message id="match_ticketrevenue_sender">Verkauf</message>
+    <message id="match_ticketrevenue_subject">Ticketverkäufe</message>
+    
+    <message id="match_sponsorpayment_subject">Sponsorenprämie</message>
+    
+    <message id="match_details_button_changes">Eingreifen</message>
+    
+    <message id="match-live-changes_navlabel">In das Spiel eingreifen</message>
+    
+    <message id="match_details_changes_max_help">Darf %d mal pro Spiel geändert werden.</message>
+    <message id="match_details_changes_too_late">Eine Auswechslung muss mindestens %d Minuten vorher platziert werden.</message>
+    <message id="match_details_changes_too_late_altered">Die Einwechslung Nr. %d wurde auf den nächst möglichen Zeitpunkt verschoben.</message>
+	<message id="match_details_changes_too_often">Die Taktik dürfen Sie nur %d mal während dem Spiel ändern.</message>
+    
+	<message id="match_details_report_halftime">Halbzeit! Zwischenstand: %s</message>
+	<message id="match_details_report_extension">Es geht in die Verlängerung! Zwischenstand: %s</message>
+	<message id="match_details_report_penaltyshooting">Entscheidung durch Elfmeter! Zwischenstand: %s</message>
+	
+	<message id="match_details_statistic_ballcontacts_player">Ballkontakte</message>
+	<message id="match_details_statistic_tackles_player">Gew. Zweikämpfe</message>
+	<message id="match_details_players_age">Alter</message>
+	
+	<message id="match_livematch_title">Jetzt live!</message>
+	<message id="match_live_label">Läuft gerade</message>
+	
+	<message id="todaysmatches_navlabel">Heutige Spiele</message>
+	
+	<message id="myschedule_navlabel">Spielplan</message>
+	
+	<message id="matchpreview_last_matches">Letzte Spiele im Wettbewerb</message>
+	<message id="matchpreview_nolastmatches">%s hat in diesem Wettbewerb noch nicht gespielt.</message>
+	<message id="matchpreview_nouser">%s hat derzeit keinen Manager.</message>
+</messages>

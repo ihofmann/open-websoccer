@@ -1,0 +1,80 @@
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/paginator.twig" as pagination %}
+
+{% if matches is defined and matches|length > 0 %}
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_match_datum") }}</th>
+				<th>{{ i18n.getMessage("entity_match_home_verein") }}</th>
+				<th>{{ i18n.getMessage("entity_match_gast_verein") }}</th>
+				<th>{{ i18n.getMessage("match_result") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for match in matches %}
+			<tr>
+				<td>
+					{% if match.type == "Ligaspiel" %}
+						<i class="icon-shield wstooltip" title="{{ i18n.getMessage("option_Ligaspiel") }}"></i>
+					{% elseif match.type == "Freundschaft" %}
+						<i class="icon-smile wstooltip" title="{{ i18n.getMessage("option_Freundschaft") }}"></i>
+					{% else %}
+						<i class="icon-trophy wstooltip" title="{{ i18n.getMessage("option_Pokalspiel") }} ({{ match.cup_name }}, {{ match.cup_round }})"></i>
+					{% endif %}
+					{{ env.getFormattedDatetime(match.date, i18n) }}
+				</td>
+				<td>
+					{% if match.home_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.home_team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a>
+					{% if match.home_noformation %}
+						<i class="icon-bolt wstooltip" title="{{ i18n.getMessage("match_details_noformation", match.home_team) }}"></i>
+					{% endif %}
+					{% if match.home_user_id > 0 %}
+						<br>
+						{% if match.home_user_picture|length > 0 %}
+							<a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}"><img src="{{ match.home_user_picture }}" style="width: 20px; height: 20px"/></a>
+						{% endif %}
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}">{{ match.home_user_nick }}</a></small>
+					{% endif %}
+				</td>
+				<td>
+					{% if match.guest_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.guest_team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a>
+					{% if match.guest_noformation %}
+						<i class="icon-bolt wstooltip" title="{{ i18n.getMessage("match_details_noformation", match.guest_team) }}"></i>
+					{% endif %}
+					{% if match.guest_user_id > 0 %}
+						<br>
+						{% if match.guest_user_picture|length > 0 %}
+							<a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}"><img src="{{ match.guest_user_picture }}" style="width: 20px; height: 20px"/></a>
+						{% endif %}
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}">{{ match.guest_user_nick }}</a></small>
+					{% endif %}
+				</td>
+				<td><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" title="{{ i18n.getMessage("match_navlabel") }}">
+				{% if match.simulated == 1 %}
+				{{ match.home_goals }} - {{ match.guest_goals }}
+				{% elseif match.minutes > 0  %}
+				<i class="icon-fire" title="{{ i18n.getMessage("match_live_label") }}"></i> {{ match.home_goals }} - {{ match.guest_goals }}
+				{% else %}
+				{{ i18n.getMessage("match_navlabel") }}
+				{% endif %}
+				</a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	
+	{% if paginator is defined and paginator is not null %}
+		{{ pagination.paginator(paginator) }}
+	{% endif %}
+	
+{% else %}
+	{{ messagebox.box(i18n.getMessage("results_no_matches_found"), "", "info") }}
+{% endif %}

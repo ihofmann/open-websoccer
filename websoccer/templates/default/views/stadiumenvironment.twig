@@ -1,0 +1,116 @@
+{% import "macros/premium.twig" as premium %}
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("stadiumenvironment_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<h3>{{ i18n.getMessage("stadiumenvironment_existingbuildings") }}</h3>
+
+{% if existingBuildings|length == 0 %}
+	{{ i18n.getMessage("stadiumenvironment_existingbuildings_none") }}
+{% else %}
+	<table class="table table-striped">
+		<tbody>
+			{% for building in existingBuildings %}
+				{% if i18n.hasMessage(building.name) %}
+					{% set buildingName = i18n.getMessage(building.name) %}
+				{% else %}
+					{% set buildingName = building.name %}
+				{% endif %}
+				{% if i18n.hasMessage(building.description) %}
+					{% set buildingDescription = i18n.getMessage(building.description) %}
+				{% else %}
+					{% set buildingDescription = building.description %}
+				{% endif %}
+				
+			<tr{% if building.under_construction %} class="warning"{% endif %}>
+				<td>
+				{% if building.picture|length > 0 %}
+				<img src="{{ env.getConfig("context_root") }}/uploads/stadiumbuilding/{{ building.picture }}">
+				{% endif %}
+				</td>
+				<td>
+					<h4>{{ buildingName }}</h4>
+					<p>{{ buildingDescription }}</p>
+					{% if building.under_construction %}
+						<p><strong>{{ i18n.getMessage("stadiumenvironment_existingbuildings_underconstruction", env.getFormattedDatetime(building.construction_deadline, i18n)) }}</strong></p>
+					{% endif %}
+					{% if building.effect_income != 0 %}
+						<p><strong>{{ i18n.getMessage("entity_stadiumbuilding_effect_income") }}:</strong>
+						{{ building.effect_income|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</p>
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endif %}
+
+<h3>{{ i18n.getMessage("stadiumenvironment_availablebuildings") }}</h3>
+
+{% if availableBuildings|length == 0 %}
+	<div class="well">
+	{{ i18n.getMessage("stadiumenvironment_availablebuildings_none") }}
+	</div>
+{% else %}
+
+	<div id="buildingsSelection" class="carousel well slide" style="min-height: 200px">
+	  <ol class="carousel-indicators">
+	  	{% for building in availableBuildings %}
+	    	<li data-target="#buildingsSelection" data-slide-to="{{ loop.index0 }}"{% if loop.index0 == 0 %} class="active"{% endif %}></li>
+	    {% endfor %}
+	  </ol>
+	  <div class="carousel-inner">
+	  	{% for building in availableBuildings %}
+	  		{% if i18n.hasMessage(building.name) %}
+				{% set buildingName = i18n.getMessage(building.name) %}
+			{% else %}
+				{% set buildingName = building.name %}
+			{% endif %}
+			{% if i18n.hasMessage(building.description) %}
+				{% set buildingDescription = i18n.getMessage(building.description) %}
+			{% else %}
+				{% set buildingDescription = building.description %}
+			{% endif %}
+	    	<div class="item{% if loop.index0 == 0 %} active{% endif %}" style="padding: 0 50px">
+				<h4>{{ buildingName }}</h4>
+				<p>{{ buildingDescription }}</p>
+				
+				{% if building.picture|length > 0 %}
+					<p><img src="{{ env.getConfig("context_root") }}/uploads/stadiumbuilding/{{ building.picture }}"></p>
+				{% endif %}
+				
+				<dl class="dl-horizontal">
+					<dt>{{ i18n.getMessage("entity_stadiumbuilding_costs") }}</dt>
+					<dd>{{ building.costs|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}
+					{% if building.premiumfee %}
+						{{ premium.premiumbadge(building.premiumfee) }}
+					{% endif %}
+					</dd>
+					
+					<dt>{{ i18n.getMessage("entity_stadiumbuilding_construction_time_days") }}</dt>
+					<dd>{{ building.construction_time_days  }}</dd>
+					
+					{% if building.effect_income != 0 %}
+						<dt>{{ i18n.getMessage("entity_stadiumbuilding_effect_income") }}</dt>
+						<dd>{{ building.effect_income|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</dd>
+					{% endif %}
+				</dl>
+				
+				<p><a href="{{ env.getInternalActionUrl("order-building", "id=" ~ building.id) }}" class="btn btn-primary">{{ i18n.getMessage("stadiumenvironment_build") }}</a></p>
+		    </div>
+	    {% endfor %}
+	  </div>
+	  {% if availableBuildings|length > 1 %}
+		  <a class="carousel-control left" href="#buildingsSelection" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#buildingsSelection" data-slide="next">&rsaquo;</a>
+	  {% endif %}
+	</div>
+
+{% endif %}
+
+{% endblock %}

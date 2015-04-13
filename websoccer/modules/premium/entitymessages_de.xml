@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_premiumstatement">Premiumtransaktionen</message>
+	<message id="entity_premiumstatement_user_id">Benutzer</message>
+	<message id="entity_premiumstatement_action_id">Aktion</message>
+	<message id="entity_premiumstatement_amount">Betrag</message>
+	<message id="entity_premiumstatement_created_date">Datum</message>
+	<message id="entity_premiumstatement_subject_data">Betreffsdaten</message>
+	<message id="entity_premiumstatement_subject_data_help">In JSON-Format.</message>
+	
+	<message id="entity_premiumpayment">Geldzahlungen</message>
+	<message id="entity_premiumpayment_user_id">Benutzer</message>
+	<message id="entity_premiumpayment_amount">Betrag</message>
+	<message id="entity_premiumpayment_created_date">Datum</message>
+</messages>

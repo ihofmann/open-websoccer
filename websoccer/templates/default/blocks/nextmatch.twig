@@ -1,0 +1,42 @@
+<h4>{{ i18n.getMessage("next_match_block_title") }}</h4>
+{% if match_date is defined %}
+<div class="row">
+	<div class="span4">
+		<p><em>{{ env.getFormattedDatetime(match_date) }} | {{ i18n.getMessage("matchtype_" ~ match_type) }}</em></p>
+		<p><strong><a href="{{ env.getInternalUrl("team", "id=" ~ match_home_id) }}">{{ match_home_name }}</a> 
+			{% if match_home_formation_id %}
+				<i class="icon-check-sign wstooltip" title="{{ i18n.getMessage("formation_submitted_tooltip") }}"></i>
+			{% else %}
+				<i class="icon-minus-sign-alt wstooltip" title="{{ i18n.getMessage("formation_notsubmitted_tooltip") }}"></i>
+			{% endif %} 
+			- 
+			<a href="{{ env.getInternalUrl("team", "id=" ~ match_guest_id) }}">{{ match_guest_name }}</a>
+			{% if match_guest_formation_id %}
+				<i class="icon-check-sign wstooltip" title="{{ i18n.getMessage("formation_submitted_tooltip") }}"></i>
+			{% else %}
+				<i class="icon-minus-sign-alt wstooltip" title="{{ i18n.getMessage("formation_notsubmitted_tooltip") }}"></i>
+			{% endif %} 
+			</strong></p>
+		<p><a href="{{ env.getInternalUrl("match", "id=" ~ match_id) }}" class="btn">{{ i18n.getMessage("match_navlabel") }}</a></p>
+	</div>
+	<div class="span3">
+		<p><em>{{ i18n.getMessage("next_match_block_previous_matches") }}</em></p>
+		{% if previous_matches is defined and previous_matches|length > 0 %}
+		<table class="table">
+		{% for previousMatch in previous_matches %}
+			<tr>
+				<td>{{ previousMatch.home_team }} - {{ previousMatch.guest_team }}</td>
+				<td><a href="{{ env.getInternalUrl("match", "id=" ~ previousMatch.id) }}">{{ previousMatch.home_goals }} - {{ previousMatch.guest_goals }}</a></td>
+			</tr>
+		{% endfor %}
+		</table>
+		{% else %}
+		<p>{{ i18n.getMessage("next_match_block_no_previous_matches") }}</p>
+		{% endif %}
+	</div>
+</div>
+{% else %}
+<p>{{ i18n.getMessage("next_match_block_no_nextmatch") }}</p>
+{% endif %}
+{% block nextmatch_footer %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% macro progressbar(percentvalue = 0, cssClass = "") %}
+{% if percentvalue > 80 %}
+	{% set progress_status = 'success' %}
+{% elseif percentvalue > 50 %}
+	{% set progress_status = 'info' %}
+{% elseif percentvalue > 30 %}
+	{% set progress_status = 'warning' %}
+{% else %}
+	{% set progress_status = 'danger' %}
+{% endif %}
+<div class="progress progress-{{ progress_status }} {{ cssClass }}" title="{{ percentvalue }}%">
+  <div class="bar" style="width: {{ percentvalue }}%">{{ percentvalue }}%</div>
+</div>
+{% endmacro %}
+
+{% macro piechart(label1, percentvalue1, label2, percentvalue2) %}
+
+<div class="pieChart" style="width:250px;height:250px" data-series='[{"label": "{{ label2|trim }}",  "data": "{{ percentvalue2 }}", "color": "#FF6600"},
+{ "label": "{{ label1|trim }}",  "data": "{{ percentvalue1 }}", "color": "#006699"}]'></div>
+<div class="pieChartLabel"></div>
+{% endmacro %}

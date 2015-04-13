@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+	<admin>
+		<adminpage id="termsandconditions" permissionrole="r_admin" navcategory="settings" filename="termsandconditions"/>
+	</admin>
+  
+    <pages>
+        <page
+            id="termsandconditions"
+            model="TermsAndConditionsModel"
+            navitem="false"
+            template="termsandconditions"
+            role="guest,user"/>
+    </pages>
+    
+</module>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="formation_navlabel">Formation</message>
+    <message id="formation_title">Formation and Tactic</message>
+    
+    <message id="next_match_block_title">Next Match</message>
+    <message id="next_match_block_previous_matches">Previous Matches</message>
+    <message id="next_match_block_no_previous_matches">You are playing for the first time against this team.</message>
+    <message id="next_match_block_no_nextmatch">There is currently no match scheduled for you.</message>
+    
+    <message id="formation_playground_title">Set Formation</message>
+    <message id="formation_team_title">Your Team</message>
+    <message id="formation_team_noplayers">There are no players available.</message>
+    <message id="formation_bench">Bench</message>
+    
+    <message id="formation_team_collapsehead_tooltip">Expand or collapse list</message>
+    
+    <message id="formation_team_blocked_cards">Blocked due to red or yellow cards</message>
+    <message id="formation_team_blocked_injured">Player is injured</message>
+    
+    <message id="formation_dragging_note_title">Instructions:</message>
+    <message id="formation_dragging_note">Drag players onto the playground in order to set them for the match, or just double-click on the player.</message>
+    
+    <message id="formation_substitutions_title">Substitutions</message>
+    <message id="formation_substitutions_out">Out</message>
+    <message id="formation_substitutions_in">In</message>
+    <message id="formation_substitutions_minute">Minute</message>
+    
+    <message id="formation_substitutions_condition">Condition</message>
+    <message id="formation_substitutions_condition_none">None</message>
+    <message id="formation_substitutions_condition_tie">on tie</message>
+    <message id="formation_substitutions_condition_leading">on leading</message>
+    <message id="formation_substitutions_condition_deficit">on deficit</message>
+    
+    <message id="formation_substitutions_position">Position</message>
+    <message id="formation_substitutions_position_default">(Player's main position)</message>
+    
+    <message id="formation_err_player_already_set">This player is already set.</message>
+    <message id="formation_err_already_enough_players">There are already 11 players set.</message>
+    <message id="formation_err_only_one_goaly_allowed">Only one goalkeeper allowed.</message>
+    <message id="formation_err_only_x_players_per_area_allowed">You must not set more than {0} players per area.</message>
+    <message id="formation_err_only_x_players_on_bench_allowed">Not more than {0} players on the bench allowed.</message>
+    <message id="formation_err_no_goaly_set">You did not choose any goalkeeper.</message>
+    <message id="formation_err_not_enough_players">Less than 11 players are set so far.</message>
+    <message id="formation_tooltip_remove_player">Doubleclick in order to remove {0}</message>
+    
+    <message id="formation_err_nonextmatch">There is no next match yet.</message>
+    <message id="formation_err_invalidplayer">Invalid players set.</message>
+    <message id="formation_err_duplicateplayer">Some players are set multiple times.</message>
+    <message id="formation_err_blockedplayer">Injured or blocked players set.</message>
+    
+    <message id="formation_err_invalidsubstitutionminute">You are allowed to substitute players only between the second and 90th minute.</message>
+    
+    <message id="formation_offensive_title">Playing offensive</message>
+    
+    <message id="formation_setup_title">Setup</message>
+    
+    <message id="formation_bench_placeholder">Drag players here...</message>
+    <message id="formation_bench_sub_in">Substitute</message>
+    <message id="formation_bench_sub_title">Player Substitution</message>
+    
+    <message id="formation_setup_button">Set</message>
+    <message id="formation_setup_strongest">Strongest players</message>
+    <message id="formation_setup_freshest">Freshest players</message>
+    <message id="formation_setup_motivated">Most motivated players</message>
+    
+    <message id="formation_setup_altered_warn_title">The selected setup has been altered by the system!</message>
+    <message id="formation_setup_altered_warn_details">Your setup does not consist of 10 field players, hence the system automatically altered your selection.</message>
+
+	<message id="formation_clearall">Clear all</message>
+	
+	<message id="formation_switch_on">On</message>
+	<message id="formation_switch_off">Off</message>
+	
+	<message id="formation_option_longpasses">Long Passes</message>
+	<message id="formation_option_longpasses_help">May lead to more goal shots, but also to more turnovers.</message>
+	
+	<message id="formation_option_counterattacks">Counterattacks</message>
+	<message id="formation_option_counterattacks_help">May prevent opponent's goal attempts, but also reduces number of own attempts.</message>
+	
+	<message id="formation_freekickplayer">Free Kick Taker</message>
+	
+	<message id="formation_templatename_field">Template name</message>
+	<message id="formation_templatename_field_help">Provide a name in order to save this formation aditionally as template.</message>
+	
+	<message id="formation_load_from_template">Load template</message>
+	<message id="formation_load_from_template_none_available">There are no templates available. You can create a new template by providing a template name when saving a new formation.</message>
+	
+	<message id="formation_template_saving_failed_because_boundary_title">You may have only up to %d templates!</message>
+	<message id="formation_template_saving_failed_because_boundary_details">This formation has not been saved as template. Delete unused templates first.</message>
+	
+	<message id="formation_submitted_tooltip">Formation submitted</message>
+	<message id="formation_notsubmitted_tooltip">No formation submitted yet</message>
+</messages>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="cancellation_navlabel">Kündigung</message>
+    <message id="cancellation_title">Benutzerkonto schliessen</message>
+    
+    <message id="cancellation_intro">Sie möchten nicht mehr mitspielen? Schade. Hier können Sie sich vom Spiel abmelden. Sie verlieren dann Ihren Verein und Ihr Benutzerkonto wird deaktiviert.</message>
+    <message id="cancellation_button">Kündigen</message>
+    <message id="cancellation_modal_title">Kündigung bestätigen</message>
+    <message id="cancellation_modal_content">Wollen Sie wirklich Ihr Benutzerkonto schliessen?</message>
+    <message id="cancellation_modal_confirm">Ja, kündigen</message>
+    
+    <message id="cancellation_success">Ihr Benutzerkonto wurde erfolgreich deaktiviert. Auf Wiedersehen!</message>
+    
+</messages>

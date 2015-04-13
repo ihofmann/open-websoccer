@@ -1,0 +1,34 @@
+{% if env.getConfig("micropayment_enabled") and env.getConfig("premium_currency") == "EUR" %}
+	<h3>{{ i18n.getMessage("micropayment_link_title") }}</h3>
+	
+	<form method="post">
+		<input type="hidden" name="action" value="micropayment-redirect"/>
+		<input type="hidden" name="page" value="{{ env.getPageId() }}"/>
+		
+		<p>
+		<select name="amount" id="amount">
+		{% set priceOptions = env.getConfig("premium_price_options")|split(',') %}
+		{% if priceOptions|length > 0 %}
+				{% for priceOption in priceOptions %}
+					{% set optionParts = priceOption|split(':') %}
+					<option value="{{ optionParts[0] }}">{{ optionParts[0] }} {{ env.getConfig("premium_currency") }} ({{ optionParts[1] }} {{ env.getConfig("premium_credit_unit") }})</option>
+				{% endfor %}
+		{% endif %}
+		</select>
+		</p>
+		
+		{% if env.getConfig("micropayment_call2pay_enabled") %}
+			<input type="image" name="module[call2pay]" value="1" style="margin-top: 5px" src="//www.micropayment.ch/resources/?what=img&group=c2p&show=type-a.2&lang={{ i18n.getCurrentLanguage() }}" />
+		{% endif %}
+		{% if env.getConfig("micropayment_handypay_enabled") %}
+			<input type="image" name="module[handypay]" value="1" style="margin-top: 5px" src="//www.micropayment.ch/resources/?what=img&group=hp&show=type-a.1&lang={{ i18n.getCurrentLanguage() }}" />
+		{% endif %}
+		{% if env.getConfig("micropayment_ebank2pay_enabled") %}
+			<input type="image" name="module[ebank2pay]" value="1" style="margin-top: 5px" src="//www.micropayment.ch/resources/?what=img&group=eb2p&show=type-a.1&lang={{ i18n.getCurrentLanguage() }}" />
+		{% endif %}
+		{% if env.getConfig("micropayment_creditcard_enabled") %}
+			<input type="image" name="module[creditcard]" value="1" style="margin-top: 5px" src="//www.micropayment.ch/resources/?what=img&group=cc&show=type-a.2&lang={{ i18n.getCurrentLanguage() }}" />
+		{% endif %}
+	</form>
+
+{% endif %}

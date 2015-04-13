@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="training_navlabel">Training</message>
+    <message id="training_no_trainers_available">Derzeit stehen keine Trainer zur Verfügung.</message>
+    <message id="training_choose_trainer">Wählen Sie einen Trainer</message>
+    
+    <message id="trainer-details_navlabel">Trainer auswählen</message>
+    
+    <message id="training_choose_trainer_title">Diesen Trainer einstellen</message>
+    <message id="training_choose_trainer_units">Anzahl Trainingseinheiten</message>
+	
+    <message id="training_choose_trainer_err_existing_units">Sie haben noch offene Trainingseinheiten. Diese müssen zuerst ausgeführt werden bevor Sie einen neuen Trainer anstellen können.</message>
+    <message id="training_choose_trainer_err_too_expensive">Diesen Trainer können Sie sich im Moment nicht leisten.</message>
+    
+    <message id="training_trainer_salary_subject">Honorar für gebuchte Trainingseinheiten</message>
+    
+    <message id="training_units_count">Offene Trainingseinheiten</message>
+    <message id="training_last_execution">Letzte Trainingseinheit</message>
+    
+    <message id="training_trainer_details">Gebuchter Trainer</message>
+    <message id="training_execute_training_title">Jetzt Mannschaft trainieren</message>
+    <message id="training_execute_button">Training ausführen</message>
+    
+    <message id="training_execute_focus">Schwerpunkt</message>
+    <message id="training_execute_focus_technique">Technik</message>
+    <message id="training_execute_focus_stamina">Kondition</message>
+    <message id="training_execute_focus_motivation">Motivation</message>
+    <message id="training_execute_focus_regeneration">Regeneration</message>
+    
+    <message id="training_execute_intensity">Intensität</message>
+    <message id="training_execute_training_note">Sie können alle %d Stunden eine Trainingseinheit ausführen.</message>
+    
+    <message id="training_execute_success">Das Team wurde trainiert.</message>
+    <message id="training_execute_err_already_executed">Die Trainingseinheit wurde bereits ausgeführt. Laden Sie die Seite neu und probieren Sie es noch einmal.</message>
+    
+    <message id="training_execute_err_too_early">Die Ruhepause nach der letzten Trainingseinheit ist zu kurz. Das nächste Training darf frühestens wieder stattfinden: %s</message>
+    <message id="training_execute_err_match_simulating">Das Team ist im Moment bei einem Spiel. Sie können erst danach wieder trainieren.</message>
+    
+    <message id="training_execute_effects_title">Ergebnis der Trainingseinheit</message>
+    
+    <message id="training_execute_err_team_in_training_camp">Das Team ist momentan im Trainingslager und hat daher keine Zeit für normale Trainingseinheiten.</message>
+</messages>

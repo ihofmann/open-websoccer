@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="transferoffer_button">Kaufangebot machen</message>
+    
+    <message id="transferoffer_modal_title">Transferangebot</message>
+    
+    <message id="transferoffer_label_amount">Ablösesumme</message>
+    <message id="transferoffer_label_comment">Kommentar</message>
+    <message id="transferoffer_label_fieldset_playerexchange">Spielertausch (optional)</message>
+    <message id="transferoffer_label_exchangeplayer1">Spieler</message>
+    <message id="transferoffer_label_exchangeplayer2">2. Spieler</message>
+    
+    <message id="transferoffer_label_fieldset_contract">Vertragsbedingungen</message>
+    
+    <message id="transferoffer_err_ownplayer">Der Spieler ist bereits in Ihrem Team.</message>
+    <message id="transferoffer_err_nomanager">Der Verein des Spielers hat momentan keinen Manager. Transferangebote können daher nicht bearbeitet werden.</message>
+    <message id="transferoffer_err_unsellable">Der Spieler wurde von seinem Manager entweder als unverkäuflich markiert oder bereits auf den Transfermarkt gesetzt.</message>
+    
+    <message id="transferoffer_err_open_offers_exist">Der Manager hat noch unbeantwortete Kaufangebote von Ihnen. Sie können immer nur eine Kaufanfrage pro Manager senden. Warten Sie bis der Manager Ihre vorherige Anfrage akzeptiert oder abgelehnt hat.</message>
+    
+    <message id="transferoffer_err_noalternative_allowed">Der Manager hat angegeben, dass er für diesen Spieler von Ihnen kein Angebot mehr erhalten möchte.</message>
+    
+    <message id="transferoffer_err_transferstop">Der Spieler darf derzeit das Team wegen einer Wechselsperre von %d Tagen nicht wechseln.</message>
+    
+    <message id="transferoffer_err_exchangeplayer_on_transfermarket">Der Tauschspieler, %s, steht derzeit auf dem Transfermarkt. Er kommt als Spieler für einen Tausch daher nicht zur Verfügung.</message>
+    <message id="transferoffer_err_exchangeplayer_involved_in_other_offers">Der Tauschspieler, %s, wurde bereits als Tauschspieler für ein anderes Gebot angeboten. Ziehen Sie das andere Gebot zurück oder wählen Sie einen anderen Spieler aus.</message>
+	<message id="transferoffer_err_exchangeplayer_transferstop">Der Tauschspieler, %s, darf wegen einer Transfersperre noch nicht das Team wechseln.</message>
+    
+	<message id="transferoffer_err_totaloffers_too_high">Ihr Budget reicht für dieses Angebot nicht aus. Reduzieren Sie Ihr Angebot oder ziehen Sie andere offene Gebote zurück.</message>
+
+	<message id="transferoffer_err_salary_too_high">Im Moment können Sie sich das Gehalt des Spielers nicht leisten.</message>
+	
+	<message id="transferoffer_submitted_title">Gebot erfolgreich eingereicht!</message>
+	<message id="transferoffer_submitted_message">Der Manager des Spielers erhält eine Benachrichtigung und muss Ihr Angebot annehmen oder ablehnen.</message>
+
+	<message id="transferoffers_navlabel">Transferangebote</message>
+	<message id="transferoffers_tab_received">Erhaltene Gebote</message>
+	<message id="transferoffers_tab_sent">Versendete Gebote</message>
+	
+	<message id="transferoffers_no_received_offers">Derzeit gibt es keine offenen Angebote von anderen Managern.</message>
+	<message id="transferoffers_no_sent_offers">Es gibt derzeit keine offenen Angebote von Ihnen.</message>
+	
+	<message id="transferoffers_offer_reaction">Reaktion</message>
+	<message id="transferoffers_offer_reaction_accept">Akzeptieren</message>
+	<message id="transferoffers_offer_reaction_reject">Ablehnen</message>
+	<message id="transferoffers_offer_status_adminapprovalpending">Warten auf Freigabe</message>
+	<message id="transferoffers_offer_status_rejected">abgelehnt</message>
+	
+	<message id="transferoffers_offer_showcomment">Kommentar anzeigen</message>
+	<message id="transferoffers_offer_comment_title">%s schrieb:</message>
+	
+	<message id="transferoffer_accepted_title">Das Angebot wurde angenommen!</message>
+	<message id="transferoffer_accepted_message">Der Spieler hat erfolgreich das Team gewechselt.</message>
+	<message id="transferoffer_accepted_message_approvalpending">Nun wird noch auf die manuelle Freigabe durch einen Administrator gewartet.</message>
+
+	<message id="transferoffer_accept_err_exchangeplayer_on_transfermarket">Der angebotene Tauschspieler %s wurde inzwischen auf den Transfermarkt gesetzt. Der Transfer kann derzeit daher nicht ausgeführt werden.</message>
+	<message id="transferoffer_accept_err_exchangeplayer_notinteam">Der angebotene Tauschspieler %s ist gar nicht mehr im Team des Managers, der das Angebot gemacht hat. Das Angebot kann daher so nicht ausgeführt werden.</message>
+	<message id="transferoffer_accept_err_exchangeplayer_salarytoohigh">Sie können sich das Gehalt des Tauschspielers %s im Moment nicht leisten.</message>
+
+	<message id="transferoffers_sent_cancellation">Widerruf</message>
+	<message id="transferoffers_offer_cancellation_button">Zurückziehen</message>
+	<message id="transferoffers_offer_cancellation_notfound">Das Angebot wurde entweder gelöscht oder bereits durchgeführt.</message>
+	<message id="transferoffers_offer_cancellation_success">Das Angebot wurde erfolgreich zurückgenommen.</message>
+	
+	<message id="transferoffer_reject_modal_title">Angebot ablehnen</message>
+	<message id="transferoffer_reject_label_comment">Begründung (optional)</message>
+	<message id="transferoffer_reject_label_allow_alternative">Der Benutzer darf ein Alternativangebot machen.</message>
+	<message id="transferoffers_offer_reject_success">Das Angebot wurde erfolgreich abgelehnt.</message>
+	
+	<message id="directtransfer_subject">Spielertransfer</message>
+	
+	<message id="transferoffer_notification_offerreceived"><strong>{sendername}</strong> hat Ihnen ein Spielerkaufangebot gemacht.</message>
+	<message id="transferoffer_notification_executed">Der vereinbarte Transfer des Spielers <strong>{playername}</strong> wurde durchgeführt.</message>
+	<message id="transferoffer_notification_rejected"><strong>{receivername}</strong> hat Ihr Kaufangebot für den Spieler <strong>{playername}</strong> abgelehnt.</message>
+</messages>

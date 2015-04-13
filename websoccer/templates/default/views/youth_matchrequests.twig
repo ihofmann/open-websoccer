@@ -1,0 +1,62 @@
+{% extends "base.twig" %}
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% block page_title %}
+{{ i18n.getMessage("youth-matchrequests_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+<p><a href="{{ env.getInternalUrl("youth-matchrequests-create") }}" class="btn"><i class="icon-bullhorn"></i> {{ i18n.getMessage("youthteam_matchrequest_createnew") }}</a></p>
+
+{% if requests|length == 0 %}
+	{{ messagebox.box(i18n.getMessage("youthteam_matchrequest_none_available"), "", "info") }}
+{% else %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_match_datum") }}</th>
+				<th>{{ i18n.getMessage("entity_club") }}</th>
+				<th>{{ i18n.getMessage("entity_users") }}</th>
+				<th>{{ i18n.getMessage("youthteam_matchrequest_reward") }}</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for request in requests %}
+			<tr>
+				<td>{{ env.getFormattedDatetime(request.matchdate, i18n) }}</td>
+				<td><a href="{{ env.getInternalUrl("team", "id=" ~ request.team_id) }}"
+					title="{{ i18n.getMessage("team_navlabel") }}">{{ request.team_name }}</a></td>
+				<td>
+					{% if request.user_picture|length > 0 %}
+						<a href="{{ env.getInternalUrl("user", "id=" ~ request.user_id) }}" 
+						title="{{ i18n.getMessage("user_navlabel") }}"><img src="{{ request.user_picture }}" alt="{{ request.user_nick }}" style="width: 40px; height: 40px"/></a>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("user", "id=" ~ request.user_id) }}" 
+						title="{{ i18n.getMessage("user_navlabel") }}">{{ request.user_nick }}</a>
+				</td>
+				<td>
+					{% if request.reward > 0 %}
+						{{ request.reward|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
+					{% else %}
+						-
+					{% endif %}
+				</td>
+				<td>
+					{% if env.user.clubId == request.team_id %}
+						<a href="{{ env.getInternalActionUrl("cancel-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-small btn-danger"><i class="icon-remove icon-white"></i> {{ i18n.getMessage("youthteam_matchrequest_cancel") }}</a>
+					{% else %}
+						<a href="{{ env.getInternalActionUrl("accept-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-small btn-success"><i class="icon-ok icon-white"></i> {{ i18n.getMessage("youthteam_matchrequest_accept") }}</a>
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+	{{ pagination.paginator(paginator) }}
+{% endif %}
+
+{% endblock %}

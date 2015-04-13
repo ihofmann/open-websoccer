@@ -1,0 +1,73 @@
+{% if leagueStatistics|length == 0 and cupStatistics|length == 0 %}
+	<p>{{ i18n.getMessage("player_details_statistic_nomatchesplayed") }}</p>
+{% else %}
+
+	{% for statistic in leagueStatistics %}
+		<h4>{{ statistic.league_name }} ({{ statistic.season_name }})</h4>
+
+		<dl class="dl-horizontal">
+		  <dt>{{ i18n.getMessage("player_details_statistic_matches") }}</dt>
+		  <dd>{{ statistic.matches }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_goals") }}</dt>
+		  <dd>{{ statistic.goals }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_shoots") }}</dt>
+		  <dd>{{ statistic.shoots }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_assists") }}</dt>
+		  <dd>{{ statistic.assists }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_yellow") }}</dt>
+		  <dd>{{ statistic.yellowcards }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_red") }}</dt>
+		  <dd>{{ statistic.redcards }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_grade") }}</dt>
+		  <dd>{{ "%.2f"|format(statistic.grade) }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_passquota") }}</dt>
+		  <dd>{% if (statistic.passes_successed > 0 or statistic.passes_failed > 0) %}
+		  {{ "%d"|format(statistic.passes_successed * 100 / (statistic.passes_successed + statistic.passes_failed)) }}%
+		  {% else %}
+		  0%
+		  {% endif %}</dd>
+		</dl>
+	{% endfor %}
+	
+	{% for statistic in cupStatistics %}
+		<h4>{{ statistic.cup_name }}</h4>
+
+		<dl class="dl-horizontal">
+		  <dt>{{ i18n.getMessage("player_details_statistic_matches") }}</dt>
+		  <dd>{{ statistic.matches }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_goals") }}</dt>
+		  <dd>{{ statistic.goals }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_shoots") }}</dt>
+		  <dd>{{ statistic.shoots }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_assists") }}</dt>
+		  <dd>{{ statistic.assists }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_yellow") }}</dt>
+		  <dd>{{ statistic.yellowcards }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_red") }}</dt>
+		  <dd>{{ statistic.redcards }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_grade") }}</dt>
+		  <dd>{{ "%.2f"|format(statistic.grade) }}</dd>
+		  
+		  <dt>{{ i18n.getMessage("player_details_statistic_passquota") }}</dt>
+		  <dd>{% if (statistic.passes_successed > 0 or statistic.passes_failed > 0) %}
+		  {{ "%d"|format(statistic.passes_successed * 100 / (statistic.passes_successed + statistic.passes_failed)) }}%
+		  {% else %}
+		  0%
+		  {% endif %}</dd>
+		</dl>
+	{% endfor %}
+
+{% endif %}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_sponsor">Sponsor</message>
+	<message id="entity_sponsor_name">Name</message>
+	<message id="entity_sponsor_liga_id">Liga</message>
+	<message id="entity_sponsor_bild">Logo</message>
+	<message id="entity_sponsor_b_spiel">Prämie pro Spiel</message>
+	<message id="entity_sponsor_b_heimzuschlag">Zuschlag bei Heimspielen</message>
+	<message id="entity_sponsor_b_sieg">Zuschlag bei Sieg</message>
+	<message id="entity_sponsor_b_meisterschaft">Zuschlag bei Gewinn der Meisterschaft</message>
+	<message id="entity_sponsor_max_teams">Höchstanzahl an Teams</message>
+	<message id="entity_sponsor_min_platz">Mindestplatzierung</message>
+</messages>

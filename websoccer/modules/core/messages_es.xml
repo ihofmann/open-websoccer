@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="offline_title">Estamos temporalmente fuera de línea</message>
+	<message id="error_action_required_team">Tienes que ser manager de un equipo con el fin de ejecutar esta acción.</message>
+	
+	<message id="requireslogin_box_title">Acceso denegado</message>
+	<message id="requireslogin_box_message">Es necesario estar registrado para poder ver el contenido del sitio.</message>
+	
+	<message id="date_yesterday">Ayer</message>
+	<message id="date_today">Hoy</message>
+	<message id="date_tomorrow">Mañana</message>
+	
+	<message id="privacypolicy_navlabel">Política de privacidad</message>
+</messages>

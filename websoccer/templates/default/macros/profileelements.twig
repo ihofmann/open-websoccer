@@ -1,0 +1,7 @@
+{% macro infofield(label, value, doNotEscape = false) %}
+
+<div class="row-fluid inforow">
+	<div class="span6 infolabel">{% if doNotEscape %}{{ label|raw }}{% else %}{{ label }}{% endif %}</div>
+	<div class="span6 infovalue">{% if doNotEscape %}{{ value|raw }}{% else %}{{ value }}{% endif %}</div>
+</div>
+{% endmacro %}

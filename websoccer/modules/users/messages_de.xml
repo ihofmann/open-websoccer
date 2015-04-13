@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="highscore_navlabel">Highscore</message>
+	<message id="highscore_title">Benutzer Highscore Ranking</message>
+	
+	<message id="highscore_rank">Rang</message>
+	<message id="highscore_user">Benutzer</message>
+	<message id="highscore_registration_date">Anmeldedatum</message>
+	<message id="highscore_score">Punkte</message>
+	
+	<message id="user_navlabel">Benutzerprofil</message>
+	
+	<message id="user_tab_profile">Profil</message>
+	
+	<message id="user_visit_website">besuchen</message>
+	
+	<message id="user_changepicture_button">Bild hochladen</message>
+	
+	<message id="history_tab">Historie</message>
+	<message id="history_no_records">Der Benutzer hat bisher noch keine Saison durchgespielt.</message>
+</messages>

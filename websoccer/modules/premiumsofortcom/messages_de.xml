@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="actionsubject_sofortcom-notify">Zahlung über Sofort.com</message>
+    <message id="sofortcompayment_link_title">Zahlen über Sofort.com</message>
+    <message id="sofortcompayment_link_intro">Bezahlen Sie einfach mit Ihren Online-Banking-Daten über den Anbieter <a href="https://www.sofort.com" target="_blank">Sofort.com</a>. Sie müssen sich dazu weder bei dem Anbieter registrieren, noch benötigen Sie eine Kreditkarte.</message>
+
+	<message id="sofortcompayment_label_amount">Betrag</message>
+	<message id="sofortcompayment_label_submit">Auf Sofort.com kaufen</message>
+</messages>

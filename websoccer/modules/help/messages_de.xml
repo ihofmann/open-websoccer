@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="help_button">Hilfe</message>
+    <message id="help_dialog_title">Informationen zur Nutzung</message>
+    
+    <message id="help_formation">
+        <p>Legen Sie auf dieser Seite die Taktik für das nächste Spiel fest.</p>
+        
+        <p><strong>Die richtige Taktik wählen</strong></p>
+        <p>Sowohl die Formation als auch der Wert bei &quot;Offensiv spielen&quot; legen fest, wie offensiv und damit risikoreich Sie spielen möchten. Dies sollten Sie je nach Gegner anpassen.</p>
+        
+        <p><strong>Spieler aufstellen</strong></p>
+        <p>Spieler können Sie mit Ihrer Maus auf das Spielfeld ziehen. Oder Sie drücken auf die entsprechenden Buttons oder Doppelklicken auf die Zeile des gewünschten Spielers. Der Doppelklcik funktioniert nur, wenn der Spieler eine Hauptposition hat und diese noch nicht besetzt ist.</p>
+        
+    	<p><strong>Ersatzspieler</strong></p>
+    	<p>Setzen Sie bis zu fünf Spieler auf die Bank, indem Sie bei den Spieler auf das Bank-Symbol klicken. Dies ermöglicht Spielerwechsel während des Spiels, z.B. bei Verletzungen oder aus taktischen Gründen.</p>
+    </message>
+    
+<message id="help_training">
+<p>Trainieren Sie Ihr Team regelmässig, um die Kondition, Technik oder Frische der Spieler zu verbessern.</p>
+
+<p>So trainieren Sie Ihr Team:</p>
+<ul>
+<li>Wählen Sie einen Trainer aus und verpflichten ihn für eine von Ihnen gewählte Anzahl an Trainingseinheiten.</li>
+<li>Wenn Sie einen Trainer verpflichtet haben, können Sie die Intensität und den Trainingsfokus bestimmen.</li>
+<li>Drücken Sie auf den Button &quot;Training ausführen&quot;. Die Spieler werden gemäss Ihren Vorgaben unter Aufsicht des Trainers sofort trainiert.</li>
+</ul>
+
+<p>Während eines Spiels können Sie kein Training ausführen.</p>
+
+<p><strong>Auswahl des Trainers</strong></p>
+
+<p>Die Angaben für &quot;Effektivität&quot; zeigen an, wie erfolgreich der Trainer trainiert. 50% bedeutet beispielsweise, dass sich ein Spieler mit einer Wahrscheinlichkeit von 50% während einer Trainingseinheit verbessert.</p>
+
+<p>Beachten Sie, dass das Honorar für den Trainer sofort bei der Verpflichtung von Ihrem Vereinskonto abgebucht wird.</p>
+
+<p><strong>Training ausführen</strong></p>
+
+<p>Wenn Sie ein Training ausführen, verbessern sich die Spieler gemäss Effektivität des Trainers und vorgegebener Intensität. Je höher die Intensität ist, desto mehr Frische verlieren die Spieler während des Trainings, aber desto höher ist die Chance, dass sich die Technik oder Kondition des Spielers erhöht.</p>
+
+<p>Verletzte Spieler trainieren nicht mit, sondern erholen sich währenddessen. Sie gewinnen also an Frische.</p>
+</message>
+
+<message id="help_sponsor">
+<p>Wählen Sie einen Sponsor, der Ihnen für jedes Pflichtspiel eine Prämie zahlt.</p>
+
+<p>Welche Sponsoren Ihnen zur Auswahl stehen hängt von Ihrem sportlichen Erfolg ab. Sie können mit dem Abschliessen eines Vertrages noch warten, wenn Sie denken, dass Sie die nächsten Spiele gewinnen werden und daher einen noch besseren Sponsor bekommen könnten. Oder Sie wählen früher einen Sponsor, um sofort Prämienzahlungen zu erhalten oder falls Sie befürchten, dass Sie in der Ligatabelle abrutschen könnten.</p>
+
+<p>Ein gültiger Sponsorenvertrag kann nicht vorzeitig gekündigt werden.</p>
+</message>
+
+<message id="help_tickets">
+<p>Legen Sie hier die Preise für Tickets zu Ihren Heimspielen fest. Zur Unterstützung der Preisfindung wird Ihnen angezeigt, wie viele Zuschauer zu Ihrem letzten Heimspiel gekommen sind.</p>
+
+<p>Die Höhe der Zuschauer richtet sich nach:</p>
+<ul>
+<li>Der Höhe der Eintrittspreise. Diese sollten nicht erheblich höher als der Ligadurchschnitt (Anfangswerte) sein.</li>
+<li>Ihrer Fanbeliebtheit. Diese richtet sich nach Ihrem sportlichen Erfolg.</li>
+<li>Der Attraktivität des Heimspiels. Spielen Sie beispielsweise gegen einen &quot;Tabellennachbarn&quot; könnten Sie die Preise leichte anheben. Danach sollten Sie diese wieder erniedrigen.</li>
+</ul>
+</message>
+
+<message id="help_stadium">
+<p>Auf dieser Seite sehen Sie die Grösse und Aufteilung Ihres Stadions.</p>
+<p>Der graue Bereich über den Sitzen zeigt an, bis zu welcher Grösse Sie Ihr Stadion theoretisch ausbauen könnten.</p>
+
+<p>Im Formular unter der Grafik können Sie angeben, wie viele neue Plätze Sie hinzu bauen möchten. Nach Absenden des Formulars werden Ihnen von Bauträgern Preisangebote mit Angabe eines Fertigstellungsdatums gemacht. Nach Auswahl eines für Sie passenden Angebots werden die Gesamtkosten umgehend von Ihrem Konto abgebucht und mit dem Umbau begonnen.</p>
+
+<p>Ein Stadionausbau muss manuell nach Ende der Bauzeit von Ihnen bestätigt werden! Beachten Sie, dass sich sehr günstige Bauträger auch mal mit der geplanten Bauzeit verschätzen.</p>
+
+<p>Ein Rückbau, also die Reduzierung von Plätzen, ist nicht möglich.</p>
+</message>
+
+<message id="help_myteam">
+<p>Hier sehen Sie eine Übersicht über alle Spieler, die derzeit in Ihrem Team verpflichtet sind. Diese Seite sollten Sie regelmässig besuchen, um den ungewollten Verlust von Spielern durch ausgelaufene Verträge zu vermeiden.</p>
+
+<p><strong>Spieler verkaufen</strong></p>
+
+<p>Sie können jederzeit Spieler verkaufen, indem Sie bei dem entsprechenden Spieler auf den Button &quot;Verkaufen&quot; drücken und danach ein Mindestgebot für ihn einstellen. Der Spieler wird dann auf den Transfermarkt gesetzt auf dem andere Benutzer für den Spieler bieten können. Bis der Spieler tatsächlich an den Meistbietenden verkauft ist, verbleibt der Spieler in Ihrem Team.</p>
+
+<p>Beachten Sie, dass Sie einen Spieler danach nicht mehr vom Transfermarkt nehmen können.</p>
+
+<p><strong>Verträge verlängern</strong></p>
+
+<p>Spieler, deren Verträge bald auslaufen und verlängert werden können, werden in der Übersicht rot und mit einem Ausrufezeichen markiert. Es erscheint ausserdem ein Button &quot;Vertragsverlängerung&quot;. Bei Klick auf den Button gelangen Sie zur Verhandlung über eine Vertragsverlängerung.</p>
+
+<p>Wenn Sie einen Vertrag nicht verlängern, wird der Spieler automatisch nach Ablauf seines Vertrages aus Ihrem Team genommen und auf dem Transfermarkt ablösefrei angeboten.</p>
+
+<p><strong>Kapitän ernennen</strong></p>
+<p>Ein Kapitän kann die Moral stärken, wenn Ihr Team mal in Rückstand ist. Je erfahrener der Spieler ist, desto mehr Respekt hat er im Team.</p>
+<p>Seien Sie vorsichtigt, wenn Sie den Kapitän wechseln möchten. Ihr bisheriger Kapitän könnte Ihnen das übel nehmen.</p>
+</message>
+
+<message id="help_trainingcamp">
+<p>Wenn es eine spielfreie Zeit gibt, können Sie Ihr Team in ein Trainingslager schicken.</p>
+
+<p>Hierfür müssen Sie keinen Trainer verpflichten, da das Trainingslager einen stellt, der Ihre Spieler täglich um die auf der Seite angegebenen Werte garantiert verbessert bzw. verschlechtert.</p>
+<p>Die Kosten für das Trainingslager werden sofort bei der Buchung von Ihrem Vereinskonto abgezogen.</p>
+<p>Es kann ausserdem immer nur ein einziges Trainingslager gebucht werden. Erst nach der Rückkehr vom Lager können Sie wieder einen neuen Termin reservieren.</p>
+</message>
+
+<message id="help_transfermarket">
+<p>Verpflichten Sie über den Transfermarkt neue Spieler oder schauen Sie nach, ob jemand auf Ihre eigenen Spieler geboten hat.</p>
+
+<p><strong>Spieler kaufen</strong></p>
+
+<p>Es können nur Spieler verpflichtet werden, die auf dem Transfermarkt verfügbar sind. Dabei werden die Spieler über Auktionen versteigert, auch dann wenn ein Spieler ablösefrei angeboten wird. Bei ablösefreien Spielern entscheidet das höchste Gehaltsangebot inklusive einer möglichen Handgeldzahlung. Bei Vereinswechsel entscheidet die höchstgebotene Ablösesumme.</p>
+
+<p>Zum Bieten auf einen Spieler, oder auch um nur Informationen zum aktuellen Höchstgebot zu erhalten, klicken Sie entweder auf die aktuelle Ablösesumme oder auf den Button &quot;Bieten&quot;.</p>
+
+<p>Übrigens, die Anzahl an erlaubten Transaktionen zwischen denselben Benutzern ist limitiert. Vermeiden Sie es daher, auf mehrere Spieler eines bestimmten Vereins zu bieten.</p>
+
+<p><strong>Spieler verkaufen</strong></p>
+
+<p>Eigene Spieler können Sie auf den Transfermarkt setzen, indem Sie auf den Menüpunkt &quot;Mein Team&quot; gehen und dort Spieler für den Verkauf freigeben.</p>
+</message>
+
+<message id="help_transfer-bid">
+<p>Bieten Sie hier auf den ausgewählten Spieler oder beobachten Sie lediglich, ob neue Höchstgebote vorliegen.</p>
+
+<p><strong>Bieten auf Spieler von einem anderen Verein</strong></p>
+
+<p>Entscheidend ist die gebotene Höhe der Ablösesumme. Das Gehalt sollte lediglich dem Spieler zusagen, muss aber nicht besser als das des aktuellen Höchstgebots sein.</p>
+
+<p><strong>Ablösefreie Spieler</strong></p>
+
+<p>Sie müssen das für den Spieler attraktivste Gehaltsangebot machen. Der Spieler entscheidet sich automatisch für den Verein bei dem er insgesamt am meisten verdienen kann. Bei Abwehrspielern und Torwart ist eine Torprämie irrelevant für den Spieler.</p>
+
+<p>&quot;Handgeld&quot; ist eine Summe, die dem Spieler bei Antritt ausbezahlt würde, unabhängig von der Vertragsdauer.</p>
+</message>
+
+<message id="help_messages">
+<p>Senden Sie hier kurze Nachrichten an andere Benutzer.</p>
+
+<p>Dafür müssen Sie aus Sicherheitsgründen den Benutzernamen des Empfängers kennen. Kopieren Sie diesen in das Feld &quot;Empfänger&quot; oder tippen Sie die ersten zwei bis drei Buchstaben und warten bis der vollständige Benutzername vom System vorgeschlagen wird.</p>
+
+<p>Beachten Sie, dass das Senden von Werbung untersagt ist und zwischen dem Senden von Nachrichten eine kleine Zeitsperre aktiviert wird, um Missbrauch zu unterbinden.</p>
+
+<p>Beachten Sie ausserdem, dass Nachrichten unverschlüsselt in der Datenbank gespeichert werden. Versenden Sie daher keine vertraulichen Informationen.</p>
+
+<p>HTML ist nicht erlaubt.</p>
+</message>
+    
+	
+</messages>

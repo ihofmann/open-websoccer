@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("premium_info_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if env.getContextParameters()["premium_balance_required"] is defined %}
+<div class="alert">
+	<strong>{{ i18n.getMessage("premium_info_notenoughcredit_alert")|format(env.getContextParameters()["premium_balance_required"], env.getConfig("premium_credit_unit")) }}</strong>
+</div>
+{% endif %}
+
+<div class="well">
+{{ i18n.getMessage("premium_info_description")|raw }}
+</div>
+
+{% set priceOptions = env.getConfig("premium_price_options")|split(',') %}
+{% if priceOptions|length > 0 %}
+
+	<h3>{{ i18n.getMessage("premium_info_price_options") }}</h3>
+
+	<table class="table">
+		<tbody>
+		{% for priceOption in priceOptions %}
+			{% set optionParts = priceOption|split(':') %}
+			<tr>
+				<td>{{ optionParts[0] }} {{ env.getConfig("premium_currency") }}</td>
+				<td>{{ optionParts[1] }} {{ env.getConfig("premium_credit_unit") }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% endif %}
+{% endblock %}

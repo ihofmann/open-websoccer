@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="stadiumenvironment_navlabel">Stadionumfeld</message>
+    
+    <message id="stadiumenvironment_existingbuildings">Vorhandene Gebäude</message>
+    <message id="stadiumenvironment_existingbuildings_none">Es wurden noch keine Gebäude in Auftrag gegeben.</message>
+    <message id="stadiumenvironment_existingbuildings_underconstruction">Wird noch gebaut bis %s</message>
+    
+    <message id="stadiumenvironment_availablebuildings">Verfügbare Gebäude</message>
+    <message id="stadiumenvironment_availablebuildings_none">Für Ihren Verein stehen derzeit keine weiteren Gebäude zum Ausbau zur Verfügung.</message>
+
+	<message id="stadiumenvironment_build">Bauen</message>
+	
+	<message id="stadiumenvironment_build_err_too_expensive">Die Baukosten können Sie sich derzeit nicht leisten.</message>
+	<message id="stadiumenvironment_build_err_already_exists">Dieses Gebäude besitzen Sie bereits.</message>
+	<message id="stadiumenvironment_build_err_requires_building">Dieses Gebäude steht Ihnen im Moment noch nicht zur Verfügung.</message>
+	<message id="stadiumenvironment_build_err_premium_balance">Ihr Premiumguthaben reicht für dieses Gebäude nicht aus. Bitte laden Sie Ihr Premiumkonto auf.</message>
+	
+	<message id="stadiumenvironment_build_success">Der Bau des Gebäudes wurde erfolgreich in Auftrag gegeben.</message>
+	
+	<message id="building_construction_fee_subject">Gebäudebau Stadionumfeld</message>
+	<message id="actionsubject_order-building">Bau eines Premiumgebäudes</message>
+	<message id="activitylog_order-building">%s hat sein Stadionumfeld ausgebaut.</message>
+	
+	<message id="stadiumenvironment_matchincome_subject">Einkommen Stadionumfeld</message>
+	<message id="stadiumenvironment_costs_per_match_subject">Kosten Stadionumfeld</message>
+</messages>

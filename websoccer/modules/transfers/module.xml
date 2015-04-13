@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="transfermarket" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="transfers"
+            entity="transfers"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="transfer AS TransferTab" >
+
+                <overview add="false" delete="true" edit="false" >
+
+                    <column
+                        id="entity_transfers_datum"
+                        field="TransferTab.datum"
+                        type="timestamp"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_transfers_spieler_id"
+                        field="CONCAT(PlayerTab.vorname, ' ', PlayerTab.nachname)"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfers_seller_club_id"
+                        field="SellerTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfers_buyer_club_id"
+                        field="BuyerTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfers_bid_amount"
+                        field="BidTab.abloese"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_transfers_directtransfer_amount"
+                        field="TransferTab.directtransfer_amount"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_offer_player1"
+                        field="CONCAT(ExPlayer1Tab.vorname, ' ', ExPlayer1Tab.nachname)"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transfer_offer_offer_player2"
+                        field="CONCAT(ExPlayer2Tab.vorname, ' ', ExPlayer2Tab.nachname)"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <join type="INNER" jointable="spieler AS PlayerTab" joincondition="TransferTab.spieler_id = PlayerTab.id" />
+                	<join type="INNER" jointable="verein AS BuyerTab" joincondition="TransferTab.buyer_club_id = BuyerTab.id" />
+                	<join type="LEFT" jointable="verein AS SellerTab" joincondition="TransferTab.seller_club_id = SellerTab.id" />
+                	<join type="LEFT" jointable="transfer_angebot AS BidTab" joincondition="TransferTab.bid_id = BidTab.id" />
+                	<join type="LEFT" jointable="spieler AS ExPlayer1Tab" joincondition="TransferTab.directtransfer_player1 = ExPlayer1Tab.id" />
+                	<join type="LEFT" jointable="spieler AS ExPlayer2Tab" joincondition="TransferTab.directtransfer_player2 = ExPlayer2Tab.id" />
+                </overview>
+                
+            </entity>
+        </adminpage>
+        
+    </admin>
+  
+</module>

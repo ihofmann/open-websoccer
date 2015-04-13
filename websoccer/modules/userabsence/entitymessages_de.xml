@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_userabsence">Abwesenheiten</message>
+	<message id="entity_userabsence_user_id">Benutzer</message>
+	<message id="entity_userabsence_deputy_id">Stellvertreter</message>
+	<message id="entity_userabsence_from_date">Von</message>
+	<message id="entity_userabsence_to_date">Bis</message>
+</messages>

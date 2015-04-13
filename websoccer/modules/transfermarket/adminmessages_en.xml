@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_tab_transfermarket">Transfer Market</message> 
+	
+	<message id="settings_label_transfermarket_enabled">Enable automatic transfer market.</message>
+	
+	<message id="settings_label_transfermarket_duration_days">How long shall be a player on ther transfer list</message>
+	<message id="settings_label_transfermarket_duration_days_help">days. If the player cannot be sold within the deadline, the deadline will be posponed by the same number of days.</message>
+	
+	<message id="settings_label_transfermarket_computed_marketvalue">Compute market value automatically. Value depends on player's actual strength.</message>
+	
+	<message id="settings_label_transfermarket_value_per_strength">Market value per strength point</message>
+	<message id="settings_label_transfermarket_value_per_strength_help">in case the market value shall be computed.</message>
+	
+	<message id="settings_label_transfermarket_min_teamsize">Minimum Team Size</message>
+	<message id="settings_label_transfermarket_min_teamsize_help">Minimum number of players that must be in the team. If minimum number is exceeded, further player sales are not possible.</message>
+
+<message id="settings_label_transfermarket_max_transactions_between_users">Transactions between users</message>
+<message id="settings_label_transfermarket_max_transactions_between_users_help">Maximum number of trades between two particular users within 30 days.</message>
+</messages>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  	<settings>
+      	<setting id="premium_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="premium_credit_unit" category="premium" type="text" default="Coins" />
+      	<setting id="premium_infopage" category="premium" type="text" default="premium-feature-requested" />
+      	
+      	<setting id="premium_price_options" category="premium" type="tags" default="5:10,20:50,50:150" />
+      	<setting id="premium_currency" category="premium" type="text" default="EUR" />
+      	<setting id="premium_initial_credit" category="premium" type="number" default="0" />
+      	
+      	<setting id="premium_exchangerate_gamecurrency" category="premium" type="number" default="1000000" />
+  	</settings>
+  	
+  	<admin>
+        <adminpage
+            id="premiumstatement"
+            entity="premiumstatement"
+            navcategory="website"
+            permissionrole="r_user" >
+
+            <entity dbtable="premiumstatement AS TransactionTab" >
+
+                <overview delete="true" edit="false" >
+
+                    <column
+                        id="entity_premiumstatement_user_id"
+                        field="UserTab.nick"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_premiumstatement_action_id"
+                        field="TransactionTab.action_id"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_premiumstatement_amount"
+                        field="TransactionTab.amount"
+                        type="number"
+                        sort="true" />
+
+                    <column
+                        id="entity_premiumstatement_created_date"
+                        field="TransactionTab.created_date"
+                        type="timestamp"
+                        sort="true" />
+                    
+                	<join type="LEFT" jointable="user AS UserTab" joincondition="TransactionTab.user_id = UserTab.id" />
+                </overview>
+
+                <editform>
+					<field id="user_id" type="foreign_key" entity="users" 
+					    jointable="user" cascade="delete" labelcolumns="nick" required="true" />
+					<field id="created_date" type="timestamp" required="true"  />
+					<field id="action_id" type="text" required="true"  />
+					<field id="subject_data" type="textarea" required="false"  />
+					<field id="amount" type="number" required="true" converter="PremiumTransactionConverter" />
+					
+                </editform>
+            </entity>
+        </adminpage>
+        
+        <adminpage
+            id="premiumpayment"
+            entity="premiumpayment"
+            navcategory="website"
+            permissionrole="r_user" >
+
+            <entity dbtable="premiumpayment AS TransactionTab" >
+
+                <overview delete="true" edit="false" >
+
+                    <column
+                        id="entity_premiumpayment_user_id"
+                        field="UserTab.nick"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_premiumpayment_amount"
+                        field="(TransactionTab.amount / 100)"
+                        type="number"
+                        sort="true" />
+
+                    <column
+                        id="entity_premiumpayment_created_date"
+                        field="TransactionTab.created_date"
+                        type="timestamp"
+                        sort="true" />
+                    
+                	<join type="LEFT" jointable="user AS UserTab" joincondition="TransactionTab.user_id = UserTab.id" />
+                </overview>
+                
+                <editform>
+					<field id="user_id" type="foreign_key" entity="users" 
+					    jointable="user" cascade="delete" labelcolumns="nick" required="true" />
+					<field id="created_date" type="timestamp" required="true"  />
+					<field id="amount" type="number" required="true" />
+					
+                </editform>
+
+            </entity>
+        </adminpage>
+    </admin>
+  	
+  	<pages>
+	    <page id="premiumaccount"
+	        role="user"
+	        template="premiumaccount"
+	        model="PremiumAccountModel"
+	        parentItem="profile">
+            <page id="premium-feature-requested"
+	        	role="user"
+	        	template="premium_feature_requested"/>
+            
+            <page id="premium-confirm-action"
+	        	role="user"
+	        	template="premium_confirm_action"/>
+            
+            <page id="premium-exchange"
+	        	role="user"
+	        	template="premium_exchange">
+               <page id="premium-exchange-confirm"
+	        		role="user"
+	        		template="premium_exchange_confirm" /> 
+            </page>
+	    </page>
+	</pages>
+	
+  	<actions>
+  	    <action id="exchange-premium" controller="ExchangePremiumController" role="user">
+  	        <param id="validateonly" type="boolean" />
+  	        <param id="amount" type="number" min="1" required="true" />
+  	    </action>
+  	    
+  	</actions>
+  
+</module>

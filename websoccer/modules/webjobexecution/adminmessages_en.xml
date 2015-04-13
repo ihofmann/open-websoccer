@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_webjobexecution_enabled">Trigger matches simulation by external websites, instead of jobs.</message>
+	<message id="settings_label_webjobexecution_key">Security token for external simulation execution</message>
+	<message id="settings_label_webjobexecution_key_help">You get this key when you register your website for external simulation at <a href="http://www.websoccer-sim.com" target="_blank">websoccer-sim.com</a>.</message>
+</messages>

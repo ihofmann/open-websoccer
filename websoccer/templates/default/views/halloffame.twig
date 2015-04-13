@@ -1,0 +1,86 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("halloffame_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<h3>{{ i18n.getMessage("entity_league") }}</h3>
+{% if leagues|length > 0 %}
+
+	<div class="accordion" id="leagues">
+		{% for league,seasons in leagues %}
+			{% set country = seasons[0].league_country %}
+			{% set nationImg = skin.getImage("flags/players/" ~ country ~ ".png") %}
+			{% if i18n.hasMessage("option_" ~ country) %}
+				{% set countryLabel = i18n.getMessage("option_" ~ country) %}
+			{% else %}
+				{% set countryLabel = country %}
+			{% endif %}
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse"
+					data-parent="#leagues" href="#collapse{{ loop.index }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %} {{ countryLabel }} - {{ league }}</a>
+			</div>
+			<div id="collapse{{ loop.index }}" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>{{ i18n.getMessage("entity_season") }}</th>
+								<th>{{ i18n.getMessage("entity_club") }}</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for season in seasons %}
+							<tr>
+								<td>{{ season.season_name }}</td>
+								<td>
+									{% if season.team_picture|length %}
+										<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ season.team_picture }}" style="max-width: 40px"/>
+									{% endif %}
+									<a href="{{ env.getInternalUrl("team", "id=" ~ season.team_id ) }}">{{ season.team_name }}</a>
+								</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% else %}
+	<p>{{ i18n.getMessage("halloffame_no_seasons") }}</p>
+{% endif %}
+
+<h3>{{ i18n.getMessage("entity_cup") }}</h3>
+
+{% if cups|length > 0 %}
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_cup_name") }}</th>
+				<th>{{ i18n.getMessage("entity_cup_winner_id") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for cup in cups %}
+			<tr>
+				<td>{{ cup.cup_name }}</td>
+				<td>
+					{% if cup.team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ cup.team_picture }}" style="max-width: 40px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ cup.team_id ) }}">{{ cup.team_name }}</a>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+	<p>{{ i18n.getMessage("halloffame_no_cups") }}</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("rename-club_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<form class="form-horizontal" method="post">
+	
+	{{ formelements.textfield('name', i18n.getMessage('entity_club_name'), env.getRequestParameter('name'), true, validationMsg, 'text') }}
+	
+	{{ formelements.textfield('kurz', i18n.getMessage('entity_club_kurz'), env.getRequestParameter('kurz'), true, validationMsg, 'text') }}
+	
+	{{ formelements.textfield('stadium', i18n.getMessage('entity_stadium'), env.getRequestParameter('stadium'), true, validationMsg, 'text') }}
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+		<a href="{{ env.getInternalUrl("team", "id=" ~ env.user.clubId) }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="page" value="rename-club"/>
+	<input type="hidden" name="action" value="rename-club"/>
+</form>
+{% endblock %}

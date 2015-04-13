@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_stadium">Stadium</message>
+	<message id="entity_stadium_name">Name</message>
+	<message id="entity_stadium_verein">Club</message>
+	<message id="entity_stadium_stadt">City</message>
+	<message id="entity_stadium_land">Country</message>
+	<message id="entity_stadium_picture">Picture</message>
+	<message id="entity_stadium_p_steh">Standing</message>
+	<message id="entity_stadium_p_sitz">Seats</message>
+	<message id="entity_stadium_p_haupt_steh">Standing (grandstand)</message>
+	<message id="entity_stadium_p_haupt_sitz">Seats (grandstand)</message>
+    <message id="entity_stadium_p_vip">VIP Lounges</message>
+    
+    <message id="entity_stadiumbuilder">Stadium Builder</message>
+    <message id="entity_stadiumbuilder_name">Name</message>
+    <message id="entity_stadiumbuilder_picture">Company logo</message>
+    <message id="entity_stadiumbuilder_fixedcosts">Fixed costs</message>
+    <message id="entity_stadiumbuilder_fixedcosts_help">Costs which will be charged independend from number of seats to build.</message>
+    <message id="entity_stadiumbuilder_cost_per_seat">Costs per seat</message>
+    <message id="entity_stadiumbuilder_cost_per_seat_help">Will be added to costs which are configured at page "settings". May be also negative.</message>
+    <message id="entity_stadiumbuilder_construction_time_days">Construction time per 5000 seats</message>
+    <message id="entity_stadiumbuilder_construction_time_days_help">days</message>
+    <message id="entity_stadiumbuilder_construction_time_days_min">Minimum construction time</message>
+    <message id="entity_stadiumbuilder_construction_time_days_min_help">days</message>
+    <message id="entity_stadiumbuilder_min_stadium_size">Minimum stadium size</message>
+    <message id="entity_stadiumbuilder_min_stadium_size_help">How many seats a stadium must already have in order to get the builder's attention. Enables the stepwise extension of stadiums.</message>
+	<message id="entity_stadiumbuilder_max_stadium_size">Maximum stadium size</message>
+	<message id="entity_stadiumbuilder_max_stadium_size_help">0 for no limitation.</message>
+	<message id="entity_stadiumbuilder_reliability">Reliability</message>
+	<message id="entity_stadiumbuilder_reliability_help">100% means that the extension will be definately completed after the calculated construction time. A value below can cause (repeated) postponing of the deadline.</message>
+	<message id="entity_stadiumbuilder_premiumfee">Premium Fee</message>
+	
+	<message id="entity_stadiumconstruction">Stadium Extension</message>
+	<message id="entity_stadiumconstruction_team_id">Club</message>
+	<message id="entity_stadiumconstruction_builder_id">Builder</message>
+	<message id="entity_stadiumconstruction_started">Order placed</message>
+	<message id="entity_stadiumconstruction_deadline">Expected completion</message>
+	<message id="entity_stadiumconstruction_p_steh">Standing</message>
+	<message id="entity_stadiumconstruction_p_sitz">Seats</message>
+	<message id="entity_stadiumconstruction_p_haupt_steh">Standing (grandstand)</message>
+	<message id="entity_stadiumconstruction_p_haupt_sitz">Seats (grandstand)</message>
+	<message id="entity_stadiumconstruction_p_vip">VIP Lounges</message>
+	
+	<message id="entity_stadium_level_pitch">Grass quality</message>
+	<message id="entity_stadium_level_pitch_help">Between 0 and 5.</message>
+	<message id="entity_stadium_level_videowall">Video wall up-to-dateness</message>
+	<message id="entity_stadium_level_videowall_help">Between 0 and 5.</message>
+	<message id="entity_stadium_level_seatsquality">Seats quality</message>
+	<message id="entity_stadium_level_seatsquality_help">Between 0 and 5.</message>
+	<message id="entity_stadium_level_vipquality">VIP lounges quality</message>
+	<message id="entity_stadium_level_vipquality_help">Between 0 and 5.</message>
+	
+	<message id="entity_stadium_maintenance_pitch">Next maintenance due: Grass</message>
+	<message id="entity_stadium_maintenance_pitch_help">Number of matches at home.</message>
+	
+	<message id="entity_stadium_maintenance_videowall">Next maintenance due: Video wall</message>
+	<message id="entity_stadium_maintenance_videowall_help">Number of matches at home.</message>
+	
+	<message id="entity_stadium_maintenance_seatsquality">Next maintenance due: Seats</message>
+	<message id="entity_stadium_maintenance_seatsquality_help">Number of matches at home.</message>
+	
+	<message id="entity_stadium_maintenance_vipquality">Next maintenance due: VIP lounges</message>
+	<message id="entity_stadium_maintenance_vipquality_help">Number of matches at home.</message>
+</messages>

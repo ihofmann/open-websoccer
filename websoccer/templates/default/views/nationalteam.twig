@@ -1,0 +1,77 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/playerlists.twig" as playerlists %}
+
+{% block page_title %}
+{{ i18n.getMessage("nationalteam_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+	<h3>{{ team_name }}</h3>
+	
+	<p><a class="btn btn-small" href="{{ env.getInternalUrl("nominate-national-players") }}"><i class="icon-phone-sign"></i> {{ i18n.getMessage("nominate-national-players_navlabel") }}</a></p>
+	
+	{% if players|length == 0 %}
+		{{ messagebox.box("", i18n.getMessage("nationalteams_no_players"), "info") }}
+	{% else %}
+		{% for playerPosition, positionPlayers in players %}
+			<h4>{{ i18n.getMessage("player_position_" ~ playerPosition) }} ({{ positionPlayers|length }})</h4>
+			
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+						<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+						<th>{{ i18n.getMessage("entity_player_verein_id") }}</th>
+						{% if env.getConfig("hide_strength_attributes") != "1" %}
+							<th>{{ i18n.getMessage("playertable_head_strength") }}</th>
+						{% endif %}
+						<th>{{ i18n.getMessage("playertable_head_age") }}</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for player in positionPlayers %}
+						<tr>
+							<td>
+							<img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
+							alt="{{ i18n.getMessage("player_position_" ~ player.position) }}" title="{{ i18n.getMessage("player_position_" ~ player.position) }}" />
+							{% if player.position_main|length > 0 %}<abbr title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</abbr>{% endif %}
+							{% if player.position_second|length > 0 %}/ <abbr title="{{ i18n.getMessage("option_" ~ player.position_second) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_second) }}</abbr>{% endif %}
+							</td>
+							<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a>
+							</td>
+							<td>
+							{% if player.team_id > 0 %}
+							<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
+							{% else %}
+							-
+							{% endif %}
+							</td>
+							{% if env.getConfig("hide_strength_attributes") != "1" %}
+								<td>
+								<ul class="unstyled">
+									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength") }}">{{ i18n.getMessage("playertable_head_strength_abbr") }}</abbr>:</span> 
+										<span {{ playerlists.strengthClass(player.strength) }}>{{ player.strength }}</span></li>
+									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr>:</span> 
+										<span {{ playerlists.strengthClass(player.strength_technique) }}>{{ player.strength_technique }}</span></li>
+									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_freshness") }}">{{ i18n.getMessage("playertable_head_strength_freshness_abbr") }}</abbr>:</span> 
+										<span {{ playerlists.strengthClass(player.strength_freshness) }}>{{ player.strength_freshness }}</span></li>
+									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_stamina") }}">{{ i18n.getMessage("playertable_head_strength_stamina_abbr") }}</abbr>:</span> 
+										<span {{ playerlists.strengthClass(player.strength_stamina) }}>{{ player.strength_stamina }}</span></li>
+									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_satisfaction") }}">{{ i18n.getMessage("playertable_head_strength_satisfaction_abbr") }}</abbr>:</span> 
+										<span {{ playerlists.strengthClass(player.strength_satisfaction) }}>{{ player.strength_satisfaction }}</span></li>
+								</ul>
+								</td>
+							{% endif %}
+							<td>{{ player.age }}</td>
+							<td><a href="{{ env.getInternalActionUrl("remove-national-player", "id=" ~ player.id) }}" class="btn btn-small"><i class="icon-remove"></i> {{ i18n.getMessage("nationalteams_remove_from_team") }}</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endfor %}
+	{% endif %}
+
+{% endblock %}

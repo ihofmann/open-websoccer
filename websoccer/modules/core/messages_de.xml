@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="offline_title">Wir sind vorübergehend nicht erreichbar</message>
+	<message id="error_action_required_team">Sie müssen Manager eines Teams sein, um diese Aktion ausführen zu können.</message>
+	
+	<message id="requireslogin_box_title">Zugriff verweigert</message>
+	<message id="requireslogin_box_message">Sie müssen angemeldet sein, um die angefragte Seite sehen zu dürfen.</message>
+	
+	<message id="date_yesterday">Gestern</message>
+	<message id="date_today">Heute</message>
+	<message id="date_tomorrow">Morgen</message>
+	
+	<message id="privacypolicy_navlabel">Datenschutzerklärung</message>
+</messages>

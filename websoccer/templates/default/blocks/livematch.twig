@@ -1,0 +1,10 @@
+{% extends "box.twig" %}
+
+{% block box_title %}
+<i class="icon-fire"></i> {{ i18n.getMessage('match_livematch_title') }}
+{% endblock %}
+
+{% block box_content %}
+
+<a href="{{ env.getInternalUrl("match", "id=" ~ match.match_id) }}">{{ match.match_home_name }} - {{ match.match_guest_name }}</a>
+{% endblock %}

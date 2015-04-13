@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_no_transactions_for_teams_without_user">Teams without manager cannot have any income or expenses. Their set budget will remain the same then.</message> 
+</messages>

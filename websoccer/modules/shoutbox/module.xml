@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <blocks>
+
+        <block
+            id="shoutbox"
+            template="shoutbox"
+            model="ShoutboxModel"
+            includepages="match"
+            area="sidebar"
+            weight="1"
+            role="user,guest" />
+        
+        <block
+            id="shoutbox_in_league"
+            template="shoutbox"
+            model="ShoutboxLeagueModel"
+            includepages="league"
+            area="sidebar"
+            weight="1"
+            role="user" />
+        
+    </blocks>
+    
+    <actions>
+        <action id="send-shoutbox-msg" controller="SendShoutBoxMessageController" role="user">
+			<param id="id" type="number" required="true" />
+			<param id="msgtext" type="text" required="true" min="2" max="140" />                
+        </action>
+        
+        <action id="delete-shoutbox-message" controller="DeleteShoutBoxMessageController" role="admin">
+			<param id="mid" type="number" required="true" />
+        </action>
+    </actions>
+    
+</module>

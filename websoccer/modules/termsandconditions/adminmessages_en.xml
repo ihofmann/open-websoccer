@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="termsandconditions_navlabel">Terms and conditions</message>
+	
+	<message id="termsandconditions_introduction">Change here your terms and conditions which need to be accepted by the user when he registers a new account. <strong>Note:</strong> The initial standard text has not been reviewed by any lawyer and might contain statutory violations or might not fit to your kind of project.</message>
+	<message id="termsandconditions_label_language">Language variant</message>
+	
+	<message id="termsandconditions_err_filenotwritable">The file <em>%s</em> is not writable!</message>
+</messages>

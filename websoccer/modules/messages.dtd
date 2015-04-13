@@ -1,0 +1,20 @@
+<!ELEMENT messages (message+)>
+
+<!ELEMENT message (#PCDATA|strong|b|i|a|em|p|ul|br)*>
+<!ATTLIST message id CDATA #REQUIRED>
+
+<!ELEMENT strong (#PCDATA)>
+<!ELEMENT i (#PCDATA)>
+<!ELEMENT b (#PCDATA)>
+<!ELEMENT em (#PCDATA)>
+<!ELEMENT p (#PCDATA|strong|b|i|a|em|p|ul)*>
+
+<!ELEMENT a (#PCDATA)>
+<!ATTLIST a href CDATA #IMPLIED>
+<!ATTLIST a target CDATA #IMPLIED>
+<!ATTLIST a class CDATA #IMPLIED>
+
+<!ELEMENT ul (li+)>
+<!ELEMENT li (#PCDATA)>
+
+<!ELEMENT br (#PCDATA)>

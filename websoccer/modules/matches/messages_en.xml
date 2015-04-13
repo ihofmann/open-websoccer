@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="results_navlabel">Results and Schedules</message>
+    <message id="match_navlabel">Match Details</message>
+    
+    <message id="matchtype_league">League</message>
+    <message id="matchtype_cup">Cup</message>
+    <message id="matchtype_friendly">Friendly Match</message>
+    
+    <message id="last_match_block_title">My Last Match</message>
+    <message id="last_match_block_no_lastmatch">You team has not played in any match yet.</message>
+    
+    <message id="match_details_date">Date</message>
+    <message id="match_details_type">Type</message>
+    <message id="match_details_stadium">Stadium</message>
+    
+    <message id="match_details_matchday">matchday %d</message>
+    <message id="match_details_audience">Audience</message>
+    
+    <message id="match_details_noformation">%s has not submitted any formation.</message>
+    
+    <message id="match_details_notyetsimulated">This match has not been played yet.</message>
+    <message id="match_details_match_completed">The match is completed.</message>
+    
+    <message id="match_details_report_title">Match Report</message>
+    
+    <message id="match_details_comments_title">Live-Comments</message>
+    <message id="match_details_players_title">Players</message>
+    <message id="match_details_statistic_title">Statistics</message>
+    
+    <message id="match_details_commenttitle_penalty">Penalty</message>
+    <message id="match_details_commenttitle_goal">Goal!</message>
+    
+    <message id="match_details_nostatistics_available">There are no statistics available for this match. Please have a look at the match report.</message>
+    
+    <message id="match_details_noplayersset">No players set.</message>
+    <message id="match_details_no_players_on_bench">There are no players on the bench.</message>
+    
+    <message id="match_details_players_name">Name</message>
+    <message id="match_details_players_grade">Grade</message>
+    <message id="match_details_players_grade_helptext">Grading in the range of 1.00 (very good) to 6.00 (very poor)</message>
+    
+    <message id="match_details_statistic_shoots">Shots</message>
+    <message id="match_details_statistic_tackles">Tacklings</message>
+    <message id="match_details_statistic_ballcontacts">Ball Possession</message>
+    <message id="match_details_statistic_successfulpasses">Successful Passes</message>
+    
+    <message id="results_tab_leagues">Leagues</message>
+    <message id="results_tab_cups">Cups</message>
+    <message id="results_tab_latest_results">Latest Results</message>
+    
+    <message id="results_no_matches_found">No matches found.</message>
+    
+    <message id="match_result">Result</message>
+    
+    <message id="match_report_minute">Minute %d</message>
+    
+    <message id="player_yellowcard">Got a yellow card</message>
+    <message id="player_yellowredcard">Got a yellow-red card</message>
+    <message id="player_yellowcard">Got a red card</message>
+    <message id="player_goalscorer">Is Goal Scorer</message>
+    <message id="player_assists">Assist</message>
+    <message id="player_injured">Got injured</message>
+    <message id="player_substitute_out">Had to leave the pitch</message>
+    <message id="player_substitute_in">Substituted in</message>
+    
+    <message id="match_salarypayment_sender">Accounting</message>
+    <message id="match_salarypayment_subject">Player's Salary</message>
+    
+    <message id="match_ticketrevenue_sender">Sales</message>
+    <message id="match_ticketrevenue_subject">Ticket Sales</message>
+    
+    <message id="match_sponsorpayment_subject">Sponsor premium</message>
+    
+    <message id="match_details_button_changes">Act</message>
+    <message id="match-live-changes_navlabel">Live tactic changes</message>
+    
+    <message id="match_details_changes_max_help">May be changed %d times per match.</message>
+    <message id="match_details_changes_too_late">Substitutions must be placed at least %d minutes before execution.</message>
+    <message id="match_details_changes_too_late_altered">The substitution no. %d is moved to the next possible point of time.</message>
+	<message id="match_details_changes_too_often">You are allowed to change your tactic only %d times per match.</message>
+
+	<message id="match_livematch_title">Watch now!</message>
+	<message id="match_live_label">Live</message>
+	
+	<message id="todaysmatches_navlabel">Today's Matches</message>
+	
+	<message id="match_details_report_halftime">Half-time break! Score: %s</message>
+	<message id="match_details_report_extension">Extra time! Score: %s</message>
+	<message id="match_details_report_penaltyshooting">Penalty shooting! Score: %s</message>
+	
+	<message id="match_details_statistic_ballcontacts_player">Touches of ball</message>
+	<message id="match_details_statistic_tackles_player">Won tackles</message>
+	<message id="match_details_players_age">Age</message>
+	
+	<message id="myschedule_navlabel">Schedule</message>
+	
+	<message id="matchpreview_last_matches">Last matches in competition</message>
+	<message id="matchpreview_nolastmatches">%s has not played in this competition yet.</message>
+	<message id="matchpreview_nouser">%s has currently no manager.</message>
+	
+	<!-- Match report messages -->
+	<message id="Tor von {sp1}!"><b>Goal by {sp1}!</b></message>
+	<message id="{sp1} schießt..... TOR!"><b>{sp1} shoots..... GOAL!</b></message>
+	<message id="{sp1} kommt zum Kopfball... und da flattert der Ball im Netz!"><b>Header by {sp1}..... and the ball is in the net!</b></message>
+	<message id="TOR - wunderschön gemacht von {sp1}"><b>GOAL - what a trick by {sp1}!</b></message>
+	<message id="{sp1} schießt auf das Tor... und der Ball ist drin!"><b>{sp1} shootstowards the goal... and the ball is in!</b></message>
+	<message id="{sp1} kommt für {sp2}"><em>{sp1} substitutes {sp2}.</em></message>
+	<message id="{sp1} geht auf seinen Gegenspieler zu und gewinnt den Zweikampf!">{sp1} runs towards his opponent and wins the tackling!</message>
+	<message id="{sp1} in einem Zweikampf.... gewonnen!">{sp1} in a tackling... and wins it!</message>
+	<message id="{sp1} läuft mit dem Ball am Fuß auf seinen Gegenspieler zu... und gewinnt den Zweikampf.">{sp1} has the ball and sees his opponent in front of him... but he can win the tackling.</message>
+	<message id="{sp1} nimmt seinem Gegenspieler gekonnt den Ball von den Füßen.">{sp1} steals his opponent's ball in a tackling.</message>
+	<message id="{sp1} geht auf {sp2} zu... und verliert den Zweikampf.">{sp1} runs towards {sp2}... and looses the ball.</message>
+	<message id="{sp1} in einem Zweikampf.... und verliert ihn.">{sp1} in a tackling... and looses it!</message>
+	<message id="{sp1} geht mit dem Ball am Fuß auf seinen Gegenspieler zu... und verliert ihn.">{sp1} has the ball and sees his opponent in front of him... and looses the tackling.</message>
+	<message id="{sp1} sieht seinen Gegenspieler gegenüber und lässt sich den Ball abnehmen.">{sp1} lets taken away the ball.</message>
+	<message id="Flanke von {sp1}... in die Wolken!">Cross by {sp1}... into the clouds!</message>
+	<message id="{sp1} passt den Ball in die Mitte... genau auf die Füße des Gegners.">{sp1} passes the ball towards the centre... but the opponent catches it.</message>
+	<message id="{sp1} passt den Ball steil nach vorne... Abschlag!">{sp1} tries to pass the ball to the strikers... but misses!</message>
+	<message id="Pass von {sp1}... ins Seitenaus.">{sp1} passes the ball... and the ball is out.</message>
+	<message id="{sp1} hat freie Bahn und schießt... weit über das Tor.">{sp1} has the chance to shoot... and cannot even target the goal.</message>
+	<message id="{sp1} schießt..... daneben.">{sp1} shoots... but missed.</message>
+	<message id="{sp1} schießt auf das Tor... aber genau auf den Torwart.">{sp1} shoots towards the goal... but into the arms of the goalkeeper!</message>
+	<message id="Kopfball {sp1}... daneben.">Header by {sp1}... but missed.</message>
+	<message id="{sp1} haut mit aller Kraft auf den Ball... Abschlag.">{sp1} tries it with a strong shoot... but missed.</message>
+	<message id="{sp1} schießt..... in die Wolken.">{sp1} shoots... into the sky.</message>
+	<message id="{sp1} schießt..... Glanzparade des Torwarts!">{sp1} shoots... but the goalkeeper can somehow catch it.</message>
+	<message id="{sp1} schießt auf das Tor... aber der Torwart macht einen Hechtsprung und hat den Ball.">{sp1} shoots... but the goalkeeper dives to get the ball.</message>
+	<message id="{sp1} hat freie Bahn und schießt... aber der Torwart kann den Ball gerade noch so um den Pfosten drehen.">{sp1} shoots... but the goalkeeper can turn the ball around the goalpost.</message>
+	<message id="{sp1} kommt zum Kopfball... ganz knapp daneben.">Header by {sp1}... that was close.</message>
+	<message id="{sp1} schießt..... in die Wolken.">{sp1} shoots... into the sky.</message>
+	<message id="{sp1} bekommt nach einem Foul die gelbe Karte.">{sp1} gets the yellow card after a foul.</message>
+	<message id="{sp1} sieht die gelbe Karte.">{sp1} is shown the yellow card.</message>
+	<message id="{sp1} haut seinen Gegenspieler um und bekommt dafür die gelbe Karte.">{sp1} hits his opponent and gets the yellow card for that.</message>
+	<message id="{sp1} springt von hinten in die Beine seinen Gegenspielers und sieht sofort die Rote Karte."><i>{sp1} jumps from the back on his opponent's legs and geths the red card for that.</i></message>
+	<message id="{sp1} haut seinen Gegenspieler um und sieht dafür die Rote Karte."><i>{sp1} hits his opponent and gets the red card for that.</i></message>
+	<message id="{sp1} bekommt die Rote Karte wegen Prügelei."><i>{sp1} gets the redcard because he started a punch-up.</i></message>
+	<message id="{sp1} sieht die Gelb-Rote Karte und muss vom Platz."><i>{sp1} sees the yellow-red card and must leave the pitch.</i></message>
+	<message id="{sp1} haut seinen Gegenspieler um und bekommt dafür die Gelb-Rote Karte."><i>{sp1} hits his opponent and gets the yellow-red card for that.</i></message>
+	<message id="{sp1} sieht nach einem bösen Foul die Rote Karte und muss vom Platz."><i>{sp1} gets the red card after a very brutal foul.</i></message>
+	<message id="{sp1} ist verletzt und muss vom Spielfeld getragen werden."><i>{sp1} is injured and must leave the pitch.</i></message>
+	<message id="{sp1} hat sich verletzt und kann nicht mehr weiterspielen."><i>{sp1} has an injury and cannot continue playing anymore.</i></message>
+	<message id="{sp1} tritt an: Und trifft!">{sp1} is trying: And scores!</message>
+	<message id="{sp1} tritt an: Aber {sp2} hält den Ball!!">{sp1} is trying: But {sp2} catches the ball!!</message>
+	<message id="{sp1} legt sich den Ball zurecht. Etwas unsicherer Anlauf... und haut den Ball über das Tor.">{sp1} is placing the ball. He seems to be a bit unsecure... and kicks the ball far aside of the goal.</message>
+</messages>

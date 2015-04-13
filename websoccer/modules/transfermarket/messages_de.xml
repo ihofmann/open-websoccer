@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="transfermarket_navlabel">Transfermarkt</message>
+    <message id="transfermarket_title">Transfermarkt</message>
+    
+    <message id="sell-player_navlabel">Spieler verkaufen</message>
+    <message id="sell_player_title">%s verkaufen</message>
+    <message id="sell_player_put_on_list_title">Auf Transferliste setzen</message>
+    
+    <message id="transfermarket_min_bid">Mindestgebot</message>
+    
+    <message id="sell_player_min_bid_too_low">Das Mindestgebot muss mindestens die Hälfte des Marktwertes betragen.</message>
+    <message id="sell_player_already_on_list">Der Spieler ist bereits auf der Transferliste.</message>
+    
+    <message id="sell_player_teamsize_too_small">Ihr Kader (%d Spieler) ist zu klein. Sie können im Moment keine weiteren Spieler verkaufen.</message>
+    
+    <message id="sell_player_success">Der Spieler ist nun auf dem Transfermarkt verfügbar.</message>
+    
+    <message id="transfermarket_tab_overview">Aktuelle Transferliste</message>
+    <message id="transfermarket_tab_mybids">Meine Gebote</message>
+    <message id="transfermarket_tab_mytransfers">Meine Transfers</message>
+    <message id="transfermarket_tab_lasttransfers">Neuste Transfers</message>
+    
+    <message id="transfermarket_filter_by_position">Nach Position filtern</message>
+    <message id="transfermarket_no_players">Keine Spieler auf dem Transfermarkt gefunden.</message>
+	<message id="transfermarket_playerscount">%d Spieler gefunden.</message>
+    
+    
+    <message id="transfermarket_head_deadline">Auktionsende</message>
+    <message id="transfermarket_head_highestbid">Höchstgebot</message>
+    <message id="transfermarket_bid">Bieten</message>
+    
+    <message id="transfermarket_without_team">vereinslos</message>
+    
+    <message id="transfer-bid_navlabel">Gebot abgeben</message>
+    
+    <message id="transfer_bid_title">Gebot für %s</message>
+    
+    <message id="transfer_bid_playerinfo">Spielerinfo</message>
+    
+    <message id="transfer_bid_existing_max_bid">Bisheriges Höchstgebot</message>
+    <message id="transfer_bid_no_existing_max_bid">Bisher wurde auf diesen Spieler noch nicht geboten!</message>
+    <message id="transfer_bid_yourbid">Ihr Gebot</message>
+    
+    <message id="transfer_bid_amount">Ablöse</message>
+    <message id="transfer_bid_handmoney">Handgeld</message>
+    <message id="transfer_bid_date">Datum</message>
+    <message id="transfer_bid_withoutfee">ablösefrei</message>
+    
+    <message id="transfer_bid_on_own_player">Sie können nicht auf Ihren eigenen Spieler bieten.</message>
+    <message id="transfer_bid_auction_ended">Die Auktion ist bereits beendet.</message>
+    <message id="transfer_bid_player_not_on_list">Der Spieler steht nicht (mehr) auf der Transferliste.</message>
+    <message id="transfer_bid_salary_too_less">Der Spieler will für dieses Gehalt nicht zu Ihnen wechseln.</message>
+    <message id="transfer_bid_goalbonus_too_less">Der Spieler möchte eine höhere Torprämie haben.</message>
+    <message id="transfer_bid_too_many_transactions_with_user">Sie haben mit dem Verkäufer in den letzten 30 Tagen bereits %d Transfers vereinbart. Ein weiterer Transfer ist derzeit nicht erlaubt.</message>
+    <message id="transfer_bid_amount_must_be_higher">Die Ablösesumme muss höher als %d sein.</message>
+    <message id="transfer_bid_contract_conditions_too_low">Die angebotenen Vertragsbedingungen sind schlechter als bei dem bisherigen Höchstgebot.</message>
+    <message id="transfer_bid_budget_too_less">Ihr Vereinsbudget ist zu gering für ein solch hohes Angebot.</message>
+    <message id="transfer_bid_budget_for_all_bids_too_less">Ihr Vereinsbudget reicht nicht für alle Ihrer momentanen Höchstgebote aus.</message>
+    
+    <message id="transfer_bid_notification_outbidden">Ihr Gebot für {player} auf dem Transfermarkt wurde überboten.</message>
+    <message id="transfer_bid_notification_transfered">Der Spieler {player} ist in Ihr Team gewechselt.</message>
+    
+    <message id="transfer_bid_success">Ihr Gebot wurde erfolgreich gespeichert.</message>
+    
+    <message id="transfermarket_countdown_days">Tage</message>
+    
+    <message id="transfer_bids_nobids">Keine Gebote vorhanden.</message>
+    <message id="transfer_bids_ishighest">Ist derzeitiges Höchstgebot</message>
+    <message id="transfer_bids_overbidden">Wurde überboten</message>
+    
+    <message id="transfers_no_transfers">Keine Transfers vorhanden.</message>
+    
+    <message id="transfer_date">Datum</message>
+    <message id="transfer_from">Von</message>
+    <message id="transfer_to">Nach</message>
+    
+    <message id="transfers_tab">Transfers</message>
+    
+    <message id="transfer_transaction_subject_handmoney">Zahlung Handgeld</message>
+    <message id="transfer_transaction_subject_fee">Ablösesumme für Spielertransfer</message>
+    
+    <message id="transfermarket_remove_label">Vom Transfermarkt entfernen</message>
+    <message id="transfermarket_remove_err_bidexists">Auf den Spieler wurde bereits geboten. Er kann nicht vom Transfermarkt genommen werden.</message>
+    <message id="transfermarket_remove_success">Der Spieler steht nicht mehr zum Verkauf.</message>
+</messages>

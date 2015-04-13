@@ -1,0 +1,26 @@
+{% if env.getConfig("social_likebutton_werkenntwen") %}
+<script type="text/javascript" id="wkwrecommendscript" src="http://www.wer-kennt-wen.de/js/widgets/external/recommend.js?imgId=0"></script>
+<style>
+#wkwRecommendAnchorTag > img {
+	vertical-align: top;
+}
+</style>
+{% endif %}
+
+{% if env.getConfig("social_likebutton_xing") %}
+<div data-counter="no_count" data-type="XING/Share" data-lang="{{ i18n.getCurrentLanguage() }}"></div>
+<script>
+  ;(function (d, s) {
+    var x = d.createElement(s),
+      s = d.getElementsByTagName(s)[0];
+      x.src = "https://www.xing-share.com/js/external/share.js";
+      s.parentNode.insertBefore(x, s);
+  })(document, "script");
+</script>
+{% endif %}
+
+{% if env.getConfig("social_likebutton_twitter") %}
+<span style="margin: 0 2px;">
+<a href="https://twitter.com/share" class="twitter-share-button" data-lang="{{ i18n.getCurrentLanguage() }}">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</span>{% endif %}

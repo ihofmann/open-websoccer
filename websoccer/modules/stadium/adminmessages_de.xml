@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="settings_tab_stadium">Stadien</message>
+    <message id="settings_label_stadium_max_side">Max. Nebentribüne</message>
+	<message id="settings_label_stadium_max_side_help">Maximale Anzahl an Plätze auf den Nebentribünen.</message>
+	
+	<message id="settings_label_stadium_max_grand">Max. Haupttribüne</message>
+	<message id="settings_label_stadium_max_grand_help">Maximale Anzahl an Plätze auf der Haupttribüne.</message>
+
+	<message id="settings_label_stadium_max_vip">Max. VIP Logen</message>
+	<message id="settings_label_stadium_max_vip_help">Maximale Anzahl an VIP-Logen.</message>
+	
+	<message id="settings_label_stadium_cost_standing">Ausbaukosten Stehplatz Nebentribüne</message>
+	<message id="settings_label_stadium_cost_standing_help">pro Platz. Diese Kosten werden zu den individuellen Preisen der unterschiedlichen Bauträger addiert.</message>
+	<message id="settings_label_stadium_cost_seats">Ausbaukosten Sitzplatz Nebentribüne</message>
+	<message id="settings_label_stadium_cost_seats_help">pro Platz</message>
+	<message id="settings_label_stadium_cost_standing_grand">Ausbaukosten Stehplatz Haupttribüne</message>
+	<message id="settings_label_stadium_cost_standing_grand_help">pro Platz</message>
+	<message id="settings_label_stadium_cost_seats_grand">Ausbaukosten Sitzplatz Haupttribüne</message>
+	<message id="settings_label_stadium_cost_seats_grand_help">pro Platz</message>
+	<message id="settings_label_stadium_cost_vip">Ausbaukosten VIP Loge</message>
+	<message id="settings_label_stadium_cost_vip_help">pro Platz</message>
+	
+	<message id="settings_label_stadium_construction_delay">Bauverzögerung in Tagen</message>
+	<message id="settings_label_stadium_construction_delay_help">Mögliche Verzögerung bei der Fertigstellung eines Stadionausbaus wenn ein unzuverlässiger Bauträger gewählt wurde. Sollte mindestens so hoch sein, dass bei der zukünftigen Wahl des Bauträgers auch teurere (aber dafür zuverlässigere) Anbieter interessant sind.</message>
+
+	<message id="settings_label_stadium_hide_builders_reliability">Zuverlässigkeit von Bauträgern bei Angeboten ausblenden.</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_pitch">Wartungsintervall Rasen</message>
+	<message id="settings_label_stadium_maintenanceinterval_pitch_help">Heimspiele. Nach wievielen Heimspielen die Rasenqualität sinkt.</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_videowall">Wartungsintervall Videowand</message>
+	<message id="settings_label_stadium_maintenanceinterval_videowall_help">Heimspiele</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_seatsquality">Wartungsintervall Sitze</message>
+	<message id="settings_label_stadium_maintenanceinterval_seatsquality_help">Heimspiele</message>
+	
+	<message id="settings_label_stadium_maintenanceinterval_vipquality">Wartungsintervall VIP Logen</message>
+	<message id="settings_label_stadium_maintenanceinterval_vipquality_help">Heimspiele</message>
+	
+	<message id="settings_label_stadium_pitch_price">Wartungskosten Rasen</message>
+	<message id="settings_label_stadium_pitch_price_help">Kosten für Ausbau zur ersten Stufe. Für weitere Stufen greift der unten angegebene Zuschlag.</message>
+	
+	<message id="settings_label_stadium_videowall_price">Wartungskosten Videowand</message>
+	<message id="settings_label_stadium_seatsquality_price">Wartungskosten Sitze (pro Sitz)</message>
+	<message id="settings_label_stadium_vipquality_price">Wartungskosten VIP Logen (pro Loge)</message>
+	
+	<message id="settings_label_stadium_maintenance_priceincrease_per_level">Wartungskostenzuschlag pro Stufe</message>
+	<message id="settings_label_stadium_maintenance_priceincrease_per_level_help">Prozent; Kumulierter Aufschlag zu den Wartungskosten. Beispiel: 10% bedeutet einen Aufschlag von 40% bei Ausbau zu Stufe 5 (Kosten Stufe 1 + 10% + 10% + 10% + 10%). 0 für keinen Zuschlag.</message>
+
+	<message id="settings_label_stadium_pitch_effect">Auswirkung Rasenzustand</message>
+	<message id="settings_label_stadium_pitch_effect_help">Wieviel Prozentpunkte pro fehlender Stufe das eigene Team bei Heimspielen an Technikstärke verliert.</message>
+	
+	<message id="settings_label_stadium_videowall_effect">Auswirkung Videowand</message>
+	<message id="settings_label_stadium_videowall_effect_help">Wieviel Prozentpunkte mehr Zuschauer pro Stufe zu Heimspielen kommen.</message>
+	
+	<message id="settings_label_stadium_seatsquality_effect">Auswirkung Sitzzustand</message>
+	<message id="settings_label_stadium_seatsquality_effect_help">Wieviel Prozentpunkte weniger Zuschauer pro fehlender Stufe zu Heimspielen kommen.</message>
+	
+	<message id="settings_label_stadium_vipquality_effect">Auswirkung Zustand VIP Logen</message>
+	<message id="settings_label_stadium_vipquality_effect_help">Wieviel Prozentpunkte weniger Zuschauer pro fehlender Stufe zu Heimspielen kommen.</message>
+</messages>

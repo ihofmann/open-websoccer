@@ -1,0 +1,206 @@
+{% extends "base.twig" %}
+
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as msgbox %}
+
+{% block page_title %}
+{{ match.match_home_name }} - {{ match.match_guest_name }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if match.match_type == "league" %}
+	{% set matchtype = i18n.getMessage("matchtype_" ~ match.match_type) ~  ", " ~ i18n.getMessage("match_details_matchday", match.match_matchday) %}
+{% elseif match.match_type == "cup" %}
+	{% set matchtype = i18n.getMessage("matchtype_" ~ match.match_type) ~  ", " ~ match.match_cup_name ~ " (" ~ match.match_cup_round ~ ")" %}
+{% else %}
+	{% set matchtype = i18n.getMessage("matchtype_" ~ match.match_type) %}
+{% endif %}
+
+{{ profile.infofield(i18n.getMessage("match_details_date"), env.getFormattedDatetime(match.match_date, i18n)) }}
+{{ profile.infofield(i18n.getMessage("match_details_type"), matchtype) }}
+{% if match.match_stadium_name|length > 0 %}
+	{{ profile.infofield(i18n.getMessage("match_details_stadium"), match.match_stadium_name) }}
+{% endif %}
+{% if match.match_audience > 0 %}
+	{% set audience = match.match_audience|number_format(0, ',', ' ') %}
+	{%  if match.match_soldout %}
+		{% set audience = audience ~ " (" ~ i18n.getMessage("entity_match_soldout") ~ ")" %}
+	{% endif %}
+	{{ profile.infofield(i18n.getMessage("match_details_audience"), audience) }}
+{% endif %}
+
+{% if match.match_simulated == 0 and match.match_minutes < 1 %}
+	<hr/>
+	{{ msgbox.box("", i18n.getMessage("match_details_notyetsimulated"), "info") }}
+{% else %}
+
+	<h3>{{ i18n.getMessage("match_details_report_title") }}</h3>
+	
+	<div id="report_result">
+		<span id="report_goals_home">
+		{% if match.match_home_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; margin-right: 20px"/>{% endif %}
+		{{ match.match_goals_home }}</span>
+		<span id="report_goals_separator">-</span>
+		<span id="report_goals_guest">{{ match.match_goals_guest }}
+		{% if match.match_guest_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; margin-left: 20px"/>{% endif %}
+		</span>
+		<div class="row" style="margin: -10px 0 10px 0">
+			<div style="width: 50%; float: left;">
+				{% for goalMessage in homeStrikerMessages %}
+				<small style="font-weight: bold">{{ goalMessage.playerNames|split(';')[0] }} ({{ goalMessage.minute }}.{% if goalMessage.type == "Elfmeter_erfolg" %}, {{ i18n.getMessage("match_details_commenttitle_penalty")|slice(0, 1) }}.{% endif %})<br></small>
+				{% endfor %}
+			</div>
+			<div style="width: 50%; float: right;">
+				{% for goalMessage in guestStrikerMessages %}
+				<small style="font-weight: bold">{{ goalMessage.playerNames|split(';')[0] }} ({{ goalMessage.minute }}.{% if goalMessage.type == "Elfmeter_erfolg" %}, {{ i18n.getMessage("match_details_commenttitle_penalty")|slice(0, 1) }}.{% endif %})<br></small>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top: 10px">
+	{% if match.match_home_noformation %}
+	{{ msgbox.box("", i18n.getMessage("match_details_noformation", match.match_home_name), "warning") }}
+	{% endif %}
+	{% if match.match_guest_noformation %}
+	{{ msgbox.box("", i18n.getMessage("match_details_noformation", match.match_guest_name), "warning") }}
+	{% endif %}
+	</div>
+	
+	<p style="margin-top: 10px">
+	{% if not match.match_simulated %}
+		<a id="matchReportRefresh" class="btn ajaxLink" data-ajaxtarget="pagecontent" 
+			data-ajaxquerystr="page=match&amp;id={{ match.match_id }}" 
+			data-blockseconds="60"
+			href="#refresh"><i class="icon-refresh"></i> {{ i18n.getMessage("button_refresh") }} <span class="timerCount"></span></a>
+			
+		{% if allowTacticChanges %}
+			<a class="btn" href="{{ env.getInternalUrl("match-live-changes", "id=" ~ match.match_id) }}"><i class="icon-edit"></i> {{ i18n.getMessage("match_details_button_changes") }}</a>
+		{% endif %}
+	
+	{% endif %}
+	</p>
+	
+	<ul class="nav nav-tabs" id="reportTab">
+	  <li class="active"><a href="#report" data-toggle="tab">{{ i18n.getMessage("match_details_comments_title") }}</a></li>
+	  <li><a href="#players" data-toggle="tab" class="ajaxLink"
+	  	data-ajaxtarget="players-list" data-ajaxblock="match-result-players"
+	  	data-ajaxquerystr="id={{ match.match_id }}"
+	  	{% if not match.match_simulated %}data-ajaxdisabledcache="1"{% endif %}>{{ i18n.getMessage("match_details_players_title") }}</a></li>
+	  <li><a href="#statistic" data-toggle="tab" class="ajaxLink"
+	  	data-ajaxtarget="matchstatistic" data-ajaxblock="match-statistics"
+	  	data-ajaxquerystr="id={{ match.match_id }}"
+	  	{% if not match.match_simulated %}data-ajaxdisabledcache="1"{% endif %}>{{ i18n.getMessage("match_details_statistic_title") }}</a></li>
+	</ul>
+	 
+	<div class="tab-content">
+	  <div class="tab-pane active" id="report">
+	  
+	  	<span class="report_team_home">{{ match.match_home_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+	  	<span style="margin-left: 20px" class="report_team_guest">{{ match.match_guest_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+	  
+		<div id="reportarea">
+		{% if match.match_deprecated_report|length > 0 %}
+			{{ match.match_deprecated_report|raw|nl2br }}
+		{% else %}
+		
+			<table id="reporttable">
+				<colgroup>
+					<col style="width: 60px" />
+					<col />
+				</colgroup>
+				<tbody>
+					{% if match.match_simulated %}
+					<tr>
+						<td style="text-align: center"><i class="websoccericon-matchcompleted"></i></td>
+						<td><h4>{{ i18n.getMessage("match_details_match_completed") }}</h4></td>
+					</tr>
+					{% endif %}
+					
+					{% set previousMinute = 0 %}
+					{% for reportmessage in reportmessages %}
+					
+						{# half-time #}
+						{% if previousMinute > 45 and reportmessage.minute <= 45 %}
+							<tr>
+								<td></td>
+								<td><h4>{{ i18n.getMessage("match_details_report_halftime")|format(reportmessage.goals) }}</h4></td>
+							</tr>
+						{% elseif (match.match_penalty_enabled or match.match_type == "cup") and previousMinute > 91 and reportmessage.minute <= 91 %}
+							<tr>
+								<td></td>
+								<td><h4>{{ i18n.getMessage("match_details_report_extension")|format(reportmessage.goals) }}</h4></td>
+							</tr>
+						{% elseif displayPenaltyMsg is defined and displayPenaltyMsg == 1 
+							and reportmessage.type != "Elfmeter_erfolg" and reportmessage.type != "Elfmeter_verschossen" %}
+							<tr>
+								<td></td>
+								<td><h4>{{ i18n.getMessage("match_details_report_penaltyshooting")|format(reportmessage.goals) }}</h4></td>
+							</tr>
+							{% set displayPenaltyMsg = 0 %}
+						{% endif %}
+							<tr>
+								<td style="text-align: center">
+								{% if reportmessage.type == "Tor" or reportmessage.type == "Elfmeter_erfolg" or reportmessage.type == "Tor_mit_vorlage" or reportmessage.type == "Freistoss_treffer"  %}
+									<i class="websoccericon-goal"></i>
+								{% elseif reportmessage.type == "Karte_gelb" %}
+									<i class="websoccericon-yellowcard"></i>
+								{% elseif reportmessage.type == "Karte_gelb_rot" or reportmessage.type == "Karte_rot" %}
+									<i class="websoccericon-redcard"></i>
+								{% elseif reportmessage.type == "Auswechslung" %}
+									<i class="websoccericon-substitution"></i>
+								{% elseif reportmessage.type == "Verletzung" %}
+									<i class="websoccericon-injury"></i>
+								{% elseif reportmessage.type == "Torschuss_daneben" %}
+									<i class="websoccericon-shoot"></i>
+								{% elseif reportmessage.type == "Torschuss_auf_Tor" %}
+									<i class="websoccericon-attempt"></i>
+								{% elseif reportmessage.type == "Elfmeter_verschossen" or reportmessage.type == "Freistoss_daneben" %}
+									<i class="websoccericon-penalty"></i>
+								{% elseif reportmessage.type == "Ecke" %}
+									<i class="websoccericon-corner"></i>
+								{% elseif reportmessage.type == "Taktikaenderung" %}
+									<i class="websoccericon-tacticschange"></i>
+								{% endif %}
+								</td>
+								<td>
+									{% set teamMarkerClass = (reportmessage.active_home) ? "report_team_home" : "report_team_guest" %}
+									<div class="report_minute {{ teamMarkerClass }}">{{ i18n.getMessage("match_report_minute", reportmessage.minute) }}
+									{% if reportmessage.type == "Elfmeter_erfolg" or reportmessage.type == "Elfmeter_verschossen" %} - {{ i18n.getMessage("match_details_commenttitle_penalty") }}
+									{% elseif reportmessage.type == "Tor" or reportmessage.type == "Tor_mit_vorlage" %} - {{ i18n.getMessage("match_details_commenttitle_goal") }}
+									{% endif %}
+									</div>
+									{% if (reportmessage.type == "Elfmeter_erfolg" or reportmessage.type == "Elfmeter_verschossen" or reportmessage.type == "Tor" or reportmessage.type == "Tor_mit_vorlage" or reportmessage.type == "Freistoss_treffer") and reportmessage.goals|length > 0 %}
+									<div class="report_comment">{{ reportmessage.goals }}</div>
+									{% endif %}
+									<div class="report_comment">{{ reportmessage.message|raw }}</div>
+								</td>
+							</tr>
+						{% set previousMinute = reportmessage.minute %}
+						{% if reportmessage.minute == 121 and (reportmessage.type == "Elfmeter_erfolg" or reportmessage.type == "Elfmeter_verschossen") %}
+							{% set displayPenaltyMsg = 1 %}
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
+		
+		</div>
+	  </div>
+	  <div class="tab-pane" id="players">
+		<span id="players-list"></span>
+	  </div>
+	  <div class="tab-pane" id="statistic">
+	  
+		{% if match.match_deprecated_report|length > 0 %}
+			<p>{{ i18n.getMessage("match_details_nostatistics_available") }}</p>
+		{% else %}
+			<span id="matchstatistic"></span>
+		{% endif %}
+
+	  </div>
+	</div>	
+
+{% endif %}
+{% endblock %}

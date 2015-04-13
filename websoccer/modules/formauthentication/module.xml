@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="userauthentication" version="1.0.0" />
+        <dependency module="userregistration" version="1.0.0" />
+    </dependencies>
+    
+    <pages>
+        <page
+            id="login"
+            template="login"
+            role="guest">
+            <page
+	            id="forgot-password"
+	            template="forgot-password"
+	            model="ForgotPasswordModel"
+	            role="guest"/>
+        </page>
+        
+        <page
+            id="activate-user"
+            template="activate-user"
+            role="guest" />
+
+    </pages>    
+    
+    <blocks>
+
+        <block
+            id="login-form"
+            template="userlogin"
+            includepages="all"
+            excludepages="login,register"
+            area="sidebar"
+            weight="0"
+            role="guest" />
+        
+    </blocks>
+    
+  <settings>
+      <setting id="login_type" category="users" type="select" selection="email,username" default="email" />
+      <setting id="login_method" category="users" type="text" default="DefaultUserLoginMethod" />
+      <setting id="login_allow_sendingpassword" category="users" type="boolean" default="1" />
+  </settings>
+    
+  <actions>
+	<action id="login" controller="FormLoginController" role="guest">
+		<param id="loginstr" type="text" required="true"/>
+		<param id="loginpassword" type="text" required="true" max="32" />
+		<param id="rememberme" type="boolean" />
+	</action>
+	
+	<action id="send-password" controller="SendPasswordController" role="guest">
+		<param id="useremail" type="text" required="true" validator="EmailValidator"/>
+	</action>
+	
+	<action id="activate" controller="UserActivationController" role="guest">
+		<param id="userid" type="number" required="true" />
+		<param id="key" type="text" required="true" />
+	</action>
+  </actions>
+
+</module>

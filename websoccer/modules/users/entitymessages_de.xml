@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_users">Benutzer</message>
+	<message id="entity_users_nick">Username</message>
+	<message id="entity_users_lastonline">Letzter Login</message>
+	<message id="entity_users_lastaction">Letzte Aktion</message>
+	<message id="entity_users_highscore">Highscore</message>
+	<message id="entity_users_clubname">Verein</message>
+	<message id="entity_users_datum_anmeldung">Anmeldedatum</message>
+	<message id="entity_users_email">E-Mail</message>
+	
+    <message id="entity_users_passwort">Passwort</message>
+    <message id="entity_users_wunschverein">Wunschvereine</message>
+    <message id="entity_users_name">Name</message>
+    <message id="entity_users_wohnort">Wohnort</message>
+    <message id="entity_users_land">Land</message>
+    <message id="entity_users_geburtstag">Geburtstag</message>
+    <message id="entity_users_beruf">Beruf</message>
+    <message id="entity_users_interessen">Interessen</message>
+    <message id="entity_users_lieblingsverein">Lieblingsverein</message>
+    <message id="entity_users_homepage">Homepage</message>
+    <message id="entity_users_fanbeliebtheit">Fanbeliebtheit</message>
+    <message id="entity_users_history">Historie</message>
+    <message id="entity_users_status">Aktiv</message>
+    
+    <message id="entity_users_c_hideinonlinelist">Eigene Aktivität in der "Wer ist wo?"-Liste verstecken.</message>
+    <message id="entity_users_premium_balance">Premium-Guthaben</message>
+    
+    <message id="entity_users_picture">Profilbild</message>
+	<message id="entity_users_picture_help">Muss genau 120px x 120px gross sein.</message>
+	
+	<message id="entity_user_inactivity">Inaktivität</message>
+	<message id="entity_user_inactivity_login">Anmeldungen auf Webseite</message>
+   	<message id="entity_user_inactivity_aufstellung">Aufstellung abgegeben</message>
+   	<message id="entity_user_inactivity_transfer">Transfers getätigt</message>
+   	<message id="entity_user_inactivity_vertragsauslauf">Spielerverträge verlängert</message>
+   	<message id="entity_user_inactivity_transfer_check">Letzte Aktion am %s</message>
+   	
+</messages>

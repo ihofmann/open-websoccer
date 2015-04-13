@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="formation_navlabel">Aufstellung</message>
+    <message id="formation_title">Aufstellung und Taktik</message>
+    
+    <message id="next_match_block_title">Nächstes Spiel</message>
+    <message id="next_match_block_previous_matches">Vorherige Begegnungen</message>
+    <message id="next_match_block_no_previous_matches">Sie spielen zum ersten mal gegen diese Mannschaft.</message>
+    
+    <message id="next_match_block_no_nextmatch">Im Moment ist noch kein Spiel für Sie angesetzt.</message>
+    
+    <message id="formation_playground_title">Aufstellung setzen</message>
+    <message id="formation_team_title">Ihr Kader</message>
+    <message id="formation_team_noplayers">Es stehen keine Spieler zur Verfügung.</message>
+    <message id="formation_bench">Bank</message>
+    
+    <message id="formation_team_collapsehead_tooltip">Liste auf- oder zuklappen</message>
+    
+    <message id="formation_team_blocked_cards">Gelb- oder Rotsperre</message>
+    <message id="formation_team_blocked_injured">Spieler ist verletzt</message>
+    
+    <message id="formation_dragging_note_title">Hinweis zur Nutzung:</message>
+    <message id="formation_dragging_note">Ziehen Sie Spieler auf das Feld, um sie aufzustellen oder doppelklicken Sie auf den Spieler.</message>
+    
+    <message id="formation_substitutions_title">Auswechslungen</message>
+    <message id="formation_substitutions_out">Raus</message>
+    <message id="formation_substitutions_in">Rein</message>
+    <message id="formation_substitutions_minute">Minute</message>
+    
+    <message id="formation_substitutions_condition">Bedingung</message>
+    <message id="formation_substitutions_condition_none">Keine</message>
+    <message id="formation_substitutions_condition_tie">bei Gleichstand</message>
+    <message id="formation_substitutions_condition_leading">bei Führung</message>
+    <message id="formation_substitutions_condition_deficit">bei Rückstand</message>
+    
+    <message id="formation_substitutions_position">Position</message>
+    <message id="formation_substitutions_position_default">(Hauptposition des Spielers)</message>
+    
+    <message id="formation_err_player_already_set">Der Spieler ist bereits aufgestellt.</message>
+    <message id="formation_err_already_enough_players">Es stehen bereits 11 Spieler auf dem Platz.</message>
+    <message id="formation_err_only_one_goaly_allowed">Es darf maximal nur ein Torwart aufgestellt werden.</message>
+    <message id="formation_err_only_x_players_per_area_allowed">Es dürfen maximal nur jeweils bis zu {0} Feldspieler pro Bereich aufgestellt werden.</message>
+    <message id="formation_err_only_x_players_on_bench_allowed">Es dürfen nur maximal {0} Ersatzspieler auf der Bank sitzen.</message>
+    <message id="formation_err_no_goaly_set">Es wurde kein Torwart aufgestellt.</message>
+    <message id="formation_err_not_enough_players">Es stehen nicht genau 11 Spieler auf dem Platz.</message>
+    <message id="formation_tooltip_remove_player">Doppelklick um {0} zu entfernen</message>
+    
+    <message id="formation_err_nonextmatch">Das nächste Spiel steht noch nicht fest.</message>
+    <message id="formation_err_invalidplayer">Es wurden ungültige Spieler aufgestellt.</message>
+    <message id="formation_err_duplicateplayer">Es wurden Spieler doppelt aufgestellt.</message>
+    <message id="formation_err_blockedplayer">Es wurden gesperrte oder verletzte Spieler aufgestellt.</message>
+    
+    <message id="formation_err_invalidsubstitutionminute">Es darf nur zwischen der zweiten und 90. Minute ausgewechselt werden.</message>
+    
+    <message id="formation_offensive_title">Offensiv spielen</message>
+    
+    <message id="formation_setup_title">Formation</message>
+    
+    <message id="formation_bench_placeholder">Spieler hier hinziehen...</message>
+    <message id="formation_bench_sub_in">Einwechseln</message>
+    <message id="formation_bench_sub_title">Spielerwechsel</message>
+    
+    <message id="formation_setup_button">Aufstellen</message>
+    <message id="formation_setup_strongest">Stärkste Spieler</message>
+    <message id="formation_setup_freshest">Frischeste Spieler</message>
+    <message id="formation_setup_motivated">Motivierteste Spieler</message>
+    
+    <message id="formation_setup_altered_warn_title">Die angegebene Formation wurde vom System angepasst!</message>
+    <message id="formation_setup_altered_warn_details">Ihre gewählte Formation umfasst nicht genau 10 Feldspieler, weshalb das System Ihre Auswahl automatisch korrigiert hat.</message>
+
+	<message id="formation_clearall">Spielfeld leeren</message>
+	
+	<message id="formation_switch_on">Ein</message>
+	<message id="formation_switch_off">Aus</message>
+	
+	<message id="formation_option_longpasses">Lange Pässe</message>
+	<message id="formation_option_longpasses_help">Kann zu mehr Torschüssen führen, aber auch zu mehr Ballverlusten.</message>
+	
+	<message id="formation_option_counterattacks">Konterspiel</message>
+	<message id="formation_option_counterattacks_help">Kann Gegenangriffe verhindern, aber reduziert auch die Anzahl an eigenen Torchancen.</message>
+	
+	<message id="formation_freekickplayer">Freistoß- und Eckballschütze</message>
+	
+	<message id="formation_templatename_field">Vorlagenname</message>
+	<message id="formation_templatename_field_help">Geben Sie einen Namen an, um diese Aufstellung zusätzlich als Vorlage abzuspeichern.</message>
+	<message id="formation_load_from_template">Vorlage laden</message>
+	<message id="formation_load_from_template_none_available">Es stehen keine Vorlagen zur Verfügung. Eine neue Vorlage erstellen Sie indem Sie einen Vorlagennamen beim Speichern einer neuen Aufstellung angeben.</message>
+	
+	<message id="formation_template_saving_failed_because_boundary_title">Sie dürfen nur %d Vorlagen speichern!</message>
+	<message id="formation_template_saving_failed_because_boundary_details">Die Aufstellung wurde nicht als Vorlage abgelegt. Löschen Sie zuerst nicht mehr benötigte Vorlagen.</message>
+	
+	<message id="formation_submitted_tooltip">Aufstellung wurde abgegeben</message>
+	<message id="formation_notsubmitted_tooltip">Noch keine Aufstellung abgegeben</message>
+</messages>

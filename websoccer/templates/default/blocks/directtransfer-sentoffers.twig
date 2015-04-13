@@ -1,0 +1,71 @@
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% if offers|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_transfer_offer_submitted_date") }}</th>
+				<th>{{ i18n.getMessage("entity_transfer_offer_player_id") }}</th>
+				<th>{{ i18n.getMessage("entity_transfer_offer_receiver_club_id") }}</th>
+				<th>{{ i18n.getMessage("entity_transfer_offer_offer_amount") }}</th>
+				<th>{{ i18n.getMessage("transferoffers_offer_reaction") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for offer in offers %}
+			<tr>
+				<td><p>{{ env.getFormattedDatetime(offer.offer_submitted_date) }}</p>
+				{% if offer.offer_message|length > 0 %}
+				<a href="#" class="btn btn-mini wspopover" data-toggle="popover" 
+					data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.sender_user_name) }}" 
+					data-content="{{ offer.offer_message }}">{{ i18n.getMessage("transferoffers_offer_showcomment") }}</a>
+				{% endif %}
+				</td>
+				<td><a href="{{ env.getInternalUrl("player", "id=" ~ offer.player_id) }}">{% if offer.player_pseudonym|length > 0 %}{{ offer.player_pseudonym }}{% else %}{{ offer.player_firstname }} {{ offer.player_lastname }}{% endif %}</a>
+					{% if offer.player_position_main|length > 0 %}({{ i18n.getMessage("player_mainposition_" ~ offer.player_position_main) }}){% endif %}<br>
+				<small>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}: {{ offer.player_salary|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}<br>
+				{{ i18n.getMessage("entity_player_marktwert") }}: {{ offer.player_marketvalue|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</small></td>
+				<td><a href="{{ env.getInternalUrl("team", "id=" ~ offer.receiver_club_id) }}">{{ offer.receiver_club_name }}</a><br> (<a href="{{ env.getInternalUrl("user", "id=" ~ offer.receiver_user_id) }}">{{ offer.receiver_user_name }}</a>)</td>
+				<td>
+					<span>{{ offer.offer_amount|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</span>
+					{% if offer.explayer1_id > 0 or offer.explayer2_id > 0 %}
+						<ul class="unstyled">
+							{% if offer.explayer1_id > 0  %}
+							<li><small>+ <a href="{{ env.getInternalUrl("player", "id=" ~ offer.explayer1_id) }}">{% if offer.explayer1_pseudonym|length > 0 %}{{ offer.explayer1_pseudonym }}{% else %}{{ offer.explayer1_firstname }} {{ offer.explayer1_lastname }}{% endif %}</a></small></li>
+							{% endif %}
+							
+							{% if offer.explayer2_id > 0  %}
+							<li><small>+ <a href="{{ env.getInternalUrl("player", "id=" ~ offer.explayer2_id) }}">{% if offer.explayer2_pseudonym|length > 0 %}{{ offer.explayer2_pseudonym }}{% else %}{{ offer.explayer2_firstname }} {{ offer.explayer2_lastname }}{% endif %}</a></small></li>
+							{% endif %}
+						</ul>
+					{% endif %}
+				</td>
+				<td>
+					{% if offer.offer_rejected_date == 0 %}
+					<p><a href="#" class="btn btn-info btn-small btn-block ajaxLink"
+						data-ajaxtarget="sent"
+						data-ajaxquerystr="block=directtransfer-sentoffers&action=directtransfer-cancel&id={{ offer.offer_id }}">{{ i18n.getMessage("transferoffers_offer_cancellation_button") }}</a></p>
+					{% else %}
+						<span class="label label-important">{{ i18n.getMessage("transferoffers_offer_status_rejected") }}</span>
+						
+						{% if offer.offer_rejected_message|length > 0 %}
+						<a href="#" class="wspopover" data-toggle="popover" 
+							data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.receiver_user_name) }}" 
+							data-content="{{ offer.offer_rejected_message }}"
+							data-placement="left"
+							data-trigger="hover"><i class="icon-envelope"></i></a>
+						{% endif %}
+						
+					{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+	{{ pagination.paginator(paginator, "sent") }}
+{% else %}
+	{{ messagebox.box(i18n.getMessage("transferoffers_no_sent_offers"), "", "info") }}
+{% endif %}

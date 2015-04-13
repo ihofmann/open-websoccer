@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_enable_player_resignation">Benutzer dürfen Spieler entlassen.</message> 
+	<message id="settings_label_player_resignation_compensation_matches">Abfindung bei Entlassung</message> 
+	<message id="settings_label_player_resignation_compensation_matches_help">Anzahl Spiele für die dem Spieler eine Abfindung gezahlt werden muss bei vorzeitiger Entlassung. 0 für keine Abfindung.</message> 
+</messages>

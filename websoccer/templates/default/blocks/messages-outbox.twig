@@ -1,0 +1,33 @@
+{% import "macros/paginator.twig" as pagination %}
+{% if messages|length > 0 %}
+  	
+  	<table class="table table-striped">
+  		<thead>
+  			<tr>
+  				<th>{{ i18n.getMessage("messages_date") }}</th>
+  				<th>{{ i18n.getMessage("messages_sender") }}</th>
+  				<th>{{ i18n.getMessage("messages_subject") }}</th>
+  				<th>&nbsp;</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  		{% for message in messages %}
+  			<tr>
+  				<td>{{ env.getFormattedDatetime(message.date) }}</td>
+  				<td><a href="{{ env.getInternalUrl("user", "id=" ~ message.sender_id) }}">{{ message.sender_name }}</a></td>
+  				<td>
+  				{% if not message.seen %}<strong>{% endif %}
+  				<a href="#showMessage" data-toggle="modal" class="ajaxLink"
+  					data-ajaxtarget="messagecontent" data-ajaxblock="message-details" data-ajaxquerystr="id={{ message.message_id }}">{{ message.subject }}</a>
+  				{% if not message.seen %}</strong>{% endif %}
+  				</td>
+  				<td><a href="{{ env.getInternalUrl("messages", "action=delete-message&id=" ~ message.message_id) }}#outbox" title="{{ i18n.getMessage("messages_delete") }}"><i class="icon-trash"></i></a></td>
+  			</tr>
+  		{% endfor %}
+  		</tbody>
+  	</table>
+  	
+  	{{ pagination.paginator(paginator, "outboxlist") }}
+{% else %}
+  	<p>{{ i18n.getMessage("messages_empty_outbox") }}</p>
+{% endif %}

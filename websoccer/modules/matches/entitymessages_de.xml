@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="entity_match">Spiel</message>
+	<message id="entity_match_spieltag">Spieltag</message>
+	
+	<message id="entity_match_datum">Datum</message>
+	<message id="entity_match_home_verein">Heimmannschaft</message>
+	<message id="entity_match_gast_verein">Gastmannschaft</message>
+	
+	<message id="entity_match_saison_id">Saison</message>
+	<message id="entity_match_pokalname">Pokal</message>
+	<message id="entity_match_pokalrunde">Pokalrunde</message>
+	<message id="entity_match_pokalgruppe">Pokalgruppe</message>
+	<message id="entity_match_berechnet">Ist simuliert</message>
+	
+	<message id="entity_match_spieltyp">Typ</message>
+	<message id="entity_match_elfmeter">Elfmeterschiessen bei Unentschieden</message>
+	<message id="entity_match_home_tore">Tore (Heim)</message>
+	<message id="entity_match_gast_tore">Tore (Gast)</message>
+	<message id="entity_match_zuschauer">Zuschauer</message>
+	<message id="entity_match_bericht">Spielbericht</message>
+	<message id="entity_match_bericht_help">Nur angeben, wenn der automatisch generierte Bericht nicht angezeigt werden soll.</message>
+	
+	<message id="entity_match_soldout">ausverkauft</message>
+	<message id="entity_match_blocked">Ist für die Simulation blockiert. Wurde diese Option nicht manuell gesetzt, wird das Spiel entweder gerade simuliert oder es ist ein Fehler bei der Simulation aufgetreten. Deaktivieren Sie das Kästchen wenn das Spiel bei der nächsten Möglichkeit simuliert werden soll.</message>
+	
+	<message id="option_Ligaspiel">Ligaspiel</message>
+	<message id="option_Pokalspiel">Pokalspiel</message>
+	<message id="option_Freundschaft">Freundschaftsspiel</message>
+	
+	<message id="entity_matchtext">Spielberichtmeldung</message>
+	<message id="entity_matchtext_aktion">Aktionstyp</message>
+	<message id="entity_matchtext_nachricht">Meldung</message>
+	<message id="entity_matchtext_nachricht_help">Kann auch nur ein Nachrichtenschlüssel (messages key) sein. Sie können Meldungen übersetzen, indem Sie die Nachricht in einer Messages Konfigurationsdatei hinzufügen. Beispiele dafür gibt es in der Datei <em>/modules/matches/messages_en.xml</em>.</message>
+	
+	<message id="option_Tor">Tor</message>
+	<message id="option_Auswechslung">Auswechslung</message>
+	<message id="option_Zweikampf_gewonnen">Zweikampf: gewonnen</message>
+	<message id="option_Zweikampf_verloren">Zweikampf: verloren</message>
+	<message id="option_Pass_daneben">Pass: daneben</message>
+	<message id="option_Torschuss_daneben">Erfolgloser Torschuss: daneben</message>
+	<message id="option_Torschuss_auf_Tor">Erfolgloser Torschuss: aufs Tor</message>
+	<message id="option_Karte_gelb">Gelbe Karte</message>
+	<message id="option_Karte_rot">Rote Karte</message>
+	<message id="option_Karte_gelb_rot">Gelb-Rote Karte</message>
+	<message id="option_Verletzung">Verletzung</message>
+	<message id="option_Elfmeter_erfolg">Elfmeter: getroffen</message>
+	<message id="option_Elfmeter_verschossen">Elfmeter: verschossen</message>
+	<message id="option_Taktikaenderung">Manager ändert Taktik</message>
+	<message id="option_Ecke">Ecke</message>
+	<message id="option_Freistoss_daneben">Freistoss: daneben</message>
+	<message id="option_Freistoss_treffer">Freistoss: Treffer</message>
+	<message id="option_Tor_mit_vorlage">Tor mit Vorlage</message>
+	
+	<message id="entity_match_matchreportitems">Spielbericht</message>
+	
+	<message id="entity_match_stadion_id">Stadion</message>
+	<message id="entity_match_stadion_id_help">Wenn kein Austragungsort ausgewählt wird, findet das Spiel im Stadion der Heimmannschaft statt. Wird explizit ein Stadion ausgewählt, entfallen Einnahmen und ein eventueller Heimvorteil.</message>
+</messages>

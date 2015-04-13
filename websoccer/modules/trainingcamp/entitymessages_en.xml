@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_trainingcamp">Training Camp</message>
+	<message id="entity_trainingcamp_name">Name</message>
+	<message id="entity_trainingcamp_land">Country</message>
+	<message id="entity_trainingcamp_preis_spieler_tag">Costs per player per day</message>
+	<message id="entity_trainingcamp_p_staerke">Effect Strength</message>
+	<message id="entity_trainingcamp_p_technik">Effect Technique</message>
+	<message id="entity_trainingcamp_p_kondition">Effect Stamina</message>
+	<message id="entity_trainingcamp_p_frische">Effect Freshness</message>
+	<message id="entity_trainingcamp_p_zufriedenheit">Effect Satisfaction</message>
+</messages>

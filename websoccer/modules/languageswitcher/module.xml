@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <blocks>
+
+        <block
+            id="language-switcher"
+            template="language-switcher"
+            model="LanguageSwitcherModel"
+            includepages="all"
+            area="sidebar"
+            weight="10"
+            role="guest,user" />
+        
+    </blocks>
+    
+  <actions>
+	<action id="switch-language" controller="LanguageSwitcherController" role="guest,user">
+		<param id="lang" type="text" required="true" min="2" max="2"/>
+	</action>
+  </actions>
+    
+</module>

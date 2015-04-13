@@ -1,0 +1,27 @@
+<p><a href="#offerModal" role="button" data-toggle="modal" class="btn btn-small ajaxLink"
+	data-ajaxtarget="offerFormBlock" data-ajaxblock="directtransfer-offer-form" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}&loadformdata=1"><i class="icon-shopping-cart"></i> {{ i18n.getMessage("transferoffer_button") }}</a></p>
+
+<form method="post" class="form-horizontal">
+	<div id="offerModal" class="modal hide fade" tabindex="-1" role="dialog" 
+		aria-labelledby="offerModalLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="offerModalLabel">{{ i18n.getMessage("transferoffer_modal_title") }}</h3>
+	  </div>
+	  <div class="modal-body">
+	  	<div id="modalMessages"></div>
+	  	<div id="offerFormBlock">...</div>
+	  </div>
+	  <div class="modal-footer">
+	  	<button id="offerSubmit" type="submit" class="btn btn-primary ajaxSubmit" 
+			data-ajaxtarget="offerFormBlock" data-ajaxblock="directtransfer-offer-form" 
+			data-messagetarget="modalMessages">{{ i18n.getMessage("button_submit") }}</button>
+	    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_close") }}</a>
+	  </div>
+	</div>
+	
+	<input type="hidden" name="page" value="player">
+	<input type="hidden" name="id" value="{{ env.getRequestParameter("id") }}">
+	<input type="hidden" name="action" value="directtransfer-offer">
+	<input type="hidden" name="loadformdata" value="1">
+</form>

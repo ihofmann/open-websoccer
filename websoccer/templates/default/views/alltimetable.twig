@@ -1,0 +1,25 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("alltimetable_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<form class="form-inline" method="post">
+
+	<label class="control-label" for="country">{{ i18n.getMessage("entity_league") }}</label> 
+	<select id="id" name="id" class="span3">
+		<option></option>
+	{% for leagueItem in leagues %}
+		<option value="{{ leagueItem.league_id }}"{% if league.league_id is defined and league.league_id == leagueItem.league_id or env.getRequestParameter("id") == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>
+	{% endfor %}
+	</select>
+
+	<button type="submit" class="btn btn-primary ajaxSubmit" 
+		data-ajaxtarget="alltimetable-table_block" data-ajaxblock="alltimetable-table">{{ i18n.getMessage('button_display') }}</button>
+
+	<input type="hidden" name="page" value="alltimetable" />
+</form>
+
+{% endblock %}

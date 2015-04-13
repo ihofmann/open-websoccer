@@ -1,0 +1,18 @@
+
+{% if blocks.content_top is defined %}
+	{% for uiBlock in blocks.content_top %}
+		<div id="{{ uiBlock.id }}_block">
+		{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+		</div>
+	{% endfor %}
+{% endif %}
+
+{{ block("page_content") }}
+
+{% if blocks.content_bottom is defined %}
+	{% for uiBlock in blocks.content_bottom %}
+		<div id="{{ uiBlock.id }}_block">
+		{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+		</div>
+	{% endfor %}
+{% endif %}

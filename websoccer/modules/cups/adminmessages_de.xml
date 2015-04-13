@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="validation_error_uniquecupname">Es gibt bereits einen Pokal oder Pokalspiele mit dem angegebenen Namen.</message> 
+	<message id="managecuprounds_navlabel">Pokalrunden verwalten</message>
+	
+	<message id="managecuprounds_infoalert_title">Erst alle Runden erstellen!</message>
+	<message id="managecuprounds_infoalert_msg">Damit das System automatisch Spiele in den Gewinner- oder Verliererrunden generieren kann, müssen vor der Simulation von Spielen alle Runden erstellt werden.</message>
+	
+	<message id="managecuprounds_label_create">Neue Runde erstellen</message>
+	
+	<message id="managecuprounds_label_name">Name</message>
+	<message id="managecuprounds_label_firstround_date">Datum Hinspiel</message>
+	<message id="managecuprounds_label_secondround_date">Datum Rückspiel</message>
+	<message id="managecuprounds_label_create_secondround">Es soll ein Rückspiel ausgetragen werden.</message>
+	<message id="managecuprounds_label_round_generation">Spiele generieren?</message>
+	<message id="managecuprounds_label_groupmatches">Besteht aus Gruppenspielen.</message>
+	<message id="managecuprounds_label_finalround">Ist Finale (Siegesprämien werden nach Spielende ausbezahlt).</message>
+	<message id="managecuprounds_label_previous_round">Vorherige Runde</message>
+	
+	<message id="managecuprounds_show_matches">Spiele anzeigen</message>
+	<message id="managecuprounds_add_match">Spiel hinzufügen</message>
+	<message id="managecuprounds_generate_matches">Aus Mannschaften generieren</message>
+	<message id="managecuprounds_manage_groups">Gruppen verwalten</message>
+	
+	<message id="managecuprounds_next_round_winners">Gewinner spielt in</message>
+	<message id="managecuprounds_next_round_loosers">Verlierer spielt in</message>
+	
+	<message id="option_self">Manuell Spiele hinzufügen</message>
+	<message id="option_winners_from">Automatisch Gewinner aus vorheriger Runde</message>
+	<message id="option_loosers_from">Automatisch Verlierer aus vorheriger Runde</message>
+	<message id="option_generate_from_groups">Aus Gruppenphase generieren</message>
+	
+	<message id="managecuprounds_generate_navlabel">Pokalrunde: Spiele generieren</message>
+	<message id="managecuprounds_generate_formlabel">Teilnehmende Mannschaften auswählen</message>
+	<message id="managecuprounds_generate_submitbutton">Spiele generieren</message>
+	<message id="managecuprounds_generate_success">Spiele erfolgreich generiert!</message>
+	<message id="managecuprounds_generate_success_overviewlink">Zur Rundenübersicht</message>
+	
+	<message id="managecuprounds_generate_noroundspossible">Kein K.O.-Rundenpokal möglich mit ausgewählter Anzahl an Teams!</message>
+	<message id="managecuprounds_generate_possiblerounds">Mögliche K.O.-Runden</message>
+	
+	<message id="managecuprounds_groups_navlabel">Pokalrunde: Gruppen verwalten</message>
+	<message id="managecuprounds_groups_back">Zurück zur Rundenübersicht</message>
+	<message id="managecuprounds_groups_nextrounds">Folgerunden</message>
+	<message id="managecuprounds_groups_label_create">Neue Gruppe erstellen</message>
+	<message id="managecuprounds_group_label_name">Gruppenname</message>
+	<message id="managecuprounds_group_label_teams">Vereine in der Gruppe</message>
+	<message id="managecuprounds_groups_label_selectteams">Wählen Sie die Teams für diese Gruppe aus.</message>
+	<message id="managecuprounds_groups_addteam">Team hinzufügen</message>
+	
+	<message id="managecuprounds_groups_open_generate_matches_popup">Spiele erzeugen</message>
+	
+	<message id="managecuprounds_groups_generate_title">Spielplan erstellen</message>
+	<message id="managecuprounds_groups_generate_submit">Erzeugen</message>
+	<message id="managecuprounds_groups_generate_alert">Achtung: Bisher angesetzte Spiele werden gelöscht!</message>
+	<message id="managecuprounds_groups_created_matches">angesetzte Spiele.</message>
+	
+</messages>

@@ -1,0 +1,23 @@
+{% extends "box.twig" %}
+
+{% block box_title %}
+{{ i18n.getMessage('activitylog_box_title') }}
+{% endblock %}
+
+{% block box_content %}
+
+{% if activities is defined and activities|length > 0 %}
+	
+	<table class="table table-striped">
+	{% for activity in activities %}
+		{% set username = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ activity.user_id) ~ "\">" ~ activity.user_name|e ~ "</a>" %}
+		<tr>
+			<td>{{ i18n.getMessage("activitylog_" ~ activity.action_id)|format(username)|raw }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	
+{% endif %}
+
+
+{% endblock %}

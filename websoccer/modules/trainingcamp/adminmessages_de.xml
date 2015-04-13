@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_trainingcamp_min_days">Mindestdauer Trainingslager</message> 
+	<message id="settings_label_trainingcamp_min_days_help">in Tagen</message> 
+	
+	<message id="settings_label_trainingcamp_max_days">Höchstdauer Trainingslager</message> 
+	<message id="settings_label_trainingcamp_max_days_help">in Tagen</message> 
+	
+	<message id="settings_label_trainingcamp_booking_max_days_in_future">Späteste Buchung</message> 
+	<message id="settings_label_trainingcamp_booking_max_days_in_future_help">in Tagen; Bis zu wievielen Tagen in der Zukunft ein Trainingslager gebucht werden kann.</message> 
+</messages>

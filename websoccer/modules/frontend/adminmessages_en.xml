@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_tab_frontend">Frontend</message> 
+	<message id="imprint_navlabel">Imprint</message>
+	
+	<message id="imprint_label_content">Page Content</message>
+	<message id="imprint_label_content_help">HTML is supported. Line breaks will be converted.</message>
+	<message id="imprint_introduction">Usually it is a legal requirement to provide the contact details of the responsible website owner. You can do so by entering your details into the field below. It will appear at the website page "imprint".</message>
+	
+	<message id="imprint_validationerror_content">You must provide some content.</message>
+	
+	<message id="settings_label_head_code">HTML code for the &lt;head&gt; area</message>
+</messages>

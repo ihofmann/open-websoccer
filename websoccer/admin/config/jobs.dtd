@@ -1,0 +1,12 @@
+<!ELEMENT jobs (job+)>
+
+<!ELEMENT job EMPTY>
+<!ATTLIST job id ID #REQUIRED>
+<!ATTLIST job name CDATA #REQUIRED>
+<!ATTLIST job name_de CDATA #IMPLIED>
+<!ATTLIST job class CDATA #REQUIRED>
+<!ATTLIST job interval CDATA #REQUIRED>
+<!ATTLIST job last_ping CDATA #IMPLIED>
+<!ATTLIST job stop (1|0) "1">
+<!ATTLIST job error CDATA #IMPLIED>
+<!ATTLIST job inittime CDATA #IMPLIED>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <admin>
+        <adminpage
+            id="cup"
+            entity="cup"
+            navcategory="season"
+            permissionrole="r_spiele" >
+
+            <entity dbtable="cup AS CupTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_cup_name"
+                        field="CupTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_cup_winner_id"
+                        field="ClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_cup_matches"
+                        field="(SELECT COUNT(*) FROM {tablePrefix}_spiel AS MatchesTab WHERE MatchesTab.pokalname = CupTab.name)"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_cup_rounds"
+                        field="(SELECT COUNT(*) FROM {tablePrefix}_cup_round AS RoundsTab WHERE RoundsTab.cup_id = CupTab.id)"
+                        type="number"
+                        converter="CupRoundsLinkConverter" 
+                        sort="true" />
+                    
+                    <column
+                        id="entity_cup_archived"
+                        field="CupTab.archived"
+                        type="boolean"
+                        sort="true"
+                        filter="true" />
+
+                	<join type="LEFT" jointable="verein AS ClubTab" joincondition="CupTab.winner_id = ClubTab.id" />
+                </overview>
+
+                <editform>
+                    <field id="name" type="text" required="true" validator="UniqueCupNameValidator"  />
+					<field id="winner_id" type="foreign_key" entity="club" 
+					    jointable="verein" labelcolumns="name" required="false" />
+					<field id="logo" type="file" required="false"  />
+					<field id="winner_award" type="number" required="false"  />
+					<field id="second_award" type="number" required="false"  />
+					<field id="perround_award" type="number" required="false"  />
+					<field id="archived" type="boolean" />
+                </editform>
+            </entity>
+        </adminpage>
+        
+    </admin>
+  
+    <blocks>
+
+        <block
+            id="cupgroupdetails"
+            template="cupgroup_table"
+            model="CupGroupDetailsModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+    </blocks>
+</module>

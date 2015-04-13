@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="player_navlabel">Player Details</message>
+    
+    <message id="no_players_found">No players found.</message>
+    
+    <message id="playertable_head_position_abbr">Pos</message>
+    <message id="playertable_head_position">Position</message>
+    <message id="playertable_head_name">Name</message>
+    <message id="playertable_head_strength_abbr">Ski</message>
+    <message id="playertable_head_strength">Skill</message>
+    <message id="playertable_head_strength_technic_abbr">Tec</message>
+    <message id="playertable_head_strength_technic">Technique</message>
+    <message id="playertable_head_strength_freshness_abbr">Fit</message>
+    <message id="playertable_head_strength_freshness">Fitness</message>
+    <message id="playertable_head_strength_stamina_abbr">Sta</message>
+    <message id="playertable_head_strength_stamina">Stamina</message>
+    <message id="playertable_head_strength_satisfaction_abbr">Mor</message>
+    <message id="playertable_head_strength_satisfaction">Morale</message>
+    <message id="playertable_head_age">Age</message>
+    <message id="playertable_head_blocked">Blocked</message>
+    <message id="playertable_head_matches_abbr">Matches</message>
+    
+    <message id="player_details_tab_general">Profile</message>
+    <message id="player_details_tab_statistic">Statistics</message>
+    <message id="player_details_tab_history">History</message>
+    
+    <message id="player_details_unit_matches">matches</message>
+    
+    <message id="player_details_strength_title">Skill</message>
+    
+    <message id="player_details_statistic_season">This Season</message>
+    <message id="player_details_statistic_total">Total</message>
+    
+    <message id="player_details_statistic_goals">Goals</message>
+    <message id="player_details_statistic_assists">Assists</message>
+    <message id="player_details_statistic_matches">Matches</message>
+    <message id="player_details_statistic_yellow">Yellow Cards</message>
+    <message id="player_details_statistic_yellow_red">Yell.-R. Cards</message>
+    <message id="player_details_statistic_red">Red Cards</message>
+    <message id="player_details_statistic_assists">Assists</message>
+    <message id="player_details_statistic_shoots">Goal Attempts</message>
+    <message id="player_details_statistic_grade">Average Grade</message>
+    <message id="player_details_statistic_passquota">Pass Quota</message>
+    
+    <message id="player_details_statistic_opendetails">Show More Statistics</message>
+    <message id="player_details_statistic_detailstitle">Player Statistics</message>
+    <message id="player_details_statistic_nomatchesplayed">The player has not played in any matches yet.</message>
+    
+    <message id="player_details_grades_title">Grading of the last matches</message>
+    <message id="player_details_nogradesavailable">There are no grades available for this player, yet.</message>
+    <message id="player_details_grade_last_match">Grade in last match</message>
+    <message id="player_details_grade_average">Average grade</message>
+    <message id="player_details_nohistoryavailable">No history available.</message>
+    
+    <message id="player_details_avaiable_on_transfermarket">The player is currently available on the transfer market.</message>
+    <message id="player_details_unsellable">The manager of the player's club marked the player as unsellable.</message>
+    
+    <message id="player_mainposition_T">GK</message>
+    <message id="player_mainposition_LV">LB</message>
+    <message id="player_mainposition_RV">RB</message>
+    <message id="player_mainposition_IV">CB</message>
+    <message id="player_mainposition_LM">LM</message>
+    <message id="player_mainposition_RM">RM</message>
+    <message id="player_mainposition_ZM">CM</message>
+    <message id="player_mainposition_LS">LW</message>
+    <message id="player_mainposition_MS">CF</message>
+    <message id="player_mainposition_RS">RW</message>
+    <message id="player_mainposition_OM">AM</message>
+    <message id="player_mainposition_DM">DM</message>
+    
+    <message id="player_button_to_pitch">Pitch</message>
+    <message id="player_button_to_bench">Bench</message>
+    <message id="player_button_remove_from_pitch">Remove</message>
+    
+    <message id="topstrikers_navlabel">Top Strikers</message>
+    <message id="topstrikers_title">Best Strikers in Game</message>
+    
+    <message id="topscorers_navlabel">Top Scorers</message>
+    <message id="topscorers_head_score">Score</message>
+</messages>

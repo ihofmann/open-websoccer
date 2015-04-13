@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="who-is-online_navlabel">Wer ist gerade online?</message>
+    <message id="who_is_online_title">Derzeit angemeldete Benutzer</message>
+    <message id="who_is_online_anonymous">Anonymer Benutzer</message>
+</messages>

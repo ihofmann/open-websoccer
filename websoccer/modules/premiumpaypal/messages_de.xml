@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="actionsubject_paypal-notify">Zahlung über PayPal</message>
+    <message id="paypalpayment_link_title">Mit PayPal bezahlen</message>
+</messages>

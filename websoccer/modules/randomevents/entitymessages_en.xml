@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_randomevent">Random Events</message>
+	<message id="entity_randomevent_message">Message</message>
+	<message id="entity_randomevent_message_help">Can also be a Messages Key. Message can contain "{playername}" for player related events.</message>
+	<message id="entity_randomevent_effect">Effect</message>
+	<message id="entity_randomevent_effect_money_amount">Effect: Money</message>
+	<message id="entity_randomevent_effect_money_amount_help">Positive or negative amount which will be credited or debited to/from the team account.</message>
+	<message id="entity_randomevent_effect_blocked_matches">Effect: Number of suspended matches</message>
+	<message id="entity_randomevent_effect_skillchange">Effect: Skill change</message>
+	<message id="entity_randomevent_effect_skillchange_help">Positive or negative effect on the appropriate player attribute.</message>
+	<message id="entity_randomevent_weight">Weight</message>
+	<message id="entity_randomevent_weight_help">Influences probability. 1 means standard probability; 5 means that probability of occuring is five times higher. 0 disables the event.</message>
+
+	<message id="option_money">Team budget will be changed</message>
+	<message id="option_player_injured">A random player will get injured</message>
+	<message id="option_player_blocked">A random player will get blocked</message>
+	<message id="option_player_happiness">A random player's happiness will be changed</message>
+	<message id="option_player_fitness">A random player's fitness will be changed</message>
+	<message id="option_player_stamina">A random player's stamina will be changed</message>
+</messages>

@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("leagues_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+<form class="form-inline" method="post">
+
+	<label class="control-label" for="country">{{ i18n.getMessage("entity_league_land") }}</label> 
+	<select id="country" name="country">
+		<option></option>
+	{% for country in countries %}
+		<option value="{{ country.name }}">{{ country.name }} ({{ country.noOfLeagues }})</option>
+	{% endfor %}
+	</select>
+
+	<button type="submit" class="btn btn-primary ajaxSubmit" 
+		data-ajaxtarget="leagues-selection" data-ajaxblock="leagues-selection">{{ i18n.getMessage('button_display') }}</button>
+
+	<input type="hidden" name="page" value="leagues" />
+</form>
+
+<div id="leagues-selection"></div>
+{% endblock %}

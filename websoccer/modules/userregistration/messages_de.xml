@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="register_navlabel">Registrieren</message>
+    <message id="registration_disabled">Die Benutzeranmeldung ist derzeit durch den Administrator deaktiviert.</message>
+    <message id="registration_title">Als Benutzer registrieren</message>
+    <message id="registration_password_repeat">Passwort wiederholen</message>
+    <message id="registration_email_repeat">E-Mail wiederholen</message>
+    <message id="registration_submit_button">Registrieren</message>
+    
+    <message id="registration_illegal_username">Der angegebene Benutzername ist nicht erlaubt.</message>
+    <message id="registration_repeated_password_notmatching">Das wiederholte Passwort stimmt nicht mit dem zuerst eingegebenen Passwort überein.</message>
+    <message id="registration_repeated_email_notmatching">Die wiederholte E-Mail-Adresse stimmt nicht mit der zuerst eingegebenen Adresse überein.</message>
+    <message id="registration_user_exists">Der Benutzername oder die E-Mail-Adresse ist bereits vergeben.</message>
+    <message id="registration_max_number_users_exceeded">Im Moment können sich keine weiteren Benutzer registrieren.</message>
+    
+    <message id="registration_invalidcaptcha">Der Sicherheitscode ("Captcha") wurde falsch eingegeben.</message>
+    
+    
+    <message id="register-success_navlabel">Registrierung abgeschickt</message>
+    <message id="register-success_message_title">Registrierung abgeschickt - Prüfen Sie Ihre E-Mails</message>
+    <message id="register-success_message_content">Zur Überprüfung auf die Echtheit der von Ihnen angegebenen E-Mail-Adresse wurde Ihnen vom System automatisch eine E-Mail mit Aktivierungslink geschickt.</message>
+	<message id="register-success_nextstep">Rufen Sie nun Ihre E-Mails ab und folgen Sie den Anweisungen in der von uns versendeten E-Mail. Es kann passieren, dass die E-Mail etwas zeitversetzt ankommt.</message>
+    
+	<message id="activation_email_subject">Vervollständigung Ihrer Registrierung</message>
+	<message id="activation_email_greeting">Guten Tag,</message>
+	<message id="activation_email_introduction">zur Vervollständigung Ihrer Benutzerregistrierung rufen Sie bitte folgende Internetadresse auf:</message>
+	<message id="activation_email_ending">Wenn Sie sich nicht bei uns registriert haben und einen Missbrauch Ihrer E-Mail-Adresse vermuten, antworten Sie bitte auf diese E-Mail.</message>
+	
+</messages>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="messages_navlabel">Messages</message>
+    
+    <message id="messages_err_messagesdisabled">The administrator disabled sending messages.</message>
+    
+    <message id="messages_tab_inbox">Inbox</message>
+    <message id="messages_tab_outbox">Outbox</message>
+    
+    <message id="messages_empty_inbox">There are no messages in your inbox.</message>
+    <message id="messages_empty_outbox">There are no messages in your outbox.</message>
+    
+    <message id="messages_date">Date</message>
+    <message id="messages_sender">Sender</message>
+    <message id="messages_recipient">Recipient</message>
+    <message id="messages_subject">Subject</message>
+    <message id="messages_content">Content</message>
+    
+    <message id="messages_delete">Delete this message</message>
+    <message id="messages_delete_invalidid">Invalid message. The selected message might have been deleted already.</message>
+    <message id="messages_delete_success">Message deleted</message>
+    
+    <message id="messages_details_title">Read message</message>
+    
+    <message id="messages_compose_button">New message</message>
+    <message id="messages_compose_title">Compose message</message>
+    
+    <message id="messages_send_err_invalidrecipient">Could not find any user with the provided user name.</message>
+    <message id="messages_send_err_sendtoyourself">You cannot send messages to yourself.</message>
+    <message id="messages_send_err_timebreak">There must be at least %d minutes between your previously sent message.</message>
+    
+    <message id="messages_reply_button">Reply</message>
+    
+    <message id="messages_send_success">Message sent</message>
+    <message id="messages_send_button">Send</message>
+    
+    <message id="messages_new_messages">You have %d new messages</message>
+</messages>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="settings_label_paypal_enabled">Enable payments through PayPal.</message> 
+	<message id="settings_label_paypal_receiver_email">PayPal: Account name (E-Mail)</message>
+	<message id="settings_label_paypal_receiver_email_help">Receiver E-Mail. Needs to be the address which is stored as primary address on PayPal.</message>
+	<message id="settings_label_paypal_host">PayPal: Host</message>
+	<message id="settings_label_paypal_host_help">Usually <em>www.paypal.com</em>. For testing: <em>www.sandbox.paypal.com</em></message>
+	<message id="settings_label_paypal_url">URL to PayPal</message>
+	<message id="settings_label_paypal_url_help">Internal URL for payment authentication. Usually <em>ssl://www.paypal.com</em>. For testing: <em>ssl://www.sandbox.paypal.com</em>.</message>
+	<message id="settings_label_paypal_buttonhtml">PayPal: Button Code (HTML)</message>
+	<message id="settings_label_paypal_buttonhtml_help"><strong>Original</strong> HTML Code of the button which you have created on PayPal's merchant portal. The button needs to contain the buy-in options and currency which are configured on this page. Read the product manual for details.</message>
+</messages>

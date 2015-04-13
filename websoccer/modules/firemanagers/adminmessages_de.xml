@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	
+	<message id="firemanagers_navlabel">Manager kündigen</message> 
+	<message id="firemanagers_introduction">Suchen Sie hier nach Vereinen, deren Manager Sie kündigen möchten. Eine Kündigung bedeutet, dass der Manager den Verein verliert. Die entsprechenden Benutzerkonten werden <strong>nicht</strong> gelöscht, können aber auf Wunsch deaktiviert werden. Hat ein Benutzer seinen Verein heruntergewirtschaftet, kann das System den Verein wieder für andere Benutzer attraktiv machen.</message>
+
+	<message id="firemanagers_search_label">Nach Vereinen suchen</message>
+	
+	<message id="firemanagers_search_maxbudget">Mindestbudget</message>
+	<message id="firemanagers_search_maxbudget_help">Finde Vereine, die einen niedrigeren Kontostand haben.</message>
+	
+	<message id="firemanagers_search_lastlogindays">Letzter Log-In</message>
+	<message id="firemanagers_search_lastlogindays_help">Tage. Finde Vereine, deren Manager in den letzten X Tagen nicht angemeldet war.</message>
+	
+	<message id="firemanagers_search_maxplayers">Mindestkadergrösse</message>
+	<message id="firemanagers_search_maxplayers_help">Finde Vereine, die weniger als X Spieler im Team haben.</message>
+	
+	<message id="firemanagers_search_userid">Benutzer</message>
+	
+	<message id="firemanagers_search_nohits">Keine Vereine gefunden.</message>
+	<message id="firemanagers_dismiss_button">Ausgewählte Benutzer kündigen</message>
+	
+	<message id="firemanagers_dismiss_noneselected">Sie müssen mindestens ein Verein auswählen.</message>
+	
+	<message id="firemanagers_dismiss_label">Optionen zur Managerkündigung</message>
+	<message id="firemanagers_dismiss_disableusers">Benutzerkonten deaktivieren</message>
+	<message id="firemanagers_dismiss_minbudget">Mindestvereinsbudget</message>
+	<message id="firemanagers_dismiss_minbudget_help">Hat der Verein eines gekündigten Managers ein niedrigeres Budget, wird es aufgestockt.</message>
+	<message id="firemanagers_dismiss_message_subject">Nachricht an Benutzer: Betreff</message>
+	<message id="firemanagers_dismiss_message_subject_help">Falls dem Benutzer eine private Nachricht zugesendet werden soll. Beachten Sie, dass deaktivierte Benutzer diese Nachricht nicht abrufen können.</message>
+	<message id="firemanagers_dismiss_message_content">Nachricht an Benutzer: Inhalt</message>
+	
+	<message id="firemanagers_dismiss_label_players">Auswirkungen auf den Kader</message>
+	<message id="firemanagers_dismiss_strength_min_freshness">Mindeststärke: Frische</message>
+	<message id="firemanagers_dismiss_strength_min_stamina">Mindeststärke: Kondition</message>
+	<message id="firemanagers_dismiss_strength_min_satisfaction">Mindeststärke: Zufriedenheit</message>
+	<message id="firemanagers_dismiss_mincontractmatches">Mindestvertragslaufzeit</message>
+	
+	<message id="firemanagers_dismiss_label_minteamsize">Mindestkadergrösse: Aufstockung des Kaders</message>
+	<message id="firemanagers_dismiss_label_minteamsize_intro">Existieren weniger Spieler auf einer Position wie unten angegeben, werden automatisch neue Spieler generiert.</message>
+
+	<message id="firemanagers_dismiss_success">Die Benutzer wurden erfolgreich von ihren Vereinen entfernt.</message>
+</messages>

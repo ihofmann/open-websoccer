@@ -1,0 +1,22 @@
+{% extends "box.twig" %}
+
+{% block box_title %}
+{{ i18n.getMessage('results_block_title') }}
+{% endblock %}
+
+{% block box_content %}
+
+{% if matches|length > 0 %}
+<table class="table table-borderless table-striped">
+	{% for match in matches %}
+	  <tr>
+	    <td><a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a> - <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a></td>
+	    <td><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" title="{{ i18n.getMessage("match_navlabel") }}">{{ match.home_goals }}:{{ match.guest_goals }}</a></td>
+	  </tr>
+	{% endfor %}
+</table>
+{% endif %}
+
+<p><a href="{{ env.getInternalUrl("results") }}" class="btn btn-primary">{{ i18n.getMessage("button_more") }}</a></p>
+
+{% endblock %}

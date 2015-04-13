@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  
+  <settings>
+      <setting id="webjobexecution_enabled" category="general" type="boolean" default="1" />
+      <setting id="webjobexecution_key" category="general" type="text" default="-" />
+  </settings>
+  
+</module>

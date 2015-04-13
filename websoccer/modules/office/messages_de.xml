@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="office_navlabel">Büro</message>
+    <message id="office_title">Mein Büro</message>
+    
+    <message id="feature_requires_team">Sie müssen Manager eines Vereins sein, um diese Funktion benutzen zu können.</message>
+    
+    <message id="myteam_navlabel">Mein Kader</message>
+    <message id="myteam_title">Meine Spieler</message>
+    
+    <message id="myteam_player_sell">Verkaufen</message>
+    <message id="myteam_player_extend_contract">Vertrag verlängern</message>
+    <message id="myteam_player_contract_is_ending">Der Vertrag läuft bald aus</message>
+    
+    <message id="myteam_unsellable">Als unverkäuflich markieren</message>
+    <message id="myteam_unsellable_tooltip">Für diesen Spieler werden dann keine Kaufangebote mehr angenommen.</message>
+    <message id="myteam_unsellable_player_success">Spieler wurde als unverkäuflich markiert.</message>
+    <message id="myteam_unsellable_unmark_tooltip">Unverkäuflichkeitsstatus entfernen</message>
+    <message id="myteam_remove_unsellable_player_success">Für diesen Spieler werden wieder Kaufangebote angenommen.</message>
+    
+    <message id="myteam_action_button">Aktion</message>
+    
+    <message id="myteam_captain_tooltip">Ist Kapitän und für die Moral bei Spielrückstand verantwortlich</message>
+    <message id="myteam_player_select_as_captain">Als Kapitän ernennen</message>
+    <message id="myteam_player_select_as_captain_success">Der Kapitän wurde erfolgreich ausgewählt!</message>
+    <message id="myteam_player_select_as_captain_warning_old_captain">Ihr bisheriger Kapitän, %s, ist über diese Entscheidung sehr enttäuscht.</message>
+    
+    <message id="extend-contract_navlabel">Vertragsverlängerung</message>
+    <message id="extend-contract_title">Verhandlung mit %s</message>
+    
+    <message id="extend-contract_existing_contract_title">Bisheriger Vertrag</message>
+    <message id="extend-contract_link_profile">Zum Spielerprofil</message>
+    
+    <message id="extend-contract_offer_title">Ihr Angebot</message>
+    
+    <message id="extend-contract_decrease_satisfaction_hint">Beachten Sie, dass die Zufriedenheit des Spielers unter jedem zu schlechten Angebot leidet.</message>
+    
+    <message id="extend-contract_success">Der Vertrag wurde erfolgreich zu den neuen Konditionen verlängert!</message>
+    
+    <message id="extend-contract_player_is_unhappy">Der Spieler fühlt sich in Ihrem Verein nicht mehr wohl und möchte den Vertrag daher im Moment nicht verlängern.</message>
+    <message id="extend-contract_lower_than_current_salary">Der Spieler akzeptiert keine Gehaltskürzung.</message>
+    
+    <message id="extend-contract_salary_too_low">Das gebotene Gehalt ist dem Spieler zu niedrig. Er fordert ein höheres Gehalt pro Spiel.</message>
+    
+    <message id="extend-contract_cannot_afford_offer">Mit ihrem aktuellen Budget können Sie sich dieses Gehalt nicht leisten.</message>
+    
+    <message id="extend-contract_goalbonus_too_low">Die Torprämie ist dem Spieler zu gering.</message>
+    
+    <message id="finances_navlabel">Finanzen</message>
+    
+    <message id="account_statement_date">Datum</message>
+    <message id="account_statement_sender">Absender / Empfänger</message>
+    <message id="account_statement_subject">Betreff</message>
+    <message id="account_statement_amount">Betrag</message>
+    
+    <message id="tickets_navlabel">Eintrittspreise</message>
+    
+    <message id="tickets_stands">Stehplätze</message>
+    <message id="tickets_seats">Sitzplätze</message>
+    <message id="tickets_stands_grand">Stehplätze (Haupttribüne)</message>
+    <message id="tickets_seats_grand">Sitzplätze (Haupttribüne)</message>
+    <message id="tickets_vip">V.I.P. Logen</message>
+    
+    <message id="tickets_sold_last_match">Im letzten Spiel verkauft</message>
+    
+    <message id="tickets_info_homefieldadvantage"><strong>Tipp:</strong> Ihr Team ist bei Heimspielen besonders motiviert, wenn das Stadion ausverkauft ist. Berücksichtigen Sie dies bei der Festlegung der Eintrittspreise!</message>
+    
+    <message id="notification_soon_ending_playercontracts">Manche Spielerverträge laufen bald aus!</message>
+</messages>

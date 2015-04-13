@@ -1,0 +1,127 @@
+<!ELEMENT module (admin?|settings?|pages?|dependencies?|blocks?|actions?|plugins?)*>
+<!ATTLIST module version CDATA #REQUIRED>
+
+<!ELEMENT dependencies (dependency+)>
+<!ELEMENT dependency EMPTY>
+<!ATTLIST dependency module CDATA #REQUIRED>
+<!ATTLIST dependency version CDATA #REQUIRED>
+
+<!ELEMENT admin (adminpage+)>
+
+<!ELEMENT adminpage (entity?)>
+<!ATTLIST adminpage id CDATA #REQUIRED>
+<!ATTLIST adminpage navcategory CDATA #REQUIRED>
+<!ATTLIST adminpage entity CDATA #IMPLIED>
+<!ATTLIST adminpage permissionrole (r_admin|r_daten|r_adminuser|r_news|r_spiele|r_user) #IMPLIED>
+<!ATTLIST adminpage filename CDATA #IMPLIED>
+
+<!ELEMENT entity (overview, editform?)>
+<!ATTLIST entity dbtable CDATA #REQUIRED>
+
+<!ELEMENT overview (column+, join*)>
+<!ATTLIST overview add (true|false) "true">
+<!ATTLIST overview edit (true|false) "false">
+<!ATTLIST overview delete (true|false) "false">
+<!ATTLIST overview logging (true|false) "false">
+<!ATTLIST overview loggingcolumns CDATA #IMPLIED>
+
+<!ELEMENT column EMPTY>
+<!ATTLIST column id CDATA #REQUIRED>
+<!ATTLIST column filter (true|false) "false">
+<!ATTLIST column sort (true|false) "false">
+<!ATTLIST column type (text|number|email|boolean|select|timestamp|percent|fk) #REQUIRED>
+<!ATTLIST column field CDATA #REQUIRED>
+<!ATTLIST column selection CDATA #IMPLIED>
+<!ATTLIST column converter CDATA #IMPLIED>
+<!ATTLIST column hidden (true|false) "false">
+
+<!ELEMENT join EMPTY>
+<!ATTLIST join type (LEFT|INNER|RIGHT) #REQUIRED>
+<!ATTLIST join jointable CDATA #REQUIRED>
+<!ATTLIST join joincondition CDATA #REQUIRED>
+
+<!ELEMENT editform (field+)>
+
+<!ELEMENT field EMPTY>
+<!ATTLIST field id CDATA #REQUIRED>
+<!ATTLIST field required (true|false) "false">
+<!ATTLIST field editonly (true|false) "false">
+<!ATTLIST field type (text|number|email|boolean|password|url|select|textarea|file|timestamp|color|date|percent|foreign_key) #REQUIRED>
+<!ATTLIST field converter CDATA #IMPLIED>
+<!ATTLIST field validator CDATA #IMPLIED>
+<!ATTLIST field entity CDATA #IMPLIED>
+<!ATTLIST field jointable CDATA #IMPLIED>
+<!ATTLIST field cascade CDATA #FIXED "delete">
+<!ATTLIST field labelcolumns CDATA #IMPLIED>
+<!ATTLIST field selection CDATA #IMPLIED>
+<!ATTLIST field roles CDATA #IMPLIED>
+<!ATTLIST field readonly (true|false) "false">
+<!ATTLIST field default CDATA #IMPLIED>
+
+<!ELEMENT settings (setting+)>
+<!ELEMENT setting EMPTY>
+<!ATTLIST setting id CDATA #REQUIRED>
+<!ATTLIST setting type (text|number|email|boolean|password|url|select|textarea|timestamp|foreign_key|tags) #REQUIRED>
+<!ATTLIST setting category CDATA #IMPLIED>
+<!ATTLIST setting default CDATA #IMPLIED>
+<!ATTLIST setting selection CDATA #IMPLIED>
+
+<!ELEMENT pages (page+)>
+
+<!ELEMENT page (page*, script*, css*)>
+<!ATTLIST page id CDATA #REQUIRED>
+<!ATTLIST page template CDATA #REQUIRED>
+<!ATTLIST page role CDATA #REQUIRED>
+<!ATTLIST page model CDATA #IMPLIED>
+<!ATTLIST page parentItem CDATA #IMPLIED>
+<!ATTLIST page navweight CDATA #IMPLIED>
+<!ATTLIST page navitem (true|false) "false">
+<!ATTLIST page navitemOnlyForConfigEnabled CDATA #IMPLIED>
+<!ATTLIST page premiumBalanceMin CDATA #IMPLIED>
+
+<!ELEMENT script EMPTY>
+<!ATTLIST script file CDATA #REQUIRED>
+<!ATTLIST script debugonly (true|false) "false">
+<!ATTLIST script productiononly (true|false) "false">
+
+<!ELEMENT css EMPTY>
+<!ATTLIST css file CDATA #REQUIRED>
+<!ATTLIST css debugonly (true|false) "false">
+<!ATTLIST css productiononly (true|false) "false">
+
+<!ELEMENT blocks (block+)>
+
+<!ELEMENT block EMPTY>
+<!ATTLIST block id CDATA #REQUIRED>
+<!ATTLIST block template CDATA #REQUIRED>
+<!ATTLIST block role CDATA #REQUIRED>
+<!ATTLIST block model CDATA #IMPLIED>
+<!ATTLIST block includepages CDATA #IMPLIED>
+<!ATTLIST block area (sidebar|content_top|content_bottom|custom) #IMPLIED>
+<!ATTLIST block weight CDATA #IMPLIED>
+<!ATTLIST block excludepages CDATA #IMPLIED>
+<!ATTLIST block premiumBalanceMin CDATA #IMPLIED>
+
+<!ELEMENT actions (action+)>
+
+<!ELEMENT action (param*)>
+<!ATTLIST action id CDATA #REQUIRED>
+<!ATTLIST action role CDATA #REQUIRED>
+<!ATTLIST action controller CDATA #REQUIRED>
+<!ATTLIST action premiumBalanceMin CDATA #IMPLIED>
+<!ATTLIST action log (true|false) "false">
+
+<!ELEMENT param EMPTY>
+<!ATTLIST param id CDATA #REQUIRED>
+<!ATTLIST param type (text|number|email|boolean|password|date|url|percent) #REQUIRED>
+<!ATTLIST param required (true|false) "false">
+<!ATTLIST param min CDATA #IMPLIED>
+<!ATTLIST param max CDATA #IMPLIED>
+<!ATTLIST param validator CDATA #IMPLIED>
+
+<!ELEMENT plugins (eventlistener+)>
+
+<!ELEMENT eventlistener EMPTY>
+<!ATTLIST eventlistener event CDATA #REQUIRED>
+<!ATTLIST eventlistener class CDATA #REQUIRED>
+<!ATTLIST eventlistener method CDATA #REQUIRED>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <settings>
+      <setting id="no_transactions_for_teams_without_user" category="game" type="boolean" default="0" />
+  	</settings>
+    
+    <admin>
+        <adminpage
+            id="transaction"
+            entity="transaction"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="konto AS TransactionTab" >
+
+                <overview delete="true" edit="false" >
+
+                    <column
+                        id="entity_transaction_verein_id"
+                        field="ClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transaction_absender"
+                        field="TransactionTab.absender"
+                        converter="PaymentSenderMessageConverter"
+                        type="text" />
+                    
+                    <column
+                        id="entity_transaction_betrag"
+                        field="TransactionTab.betrag"
+                        type="number"
+                        sort="true" />
+
+                    <column
+                        id="entity_transaction_datum"
+                        field="TransactionTab.datum"
+                        type="timestamp"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_transaction_verwendung"
+                        field="TransactionTab.verwendung"
+                        type="text"
+                        converter="PaymentSubjectMessageConverter" />
+                    
+                	<join type="LEFT" jointable="verein AS ClubTab" joincondition="TransactionTab.verein_id = ClubTab.id" />
+                </overview>
+
+                <editform>
+					<field id="verein_id" type="foreign_key" entity="club" 
+					    jointable="verein" cascade="delete" labelcolumns="name" required="true" />
+					<field id="datum" type="timestamp" required="true"  />
+					<field id="absender" type="text" required="true"  />
+					<field id="verwendung" type="text" required="true"  />
+					<field id="betrag" type="number" required="true" converter="MoneyTransactionConverter" />
+					
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+  
+</module>

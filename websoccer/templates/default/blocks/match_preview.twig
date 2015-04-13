@@ -1,0 +1,60 @@
+<h4>{{ i18n.getMessage("entity_users") }}</h4>
+<div class="row-fluid">
+	<div class="span6 text-center">
+		{% if homeUser != null %}
+			{% if homeUser.picture|length > 0 %}
+				<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}"><img src="{{ homeUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
+			{% endif %}
+			<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}">{{ homeUser.nick }}</a></p>
+		{% else %}
+			<p>{{ i18n.getMessage("matchpreview_nouser", match.match_home_name) }}</p>
+		{% endif %}
+	</div>
+	<div class="span6">
+		{% if guestUser != null %}
+			{% if guestUser.picture|length > 0 %}
+				<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}"><img src="{{ guestUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
+			{% endif %}
+			<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}">{{ guestUser.nick }}</a></p>
+		{% else %}
+			<p>{{ i18n.getMessage("matchpreview_nouser", match.match_guest_name) }}</p>
+		{% endif %}
+	</div>
+</div>
+
+<h4>{{ i18n.getMessage("matchpreview_last_matches") }}</h4>
+
+<div class="row-fluid">
+	<div class="span6">
+		{% if latestMatchesHome|length > 0 %}
+			{% if match.match_home_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
+			<table class="table table-striped">
+			{% for previousMatch in latestMatchesHome %}
+				<tr>
+					<td>{{ previousMatch.home_team }} - {{ previousMatch.guest_team }}</td>
+					<td><a href="{{ env.getInternalUrl("match", "id=" ~ previousMatch.id) }}">{{ previousMatch.home_goals }} - {{ previousMatch.guest_goals }}</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+		{% else %}
+			<p>{{ i18n.getMessage("matchpreview_nolastmatches", match.match_home_name) }}</p>
+		{% endif %}
+		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" class="btn">{{ i18n.getMessage("team_navlabel") }}</a></p>
+	</div>
+	<div class="span6">
+		{% if latestMatchesGuest|length > 0 %}
+			{% if match.match_guest_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
+			<table class="table table-striped">
+			{% for previousMatch in latestMatchesGuest %}
+				<tr>
+					<td>{{ previousMatch.home_team }} - {{ previousMatch.guest_team }}</td>
+					<td><a href="{{ env.getInternalUrl("match", "id=" ~ previousMatch.id) }}">{{ previousMatch.home_goals }} - {{ previousMatch.guest_goals }}</a></td>
+				</tr>
+			{% endfor %}
+			</table>
+		{% else %}
+			<p>{{ i18n.getMessage("matchpreview_nolastmatches", match.match_guest_name) }}</p>
+		{% endif %}
+		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" class="btn">{{ i18n.getMessage("team_navlabel") }}</a></p>
+	</div>
+</div>

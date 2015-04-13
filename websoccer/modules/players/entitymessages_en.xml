@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="entity_player">Football Player</message>
+	<message id="entity_player_vorname">First Name</message>
+	<message id="entity_player_nachname">Last Name</message>
+	<message id="entity_player_kunstname">Pseudonym</message>
+	<message id="entity_player_verein_id">Club</message>
+	<message id="entity_player_status">Active</message>
+	
+	<message id="entity_player_geburtstag">Birthday</message>
+	<message id="entity_player_geburtstag_help">Must be specified if players age according to their birthday. Check system settings.</message>
+	<message id="entity_player_age">Age</message>
+	<message id="entity_player_age_help">in years. Must be specified if players age at the end of every season.</message>
+	
+	
+	<message id="entity_player_position">Position</message>
+	<message id="entity_player_position_main">Main Position</message>
+	<message id="entity_player_position_main_help">If you do not specify a main position, the player is an all-rounder within the above selected position.</message>
+	<message id="entity_player_position_second">Secondary Position</message>
+	<message id="entity_player_nation">Nationality (Country)</message>
+	<message id="entity_player_picture">Picture</message>
+	<message id="entity_player_verletzt">Injured</message>
+	<message id="entity_player_gesperrt">Blocked</message>
+	<message id="entity_player_gesperrt_cups">Blocked (Cups)</message>
+	<message id="entity_player_gesperrt_nationalteam">Blocked (National team)</message>
+	<message id="entity_player_w_staerke">Skill</message>
+	<message id="entity_player_w_technik">Technique</message>
+	<message id="entity_player_w_kondition">Stamina</message>
+	<message id="entity_player_w_frische">Fitness</message>
+	<message id="entity_player_w_zufriedenheit">Morale</message>
+	<message id="entity_player_transfermarkt">Available on transfer market</message>
+	<message id="entity_player_transfer_start">Available on transfer market since</message>
+	<message id="entity_player_transfer_ende">Available on transfer market until</message>
+	<message id="entity_player_transfer_mindestgebot">Minimum bid</message>
+	<message id="entity_player_vertrag_gehalt">Salary per Match</message>
+	<message id="entity_player_vertrag_spiele">Contract length</message>				
+	<message id="entity_player_vertrag_torpraemie">Goal Bonus</message>
+	<message id="entity_player_marktwert">Market value</message>
+	<message id="entity_player_marktwert_help">in case it shall not be computed automatically (check system settings).</message>		
+	
+	<message id="entity_player_sa_tore">Goals (this season)</message>	
+	<message id="entity_player_sa_assists">Assists (this season)</message>
+	<message id="entity_player_sa_spiele">Matches (this season)</message>	
+	<message id="entity_player_sa_karten_gelb">Yellow Cards (this season)</message>	
+	<message id="entity_player_sa_karten_gelb_rot">Yellow-Red Cards (this season)</message>	
+	<message id="entity_player_sa_karten_rot">Red Cards (this season)</message>	
+	
+	<message id="entity_player_st_tore">Goals (total)</message>	
+	<message id="entity_player_st_assists">Assists (total)</message>	
+	<message id="entity_player_st_spiele">Matches (total)</message>	
+	<message id="entity_player_st_karten_gelb">Yellow Cards (total)</message>	
+	<message id="entity_player_st_karten_gelb_rot">Yellow-Red Cards (total)</message>	
+	<message id="entity_player_st_karten_rot">Red Cards (total)</message>	
+	
+	<message id="entity_player_history">History</message>	    
+	
+	<message id="entity_player_unsellable">unsellable</message>	
+	
+	<message id="entity_player_lending_owner_id">Lender</message>	
+	<message id="entity_player_lending_fee">Lending fee per match</message>	
+	<message id="entity_player_lending_matches">Lent matches</message>	
+    
+    <message id="player_position_goaly">Goalkeeper</message>
+    <message id="player_position_defense">Defense</message>
+    <message id="player_position_midfield">Midfield</message>
+    <message id="player_position_striker">Forward</message>
+    <message id="player_position_outsideforward">Outside forward</message>
+    
+    <message id="player_position_field">Outfield Players</message>
+    <message id="player_position_bench">Bench</message>
+    
+    <message id="option_Torwart">Goalkeeper</message>
+    <message id="option_Abwehr">Defense</message>
+    <message id="option_Mittelfeld">Midfield</message>
+    <message id="option_Sturm">Forward</message>
+    
+    <message id="option_T">Goalkeeper</message>
+    <message id="option_LV">Left Back</message>
+    <message id="option_RV">Right Back</message>
+    <message id="option_IV">Centre Back</message>
+    <message id="option_LM">Left Midfield</message>
+    <message id="option_RM">Right Midfield</message>
+    <message id="option_ZM">Centre Midfield</message>
+    <message id="option_LS">Left Wing</message>
+    <message id="option_MS">Centre Forward</message>
+    <message id="option_RS">Right Wing</message>
+    <message id="option_OM">Attacking Midfield</message>
+    <message id="option_DM">Defensive Midfield</message>
+    
+    <message id="option_Deutschland">Germany</message>
+    <message id="option_Frankreich">France</message>
+    <message id="option_Italien">Italy</message>
+    <message id="option_Spanien">Spain</message>
+</messages>

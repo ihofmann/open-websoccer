@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="badge_notification">Congratulations! You have earned a new badge.</message>
+    
+    <message id="badge_level_gold">Golden Badge</message>
+    <message id="badge_level_silver">Silver Badge</message>
+    <message id="badge_level_bronze">Bronze Badge</message>
+    
+    <message id="badges_navlabel">Badges</message>
+</messages>

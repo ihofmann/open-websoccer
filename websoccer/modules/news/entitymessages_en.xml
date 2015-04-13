@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_news">News</message>
+    <message id="news-details_navlabel">read</message>
+    <message id="entity_news_autor_id">Author</message>
+	<message id="entity_news_titel">Title</message>
+	<message id="entity_news_datum">Date</message>
+	<message id="entity_news_nachricht">Message</message>
+	<message id="entity_news_linktext1">Relevant Link 1 (Text)</message>
+	<message id="entity_news_linkurl1">Relevant Link 1 (URL)</message>
+	<message id="entity_news_linktext2">Relevant Link 2 (Text)</message>
+	<message id="entity_news_linkurl2">Relevant Link 2 (URL)</message>
+	<message id="entity_news_linktext3">Relevant Link 3 (Text)</message>
+	<message id="entity_news_linkurl3">Relevant Link 3 (URL)</message>
+	<message id="entity_news_c_smilies">Transform Smilies</message>
+	<message id="entity_news_c_br">Display line breaks</message>
+	<message id="entity_news_c_links">Transform URLs into HTML links</message>
+	<message id="entity_news_status">Active</message>
+</messages>

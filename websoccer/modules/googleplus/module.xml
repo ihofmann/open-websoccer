@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+  <settings>
+      <setting id="googleplus_enable_login" category="social" type="boolean" default="0" />
+      
+      <setting id="googleplus_appname" category="social" type="text" default="" />
+      <setting id="googleplus_clientid" category="social" type="text" default="" />
+      <setting id="googleplus_clientsecret" category="social" type="text" default="" />
+      <setting id="googleplus_developerkey" category="social" type="text" default="" />
+      
+      <setting id="googleplus_enable_likebutton" category="social" type="boolean" default="0" />
+  </settings>
+  
+  <blocks>
+      
+       <block
+            id="googleplus-login-sidebar"
+            template="googleplusloginbox"
+            model="GoogleplusLoginModel"
+            includepages="all"
+            area="sidebar"
+            weight="1"
+            role="guest" />
+        
+
+        <block
+            id="googleplus-like"
+            template="googleplus_like"
+            includepages="home,news-details,match,todaysmatches,highscore,freeclubs"
+            area="content_bottom"
+            weight="5"
+            role="guest,user" />
+        
+        
+  </blocks>
+  
+  <actions>
+      <action id="googleplus-login" controller="GoogleplusLoginController" role="guest" />
+  </actions>
+    
+</module>

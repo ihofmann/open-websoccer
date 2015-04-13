@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="leagues" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="trainingcamp"
+            entity="trainingcamp"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="trainingslager" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_trainingcamp_name"
+                        field="name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_land"
+                        field="land"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_preis_spieler_tag"
+                        field="preis_spieler_tag"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_p_staerke"
+                        field="p_staerke"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_p_technik"
+                        field="p_technik"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_p_kondition"
+                        field="p_kondition"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_p_frische"
+                        field="p_frische"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_trainingcamp_p_zufriedenheit"
+                        field="p_zufriedenheit"
+                        type="number"
+                        sort="true" />
+                    
+                </overview>
+
+                <editform>
+                    
+                    <field id="name" type="text" required="true" />
+                    <field id="land" type="text" required="true" />
+					<field id="preis_spieler_tag" type="number" required="true" />
+					<field id="p_staerke" type="number" required="true" />
+					<field id="p_technik" type="number" required="true" />
+					<field id="p_kondition" type="number" required="true" />
+					<field id="p_frische" type="number" required="true" />
+					<field id="p_zufriedenheit" type="number" required="true" />
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+    <settings>
+      <setting id="trainingcamp_min_days" category="game" type="number" default="3" />
+      <setting id="trainingcamp_max_days" category="game" type="number" default="5" />
+      <setting id="trainingcamp_booking_max_days_in_future" category="game" type="number" default="30" />
+  </settings>
+    
+    <pages>
+        <page
+            id="trainingcamp"
+            template="trainingcamp"
+            model="TrainingCampsModel"
+            parentItem="office"
+            navitem="true"
+            navweight="5"
+            role="user">
+            <page
+	            id="camp-details"
+	            template="camp-details"
+	            model="TrainingCampsDetailsModel"
+	            role="user" />
+        </page>
+
+    </pages> 
+    
+  <actions>
+	<action id="book-camp" controller="BookCampController" role="user" log="true">
+	    <param id="id" type="number" required="true" min="1" max="2000000000" />
+		<param id="start_date" type="date" required="true" min="5" max="20" />
+		<param id="days" type="number" required="true" min="1" />
+	</action>
+	
+	<action id="cancel-camp" controller="CancelCampController" role="user">
+	    <param id="bookingid" type="number" required="true" min="1" max="2000000000" />
+	</action>
+	
+  </actions>
+    
+</module>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_club">Club</message>
+	<message id="entity_club_name">Nombre</message>
+	<message id="entity_club_kurz">Siglas</message>
+	<message id="entity_club_liga_id">Liga</message>
+	<message id="entity_club_user_id">Usuario</message>
+	<message id="entity_club_user_id_actual">Manager actual</message>
+	<message id="entity_club_user_id_actual_help">In case manager is only deputy during actual manager's absence.</message>
+	<message id="entity_club_bild">Logo</message>
+	<message id="entity_club_stadion_id">Estadio</message>
+	<message id="entity_club_sponsor_id">Sponsor</message>
+	<message id="entity_club_sponsor_spiele">Partidos restantes con patrocinador</message>
+	<message id="entity_club_training_id">Unidad de Formación</message>
+	<message id="entity_club_finanz_budget">Presupuesto</message>
+	<message id="entity_club_finanz_sponsor">Ingresos a través del patrocinador</message>
+	<message id="entity_club_finanz_transfer">Ingresos a través de la transferencia de jugadores</message>
+	<message id="entity_club_finanz_gehalt">Pago de salarios</message>
+	<message id="entity_club_finanz_zuschauer">Ingresos a través de entradas</message>
+	<message id="entity_club_finanz_sonstiges">Otros ingresos</message>
+	<message id="entity_club_preis_stehen">Ganancias de entradas de pie</message>
+	<message id="entity_club_preis_sitz">Ganancias de entradas con asientos</message>
+	<message id="entity_club_preis_haupt_stehen">Ganancias de entradas de pie (tribuna)</message>
+	<message id="entity_club_preis_haupt_sitze">Ganancias de entradas con asientos(tribuna)</message>
+	<message id="entity_club_preis_vip">Ganancias de entradas de salones VIP</message>
+	<message id="entity_club_last_steh">Anteriormente entradas vendidas: De pie</message>
+	<message id="entity_club_last_sitz">Anteriormente entradas vendidas: Asientos</message>
+	<message id="entity_club_last_haupt_steh">Anteriormente entradas vendidas: De pie(tribuna)</message>
+	<message id="entity_club_last_haupt_sitz">Anteriormente entradas vendidas: Asientos (tribuna)</message>
+	<message id="entity_club_last_vip">Anteriormente entradas vendidas: Asientos: VIP</message>
+	<message id="entity_club_meisterschaften">Campeonatos Ganados</message>
+	<message id="entity_club_st_tore">Goles(total)</message>
+	<message id="entity_club_st_gegentore">Goles recividos (total)</message>
+	<message id="entity_club_st_spiele">Partidos (total)</message>
+	<message id="entity_club_st_siege">Ganados (total)</message>
+	<message id="entity_club_st_niederlagen">Perdidos (total)</message>
+	<message id="entity_club_st_unentschieden">Empatados (total)</message>
+	<message id="entity_club_st_punkte">Puntuación (total)</message>
+	<message id="entity_club_sa_tore">Goles(Temporada)</message>
+	<message id="entity_club_sa_gegentore">Goles recividos(Temporada)</message>
+	<message id="entity_club_sa_spiele">Partidos(Temporada)</message>
+	<message id="entity_club_sa_siege">Ganados(Temporada)</message>
+	<message id="entity_club_sa_niederlagen">Perdidos(Temporada)</message>
+	<message id="entity_club_sa_unentschieden">Empatados(Temporada)</message>
+	<message id="entity_club_sa_punkte">Puntuación(Temporada)</message>
+	<message id="entity_club_history">Historia</message>
+	<message id="entity_club_status">Activo</message>
+	<message id="entity_club_min_target_rank">Objetivo de la Temporada</message>
+	<message id="entity_club_min_target_rank_help">Rango mínimo esperado en la liga al final de la temporada.</message>
+	<message id="entity_club_nationalteam">Es una selección</message>
+	<message id="entity_club_captain_id">Capitán</message>
+</messages>

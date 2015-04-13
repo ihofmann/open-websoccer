@@ -1,0 +1,133 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/statisticelements.twig" as statisticelements %}
+{% import "macros/paginator.twig" as pagination %}
+
+{% block page_title %}
+{{ i18n.getMessage("youth-marketplace_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+    <form class="form-inline">
+  		<label for="position">{{ i18n.getMessage("transfermarket_filter_by_position") }}</label>
+  		<select name="position" id="position">
+  			<option></option>
+  			<option value="Torwart"{% if env.getRequestParameter("position") == "Torwart" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
+  			<option value="Abwehr"{% if env.getRequestParameter("position") == "Abwehr" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
+  			<option value="Mittelfeld"{% if env.getRequestParameter("position") == "Mittelfeld" %} selected{% endif %}>{{ i18n.getMessage("option_Mittelfeld") }}</option>
+  			<option value="Sturm"{% if env.getRequestParameter("position") == "Sturm" %} selected{% endif %}>{{ i18n.getMessage("option_Sturm") }}</option>
+  		</select>
+	  	<button type="submit" class="btn btn-primary">{{ i18n.getMessage("button_display") }}</button>
+	  	<a href="{{ env.getInternalUrl("youth-marketplace") }}" class="btn">{{ i18n.getMessage("button_reset") }}</a>
+	  	
+	  	<input type="hidden" name="page" value="youth-marketplace" />
+	</form>
+
+{% if players is defined and players|length > 0 %}
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
+				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
+				<th>{{ i18n.getMessage("entity_youthplayer_team_id") }}</th>
+				<th>{{ i18n.getMessage("playertable_head_strength") }}</th>
+				<th>{{ i18n.getMessage("entity_youthplayer_st_matches") }}</th>
+				<th>{{ i18n.getMessage("entity_youthplayer_transfer_fee") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+		{% for player in players %}
+			
+			{% if player.position == "Torwart" %}
+				{% set positionId = "goaly" %}
+			{% elseif player.position == "Abwehr" %}
+				{% set positionId = "defense" %}
+			{% elseif player.position == "Mittelfeld" %}
+				{% set positionId = "midfield" %}
+			{% else %}
+				{% set positionId = "striker" %}
+			{% endif %}
+			
+			{% if i18n.hasMessage("option_" ~ player.nation) %}
+				{% set countryLabel = i18n.getMessage("option_" ~ player.nation) %}
+			{% else %}
+				{% set countryLabel = player.nation %}
+			{% endif %}
+		
+			<tr>
+				<td style="text-align: center">
+					<img src="{{ skin.getImage("icons/playertype_" ~ positionId ~ ".png") }}"
+					alt="{{ i18n.getMessage("player_position_" ~ positionId) }}" title="{{ i18n.getMessage("player_position_" ~ positionId) }}" />
+					<br>
+					<small>{{ i18n.getMessage("option_" ~ player.position) }}</small>
+				</td>
+				<td><p>{{ player.firstname }} {{ player.lastname }} ({{ player.age }})
+					{% if player.nation_flagfile|length > 0 %}
+						{% set nationImg = skin.getImage("flags/players/" ~ player.nation_flagfile ~ ".png") %}
+						{% if nationImg %}<img src="{{ nationImg }}" title="{{ countryLabel }}" alt="{{ countryLabel}}" />{% else %}({{ countryLabel }}){% endif %}
+					{% endif %}
+					{% if env.user.clubId == player.team_id %}
+						<a href="{{ env.getInternalActionUrl("remove-youthplayer-from-market", "id=" ~ player.player_id) }}"
+							title="{{ i18n.getMessage("youthteam_action_removefrommarket") }}"><i class="icon-share darkIcon"></i></a>
+					{% endif %}</p>
+					
+					{% if env.user.clubId != player.team_id %}
+						<a href="{{ env.getInternalUrl("youthplayer-buy", "id=" ~ player.player_id) }}" class="btn btn-small"><i class="icon-shopping-cart"></i> {{ i18n.getMessage("youthteam_action_buy") }}</a>
+					{% endif %}
+				</td>
+				<td>
+					{% if player.team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
+					
+					{% if player.user_id > 0 %}
+						<br>
+						{% if player.user_picture|length > 0 %}
+							<a href="{{ env.getInternalUrl("user", "id=" ~ player.user_id) }}"><img src="{{ player.user_picture }}" style="width: 20px; height: 20px"/></a>
+						{% endif %}
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ player.user_id) }}">{{ player.user_nick }}</a></small>
+					{% endif %}
+				</td>
+				<td>{{ statisticelements.progressbar(player.strength, "noBottomMargin") }}</td>
+				<td>{{ player.st_matches }} <a href="#statistics{{ player.player_id }}" data-toggle="collapse" title="{{ i18n.getMessage("youthteam_showstatistics_tooltip") }}"><i class="icon-zoom-in darkIcon"></i></a>
+					<div id="statistics{{ player.player_id }}" class="collapse">
+					<dl>
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_goals") }}</dt>
+						<dd>{{ player.st_goals }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_assists") }}</dt>
+						<dd>{{ player.st_assists }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_cards_yellow") }}</dt>
+						<dd>{{ player.st_cards_yellow }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_cards_yellow_red") }}</dt>
+						<dd>{{ player.st_cards_yellow_red }}</dd>
+						
+						<dt>{{ i18n.getMessage("entity_youthplayer_st_cards_red") }}</dt>
+						<dd>{{ player.st_cards_red }}</dd>
+					</dl>
+					</div>
+				</td>
+				<td>
+					{{ player.transfer_fee|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}<br>
+					<small><em>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}:</em><br>
+					{{ (player.strength * env.getConfig("youth_salary_per_strength"))|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</small>
+				</td>
+			</tr>
+		{% endfor %}
+		
+		</tbody>
+	</table>
+	
+	{{ pagination.paginator(paginator) }}
+	
+{% else %}
+	{{ messagebox.box(i18n.getMessage("youthmarketplace_no_players"), "", "info") }}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="main_title">WebSoccer AdminCenter</message>
+    
+    <message id="error_page_not_found">The requested page does not exist (anymore). Have you entered the correct address?</message>
+    <message id="error_access_denied">Access denied.</message>
+    <message id="validationerror_no_changes_as_demo">The demo user cannot make any changes.</message>
+    <message id="validationerror_email">The entered e-mail address is invalid.</message>
+    <message id="validationerror_url">The value of %s is not a valid URL.</message>
+    <message id="validationerror_number">The value of %s is not a number.</message>
+    <message id="validationerror_percent">The value of %s must be a natural number.</message>
+    <message id="validationerror_text_too_long">The value of %s is too long.</message>
+    <message id="validationerror_date">The value of %s is not a valid date. It must match the format '%s'.</message>
+    <message id="validationerror_required">%s requires a value.</message>
+    <message id="validationerror_imageupload_noimagefile">The selected file to upload is not a valid graphics file.</message>
+    <message id="error_file_upload_failed">The selected file could not be uploaded. Verify that the target directory exists and has write permissions.</message>
+    
+    <message id="subpage_save_title">Save</message>
+    <message id="subpage_error_title">Error</message>
+    <message id="subpage_error_alertbox_title">The following errors happened:</message>
+    
+    <message id="alert_save_success">Data successfully saved.</message>
+    <message id="back_label">Back</message>
+    
+    <message id="button_save">Save</message>
+    <message id="button_reset">Reset</message>
+    <message id="button_delete">Delete</message>
+    <message id="button_close">Close</message>
+    <message id="button_search">Search</message>
+    <message id="button_cancel">Cancel</message>
+    <message id="button_display">Display</message>
+    
+    <message id="option_yes">Yes</message>
+    <message id="option_no">No</message>
+    
+    <message id="unit_days">days</message>
+    <message id="unit_minutes">minutes</message>
+    <message id="unit_hours">hours</message>
+    <message id="unit_matches">matches</message>
+    <message id="unit_seats">seats</message>
+    
+    <message id="empty_list">No entries found.</message>
+    
+    <message id="alert_error_title">Error.</message>
+    
+    <message id="internetexplorer_warning_title">Better use a different web browser!</message>
+    <message id="internetexplorer_warning_message">The AdminCenter pages work better and faster when you use a HTML5-ready web browser, such as Google Chrome. Try it!</message>
+    
+    
+    <message id="login_title">AdminCenter Log-In</message>
+    <message id="login_error_nousername">No username provided.</message>
+    <message id="login_error_nopassword">No password provided.</message>
+    <message id="login_error_unknownusername">Unknown username.</message>
+    <message id="login_error_invalidpassword">Invalid password.</message>
+    <message id="login_alert_accessdenied_title">You need to log in!</message>
+    <message id="login_alert_accessdenied_content">Please provide your credentials below.</message>
+    <message id="login_alert_logoutsuccess_title">Successfully logged out.</message>
+    <message id="login_alert_logoutsuccess_content">See you soon!</message>
+    <message id="login_alert_sentpassword_title">Successfully sent password.</message>
+    <message id="login_alert_sentpassword_content">Check your e-mails!</message>
+    <message id="login_alert_error_title">Log-in failed!</message>
+    <message id="login_alert_error_content">Verify your credentials.</message>
+    
+    <message id="login_label_user">Username</message>
+    <message id="login_label_password">Password</message>
+    <message id="login_button_logon">Sign On</message>
+    
+    <message id="login_link_forgotpassword">Forgot Password?</message>    
+    
+    <message id="admincenter_brand">AdminCenter</message>
+    <message id="admincenter_homelink_tooltip">To AdminCenter Home Page</message>
+    <message id="admincenter_loggedin_as">Signed in as</message>
+    <message id="admincenter_editprofile_tooltip">Edit Profile</message>
+    <message id="admincenter_logout">Log Out</message>
+    <message id="admincenter_link_clear_cache">Clear Cache</message>
+    
+    <message id="category_website_navlabel">Website</message>
+    <message id="category_settings_navlabel">General</message>
+
+	<message id="admincenter_link_website">Website</message>
+	<message id="admincenter_link_profile">Profile</message>
+	<message id="admincenter_link_adminlog">Admin Logs</message>
+	
+	<message id="all_settings_navlabel">Settings</message>
+	<message id="all_logging_navlabel">Admin Logs</message>
+	
+	<message id="clearcache_title">Clear Cache</message>	
+	<message id="clearcache_success_title">The cache has been rebuilt.</message>	
+	<message id="clearcache_success_message">Always execute this action when you have changed anything at the modules configuration.</message>
+	
+	<message id="profile_title">Edit Profile</message>
+	<message id="profile_label_name">Name</message>
+	<message id="profile_label_email">E-Mail</message>
+	<message id="profile_label_newpassword">New Password</message>
+	<message id="profile_label_repeatpassword">Repeat new password</message>
+	<message id="profile_label_language">Language</message>
+	
+	<message id="all_logging_title">Admin Log</message>
+	<message id="all_logging_intro">This list is showing the last AdminCenter log-ins of the administrators.</message>
+	<message id="all_logging_filesize"><b>Log File Size:</b> %s KBytes</message>
+	<message id="all_logging_button_empty_file">Empty File</message>
+	<message id="all_logging_filenotfound">The log file does not exist.</message>
+	<message id="all_logging_alert_logfile_truncated">The log file has been truncated successfully.</message>
+	<message id="all_logging_error_not_truncated">The log file could not be truncated. Is the file writable?</message>
+	<message id="all_logging_only_last_entries_shown">Only the last 50 entries will be shown.</message>
+	
+	<message id="all_logging_label_no">No</message>
+	<message id="all_logging_label_user">User</message>
+	<message id="all_logging_label_ip">IP</message>
+	<message id="all_logging_label_time">System Time</message>
+	
+	<message id="profile_validationerror_email">No E-Mail address entered.</message>
+	<message id="profile_validationerror_password_too_short">The password is too short.</message>
+	<message id="profile_validationerror_wrong_repeated_password">The repeated passwort is not equal to the first password.</message>
+
+	<message id="home_title">Welcome, %s!</message>
+	<message id="home_intro">Glad to see you at the <b>OpenWebSoccer-Sim</b> AdminCenter. Please do not forget to <a href="logout.php">logout</a> once you completed your session if you are not the only user of this computer.</message>
+	<message id="home_softwareinfo_title">Software Information</message>
+	<message id="home_softwareinfo_name">Name</message>
+	<message id="home_softwareinfo_version">Version</message>
+	<message id="home_softwareinfo_developer">Author</message>
+	<message id="home_softwareinfo_copyright">Copyright</message>
+	<message id="home_projectinfo_title">Project Information</message>
+	<message id="home_projectinfo_name">Name</message>
+	<message id="home_projectinfo_adminemail">Admin E-Mail</message>  
+	
+	<message id="all_settings_title">System Settings</message>  
+  
+	<message id="settings_tab_general">General</message> 
+	<message id="settings_tab_offlinemode">Offline Mode</message> 
+	<message id="settings_tab_game">Game</message> 
+	<message id="settings_tab_social">Social Networks</message> 
+	
+	<message id="settings_saved_note_restartjobs">Restart your jobs!</message>
+	<message id="settings_saved_note_restartjobs_details">Changes which affect any job require its restart.</message>
+	
+	<message id="settings_label_context_root">Relative Server Path (Context Root)</message> 
+	<message id="settings_label_context_root_help">Without trailing "/".</message> 
+	<message id="settings_label_projectname">Project Name</message> 
+	<message id="settings_label_systememail">System E-Mail</message> 
+	<message id="settings_label_homepage">Official Website</message> 
+	<message id="settings_label_homepage_help">URL to script without context root</message> 
+	<message id="settings_label_time_offset">Server Time Offset</message> 
+	<message id="settings_label_time_offset_help">in seconds (3600 is one hour)</message> 	
+	<message id="settings_label_password_protected">Protect all pages.</message> 
+	<message id="settings_label_password_protected_help">Only registered users can see all pages.</message> 
+	<message id="settings_label_password_protected_startpage">Protect also start page.</message> 
+	<message id="settings_label_entries_per_page">Number of entries per page</message> 
+	<message id="settings_label_entries_per_page_help">in lists</message> 
+	<message id="settings_label_supported_languages">Supported Languages</message> 
+	<message id="settings_label_supported_languages_help">Separated by comma</message> 
+	<message id="settings_label_date_format">Date Format</message> 
+	<message id="settings_label_date_format_help">According to PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-function</message> 
+	<message id="settings_label_datetime_format">Date Time Format</message> 
+	<message id="settings_label_datetime_format_help">According to PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-function</message> 
+	<message id="settings_label_time_format">Time Only Format</message> 
+	<message id="settings_label_time_format_help">According to PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-function</message> 
+	<message id="settings_label_skin">Skin</message>
+	<message id="settings_label_skin_help">Name of the skin class. By default available are <em>DefaultBootstrapSkin</em>, <em>GreenBootstrapSkin</em> and <em>SchedioartFootballSkin</em>.</message> 
+	<message id="settings_label_session_lifetime">User Session Lifetime</message> 
+	<message id="settings_label_session_lifetime_help">in seconds. How long can a user be inactive until the system disables his session.</message> 
+	
+	<message id="settings_label_time_zone">Time Zone</message> 
+	<message id="settings_label_time_zone_help">Server time zone. Must be a value <a href="http://www.php.net/manual/en/timezones.php" target="_blank">supported by PHP</a>.</message> 
+	
+	<message id="settings_label_privacypolicy_url">URL to privacy policy</message> 
+	<message id="settings_label_privacypolicy_url_help">Internal or external URL (internet address) to a privacy policy.</message> 
+	
+	<message id="settings_label_game_currency">Play Money Currency</message> 
+	
+  	<message id="settings_label_offline_help">Switch the frontend mode to off- or online. If you choose "Offline" below, the users will only see the entered message.</message>
+  	<message id="settings_label_offline">Mode</message>
+	<message id="settings_label_offline_text">Offline Message</message>
+	
+	<message id="settings_label_offline_times">Recurring Offline Mode</message>
+	<message id="settings_label_offline_times_help">Comma separated time spans in 24 hours format in which the website shall automatically switch to offline mode. Example: 09:00-12:00, 13:00-17:00</message>
+	
+	<message id="manage_add">Add new Record</message>
+	<message id="manage_edit">Edit</message>
+	<message id="manage_delete">Delete</message>
+	<message id="manage_no_records_found">No records found.</message>
+	<message id="manage_number_of_records"><b>%d</b> records found. Show %d to %d:</message>
+	<message id="manage_select_all_label">Select all items.</message>
+	<message id="manage_selected_items_label">Selected items:</message>
+	<message id="manage_status_active">Status: active</message>
+	<message id="manage_status_blocked">Status: disabled</message>
+	<message id="manage_show_details">Show Details</message>
+	<message id="manage_sort_column_asc">Sort by %s in ascending order</message>	
+	<message id="manage_sort_column_desc">Sort by %s in descending order</message>	
+	<message id="manage_sort_column_reset">Remove sorting</message>
+	<message id="manage_search_title">Search</message>
+	<message id="manage_search_collapse">Show / hide search form</message>
+	<message id="manage_delete_multiselect_confirm">Do you really want to delete the selected items?</message>
+	<message id="manage_delete_link_confirm">Do you really want to delete this item?</message>
+	<message id="manage_success_delete">Successfully deleted.</message>
+	<message id="manage_add_title">Add New</message>
+	<message id="manage_edit_title">Edit</message>
+	
+	<message id="manage_select_placeholder">None</message>
+	
+	<message id="jobs_navlabel">Jobs</message>
+	<message id="jobs_introduction">Jobs are processes which will be executed periodically in the background, such as the match simulation. They must be started manuelly every time the server had a reboot or if any error occured.</message>
+	<message id="jobs_warning">Check regularly (at least daily) if the jobs still run!</message>  
+	<message id="jobs_head_name">Name</message>
+	<message id="jobs_head_status">Status</message>
+	<message id="jobs_head_startstop">Start/Stop</message> 
+	<message id="jobs_head_class">Class</message> 
+	<message id="jobs_head_last_execution">Last Execution</message> 
+	<message id="jobs_head_interval">Interval</message> 
+	<message id="jobs_status_running">Running</message> 
+	<message id="jobs_status_notrunning">Not Running</message> 
+	<message id="jobs_button_stop">Stop</message>
+	<message id="jobs_button_start">Start</message>
+	<message id="jobs_button_execute_once">Execute once</message>
+	<message id="jobs_executed">Successfully executed.</message>
+	
+	<message id="sendpassword_admin_email_subject">Your new Password to the AdminCenter</message>
+	<message id="sendpassword_admin_email_greeting">Hello,</message>
+	<message id="sendpassword_admin_email_introduction">Please find below your new password that you have requested via the AdminCenter and which you can and shall change on our website:</message>
+	<message id="sendpassword_admin_email_newpassword_label">Your new Password:</message>
+	<message id="sendpassword_admin_email_ending">Note that the new password only gets active as soon as you log on with it for the first time. </message>
+	
+	<message id="sendpassword_admin_usernotfound">User not found.</message>
+	<message id="sendpassword_admin_alreadysent">You have requested a new password just recently. Please try it later again.</message>
+	
+	<message id="sendpassword_admin_title">Request Password</message>
+	<message id="sendpassword_admin_intro">Did you forget your password? Just enter your E-mail address and we are going to send you a new password to it.</message>
+	<message id="sendpassword_admin_label_email">E-Mail</message>
+	<message id="sendpassword_admin_button">Send password</message>
+	<message id="sendpassword_admin_loginlink">To Log-In</message>
+	
+	<message id="entitylogging_nologgingcolumns">If you enable logging for this entity, you also need to specify database columns at the <em>loggingcolumns</em> attribute.</message>
+	<message id="entitylogging_navlabel">Data Changes</message>
+	<message id="entitylogging_intro">These are the latest 50 changes on important data types. The logging of changes can be enabled and disabled for each module separately. For enabling, simply add the attributes <em>logging</em> und <em>loggingcolumns</em> in the appropriate <em>module.xml</em>-file, as shown in the example below.</message>
+	<message id="entitylogging_label_no">No.</message>
+	<message id="entitylogging_label_time">Time</message>
+	<message id="entitylogging_label_user">User (IP)</message>
+	<message id="entitylogging_label_type">Action</message>
+	<message id="entitylogging_label_data">Data Record</message>
+	
+	<message id="entitylogging_action_edit">Modification</message>
+	<message id="entitylogging_action_delete">Removal</message>
+
+</messages>

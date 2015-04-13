@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+  <settings>
+      <setting id="social_likebutton_twitter" category="social" type="boolean" default="0" />
+      <setting id="social_likebutton_werkenntwen" category="social" type="boolean" default="0" />
+      <setting id="social_likebutton_xing" category="social" type="boolean" default="0" />
+  </settings> 
+  
+  <blocks>
+
+        <block
+            id="socialrecommendations"
+            template="socialrecommendations"
+            includepages="home,news-details,match,todaysmatches,highscore,freeclubs"
+            area="content_bottom"
+            weight="6"
+            role="guest,user" />
+        
+  </blocks>
+    
+</module>

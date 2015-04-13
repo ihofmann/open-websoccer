@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+  
+  	<settings>
+      	<setting id="paypal_enabled" category="premium" type="boolean" default="false" />
+      	<setting id="paypal_receiver_email" category="premium" type="email" default="" />
+      	<setting id="paypal_host" category="premium" type="text" default="www.paypal.com" />
+      	<setting id="paypal_url" category="premium" type="url" default="ssl://www.paypal.com" />
+      	<setting id="paypal_buttonhtml" category="premium" type="textarea" default="" />
+  	</settings>
+  	
+	<actions>
+	    <action id="paypal-notify" controller="PaypalPaymentNotificationController" role="guest,user">
+	        <param id="receiver_email" type="email" required="true" />
+	        <param id="mc_gross" type="text" required="true" />
+	        <param id="settle_amount" type="text" required="false" />
+	        <param id="custom" type="number" required="true" />
+	        <param id="payment_status" type="text" required="true" />
+	        
+	    </action>
+	    
+	</actions>
+	
+	<blocks>
+      
+       <block
+            id="paypalpaymentlink"
+            template="paypalpaymentlink"
+            includepages="premium-feature-requested"
+            area="content_bottom"
+            weight="1"
+            role="user"
+            model="PaypalLinkModel" />
+        
+	</blocks>
+  
+</module>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="register_navlabel">Register</message>
+    <message id="registration_disabled">The user registration is currently disabled by the administrator.</message>
+    <message id="registration_title">Register as new User</message>
+    <message id="registration_password_repeat">Repeat Password</message>
+    <message id="registration_email_repeat">Repeat E-Mail</message>
+    <message id="registration_submit_button">Register</message>
+    
+    <message id="registration_illegal_username">The chosen user name is not allowed.</message>
+    <message id="registration_repeated_password_notmatching">The repeated password does not match the previously entered password.</message>
+    <message id="registration_repeated_email_notmatching">The repeated e-mail address does not match the previously entered address.</message>
+    <message id="registration_user_exists">The user name or e-mail-address is already in use.</message>
+    <message id="registration_max_number_users_exceeded">Currently it is not possible to register.</message>
+    
+    <message id="register-success_navlabel">Registration submitted</message>
+    <message id="register-success_message_title">Registration submitted - Check your e-mails</message>
+    <message id="register-success_message_content">In order to verify the specified e-mail address, the system automatically sent you an e-mail with an activation link.</message>
+	<message id="register-success_nextstep">Please check your e-mails now and follow the instructions inside. It might take a few moments until this e-mail has reached you.</message>
+    
+	<message id="activation_email_subject">Completing your User Registration</message>
+	<message id="activation_email_greeting">Hello,</message>
+	<message id="activation_email_introduction">Please visit the below internet address in order to complete your user registration:</message>
+	<message id="activation_email_ending">If you did not register at our website and assume some kind of abuse, please reply to this e-mail.</message>
+	
+</messages>

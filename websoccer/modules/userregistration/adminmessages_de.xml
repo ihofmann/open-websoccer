@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="settings_label_allow_userregistration">Benutzerregistrierung für jeden Gast aktivieren.</message> 
+    <message id="settings_label_illegal_usernames">Unerlaubte Benutzernamen</message> 
+    <message id="settings_label_illegal_usernames_help">Mit Komma getrennt</message> 
+    <message id="settings_label_max_number_of_users">Höchstanzahl zugelassender Benutzer</message> 
+    <message id="settings_label_max_number_of_users_help">0 für uneingeschränkt</message> 
+    
+    <message id="settings_label_register_use_captcha">reCAPTCHA Sicherheitscode benutzen, um Spam-Registrierungen zu verhindern. Dies erfordert eine Registrierung auf <a href="https://www.google.com/recaptcha/admin/create" target="_blank">www.google.com/recaptcha</a>.</message> 
+    
+    <message id="settings_label_register_captcha_publickey">Public Key</message>
+    <message id="settings_label_register_captcha_publickey_help">Entnehmen Sie diese Angabe aus der reCAPTCHA-Registrierungsbestätigung.</message>
+    <message id="settings_label_register_captcha_privatekey">Private Key</message>
+    <message id="settings_label_register_captcha_privatekey_help">Entnehmen Sie diese Angabe aus der reCAPTCHA-Registrierungsbestätigung.</message>
+
+    <message id="settings_label_registration_url">URL zu Registrierung</message>
+	<message id="settings_label_registration_url_help">Falls Benutzer ihr Benutzerkonto auf einer anderen Webseite registrieren sollen, können Sie hier den URL zur Registrierungsmaske angeben.</message>
+</messages>

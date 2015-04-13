@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("absence_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+	<div class="well">{{ i18n.getMessage("absence_intro") }}</div>
+
+	{% if currentAbsence %}
+		<div class="well">
+			<p>{{ i18n.getMessage("absence_reportinfo")|format(env.getFormattedDate(currentAbsence.to_date), deputyName|e)|raw }}</p>
+			<p><a href="{{ env.getInternalActionUrl("return-from-absence") }}" class="btn"><i class="icon-signin"></i> {{ i18n.getMessage("absence_return_button") }}</a></p>
+		</div>
+	{% else %}
+		
+		<form class="form-horizontal" method="post">
+		
+			{{ formelements.textfield('days', i18n.getMessage('absence_label_days'), env.getRequestParameter("days"), true, validationMsg, 'number', i18n.getMessage('absence_label_days_help')) }}
+		
+			{{ formelements.autocomplete("deputynick", i18n.getMessage("entity_userabsence_deputy_id"), env.getRequestParameter('deputynick'), true, validationMsg, "usernick-search") }}
+		
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
+			</div>
+			<input type="hidden" name="page" value="absence"/>
+			<input type="hidden" name="action" value="report-absence"/>
+		
+		</form>
+		
+	{% endif %}
+
+{% endblock %}

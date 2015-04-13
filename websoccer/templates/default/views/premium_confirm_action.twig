@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("premium-confirm-action_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+<div class="well">
+{{ i18n.getMessage("premium-confirm-action_question")|format(env.getContextParameters()["premium_balance_required"], env.getConfig("premium_credit_unit"))|raw }}
+</div>
+
+<div class="form-actions">
+	<form method="post" style="display: inline">
+		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
+			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">
+		{% endfor %}
+		<input type="hidden" name="page" value="{{ env.getContextParameters()["srcpage"] }}">
+		<input type="hidden" name="action" value="{{ env.getContextParameters()["actionid"] }}">
+		<input type="hidden" name="premiumconfirmed" value="1">
+		<button type="submit" class="btn btn-success">{{ i18n.getMessage("premium-confirm-action_confirm") }}</button>
+	</form>
+	
+	<form method="post" style="display: inline">
+		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
+			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">
+		{% endfor %}
+		<input type="hidden" name="page" value="{{ env.getContextParameters()["srcpage"] }}">
+		<input type="hidden" name="action" value="">
+		<button type="submit" class="btn btn-danger">{{ i18n.getMessage("button_cancel") }}</button>
+	</form>
+</div>
+
+{% endblock %}

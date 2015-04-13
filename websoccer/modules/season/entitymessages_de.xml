@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="entity_season">Saison</message>
+    
+    <message id="entity_season_name">Name</message>
+    <message id="entity_season_liga_id">Liga</message>
+    <message id="entity_season_beendet">Ist beendet</message>
+    
+    <message id="entity_season_platz_1_id">Erster Platz</message>
+    <message id="entity_season_platz_2_id">Zweiter Platz</message>
+    <message id="entity_season_platz_3_id">Dritter Platz</message>
+    <message id="entity_season_platz_4_id">Vierter Platz</message>
+    <message id="entity_season_platz_5_id">Fünfter Platz</message>
+    
+</messages>

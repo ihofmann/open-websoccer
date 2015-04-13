@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="clubs" version="1.0.0"/>
+    </dependencies>
+    
+  <settings>
+      <setting id="assign_team_automatically" category="game" type="boolean" default="1" />
+      <setting id="max_number_teams_per_user" category="game" type="number" default="1" />
+      <setting id="additional_team_min_highscore" category="game" type="number" default="100" />
+  </settings>
+  
+    <pages>
+        <page
+            id="freeclubs"
+            template="freeclubs"
+            model="FreeClubsModel"
+            role="user,guest"
+            navitem="true"
+            navweight="4"/>
+
+    </pages> 
+    
+  <actions>
+	<action id="choose-team" controller="ChooseTeamController" role="user">
+		<param id="teamId" type="number" required="true" />
+	</action>
+	
+	<action id="choose-additional-team" controller="ChooseAdditionalTeamController" role="user">
+		<param id="teamId" type="number" required="true" />
+	</action>
+  </actions>
+    
+</module>

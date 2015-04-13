@@ -1,0 +1,3 @@
+{% for team in userteams %}
+<li><a href="{{ env.getInternalActionUrl("select-team", "id=" ~ team.id, "office") }}">{{ team.name }}</a></li>
+{% endfor %}

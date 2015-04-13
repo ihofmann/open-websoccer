@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="leagues" version="1.0.0"/>
+    </dependencies>
+    
+    <pages>
+        <page
+            id="alltimetable"
+            template="alltimetable"
+            navitem="true"
+            navweight="10"
+            model="LeagueDetailsModel"
+            role="user,guest" 
+            parentItem="leagues"/>
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="alltimetable-table"
+            template="alltimetable-table"
+            model="AlltimeTableModel"
+            includepages="alltimetable"
+            area="content_bottom"
+            weight="2"
+            role="user,guest" />
+        
+    </blocks>    
+</module>

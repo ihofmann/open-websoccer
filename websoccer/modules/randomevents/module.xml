@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <settings>
+      	<setting id="randomevents_interval_days" category="game" type="number" default="10" />
+  	</settings>
+
+    <admin>
+        <adminpage
+            id="randomevent"
+            entity="randomevent"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="randomevent AS EventTab" >
+
+                <overview delete="true" edit="true" >
+
+                    <column
+                        id="entity_randomevent_message"
+                        field="EventTab.message"
+                        type="text"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_randomevent_effect"
+                        field="EventTab.effect"
+                        type="text"
+                        sort="true" />
+                    
+           			<column
+                        id="entity_randomevent_weight"
+                        field="EventTab.weight"
+                        type="number"
+                        sort="true" />
+                </overview>
+
+                <editform>
+                    <field id="message" type="text" required="true" />
+					<field id="effect" type="select" required="true" 
+					    selection="money,player_injured,player_blocked,player_happiness,player_fitness,player_stamina" />
+					
+					<field id="effect_money_amount" type="number" />
+					<field id="effect_blocked_matches" type="number" />
+					<field id="effect_skillchange" type="number" />
+					
+					<field id="weight" type="number" required="true" default="3" />
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+</module>

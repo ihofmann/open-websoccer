@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+    
+    <admin>
+		<adminpage id="teamsgenerator" permissionrole="r_daten" navcategory="league" filename="teamsgenerator"/>
+		<adminpage id="playersgenerator" permissionrole="r_daten" navcategory="league" filename="playersgenerator"/>
+	</admin>
+  
+</module>

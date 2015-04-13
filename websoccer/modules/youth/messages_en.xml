@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="youth-team_navlabel">Youth Team</message>
+    <message id="youth-scouting_navlabel">Scouting</message>
+    <message id="youth-matchrequests_navlabel">Match Requests</message>
+    <message id="youth-matches_navlabel">Matches</message>
+    <message id="youth-marketplace_navlabel">Marketplace</message>
+    
+    <message id="youthteam_title">My Youth Team</message>
+    <message id="youthteam_no_players">There are currently no players in your youth team.</message>
+    <message id="youthteam_scout_button">Scout for new talents</message>
+    
+    <message id="youthteam_showstatistics_tooltip">Show or collapse statistics</message>
+    
+    <message id="youthteam_min_age_info">A player must be at least %d years old in order to be moved to the professional team.</message>
+    
+    <message id="youthteam_action_make_professional">Transfer to professional team</message>
+    <message id="youthteam_action_sell">Offer in marketplace</message>
+    <message id="youthteam_action_fire">Dismiss</message>
+    <message id="youthteam_action_removefrommarket">Offered for transfer. Remove from market.</message>
+    <message id="youthteam_action_buy">Buy</message>
+    
+    <message id="youthplayer-sell_navlabel">Offer youth player in public market</message>
+    <message id="youthplayer-sell_formlabel">Enter your desired transfer fee</message>
+    
+    <message id="youthteam_err_notownplayer">The player does not belong to your team (anymore).</message>
+    <message id="youthteam_sell_err_alreadyonmarket">The player is already on the marketplace.</message>
+    
+    <message id="youthteam_sell_success">The player can now be bought by other managers.</message>
+    <message id="youthteam_removefrommarket_success">The player has been removed from the marketplace.</message>
+    <message id="youthteam_fire_success">The player got dismissed.</message>
+    <message id="youthteam_buy_success">The player belongs to your team now!</message>
+    
+    <message id="youthplayer-fire_navlabel">Dismiss youth player</message>
+    <message id="youthplayer-fire_formlabel">Remove from team</message>
+    <message id="youthplayer-fire_confirmationmsg">Do you really want to lay off this player? This cannot be undone later.</message>
+
+    <message id="youthplayer-buy_navlabel">Buy youth player</message>
+    <message id="youthplayer-buy_formlabel">Hire this player</message>
+    <message id="youthplayer-buy_confirmationmsg">Do you really want to buy this player? He will be immediately transferred to your team for the above mentioned transfer fee.</message>
+    
+    <message id="youthteam_buy_err_ownplayer">The player already belongs to your team.</message>
+    <message id="youthteam_buy_err_ownplayer_otherteam">You cannot buy players from one of your other teams.</message>
+    <message id="youthteam_buy_err_notenoughbudget">You cannot afford the transfer fee at the moment.</message>
+    
+	<message id="team_details_tab_youthplayers">Youth Team</message>
+	<message id="youthteam_no_players_in_team">This team has currently no youth players.</message>
+	
+	<message id="youthteam_transferfee_subject">Transfer fee for youth player</message>
+    <message id="youthteam_transfer_notification">The youth player <strong>{player}</strong> is now playing for <strong>{newteam}</strong>.</message>
+
+	<message id="youthplayer-makeprofessional_navlabel">Hire as professional</message>
+	<message id="youthplayer-makeprofessional_formlabel">Move to professional team</message>
+	<message id="youthplayer-makeprofessional_form_intro">Select the player's main position. <strong>Note:</strong> This cannot be changed later.</message>
+    
+	<message id="youthteam_makeprofessional_err_tooyoung">The player's age must be at least %d years.</message>
+	<message id="youthteam_makeprofessional_err_invalidmainposition">You selected an invalid main position.</message>
+	<message id="youthteam_makeprofessional_err_budgettooless">You cannot pay the player's salary at the moment.</message>
+	
+	<message id="youthteam_makeprofessional_success">The player now belongs to the professional team!</message>
+	
+	<message id="youthteam_scouting_lastexecution">Last Scouting</message>
+	<message id="youthteam_scouting_lastexecution_never">Never executed before</message>
+	<message id="youthteam_scouting_nextpossibleexecution">The next scouting is earliest possible on %s</message>
+	
+	<message id="youthteam_scouting_schoosescout">Choose your favourite scout</message>
+	<message id="youthteam_scouting_noscoutavailable">There is no scout available at the moment.</message>
+	<message id="youthteam_scouting_schoosecountry">At which country shall be searched for new talents?</message>
+	
+	<message id="youthteam_scouting_err_breakviolation">The earliest date to scout next time would be: %s</message>
+	<message id="youthteam_scouting_err_invalidcountry">It is not possible to scout at the selected country. Please contact the administrator.</message>
+	<message id="youthteam_scouting_err_invalidscout">The selected scout does not exist (anymore).</message>
+	<message id="youthteam_scouting_err_notenoughbudget">You cannot afford the scout's fee at the moment.</message>
+	
+	<message id="youthteam_scouting_fee_subject">Fee for youth player scouting</message>
+	<message id="youthteam_scouting_failure">Unfortunately, the scout has not found any talented player during his trip.</message>
+	
+	<message id="youthteam_scouting_success">Congratulation! The scout could find a new talent.</message>
+	<message id="youthteam_scouting_success_details">Please welcome %s in your youth team!</message>
+	
+	<message id="youthteam_matchrequest_createnew">Post new request</message>
+	<message id="youthteam_matchrequest_none_available">There are no open match requests at the moment.</message>
+	<message id="youthteam_matchrequest_accept">Accept</message>
+	<message id="youthteam_matchrequest_cancel">Cancel</message>
+	
+	<message id="youth-matchrequests-create_navlabel">Post a new youth match request</message>
+	<message id="youthteam_matchrequest_create_date">Date and time</message>
+	<message id="youthteam_matchrequest_reward">Reward</message>
+	
+	<message id="youthteam_matchrequest_create_err_invaliddate">The entered date is invalid. If you have used the form properly, then contact an administrator, please.</message>
+	<message id="youthteam_matchrequest_create_err_too_many_open_requests">You may have only up to %d open match requests. Cancel your other requests or wait until they are expired.</message>
+	<message id="youthteam_matchrequest_create_err_budgetnotenough">You cannot afford the entered reward at the moment.</message>
+	<message id="youthteam_matchrequest_create_err_notenoughplayers">You do not have enough youth players in order to attend matches.</message>
+	
+	<message id="youthteam_matchrequest_create_success">Your match request has been successfully published.</message>
+	
+	<message id="youthteam_matchrequest_cancel_err_notfound">The match request does not exist (anymore). It might have been accepted already.</message>
+	<message id="youthteam_matchrequest_cancel_success">The match request has been succesfully cancelled.</message>
+	
+	<message id="youthteam_matchrequest_accept_err_ownrequest">You cannot play against yourself.</message>
+	
+	<message id="youthteam_matchrequest_err_maxperday_violated">You can have only %d youth match(es) per day.</message>
+	
+	<message id="youthteam_matchrequest_accept_success">The match has been successfully created!</message>
+	<message id="youthteam_matchrequest_accept_success_details">Set your tactics for this match now.</message>
+	
+	<message id="youthteam_matchrequest_reward_subject">Reward for accepting a youth match request</message>
+	<message id="youthteam_matchrequest_accept_notification">The team <strong>{team}</strong> has accepted your youth match request from {date}.</message>
+
+	<message id="youthmatches_title">Matches of my team</message>
+	<message id="youthmatches_no_matches">There haven't been any matches with your team so far.</message>
+	
+	<message id="youthmarketplace_no_players">No youth players are for sale at the moment.</message>
+	
+	<message id="youth-formation_navlabel">Formation</message>
+	<message id="youthformation_err_matchexpired">You cannot set a formation for this match anymore, because it is either already simulated or will be simulated shortly.</message>
+
+	<message id="youthteam_salarypayment_subject">Youth players' salary</message>
+	
+	<message id="youth-match_navlabel">Youth Match</message>
+	<message id="youthmatch_statistic_avg_strength">Average Strength</message>
+	
+	<message id="ymreport_goal"><strong>Goal by {scorer}!</strong></message>
+	<message id="ymreport_attempt">{scorer} takes a shot at the goal.</message>
+	<message id="ymreport_tackle">Tackle between {winner} and {loser}. {winner} wins!</message>
+	<message id="ymreport_injury">{player} is injured and must leave the pitch.</message>
+	<message id="ymreport_card_yellowred">{player} gets the yellow-red card.</message>
+	<message id="ymreport_card_yellow">{player} gets a yellow card.</message>
+	<message id="ymreport_card_red">{player} gets a red card and must leave the pitch.</message>
+	<message id="ymreport_penalty_success"><strong>{player} converts a penalty kick!</strong></message>
+	<message id="ymreport_penalty_failure"><em>{player} misses a penalty!</em></message>
+	<message id="ymreport_substitution">Substitution! <strong>{in}</strong> replaces <strong>{out}</strong>.</message>
+</messages>

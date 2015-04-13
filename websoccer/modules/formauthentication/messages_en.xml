@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    
+    <message id="formlogin_block_title">Log In</message>
+    <message id="formlogin_option_rememberme">Remember me next time</message>
+    <message id="formlogin_submit_button">Log In</message>
+    <message id="formlogin_link_register">Register</message>
+    <message id="formlogin_link_forgot_password">Forgot your password?</message>
+    
+    <message id="formlogin_invalid_data">The given credentials are not correct.</message>
+    
+    <message id="login_navlabel">Log In</message>
+    <message id="login_title">Log In</message>
+    
+    <message id="forgot-password_navlabel">Send new password</message>
+    <message id="forgot-password_title">Generate new Password</message>
+    <message id="forgot-password_submit_button">Send new password</message>
+    
+    <message id="forgot-password_email-not-found">No active user with this e-mail found. Please check the spelling.</message>
+    <message id="forgot-password_already-sent">You have already requested a new password within the last 24 hours. We can send a new password only once per day.</message>
+    
+    <message id="forgot-password_message_title">A new password has been sent</message>
+    <message id="forgot-password_message_content">Please check your e-mails now.</message>
+    
+    <message id="activate-user_navlabel">User Account Activation</message>
+    <message id="activate-user_title">Activate User Account</message>
+    <message id="activate-user_content">Do you have any issues with your user account? Feel free to contact us.</message>
+    <message id="activate-user_user-not-found">Either your user account is already active or you entered a wrong address. Please double-check the URL provided in the activation e-mail.</message>
+    <message id="activate-user_message_title">Your user account has been successfully activated!</message>
+    <message id="activate-user_message_content">You can log on with your e-mail and password now. Have a good time!</message>
+    
+</messages>

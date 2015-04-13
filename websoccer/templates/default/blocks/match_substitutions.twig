@@ -1,0 +1,56 @@
+{% import "macros/formelements.twig" as formelements %}
+
+{% if env.getConfig("sim_allow_offensivechanges") > 0 %}
+	{{ formelements.textfield('offensive', i18n.getMessage('formation_offensive_title'), offensive, true, validationMsg, 'number', 
+		i18n.getMessage("match_details_changes_max_help", env.getConfig("sim_allow_offensivechanges"))) }}
+		
+	{{ formelements.checkbox("longpasses", i18n.getMessage("formation_option_longpasses"), longpasses, false, validationMsg) }}
+	
+	{{ formelements.checkbox("counterattacks", i18n.getMessage("formation_option_counterattacks"), counterattacks, false, validationMsg) }}
+{% endif %}
+
+{% if players.bench is defined and players.bench|length > 0 %}
+<table class="table">
+  		<thead>
+  			<tr>
+  				<th>{{ i18n.getMessage("formation_substitutions_out") }} / {{ i18n.getMessage("formation_substitutions_in") }}</th>
+  				<th>{{ i18n.getMessage("formation_substitutions_minute") }}</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			{% for subsNo in [1,2,3] %}
+  			{% set disabledState = (substitutions[subsNo].minute > 0 and substitutions[subsNo].minute <= match.match_minutes) %}
+  			<tr>
+  				<td>
+  					<p><select class="sub_out_select" id="sub{{ subsNo }}_out" name="sub{{ subsNo }}_out"{% if disabledState %} disabled{% endif %}>
+  						<option value="0">{{ i18n.getMessage("formation_substitutions_out") }}</option>
+  						{% for player in players.field %}
+  						<option value="{{ player.id }}"{% if substitutions[subsNo].out == player.id %} selected{% endif %}>{{ player.name }} ({{ i18n.getMessage("option_" ~ player.position) }})</option>
+  						{% endfor %}
+  					</select></p>
+  					<p>
+  					<select class="sub_in_select" id="sub{{ subsNo }}_in" name="sub{{ subsNo }}_in"{% if disabledState %} disabled{% endif %}>
+  						<option value="0">{{ i18n.getMessage("formation_substitutions_in") }}</option>
+  						{% for player in players.bench %}
+  						<option value="{{ player.id }}"{% if substitutions[subsNo].in == player.id %} selected{% endif %}>{{ player.name }} ({{ i18n.getMessage("option_" ~ player.position) }})</option>
+  						{% endfor %}
+  					</select>	
+  					</p>
+  					<p>
+  						<select id="sub{{ subsNo }}_condition" name="sub{{ subsNo }}_condition"{% if disabledState %} disabled{% endif %}>
+							<option value="">{{ i18n.getMessage("formation_substitutions_condition_none") }}</option>
+							<option value="Tie"{% if substitutions[subsNo].condition == "Tie" %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_tie") }}</option>
+							<option value="Leading"{% if substitutions[subsNo].condition == "Leading" %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_leading") }}</option>
+							<option value="Deficit"{% if substitutions[subsNo].condition == "Deficit" %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_deficit") }}</option>
+						</select>
+  					</p>	
+  				</td>
+  				<td><input class="input-mini" type="number" id="sub{{ subsNo }}_minute" name="sub{{ subsNo }}_minute" 
+  					value="{% if substitutions[subsNo].minute > 0 %}{{ substitutions[subsNo].minute }}{% endif %}" min="1" max="90" {% if disabledState %} disabled{% endif %}/></td>
+  			</tr>
+  			{% endfor %}
+  		</tbody>
+  	</table>
+{% else %}
+	<p>{{ i18n.getMessage("match_details_no_players_on_bench") }}</p>
+{% endif %}

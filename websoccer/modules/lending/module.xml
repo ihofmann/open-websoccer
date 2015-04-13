@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="players" version="1.0.0"/>
+    </dependencies>
+    
+	<settings>
+	    <setting id="lending_enabled" category="game" type="boolean" default="1" />
+	    <setting id="lending_matches_min" category="game" type="number" default="5" />
+	    <setting id="lending_matches_max" category="game" type="number" default="20" />
+	</settings>
+	
+    <pages>
+        <page
+            id="lend-player"
+            template="lend-player"
+            model="PlayerDetailsModel"
+            role="user"
+            parentItem="office"/>
+        
+        <page
+            id="borrow-player"
+            template="borrow-player"
+            model="PlayerDetailsModel"
+            role="user"
+            parentItem="office"/>
+   
+    </pages>
+    
+    <blocks>
+        <block id="lent-players"
+            template="lent_players"
+            model="LentPlayersModel"
+            role="user"
+            includepages="myteam"
+            area="content_bottom" />
+    </blocks>
+    
+  <actions>
+	<action id="lend-player" controller="LendPlayerController" role="user">
+		<param id="fee" type="number" required="true" min="1" max="1000000000" />
+		<param id="id" type="number" required="true" />
+	</action>
+	
+	<action id="unmarkLendable" controller="UnmarkLendableController" role="user">
+		<param id="id" type="number" required="true" />
+	</action>
+	
+	<action id="borrow-player" controller="BorrowPlayerController" role="user">
+		<param id="matches" type="number" required="true" min="1" max="100" />
+		<param id="id" type="number" required="true" />
+	</action>
+	
+  </actions>
+	
+</module>

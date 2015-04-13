@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="users" version="1.0.0" />
+    </dependencies>
+    
+    <settings>
+      <setting id="contract_max_number_of_remaining_matches" category="game" type="number" default="15" />
+  	</settings>
+    
+    <pages>
+        <page
+            id="office"
+            template="office-overview"
+            model="OfficeModel"
+            navitem="true"
+            navweight="2"
+            role="user">
+            
+	        <page
+	            id="myteam"
+	            template="myteam-overview"
+	            model="MyTeamModel"
+	            navitem="true"
+	            navweight="2"
+	            role="user">
+		        <page
+		            id="extend-contract"
+		            model="PlayerDetailsModel"
+		            template="extend-contract"
+		            role="user" />
+	  		</page>
+	  		
+	        <page
+	            id="finances"
+	            template="finances"
+	            model="FinancesModel"
+	            navitem="true"
+	            navweight="4"
+	            role="user"/>
+	        
+	        <page
+	            id="tickets"
+	            template="tickets"
+	            model="TicketsModel"
+	            navitem="true"
+	            navweight="5"
+	            role="user"/>
+            
+         </page>
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="extend-contract-form"
+            template="extend-contract-form"
+            model="PlayerDetailsModel"
+            includepages="extend-contract"
+            area="content_bottom"
+            weight="0"
+            role="user" />
+        
+       <block
+            id="finances-summary"
+            template="finances_summary"
+            model="FinancesSummaryModel"
+            includepages="finances"
+            area="content_top"
+            weight="0"
+            role="user" />
+        
+    </blocks>
+    
+  <actions>
+	<action id="extend-contract" controller="ExtendContractController" role="user" log="true">
+		<param id="salary" type="number" required="true" max="1000000000" />
+		<param id="goal_bonus" type="number" required="false"/>
+		<param id="matches" type="number" required="true" min="20" max="100"/>
+		<param id="id" type="number" required="true" />
+	</action>
+	
+	<action id="save-tickets" controller="SaveTicketsController" role="user" log="true">
+		<param id="p_stands" type="number" required="true" min="1" max="1000" />
+		<param id="p_seats" type="number" required="true" min="1" max="1000" />
+		<param id="p_stands_grand" type="number" required="true" min="1" max="1000" />
+		<param id="p_seats_grand" type="number" required="true" min="1" max="1000" />
+		<param id="p_vip" type="number" required="true" min="1" max="1000" />
+	</action>
+	
+	<action id="markAsUnsellable" controller="MarkAsUnsellableController" role="user">
+		<param id="id" type="number" required="true" min="1" max="1000000000" />
+	</action>
+	
+	<action id="unmarkUnsellable" controller="UnmarkUnsellableController" role="user">
+		<param id="id" type="number" required="true" min="1" max="1000000000" />
+	</action>
+	
+	<action id="select-captain" controller="SelectCaptainController" role="user" log="true">
+		<param id="id" type="number" required="true" min="1" max="1000000000" />
+	</action>
+	
+  </actions>
+    
+</module>

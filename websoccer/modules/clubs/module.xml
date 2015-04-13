@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../module.dtd">
+<module version="1.0.0">
+
+    <dependencies>
+        <dependency module="users" version="1.0.0"/>
+        <dependency module="leagues" version="1.0.0"/>
+    </dependencies>
+    
+    <admin>
+        <adminpage
+            id="club"
+            entity="club"
+            navcategory="league"
+            permissionrole="r_daten" >
+
+            <entity dbtable="verein AS ClubTab" >
+
+                <overview delete="true" edit="true" logging="true" loggingcolumns="name,liga_id">
+
+                    <column
+                        id="entity_club_name"
+                        field="ClubTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_club_liga_id"
+                        field="LeagueTab.name"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_club_nationalteam"
+                        field="ClubTab.nationalteam"
+                        type="boolean"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_club_user_id"
+                        field="UserTab.nick"
+                        type="text"
+                        sort="true"
+                        filter="true" />
+                    
+                    <column
+                        id="entity_club_finanz_budget"
+                        field="ClubTab.finanz_budget"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_player"
+                        field="(SELECT COUNT(*) FROM {tablePrefix}_spieler AS PlayerTab WHERE PlayerTab.verein_id = ClubTab.id)"
+                        type="number"
+                        sort="true" />
+                    
+                    <column
+                        id="entity_club_status"
+                        field="ClubTab.status"
+                        type="boolean" />
+                    
+                	<join type="LEFT" jointable="liga AS LeagueTab" joincondition="ClubTab.liga_id = LeagueTab.id" />
+		    		<join type="LEFT" jointable="user AS UserTab" joincondition="ClubTab.user_id = UserTab.id" />
+                </overview>
+
+                <editform>
+                    <field id="name" type="text" required="true" />
+					<field id="kurz" type="text" required="true" />
+					<field id="nationalteam" type="boolean" required="false" />
+					<field id="liga_id" type="foreign_key" entity="league" jointable="liga" cascade="delete" labelcolumns="land, name" required="false" default="0" />
+					<field id="user_id" type="foreign_key" entity="users" jointable="user" labelcolumns="nick" />
+					<field id="user_id_actual" type="foreign_key" entity="users" jointable="user" labelcolumns="nick" />
+					<field id="interimmanager" type="boolean" required="false" />
+					<field id="bild" type="file" />
+					<field id="stadion_id" type="foreign_key" entity="stadium"  jointable="stadion" labelcolumns="name" />
+					<field id="sponsor_id" type="foreign_key" entity="sponsor"  jointable="sponsor" labelcolumns="name" />
+					<field id="sponsor_spiele" type="number" />
+					<field id="finanz_budget" type="number" />
+					<field id="min_target_rank" type="number" default="0" />
+					<field id="preis_stehen" type="number" />
+					<field id="preis_sitz" type="number" />
+					<field id="preis_haupt_stehen" type="number" />
+					<field id="preis_haupt_sitze" type="number" />
+					<field id="preis_vip" type="number" />
+					<field id="last_steh" type="number" editonly="true" />
+					<field id="last_sitz" type="number" editonly="true" />
+					<field id="last_haupt_steh" type="number" editonly="true" />
+					<field id="last_haupt_sitz" type="number" editonly="true" />
+					<field id="last_vip" type="number" editonly="true" />
+					<field id="meisterschaften" type="number" editonly="true" />
+					<field id="st_tore" type="number" editonly="true" />
+					<field id="st_gegentore" type="number" editonly="true" />
+					<field id="st_spiele" type="number" editonly="true" />
+					<field id="st_siege" type="number" editonly="true" />
+					<field id="st_niederlagen" type="number" editonly="true" />
+					<field id="st_unentschieden" type="number" editonly="true" />
+					<field id="st_punkte" type="number" editonly="true" />
+					<field id="sa_tore" type="number" editonly="true" />
+					<field id="sa_gegentore" type="number" editonly="true" />
+					<field id="sa_spiele" type="number" editonly="true" />
+					<field id="sa_siege" type="number" editonly="true" />
+					<field id="sa_niederlagen" type="number" editonly="true" />
+					<field id="sa_unentschieden" type="number" editonly="true" />
+					<field id="sa_punkte" type="number" editonly="true" />
+					<field id="captain_id" type="foreign_key" entity="player" jointable="spieler" labelcolumns="vorname,nachname,kunstname" required="false" default="0" />
+					<field id="history" type="textarea" />
+					<field id="status" type="boolean" default="1" />
+                </editform>
+            </entity>
+        </adminpage>
+    </admin>
+    
+    <pages>
+        <page
+            id="team"
+            template="team-details"
+            model="TeamDetailsModel"
+            role="user,guest"
+            parentItem="leagues" />
+
+    </pages> 
+    
+    <blocks>
+
+        <block
+            id="teamplayers"
+            template="teamplayers"
+            model="TeamPlayersModel"
+            includepages="team"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+
+        <block
+            id="team-results"
+            template="results-list"
+            model="TeamResultsModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user,guest" />
+        
+        <block
+            id="team-history"
+            template="team_history"
+            model="TeamHistoryModel"
+            includepages="none"
+            area="custom"
+            weight="0"
+            role="user" />
+    </blocks>
+</module>

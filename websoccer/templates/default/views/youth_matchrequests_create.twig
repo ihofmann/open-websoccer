@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("youth-matchrequests-create_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<form class="form-horizontal" method="post">
+		
+	<div class="control-group{% if validationMsg['matchdate'] is defined %} error{% endif %}">
+		<label class="control-label" for="matchdate">
+			<strong>{{ i18n.getMessage("youthteam_matchrequest_create_date") }}</strong>
+		</label>
+		<div class="controls">
+	  		<select name="matchdate" id="matchdate">
+	  			<option></option>
+	  			
+	  			{% for dateOptionLabelValue, dateOptionLabel in dateOptions %}
+					<option value="{{ dateOptionLabelValue }}"{% if env.getRequestParameter('matchdate') == dateOptionLabelValue %} selected{% endif %}>{{ dateOptionLabel }}</p>
+				{% endfor %}
+	  		</select>
+		</div>
+	</div>
+	
+	{{ formelements.textfield('reward', i18n.getMessage('youthteam_matchrequest_reward'), env.getRequestParameter('reward'), false, validationMsg, 'number', env.getConfig("game_currency")) }}
+		
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
+		<a href="{{ env.getInternalUrl("youth-matchrequests") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+	</div>
+	<input type="hidden" name="page" value="youth-matchrequests-create"/>
+	<input type="hidden" name="action" value="create-youthmatch-request"/>
+</form>
+{% endblock %}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+	<message id="settings_label_webjobexecution_enabled">Spielesimulation durch externe Webseiten ausführen, statt durch Jobs.</message>
+	<message id="settings_label_webjobexecution_key">Sicherheitsschlüssel für externe Simulationsausführung</message>
+	<message id="settings_label_webjobexecution_key_help">Den Schlüssel erhalten Sie beispielsweise, wenn Sie Ihre Simulation über die Webseite von <a href="http://www.websoccer-sim.com" target="_blank">websoccer-sim.com</a> ausführen lassen.</message>
+</messages>

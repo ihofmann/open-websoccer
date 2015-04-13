@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ article.title }}
+{% endblock %}
+
+{% block page_content %}
+<p><em>{{ article.date }}, {{ i18n.getMessage('news_author', article.author_name) }}.</em></p>
+
+{{ article.message|raw }}
+
+{% if relatedLinks|length > 0 %}
+<h5>{{ i18n.getMessage('news_related_links') }}</h5>
+<ul>
+{% for linkUrl,linkLabel in relatedLinks %}
+<li><a href="{{ linkUrl }}"{% if linkUrl[:env.getConfig('homepage')|length] != env.getConfig('homepage') %} target="_blank"{% endif %}>{{ linkLabel }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

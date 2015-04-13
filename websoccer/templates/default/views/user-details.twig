@@ -1,0 +1,161 @@
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/badges.twig" as badgesmacros %}
+{% extends "base.twig" %}
+
+{% block page_title %}
+	{{ user.nick }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if badges|length > 0 %}
+<ul class="inline">
+	{% for badge in badges %}
+		<li>{{ badgesmacros.badge(badge.name, badge.level, badge.date_rewarded) }}</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+<div style="text-align: center; margin-bottom: 10px;">
+
+	{% if user.picture|length > 0 %}
+		<img src="{{ user.picture }}" class="img-rounded" style="width:120px;height:120px"/>
+	{% endif %}
+
+	{% if user.id == env.user.id %}
+		<p style="text-align: center; margin-top: 10px;">
+		
+		{% if env.getConfig("user_picture_upload_enabled") %}
+			<a href="{{ env.getInternalUrl("change-profile-picture") }}" class="btn btn-small">
+				<i class="icon-upload"></i> {{ i18n.getMessage("user_changepicture_button") }}
+			</a>
+			{% if user.picture_uploadfile|length > 0 %}
+				<a href="{{ env.getInternalActionUrl("delete-profile-picture") }}" class="btn btn-small">
+					<i class="icon-remove"></i> {{ i18n.getMessage("user_deletepicture_button") }}
+				</a>
+			{% endif %}
+		{% endif %}
+		
+		{% if env.getConfig("gravatar_enable") %}
+			<a href="http://{{ i18n.getCurrentLanguage() }}.gravatar.com" target="_blank" 
+				title="{{ i18n.getMessage("gravatar_edit_picture") }}" class="btn btn-small">
+				<i class="icon-external-link"></i> {{ i18n.getMessage("gravatar_edit_picture_button") }}
+			</a>
+		{% endif %}
+		
+		</p>
+	{% endif %}
+</div>
+
+{% if absence %}
+	{{ messagebox.box("", i18n.getMessage("absence_profile_info", env.getFormattedDate(absence.to_date)), "warning") }}
+{% endif %}
+
+<ul class="nav nav-tabs" id="userTab">
+  <li class="active"><a href="#general" data-toggle="tab">{{ i18n.getMessage("user_tab_profile") }}</a></li>
+  <li><a href="#activities" data-toggle="tab" class="ajaxLink"
+  	data-ajaxtarget="activitieslist" data-ajaxblock="user-activities" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("activities_tab") }}</a></li>
+  <li><a href="#results" data-toggle="tab" class="ajaxLink"
+  	data-ajaxtarget="resultslist" data-ajaxblock="user-results" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("results_tab_latest_results") }}</a></li>
+  {% if env.getConfig("transfermarket_enabled") or env.getConfig("transferoffers_enabled") %}
+  <li><a href="#transfers" data-toggle="tab" class="ajaxLink"
+  	data-ajaxtarget="transferslist" data-ajaxblock="usertransfers" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("transfers_tab") }}</a></li>
+  {% endif %}
+  <li><a href="#history" data-toggle="tab" class="ajaxLink"
+  	data-ajaxtarget="historycontent" data-ajaxblock="user-history" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("history_tab") }}</a></li>
+  
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="general">
+  
+  	{% if user.id == env.user.id %}
+  	<p><a href="{{ env.getInternalUrl("profile") }}" class="btn"><i class="icon-edit"></i> {{ i18n.getMessage("button_edit") }}</a></p>
+  	{% endif %}
+  
+	<div class="row-fluid">
+		<div class="span6">
+			{% if userteams|length > 1 %}
+				{% set team = "<ul class=\"unstyled\">" %}
+				{% for userteam in userteams %}
+					{% set team = team ~ "<li><a href=\"" ~ env.getInternalUrl("team", "id=" ~ userteam.id) ~ "\">" ~ userteam.name|e ~ "</a></li>" %}
+				{% endfor %}
+				{% set team = team ~ "</ul>" %}
+			{% elseif userteams|length == 1 %}
+				{% set team = "<a href=\"" ~ env.getInternalUrl("team", "id=" ~ userteams[0].id) ~ "\">" ~ userteams[0].name|e ~ "</a>" %}
+			{% else %}
+				{% set team = "-" %}
+			{% endif %}
+			
+			{{ profile.infofield(i18n.getMessage("entity_club"), team, true) }}
+			
+			{% if user.nationalteam is defined %}
+				{% set nationalteam = "<a href=\"" ~ env.getInternalUrl("team", "id=" ~ user.nationalteam.id) ~ "\">" ~ user.nationalteam.name|e ~ "</a>" %}
+				{{ profile.infofield(i18n.getMessage("nationalteams_team_label"), nationalteam, true) }}
+			{% endif %}
+			
+			{{ profile.infofield(i18n.getMessage("entity_users_highscore"), user.highscore) }}
+			{{ profile.infofield(i18n.getMessage("entity_users_fanbeliebtheit"), user.popularity ~ "%") }}
+			{{ profile.infofield(i18n.getMessage("entity_users_datum_anmeldung"), env.getFormattedDate(user.registration_date)) }}
+			{{ profile.infofield(i18n.getMessage("entity_users_lastonline"), env.getFormattedDate(user.lastonline)) }}
+		</div>
+		<div class="span6">
+		
+		{% if user.name|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_name"), user.name) }}
+		{% endif %}
+		{% if user.place|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_wohnort"), user.place) }}
+		{% endif %}
+		{% if user.country|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_land"), user.country) }}
+		{% endif %}
+		{% if user.birthday > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_geburtstag"), user.birthday|date(env.getConfig("date_format"))) }}
+		{% endif %}
+		{% if user.occupation|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_beruf"), user.occupation) }}
+		{% endif %}
+		{% if user.interests|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_interessen"), user.interests) }}
+		{% endif %}
+		{% if user.favorite_club|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_lieblingsverein"), user.favorite_club) }}
+		{% endif %}
+		{% if user.homepage|length > 0 %}
+		
+			{% set websiteLink = "<a href=\"" ~ user.homepage ~ "\" target=\"_blank\">" ~ i18n.getMessage("user_visit_website") ~ "</a>" %}
+		
+			{{ profile.infofield(i18n.getMessage("entity_users_homepage"), websiteLink, true) }}
+		{% endif %}
+		</div>
+	</div>
+  
+  </div>
+  
+  <div class="tab-pane" id="activities">
+  	<div id="activitieslist"></div>
+  </div>
+  
+  <div class="tab-pane" id="results">
+  	<div id="resultslist"></div>
+  </div>
+  
+  {% if env.getConfig("transfermarket_enabled") or env.getConfig("transferoffers_enabled") %}
+  <div class="tab-pane" id="transfers">
+  	<div id="transferslist"></div>
+  </div>
+  {% endif %}
+  
+  <div class="tab-pane" id="history">
+  	<div id="historycontent"></div>
+  	
+  	{% if user.history|length > 0 %}
+  		<h4>{{ i18n.getMessage("entity_users_history") }}</h4>
+			{{ user.history|nl2br }}
+	{% endif %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="absence_navlabel">Abwesenheit</message>
+    <message id="absence_intro">Fahren Sie in den Urlaub oder können aus anderen Gründen für eine kurze Zeit nicht am Spiel teilnehmen? Melden Sie sich hier als abwesend und geben Sie einen Stellvertreter an. Dieser kann dann Ihre Teams führen bis Sie wieder anwesend sind.</message>
+    
+    <message id="absence_label_days">Tage</message>
+    <message id="absence_label_days_help">(voraussichtlich)</message>
+    
+    <message id="absence_err_invaliddeputy">Es konnte kein Benutzer mit dem eingegebenen Namen gefunden werden. Überprüfen Sie die Schreibweise.</message>
+    <message id="absence_err_deputyisself">Sorry, Sie dürfen sich leider nicht selbst vertreten.</message>
+    
+    <message id="absence_report_success">Erfolgreich als abwesend gemeldet!</message>
+    
+    <message id="absence_reportinfo">Sie sind bis zum %s als abwesend gemeldet. Ihr Stellvertreter ist <strong>%s</strong>.</message>
+    <message id="absence_return_button">Ich bin wieder zurück</message>
+    <message id="absence_return_success">Sie können Ihre Teams wieder managen!</message>
+    
+    <message id="absence_warning">Sie gelten derzeit als abwesend und können daher Ihre Teams nicht managen.</message>
+    
+    <message id="absence_profile_info">Der Benutzer ist bis zum %s abwesend.</message>
+    
+    <message id="absence_notification">{user} hat sich abwesend gemeldet und Sie als Stellvertreter für seine Teams angegeben.</message>
+    <message id="absence_comeback_notification">{user} hat sich aus seiner Abwesenheit zurückgemeldet und führt wieder seine Teams.</message>
+</messages>

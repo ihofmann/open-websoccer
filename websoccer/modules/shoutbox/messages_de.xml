@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+    <message id="shoutbox_title">Shoutbox</message>
+    <message id="shoutbox_messageinput_placeholder">Ihre Nachricht...</message>
+    <message id="shoutbox_button_go">Go</message>
+    
+    <message id="shoutbox_hiddensubmit_note">Sie müssen angemeldet sein und ein Spielbericht öffnen, um Nachrichten schreiben zu können.</message>
+</messages>

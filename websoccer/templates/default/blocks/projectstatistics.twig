@@ -1,0 +1,14 @@
+{% extends "box.twig" %}
+
+{% block box_title %}
+{{ i18n.getMessage('projectstatistics_title') }}
+{% endblock %}
+
+{% block box_content %}
+
+<p><a href="{{ env.getInternalUrl("who-is-online") }}" title="{{ i18n.getMessage("who-is-online_navlabel") }}">{% if usersOnline == 1 %}{{ i18n.getMessage("projectstatistics_onlineusers_single")|raw }}{% else %}{{ i18n.getMessage("projectstatistics_onlineusers", usersOnline)|raw }}{% endif %}.</a> {{ i18n.getMessage("projectstatistics_totalusers", usersTotal)|raw }}.</p>
+
+<p>{{ i18n.getMessage("projectstatistics_leagues", numberOfLeagues)|raw }}. <br>
+<a href="{{ env.getInternalUrl("freeclubs") }}">{{ i18n.getMessage("projectstatistics_freeteams", numberOfFreeTeams)|raw }}.</a></p>
+
+{% endblock %}

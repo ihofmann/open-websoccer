@@ -1,0 +1,9 @@
+<h4>{{ i18n.getMessage("nationalmatches_nextmatch_title") }}</h4>
+
+<p><em>{{ env.getFormattedDatetime(match.date) }} | {{ i18n.getMessage("option_" ~ match.type) }}</em></p>
+<p><strong><a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a> 
+	- 
+	<a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a>
+	</strong></p>
+<p><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" class="btn">{{ i18n.getMessage("match_navlabel") }}</a>
+<a href="{{ env.getInternalUrl("formation", "nationalteam=1&id=" ~ match.id) }}" class="btn">{{ i18n.getMessage("formation_navlabel") }}</a></p>

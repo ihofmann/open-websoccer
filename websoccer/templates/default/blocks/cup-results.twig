@@ -1,0 +1,48 @@
+{% import "macros/profileelements.twig" as profile %}
+
+<h3>{{ env.getRequestParameter("cup") }}</h3>
+
+{% if round|length > 0 and round.cup_logo|length > 0 %}
+<div style="text-align: center; margin-bottom: 10px;">
+	<img src="{{ env.getConfig("context_root") }}/uploads/cup/{{ round.cup_logo }}" class="img-rounded">
+</div>
+{% endif %}
+
+<h4>{{ env.getRequestParameter("round") }}</h4>
+
+{% if round|length > 0 %}
+
+	{% if round.prev_round_winners|length > 0 %}
+	<p>{{ i18n.getMessage("cup_created_from_winners_of_round", round.prev_round_winners|e)|raw }}</p>
+	{% elseif round.prev_round_loosers|length > 0 %}
+	<p>{{ i18n.getMessage("cup_created_from_loosers_of_round", round.prev_round_loosers|e)|raw }}</p>
+	{% endif %}
+	
+	
+	{% if groups|length > 0 %}
+		<h5>{{ i18n.getMessage("cup_title_groups") }}</h5>
+		<ul class="nav nav-pills">
+			{% for group in groups %}
+			<li class="clientsideNavItem{% if group == preSelectedGroup %} active{% endif %}"><a href="#" 
+			class="ajaxLink{% if group == preSelectedGroup %} triggerClickOnLoad{% endif %}"
+			data-ajaxtarget="grouptable" data-ajaxblock="cupgroupdetails"
+			data-ajaxquerystr="roundid={{ round.round_id }}&group={{ group }}">{{ group }}</a></li>
+			{% endfor %}
+		</ul>
+		
+		<hr>
+		<div id="grouptable">{{ i18n.getMessage("cup_group_select_group_placeholder") }}</div>
+	{% else %}
+		{% if round.secondround_date < 1 %}
+		{{ profile.infofield(i18n.getMessage("cup_firstround_only_date"), env.getFormattedDatetime(round.firstround_date)) }}
+		{% else %}
+		{{ profile.infofield(i18n.getMessage("cup_firstround"), env.getFormattedDatetime(round.firstround_date)) }}
+		{{ profile.infofield(i18n.getMessage("cup_secondround"), env.getFormattedDatetime(round.secondround_date)) }}
+		{% endif %}
+	{% endif %}
+{% endif %}
+
+{% if groups is not defined or groups|length == 0 %}
+<hr>
+{% include 'blocks/results-list.twig' %}
+{% endif %}

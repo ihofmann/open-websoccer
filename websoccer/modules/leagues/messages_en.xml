@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+    <message id="leagues_navlabel">Leagues</message>
+    <message id="leagues_title">Tables</message>
+    
+    <message id="league_navlabel">Table</message>
+    
+    <message id="leaguetable_block_title">Latest Table</message>
+    <message id="leaguetable_block_noteamsavailable">There are no teams in this league.</message>
+    
+    <message id="leaguetable_head_place">Position</message>
+    <message id="leaguetable_head_place_abbr">P</message>
+    <message id="leaguetable_head_club">Club</message>
+    <message id="leaguetable_head_matches">Matches</message>
+    <message id="leaguetable_head_matches_abbr">M</message>
+    <message id="leaguetable_head_wins">Wins</message>
+    <message id="leaguetable_head_wins_abbr">W</message>
+    <message id="leaguetable_head_draws">Draws</message>
+    <message id="leaguetable_head_draws_abbr">D</message>
+    <message id="leaguetable_head_defeats">Losses</message>
+    <message id="leaguetable_head_defeats_abbr">L</message>
+    <message id="leaguetable_head_goals">Goals</message>
+    <message id="leaguetable_head_goalsdiff">Goals Difference</message>
+    <message id="leaguetable_head_goalsdiff_abbr">GD</message>
+    <message id="leaguetable_head_score">Points</message>
+    
+    <message id="leaguetable_button_type">Table Type</message>
+    <message id="leaguetable_button_type_total">Total Standings</message>
+    <message id="leaguetable_button_type_home">Home Table</message>
+    <message id="leaguetable_button_type_guest">Away Table</message>
+    
+    <message id="leaguetable_timedelay_info">There might be a delay in displaying the most current standings.</message>
+</messages>

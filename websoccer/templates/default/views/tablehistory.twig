@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("tablehistory_title", teamName) }}
+{% endblock %}
+
+{% block page_content %}
+
+	<p><a href="{{ env.getInternalUrl("league", "id=" ~ leagueid) }}" class="btn"><i class="icon-table"></i> {{ i18n.getMessage("league_navlabel") }}</a></p>
+	
+
+	{% if history|length > 0 %}
+	
+		<div style="font-weight: bold;">{{ i18n.getMessage("leaguetable_head_place") }}</div>
+		<div style="position: relative">
+			<div id="leaguehistorychart" style="width: 90%; height: 600px; margin-left: 30px; margin-bottom: 30px"
+					data-maxpos="{{ noOfTeamsInLeague }}"
+	  				data-series="[{% for record in history %}{% if loop.index > 1 %}, {% endif %}[{{ record.matchday }}, {{ record.rank }}]{% endfor %}]"></div>
+			<div style="position: absolute; top: 595px; left: 50%; font-weight: bold;">{{ i18n.getMessage("entity_match_spieltag") }}</div>
+		</div>
+	{% endif %}
+	
+{% endblock %}
