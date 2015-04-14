@@ -1,12 +1,2 @@
 release
-websoccer/cache/*
-websoccer/uploads/buildings/*
-websoccer/uploads/club/*
-websoccer/uploads/cup/*
-websoccer/uploads/player/*
-websoccer/uploads/sponsor/*
-websoccer/uploads/stadium/*
-websoccer/uploads/stadiumbuilder/*
-websoccer/uploads/stadiumbuilding/*
-websoccer/uploads/users/*
 .gradle
