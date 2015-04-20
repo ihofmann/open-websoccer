@@ -40,13 +40,13 @@ class ConverterFactory {
 	 */
 	public static function getConverter($website, $i18n, $converter) {
 		
-		if (is_array(self::$_createdConverters) && isset(self::$_createdConverter[$converter])) {
-			return self::$_createdConverter[$converter];
+		if (isset(self::$_createdConverters[$converter])) {
+			return self::$_createdConverters[$converter];
 		}
 		
 		if (class_exists($converter)) {
 			$converterInstance = new $converter($i18n, $website);
-			self::$_createdConverter[$converter] = $converterInstance;
+			self::$_createdConverters[$converter] = $converterInstance;
 			return $converterInstance;
 		}
 		
