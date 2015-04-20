@@ -1,4 +1,4 @@
-def releaseVersion = "5.2.2"
+def releaseVersion = "5.2.3"
 def targetDirBase = './release/' + releaseVersion + '/'
 def targetDir = targetDirBase + "/websoccer"
 def targetUpdateDir = targetDirBase + '/update/websoccer'
