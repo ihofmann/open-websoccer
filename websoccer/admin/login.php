@@ -88,7 +88,7 @@ if ($inputUser or $inputPassword) {
 					$content = $admin['name'] .', '. $ip .', '. date('d.m.y - H:i:s');
 					$content .= "\n";
 					
-					$datei = 'config/adminlog.php';
+					$datei = '../generated/adminlog.php';
 					$fp = fopen($datei, 'a+');
 					
 					if (filesize($datei)) {

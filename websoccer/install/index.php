@@ -23,9 +23,9 @@ error_reporting(E_ALL);
 define("BASE_FOLDER", __DIR__ ."/..");
 
 define("PHP_MIN_VERSION", "5.3.0");
-define("WRITABLE_FOLDERS", "uploads/club/,uploads/cup/,uploads/player/,uploads/sponsor/,uploads/stadium/,uploads/stadiumbuilder/,uploads/stadiumbuilding/,uploads/users/,cache/,admin/config/adminlog.php,admin/config/entitylog.php,admin/config/config.inc.php,admin/config/imprint.php,admin/config/jobs.xml,admin/config/termsandconditions.xml");
+define("WRITABLE_FOLDERS", "generated/,uploads/club/,uploads/cup/,uploads/player/,uploads/sponsor/,uploads/stadium/,uploads/stadiumbuilder/,uploads/stadiumbuilding/,uploads/users/,admin/config/jobs.xml,admin/config/termsandconditions.xml");
 define("DEFAULT_DB_PREFIX", "ws3");
-define("CONFIGFILE", BASE_FOLDER . "/admin/config/config.inc.php");
+define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
 define("DDL_FULL", "ws3_ddl_full.sql");
 define("DDL_MIGRATION", "ws3_ddl_upgrade.sql");
 define("DDL_INDEX", "ws3_ddl_index.sql");
@@ -334,7 +334,7 @@ function actionSaveConfig() {
 	$filecontent .= "\$conf['systememail'] = \"". $_POST["systememail"] . "\";" . PHP_EOL;
 	$filecontent .= "?>" . PHP_EOL;
 	
-	$fp = fopen(CONFIGFILE, 'w');
+	$fp = fopen(CONFIGFILE, 'w+');
 	fwrite($fp, $filecontent);
 	fclose($fp);
 	

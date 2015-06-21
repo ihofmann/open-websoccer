@@ -39,7 +39,7 @@ if (!$show) {
 
   <?php
 
-  $datei = 'config/entitylog.php';
+  $datei = '../generated/entitylog.php';
 
   if (!file_exists($datei)) echo createErrorMessage($i18n->getMessage('alert_error_title'), $i18n->getMessage('all_logging_filenotfound'));
   else {
