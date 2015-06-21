@@ -1,4 +1,4 @@
-def releaseVersion = "5.2.3"
+def releaseVersion = "5.2.4-SNAPSHOT"
 def targetDirBase = './release/' + releaseVersion + '/'
 def targetDir = targetDirBase + "/websoccer"
 def targetUpdateDir = targetDirBase + '/update/websoccer'
@@ -37,26 +37,10 @@ release << {
 	    exclude 'uploads/stadium/*'
 	    exclude 'uploads/stadiumbuilding/*'
 	    exclude 'uploads/users/*'
+	    exclude 'generated/*'
     }
 
     println 'Copied files'
-}
-
-release << {
-
-	configfile = new File(targetDir + '/admin/config/config.inc.php')
-    configfile.text = ''
-
-    imprintfile = new File(targetDir + '/admin/config/imprint.php')
-    imprintfile.text = 'n.a.'
-    
-    adminlog = new File(targetDir + '/admin/config/adminlog.php')
-    adminlog.text = ''
-    
-    entitylog = new File(targetDir + '/admin/config/entitylog.php')
-    entitylog.text = ''
-
-    println 'Emptied files'
 }
 
 release << {
