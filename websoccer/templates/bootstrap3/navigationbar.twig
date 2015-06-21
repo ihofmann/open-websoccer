@@ -1,0 +1,40 @@
+{% import "macros/navitem.twig" as navitemTemplate %}
+
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#websoccer-nav" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="{{ env.getConfig("context_root") }}" title="{{ i18n.getNavigationLabel("home") }}">{{ env.getConfig("projectname") }}</a>
+	    </div>
+		
+		<div class="collapse navbar-collapse" id="websoccer-nav">
+			<ul class="nav navbar-nav" role="menu">
+				{% for navItem in navItems %}
+				
+				{% if navItem.children|length > 0 %}
+				<li role="menuitem" class="dropdown{% if navItem.isActive %}  active{% endif %}">
+					<a class="dropdown-toggle" id="label{{ navItem.pageId }}" role="button"
+						data-toggle="dropdown" href="#">
+						{{ navItem.label }} <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="label{{ navItem.pageId }}">
+						{{ navitemTemplate.item(navItem.pageId, navItem.label, false) }}
+						{% for navChild in navItem.children %}
+						{{ navitemTemplate.item(navChild.pageId, navChild.label, navChild.isActive) }}
+						{% endfor %}
+					</ul>
+				</li>
+				{% else %}
+				{{ navitemTemplate.item(navItem.pageId, navItem.label, navItem.isActive) }}
+				{% endif %}
+
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>

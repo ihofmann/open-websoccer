@@ -50,6 +50,7 @@ release << {
         include 'classes/**'
         include 'admin/config/version.txt'
         include 'update/**'
+        include 'templates/bootstrap3/**'
         into targetUpdateDir
     }
     

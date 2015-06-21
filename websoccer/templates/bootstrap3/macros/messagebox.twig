@@ -1,0 +1,12 @@
+{% macro box(title, message, type) %}
+{%  set alertClass = (type == 'error') ? 'danger' : type %}
+<div class="alert alert-block alert-{{ alertClass|default('error') }}">
+	{%  if message|length > 0 %}
+	  <h4>{{ title }}</h4>
+	  {{ message }}
+	{% else %}
+		<strong>{{ title }}</strong>
+	{% endif %}
+</div>
+
+{% endmacro %}
