@@ -37,7 +37,7 @@ if (!$show) {
 
   <?php
 
-  $datei = '../generated/adminlog.php';
+  $datei = 'config/adminlog.php';
 
   if (!file_exists($datei)) echo createErrorMessage($i18n->getMessage('alert_error_title'), $i18n->getMessage('all_logging_filenotfound'));
   elseif ($admin['r_demo']) echo createErrorMessage($i18n->getMessage('error_access_denied'), '');

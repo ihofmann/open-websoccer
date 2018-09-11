@@ -103,7 +103,7 @@ function createMessage($severity, $title, $message) {
 function logAdminAction(WebSoccer $websoccer, $type, $username, $entity, $entityValue) {
 	$userIp = getenv('REMOTE_ADDR');
 	$message = $websoccer->getFormattedDatetime($websoccer->getNowAsTimestamp()) . ';' . $username . ';' . $userIp . ';' . $type . ';' . $entity . ';' . $entityValue;
-	$file = BASE_FOLDER . '/generated/entitylog.php';
+	$file = BASE_FOLDER . '/admin/config/entitylog.php';
 	
 	$fw = new FileWriter($file, FALSE);
 	$fw->writeLine($message);
