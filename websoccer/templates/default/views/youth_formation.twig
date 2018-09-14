@@ -12,31 +12,35 @@
 		<input type="hidden" name="matchid" value="{{ env.getRequestParameter("matchid") }}" />
 		
 		<h4>{{ i18n.getMessage("formation_setup_title") }}</h4>
-		
+		{{ i18n.getMessage("player_position_defense") }}
 		<select class="input-mini wstooltip" name="formation_defense" title="{{ i18n.getMessage("player_position_defense") }}">
 			{% for i in 1..4 %}
 				<option value="{{ i }}"{% if setup.defense == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
+		{{ i18n.getMessage("option_DM") }}
 		<select class="input-mini wstooltip" name="formation_defensemidfield" title="{{ i18n.getMessage("option_DM") }}">
 			{% for i in 0..2 %}
 				<option value="{{ i }}"{% if setup.dm == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
+		{{ i18n.getMessage("player_position_midfield") }}
 		<select class="input-mini wstooltip" name="formation_midfield" title="{{ i18n.getMessage("player_position_midfield") }}">
 			{% for i in 0..4 %}
 				<option value="{{ i }}"{% if setup.midfield == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
+		{{ i18n.getMessage("option_OM") }}
 		<select class="input-mini wstooltip" name="formation_offensivemidfield" title="{{ i18n.getMessage("option_OM") }}">
 			{% for i in 0..2 %}
 				<option value="{{ i }}"{% if setup.om == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
+		{{ i18n.getMessage("player_position_striker") }}
 		<select class="input-mini wstooltip" name="formation_forward" title="{{ i18n.getMessage("player_position_striker") }}">
 			{% for i in 0..3 %}
 				<option value="{{ i }}"{% if setup.striker == i %} selected{% endif %}>{{ i }}</option>

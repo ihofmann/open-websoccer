@@ -133,30 +133,32 @@
 	
 	<p>{{ i18n.getMessage("match_details_changes_max_help", env.getConfig("sim_allow_offensivechanges")) }}</p>
 	
-	{{ formelements.slider("offensive", formation.offensive) }}
+	<!--{{ formelements.slider("offensive", formation.offensive) }}-->
 	
-		<div class="form-horizontal" style="margin-top: 10px">
-			<div class="control-group">
-				<label class="control-label" for="longpasses">{{ i18n.getMessage("formation_option_longpasses") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_longpasses_help') }}"></i></label>
-				<div class="controls">
-					<div class="make-switch" 
-						data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
-						data-on="success" data-off="warning">
-						<input type="checkbox" id="longpasses" name="longpasses" value="1"{% if formation.longpasses is defined and formation.longpasses %} checked{% endif %}>
-					</div>
-				</div>
+	1-100 Prozent: <input id="offensive" name="offensive" type="number" required="true" min="1" max="100" value="{{ formation.offensive }}" />
+	
+	<div class="form-horizontal" style="margin-top: 10px">
+		<div class="control-group">
+			<label class="control-label" for="longpasses">{{ i18n.getMessage("formation_option_longpasses") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_longpasses_help') }}"></i></label>
+			<div class="controls">
+				<!--<div class="make-switch" 
+					data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
+					data-on="success" data-off="warning">-->
+					<input type="checkbox" id="longpasses" name="longpasses" value="1"{% if formation.longpasses is defined and formation.longpasses %} checked{% endif %}>
+				<!--</div>-->
 			</div>
-			
-			<div class="control-group">
-				<label class="control-label" for="counterattacks">{{ i18n.getMessage("formation_option_counterattacks") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_counterattacks_help') }}"></i></label>
-				<div class="controls">
-					<div class="make-switch" 
-						data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
-						data-on="success" data-off="warning">
-						<input type="checkbox" id="counterattacks" name="counterattacks" value="1"{% if formation.counterattacks is defined and formation.counterattacks %} checked{% endif %}>
-					</div>
-				</div>
+		</div>
+		
+		<div class="control-group">
+			<label class="control-label" for="counterattacks">{{ i18n.getMessage("formation_option_counterattacks") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_counterattacks_help') }}"></i></label>
+			<div class="controls">
+				<!--<div class="make-switch" 
+					data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
+					data-on="success" data-off="warning">-->
+					<input type="checkbox" id="counterattacks" name="counterattacks" value="1"{% if formation.counterattacks is defined and formation.counterattacks %} checked{% endif %}>
+				<!--</div>-->
 			</div>
+		</div>
 		</div>
 	
 		<div class="form-actions" style="text-align: center">
