@@ -29,14 +29,18 @@
 		{% endif %}
 		{{ env.getConfig("head_code")|raw }}
 	</head>
+
+
+
+	
 	<body>
 	
 		{% block navigation %}
 		{% include 'navigationbar.twig' %}
 		{% endblock %}
 	
-		<div class="container">	
-		
+		<div class="container">	<div class="layout">
+		                      
 			{% block page_header %}
 			{% endblock %}
 		
@@ -98,11 +102,11 @@
 	        	<p><a href="{{ env.getInternalUrl("termsandconditions") }}">{{ i18n.getMessage("termsandconditions_navlabel") }}</a> 
 	        	{% if env.getConfig("privacypolicy_url")|length > 0 %}| <a href="{{ env.getConfig("privacypolicy_url") }}">{{ i18n.getMessage("privacypolicy_navlabel") }}</a>{% endif %}
 	        	| <a href="{{ env.getInternalUrl("imprint") }}">{{ i18n.getMessage("imprint_navlabel") }}</a> 
-	        	| Powered by <a href="http://www.websoccer-sim.com" target="_blank">OpenWebSoccer-Sim</a>
-	        	| <i class="icon-time"></i> {{ env.getFormattedDatetime(null) }}
+	        	|  <a href="https://topcup.pl" target="_blank">topcup.pl</a>
+	        	| <i class="icon-time"></i> {{ env.getFormattedDatetime(null) }}| {{ viewHandler.renderBlock('language-switcher')|raw }}
 	        	</p>
 			</footer>
-			
+			</div>
 		</div>
 		
 		<div id="ajaxLoaderPage"></div>
@@ -119,5 +123,6 @@
 		<!--[if lt IE 9]>
 		<script src="js/extcanvas/excanvas.compiled.js"></script>
 		<![endif]-->
+		
 	</body>
 </html>
