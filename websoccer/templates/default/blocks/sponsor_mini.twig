@@ -1,0 +1,32 @@
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{# blok stworzony do pokazywania nazwy sponsora dla sidebar profilu #}
+
+
+{% block page_title %}
+{# {{ i18n.getMessage("sponsor_navlabel") }} #} {# tytuł bloku  #}
+{% endblock %}
+
+{% block page_content %}
+
+{# show current sponsor details #}
+{% if sponsor is defined and sponsor|length > 0 %}
+
+{# pokazuje ostylowaną nazwę sponsora albo logo jeśli wgramy #}
+	{% if sponsor.picture|length == 0 %}{{ i18n.getMessage("sponsor_navlabel") }}
+	<div style="text-align: center; margin-bottom: 40px; font-family: Georgia, “Times New Roman”, Times, serif,Lucida; font-size:25px; text-shadow: black 0.1em 0.1em 0.2em; ">{{(sponsor.name)}}</div>
+	
+	{% endif %}
+
+	
+
+
+	
+			
+	
+
+{% endif %}
+
+{% endblock %}

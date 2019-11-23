@@ -6,7 +6,7 @@
 
 {% block box_content %}
 
-<ul class="unstyled">
+<span class="oi oi-spreadsheet"></span><ul class="unstyled">
 	{% for article in topnews %}
 		<li><small>{{ article.date }}</small> <a href="{{ env.getInternalUrl("news-details", "id=" ~ article.id) }}">{{ article.title }}</a></li>
 	{% endfor %}

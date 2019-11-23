@@ -25,8 +25,8 @@
 				<th><abbr title="{{ i18n.getMessage("leaguetable_head_wins") }}">{{ i18n.getMessage("leaguetable_head_wins_abbr") }}</abbr></th>
 				<th><abbr title="{{ i18n.getMessage("leaguetable_head_draws") }}">{{ i18n.getMessage("leaguetable_head_draws_abbr") }}</abbr></th>
 				<th><abbr title="{{ i18n.getMessage("leaguetable_head_defeats") }}">{{ i18n.getMessage("leaguetable_head_defeats_abbr") }}</abbr></th>
-				<th>{{ i18n.getMessage("leaguetable_head_goals") }}</th>
-				<th><abbr title="{{ i18n.getMessage("leaguetable_head_goalsdiff") }}">{{ i18n.getMessage("leaguetable_head_goalsdiff_abbr") }}</abbr></th>
+				
+				
 				<th>{{ i18n.getMessage("leaguetable_head_score") }}</th>
 			</tr>
 		</thead>
@@ -67,8 +67,8 @@
 					<td>{{ team.wins }}</td>
 					<td>{{ team.draws }}</td>
 					<td>{{ team.defeats }}</td>
-					<td>{{ team.goals }}:{{ team.goals_received }}</td>
-					<td>{{ team.goals_diff }}</td>
+					
+					
 					<td>{{ team.score }}
 					{% if team.previous_rank is defined and team.previous_rank > 0 %}
 						<a href="{{ env.getInternalUrl("tablehistory", "id=" ~ team.id) }}" style="text-decoration: none" title="{{ i18n.getMessage("tablehistory_navlabel") }}">
@@ -87,7 +87,7 @@
 		</tbody>
 	</table>
 	
-	{% if markers is defined and markers|length > 0 %}
+	{#{% if markers is defined and markers|length > 0 %}
 		<h5>{{ i18n.getMessage("entity_tablemarker") }}</h5>
 		<table class="table table-condensed" style="width: auto;">
 			<colgroup>
@@ -107,7 +107,7 @@
 			{% endfor %}
 			</tbody>
 		</table>
-	{% endif %}
+	{% endif %}#}
 	
 {% else %}
 	{{ messagebox.box(i18n.getMessage("leaguetable_block_noteamsavailable"), "", "info") }}

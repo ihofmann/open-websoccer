@@ -1,0 +1,25 @@
+{% import "macros/statisticelements.twig" as statisticelements %}
+{% import "macros/formelements.twig" as formelements %}
+{% extends "box.twig" %}
+{% block box_title %}
+{{ i18n.getMessage("tickets_navlabel") }}
+{% endblock %}
+
+{% block box_content %}
+
+{# oblicza procentową wartość sprzedanych biletów #}
+
+
+
+	<b>{{ i18n.getMessage("tickets_sold_last_match")}}</b><br/>
+	{{ i18n.getMessage('tickets_stands')}} {{ statisticelements.progressbar((tickets.l_stands|round(1, 'common') / tickets.s_stands|round(1, 'common') * 100)|round(2, 'common')) }}
+	{{ i18n.getMessage('tickets_seats')}} {{ statisticelements.progressbar((tickets.l_seats|round(1, 'common') / tickets.s_seats|round(1, 'common') * 100)|round(2, 'common')) }}
+	{{ i18n.getMessage('tickets_stands_grand')}} {{ statisticelements.progressbar((tickets.l_stands_grand|round(1, 'common') / tickets.s_stands_grand|round(1, 'common') * 100)|round(2, 'common')) }}
+    {{ i18n.getMessage('tickets_seats_grand')}} {{ statisticelements.progressbar((tickets.l_seats_grand|round(1, 'common') / tickets.s_seats_grand|round(1, 'common') * 100)|round(2, 'common')) }}
+	{{ i18n.getMessage('tickets_vip')}} {{ statisticelements.progressbar((tickets.l_vip|round(1, 'common') / tickets.s_vip|round(1, 'common') * 100)|round(2, 'common')) }}
+	
+	
+	
+
+
+{% endblock %}

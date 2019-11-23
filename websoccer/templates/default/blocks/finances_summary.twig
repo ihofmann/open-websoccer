@@ -11,10 +11,10 @@
 					{% endif %}		
 				</strong></td>
 				<td>
-					{% if majorPosition.balance < 0 %}<span style="color: red">{% endif %}
+					{% if majorPosition.balance < 0 %}<span style="color: #000000">{% endif %}
 					{{ majorPosition.balance|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
 					{% if majorPosition.balance < 0 %}</span>{% endif %}<br/>
-					(&empty; {% if majorPosition.avgAmount < 0 %}<span style="color: red">{% endif %}
+					(&empty; {% if majorPosition.avgAmount < 0 %}<span style="color: #000000">{% endif %}
 					{{ majorPosition.avgAmount|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
 					{% if majorPosition.avgAmount < 0 %}</span>{% endif %})		
 				</td>

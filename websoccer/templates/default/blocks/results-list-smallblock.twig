@@ -10,7 +10,12 @@
 <table class="table table-borderless table-striped">
 	{% for match in matches %}
 	  <tr>
-	    <td><a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a> - <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a></td>
+	    <td>{% if match.home_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.home_team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a> - {% if match.guest_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.guest_team_picture }}" style="max-width: 20px"/>
+					{% endif %}<a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a></td>
 	    <td><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" title="{{ i18n.getMessage("match_navlabel") }}">{{ match.home_goals }}:{{ match.guest_goals }}</a></td>
 	  </tr>
 	{% endfor %}

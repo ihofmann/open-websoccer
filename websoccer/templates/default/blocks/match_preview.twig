@@ -3,9 +3,9 @@
 	<div class="span6 text-center">
 		{% if homeUser != null %}
 			{% if homeUser.picture|length > 0 %}
-				<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}"><img src="{{ homeUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
+				{#<!--<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}"><img src="{{ homeUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>#}
 			{% endif %}
-			<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}">{{ homeUser.nick }}</a></p>
+			{#<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}">{{ homeUser.nick }}</a></p>-->#}
 		{% else %}
 			<p>{{ i18n.getMessage("matchpreview_nouser", match.match_home_name) }}</p>
 		{% endif %}
@@ -13,9 +13,9 @@
 	<div class="span6">
 		{% if guestUser != null %}
 			{% if guestUser.picture|length > 0 %}
-				<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}"><img src="{{ guestUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
+				{#<!--<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}"><img src="{{ guestUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>#}
 			{% endif %}
-			<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}">{{ guestUser.nick }}</a></p>
+			{#<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}">{{ guestUser.nick }}</a></p>-->#}
 		{% else %}
 			<p>{{ i18n.getMessage("matchpreview_nouser", match.match_guest_name) }}</p>
 		{% endif %}
@@ -27,7 +27,11 @@
 <div class="row-fluid">
 	<div class="span6">
 		{% if latestMatchesHome|length > 0 %}
-			{% if match.match_home_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
+			{% if match.match_home_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; max-width: 120px; border-radius:0px;"/>
+			{% else %}<img src="{{ env.getConfig("context_root") }}/img/defaultclubs.png" style="max-height: 120px; margin-right: 20px;margin-left: 35px; border-radius:0px; opacity: 0.3"/></p>
+			{% endif %}<p class="text-center"><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}">{{ homeUser.nick }}</a></p>
+		
+			
 			<table class="table table-striped">
 			{% for previousMatch in latestMatchesHome %}
 				<tr>
@@ -43,7 +47,9 @@
 	</div>
 	<div class="span6">
 		{% if latestMatchesGuest|length > 0 %}
-			{% if match.match_guest_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
+			{% if match.match_guest_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; max-width: 120px; border-radius:0px;"/>
+			{% else %}<img src="{{ env.getConfig("context_root") }}/img/defaultclubs.png" style="max-height: 120px; margin-right: 20px;margin-left: 35px; border-radius:0px; opacity: 0.3"/></p>
+			{% endif %}<p class="text-center"><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}">{{ guestUser.nick }}</a></p>
 			<table class="table table-striped">
 			{% for previousMatch in latestMatchesGuest %}
 				<tr>

@@ -1,5 +1,6 @@
 {% extends "box.twig" %}
 
+
 {% import "macros/statisticelements.twig" as statisticelements %}
 
 {% block box_title %}
@@ -67,6 +68,10 @@
 {% if env.getConfig("premium_enabled") %}
 	<p><em>{{ i18n.getMessage('entity_users_premium_balance') }}</em><br/>
 	<a href="{{ env.getInternalUrl("premiumaccount") }}">{{ env.user.premiumBalance|number_format(0, ',', ' ') }} {{ env.getConfig("premium_credit_unit") }}</a></p>
+{% endif %}
+{% if env.getUser().clubId > 0 %}
+
+{{ viewHandler.renderBlock('sponsor_mini')|raw }}
 {% endif %}
 
 <p><i class="icon-off"></i> <a href="{{ env.getInternalActionUrl("logout") }}"> {{ i18n.getMessage('userprofile_block_link_logout') }}</a>

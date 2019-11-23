@@ -1,0 +1,87 @@
+
+
+
+{% block page_title %}
+{{ i18n.getMessage("freeclubs_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if countries|length > 0 %}
+
+<div class="accordion" id="countries">
+	{% for country,clubs in countries %}
+		{% set nationImg = skin.getImage("flags/players/" ~ country ~ ".png") %}
+		{% if i18n.hasMessage("option_" ~ country) %}
+			{% set countryLabel = i18n.getMessage("option_" ~ country) %}
+		{% else %}
+			{% set countryLabel = country %}
+		{% endif %}
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse"
+				data-parent="#countries" href="#collapse{{ loop.index }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %} {{ countryLabel }} ({{ clubs|length }})</a>
+		</div>
+		<div id="collapse{{ loop.index }}" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>{{ i18n.getMessage("entity_club_name") }}</th>
+							
+							<th>{{ i18n.getMessage("entity_club_liga_id") }}</th>
+							<th>{{ i18n.getMessage("entity_club_finanz_budget") }}</th>
+							<th>&nbsp;</th>
+							{% if env.getConfig("assign_team_automatically") %}
+							<th>{{ i18n.getMessage("freeclubs_head_choose") }}</th>
+							{% endif %}
+						</tr>
+					</thead>
+					<tbody>
+					{% for club in clubs %}
+						<tr style="background color: yellow">
+							<td>
+								{% if club.team_picture|length %}
+									<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ club.team_picture }}" style="max-width: 40px"/>
+								{% endif %}
+								<a href="{{ env.getInternalUrl("team", "id=" ~ club.team_id ) }}">{{ club.team_name }}</a>
+									
+								
+									
+								<small>	
+									<p><strong>{{ i18n.getMessage("entity_stadium") }}</strong>
+									{{ (club.stadium_p_steh + club.stadium_p_sitz + club.stadium_p_haupt_steh + club.stadium_p_haupt_sitz + club.stadium_p_vip)|number_format(0, ',', ' ') }}</p>
+								</small>
+							</td>
+							
+							<td><a href="{{ env.getInternalUrl("league", "id=" ~ club.league_id ) }}">{{ club.league_name }}</a></td>
+							<td>
+							{{ club.team_budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
+							</td>
+							<td>
+
+							</td>
+							{% if env.getConfig("assign_team_automatically") %}
+							<td>
+								{% if env.user.clubId < 1 %}
+									<a href="{{ env.getInternalActionUrl("choose-team", "teamId=" ~ club.team_id) }}" class="btn btn-small"><i class="icon-file-text-alt"></i> {{ i18n.getMessage("freeclubs_button_choose") }}</a>
+								{% elseif env.getConfig("max_number_teams_per_user") > 1 %}
+									<a href="{{ env.getInternalActionUrl("choose-additional-team", "teamId=" ~ club.team_id) }}" class="btn btn-small"><i class="icon-file-text-alt"></i> {{ i18n.getMessage("freeclubs_button_choose_another") }}</a>
+								{% endif %}
+							</td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% else %}
+	<p>{{ i18n.getMessage("freeclubs_no_free_clubs_available") }}</p>
+{% endif %}
+
+{% endblock %}

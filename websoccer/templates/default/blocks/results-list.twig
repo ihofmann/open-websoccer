@@ -34,11 +34,11 @@
 						<i class="icon-bolt wstooltip" title="{{ i18n.getMessage("match_details_noformation", match.home_team) }}"></i>
 					{% endif %}
 					{% if match.home_user_id > 0 %}
-						<br>
+						<!--<br>
 						{% if match.home_user_picture|length > 0 %}
 							<a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}"><img src="{{ match.home_user_picture }}" style="width: 20px; height: 20px"/></a>
 						{% endif %}
-						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}">{{ match.home_user_nick }}</a></small>
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}">{{ match.home_user_nick }}</a></small>-->
 					{% endif %}
 				</td>
 				<td>
@@ -50,11 +50,11 @@
 						<i class="icon-bolt wstooltip" title="{{ i18n.getMessage("match_details_noformation", match.guest_team) }}"></i>
 					{% endif %}
 					{% if match.guest_user_id > 0 %}
-						<br>
+						<!--<br><br>
 						{% if match.guest_user_picture|length > 0 %}
 							<a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}"><img src="{{ match.guest_user_picture }}" style="width: 20px; height: 20px"/></a>
 						{% endif %}
-						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}">{{ match.guest_user_nick }}</a></small>
+						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}">{{ match.guest_user_nick }}</a></small>-->
 					{% endif %}
 				</td>
 				<td><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" title="{{ i18n.getMessage("match_navlabel") }}">

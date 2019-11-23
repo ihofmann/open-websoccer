@@ -6,5 +6,10 @@
 
 {% block box_content %}
 
-<a href="{{ env.getInternalUrl("match", "id=" ~ match.match_id) }}">{{ match.match_home_name }} - {{ match.match_guest_name }}</a>
+{% if match.home_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.home_team_picture }}" style="max-width: 20px"/>
+					{% endif %}
+					<a href="{{ env.getInternalUrl("match", "id=" ~ match.match_id) }}">{{ match.match_home_name }} - {% if match.guest_team_picture|length %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.guest_team_picture }}" style="max-width: 20px"/>
+					{% endif %}{{ match.match_guest_name }}</a>
 {% endblock %}

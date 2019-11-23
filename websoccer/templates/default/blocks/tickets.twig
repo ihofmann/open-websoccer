@@ -1,0 +1,38 @@
+{% import "macros/statisticelements.twig" as statisticelements %}
+{% import "macros/formelements.twig" as formelements %}
+
+{% block page_title %}
+{{ i18n.getMessage("tickets_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+
+{% if env.getConfig("sim_home_field_advantage") > 0 %}
+	
+{% endif %}
+
+<form class="form-horizontal" method="post">
+{# oblicza procentową wartość sprzedanych biletów #}
+	<b>{{ i18n.getMessage('tickets_stands')}}</b><br/>
+		{{i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_stands|number_format(0, ',', ' ') ~ "/" ~ tickets.s_stands|number_format(0, ',', ' ') }} {# {{ statisticelements.progressbar((tickets.l_stands|round(1, 'common') / tickets.s_stands|round(1, 'common') * 100)|round(2, 'common')) }}#}
+
+	<br/><br/>
+	<strong>{{ i18n.getMessage('tickets_seats')}}</strong><br/>
+		{{i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_seats|number_format(0, ',', ' ') ~ "/" ~ tickets.s_seats|number_format(0, ',', ' ') }} {# {{ statisticelements.progressbar((tickets.l_seats|round(1, 'common') / tickets.s_seats|round(1, 'common') * 100)|round(2, 'common')) }} #}
+	<br/><br/>
+		<strong>{{ i18n.getMessage('tickets_stands_grand')}}</strong><br/>
+		{{i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_stands_grand|number_format(0, ',', ' ') ~ "/" ~ tickets.s_stands_grand|number_format(0, ',', ' ') }} {# {{ statisticelements.progressbar((tickets.l_stands_grand|round(1, 'common') / tickets.s_stands_grand|round(1, 'common') * 100)|round(2, 'common')) }} #}
+	<br/><br/>
+	<strong>{{ i18n.getMessage('tickets_seats_grand')}}</strong><br/>
+		{{i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_seats_grand|number_format(0, ',', ' ') ~ "/" ~ tickets.s_seats_grand|number_format(0, ',', ' ') }} {# {{ statisticelements.progressbar((tickets.l_seats_grand|round(1, 'common') / tickets.s_seats_grand|round(1, 'common') * 100)|round(2, 'common')) }} #}
+	<br/><br/>
+	<strong>{{ i18n.getMessage('tickets_vip')}}</strong><br/>
+		{{i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_vip|number_format(0, ',', ' ') ~ "/" ~ tickets.s_vip|number_format(0, ',', ' ') }} {# {{ statisticelements.progressbar((tickets.l_vip|round(1, 'common') / tickets.s_vip|round(1, 'common') * 100)|round(2, 'common')) }} #}
+	<br/><br/>
+	
+	<input type="hidden" name="page" value="tickets"/>
+	<input type="hidden" name="action" value="save-tickets"/>
+</form>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% import "macros/messagebox.twig" as messagebox %}
+{% import "macros/paginator.twig" as pagination %}
+
+<p>
+{{ i18n.getMessage("friendlyopenmatches_description") }}
+</p>
+{% if matches is defined and matches|length > 0 %}
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_match_datum") }}</th>
+				<th>{{ i18n.getMessage("entity_match_home_verein") }}</th>
+				<th>{{ i18n.getMessage("entity_match_gast_verein") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for match in matches %}
+			<tr>
+				<td>{{ env.getFormattedDatetime(match.date) }}</td>
+				<td><a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a></td>
+				<td><a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a></td>
+			</tr>
+			<tr>
+				<td style="text-align: center" colspan="2"><a class="btn btn-mini" href="{{ env.getInternalUrl("decline-friendly", "id=" ~ match.id) }}"><i class="icon-thumbs-down"></i> {{ i18n.getMessage("decline-friendly") }}</a></td>
+				<td style="text-align: center">
+			{% if (match.home_id != myTeam) and (match.home_id != myNationalTeam) %}
+				<a class="btn btn-mini" href="{{ env.getInternalUrl("accept-friendly", "id=" ~ match.id) }}"><i class="icon-thumbs-up"></i> {{ i18n.getMessage("accept-friendly") }}</a>
+			{% endif %}
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	
+	{% if paginator is defined and paginator is not null %}
+		{{ pagination.paginator(paginator) }}
+	{% endif %}
+	
+{% else %}
+	{{ messagebox.box(i18n.getMessage("results_no_matches_found"), "", "info") }}
+{% endif %}
