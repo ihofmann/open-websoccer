@@ -17,7 +17,7 @@
 
 <p>{{ article.teaser|raw }}</p>
 
-<p style="margin-bottom: 30px;"><a href="{{ env.getInternalUrl("news-details", "id=" ~ article.id) }}">Mehr</a></p>
+<p style="margin-bottom: 30px;"><a href="{{ env.getInternalUrl("news-details", "id=" ~ article.id) }}">Czytaj więcej</a></p>
 {% endfor %}
 
 {{ pagination.paginator(paginator) }}

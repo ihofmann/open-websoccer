@@ -28,7 +28,9 @@
 					<thead>
 						<tr>
 							<th>{{ i18n.getMessage("entity_club_name") }}</th>
+							<th>{{ i18n.getMessage("entity_player_w_staerke") }}</th>
 							<th>{{ i18n.getMessage("entity_club_liga_id") }}</th>
+							<th>{{ i18n.getMessage("entity_club_finanz_budget") }}</th>
 							<th>&nbsp;</th>
 							{% if env.getConfig("assign_team_automatically") %}
 							<th>{{ i18n.getMessage("freeclubs_head_choose") }}</th>
@@ -37,27 +39,29 @@
 					</thead>
 					<tbody>
 					{% for club in clubs %}
-						<tr>
+						<tr style="background color: yellow">
 							<td>
 								{% if club.team_picture|length %}
 									<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ club.team_picture }}" style="max-width: 40px"/>
 								{% endif %}
 								<a href="{{ env.getInternalUrl("team", "id=" ~ club.team_id ) }}">{{ club.team_name }}</a>
-							</td>
-							<td><a href="{{ env.getInternalUrl("league", "id=" ~ club.league_id ) }}">{{ club.league_name }}</a></td>
-							<td>
-								<small>
-									<p><strong>{{ i18n.getMessage("entity_player_w_staerke") }}</strong><br>
-									{% for strengthlevel in 1..5 %}
-										<i class="icon-star{% if (30 + strengthlevel * 10) > club.team_strength %}-empty{% endif %}"></i>
-									{% endfor %}</p>
-								
-									<p><strong>{{ i18n.getMessage("entity_club_finanz_budget") }}</strong><br>
-									{{ club.team_budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</p>
 									
-									<p><strong>{{ i18n.getMessage("entity_stadium") }}</strong><br>
+								
+									
+								<small>	
+									<p><strong>{{ i18n.getMessage("entity_stadium") }}</strong>
 									{{ (club.stadium_p_steh + club.stadium_p_sitz + club.stadium_p_haupt_steh + club.stadium_p_haupt_sitz + club.stadium_p_vip)|number_format(0, ',', ' ') }}</p>
 								</small>
+							</td>
+							<td>{% for strengthlevel in 1..5 %}
+										<i class="icon-star{% if (30 + strengthlevel * 10) > club.team_strength %}-empty{% endif %}" style=color:yellow></i>
+									{% endfor %}</td>
+							<td><a href="{{ env.getInternalUrl("league", "id=" ~ club.league_id ) }}">{{ club.league_name }}</a></td>
+							<td>
+							{{ club.team_budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
+							</td>
+							<td>
+
 							</td>
 							{% if env.getConfig("assign_team_automatically") %}
 							<td>

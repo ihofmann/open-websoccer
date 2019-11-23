@@ -13,10 +13,13 @@
 {# show current sponsor details #}
 {% if sponsor is defined and sponsor|length > 0 %}
 
-
-	{% if sponsor.picture|length > 0 %}
+{# pokazuje ostylowaną nazwę sponsora albo logo jeśli wgramy #}
+	{% if sponsor.picture|length == 0 %}
+	<div style="text-align: center; margin-bottom: 40px; font-family: Georgia, “Times New Roman”, Times, serif,Lucida; font-size:55px; text-shadow: black 0.1em 0.1em 0.2em;">{{(sponsor.name)}}</div>
+	{% else %}
 	<div style="text-align: center; margin-bottom: 10px;">
-	<img src="{{ env.getConfig("context_root") }}/uploads/sponsor/{{ sponsor.picture }}" class="img-rounded">
+	<img src="{{ env.getConfig("context_root") }}/uploads/sponsor/{{ sponsor.picture }}" class="img-rounded" style="height:160px; width:240px"></p>
+	
 	</div>
 	{% endif %}
 

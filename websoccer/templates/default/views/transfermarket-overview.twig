@@ -3,7 +3,7 @@
 {% import "macros/paginator.twig" as pagination %}
 {% import "macros/playerlists.twig" as playerlists %}
 {% import "macros/messagebox.twig" as messagebox %}
-
+{% import "macros/statisticelements.twig" as statisticelements %}
 {% block page_title %}
 {{ i18n.getMessage("transfermarket_title") }}
 {% endblock %}
@@ -80,15 +80,16 @@
 					<td>
 						<ul class="unstyled">
 							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength") }}">{{ i18n.getMessage("playertable_head_strength_abbr") }}</abbr>:</span> 
-								<span {{ playerlists.strengthClass(player.strength) }}>{{ player.strength }}</span></li>
-							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr>:</span> 
-								<span {{ playerlists.strengthClass(player.strength_technique) }}>{{ player.strength_technique }}</span></li>
+								<span {{ playerlists.strengthClass(player.strength) }}>{{ statisticelements.progressbar(player.strength) }}
+								</span></li>
+							<!--<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr>:</span> 
+								<span {{ playerlists.strengthClass(player.strength_technique) }}>{{ statisticelements.progressbar(player.strength_technique) }}</span></li>
 							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_freshness") }}">{{ i18n.getMessage("playertable_head_strength_freshness_abbr") }}</abbr>:</span> 
-								<span {{ playerlists.strengthClass(player.strength_freshness) }}>{{ player.strength_freshness }}</span></li>
+								<span {{ playerlists.strengthClass(player.strength_freshness) }}>{{ statisticelements.progressbar(player.strength_freshness) }}</span></li>
 							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_stamina") }}">{{ i18n.getMessage("playertable_head_strength_stamina_abbr") }}</abbr>:</span> 
-								<span {{ playerlists.strengthClass(player.strength_stamina) }}>{{ player.strength_stamina }}</span></li>
+								<span {{ playerlists.strengthClass(player.strength_stamina) }}>{{ statisticelements.progressbar(player.strength_stamina) }}</span></li>
 							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_satisfaction") }}">{{ i18n.getMessage("playertable_head_strength_satisfaction_abbr") }}</abbr>:</span> 
-								<span {{ playerlists.strengthClass(player.strength_satisfaction) }}>{{ player.strength_satisfaction }}</span></li>
+								<span {{ playerlists.strengthClass(player.strength_satisfaction) }}>{{ statisticelements.progressbar(player.strength_satisfaction) }}</span></li>-->
 						</ul>
 					</td>
 				{% endif %}

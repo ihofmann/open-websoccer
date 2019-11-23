@@ -1,0 +1,51 @@
+{% extends "base.twig" %}
+{% import "macros/messagebox.twig" as messagebox %}
+
+{% block page_title %}
+{{ i18n.getMessage("decline-friendly_title") }}
+{% endblock %}
+
+{% block page_content %}
+
+{% if matches is defined and matches|length > 0 %}
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{{ i18n.getMessage("entity_match_datum") }}</th>
+				<th>{{ i18n.getMessage("entity_match_home_verein") }}</th>
+				<th>{{ i18n.getMessage("entity_match_gast_verein") }}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for match in matches %}
+			<tr>
+				<td>{{ env.getFormattedDatetime(match.date) }}</td>
+				<td><a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a></td>
+				<td><a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a></td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	
+	{% if paginator is defined and paginator is not null %}
+		{{ pagination.paginator(paginator) }}
+	{% endif %}
+
+	<form class="form-horizontal" method="post">
+
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_decline') }}</button>
+			<a href="{{ env.getInternalUrl("friendly-openmatches") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+		</div>
+		<input type="hidden" name="action" value="decline"/>
+		<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>
+	
+	</form>
+
+{% else %}
+	{{ messagebox.box(i18n.getMessage("friendly_not_your_match"), "", "error") }}
+{% endif %}
+
+<p>{{ i18n.getMessage("friendly_version") }} &copy; Powered by <a href="mailto:{{ i18n.getMessage("friendly_mail") }}">{{ i18n.getMessage("friendly_author") }}</a></p>
+{% endblock %}

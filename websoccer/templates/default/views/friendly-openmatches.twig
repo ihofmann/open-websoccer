@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+
+{% block page_title %}
+{{ i18n.getMessage("friendlyopenmatches_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<p>{{ i18n.getMessage("friendly_version") }} &copy; Powered by <a href="{{ i18n.getMessage("friendly_mail") }}">{{ i18n.getMessage("friendly_author") }}</a></p>
+{% endblock %}

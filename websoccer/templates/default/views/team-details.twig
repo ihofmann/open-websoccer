@@ -7,7 +7,8 @@
 
 {% block page_content %}
 
-<p style="font-size: 20px; margin-top: -15px">
+<p style="font-size: 20px; margin-top: -15px;text-align: center;
+    color: yellow;">
 {% for strengthlevel in 1..5 %}
 	<i class="icon-star{% if (30 + strengthlevel * 10) > team.team_strength %}-empty{% endif %}"></i>
 {% endfor %}
@@ -16,6 +17,10 @@
 {% if team.team_logo|length > 0 %}
 <div style="text-align: center; margin-bottom: 10px;">
 <img src="{{ env.getConfig("context_root") }}/uploads/club/{{ team.team_logo }}" class="img-rounded" style="max-width: 120px; max-height: 120px">
+</div>
+{% elseif team.team_logo|length == 0 %}
+<div style="text-align: center; margin-bottom: 10px;">
+<img src="{{ env.getConfig("context_root") }}/img/defaultclubs.png" class="img-rounded" style="max-width: 120px; max-height: 120px; opacity: 0.4">
 </div>
 {% endif %}
 
@@ -96,7 +101,9 @@
 	  {{ profile.infofield(i18n.getMessage("entity_club_stadion_id"), stadiumLabel, true) }}
 	  {% if stadium.stadium_id is defined and stadium.stadium_id > 0 and stadium.picture|length > 0 %}
 		<div style="text-align: center; margin: 10px;">
-		<img src="{{ env.getConfig("context_root") }}/uploads/stadium/{{ stadium.picture }}" class="img-rounded">
+		<img src="{{ env.getConfig("context_root") }}/uploads/stadium/{{ stadium.picture }}" class="img-rounded"></div>
+		{% else %}<div style="text-align: center; margin: 10px;">
+		<img src="{{ env.getConfig("context_root") }}/img/default_stadion.png" class="img-rounded">
 		</div>
 	  {% endif %}
 	

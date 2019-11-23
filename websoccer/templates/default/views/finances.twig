@@ -8,7 +8,8 @@
 
 {% block page_content %}
 
-<h3>{{ i18n.getMessage("entity_club_finanz_budget") }}: {{ budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</h3>
+<div style="text-align:center;padding: 17px 1px;
+    background: #5bad48;"><h3>{{ i18n.getMessage("entity_club_finanz_budget") }}: {{ budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</h3></div>
 
 {% if statements is defined and statements|length > 0 %}
 
@@ -40,7 +41,7 @@
 				{% endif %}
 			</td>
 			<td>
-				{% if statement.amount < 0 %}<span style="color: red">{% endif %}
+				{% if statement.amount < 0 %}<span style="color: #000000">{% endif %}
 				{{ statement.amount|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}
 				{% if statement.amount < 0 %}</span>{% endif %}
 			</td>

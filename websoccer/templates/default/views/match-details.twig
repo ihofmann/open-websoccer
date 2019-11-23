@@ -39,12 +39,16 @@
 	
 	<div id="report_result">
 		<span id="report_goals_home">
-		{% if match.match_home_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; margin-right: 20px"/>{% endif %}
+		{% if match.match_home_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; margin-right: 20px"/>
+		{% else %}<img src="{{ env.getConfig("context_root") }}/img/defaultclubs.png" style="max-height: 120px; margin-left: 20px; border-radius:0px; opacity: 0.3"/>
+{% endif %}
 		{{ match.match_goals_home }}</span>
 		<span id="report_goals_separator">-</span>
 		<span id="report_goals_guest">{{ match.match_goals_guest }}
-		{% if match.match_guest_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; margin-left: 20px"/>{% endif %}
-		</span>
+		{% if match.match_guest_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; margin-left: 20px"/>	
+		{% else %}<img src="{{ env.getConfig("context_root") }}/img/defaultclubs.png" style="max-height: 120px; margin-left: 20px; border-radius:0px; opacity: 0.3"/>
+{% endif %}
+		</span><p><span id="wynik">{{ i18n.getMessage("match_details_audience") }} {{ (audience) }}</span></p>
 		<div class="row" style="margin: -10px 0 10px 0">
 			<div style="width: 50%; float: left;">
 				{% for goalMessage in homeStrikerMessages %}
@@ -92,14 +96,20 @@
 	  	data-ajaxtarget="matchstatistic" data-ajaxblock="match-statistics"
 	  	data-ajaxquerystr="id={{ match.match_id }}"
 	  	{% if not match.match_simulated %}data-ajaxdisabledcache="1"{% endif %}>{{ i18n.getMessage("match_details_statistic_title") }}</a></li>
+	
 	</ul>
+
 	 
 	<div class="tab-content">
 	  <div class="tab-pane active" id="report">
 	  
 	  	<span class="report_team_home">{{ match.match_home_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
 	  	<span style="margin-left: 20px" class="report_team_guest">{{ match.match_guest_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+	 <!--publika-->
 	  
+	
+
+
 		<div id="reportarea">
 		{% if match.match_deprecated_report|length > 0 %}
 			{{ match.match_deprecated_report|raw|nl2br }}

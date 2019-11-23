@@ -12,8 +12,12 @@
 <div style="text-align: center; margin-bottom: 10px;">
 <img src="{{ env.getConfig("context_root") }}/uploads/player/{{ player.player_picture }}" class="img-rounded">
 </div>
-{% endif %}
 
+{% else %}
+<div style="text-align: center; margin-bottom: 10px;">
+<img src="{{ env.getConfig("context_root") }}/img/default.png" class="img-rounded">
+</div>
+{% endif %}
 <ul class="nav nav-tabs" id="playerTab">
   <li class="active"><a href="#general" data-toggle="tab">{{ i18n.getMessage("player_details_tab_general") }}</a></li>
   <li><a href="#statistic" data-toggle="tab">{{ i18n.getMessage("player_details_tab_statistic") }}</a></li>
@@ -155,6 +159,8 @@
 			
 			<p><em>{{ i18n.getMessage('entity_player_w_zufriedenheit') }} ({{ player.player_strength_satisfaction }}%)</em></p>
 			{{ statisticelements.progressbar(player.player_strength_satisfaction) }}
+			<p><em>{{ i18n.getMessage('entity_player_pass') }} ({{ player.player_strength_pass }}%)</em></p>
+			{{ statisticelements.progressbar(player.player_strength_pass) }}
 		{% endif %}
 
   

@@ -19,7 +19,8 @@
 	
 	<div class="row">
 		<div class="span12">
-			<canvas id="stadium" width="600" height="375" style="margin: 20px;"
+			<canvas id="stadium" width="600" height="375" style="margin: 20px; position: relative;
+    right: -500px;"
 				data-ratioside="{{ ((stadium.places_seats + stadium.places_stands) / env.getConfig("stadium_max_side") * 100)|number_format }}"
 				data-ratiogrand="{{ ((stadium.places_seats_grand + stadium.places_stands_grand) / env.getConfig("stadium_max_grand") * 100)|number_format }}"
 				data-ratiovip="{{ ((stadium.places_vip) / env.getConfig("stadium_max_vip") * 100)|number_format }}"

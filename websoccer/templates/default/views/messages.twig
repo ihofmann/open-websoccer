@@ -51,23 +51,25 @@
   	<table class="table table-striped">
   		<thead>
   			<tr>
-  				<th>{{ i18n.getMessage("messages_date") }}</th>
+			  <th>{{ i18n.getMessage("messages_subject") }}</th>
   				<th>{{ i18n.getMessage("messages_sender") }}</th>
-  				<th>{{ i18n.getMessage("messages_subject") }}</th>
+				  <th>{{ i18n.getMessage("messages_date") }}</th>
   				<th>&nbsp;</th>
   			</tr>
   		</thead>
   		<tbody>
   		{% for message in messages %}
   			<tr>
-  				<td>{{ env.getFormattedDatetime(message.date) }}</td>
-  				<td><a href="{{ env.getInternalUrl("user", "id=" ~ message.sender_id) }}">{{ message.sender_name }}</a></td>
-  				<td>
+			  <td>
   				{% if not message.seen %}<strong>{% endif %}
   				<a href="#showMessage" data-toggle="modal" class="ajaxLink"
   					data-ajaxtarget="messagecontent" data-ajaxblock="message-details" data-ajaxquerystr="id={{ message.message_id }}">{{ message.subject }}</a>
   				{% if not message.seen %}</strong>{% endif %}
   				</td>
+				  <td><a href="{{ env.getInternalUrl("user", "id=" ~ message.sender_id) }}">{{ message.sender_name }}</a></td>
+  				<td>{{ env.getFormattedDatetime(message.date) }}</td>
+  				
+  				
   				<td><a href="{{ env.getInternalUrl("messages", "action=delete-message&id=" ~ message.message_id) }}" title="{{ i18n.getMessage("messages_delete") }}"><i class="icon-trash"></i></a></td>
   			</tr>
   		{% endfor %}
@@ -90,7 +92,7 @@
 		aria-labelledby="messageModalLabel" aria-hidden="true">
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	    <h3 id="messageModalLabel">{{ i18n.getMessage("messages_details_title") }}</h3>
+	    <h5 id="messageModalLabel">{{ i18n.getMessage("messages_details_title") }}</h5>
 	  </div>
 	  <div class="modal-body">
 	    <div id="messagecontent"></div>

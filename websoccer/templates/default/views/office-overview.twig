@@ -1,9 +1,21 @@
 {% extends "base.twig" %}
+{% import "macros/paginator.twig" as pagination %}
+{% import "macros/profileelements.twig" as profile %}
+{% import "macros/messagebox.twig" as messagebox %}
 
 {% block page_title %}
 {{ i18n.getMessage("office_title") }}
 {% endblock %}
 
 {% block page_content %}
+
+{% if env.getUser().clubId > 0 %}
+{{ viewHandler.renderBlock('tickets')|raw }}
+{{ viewHandler.renderBlock('sponsor_office')|raw }}
+
+
+
+
+{% endif %}
 
 {% endblock %}

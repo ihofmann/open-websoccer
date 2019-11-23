@@ -345,6 +345,8 @@
 												{% endif %}
 											</div>
 										{% endif %}
+									<img src="{{ env.getConfig("context_root") }}/img/default.png" style="width: 64px; height: 64px; vertical-align: baseline; float: left;"/>
+									
 										{% if (player.position_main is defined and player.position_main|length > 0) %}
 											<span class="mainposition" title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</span> 
 											{% if (player.position_second|length > 0) %}
@@ -370,7 +372,7 @@
 										
 									</div>
 								
-									<span>{{ playerName }} ({{ player.age }}) {% if captain_id is defined and captain_id == player.id %}<i class="icon-group wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>{% endif %}</span>
+									<span style="padding-left: 17px;">{{ playerName }} ({{ player.age }}) {% if captain_id is defined and captain_id == player.id %}<i class="icon-group wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>{% endif %}</span>
 									
 									<br>
 									<small>

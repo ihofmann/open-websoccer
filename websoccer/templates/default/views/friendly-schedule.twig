@@ -1,0 +1,35 @@
+{% extends "base.twig" %}
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/formelementsfriendly.twig" as formelementsfriendly %}
+
+{% block page_title %}
+{{ i18n.getMessage("friendlyschedule_navlabel") }}
+{% endblock %}
+
+{% block page_content %}
+
+<p>
+{{ i18n.getMessage("friendlydate_help",env.getConfig("friendlies_time_difference")) }}
+</p>
+<form class="form-horizontal" method="post">
+{# START: Nationalteam #}
+{% if env.getConfig("nationalteams_enabled") and  env.getConfig("friendlies_nationalteam_on_off")%}
+	{{ formelements.checkbox("friendlynationalteam", i18n.getMessage("friendly_with_nationalteam", nationalteam.team_name), 
+		env.getRequestParameter('friendlynationalteam'), false, validationMsg) }}
+{% endif %}
+{# END: Nationalteam #}
+	{{ formelements.autocomplete("friendlyopponent", i18n.getMessage("entity_player_verein_id"), 
+		env.getRequestParameter('friendlyopponent'), true, validationMsg, "clubsearch") }}
+	
+	{{ formelementsfriendly.datetimepicker("friendlydp", i18n.getMessage('friendly_date_label'), 
+		"now"|date('d.m.Y'), "now"|date_modify('+' ~(env.getConfig("friendlies_time_difference")+5)~ 'minute')|date('H:i'), true, validationMsg, "friendlydate") }}
+	
+	<div class="form-actions">
+		<button type="submit" 
+		class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+	</div>
+	<input type="hidden" name="page" value="friendly-schedule"/>
+	<input type="hidden" name="action" value="schedulefriendly"/>
+</form>
+<p>{{ i18n.getMessage("friendly_version") }} &copy; Powered by <a href="mailto:{{ i18n.getMessage("friendly_mail") }}">{{ i18n.getMessage("friendly_author") }}</a></p>
+{% endblock %}
