@@ -68,7 +68,14 @@ if ($inputUser or $inputPassword) {
 			
 			$hashedPw = SecurityUtil::hashPassword($inputPassword, $admin['passwort_salt']);
 			if ($admin['passwort'] == $hashedPw || $admin['passwort_neu'] == $hashedPw) {
-				session_regenerate_id();
+				if (version_compare(PHP_VERSION, '7.0.0') >= 0) {
+				    // PHP7
+				    session_destroy();
+				    session_start();
+				}
+				elseif (version_compare(PHP_VERSION, '5.4.0') >= 0) {
+				    session_regenerate_id();
+				}
 				$_SESSION['valid'] = 1;
 				$_SESSION['userid'] = $admin['id'];
 				
