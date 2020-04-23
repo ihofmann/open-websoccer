@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 {% import "macros/profileelements.twig" as profile %}
-
+{% import "macros/formelements.twig" as formelements %}
+{% import "macros/formelementsfriendly.twig" as formelementsfriendly %}
 {% block page_title %}
 {{ team.team_name }}
 {% endblock %}
@@ -59,6 +60,40 @@
   
   {% if team.team_user_id > 0 %}
 	{% set manager = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_user_id) ~ "\">" ~ team.team_user_name|e ~ "</a>" %}
+{% set replySubject = message.subject %}
+{% set replyRecipient = team.team_user_name %}
+
+<div class="btn-group">
+	<a href="#composeMessage" class="btn btn-small ajaxLink"
+		 data-toggle="modal"
+		  data-dismiss="modal" aria-hidden="true"
+		  data-ajaxtarget="sendmsgbody" data-ajaxblock="compose-message-body" data-ajaxquerystr="subject={{ replySubject }}&amp;nick={{ replyRecipient }}"<i class="icon-pencil"></i> {{ i18n.getMessage("messages_compose_button") }}</a>
+	
+	<form class="form-horizontal">
+		<div id="composeMessage" class="modal hide fade" tabindex="-1" role="dialog" 
+			aria-labelledby="composeModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="composeModalLabel">{{ i18n.getMessage("messages_compose_title") }}</h3>
+		  </div>
+		  <div class="modal-body">
+		  
+			  <div id="modalmessages"></div>
+			  <div id="sendmsgbody">
+				{{ viewHandler.renderBlock("compose-message-body")|raw }}
+		  	  </div>
+		  </div>
+		  <div class="modal-footer">
+		  	<button type="submit" class="btn btn-primary ajaxSubmit" 
+				data-ajaxtarget="sendmsgbody" data-ajaxblock="compose-message-body" data-messagetarget="modalmessages">{{ i18n.getMessage('messages_send_button') }}</button>
+		    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_close") }}</a>
+		  </div>
+		</div>
+		
+		<input type="hidden" name="action" value="send-message"/>
+	</form>
+</div>
+
 
 	{% if team.user_picture|length > 0 %}
 		{% set manager = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_user_id) ~ "\"><img src=\"" ~ team.user_picture ~ "\" style=\"width: 20px; height: 20px\"/></a> " ~ manager %}
@@ -77,6 +112,10 @@
 	{% if team.user_picture|length > 0 %}
 		{% set deputy = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_deputyuser_id) ~ "\"><img src=\"" ~ team.deputyuser_picture ~ "\" style=\"width: 20px; height: 20px\"/></a> " ~ deputy %}
 	{% endif %}
+
+
+
+	
   {% endif %}
   
   {% if stadium.stadium_id is defined and stadium.stadium_id > 0 %}
@@ -106,7 +145,29 @@
 		<img src="{{ env.getConfig("context_root") }}/img/default_stadion.png" class="img-rounded">
 		</div>
 	  {% endif %}
+{% if team.team_user_id > 0 %}
+	  <p>{{ i18n.getMessage("friendlyschedule_navlabel") }}</p>
+<form class="form-horizontal" method="post">
+{# START: Nationalteam #}
+{% if env.getConfig("nationalteams_enabled") and  env.getConfig("friendlies_nationalteam_on_off")%}
+	{{ formelements.checkbox("friendlynationalteam", i18n.getMessage("friendly_with_nationalteam", nationalteam.team_name), 
+		env.getRequestParameter('friendlynationalteam'), false, validationMsg) }}
+{% endif %}
+{# END: Nationalteam #}
+	{{ formelements.autocomplete("friendlyopponent", i18n.getMessage("entity_player_verein_id"), 
+		team.team_name, true, validationMsg, "clubsearch") }}
 	
+	{{ formelementsfriendly.datetimepicker("friendlydp", i18n.getMessage('friendly_date_label'), 
+		"now"|date('d.m.Y'), "now"|date_modify('+' ~(env.getConfig("friendlies_time_difference")+5)~ 'minute')|date('H:i'), true, validationMsg, "friendlydate") }}
+	
+	<div class="form-actions">
+		<button type="submit" 
+		class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+	</div>
+	<input type="hidden" name="page" value="friendly-schedule"/>
+	<input type="hidden" name="action" value="schedulefriendly"/>
+</form>
+{% endif %}	
 		{% if team.team_sponsor_name|length > 0 %}	
 			{{ profile.infofield(i18n.getMessage("entity_club_sponsor_id"), team.team_sponsor_name) }}
 			{% if team.team_sponsor_picture|length > 0 %}
