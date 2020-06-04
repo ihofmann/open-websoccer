@@ -167,7 +167,7 @@ class DefaultSimulationStrategy implements ISimulationStrategy {
 		$pTarget[PLAYER_POSITION_STRIKER] = $this->_passTargetProbPerPosition[$player->position][PLAYER_POSITION_STRIKER];
 		
 		// consider tactic option: long passes
-		if ($player->position != PLAYER_POSITION_GOALY) {
+		if ($player->team->longPasses) {
 			$pTarget[PLAYER_POSITION_STRIKER] += 10;
 		}
 		
