@@ -7,7 +7,7 @@ Setup your own football online game in order to attract new website visitors, ma
 
 ## Documentation and Issue Tracker
 
-Find out how you install, setup and enhance the software at the [Wiki](https://github.com/ihofmann/open-websoccer/wiki/00.-Home).
+Find out how you install, setup and enhance the software at the [Wiki](https://github.com/joseborges/open-websoccer/wiki/00.-Home).
 
-You found a bug or have an idea for a new feature? Then don't hesitate to open an issue at the [Issue Tracker](https://github.com/ihofmann/open-websoccer/issues).
+You found a bug or have an idea for a new feature? Then don't hesitate to open an issue at the [Issue Tracker](https://github.com/joseborges/open-websoccer/issues).
 
