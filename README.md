@@ -1,4 +1,4 @@
-# OpenWebSoccer-Sim 2020 - Start your own Online Football Manager!
+# OpenWebSoccer 2020 - Start your own Online Football Manager!
 
 With with PHP based web application your website visitors can manage a virtual fantasy football (soccer) team and play with it against other users. 
 They set the tactics for the next match, trade players, train their team, look for new talents in their youth section or extend their stadium. 
