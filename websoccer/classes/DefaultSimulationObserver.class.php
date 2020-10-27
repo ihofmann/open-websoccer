@@ -65,8 +65,8 @@ class DefaultSimulationObserver implements ISimulationObserver {
 	 */
 	public function onShootFailure(SimulationMatch $match, SimulationPlayer $scorer, SimulationPlayer $goaly) {
 		
-		// downgrade striker, if he isno hero yet (= scored at least two goals)
-		if ($scorer->getGoals() < 3) {
+		// downgrade striker, if he isno hero yet (= scored at one two goals) / zmiana na 1
+		if ($scorer->getGoals() < 1) {
 			$scorer->downgradeMark(MARK_DOWNGRADE_SHOOTFAILURE);
 		}
 		
@@ -87,9 +87,12 @@ class DefaultSimulationObserver implements ISimulationObserver {
 		// show mercy when player already is a hero
 		if ($looser->getGoals() > 0 && $looser->getGoals() < 3 && $looser->getAssists() > 0 && $looser->getAssists() < 3) {
 			$looser->downgradeMark(MARK_DOWNGRADE_TACKLE_LOOSER * 0.5);
-		} elseif ($looser->getGoals() < 3 && $looser->getAssists() < 3) {
-			$looser->downgradeMark(MARK_DOWNGRADE_TACKLE_LOOSER);
-		}
+		} 
+		
+		// nie bierz pod uwage gdy gracz strzeli mniej niz 3 bramki i 3 asysty.
+		// elseif ($looser->getGoals() < 3 && $looser->getAssists() < 3) {
+		//	$looser->downgradeMark(MARK_DOWNGRADE_TACKLE_LOOSER);
+		// }
 		
 		$winner->improveMark(MARK_IMPROVE_TACKLE_WINNER);
 		
@@ -111,8 +114,8 @@ class DefaultSimulationObserver implements ISimulationObserver {
 	 */
 	public function onBallPassFailure(SimulationMatch $match, SimulationPlayer $player) {
 		
-		// show mercy when player already hit at least twice or assisted twice or both scored and assisted
-		if ($player->getGoals() < 2 && $player->getAssists() < 2
+		// show mercy when player already hit at least twice or assisted twice or both scored and assisted // zmiana na 1 bramke i 1 asyste
+		if ($player->getGoals() < 1 && $player->getAssists() < 1
 				&& ($player->getGoals() == 0 || $player->getAssists() == 0)) {
 			$player->downgradeMark(MARK_DOWNGRADE_BALLPASS_FAILURE);
 		}
