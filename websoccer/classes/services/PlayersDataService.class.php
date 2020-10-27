@@ -658,7 +658,14 @@ class PlayersDataService {
 			+ $websoccer->getConfig('sim_weight_strengthStamina') + $websoccer->getConfig('sim_weight_strengthFreshness')
 			+ $websoccer->getConfig('sim_weight_strengthSatisfaction');
 		
-		return $totalStrength * $websoccer->getConfig('transfermarket_value_per_strength');
+		// compute market value with total goals,asisst and count matches in all carrier
+		
+		$TotalGoals = $player[$columnPrefix . 'total_goals'] * 0.3;
+		$TotalAssists = $player[$columnPrefix . 'total_assists'] * 0.1;
+		$TotalMatches = $player[$columnPrefix . 'total_matches'] / 10;
+		$TotalSocers = ($TotalGoals + $TotalAssists +1) * 0.4;
+		
+		return $totalStrength * $websoccer->getConfig('transfermarket_value_per_strength') * $TotalMatches * $TotalSocers;
 	}
 	
 	/**
