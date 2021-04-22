@@ -1,0 +1,2 @@
+- name: Build and Publish Dockerfile
+  uses: ryanjfrizzell/action-bpd@v1.0.2
