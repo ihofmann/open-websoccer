@@ -1,1 +1,1 @@
-$ docker build -t /myapp .
+$ docker build
