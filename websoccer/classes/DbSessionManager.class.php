@@ -25,7 +25,7 @@
  * 
  * @author Ingo Hofmann
  */
-class DbSessionManager {
+class DbSessionManager implements SessionHandlerInterface {
 
 	private $_db;
 	private $_websoccer;
@@ -88,7 +88,7 @@ class DbSessionManager {
 		$fromTable = $this->_websoccer->getConfig('db_prefix') . '_session';
 		$whereCondition = 'session_id = \'%s\'';
 		
-		$data = NULL;
+		$data = ''; // PHP 7 expects a string as return value, NULL is not valid
 		
 		$result = $this->_db->querySelect($columns, $fromTable, $whereCondition, $sessionId);
 		if ($result->num_rows > 0) {
@@ -108,9 +108,38 @@ class DbSessionManager {
 		}
 		
 		$result->free();
-		return $data;		
+		return $data;
 	}
 	
+	/**
+	 * Check if session id exists.
+	 * 
+	 * @param string $sessionId session id
+	 * @return string data
+	 */
+	public function validate_sid($key) {
+		$columns = 'expires';
+		$fromTable = $this->_websoccer->getConfig('db_prefix') . '_session';
+		$whereCondition = 'session_id = \'%s\'';
+
+		$result = $this->_db->querySelect($columns, $fromTable, $whereCondition, $key);
+		if ($result->num_rows > 0) {
+
+			$row = $result->fetch_array();
+			// check whether expired
+			if ($row['expires'] < $this->_websoccer->getNowAsTimestamp()) {
+				$this->destroy($key);
+			} else {
+				$result->free();
+				return true;
+			}
+
+		}
+
+		$result->free();
+		return false;
+	}
+
 	/**
 	 * Write data to session.
 	 * 
@@ -126,14 +155,15 @@ class DbSessionManager {
 		$columns['expires'] = $expiry;
 		
 		// either insert or update
-		if ($this->read($sessionId) !== NULL) {
+		if ($this->validate_sid($sessionId)) {
 			$whereCondition = 'session_id = \'%s\'';
 			
 			$this->_db->queryUpdate($columns, $fromTable, $whereCondition, $sessionId);
-		} else {
+		} else if(!empty($data)) {
 			$columns['session_id'] = $sessionId;
 			$this->_db->queryInsert($columns, $fromTable);
 		}
+		return true;
 	}
 	
 	/**
@@ -141,7 +171,7 @@ class DbSessionManager {
 	 * 
 	 * @return boolean TRUE
 	 */
-	public function gc() {
+	public function gc($maxlifetime) {
 		$this->_deleteExpiredSessions();
 		return true;
 	}
