@@ -111,6 +111,7 @@ if ($inputUser or $inputPassword) {
 				  }
 				
 				header('location: index.php');
+				die();
 			} else {
 				$errors['inputPassword'] = $i18n->getMessage('login_error_invalidpassword');
 				sleep(5);

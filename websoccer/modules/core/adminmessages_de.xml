@@ -54,7 +54,7 @@
     <message id="login_alert_accessdenied_title">Sie müssen sich einloggen!</message>
     <message id="login_alert_accessdenied_content">Bitte geben Sie unten Ihre Zugangsdaten ein.</message>
     <message id="login_alert_logoutsuccess_title">Erfolgreich abgemeldet.</message>
-    <message id="login_alert_logoutsuccess_content">Bis zum nächsten mal!</message>
+    <message id="login_alert_logoutsuccess_content">Bis zum nächsten Mal!</message>
     <message id="login_alert_sentpassword_title">Die Zugansdaten wurden versandt.</message>
     <message id="login_alert_sentpassword_content">Überprüfen Sie Ihre E-Mails!</message>
     <message id="login_alert_error_title">Anmeldung fehlgeschlagen!</message>
@@ -219,7 +219,7 @@
 	<message id="sendpassword_admin_email_greeting">Guten Tag,</message>
 	<message id="sendpassword_admin_email_introduction">dies ist Ihr neues Passwort, das Sie über das AdminCenter angefordert haben und in Ihrem Profil ändern können und sollten:</message>
 	<message id="sendpassword_admin_email_newpassword_label">Ihr neues Passwort:</message>
-	<message id="sendpassword_admin_email_ending">Beachten Sie, dass Ihr neues Passwort erst aktiv wird, sobald Sie sich zum ersten mal damit anmelden.</message>
+	<message id="sendpassword_admin_email_ending">Beachten Sie, dass Ihr neues Passwort erst aktiv wird, sobald Sie sich zum ersten Mal damit anmelden.</message>
 	
 	<message id="sendpassword_admin_usernotfound">Benutzer nicht bekannt.</message>
 	<message id="sendpassword_admin_alreadysent">Sie haben erst kürzlich ein Passwort angefordert. Probieren Sie es später noch einmal.</message>
