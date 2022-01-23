@@ -82,11 +82,11 @@ class TemplateEngine {
 	}
 	
 	private function _initTwig() {
-		require_once(BASE_FOLDER . '/lib/Twig/Autoloader.php');
+		require_once(BASE_FOLDER . '/lib/Twig/lib/Twig/Autoloader.php');
 		Twig_Autoloader::register();
 		
 		// file loader
-		$loader = new Twig_Loader_Filesystem(TEMPLATES_FOLDER . '/' . TEMPLATE_SUBDIR_DEFAULT);
+		$loader = new \Twig\Loader\FilesystemLoader(TEMPLATES_FOLDER . '/' . TEMPLATE_SUBDIR_DEFAULT);
 		
 		$skinSubDir = $this->_skin->getTemplatesSubDirectory();
 		if (strlen($skinSubDir) && $skinSubDir != TEMPLATE_SUBDIR_DEFAULT) {
@@ -103,7 +103,7 @@ class TemplateEngine {
 		}
 		
 		// init
-		$this->_environment = new Twig_Environment($loader, $twigConfig);
+		$this->_environment = new \Twig\Environment($loader, $twigConfig);
 	}
 	
 	private function _addSettingsSupport() {
