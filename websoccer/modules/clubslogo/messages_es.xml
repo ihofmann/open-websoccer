@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE messages SYSTEM "../messages.dtd">
-<messages>
-    <message id="upload-clublogo_navlabel">Cargar un nuevo logo del club</message>
-    
-    <message id="upload-clublogo_intro">Puedes subir una imagen PNG o JPEG aquí. Debe ser <strong>Rectangular</strong> con una anchura mínima de <strong>120 pixels</strong> y un tamaño máximo de archivo de <strong>%d KBytes</strong>.</message>
-	<message id="upload-clublogo_success">La nueva imagen del club se ha subido correctamente!</message>
-	
-	<message id="activitylog_upload-club-picture">%s ha subido una nueva logo del club.</message>
-    
-</messages>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE messages SYSTEM "../messages.dtd"><messages>  <message id="upload-clublogo_navlabel">Subir nuevo logo del club</message>  <message id="upload-clublogo_intro">Puede cargar una imagen PNG o JPEG aquí. Debe ser <strong>rectangular</strong> con un ancho mínimo de <strong>120 píxeles</strong> y un tamaño de archivo máximo de <strong>%d KBytes</strong> .</message>  <message id="upload-clublogo_success">¡La nueva foto del club ha sido cargada con éxito!</message>  <message id="activitylog_upload-club-picture">%s ha subido un nuevo logotipo de club.</message></messages>
