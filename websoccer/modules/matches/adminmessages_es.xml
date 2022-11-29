@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="match_manage_reportitems">Informar mensajes</message>
+  <message id="match_manage_playerstatistics">Formación y estadísticas de jugadores</message>
+  <message id="match_manage_complete">Partido completo sin simulación</message>
+  <message id="match_manage_reportitems_noitems">No hay mensajes de informes de coincidencias para estos mensajes.</message>
+  <message id="match_manage_playerstatistics_noitems">Aún no hay jugadores establecidos para este partido.</message>
+  <message id="match_manage_minuten_gespielt">Minutos jugados</message>
+  <message id="match_manage_note">Calificación</message>
+  <message id="match_manage_tore">Metas</message>
+  <message id="match_manage_assists">asistencias</message>
+  <message id="match_manage_karte_gelb">tarjetas amarillas</message>
+  <message id="match_manage_karte_rot">tarjeta roja</message>
+  <message id="match_manage_verletzt">Partidos lesionados</message>
+  <message id="match_manage_gesperrt">Machos bloqueados</message>
+  <message id="match_manage_ballcontacts">Contactos de bola</message>
+  <message id="match_manage_wontackles">Entradas ganadas</message>
+  <message id="match_manage_shoots">Disparos</message>
+  <message id="match_manage_passes_successed">pasa el éxito</message>
+  <message id="match_manage_passes_failed">Pases fallidos</message>
+  <message id="match_manage_position_field_1">en el campo</message>
+  <message id="match_manage_position_field_bench">Mesa de trabajo</message>
+  <message id="match_manage_position_field_substituted">sustituido</message>
+  <message id="match_manage_createplayer_title">Agregar jugador</message>
+  <message id="match_manage_createplayer_label_playerid">Jugador</message>
+  <message id="formation_home_offensive">Ofensivo</message>
+  <message id="formation_home_longpasses">pases largos</message>
+  <message id="formation_home_counterattacks">Contraataques</message>
+  <message id="formation_guest_offensive">Ofensivo</message>
+  <message id="formation_guest_longpasses">pases largos</message>
+  <message id="formation_guest_counterattacks">Contraataques</message>
+  <message id="match_manage_playerstatistics_createfromfrmation">Generar a partir de la formación actual</message>
+  <message id="match_manage_playerstatistics_noformationavailable">No hay ninguna formación guardada disponible para este equipo.</message>
+  <message id="match_manage_substitutions">sustituciones</message>
+  <message id="match_manage_substitutions_out">Afuera</message>
+  <message id="match_manage_substitutions_in">En</message>
+  <message id="match_manage_substitutions_minute">Minuto</message>
+  <message id="match_manage_substitutions_condition">Condición</message>
+  <message id="match_manage_substitutions_condition_tie">Atar</message>
+  <message id="match_manage_substitutions_condition_leading">Principal</message>
+  <message id="match_manage_substitutions_condition_deficit">Déficit</message>
+  <message id="match_manage_createmessage_title">Agregar mensaje</message>
+  <message id="match_manage_reportitems_noitems">Todavía no hay mensajes de informes de coincidencias.</message>
+  <message id="match_manage_reportmsg_minute">Minuto</message>
+  <message id="match_manage_reportmsg_playernames">jugadores</message>
+  <message id="match_manage_reportmsg_playernames_help">Separados por punto y coma (;). El primer nombre significa {sp1}, el segundo nombre {sp2}.</message>
+  <message id="match_manage_reportmsg_intermediateresult">resultado intermedio</message>
+  <message id="match_manage_reportmsg_message_id">Mensaje</message>
+  <message id="match_manage_complete_alreadysimulated">Este partido ya ha sido marcado como simulado.</message>
+  <message id="match_manage_complete_intro">Al hacer clic en el botón a continuación, completa este partido y se ejecutarán las siguientes acciones:<ul><li> El partido se marcará como simulado.</li><li> Si está habilitado, se computará la venta de boletos y se acreditará el ingreso.</li><li> Se acreditarán puntos por los partidos de liga. Para los partidos de copa, el sistema comprobará si los equipos pasarán a la siguiente ronda y generará los partidos correspondientes.</li><li> Actualización de resistencia, satisfacción, detalles de contratos y estadísticas.</li></ul></message>
+  <message id="match_manage_complete_computetickets">Calcular la venta de entradas.</message>
+  <message id="match_manage_complete_button">Partido completo</message>
+  <message id="match_manage_complete_success">El partido se ha completado con éxito.</message>
+</messages>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_news">Noticias</message>
+  <message id="news-details_navlabel">leer</message>
+  <message id="entity_news_autor_id">Autor</message>
+  <message id="entity_news_titel">Título</message>
+  <message id="entity_news_datum">Fecha</message>
+  <message id="entity_news_nachricht">Mensaje</message>
+  <message id="entity_news_linktext1">Enlace relevante 1 (Texto)</message>
+  <message id="entity_news_linkurl1">Enlace relevante 1 (URL)</message>
+  <message id="entity_news_linktext2">Enlace relevante 2 (Texto)</message>
+  <message id="entity_news_linkurl2">Enlace relevante 2 (URL)</message>
+  <message id="entity_news_linktext3">Enlace relevante 3 (Texto)</message>
+  <message id="entity_news_linkurl3">Enlace relevante 3 (URL)</message>
+  <message id="entity_news_c_smilies">Transformar Caritas</message>
+  <message id="entity_news_c_br">Mostrar saltos de línea</message>
+  <message id="entity_news_c_links">Transforme las URL en enlaces HTML</message>
+  <message id="entity_news_status">Activo</message>
+</messages>

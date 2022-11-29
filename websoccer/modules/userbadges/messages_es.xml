@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="badge_notification">¡Felicidades! Te has ganado una nueva insignia.</message>
+  <message id="badge_level_gold">Insignia de oro</message>
+  <message id="badge_level_silver">Insignia de plata</message>
+  <message id="badge_level_bronze">Insignia de bronce</message>
+  <message id="badges_navlabel">Insignias</message>
+</messages>

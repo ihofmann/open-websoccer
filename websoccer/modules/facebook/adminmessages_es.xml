@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_facebook_enable_login">Habilitar el inicio de sesión de Facebook. Requiere una ID de aplicación válida y un secreto de aplicación (ver más abajo).</message>
+  <message id="settings_label_facebook_appid">Identificación de la aplicación de Facebook</message>
+  <message id="settings_label_facebook_appid_help">Puede obtener esta información cuando <a href="https://developers.facebook.com/apps" target="_blank">registra su sitio web como aplicación</a> .</message>
+  <message id="settings_label_facebook_appsecret">Secreto de la aplicación de Facebook</message>
+  <message id="settings_label_facebook_appsecret_help">También obtiene esta información del proceso de registro.</message>
+  <message id="settings_label_facebook_enable_comments">Permita discusiones de usuarios (por ejemplo, en noticias e informes de partidos) a través de un complemento de Facebook. Requiere que haya ingresado una ID de aplicación de Facebook válida arriba.</message>
+  <message id="settings_label_facebook_enable_likebutton">Muestre el botón Me gusta de Facebook.</message>
+</messages>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="office_navlabel">Oficina</message>
+  <message id="office_title">Mi oficina</message>
+  <message id="feature_requires_team">Debes ser el administrador de un equipo para usar esta función.</message>
+  <message id="myteam_navlabel">Mi equipo</message>
+  <message id="myteam_title">Mis jugadores</message>
+  <message id="myteam_player_sell">Vender</message>
+  <message id="myteam_player_extend_contract">Extender contrato</message>
+  <message id="myteam_player_contract_is_ending">El contrato está a punto de terminar pronto.</message>
+  <message id="myteam_unsellable">Enmascarar como invendible</message>
+  <message id="myteam_unsellable_tooltip">No se aceptarán ofertas de transferencia para este jugador.</message>
+  <message id="myteam_unsellable_player_success">El jugador ha sido marcado como no vendible.</message>
+  <message id="myteam_unsellable_unmark_tooltip">Quitar marcador no vendible</message>
+  <message id="myteam_remove_unsellable_player_success">Se eliminó la marca de no vendible.</message>
+  <message id="myteam_action_button">Acción</message>
+  <message id="myteam_captain_tooltip">Es capitán y traerá moral cuando esté en déficit durante un partido.</message>
+  <message id="myteam_player_select_as_captain">Nominar como capitán</message>
+  <message id="myteam_player_select_as_captain_success">¡Su nuevo cpatain ha sido seleccionado con éxito!</message>
+  <message id="myteam_player_select_as_captain_warning_old_captain">Tu capitán anterior, %s, está bastante decepcionado con tu decisión.</message>
+  <message id="extend-contract_navlabel">Extension de contrato</message>
+  <message id="extend-contract_title">Negociación con %s</message>
+  <message id="extend-contract_existing_contract_title">Contrato existente</message>
+  <message id="extend-contract_link_profile">Al perfil del jugador</message>
+  <message id="extend-contract_decrease_satisfaction_hint">Tenga en cuenta que la satisfacción del jugador disminuirá por cada oferta que sea demasiado baja.</message>
+  <message id="extend-contract_offer_title">Tu oferta</message>
+  <message id="extend-contract_success">¡El contrato ha sido extendido con éxito bajo las nuevas condiciones!</message>
+  <message id="extend-contract_player_is_unhappy">El jugador ya no se siente cómodo en su equipo y de momento no quiere ampliar su contrato.</message>
+  <message id="extend-contract_lower_than_current_salary">El jugador no acepta una bajada de sueldo.</message>
+  <message id="extend-contract_salary_too_low">El salario ofrecido es a menos para el jugador. Pide un salario más alto por partido.</message>
+  <message id="extend-contract_cannot_afford_offer">No puede pagar ese salario con su presupuesto actual.</message>
+  <message id="extend-contract_goalbonus_too_low">El jugador quiere una bonificación por objetivo más alta.</message>
+  <message id="finances_navlabel">Finanzas</message>
+  <message id="account_statement_date">Fecha</message>
+  <message id="account_statement_sender">Remitente / Destinatario</message>
+  <message id="account_statement_subject">Tema</message>
+  <message id="account_statement_amount">Monto</message>
+  <message id="tickets_navlabel">Entradas</message>
+  <message id="tickets_stands">Posiciones</message>
+  <message id="tickets_seats">Asientos</message>
+  <message id="tickets_stands_grand">Posiciones (gran)</message>
+  <message id="tickets_seats_grand">Asientos (grandes)</message>
+  <message id="tickets_vip">Salas VIP</message>
+  <message id="tickets_sold_last_match">Último partido vendido</message>
+  <message id="tickets_info_homefieldadvantage"><strong>Pista:</strong> Tu equipo estará más motivado cuando juegue en casa y si todas las entradas están agotadas. ¡Tenga esto en cuenta al elegir nuevos precios de entradas!</message>
+  <message id="notification_soon_ending_playercontracts">¡Hay contratos de jugadores que terminarán pronto!</message>
+</messages>

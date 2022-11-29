@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_sofortcom_enabled">Habilite los pagos a través <a href="https://www.sofort.com" target="_blank">de Sofort.com</a> .</message>
+  <message id="settings_label_sofortcom_configkey">Clave de configuración de Sofort.com</message>
+  <message id="settings_label_sofortcom_configkey_help">Obtienes esta clave cuando te registras como vendedor en Sofort.com.</message>
+</messages>

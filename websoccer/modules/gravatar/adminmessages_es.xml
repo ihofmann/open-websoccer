@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_gravatar_enable">Muestre imágenes de usuario con <a href="http://www.gravatar.com" target="_blank">Gravatar</a> .</message>
+</messages>

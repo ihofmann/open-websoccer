@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="seasonpicker_currentmachday">Día de partido actual</message>
+  <message id="seasonpicker_previous">Anterior</message>
+  <message id="seasonpicker_next">próximo</message>
+  <message id="seasontarget_failed_penalty_subject">Penalización por no cumplir el objetivo de la temporada</message>
+  <message id="seasontarget_accomplished_reward_subject">Recompensa por cumplir el objetivo de la temporada</message>
+</messages>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_formation_max_next_matches">Envío de formación: Próximos partidos</message>
+  <message id="settings_label_formation_max_next_matches_help">Para cuántos partidos futuros un usuario puede enviar sus tácticas.</message>
+  <message id="settings_label_formation_max_templates">Envío de formación: guardar plantillas</message>
+  <message id="settings_label_formation_max_templates_help">Muchas formaciones se pueden guardar como plantillas. 0 para deshabilitar la función.</message>
+</messages>

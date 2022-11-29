@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="register_navlabel">Registro</message>
+  <message id="registration_disabled">El registro de usuario está actualmente deshabilitado por el administrador.</message>
+  <message id="registration_title">Registrarse como nuevo Usuario</message>
+  <message id="registration_password_repeat">Repita la contraseña</message>
+  <message id="registration_email_repeat">Repite el correo electrónico</message>
+  <message id="registration_submit_button">Registro</message>
+  <message id="registration_illegal_username">El nombre de usuario elegido no está permitido.</message>
+  <message id="registration_repeated_password_notmatching">La contraseña repetida no coincide con la contraseña ingresada anteriormente.</message>
+  <message id="registration_repeated_email_notmatching">La dirección de correo electrónico repetida no coincide con la dirección ingresada anteriormente.</message>
+  <message id="registration_user_exists">El nombre de usuario o la dirección de correo electrónico ya están en uso.</message>
+  <message id="registration_max_number_users_exceeded">Actualmente no es posible registrarse.</message>
+  <message id="register-success_navlabel">Registro enviado</message>
+  <message id="register-success_message_title">Registro enviado - Revise sus correos electrónicos</message>
+  <message id="register-success_message_content">Para verificar la dirección de correo electrónico especificada, el sistema le envió automáticamente un correo electrónico con un enlace de activación.</message>
+  <message id="register-success_nextstep">Por favor revise sus correos electrónicos ahora y siga las instrucciones en el interior. Pueden pasar unos minutos hasta que le llegue este correo electrónico.</message>
+  <message id="activation_email_subject">Completando su Registro de Usuario</message>
+  <message id="activation_email_greeting">Hola,</message>
+  <message id="activation_email_introduction">Visite la siguiente dirección de Internet para completar su registro de usuario:</message>
+  <message id="activation_email_ending">Si no se registró en nuestro sitio web y asume algún tipo de abuso, por favor responda a este correo electrónico.</message>
+</messages>

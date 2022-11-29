@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="transferoffer_button">oferta de compra</message>
+  <message id="transferoffer_modal_title">Oferta de transferencia</message>
+  <message id="transferoffer_label_amount">Monto</message>
+  <message id="transferoffer_label_comment">Comentario</message>
+  <message id="transferoffer_label_fieldset_playerexchange">Intercambio de jugadores (opcional)</message>
+  <message id="transferoffer_label_exchangeplayer1">Jugador</message>
+  <message id="transferoffer_label_exchangeplayer2">2do jugador</message>
+  <message id="transferoffer_label_fieldset_contract">Términos contractuales</message>
+  <message id="transferoffer_err_ownplayer">El jugador ya está en tu equipo.</message>
+  <message id="transferoffer_err_nomanager">El equipo del jugador actualmente no tiene entrenador. Por lo tanto, no se pueden procesar ofertas de compra.</message>
+  <message id="transferoffer_err_unsellable">El jugador ha sido marcado como no vendible o está en el mercado de fichajes.</message>
+  <message id="transferoffer_err_open_offers_exist">El mánager del jugador todavía tiene ofertas abiertas tuyas. Solo puede tener una oferta al mismo tiempo con el mismo administrador. Espere hasta que el otro usuario haya procesado su otra oferta o cancélela.</message>
+  <message id="transferoffer_err_noalternative_allowed">El mánager del jugador no quiere ninguna nueva oferta tuya para este jugador.</message>
+  <message id="transferoffer_err_transferstop">El jugador no debe cambiar de equipo debido a una parada de fichajes de %d días.</message>
+  <message id="transferoffer_err_exchangeplayer_on_transfermarket">El jugador seleccionado, %s, se encuentra actualmente en el mercado de fichajes. Por lo tanto, no puede ser seleccionado para un intercambio de jugadores.</message>
+  <message id="transferoffer_err_exchangeplayer_involved_in_other_offers">El jugador seleccionado, %s, ya se ha ofrecido en otra oferta de transferencia abierta. Cancela tu otra oferta o elige un jugador diferente.</message>
+  <message id="transferoffer_err_exchangeplayer_transferstop">El jugador seleccionado, %s, no debe cambiar de equipo debido a una parada de transferencia activa.</message>
+  <message id="transferoffer_err_totaloffers_too_high">Su presupuesto no es suficiente para esta oferta. Reduzca su oferta o cancele otras solicitudes abiertas.</message>
+  <message id="transferoffer_err_salary_too_high">Actualmente no puedes pagar el salario de este jugador.</message>
+  <message id="transferoffer_submitted_title">¡Su oferta ha sido enviada con éxito!</message>
+  <message id="transferoffer_submitted_message">El manager del jugador recibió una notificación y deberá aceptar o rechazar tu oferta.</message>
+  <message id="transferoffers_navlabel">Ofertas de Transferencia</message>
+  <message id="transferoffers_tab_received">Ofertas Recibidas</message>
+  <message id="transferoffers_tab_sent">Ofertas enviadas</message>
+  <message id="transferoffers_no_received_offers">Aún no ha recibido ninguna oferta de otros administradores.</message>
+  <message id="transferoffers_no_sent_offers">Actualmente no hay ofertas tuyas.</message>
+  <message id="transferoffers_offer_reaction">Reacción</message>
+  <message id="transferoffers_offer_reaction_accept">Aceptar</message>
+  <message id="transferoffers_offer_reaction_reject">Rechazar</message>
+  <message id="transferoffers_offer_status_adminapprovalpending">Aprobación pendiente</message>
+  <message id="transferoffers_offer_status_rechazado">rechazado</message>
+  <message id="transferoffers_offer_showcomment">Mostrar comentario</message>
+  <message id="transferoffers_offer_comment_title">%s escribió:</message>
+  <message id="transferoffer_accepted_title">¡Se acepta la oferta!</message>
+  <message id="transferoffer_accepted_message">El jugador cambió el equipo con éxito.</message>
+  <message id="transferoffer_accepted_message_approvalpending">Tenga en cuenta que la aprobación manual por parte de un administrador está pendiente ahora.</message>
+  <message id="transferoffer_accept_err_exchangeplayer_on_transfermarket">El jugador de intercambio ofrecido %s ha sido puesto en el mercado de fichajes. Por lo tanto, la transferencia no se puede ejecutar en este momento.</message>
+  <message id="transferoffer_accept_err_exchangeplayer_notinteam">El jugador de intercambio ofrecido %s ya no está en el equipo del remitente. Esta transferencia no es posible.</message>
+  <message id="transferoffer_accept_err_exchangeplayer_salarytoohigh">No puedes pagar el salario de %s en este momento.</message>
+  <message id="transferoffers_sent_cancellation">Cancelación</message>
+  <message id="transferoffers_offer_cancellation_button">Cancelar</message>
+  <message id="transferoffers_offer_cancellation_notfound">La oferta se ha eliminado o ya se ha ejecutado.</message>
+  <message id="transferoffers_offer_cancellation_success">La oferta ha sido cancelada con éxito.</message>
+  <message id="transferoffer_reject_modal_title">Rechazar oferta</message>
+  <message id="transferoffer_reject_label_comment">Motivo (opcional)</message>
+  <message id="transferoffer_reject_label_allow_alternative">El usuario podrá enviar otra oferta alternativa.</message>
+  <message id="transferoffers_offer_reject_success">La oferta ha sido rechazada con éxito.</message>
+  <message id="directtransfer_subject">Transferencia de jugador</message>
+  <message id="transferoffer_notification_offerreceived"><strong>{sendername}</strong> te envió una oferta de transferencia de jugador.</message>
+  <message id="transferoffer_notification_executed">Se ha ejecutado la transferencia acordada de <strong>{playername}</strong> .</message>
+  <message id="transferoffer_notification_rejected"><strong>{receivername}</strong> rechazó tu oferta de transferencia para <strong>{playername}</strong> .</message>
+</messages>

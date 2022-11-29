@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_notifications_max">Número de notificaciones</message>
+  <message id="settings_label_notifications_max_help">Número máximo de notificaciones que se listarán en el perfil de usuario.</message>
+</messages>

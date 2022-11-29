@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_frontend">Interfaz</message>
+  <message id="imprint_navlabel">Imprimir</message>
+  <message id="imprint_label_content">Contenido de página</message>
+  <message id="imprint_label_content_help">Se admite HTML. Los saltos de línea se convertirán.</message>
+  <message id="imprint_introduction">Por lo general, es un requisito legal proporcionar los datos de contacto del propietario del sitio web responsable. Puede hacerlo ingresando sus datos en el campo a continuación. Aparecerá en la página del sitio web "pie de imprenta".</message>
+  <message id="imprint_validationerror_content">Debe proporcionar algún contenido.</message>
+  <message id="settings_label_head_code">Código HTML para el área &lt;head&gt;</message>
+</messages>

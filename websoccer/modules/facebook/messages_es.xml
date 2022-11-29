@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
-    
-    <message id="facebooklogin_failure">Conectarse a través de Facebook ha sido cancelado.</message>
-    <message id="facebooklogin_success">Ha iniciado seción con exito! </message>
-    <message id="facebook_login_button">Iniciar sesión con Facebook</message>
-    
-    <message id="facebooklogout_failure">No puedes estar conectado fuera! Por favor, inténtelo de nuevo.</message>
-    <message id="facebooklogout_success">Cierro de seción exitoso!</message>
-    <message id="facebooklogout_success_details">Por favor, tenga en cuenta que usted también ha cerrado la sesión de Facebook.</message>
+  <message id="facebooklogin_failure">El inicio de sesión a través de Facebook ha sido cancelado.</message>
+  <message id="facebooklogin_success">¡Iniciado sesión correctamente!</message>
+  <message id="facebook_login_button">Iniciar sesión con Facebook</message>
+  <message id="facebooklogout_failure">¡No se pudo cerrar la sesión! Inténtalo de nuevo.</message>
+  <message id="facebooklogout_success">¡Cierre de sesión con éxito!</message>
+  <message id="facebooklogout_success_details">Tenga en cuenta que también ha sido desconectado de Facebook.</message>
 </messages>

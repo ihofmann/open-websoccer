@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_enable_player_resignation">Los usuarios pueden despedir a los jugadores.</message>
+  <message id="settings_label_player_resignation_compensation_matches">Indemnización por pérdida de empleo</message>
+  <message id="settings_label_player_resignation_compensation_matches_help">Número de partidos por los que un jugador pide una indemnización en caso de renuncia al contrato. 0 para ninguna compensación.</message>
+</messages>

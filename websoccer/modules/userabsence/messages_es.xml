@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="absence_navlabel">Ausencia</message>
+  <message id="absence_intro">¿No tienes tiempo para el juego durante los próximos días? Informe su ausencia aquí e ingrese el nombre de un diputado que administrará sus equipos durante su ausencia.</message>
+  <message id="absence_label_days">Días</message>
+  <message id="absence_label_days_help">(estimado)</message>
+  <message id="absence_err_invaliddeputy">No pudimos encontrar ningún usuario con el nombre de usuario especificado. Por favor revise la ortografía.</message>
+  <message id="absence_err_deputyisself">Lo sentimos, no puede delegar por sí mismo.</message>
+  <message id="absence_report_success">Reportado exitosamente como ausente!</message>
+  <message id="absence_profile_info">El usuario está ausente hasta %s.</message>
+  <message id="absence_reportinfo">Está informado como ausente hasta el %s. Su adjunto es <strong>%s</strong> .</message>
+  <message id="absence_return_button">He vuelto de nuevo</message>
+  <message id="absence_return_success">¡Ahora puedes volver a gestionar tus equipos!</message>
+  <message id="absence_warning">Actualmente está informado como ausente y no puede administrar sus equipos.</message>
+  <message id="absence_notification">{user} ha informado de su ausencia y te ha nombrado suplente de sus equipos.</message>
+  <message id="absence_comeback_notification">{user} ha regresado de su ausencia y dirige sus equipos nuevamente.</message>
+</messages>

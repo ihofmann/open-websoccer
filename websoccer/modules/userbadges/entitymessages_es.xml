@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_badge">Insignias</message>
+  <message id="entity_badge_name">Etiqueta</message>
+  <message id="entity_badge_name_help">También puede ser una tecla de mensajes.</message>
+  <message id="entity_badge_description">Descripción</message>
+  <message id="entity_badge_description_help">También puede ser una tecla de mensajes.</message>
+  <message id="entity_badge_level">Nivel</message>
+  <message id="entity_badge_event">Evento</message>
+  <message id="entity_badge_event_benchmark">Punto de referencia</message>
+  <message id="entity_badge_event_benchmark_help">La "X" para eventos que dependen de la variable "X".</message>
+  <message id="option_bronze">Bronce</message>
+  <message id="option_silver">Plata</message>
+  <message id="option_gold">Oro</message>
+  <message id="option_membership_since_x_days">Es miembro durante al menos X días</message>
+  <message id="option_win_with_x_goals_difference">Gana con al menos X goles de diferencia</message>
+  <message id="option_completed_season_at_x">Completa la temporada de liga en la posición X</message>
+  <message id="option_x_trades">Ha cambiado jugadores al menos X veces</message>
+  <message id="option_cupwinner">Ha ganado una competición de copa.</message>
+  <message id="option_stadium_construction_by_x">El estadio se ha ampliado en X asientos a la vez</message>
+</messages>

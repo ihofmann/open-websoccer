@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_upload_clublogo_max_size">Carga del logotipo del club: Tamaño máximo</message>
+  <message id="settings_label_upload_clublogo_max_size_help">Si los usuarios pueden cargar un nuevo logotipo del club, especifique aquí un tamaño máximo de archivo. 0 si se deshabilitará la carga de imágenes.</message>
+</messages>

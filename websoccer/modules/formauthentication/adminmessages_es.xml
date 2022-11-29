@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_login_type">Tipo de inicio de sesión</message>
+  <message id="option_email">Autenticación por correo electrónico</message>
+  <message id="option_username">Autenticación por nombre de usuario</message>
+  <message id="settings_label_login_method">Método de inicio de sesión</message>
+  <message id="settings_label_login_method_help">Nombre de la clase que implementa IUserLoginMethod. Permite la integración de otros productos de software.</message>
+  <message id="settings_label_login_allow_sendingpassword">Los usuarios pueden solicitar una nueva contraseña. Debe desactivarse si no utiliza el método de inicio de sesión estándar.</message>
+</messages>

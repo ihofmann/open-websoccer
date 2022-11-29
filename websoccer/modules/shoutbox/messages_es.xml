@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="shoutbox_title">caja de gritos</message>
+  <message id="shoutbox_messageinput_placeholder">Tu mensaje...</message>
+  <message id="shoutbox_button_go">Vamos</message>
+  <message id="shoutbox_hiddensubmit_note">Debe iniciar sesión y estar en un informe de partido para poder enviar mensajes.</message>
+</messages>
