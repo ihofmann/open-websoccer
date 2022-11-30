@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_paypal_enabled">Habilite los pagos a través de PayPal.</message>
+  <message id="settings_label_paypal_receiver_email">PayPal: nombre de la cuenta (correo electrónico)</message>
+  <message id="settings_label_paypal_receiver_email_help">Correo electrónico del receptor. Debe ser la dirección que se almacena como dirección principal en PayPal.</message>
+  <message id="settings_label_paypal_host">PayPal: Anfitrión</message>
+  <message id="settings_label_paypal_host_help">Por lo general <em>, www.paypal.com</em> . Para pruebas: <em>www.sandbox.paypal.com</em></message>
+  <message id="settings_label_paypal_url">URL a PayPal</message>
+  <message id="settings_label_paypal_url_help">URL interna para autenticación de pago. Por lo general <em>, ssl://www.paypal.com</em> . Para pruebas: <em>ssl://www.sandbox.paypal.com</em> .</message>
+  <message id="settings_label_paypal_buttonhtml">PayPal: Código de botón (HTML)</message>
+  <message id="settings_label_paypal_buttonhtml_help">Código HTML <strong>original</strong> del botón que ha creado en el portal comercial de PayPal. El botón debe contener las opciones de compra y la moneda que se configuran en esta página. Lea el manual del producto para más detalles.</message>
+</messages>

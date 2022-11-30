@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="firemanagers_navlabel">Administradores de incendios</message>
+  <message id="firemanagers_introduction">Busque clubes administrados por usuarios que desea descartar. Un despido significa que el usuario va a perder su palo. Las cuentas de usuario seleccionadas <strong>no</strong> se eliminarán, pero se pueden desactivar si lo desea. Si un usuario agotó económicamente su club, el sistema puede volver a hacerlo atractivo para otros usuarios.</message>
+  <message id="firemanagers_search_label">encontrar clubes</message>
+  <message id="firemanagers_search_maxbudget">presupuesto mínimo</message>
+  <message id="firemanagers_search_maxbudget_help">Encuentre clubes que tengan un saldo de cuenta más bajo.</message>
+  <message id="firemanagers_search_lastlogindays">Último acceso</message>
+  <message id="firemanagers_search_lastlogindays_help">días. Encuentre clubes con entrenadores que no hayan iniciado sesión en los últimos X días.</message>
+  <message id="firemanagers_search_maxplayers">Tamaño mínimo del equipo</message>
+  <message id="firemanagers_search_maxplayers_help">Encuentra clubes con menos de X jugadores.</message>
+  <message id="firemanagers_search_userid">Usuario</message>
+  <message id="firemanagers_search_nohits">No se encontraron clubes.</message>
+  <message id="firemanagers_dismiss_button">Descartar usuarios seleccionados</message>
+  <message id="firemanagers_dismiss_noneselected">Debe seleccionar al menos un equipo.</message>
+  <message id="firemanagers_dismiss_label">Opciones para el despido</message>
+  <message id="firemanagers_dismiss_disableusers">Deshabilitar cuentas de usuario</message>
+  <message id="firemanagers_dismiss_minbudget">Presupuesto mínimo del equipo</message>
+  <message id="firemanagers_dismiss_minbudget_help">Si el saldo de la cuenta del equipo es menor, se establecerá en el presupuesto mínimo.</message>
+  <message id="firemanagers_dismiss_message_subject">Mensaje al usuario: Asunto</message>
+  <message id="firemanagers_dismiss_message_subject_help">Si el usuario recibirá un mensaje privado. Tenga en cuenta que los usuarios deshabilitados no pueden recibir mensajes privados.</message>
+  <message id="firemanagers_dismiss_message_content">Mensaje al usuario: contenido</message>
+  <message id="firemanagers_dismiss_label_players">Efectos en los jugadores del equipo</message>
+  <message id="firemanagers_dismiss_strength_min_freshness">mín. Fuerza: Frescura</message>
+  <message id="firemanagers_dismiss_strength_min_stamina">mín. fuerza: aguante</message>
+  <message id="firemanagers_dismiss_strength_min_satisfaction">mín. fuerza: Satisfacción</message>
+  <message id="firemanagers_dismiss_mincontractmatches">Partidos mínimos de contrato</message>
+  <message id="firemanagers_dismiss_label_minteamsize">Tamaño mínimo del equipo: Agregar jugadores</message>
+  <message id="firemanagers_dismiss_label_minteamsize_intro">Si hay muy pocos jugadores para una posición en particular, el sistema generará nuevos.</message>
+  <message id="firemanagers_dismiss_success">Los usuarios seleccionados han sido eliminados con éxito de su equipo.</message>
+</messages>

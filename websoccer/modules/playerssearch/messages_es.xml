@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="playerssearch_navlabel">Buscar jugadores</message>
+  <message id="playerssearch_submit">Búsqueda</message>
+  <message id="playerssearch_hits">%d jugadores encontrados</message>
+  <message id="contract_unit_matches">Partidos de contrato</message>
+</messages>

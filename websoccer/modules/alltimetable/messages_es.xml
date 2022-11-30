@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
-    <message id="alltimetable_navlabel">Clasificación de Records</message>
-    <message id="alltimetable_title">Clasificación de Records</message>
-    
+  <message id="alltimetable_navlabel">Tabla de todos los tiempos</message>
+  <message id="alltimetable_title">Tabla de todos los tiempos</message>
 </messages>

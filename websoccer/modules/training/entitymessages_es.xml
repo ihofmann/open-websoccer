@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_trainer">Entrenador</message>
+  <message id="entity_trainer_name">Nombre</message>
+  <message id="entity_trainer_salary">Salario por Unidad</message>
+  <message id="entity_trainer_p_technique">Entrenamiento de la técnica de efectividad</message>
+  <message id="entity_trainer_p_stamina">Eficacia Entrenamiento de resistencia</message>
+  <message id="entity_trainer_premiumfee">Tarifa de prima</message>
+</messages>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="userprofile_block_title">Mi perfil</message>
+  <message id="userprofile_block_loggedin_as">Conectado como:</message>
+  <message id="userprofile_block_link_logout">Cerrar sesión</message>
+  <message id="userprofile_block_link_profile">Editar perfil</message>
+  <message id="userprofile_block_popularity">Popularidad entre los fanáticos</message>
+  <message id="userprofile_block_highscore">Puntuación más alta</message>
+  <message id="userprofile_block_link_table">Mesa</message>
+  <message id="userprofile_block_tooltip_popularity">Depende de tu éxito e influye en la venta de entradas.</message>
+  <message id="profile_navlabel">Perfil del usuario</message>
+  <message id="profile_title">Editar perfil</message>
+  <message id="profile_field_newemail">Nuevo correo electrónico</message>
+  <message id="profile_field_newpassword">Nueva contraseña</message>
+  <message id="profile_changedemail_message_title">Confirme la dirección de correo electrónico modificada</message>
+  <message id="profile_changedemail_message_content">Su cuenta ha sido deshabilitada temporalmente. Por favor revise sus correos electrónicos y siga las instrucciones en el correo electrónico que se le ha enviado.</message>
+  <message id="activation_changedemail_subject">Reactivando tu cuenta de usuario</message>
+  <message id="activation_changedemail_greeting">Hola,</message>
+  <message id="activation_changedemail_introduction">Visite la siguiente dirección de Internet para reactivar su cuenta de usuario:</message>
+  <message id="activation_changedemail_ending">Si no se registró en nuestro sitio web y asume algún tipo de abuso, por favor responda a este correo electrónico.</message>
+  <message id="sendpassword_email_subject">Tu nueva contraseña</message>
+  <message id="sendpassword_email_greeting">Hola,</message>
+  <message id="sendpassword_email_introduction">Encuentre a continuación su nueva contraseña que ha solicitado a través de nuestro sitio web y que puede y debe cambiar en nuestro sitio web:</message>
+  <message id="sendpassword_email_newpassword_label">Tu nueva contraseña:</message>
+  <message id="sendpassword_email_ending">Tenga en cuenta que la nueva contraseña solo se activa tan pronto como inicie sesión con ella por primera vez. Si no ha solicitado una nueva contraseña y asume algún tipo de abuso, por favor responda a este correo electrónico.</message>
+  <message id="enter-username_navlabel">Introduzca su nombre de usuario</message>
+  <message id="enter-username_intro">Ahora solo necesitamos un nombre que lo identifique en nuestro sitio web, ¡y luego estamos listos para comenzar!</message>
+  <message id="change-profile-picture_navlabel">Subir foto de perfil</message>
+  <message id="change-profile-picture_intro">Puede cargar una imagen PNG o JPEG aquí. Debe ser <strong>rectangular</strong> con un ancho mínimo de <strong>120 píxeles</strong> y un tamaño de archivo máximo de <strong>%d KBytes</strong> .</message>
+  <message id="change-profile-picture_success">¡La nueva foto de perfil ha sido cargada con éxito!</message>
+  <message id="change-profile-picture_err_notprovied">Tienes que seleccionar una imagen.</message>
+  <message id="change-profile-picture_err_illegalfiletype">Solo se aceptarán archivos de imagen PNG o JPEG.</message>
+  <message id="change-profile-picture_err_illegalfilesize">El archivo seleccionado es demasiado grande.</message>
+  <message id="change-profile-picture_err_failed">No se pudo cargar el archivo. Inténtalo de nuevo.</message>
+  <message id="user_deletepicture_button">Eliminar imagen</message>
+  <message id="delete-profile-picture_success">La imagen de perfil se ha eliminado correctamente.</message>
+</messages>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_transfer_offer">Oferta de transferencia</message>
+  <message id="entity_transfer_offer_submitted_date">Fecha de oferta</message>
+  <message id="entity_transfer_offer_player_id">Jugador</message>
+  <message id="entity_transfer_offer_receiver_club_id">club receptor</message>
+  <message id="entity_transfer_offer_sender_club_id">club transmisor</message>
+  <message id="entity_transfer_offer_offer_amount">Monto</message>
+  <message id="entity_transfer_offer_admin_approval_pending">requiere aprobación</message>
+  <message id="entity_transfer_offer_sender_user_id">Remitente</message>
+  <message id="entity_transfer_offer_offer_message">Comentario</message>
+  <message id="entity_transfer_offer_offer_player1">Intercambiar jugador 1</message>
+  <message id="entity_transfer_offer_offer_player2">Intercambiar jugador 2</message>
+  <message id="entity_transfer_offer_rejected_date">Rechazado el</message>
+</messages>

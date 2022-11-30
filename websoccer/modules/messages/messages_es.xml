@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="messages_navlabel">Mensajes</message>
+  <message id="messages_err_messagesdisabled">El administrador deshabilitó el envío de mensajes.</message>
+  <message id="messages_tab_inbox">Bandeja de entrada</message>
+  <message id="messages_tab_outbox">Bandeja de salida</message>
+  <message id="messages_empty_inbox">No hay mensajes en su bandeja de entrada.</message>
+  <message id="messages_empty_outbox">No hay mensajes en su bandeja de salida.</message>
+  <message id="messages_date">Fecha</message>
+  <message id="messages_sender">Remitente</message>
+  <message id="messages_recipient">Recipiente</message>
+  <message id="messages_subject">Tema</message>
+  <message id="messages_content">Contenido</message>
+  <message id="messages_delete">Eliminar este mensaje</message>
+  <message id="messages_delete_invalidid">Mensaje inválido. Es posible que el mensaje seleccionado ya se haya eliminado.</message>
+  <message id="messages_delete_success">Mensaje borrado</message>
+  <message id="messages_details_title">Leer el mensaje</message>
+  <message id="messages_compose_button">Nuevo mensaje</message>
+  <message id="messages_compose_title">Crear Mensaje</message>
+  <message id="messages_send_err_invalidrecipient">No se pudo encontrar ningún usuario con el nombre de usuario proporcionado.</message>
+  <message id="messages_send_err_sendtoyourself">No puedes enviarte mensajes a ti mismo.</message>
+  <message id="messages_send_err_timebreak">Debe haber al menos %d minutos entre su mensaje enviado anteriormente.</message>
+  <message id="messages_reply_button">Respuesta</message>
+  <message id="messages_send_success">Mensaje enviado</message>
+  <message id="messages_send_button">Enviar</message>
+  <message id="messages_new_messages">Tienes %d mensajes nuevos</message>
+</messages>

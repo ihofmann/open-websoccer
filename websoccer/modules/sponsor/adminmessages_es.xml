@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_sponsor_matches">Contratos de patrocinio: Días de partido</message>
+  <message id="settings_label_sponsor_matches_help">Duración del contrato de patrocinador en días de partido.</message>
+  <message id="settings_label_sponsor_earliest_matchday">Ofertas de patrocinadores: día de partido más temprano</message>
+  <message id="settings_label_sponsor_earliest_matchday_help">Un entrenador puede elegir un nuevo patrocinador solo a partir de este día de partido de una temporada.</message>
+</messages>

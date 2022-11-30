@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="projectstatistics_title">Estadísticas</message>
+  <message id="projectstatistics_onlineusers">
+    <strong>%d managers are online</strong>
+  </message>
+  <message id="projectstatistics_onlineusers_single">
+    <strong>One manager is online</strong>
+  </message>
+  <message id="projectstatistics_totalusers">Tenemos <strong>%d</strong> usuarios registrados</message>
+  <message id="projectstatistics_leagues">Jugamos con <strong>%d</strong> ligas</message>
+  <message id="projectstatistics_freeteams"><strong>%d</strong> clubes no tienen ningún administrador, todavía</message>
+</messages>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_tablemarker">Marcador de mesa</message>
+  <message id="entity_tablemarker_bezeichnung">Etiqueta</message>
+  <message id="entity_tablemarker_bezeichnung_help">También puede ser una tecla de mensajes.</message>
+  <message id="entity_tablemarker_liga_id">Liga</message>
+  <message id="entity_tablemarker_platz_von">Posiciones desde</message>
+  <message id="entity_tablemarker_platz_bis">Posiciones hasta</message>
+  <message id="entity_tablemarker_farbe">Color</message>
+  <message id="entity_tablemarker_farbe_help">Valor de color compatible con HTML. Si su navegador no muestra un selector de color, puede <a href="http://html-color-codes.info/" target="_blank">seleccionar un color en línea</a> .</message>
+  <message id="entity_tablemarker_target_league_id">Liga objetivo</message>
+  <message id="entity_tablemarker_target_league_id_help">Los equipos de las posiciones especificadas serán trasladados a la liga seleccionada al final de la temporada (por ejemplo, equipos ascendidos y relegados).</message>
+</messages>

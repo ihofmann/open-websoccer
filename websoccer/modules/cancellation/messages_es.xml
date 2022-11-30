@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
-    <message id="cancellation_navlabel">Cancelación</message>
-    <message id="cancellation_title">Borrar Su Cuenta de Usuario</message>
-    
-    <message id="cancellation_intro">Usted no quiere jugar más con nosotros? ¡Qué lástima! Aquí usted puede salir del juego. Usted perderá su equipo y su cuenta de usuario se cerrará.</message>
-    <message id="cancellation_button">Salir</message>
-    <message id="cancellation_modal_title">Confirmar cancelación</message>
-    <message id="cancellation_modal_content">¿De verdad quieres cerrar tu cuenta de usuario?</message>
-    <message id="cancellation_modal_confirm">Sí, Borrar</message>
-    
-    <message id="cancellation_success">Su cuenta se ha cerrado con éxito. ¡Adiós!</message>
+  <message id="cancellation_navlabel">Cancelación</message>
+  <message id="cancellation_title">Cierra tu cuenta de usuario</message>
+  <message id="cancellation_intro">¿Ya no quieres jugar con nosotros? ¡Qué pena! Aquí puedes salir del juego. Perderás tu equipo y tu cuenta de usuario será cerrada.</message>
+  <message id="cancellation_button">Abandonar</message>
+  <message id="cancellation_modal_title">Confirmar cancelación</message>
+  <message id="cancellation_modal_content">¿Realmente desea cerrar su cuenta de usuario?</message>
+  <message id="cancellation_modal_confirm">si, dejar de fumar</message>
+  <message id="cancellation_success">Su cuenta de usuario ha sido cerrada con éxito. ¡Adiós!</message>
 </messages>

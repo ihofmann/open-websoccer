@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_allow_userregistration">Permitir el registro de usuario para cualquier invitado.</message>
+  <message id="settings_label_illegal_usernames">Nombres de usuario ilegales</message>
+  <message id="settings_label_illegal_usernames_help">separado por comas</message>
+  <message id="settings_label_max_number_of_users">Número máximo de usuarios aprobados</message>
+  <message id="settings_label_max_number_of_users_help">0 para ilimitado</message>
+  <message id="settings_label_register_use_captcha">Utilice el código de seguridad reCAPTCHA para evitar registros de spam. Esto requiere un registro gratuito en <a href="https://www.google.com/recaptcha/admin/create" target="_blank">www.google.com/recaptcha</a> .</message>
+  <message id="settings_label_register_captcha_publickey">Llave pública</message>
+  <message id="settings_label_register_captcha_publickey_help">Tome esta clave de la confirmación de registro de reCAPTCHA.</message>
+  <message id="settings_label_register_captcha_privatekey">Llave privada</message>
+  <message id="settings_label_register_captcha_privatekey_help">Tome esta clave de la confirmación de registro de reCAPTCHA.</message>
+  <message id="settings_label_registration_url">URL de registro</message>
+  <message id="settings_label_registration_url_help">Si los usuarios deben registrar su cuenta en un sitio web diferente, puede especificar la URL del formulario de registro aquí.</message>
+</messages>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_premium">Cuentas Premium</message>
+  <message id="settings_label_premium_enabled">Habilitar cuentas de usuario premium. Los usuarios pueden obtener crédito premium y usar funciones especiales con él.</message>
+  <message id="settings_label_premium_credit_unit">Nombre de la moneda de crédito</message>
+  <message id="settings_label_premium_infopage">Página de información</message>
+  <message id="settings_label_premium_infopage_help">Página que se mostrará cuando un usuario solicitó una función premium pero no tiene saldo suficiente en su cuenta premium. Puede ser un ID de página o una URL completa (http://...).<br/> <strong>Nota:</strong> si habilitó el registro de pago automático para proveedores externos (como PayPal), debe usar la página de información predeterminada ( <em>característica premium solicitada</em> ).</message>
+  <message id="settings_label_premium_price_options">Opciones de compra</message>
+  <message id="settings_label_premium_price_options_help">Si los usuarios pueden comprar crédito con dinero, entonces puedes ofrecer varios tipos de cambio. Por ejemplo, 5.00:10 significa que 5,00 EUR de dinero real se cambiarán por 10 unidades de crédito premium. Tenga en cuenta que las cantidades con coma usan un punto en lugar de una coma (por ejemplo, 4,99 en lugar de 4,99)</message>
+  <message id="settings_label_premium_currency">Moneda (reales)</message>
+  <message id="settings_label_premium_exchangerate_gamecurrency">Moneda del juego de tipo de cambio</message>
+  <message id="settings_label_premium_exchangerate_gamecurrency_help">Si el usuario puede convertir crédito premium en dinero ficticio para su equipo, proporcione el valor de un punto de crédito premium en dinero ficticio. 0 si se deshabilitará el intercambio.</message>
+  <message id="settings_label_premium_initial_credit">Crédito inicial</message>
+  <message id="settings_label_premium_initial_credit_help">Crédito premium que obtiene un usuario en un nuevo registro.</message>
+</messages>

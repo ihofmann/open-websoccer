@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="actionsubject_sofortcom-notify">Pago a través de Sofort.com</message>
+  <message id="sofortcompayment_link_title">Paga a través de Sofort.com</message>
+  <message id="sofortcompayment_link_intro">Utilice sus datos bancarios en línea comunes para pagar a través del proveedor <a href="https://www.sofort.com" target="_blank">Sofort.com</a> . No necesita registrar una cuenta en el proveedor, ni se requiere una tarjeta de crédito.</message>
+  <message id="sofortcompayment_label_amount">Monto</message>
+  <message id="sofortcompayment_label_submit">Chico ahora a través de Sofort.com</message>
+</messages>

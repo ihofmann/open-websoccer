@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="actionsubject_micropayment-notify">Pago mediante micropago</message>
+  <message id="micropayment_link_title">Pagar mediante micropago™</message>
+</messages>

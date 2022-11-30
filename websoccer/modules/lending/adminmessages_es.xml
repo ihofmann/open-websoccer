@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_lending_enabled">Los usuarios pueden prestar y tomar prestados jugadores.</message>
+  <message id="settings_label_lending_matches_min">Duración mínima del préstamo</message>
+  <message id="settings_label_lending_matches_min_help">Número de partidos</message>
+  <message id="settings_label_lending_matches_max">Duración máxima del préstamo</message>
+  <message id="settings_label_lending_matches_max_help">Número de partidos</message>
+</messages>

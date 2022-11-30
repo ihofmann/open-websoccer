@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_webjobexecution_enabled">Desencadenar coincidencias de simulación por sitios web externos, en lugar de trabajos.</message>
+  <message id="settings_label_webjobexecution_key">Token de seguridad para ejecución de simulación externa</message>
+  <message id="settings_label_webjobexecution_key_help">Obtiene esta clave cuando registra su sitio web para simulación externa en <a href="http://www.websoccer-sim.com" target="_blank">websoccer-sim.com</a> .</message>
+</messages>

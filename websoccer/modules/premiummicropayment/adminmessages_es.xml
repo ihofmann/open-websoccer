@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_micropayment_enabled">Habilite los pagos a través de <a href="https://www.micropayment.de" target="_blank">micropagos</a> erwerben. Debe configurar cada módulo deseado en el sitio web del proveedor (Servicio: Evento).<br/> <strong>Importante:</strong> no debe usar este proveedor si no opera su proyecto en un servidor web Apache.<br/> Los pagos solo se pueden registrar cuando las opciones de compra configuradas anteriormente son válidas para montos en EUR (Euros). Actualmente, el proveedor no admite otras monedas.<br/><br/> Configuración requerida para los servicios de pago:<br/> <strong>Url</strong> API: <em>http://www.mydomain.com/websoccer/webservices/micropayment/index.php</em><br/> OBTENER Parámetros:<br/> cantidad=__cantidad__<br/> free=__$freeparam__</message>
+  <message id="settings_label_micropayment_project">micropago: ID del proyecto</message>
+  <message id="settings_label_micropayment_project_help">Obtendrá esa identificación una vez que configure un nuevo proyecto en <a href="https://www.micropayment.de" target="_blank">www.micropayment.de</a> .</message>
+  <message id="settings_label_micropayment_accesskey">micropago: AccessKey</message>
+  <message id="settings_label_micropayment_accesskey_help">Se mostrará en micropayment.de cuando inicie sesión y vaya a "Gestión de proyectos y pagos".</message>
+  <message id="settings_label_micropayment_call2pay_enabled">Habilitar módulo de micropagos: Call2Pay</message>
+  <message id="settings_label_micropayment_handypay_enabled">Habilitar módulo de micropagos: HandyPay</message>
+  <message id="settings_label_micropayment_ebank2pay_enabled">Habilitar módulo de micropagos: eBank2Pay</message>
+  <message id="settings_label_micropayment_creditcard_enabled">Habilitar módulo de micropagos: CreditCard</message>
+</messages>

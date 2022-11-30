@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_users">Usuario</message>
+  <message id="entity_users_nick">Nombre de usuario</message>
+  <message id="entity_users_lastonline">Último acceso</message>
+  <message id="entity_users_lastaction">Última acción</message>
+  <message id="entity_users_highscore">Puntuación más alta</message>
+  <message id="entity_users_clubname">Club</message>
+  <message id="entity_users_datum_anmeldung">Fecha de Registro</message>
+  <message id="entity_users_email">Correo electrónico</message>
+  <message id="entity_users_passwort">Clave</message>
+  <message id="entity_users_wunschverein">Clubes deseados</message>
+  <message id="entity_users_name">Nombre</message>
+  <message id="entity_users_wohnort">Residencia</message>
+  <message id="entity_users_land">País</message>
+  <message id="entity_users_geburtstag">Cumpleaños</message>
+  <message id="entity_users_beruf">Ocupación</message>
+  <message id="entity_users_interessen">Intereses</message>
+  <message id="entity_users_lieblingsverein">club favorito</message>
+  <message id="entity_users_homepage">Sitio web</message>
+  <message id="entity_users_fanbeliebtheit">Popularidad</message>
+  <message id="entity_users_history">Historia</message>
+  <message id="entity_users_status">Activo</message>
+  <message id="entity_users_c_hideinonlinelist">Ocultar actividades en "¿Quién está actualmente en línea?" lista.</message>
+  <message id="entity_users_premium_balance">Saldo de primas</message>
+  <message id="entity_users_picture">Foto de perfil</message>
+  <message id="entity_users_picture_help">El tamaño debe ser exactamente 120px x 120px.</message>
+  <message id="entity_user_inactivity">Inactividad</message>
+  <message id="entity_user_inactivity_login">Inicios de sesión</message>
+  <message id="entity_user_inactivity_aufstellung">tácticas enviadas</message>
+  <message id="entity_user_inactivity_transfer">Transferencias de jugadores</message>
+  <message id="entity_user_inactivity_vertragsauslauf">Contratos extendidos de jugadores</message>
+  <message id="entity_user_inactivity_transfer_check">Última acción en %s</message>
+</messages>

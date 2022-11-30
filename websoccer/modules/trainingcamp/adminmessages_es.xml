@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_trainingcamp_min_days">Estancia mínima en el campo de entrenamiento</message>
+  <message id="settings_label_trainingcamp_min_días_help">días</message>
+  <message id="settings_label_trainingcamp_max_days">Estancia máxima en el campo de entrenamiento</message>
+  <message id="settings_label_trainingcamp_max_días_help">días</message>
+  <message id="settings_label_trainingcamp_booking_max_days_in_future">Última reserva</message>
+  <message id="settings_label_trainingcamp_booking_max_days_in_future_help">en días; Hasta cuántos días en el futuro un usuario puede reservar un campo de entrenamiento.</message>
+</messages>

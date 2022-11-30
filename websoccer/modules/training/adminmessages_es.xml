@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_training_min_hours_between_execution">Tiempo de descanso entre sesiones de entrenamiento</message>
+  <message id="settings_label_training_min_hours_between_execution_help">En horas. Número mínimo de horas que debe haber entre dos unidades de entrenamiento ejecutadas.</message>
+</messages>

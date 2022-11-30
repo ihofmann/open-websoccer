@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_users">Usuarios</message>
+  <message id="popup_user_inactivity_total">Total</message>
+  <message id="popup_user_inactivity_title_action">Acción medida</message>
+  <message id="settings_label_highscore_win">Puntuación más alta por victoria</message>
+  <message id="settings_label_highscore_loss">Puntuación más alta por pérdida</message>
+  <message id="settings_label_highscore_draw">Puntuación más alta por sorteo</message>
+  <message id="settings_label_user_picture_upload_enabled">Los usuarios pueden subir su propia foto de perfil.</message>
+  <message id="settings_label_user_picture_upload_maxsize_kb">Carga de imágenes: Tamaño máximo</message>
+  <message id="settings_label_user_picture_upload_maxsize_kb_help">en KBytes</message>
+</messages>

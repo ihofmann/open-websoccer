@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="trainingcamp_navlabel">Campo de entrenamiento</message>
+  <message id="trainingcamp_nocamps">No hay campos de entrenamiento disponibles en este momento.</message>
+  <message id="trainingcamp_bookedcamp">Campamento de entrenamiento reservado</message>
+  <message id="trainingcamp_startdate">Llegada</message>
+  <message id="trainingcamp_enddate">Partida</message>
+  <message id="trainingcamp_delete">Cancelar reserva</message>
+  <message id="trainingcamp_delete_note">Puede cancelar esta reserva. Sin embargo, los costos no serán reembolsados.</message>
+  <message id="trainingcamp_cancel_illegalid">No se pudo encontrar la reserva. Probablemente ya se haya eliminado o lo haya sido en el pasado.</message>
+  <message id="trainingcamp_cancel_success">La reserva ha sido cancelada con éxito.</message>
+  <message id="camp-details_navlabel">Reservar Campamento de Entrenamiento</message>
+  <message id="camp-detail_form_title">Reserva</message>
+  <message id="camp-detail_start_date">Fecha de llegada</message>
+  <message id="camp-detail_days">Días</message>
+  <message id="camp-detail_days_help">Debe estar entre %d y %d.</message>
+  <message id="trainingcamp_booking_err_invaliddays">La estancia debe ser entre %d y %d días.</message>
+  <message id="trainingcamp_booking_err_dateinpast">La fecha de llegada debe ser futura.</message>
+  <message id="trainingcamp_booking_err_datetoofar">La fecha de llegada debe ser dentro de los próximos %d días.</message>
+  <message id="trainingcamp_booking_err_existingbookings">Ya reservaste otro campo de entrenamiento. Se le permite reservar sólo un campamento a la vez.</message>
+  <message id="trainingcamp_booking_err_tooexpensive">No puedes permitirte pagar este campo de entrenamiento en este momento.</message>
+  <message id="trainingcamp_booking_err_matcheswithintimeframe">Hay coincidencias con su tiempo dentro del marco de tiempo dado.</message>
+  <message id="trainingcamp_booking_costs_subject">Campo de entrenamiento</message>
+  <message id="trainingcamp_booking_success">¡El campamento de entrenamiento ha sido reservado con éxito!</message>
+</messages>
