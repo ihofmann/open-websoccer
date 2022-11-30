@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="facebooklogin_failure">L'accesso tramite Facebook è stato annullato.</message>
+  <message id="facebooklogin_success">Accesso riuscito!</message>
+  <message id="facebook_login_button">Fai il login con facebook</message>
+  <message id="facebooklogout_failure">Non è stato possibile effettuare il logout! Per favore riprova.</message>
+  <message id="facebooklogout_success">Disconnessione riuscita!</message>
+  <message id="facebooklogout_success_details">Tieni presente che sei stato disconnesso anche da Facebook.</message>
+</messages>

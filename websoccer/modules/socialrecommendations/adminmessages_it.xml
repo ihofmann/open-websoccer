@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_social_likebutton_twitter">Visualizza il pulsante di raccomandazione di Twitter.</message>
+  <message id="settings_label_social_likebutton_werkenntwen">Visualizza il pulsante di raccomandazione di wer-kennt-wen.de.</message>
+  <message id="settings_label_social_likebutton_xing">Visualizza il pulsante di raccomandazione di XING.</message>
+</messages>

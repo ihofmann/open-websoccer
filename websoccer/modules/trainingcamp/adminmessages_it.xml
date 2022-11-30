@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_trainingcamp_min_days">Soggiorno minimo in ritiro</message>
+  <message id="settings_label_trainingcamp_min_giorni_help">giorni</message>
+  <message id="settings_label_trainingcamp_max_days">Massima permanenza in ritiro</message>
+  <message id="settings_label_trainingcamp_max_giorni_help">giorni</message>
+  <message id="settings_label_trainingcamp_booking_max_days_in_future">Ultima prenotazione</message>
+  <message id="settings_label_trainingcamp_booking_max_days_in_future_help">in giorni; Fino a quanti giorni nel futuro un utente può prenotare un ritiro.</message>
+</messages>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_stadiumbuilding">Edifici</message>
+  <message id="entity_stadiumbuilding_name">Nome</message>
+  <message id="entity_stadiumbuilding_name_help">Può anche essere una chiave di messaggi.</message>
+  <message id="entity_stadiumbuilding_description">Descrizione</message>
+  <message id="entity_stadiumbuilding_description_help">Può anche essere una chiave di messaggi.</message>
+  <message id="entity_stadiumbuilding_picture">Immagine</message>
+  <message id="entity_stadiumbuilding_required_building_id">Edificio richiesto</message>
+  <message id="entity_stadiumbuilding_required_building_id_help">Un edificio selezionato deve essere costruito prima. Si noti che gli edifici costruiti in precedenza rimangono attivi. Gli effetti compilati di seguito verranno sommati insieme.</message>
+  <message id="entity_stadiumbuilding_costs">Costi di costruzione</message>
+  <message id="entity_stadiumbuilding_premiumfee">Tassa di premio</message>
+  <message id="entity_stadiumbuilding_premiumfee_help">Il conto premium dell'utente verrà addebitato in aggiunta al conto virtuale del club.</message>
+  <message id="entity_stadiumbuilding_construction_time_days">Tempo di costruzione (giorni)</message>
+  <message id="entity_stadiumbuilding_effect_training">Effetto: Allenamento</message>
+  <message id="entity_stadiumbuilding_effect_training_help">Numero aggiuntivo di punti abilità aggiunti al morale e alla forma fisica dopo ogni sessione di allenamento.</message>
+  <message id="entity_stadiumbuilding_effect_youthscouting">Effetto: scoutismo giovanile</message>
+  <message id="entity_stadiumbuilding_effect_youthscouting_help">Punti abilità aggiuntivi aggiunti all'abilità di un giovane giocatore scoperto.</message>
+  <message id="entity_stadiumbuilding_effect_tickets">Effetto: vendita dei biglietti</message>
+  <message id="entity_stadiumbuilding_effect_tickets_help">Numero di punti percentuali in base al quale le vendite dei biglietti saranno aumentate. Il bonus non verrà preso in considerazione se nessun biglietto verrà venduto senza questo edificio.</message>
+  <message id="entity_stadiumbuilding_effect_fanpopularity">Effetto: Popolarità (una volta)</message>
+  <message id="entity_stadiumbuilding_effect_fanpopularity_help">Numero di punti percentuali in base al quale la popolarità dell'utente verrà modificata una volta. <strong>Importante:</strong> la modifica ha effetto immediatamente una volta ordinata la costruzione dell'edificio senza attendere la fine della costruzione.</message>
+  <message id="entity_stadiumbuilding_effect_injury">Effetto: infortuni</message>
+  <message id="entity_stadiumbuilding_effect_injury_help">Numero di partite che ridurrà il numero di partite sospese per infortunio, in aggiunta alla riduzione standard. Esempio: con il valore 1, la durata di un infortunio viene ridotta della metà.</message>
+  <message id="entity_stadiumbuilding_effect_income">Entrate/costi per partita casalinga</message>
+  <message id="entity_stadiumbuilding_effect_income_help">Importo che verrà accreditato (se positivo) o addebitato (se negativo) ad ogni gara casalinga.</message>
+</messages>

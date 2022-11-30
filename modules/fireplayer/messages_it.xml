@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="fireplayer_button">Congedare</message>
+  <message id="fireplayer_modal_title">Licenziare davvero questo giocatore?</message>
+  <message id="fireplayer_modal_content">Vuoi davvero recedere dal contratto di %s?</message>
+  <message id="fireplayer_modal_confirm">Sì, licenzialo</message>
+  <message id="fireplayer_modal_compensation">Il giocatore richiede un compenso di <strong>%s %s</strong> !</message>
+  <message id="fireplayer_tooexpensive">Al momento non puoi pagare il risarcimento richiesto.</message>
+  <message id="fireplayer_success">Il giocatore è stato licenziato con successo.</message>
+  <message id="fireplayer_compensation_subject">Risarcimento per la perdita del lavoro</message>
+</messages>

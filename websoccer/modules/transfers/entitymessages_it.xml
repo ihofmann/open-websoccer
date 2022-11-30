@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_transfers">Trasferimenti di giocatori</message>
+  <message id="entity_transfers_datum">Data</message>
+  <message id="entity_transfers_spieler_id">Giocatore</message>
+  <message id="entity_transfers_seller_club_id">Venditore</message>
+  <message id="entity_transfers_buyer_club_id">Acquirente</message>
+  <message id="entity_transfers_bid_amount">Trasferimento di denaro (asta)</message>
+  <message id="entity_transfers_directtransfer_amount">Trasferimento di denaro (diretto)</message>
+</messages>

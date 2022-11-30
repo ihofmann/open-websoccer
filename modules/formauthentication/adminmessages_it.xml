@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_login_type">Tipo di accesso</message>
+  <message id="option_email">Autenticazione via e-mail</message>
+  <message id="option_username">Autenticazione tramite nome utente</message>
+  <message id="settings_label_login_method">Metodo di accesso</message>
+  <message id="settings_label_login_method_help">Nome della classe che implementa IUserLoginMethod. Consente l'integrazione di altri prodotti software.</message>
+  <message id="settings_label_login_allow_sendingpassword">Gli utenti possono richiedere una nuova password. Dovrebbe essere disabilitato se non si utilizza il metodo di accesso standard.</message>
+</messages>

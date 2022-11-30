@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_paypal_enabled">Abilita i pagamenti tramite PayPal.</message>
+  <message id="settings_label_paypal_receiver_email">PayPal: nome dell'account (e-mail)</message>
+  <message id="settings_label_paypal_receiver_email_help">E-mail del destinatario. Deve essere l'indirizzo memorizzato come indirizzo principale su PayPal.</message>
+  <message id="settings_label_paypal_host">PayPal: host</message>
+  <message id="settings_label_paypal_host_help">Di solito <em>www.paypal.com</em> . Per il test: <em>www.sandbox.paypal.com</em></message>
+  <message id="settings_label_paypal_url">URL di PayPal</message>
+  <message id="settings_label_paypal_url_help">URL interno per l'autenticazione del pagamento. Di solito <em>ssl://www.paypal.com</em> . Per il test: <em>ssl://www.sandbox.paypal.com</em> .</message>
+  <message id="settings_label_paypal_buttonhtml">PayPal: codice pulsante (HTML)</message>
+  <message id="settings_label_paypal_buttonhtml_help">Codice HTML <strong>originale</strong> del pulsante che hai creato sul portale mercantile di PayPal. Il pulsante deve contenere le opzioni di buy-in e la valuta configurate in questa pagina. Leggere il manuale del prodotto per i dettagli.</message>
+</messages>

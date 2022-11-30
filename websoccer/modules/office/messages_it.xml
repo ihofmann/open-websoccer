@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="office_navlabel">Ufficio</message>
+  <message id="office_title">Il mio ufficio</message>
+  <message id="feature_requires_team">Devi essere il manager di un team per poter utilizzare questa funzione.</message>
+  <message id="myteam_navlabel">La mia squadra</message>
+  <message id="myteam_title">I miei giocatori</message>
+  <message id="myteam_player_sell">Vendere</message>
+  <message id="myteam_player_extend_contract">Proroga contratto</message>
+  <message id="myteam_player_contract_is_ending">Il contratto sta per scadere a breve</message>
+  <message id="myteam_unsellable">Maschera come invendibile</message>
+  <message id="myteam_unsellable_tooltip">Non saranno accettate offerte di trasferimento per questo giocatore.</message>
+  <message id="myteam_unsellable_player_success">Il giocatore è stato contrassegnato come invendibile.</message>
+  <message id="myteam_unsellable_unmark_tooltip">Rimuovi il marcatore invendibile</message>
+  <message id="myteam_remove_unsellable_player_success">Il contrassegno invendibile è stato rimosso.</message>
+  <message id="myteam_action_button">Azione</message>
+  <message id="myteam_captain_tooltip">È il capitano e deve portare il morale quando è in svantaggio durante una partita</message>
+  <message id="myteam_player_select_as_captain">Nominato capitano</message>
+  <message id="myteam_player_select_as_captain_success">Il tuo nuovo cpatain è stato selezionato con successo!</message>
+  <message id="myteam_player_select_as_captain_warning_old_captain">Il tuo precedente capitano, %s, è piuttosto deluso dalla tua decisione.</message>
+  <message id="extend-contract_navlabel">Estensione del contratto</message>
+  <message id="extend-contract_title">Negoziazione con %s</message>
+  <message id="extend-contract_existing_contract_title">Contratto in essere</message>
+  <message id="extend-contract_link_profile">Vai al profilo del giocatore</message>
+  <message id="extend-contract_decrease_satisfaction_hint">Nota che la soddisfazione del giocatore diminuirà per ogni offerta troppo bassa.</message>
+  <message id="extend-contract_offer_title">La tua offerta</message>
+  <message id="extend-contract_success">Il contratto è stato prorogato con successo alle nuove condizioni!</message>
+  <message id="extend-contract_player_is_unhappy">Il giocatore non si sente più a suo agio nella tua squadra e al momento non vuole prolungare il suo contratto.</message>
+  <message id="extend-contract_lower_than_current_salary">Il giocatore non accetta una diminuzione dello stipendio.</message>
+  <message id="extend-contract_salary_too_low">Lo stipendio offerto è inferiore per il giocatore. Chiede uno stipendio più alto a partita.</message>
+  <message id="extend-contract_cannot_afford_offer">Non puoi permetterti un tale stipendio con il tuo budget attuale.</message>
+  <message id="extend-contract_goalbonus_too_low">Il giocatore vuole un bonus obiettivo più alto.</message>
+  <message id="finances_navlabel">Finanze</message>
+  <message id="account_statement_date">Data</message>
+  <message id="account_statement_sender">Mittente/Destinatario</message>
+  <message id="account_statement_subject">Materia</message>
+  <message id="account_statement_amount">Quantità</message>
+  <message id="tickets_navlabel">Biglietti</message>
+  <message id="tickets_stands">Classifiche</message>
+  <message id="tickets_seats">Sedili</message>
+  <message id="tickets_stands_grand">Classifica (grande)</message>
+  <message id="tickets_seats_grand">Posti (grandi)</message>
+  <message id="tickets_vip">Sale VIP</message>
+  <message id="tickets_sold_last_match">Ultima partita venduta</message>
+  <message id="tickets_info_homefieldadvantage"><strong>Suggerimento:</strong> la tua squadra sarà più motivata quando giocherà in casa e se tutti i biglietti saranno esauriti. Considera questo quando scegli i nuovi prezzi dei biglietti!</message>
+  <message id="notification_soon_ending_playercontracts">Ci sono contratti con i giocatori che stanno per scadere!</message>
+</messages>

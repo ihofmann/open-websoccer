@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_assign_team_automatically">Assegnazione automatica della squadra: gli utenti possono scegliere da soli qualsiasi club gratuito.</message>
+  <message id="settings_label_max_number_teams_per_user">Massimo. numero di squadre per utente</message>
+  <message id="settings_label_max_number_teams_per_user_help">Quanti team può gestire un utente con lo stesso account.</message>
+  <message id="settings_label_additional_team_min_highscore">min. punteggio più alto per la squadra aggiuntiva</message>
+  <message id="settings_label_additional_team_min_highscore_help">Highscore di cui un utente ha bisogno per poter scegliere un'altra squadra.</message>
+</messages>

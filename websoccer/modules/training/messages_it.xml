@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="training_navlabel">Addestramento</message>
+  <message id="training_no_trainers_available">Al momento non ci sono trainer disponibili.</message>
+  <message id="training_choose_trainer">Scegli un Allenatore</message>
+  <message id="trainer-details_navlabel">Scegli Allenatore</message>
+  <message id="training_choose_trainer_title">Assumi questo allenatore</message>
+  <message id="training_choose_trainer_units">Numero di Unità Formative</message>
+  <message id="training_choose_trainer_err_existing_units">Hai ancora unità di formazione aperte. Devono essere eseguiti prima di assumere un nuovo allenatore.</message>
+  <message id="training_choose_trainer_err_too_expensive">Questo trainer è troppo costoso per te al momento.</message>
+  <message id="training_trainer_salary_subject">Tariffa per le unità di formazione prenotate</message>
+  <message id="training_units_count">Unità di formazione aperte</message>
+  <message id="training_last_execution">Ultima sessione di formazione</message>
+  <message id="training_trainer_details">Formatore prenotato</message>
+  <message id="training_execute_training_title">Allena la squadra ora</message>
+  <message id="training_execute_button">Eseguire l'addestramento</message>
+  <message id="training_execute_focus">Messa a fuoco</message>
+  <message id="training_execute_focus_technique">Tecnica</message>
+  <message id="training_execute_focus_stamina">Resistenza</message>
+  <message id="training_execute_focus_motivation">Motivazione</message>
+  <message id="training_execute_focus_regeneration">Rigenerazione</message>
+  <message id="training_execute_intensity">Intensità</message>
+  <message id="training_execute_training_note">Puoi eseguire un'altra unità di addestramento ogni %d ore.</message>
+  <message id="training_execute_success">La squadra si è allenata.</message>
+  <message id="training_execute_err_already_executed">L'unità di formazione è già stata eseguita. Aggiorna la pagina e riprova.</message>
+  <message id="training_execute_err_too_early">L'intervallo di tempo dopo l'ultima sessione di allenamento è troppo breve. La prossima unità di addestramento può essere eseguita: %s</message>
+  <message id="training_execute_err_match_simulating">La tua squadra è attualmente impegnata in una partita. I giocatori possono allenarsi solo dopo che la partita è stata completata di nuovo.</message>
+  <message id="training_execute_effects_title">Effetti di questa unità formativa</message>
+  <message id="training_execute_err_team_in_training_camp">La squadra è attualmente in un campo di addestramento e quindi le unità di addestramento ordinarie non possono essere eseguite.</message>
+</messages>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="premium-feature-requested_navlabel">Funzionalità premium</message>
+  <message id="premium_info_title">Ricarica ora il tuo account premium!</message>
+  <message id="premium_info_notenoughcredit_alert">La funzione richiesta richiede almeno %d %s nel tuo account premium.</message>
+  <message id="premium_info_description">
+    <p>You can play this game for free. However, some pages or features require enough premium balance in your user account.</p>
+  </message>
+  <message id="premium_info_price_options">Opzioni di acquisto</message>
+  <message id="premiumaccount_navlabel">Account premium</message>
+  <message id="premiumaccount_recharge_button">Ottieni credito</message>
+  <message id="premium-confirm-action_navlabel">Conferma la funzionalità premium</message>
+  <message id="premium-confirm-action_title">Eseguire funzionalità premium?</message>
+  <message id="premium-confirm-action_question">Questa azione addebiterà <strong>%d %s</strong> sul tuo account premium! Vuoi continuare?</message>
+  <message id="premium-confirm-action_confirm">Conferma l'inserimento dell'addebito</message>
+  <message id="premiumaccount_exchange_link">Converti in denaro virtuale</message>
+  <message id="premium-exchange_navlabel">Converti credito premium</message>
+  <message id="premium-exchange_intro">Puoi convertire il tuo credito premium in denaro finto per la tua squadra. Inserisci sotto l'importo del credito premium che desideri scambiare.</message>
+  <message id="premium-exchange_amount_label">Importo da convertire</message>
+  <message id="premium-exchange_err_balancenotenough">Il tuo saldo premium non è sufficiente per l'importo inserito.</message>
+  <message id="premium-exchange_success">Il tuo credito premium è stato convertito con successo in denaro virtuale!</message>
+  <message id="premium-exchange-confirm_navlabel">Conferma la conversione</message>
+  <message id="premium-exchange-confirm_question">Si prega di confermare questa transazione.</message>
+  <message id="actionsubject_exchange-premium">Soldi finti</message>
+  <message id="premium-exchange_team_subject">Conversione del credito premium</message>
+  <message id="premium_balance_notenough">Il tuo saldo premium non è sufficiente per questa azione. Si prega di ricaricare il conto.</message>
+  <message id="premium_fature_fee_tooltip">Carica il tuo account premium</message>
+  <message id="actionsubject_choose-trainer">Prenotazione di un trainer premium</message>
+  <message id="actionsubject_extend-stadium">Miglioramento dello stadio con il costruttore premium</message>
+</messages>

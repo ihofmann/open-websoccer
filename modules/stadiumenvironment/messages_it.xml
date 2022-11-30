@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="stadiumenvironment_navlabel">Ambiente dello stadio</message>
+  <message id="stadiumenvironment_existingbuildings">Edifici esistenti</message>
+  <message id="stadiumenvironment_existingbuildings_none">Non hai edifici.</message>
+  <message id="stadiumenvironment_existingbuildings_underconstruction">È in costruzione fino al %s</message>
+  <message id="stadiumenvironment_availablebuildings">Edifici disponibili</message>
+  <message id="stadiumenvironment_availablebuildings_none">Non ci sono altri edifici disponibili per te.</message>
+  <message id="stadiumenvironment_build">Costruire</message>
+  <message id="stadiumenvironment_build_err_too_expensive">Non puoi permetterti i costi di costruzione.</message>
+  <message id="stadiumenvironment_build_err_already_exists">Sei già proprietario di questo edificio.</message>
+  <message id="stadiumenvironment_build_err_requires_building">Questo edificio non è attualmente disponibile per te.</message>
+  <message id="stadiumenvironment_build_err_premium_balance">Il tuo saldo premium non è sufficiente per questo edificio. Ricarica prima il tuo account premium.</message>
+  <message id="stadiumenvironment_build_success">L'edificio è stato ordinato con successo.</message>
+  <message id="building_construction_fee_subject">Costruzione di edifici</message>
+  <message id="actionsubject_order-building">Costruzione di un edificio di pregio</message>
+  <message id="activitylog_order-building">%s ha migliorato l'ambiente dello stadio.</message>
+  <message id="stadiumenvironment_matchincome_subject">Entrate ambiente stadio</message>
+  <message id="stadiumenvironment_costs_per_match_subject">Costi dell'ambiente dello stadio</message>
+</messages>

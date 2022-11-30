@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_transaction">Transazioni di denaro</message>
+  <message id="entity_transaction_verein_id">Destinatario</message>
+  <message id="entity_transaction_datum">Data</message>
+  <message id="entity_transaction_absender">Mittente</message>
+  <message id="entity_transaction_betrag">Quantità</message>
+  <message id="entity_transaction_betrag_help"><strong>Nota:</strong> il budget del team verrà modificato automaticamente!</message>
+  <message id="entity_transaction_absender_help">Può anche essere solo una chiave di messaggi.</message>
+  <message id="entity_transaction_verwendung">Materia</message>
+  <message id="entity_transaction_verwendung_help">Può anche essere solo una chiave di messaggi.</message>
+</messages>

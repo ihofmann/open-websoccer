@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_randomevents_interval_days">Eventi casuali: Intervallo</message>
+  <message id="settings_label_randomevents_interval_days_help">Dopo quanti giorni può verificarsi un nuovo evento per l'utente. 0 per disabilitare gli eventi casuali.</message>
+</messages>

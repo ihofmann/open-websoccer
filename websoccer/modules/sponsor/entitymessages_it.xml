@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_sponsor">Sponsor</message>
+  <message id="entity_sponsor_name">Nome</message>
+  <message id="entity_sponsor_liga_id">Lega</message>
+  <message id="entity_sponsor_bild">Logo</message>
+  <message id="entity_sponsor_b_spiel">Premio per partita</message>
+  <message id="entity_sponsor_b_heimzuschlag">Bonus per partita casalinga</message>
+  <message id="entity_sponsor_b_sieg">Bonus per vittoria</message>
+  <message id="entity_sponsor_b_meisterschaft">Bonus quando si vince il campionato</message>
+  <message id="entity_sponsor_max_teams">Numero massimo di squadre</message>
+  <message id="entity_sponsor_min_platz">Grado minimo in campionato</message>
+</messages>

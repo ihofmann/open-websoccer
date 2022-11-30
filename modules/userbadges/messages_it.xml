@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="badge_notification">Congratulazioni! Hai guadagnato un nuovo badge.</message>
+  <message id="badge_level_gold">Distintivo d'oro</message>
+  <message id="badge_level_silver">Distintivo d'argento</message>
+  <message id="badge_level_bronze">Distintivo di bronzo</message>
+  <message id="badges_navlabel">Distintivi</message>
+</messages>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="absence_navlabel">Assenza</message>
+  <message id="absence_intro">Non hai tempo per il gioco per i prossimi due giorni? Segnala qui la tua assenza e inserisci il nome di un sostituto che gestirà le tue squadre durante la tua assenza.</message>
+  <message id="absence_label_days">Giorni</message>
+  <message id="absence_label_days_help">(stimato)</message>
+  <message id="absence_err_invaliddeputy">Non siamo riusciti a trovare alcun utente con il nome utente specificato. Si prega di controllare l'ortografia.</message>
+  <message id="absence_err_deputyisself">Mi dispiace, non puoi sostituirti.</message>
+  <message id="absence_report_success">Segnalato con successo come assente!</message>
+  <message id="absence_profile_info">L'utente è assente fino al %s.</message>
+  <message id="absence_reportinfo">Sei segnalato come assente fino al %s. Il tuo vice è <strong>%s</strong> .</message>
+  <message id="absence_return_button">Sono tornato di nuovo</message>
+  <message id="absence_return_success">Ora puoi gestire di nuovo i tuoi team!</message>
+  <message id="absence_warning">Al momento sei segnalato come assente e non puoi gestire i tuoi team.</message>
+  <message id="absence_notification">{user} ha segnalato la sua assenza e ti ha nominato vice per le sue squadre.</message>
+  <message id="absence_comeback_notification">{user} è tornato dalla sua assenza e gestisce nuovamente i suoi team.</message>
+</messages>

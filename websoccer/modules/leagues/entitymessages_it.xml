@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_league">Lega</message>
+  <message id="entity_league_name">Nome</message>
+  <message id="entity_league_kurz">Breve</message>
+  <message id="entity_league_land">Paese</message>
+  <message id="entity_league_p_steh">Media utilizzo di stand</message>
+  <message id="entity_league_p_sitz">Media utilizzo delle sedi</message>
+  <message id="entity_league_p_haupt_steh">Media utilizzo delle tribune (tribuna)</message>
+  <message id="entity_league_p_haupt_sitz">Media utilizzo dei posti (tribuna)</message>
+  <message id="entity_league_p_vip">Media utilizzo dei posti VIP</message>
+  <message id="entity_league_preis_steh">Media prezzo per stand</message>
+  <message id="entity_league_preis_sitz">Media prezzo per posti</message>
+  <message id="entity_league_preis_vip">Media prezzo per i posti VIP</message>
+</messages>
