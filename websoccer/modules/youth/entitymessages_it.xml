@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_youthplayer">Giocatore giovanile</message>
+  <message id="entity_youthplayer_lastname">Cognome</message>
+  <message id="entity_youthplayer_firstname">Nome di battesimo</message>
+  <message id="entity_youthplayer_team_id">Club</message>
+  <message id="entity_youthplayer_position">Posizione</message>
+  <message id="entity_youthplayer_age">Età</message>
+  <message id="entity_youthplayer_strength">Abilità</message>
+  <message id="entity_youthplayer_strength_last_change">Cambio di forza dall'ultima partita</message>
+  <message id="entity_youthplayer_nation">Nazionalità</message>
+  <message id="entity_youthplayer_nation_ehlp">Nome del paese</message>
+  <message id="entity_youthplayer_st_goals">Obiettivi</message>
+  <message id="entity_youthplayer_st_matches">Partite</message>
+  <message id="entity_youthplayer_st_assists">Assist</message>
+  <message id="entity_youthplayer_st_cards_yellow">Cartellini gialli</message>
+  <message id="entity_youthplayer_st_cards_yellow_red">Cartellini giallorossi</message>
+  <message id="entity_youthplayer_st_cards_red">Cartellini rossi</message>
+  <message id="entity_youthplayer_transfer_fee">Tassa di trasferimento</message>
+  <message id="entity_youthplayer_transfer_fee_help">Se maggiore di 0, il giocatore verrà offerto per questo importo al mercato.</message>
+  <message id="entity_youthscout">Talent scout</message>
+  <message id="entity_youthscout_name">Nome</message>
+  <message id="entity_youthscout_expertise">Competenza</message>
+  <message id="entity_youthscout_fee">Tassa</message>
+  <message id="entity_youthscout_speciality">Specialità</message>
+  <message id="entity_youthmatch">Partita giovanile</message>
+  <message id="entity_youthmatch_matchdate">Data</message>
+  <message id="entity_youthmatch_home_team_id">Squadra di casa</message>
+  <message id="entity_youthmatch_guest_team_id">Squadra Ospite</message>
+  <message id="entity_youthmatch_simulated">Simulato</message>
+  <message id="entity_youthmatch_home_goals">Gol in casa</message>
+  <message id="entity_youthmatch_guest_goals">Ospiti ospiti</message>
+</messages>

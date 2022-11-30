@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_randomevent">Eventi casuali</message>
+  <message id="entity_randomevent_message">Messaggio</message>
+  <message id="entity_randomevent_message_help">Può anche essere una chiave di messaggi. Il messaggio può contenere "{playername}" per eventi relativi ai giocatori.</message>
+  <message id="entity_randomevent_effect">Effetto</message>
+  <message id="entity_randomevent_effect_money_amount">Effetto: denaro</message>
+  <message id="entity_randomevent_effect_money_amount_help">Importo positivo o negativo che verrà accreditato o addebitato sul/dal conto della squadra.</message>
+  <message id="entity_randomevent_effect_blocked_matches">Effetto: numero di partite sospese</message>
+  <message id="entity_randomevent_effect_skillchange">Effetto: cambio di abilità</message>
+  <message id="entity_randomevent_effect_skillchange_help">Effetto positivo o negativo sull'attributo del giocatore appropriato.</message>
+  <message id="entity_randomevent_weight">Il peso</message>
+  <message id="entity_randomevent_weight_help">Influenza la probabilità. 1 significa probabilità standard; 5 significa che la probabilità che si verifichi è cinque volte superiore. 0 disabilita l'evento.</message>
+  <message id="option_money">Il budget del team verrà modificato</message>
+  <message id="option_player_injured">Un giocatore a caso si infortuna</message>
+  <message id="option_player_blocked">Un giocatore a caso verrà bloccato</message>
+  <message id="option_player_happiness">La felicità di un giocatore a caso verrà modificata</message>
+  <message id="option_player_fitness">La forma fisica di un giocatore a caso verrà modificata</message>
+  <message id="option_player_stamina">La resistenza di un giocatore a caso verrà modificata</message>
+</messages>

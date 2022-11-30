@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_trainingcamp">Campo di addestramento</message>
+  <message id="entity_trainingcamp_name">Nome</message>
+  <message id="entity_trainingcamp_land">Paese</message>
+  <message id="entity_trainingcamp_preis_spieler_tag">Costi per giocatore al giorno</message>
+  <message id="entity_trainingcamp_p_staerke">Effetto Forza</message>
+  <message id="entity_trainingcamp_p_technik">Tecnica dell'effetto</message>
+  <message id="entity_trainingcamp_p_kondition">Effetto Resistenza</message>
+  <message id="entity_trainingcamp_p_frische">Effetto Freschezza</message>
+  <message id="entity_trainingcamp_p_zufriedenheit">Effetto soddisfazione</message>
+</messages>

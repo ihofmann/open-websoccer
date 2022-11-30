@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="register_navlabel">Registrati</message>
+  <message id="registration_disabled">La registrazione dell'utente è attualmente disabilitata dall'amministratore.</message>
+  <message id="registration_title">Registrati come nuovo utente</message>
+  <message id="registration_password_repeat">Ripeti la password</message>
+  <message id="registration_email_repeat">Conferma email</message>
+  <message id="registration_submit_button">Registrati</message>
+  <message id="registration_illegal_username">Il nome utente scelto non è consentito.</message>
+  <message id="registration_repeated_password_notmatching">La password ripetuta non corrisponde alla password inserita in precedenza.</message>
+  <message id="registration_repeated_email_notmatching">L'indirizzo e-mail ripetuto non corrisponde all'indirizzo inserito in precedenza.</message>
+  <message id="registration_user_exists">Il nome utente o l'indirizzo e-mail è già in uso.</message>
+  <message id="registration_max_number_users_exceeded">Attualmente non è possibile registrarsi.</message>
+  <message id="register-success_navlabel">Iscrizione inoltrata</message>
+  <message id="register-success_message_title">Iscrizione inoltrata - Controlla le tue e-mail</message>
+  <message id="register-success_message_content">Per verificare l'indirizzo e-mail specificato, il sistema ti ha inviato automaticamente un'e-mail con un link di attivazione.</message>
+  <message id="register-success_nextstep">Per favore controlla la tua e-mail ora e segui le istruzioni all'interno. Potrebbero essere necessari alcuni istanti prima che questa e-mail ti raggiunga.</message>
+  <message id="activation_email_subject">Completamento della registrazione dell'utente</message>
+  <message id="activation_email_greeting">Ciao,</message>
+  <message id="activation_email_introduction">Si prega di visitare il seguente indirizzo Internet per completare la registrazione dell'utente:</message>
+  <message id="activation_email_ending">Se non ti sei registrato sul nostro sito web e presumi qualche tipo di abuso, rispondi a questa e-mail.</message>
+</messages>

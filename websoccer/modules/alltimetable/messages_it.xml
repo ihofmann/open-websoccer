@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="alltimetable_navlabel">Tabella di tutti i tempi</message>
+  <message id="alltimetable_title">Tabella di tutti i tempi</message>
+</messages>

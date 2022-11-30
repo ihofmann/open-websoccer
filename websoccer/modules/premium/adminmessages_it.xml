@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_premium">Conti Premium</message>
+  <message id="settings_label_premium_enabled">Abilita gli account utente premium. Gli utenti possono ottenere credito premium e utilizzare funzionalità speciali con esso.</message>
+  <message id="settings_label_premium_credit_unit">Nome della valuta di credito</message>
+  <message id="settings_label_premium_infopage">Pagina informativa</message>
+  <message id="settings_label_premium_infopage_help">Pagina che verrà mostrata quando un utente ha richiesto una funzionalità premium ma non ha o non ha abbastanza saldo sul suo account premium. Può essere un ID pagina o un URL completo (http://...).<br/> <strong>Nota:</strong> se hai abilitato la registrazione automatica del pagamento per i vednor di terze parti (come PayPal), devi utilizzare la pagina delle informazioni predefinita ( <em>premium-feature-requested</em> ).</message>
+  <message id="settings_label_premium_price_options">Opzioni di acquisto</message>
+  <message id="settings_label_premium_price_options_help">Se gli utenti possono acquistare credito con denaro, puoi offrire diversi tassi di cambio. Ad esempio, 5:00:10 significa che 5,00 EUR di denaro reale verranno convertiti in 10 unità di credito premium. Nota che gli importi con la virgola usano un punto invece della virgola (es. 4.99 invece di 4,99)</message>
+  <message id="settings_label_premium_currency">Valuta (reale)</message>
+  <message id="settings_label_premium_exchangerate_gamecurrency">Valuta di gioco del tasso di cambio</message>
+  <message id="settings_label_premium_exchangerate_gamecurrency_help">Se l'utente può convertire il credito premium in denaro virtuale per la sua squadra, fornire il valore di un punto di credito premium in denaro virtuale. 0 se lo scambio deve essere disabilitato.</message>
+  <message id="settings_label_premium_initial_credit">Credito iniziale</message>
+  <message id="settings_label_premium_initial_credit_help">Credito premium che un utente ottiene con una nuova registrazione.</message>
+</messages>

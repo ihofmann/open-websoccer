@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="leagues_navlabel">Leghe</message>
+  <message id="leagues_title">Tabelle</message>
+  <message id="league_navlabel">Tavolo</message>
+  <message id="leaguetable_block_title">Ultimo tavolo</message>
+  <message id="leaguetable_block_noteamsavailable">Non ci sono squadre in questo campionato.</message>
+  <message id="leaguetable_head_place">Posizione</message>
+  <message id="leaguetable_head_place_abbr">P</message>
+  <message id="leaguetable_head_club">Club</message>
+  <message id="leaguetable_head_matches">Partite</message>
+  <message id="leaguetable_head_matches_abbr">M</message>
+  <message id="leaguetable_head_wins">Vince</message>
+  <message id="leaguetable_head_wins_abbr">In</message>
+  <message id="leaguetable_head_draws">disegna</message>
+  <message id="leaguetable_head_draws_abbr">D</message>
+  <message id="leaguetable_head_defeats">Perdite</message>
+  <message id="leaguetable_head_defeats_abbr">l</message>
+  <message id="leaguetable_head_goals">Obiettivi</message>
+  <message id="leaguetable_head_goalsdiff">Differenza gol</message>
+  <message id="leaguetable_head_goalsdiff_abbr">G.D</message>
+  <message id="leaguetable_head_score">Punti</message>
+  <message id="leaguetable_button_type">Tipo di tavolo</message>
+  <message id="leaguetable_button_type_total">Classifica totale</message>
+  <message id="leaguetable_button_type_home">Tavolo casalingo</message>
+  <message id="leaguetable_button_type_guest">Tavolo in trasferta</message>
+  <message id="leaguetable_timedelay_info">Potrebbe esserci un ritardo nella visualizzazione delle classifiche più aggiornate.</message>
+</messages>

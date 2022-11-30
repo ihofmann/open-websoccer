@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="team_navlabel">Dettagli della squadra</message>
+  <message id="team_details_tab_general">Riepilogo</message>
+  <message id="team_details_tab_statistic">Statistiche</message>
+  <message id="team_details_tab_victories">Vittorie</message>
+  <message id="team_details_tab_players">Giocatori</message>
+  <message id="team_details_manager">Gestore</message>
+  <message id="team_details_statistic_season">Questa stagione</message>
+  <message id="team_details_statistic_total">Totale</message>
+  <message id="team_details_statistic_goals">Obiettivi</message>
+  <message id="team_details_statistic_againsts">Gol ricevuti</message>
+  <message id="team_details_statistic_matches">Partite</message>
+  <message id="team_details_statistic_wins">Vince</message>
+  <message id="team_details_statistic_losses">Perdite</message>
+  <message id="team_details_statistic_draws">disegna</message>
+  <message id="team_details_statistic_score">Punto</message>
+  <message id="team_details_noleaguevictories">Questa squadra non ha ancora vittorie nel suo campionato.</message>
+  <message id="team_details_season_place">Posiziona %d</message>
+</messages>

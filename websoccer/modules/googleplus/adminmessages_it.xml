@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_googleplus_enable_login">Abilita l'accesso con Google+. Richiesto un valore per i seguenti campi. L'estensione PHP CURL deve essere abilitata sul server.</message>
+  <message id="settings_label_googleplus_appname">Nome progetto Google+</message>
+  <message id="settings_label_googleplus_clientid">ID cliente Google+</message>
+  <message id="settings_label_googleplus_clientid_help">Riceverai queste informazioni quando <a href="https://code.google.com/apis/console?api=plus" target="_blank">registri il tuo sito web su Google+</a> . Fare clic su "Accesso API", quindi su "Crea un ID client OAuth 2.0". In "Redirect URIs", fornisci l'URL completo del pattern <strong>http://www.mydomain.com/websoccerfolder/?page=home&amp;action=googleplus-login</strong> .</message>
+  <message id="settings_label_googleplus_clientsecret">Segreto cliente Google+</message>
+  <message id="settings_label_googleplus_clientsecret_help">Verrà fornito anche dopo la registrazione del sito su Google+.</message>
+  <message id="settings_label_googleplus_developerkey">Chiave dell'API di Google+</message>
+  <message id="settings_label_googleplus_developerkey_help">Verrà fornito anche dopo la registrazione del sito web su Google+. Verrà visualizzato come "Chiave API" sotto "Accesso API semplice".</message>
+  <message id="settings_label_googleplus_enable_likebutton">Visualizza il pulsante +1 (Google+).</message>
+</messages>

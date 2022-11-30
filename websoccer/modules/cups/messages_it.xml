@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="cup_firstround_only_date">Data</message>
+  <message id="cup_firstround">Primo round</message>
+  <message id="cup_secondround">Secondo round</message>
+  <message id="cup_created_from_winners_of_round">Vincitore di <strong>%s</strong> .</message>
+  <message id="cup_created_from_loosers_of_round">Perdente da <strong>%s</strong> .</message>
+  <message id="cup_cuproundaward_perround_subject">Premio per il turno di coppa</message>
+  <message id="cup_cuproundaward_winner_subject">Premio per aver vinto la coppa</message>
+  <message id="cup_cuproundaward_second_subject">Premio per la medaglia d'argento.</message>
+  <message id="cup_title_groups">Gruppi</message>
+  <message id="cup_group_noteamsavailable">Non è stata ancora assegnata alcuna squadra a questo gruppo.</message>
+  <message id="cup_group_select_group_placeholder">Seleziona un gruppo.</message>
+</messages>

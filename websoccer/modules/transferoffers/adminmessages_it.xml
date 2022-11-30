@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_transferoffers_enabled">Consenti trasferimenti diretti: gli utenti possono presentare offerte di trasferimento direttamente ad altri allenatori, al di fuori del mercato dei trasferimenti.</message>
+  <message id="settings_label_transferoffers_transfer_stop_days">Arresto del trasferimento</message>
+  <message id="settings_label_transferoffers_transfer_stop_days_help">nei giorni. I giocatori non devono cambiare squadra entro il periodo di tempo specificato dal suo ultimo trasferimento.</message>
+  <message id="settings_label_transferoffers_adminapproval_required">Una transazione di trasferimento concordata deve essere approvata manualmente da un amministratore.</message>
+  <message id="settings_label_transferoffers_contract_matches">Durata del contratto per i trasferimenti diretti</message>
+  <message id="settings_label_transferoffers_contract_matches_help">numero di partite.</message>
+  <message id="button_approve">Approvare</message>
+  <message id="transferoffer_approval_success">Il trasferimento del giocatore è stato eseguito con successo.</message>
+</messages>

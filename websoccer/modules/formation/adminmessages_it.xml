@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_formation_max_next_matches">Sottomissione formazione: Prossime partite</message>
+  <message id="settings_label_formation_max_next_matches_help">Per quante partite future un utente può inviare le sue tattiche.</message>
+  <message id="settings_label_formation_max_templates">Invio della formazione: salvataggio dei modelli</message>
+  <message id="settings_label_formation_max_templates_help">Molte formazioni possono essere salvate come modelli. 0 per disabilitare la funzione.</message>
+</messages>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_contract_max_number_of_remaining_matches">Da quante partite rimanenti è possibile una trattativa per l'estensione del contratto.</message>
+</messages>

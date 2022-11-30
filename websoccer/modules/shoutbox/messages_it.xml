@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="shoutbox_title">Casella delle grida</message>
+  <message id="shoutbox_messageinput_placeholder">Il tuo messaggio...</message>
+  <message id="shoutbox_button_go">andare</message>
+  <message id="shoutbox_hiddensubmit_note">Devi essere registrato e al tabellino della partita per poter inviare i messaggi.</message>
+</messages>

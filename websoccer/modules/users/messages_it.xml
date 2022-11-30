@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="highscore_navlabel">Punteggio alto</message>
+  <message id="highscore_title">Classifica dei punteggi più alti degli utenti</message>
+  <message id="highscore_rank">Rango</message>
+  <message id="highscore_user">Utente</message>
+  <message id="highscore_registration_date">Data di registrazione</message>
+  <message id="highscore_score">Punto</message>
+  <message id="user_navlabel">Profilo utente</message>
+  <message id="user_tab_profile">Profilo</message>
+  <message id="user_visitare_website">visitare</message>
+  <message id="user_changepicture_button">Carica l'immagine</message>
+  <message id="history_tab">Storia</message>
+  <message id="history_no_records">L'utente non ha ancora completato nessuna stagione.</message>
+</messages>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_facebook_enable_login">Abilita l'accesso a Facebook. Richiede un ID APP valido e un segreto dell'app (vedi sotto).</message>
+  <message id="settings_label_facebook_appid">ID dell'app Facebook</message>
+  <message id="settings_label_facebook_appid_help">Puoi ottenere queste informazioni quando <a href="https://developers.facebook.com/apps" target="_blank">registri il tuo sito web come App</a> .</message>
+  <message id="settings_label_facebook_appsecret">Segreto dell'app di Facebook</message>
+  <message id="settings_label_facebook_appsecret_help">Ottieni queste informazioni anche dal processo di registrazione.</message>
+  <message id="settings_label_facebook_enable_comments">Consenti le discussioni degli utenti (ad esempio nelle notizie e nei resoconti delle partite) tramite un plug-in di Facebook. Richiede che tu abbia inserito un ID app Facebook valido sopra.</message>
+  <message id="settings_label_facebook_enable_likebutton">Visualizza il pulsante Mi piace di Facebook.</message>
+</messages>

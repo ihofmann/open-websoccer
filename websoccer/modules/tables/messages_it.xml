@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="tablehistory_navlabel">Storia della stagione</message>
+  <message id="tablehistory_title">Storia della stagione di %s</message>
+  <message id="Aufstieg">Promozione</message>
+  <message id="Abstieg">Retrocessione</message>
+  <message id="Meister">Campione</message>
+</messages>

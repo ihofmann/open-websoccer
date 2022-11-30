@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="userprofile_block_notifications">Notifiche</message>
+  <message id="userprofile_block_notifications_noneavailable">Al momento non ci sono notifiche per te.</message>
+</messages>

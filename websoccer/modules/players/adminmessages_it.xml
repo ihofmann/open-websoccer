@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_hide_strength_attributes">Nascondi gli attributi di forza dei calciatori. Gli utenti non possono quindi vedere la forza effettiva di nessun giocatore.</message>
+  <message id="settings_label_players_aging">Invecchiamento dei giocatori</message>
+  <message id="option_birthday">Secondo il compleanno del giocatore</message>
+  <message id="option_static">Quando si completa una stagione</message>
+</messages>

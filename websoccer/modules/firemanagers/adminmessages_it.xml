@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="firemanagers_navlabel">Gestori dei vigili del fuoco</message>
+  <message id="firemanagers_introduction">Cerca i club gestiti dagli utenti che desideri eliminare. Un licenziamento significa che l'utente perderà il suo club. Gli account utente selezionati <strong>non</strong> verranno eliminati, ma possono essere disabilitati se lo si desidera. Se un utente ha ridotto economicamente il suo club, il sistema può renderlo nuovamente attraente per altri utenti.</message>
+  <message id="firemanagers_search_label">Trova club</message>
+  <message id="firemanagers_search_maxbudget">Budget minimo</message>
+  <message id="firemanagers_search_maxbudget_help">Trova i club che hanno un saldo del conto inferiore.</message>
+  <message id="firemanagers_search_lastlogindays">Ultimo accesso</message>
+  <message id="firemanagers_search_lastlogindays_help">giorni. Trova squadre con allenatori che non hanno effettuato l'accesso negli ultimi X giorni.</message>
+  <message id="firemanagers_search_maxplayers">Dimensione minima della squadra</message>
+  <message id="firemanagers_search_maxplayers_help">Trova squadre con meno di X giocatori.</message>
+  <message id="firemanagers_search_userid">Utente</message>
+  <message id="firemanagers_search_nohits">Nessun club trovato.</message>
+  <message id="firemanagers_dismiss_button">Ignora gli utenti selezionati</message>
+  <message id="firemanagers_dismiss_noneselected">Devi selezionare almeno una squadra.</message>
+  <message id="firemanagers_dismiss_label">Opzioni per il licenziamento</message>
+  <message id="firemanagers_dismiss_disableusers">Disabilita gli account utente</message>
+  <message id="firemanagers_dismiss_minbudget">Budget minimo della squadra</message>
+  <message id="firemanagers_dismiss_minbudget_help">Se il saldo dell'account del team è inferiore, verrà impostato sul budget minimo.</message>
+  <message id="firemanagers_dismiss_message_subject">Messaggio per l'utente: Oggetto</message>
+  <message id="firemanagers_dismiss_message_subject_help">Se l'utente riceverà un messaggio privato. Tieni presente che gli utenti disabilitati non possono ricevere messaggi privati.</message>
+  <message id="firemanagers_dismiss_message_content">Messaggio per l'utente: contenuto</message>
+  <message id="firemanagers_dismiss_label_players">Effetti sui giocatori di squadra</message>
+  <message id="firemanagers_dismiss_strength_min_freshness">min. forza: Freschezza</message>
+  <message id="firemanagers_dismiss_strength_min_stamina">min. forza: Resistenza</message>
+  <message id="firemanagers_dismiss_strength_min_satisfaction">min. forza: Soddisfazione</message>
+  <message id="firemanagers_dismiss_mincontractmatches">Corrispondenze contrattuali minime</message>
+  <message id="firemanagers_dismiss_label_minteamsize">Dimensione minima della squadra: aggiunta di giocatori</message>
+  <message id="firemanagers_dismiss_label_minteamsize_intro">Se ci sono troppo pochi giocatori per una particolare posizione, il sistema ne genererà di nuovi.</message>
+  <message id="firemanagers_dismiss_success">Gli utenti selezionati sono stati rimossi con successo dal loro team.</message>
+</messages>

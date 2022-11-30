@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_sponsor_matches">Contratti sponsor: giorni di partite</message>
+  <message id="settings_label_sponsor_matches_help">Durata contratto sponsor in giorni di partita.</message>
+  <message id="settings_label_sponsor_earliest_matchday">Offerte dello sponsor: Primo giorno della partita</message>
+  <message id="settings_label_sponsor_earliest_matchday_help">Un allenatore può scegliere un nuovo sponsor solo a partire da questo giorno di partita di una stagione.</message>
+</messages>

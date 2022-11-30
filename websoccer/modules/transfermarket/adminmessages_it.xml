@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_transfermarket">Mercato dei trasferimenti</message>
+  <message id="settings_label_transfermarket_enabled">Attiva il calciomercato automatico.</message>
+  <message id="settings_label_transfermarket_duration_days">Per quanto tempo deve essere un giocatore nella lista dei trasferimenti</message>
+  <message id="settings_label_transfermarket_duration_days_help">giorni. Se il giocatore non può essere venduto entro la scadenza, la scadenza sarà posticipata dello stesso numero di giorni.</message>
+  <message id="settings_label_transfermarket_computed_marketvalue">Calcola automaticamente il valore di mercato. Il valore dipende dalla forza effettiva del giocatore.</message>
+  <message id="settings_label_transfermarket_value_per_strength">Valore di mercato per punto di forza</message>
+  <message id="settings_label_transfermarket_value_per_strength_help">nel caso si calcoli il valore di mercato.</message>
+  <message id="settings_label_transfermarket_min_teamsize">Dimensione minima della squadra</message>
+  <message id="settings_label_transfermarket_min_teamsize_help">Numero minimo di giocatori che devono essere nella squadra. Se il numero minimo viene superato, non sono possibili ulteriori vendite di giocatori.</message>
+  <message id="settings_label_transfermarket_max_transactions_between_users">Transazioni tra utenti</message>
+  <message id="settings_label_transfermarket_max_transactions_between_users_help">Numero massimo di scambi tra due utenti particolari entro 30 giorni.</message>
+</messages>

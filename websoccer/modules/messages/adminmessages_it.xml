@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_messages_enabled">Gli utenti possono scambiarsi messaggi.</message>
+  <message id="settings_label_messages_break_minutes">Intervallo di tempo tra due messaggi</message>
+  <message id="settings_label_messages_break_minutes_help">in minuti. Gli utenti possono inviare ulteriori messaggi solo dopo X minuti, al fine di prevenire lo spam.</message>
+</messages>

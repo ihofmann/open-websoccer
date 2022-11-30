@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_match">Incontro</message>
+  <message id="entity_match_spieltag">Giorno dell'incontro</message>
+  <message id="entity_match_datum">Data</message>
+  <message id="entity_match_home_verein">Squadra di casa</message>
+  <message id="entity_match_gast_verein">Squadra Ospite</message>
+  <message id="entity_match_saison_id">Stagione</message>
+  <message id="entity_match_pokalname">Tazza</message>
+  <message id="entity_match_pokalrunde">Girone di Coppa</message>
+  <message id="entity_match_pokalgruppe">Gruppo Coppa</message>
+  <message id="entity_match_berechnet">È simulato</message>
+  <message id="entity_match_spieltyp">Tipo</message>
+  <message id="entity_match_elfmeter">Tiro di rigore in pareggio</message>
+  <message id="entity_match_home_tore">Obiettivi (Casa)</message>
+  <message id="entity_match_gast_tore">Obiettivi (Ospite)</message>
+  <message id="entity_match_zuschauer">Pubblico</message>
+  <message id="entity_match_bericht">Cronaca della partita</message>
+  <message id="entity_match_bericht_help">Deve essere specificato solo quando il report generato automaticamente non deve essere visualizzato.</message>
+  <message id="entity_match_soldout">Venduto</message>
+  <message id="entity_match_blocked">È bloccato per la simulazione. Se questa opzione non è stata abilitata manualmente, la partita è attualmente in simulazione o si è verificato un errore durante la simulazione. Disattivare la casella solo se la partita verrà simulata alla prossima occasione.</message>
+  <message id="option_Ligaspiel">Partita di campionato</message>
+  <message id="option_Pokalspiel">Partita di Coppa</message>
+  <message id="option_Freundschaft">Incontro amichevole</message>
+  <message id="entity_matchtext">Messaggio di resoconto della partita</message>
+  <message id="entity_matchtext_aktion">Tipo di azione</message>
+  <message id="entity_matchtext_nachricht">Messaggio</message>
+  <message id="entity_matchtext_nachricht_help">Può essere anche solo una chiave di messaggio. I messaggi possono essere tradotti aggiungendo la traduzione a un file di configurazione dei messaggi. Per un esempio, vedere <em>/modules/matches/messages_en.xml</em> .</message>
+  <message id="option_Tor">Obiettivo</message>
+  <message id="option_Auswechslung">Sostituzione</message>
+  <message id="option_Zweikampf_gewonnen">Contrasto: vinto</message>
+  <message id="option_Zweikampf_verloren">Affrontare: perso</message>
+  <message id="option_Pass_daneben">Passaggio: mancato</message>
+  <message id="option_Torschuss_daneben">Tiro fallito: sopra la porta</message>
+  <message id="option_Torschuss_auf_Tor">Tiro fallito: in porta</message>
+  <message id="option_Karte_gelb">Carta gialla</message>
+  <message id="option_Karte_rot">cartellino rosso</message>
+  <message id="option_Karte_gelb_rot">Cartellino giallo-rosso</message>
+  <message id="option_Verletzung">Lesione</message>
+  <message id="option_Elfmeter_erfolg">Pena: colpito</message>
+  <message id="option_Elfmeter_verschossen">Rigore: fallito</message>
+  <message id="option_Taktikaenderung">L'allenatore cambia tattica</message>
+  <message id="option_Ecke">Angolo</message>
+  <message id="option_Freistoss_daneben">Calcio di punizione: mancato</message>
+  <message id="option_Freistoss_treffer">Calcio di punizione: Gol</message>
+  <message id="option_Tor_mit_vorlage">Gol con assist</message>
+  <message id="entity_match_matchreportitems">Cronaca della partita</message>
+  <message id="entity_match_stadion_id">stadio</message>
+  <message id="entity_match_stadion_id_help">Se non viene selezionato nessuno stadio, la partita si svolgerà nello stadio della squadra di casa. Se viene selezionato uno stadio, la squadra di casa non otterrà né entrate dalla vendita dei biglietti, né alcun vantaggio extra.</message>
+</messages>

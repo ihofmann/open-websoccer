@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="lending_player_marker_tooltip">Il giocatore è preso in prestito</message>
+  <message id="lending_player_marker_lendable">Il giocatore può essere preso in prestito</message>
+  <message id="lending_lend_button">Offriti di prendere in prestito</message>
+  <message id="lending_lendable_unmark">Il giocatore viene offerto in prestito (Commissione: %d). Annulla l'offerta di prestito.</message>
+  <message id="lend-player_navlabel">Giocatore in prestito</message>
+  <message id="lend-player_intro">Offri questo lettore in prestito. Qualsiasi club interessato può assumere il giocatore per la quota di prestito specificata e per una durata massima di <strong>%d</strong> partite. Lo scambio verrà effettuato automaticamente non appena un club accetterà le condizioni. Lo stipendio sarà pagato dal mutuatario.</message>
+  <message id="lend_player_success">Il giocatore è ora pronto per il prestito.</message>
+  <message id="lending_err_notownplayer">Il giocatore che non appartiene (più) alla tua squadra.</message>
+  <message id="lending_err_alreadyoffered">Il giocatore è già contrassegnato come pronto per il prestito.</message>
+  <message id="lending_err_borrowed_player">Non puoi prestare questo giocatore poiché lo hai solo preso in prestito.</message>
+  <message id="lending_err_on_transfermarket">Il giocatore è attualmente sul mercato. Quindi, non puoi prestarlo.</message>
+  <message id="lending_err_teamsize_too_small">Al momento hai un numero insufficiente di giocatori nella tua squadra (%d) per dare via più giocatori.</message>
+  <message id="lending_err_contract_too_short">Il contratto del giocatore sta per scadere. Quindi, non puoi più prestarlo.</message>
+  <message id="lending_lendable_unmark_success">Il giocatore non è più prestabile.</message>
+  <message id="lending_player_lendable_info">Il giocatore può essere preso in prestito per <strong>%s</strong> a partita.</message>
+  <message id="lending_player_hire_button">Assumere</message>
+  <message id="borrow-player_navlabel">Assumi giocatore</message>
+  <message id="borrow-player_intro">Inserisci il numero desiderato di partite e il giocatore si sposterà nella tua squadra per questa durata. La commissione di prestito per l'intera durata verrà detratta immediatamente. Inoltre dovrai pagare lo stipendio del giocatore.</message>
+  <message id="lending_matches_durationhelp">Numero compreso tra %d e %d.</message>
+  <message id="lending_hire_err_ownplayer">Il giocatore appartiene già alla tua squadra.</message>
+  <message id="lending_hire_err_borrowed_player">Il giocatore è già stato prestato ad un'altra squadra. Probabilmente qualcun altro è stato più veloce di te.</message>
+  <message id="lending_hire_err_notoffered">Il giocatore non è (più) offerto per l'ingaggio.</message>
+  <message id="lending_hire_err_illegalduration">Il periodo di noleggio deve essere compreso tra %d e %d partite.</message>
+  <message id="lending_hire_err_contractendingtoosoon">Il contratto del giocatore scadrà dopo %d partite. Pertanto, il periodo di noleggio deve essere più breve.</message>
+  <message id="lending_hire_err_budget_too_low">Al momento non puoi permetterti lo stipendio e la quota di prestito del giocatore.</message>
+  <message id="lending_hire_success">Il giocatore ora gioca temporaneamente per la tua squadra!</message>
+  <message id="lending_fee_subject">Commissione di prestito del giocatore</message>
+  <message id="lending_notification_lent">Il giocatore <strong>{player}</strong> viene prestato per <em>{matches}</em> partite a <strong>{newteam}</strong> .</message>
+  <message id="lending_notification_return">Il giocatore preso in prestito <strong>{giocatore}</strong> è tornato da <strong>{mutuatario}</strong> a <strong>{prestatore}</strong> .</message>
+  <message id="lent_players">Giocatori prestati</message>
+</messages>

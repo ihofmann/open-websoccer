@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_wordpresslogin_tableprefix">Log-in con Wordpress (da 2.5): Prefisso tabella</message>
+  <message id="settings_label_wordpresslogin_tableprefix_help">Il prefisso della tabella del database della tua installazione di Wordpress, nel caso in cui gli utenti accedano solo con il loro account Wordpress. <em>Nota:</em> abilitare il log-in con Wordpress digitando "WordpressUserLoginMethod" nel campo "Metodo di accesso".</message>
+</messages>

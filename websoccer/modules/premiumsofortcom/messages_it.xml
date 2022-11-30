@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="actionsubject_sofortcom-notify">Pagamento tramite Sofort.com</message>
+  <message id="sofortcompayment_link_title">Paga tramite Sofort.com</message>
+  <message id="sofortcompayment_link_intro">Usa i tuoi comuni dati bancari online per pagare tramite il provider <a href="https://www.sofort.com" target="_blank">Sofort.com</a> . Non è necessario registrare un account presso il provider, né è richiesta una carta di credito.</message>
+  <message id="sofortcompayment_label_amount">Quantità</message>
+  <message id="sofortcompayment_label_submit">Boy Now tramite Sofort.com</message>
+</messages>

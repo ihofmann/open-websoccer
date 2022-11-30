@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="news_navlabel">Notizia</message>
+  <message id="news_title">Notizia</message>
+  <message id="news_no_items">Non ci sono ancora notizie.</message>
+  <message id="news_author">scritto da %s</message>
+  <message id="news_related_links">Link correlati</message>
+  <message id="news_block_title">Notizia</message>
+</messages>

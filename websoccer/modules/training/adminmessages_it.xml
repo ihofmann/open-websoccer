@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_training_min_hours_between_execution">Pausa tra le sessioni di allenamento</message>
+  <message id="settings_label_training_min_hours_between_execution_help">nelle ore. Numero minimo di ore che devono essere comprese tra due unità formative eseguite.</message>
+</messages>

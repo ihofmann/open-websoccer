@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_trainer">Allenatore</message>
+  <message id="entity_trainer_name">Nome</message>
+  <message id="entity_trainer_salary">Stipendio per unità</message>
+  <message id="entity_trainer_p_technique">Efficacia Tecnica Formazione</message>
+  <message id="entity_trainer_p_stamina">Efficacia Allenamento di resistenza</message>
+  <message id="entity_trainer_premiumfee">Tassa di premio</message>
+</messages>

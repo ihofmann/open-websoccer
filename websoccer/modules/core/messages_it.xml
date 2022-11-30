@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="offline_title">Siamo momentaneamente offline</message>
+  <message id="error_action_required_team">Devi essere il manager di una squadra per eseguire questa azione.</message>
+  <message id="requireslogin_box_title">Accesso negato</message>
+  <message id="requireslogin_box_message">Devi essere loggato per vedere il contenuto del sito.</message>
+  <message id="date_yesterday">Ieri</message>
+  <message id="date_today">In data odierna</message>
+  <message id="date_tomorrow">Domani</message>
+  <message id="privacypolicy_navlabel">Politica sulla riservatezza</message>
+</messages>

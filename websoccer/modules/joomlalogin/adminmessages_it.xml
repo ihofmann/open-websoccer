@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_label_joomlalogin_tableprefix">Accedi con Joomla: Prefisso tabella</message>
+  <message id="settings_label_joomlalogin_tableprefix_help">Prefisso della tabella del database di Joomla, nel caso in cui gli utenti accedano solo con il proprio account Joomla. <em>Nota:</em> abilitare il log-in con Joomla digitando "JoomlaUserLoginMethod" nel campo "Metodo di accesso".</message>
+</messages>

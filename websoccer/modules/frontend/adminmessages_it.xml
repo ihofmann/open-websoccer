@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_frontend">Fine frontale</message>
+  <message id="imprint_navlabel">Impronta</message>
+  <message id="imprint_label_content">Contenuto della pagina</message>
+  <message id="imprint_label_content_help">L'HTML è supportato. Le interruzioni di riga verranno convertite.</message>
+  <message id="imprint_introduction">Di solito è un obbligo legale fornire i dettagli di contatto del proprietario del sito Web responsabile. Puoi farlo inserendo i tuoi dati nel campo sottostante. Apparirà nella pagina del sito web "impronta".</message>
+  <message id="imprint_validationerror_content">Devi fornire alcuni contenuti.</message>
+  <message id="settings_label_head_code">Codice HTML per l'area &lt;head&gt;</message>
+</messages>

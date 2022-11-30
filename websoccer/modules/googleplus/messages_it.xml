@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="googlepluslogin_failure">L'accesso tramite Google+ è stato annullato.</message>
+  <message id="googlepluslogin_success">Accesso riuscito!</message>
+  <message id="googleplus_login_button">Accedi con Google+</message>
+</messages>
