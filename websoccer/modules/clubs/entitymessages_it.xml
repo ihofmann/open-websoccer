@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_club">Club</message>
+  <message id="entity_club_name">Nome</message>
+  <message id="entity_club_kurz">Breve</message>
+  <message id="entity_club_liga_id">Lega</message>
+  <message id="entity_club_user_id">Utente</message>
+  <message id="entity_club_user_id_actual">Gestore vero e proprio</message>
+  <message id="entity_club_user_id_actual_help">Nel caso in cui il direttore sia sostituto solo durante l'effettiva assenza del direttore.</message>
+  <message id="entity_club_bild">Logo</message>
+  <message id="entity_club_stadion_id">stadio</message>
+  <message id="entity_club_sponsor_id">Sponsor</message>
+  <message id="entity_club_sponsor_spiele">Partite rimanenti con lo sponsor</message>
+  <message id="entity_club_training_id">Unità di formazione</message>
+  <message id="entity_club_finanz_budget">Bilancio</message>
+  <message id="entity_club_finanz_sponsor">Entrate tramite sponsor</message>
+  <message id="entity_club_finanz_transfer">Entrate da trasferimento di giocatori</message>
+  <message id="entity_club_finanz_gehalt">Pagamento dello stipendio</message>
+  <message id="entity_club_finanz_zuschauer">Vengo attraverso i biglietti</message>
+  <message id="entity_club_finanz_sonstiges">Altri proventi</message>
+  <message id="entity_club_preis_stehen">Diritti di biglietteria in piedi</message>
+  <message id="entity_club_preis_sitz">Posti a pagamento</message>
+  <message id="entity_club_preis_haupt_stehen">Diritti di biglietteria in piedi (tribuna)</message>
+  <message id="entity_club_preis_haupt_sitze">Costi biglietto posti (tribuna)</message>
+  <message id="entity_club_preis_vip">Costi dei biglietti Sala VIP</message>
+  <message id="entity_club_last_steh">Biglietti venduti in precedenza: Standing</message>
+  <message id="entity_club_last_sitz">Biglietti già venduti: Posti</message>
+  <message id="entity_club_last_haupt_steh">Biglietti venduti in precedenza: Standing (tribuna)</message>
+  <message id="entity_club_last_haupt_sitz">Biglietti già venduti: Posti (tribuna)</message>
+  <message id="entity_club_last_vip">Biglietti venduti in precedenza: Posti: sala VIP</message>
+  <message id="entity_club_meisterschaften">Campionati vinti</message>
+  <message id="entity_club_st_tore">Gol (totale)</message>
+  <message id="entity_club_st_gegentore">Gol ricevuti (totale)</message>
+  <message id="entity_club_st_spiele">Partite (totale)</message>
+  <message id="entity_club_st_siege">Vittorie (totale)</message>
+  <message id="entity_club_st_niederlagen">Perdite (totale)</message>
+  <message id="entity_club_st_unentschieden">Pareggi (totale)</message>
+  <message id="entity_club_st_punkte">Punteggio (totale)</message>
+  <message id="entity_club_sa_tore">Gol (stagione)</message>
+  <message id="entity_club_sa_gegentore">Gol ricevuti (stagione)</message>
+  <message id="entity_club_sa_spiele">Partite (stagione)</message>
+  <message id="entity_club_sa_siege">Vittorie (stagione)</message>
+  <message id="entity_club_sa_niederlagen">Perdite (stagione)</message>
+  <message id="entity_club_sa_unentschieden">Pareggi (stagione)</message>
+  <message id="entity_club_sa_punkte">Punteggio (stagione)</message>
+  <message id="entity_club_history">Storia</message>
+  <message id="entity_club_status">Scitivo</message>
+  <message id="entity_club_min_target_rank">Obiettivo stagionale</message>
+  <message id="entity_club_min_target_rank_help">Grado minimo previsto in campionato a fine stagione. 0 per nessun rango target. Puoi specificare le conseguenze del mancato raggiungimento dell'obiettivo (licenziamento, penalità, riduzione della popolarità dei fan) al completamento di una stagione.</message>
+  <message id="entity_club_nationalteam">È la nazionale</message>
+  <message id="entity_club_captain_id">Capitano</message>
+  <message id="entity_club_interimmanager">È gestito da un manager ad interim</message>
+</messages>

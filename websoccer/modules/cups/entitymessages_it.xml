@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="entity_cup">Tazza</message>
+  <message id="entity_cup_name">Nome</message>
+  <message id="entity_cup_winner_id">Vincitore</message>
+  <message id="entity_cup_matches">Partite</message>
+  <message id="entity_cup_rounds">Turni</message>
+  <message id="entity_cup_logo">Logo</message>
+  <message id="entity_cup_winner_award">Premio vincitore</message>
+  <message id="entity_cup_second_award">Premio per il secondo</message>
+  <message id="entity_cup_perround_award">Premio per round</message>
+  <message id="entity_cup_archiviato">archiviato</message>
+</messages>

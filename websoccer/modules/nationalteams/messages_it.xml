@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="nationalteam_navlabel">Squadra nazionale</message>
+  <message id="nationalmatches_navlabel">Partite</message>
+  <message id="nominate-national-players_navlabel">Nomina giocatori</message>
+  <message id="nationalteams_user_requires_team">Devi essere l'allenatore di una squadra nazionale per poter utilizzare questa funzione.</message>
+  <message id="nationalteams_no_players">Non hai ancora nominato nessun giocatore.</message>
+  <message id="nationalteams_addplayer">Nominare</message>
+  <message id="nationalteams_addplayer_err_alreadyinteam">Il giocatore appartiene già alla tua squadra.</message>
+  <message id="nationalteams_addplayer_err_toomanyplayer">Puoi nominare solo fino a %d giocatori.</message>
+  <message id="nationalteams_addplayer_success">Il giocatore è stato aggiunto con successo alla tua squadra.</message>
+  <message id="nationalteams_remove_from_team">Rimuovere</message>
+  <message id="nationalteams_removeplayer_success">Il giocatore è stato rimosso con successo dalla tua squadra.</message>
+  <message id="nationalteams_team_label">Squadra nazionale</message>
+  <message id="nationalmatches_title">Partite della Nazionale</message>
+  <message id="nationalmatches_next_title">Prossime partite</message>
+  <message id="nationalmatches_results_title">Risultati</message>
+  <message id="nationalmatches_nextmatch_title">Prossima partita della Nazionale</message>
+</messages>

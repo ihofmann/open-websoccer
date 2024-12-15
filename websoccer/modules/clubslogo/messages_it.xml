@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="upload-clublogo_navlabel">Carica il nuovo logo del club</message>
+  <message id="upload-clublogo_intro">Puoi caricare un'immagine PNG o JPEG qui. Deve essere <strong>rettangolare</strong> con una larghezza minima di <strong>120 pixel</strong> e una dimensione massima del file di <strong>%d KBytes</strong> .</message>
+  <message id="upload-clublogo_success">La nuova foto del club è stata caricata con successo!</message>
+  <message id="activitylog_upload-club-picture">%s ha caricato un nuovo logo del club.</message>
+</messages>

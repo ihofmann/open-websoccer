@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="freeclubs_navlabel">Club gratuiti</message>
+  <message id="freeclubs_title">Squadre senza allenatore</message>
+  <message id="freeclubs_no_free_clubs_available">Al momento non ci sono club gratuiti.</message>
+  <message id="freeclubs_head_choose">Selezione</message>
+  <message id="freeclubs_button_choose">Scegli Squadra</message>
+  <message id="freeclubs_button_choose_another">Scegli un'altra squadra</message>
+  <message id="freeclubs_msg_success">Congratulazioni! Ora sei l'allenatore della squadra selezionata.</message>
+  <message id="freeclubs_msg_error">Probabilmente il team è già assegnato a un altro utente.</message>
+  <message id="freeclubs_msg_error_user_is_already_manager">Sei già manager di una squadra.</message>
+  <message id="freeclubs_msg_error_max_number_of_teams">Non devi gestire più di %d squadre al momento.</message>
+  <message id="freeclubs_msg_error_no_club_from_same_league">Non devi gestire più squadre della stessa lega.</message>
+  <message id="freeclubs_msg_error_minhighscore">Hai bisogno di un record di almeno %d per gestire un team aggiuntivo.</message>
+</messages>

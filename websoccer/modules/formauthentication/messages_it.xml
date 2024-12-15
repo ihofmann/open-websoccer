@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="formlogin_block_title">Accesso</message>
+  <message id="formlogin_option_rememberme">ricordati di me la prossima volta</message>
+  <message id="formlogin_submit_button">Accesso</message>
+  <message id="formlogin_link_register">Registrati</message>
+  <message id="formlogin_link_forgot_password">Hai dimenticato la password?</message>
+  <message id="formlogin_invalid_data">Le credenziali fornite non sono corrette.</message>
+  <message id="login_navlabel">Accesso</message>
+  <message id="login_title">Accesso</message>
+  <message id="forgot-password_navlabel">Invia nuova password</message>
+  <message id="forgot-password_title">Genera nuova password</message>
+  <message id="forgot-password_submit_button">Invia nuova password</message>
+  <message id="forgot-password_email-not-found">Nessun utente attivo con questa e-mail trovato. Si prega di controllare l'ortografia.</message>
+  <message id="forgot-password_already-sent">Hai già richiesto una nuova password nelle ultime 24 ore. Possiamo inviare una nuova password solo una volta al giorno.</message>
+  <message id="forgot-password_message_title">È stata inviata una nuova password</message>
+  <message id="forgot-password_message_content">Controlla ora le tue e-mail.</message>
+  <message id="activate-user_navlabel">Attivazione account utente</message>
+  <message id="activate-user_title">Attiva l'account utente</message>
+  <message id="activate-user_content">Hai problemi con il tuo account utente? Non esitate a contattarci.</message>
+  <message id="activate-user_user-not-found">O il tuo account utente è già attivo o hai inserito un indirizzo errato. Si prega di ricontrollare l'URL fornito nell'e-mail di attivazione.</message>
+  <message id="activate-user_message_title">Il tuo account utente è stato attivato con successo!</message>
+  <message id="activate-user_message_content">Ora puoi accedere con la tua e-mail e password. Divertiti!</message>
+</messages>

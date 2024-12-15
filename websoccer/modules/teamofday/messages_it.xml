@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="teamoftheday_navlabel">Squadra del giorno</message>
+  <message id="teamoftheday_no_matches_in_season">Non ci sono ancora partite completate in questa stagione.</message>
+  <message id="teamoftheday_openmatchesexist">Ci sono ancora partite aperte per questa giornata.</message>
+  <message id="teamoftheday_known_member_tooltip">È stato %d volte membro della squadra del giorno in questa stagione.</message>
+  <message id="teamoftheday_matchreport_tooltip">È membro della squadra del giorno.</message>
+  <message id="teamoftheday_teamoftheseason">Squadra della stagione</message>
+</messages>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="error_access_denied">Non hai l'autorizzazione necessaria per accedere a questa pagina.</message>
+  <message id="logout_message_title">Ti sei disconnesso con successo!</message>
+</messages>

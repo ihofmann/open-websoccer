@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_stadium">stadio</message>
+  <message id="settings_label_stadium_max_side">Massimo. Lato</message>
+  <message id="settings_label_stadium_max_side_help">Numero massimo di posti ai lati.</message>
+  <message id="settings_label_stadium_max_grand">Massimo. Tribuna</message>
+  <message id="settings_label_stadium_max_grand_help">Numero massimo di posti in tribuna.</message>
+  <message id="settings_label_stadium_max_vip">Massimo. Sale VIP</message>
+  <message id="settings_label_stadium_max_vip_help">Numero massimo di sale VIP.</message>
+  <message id="settings_label_stadium_cost_standing">Costi di costruzione lato posti in piedi</message>
+  <message id="settings_label_stadium_cost_standing_help">per posto. Verranno aggiunti ai singoli prezzi delle imprese costruttrici.</message>
+  <message id="settings_label_stadium_cost_seats">Costi di costruzione lato sedile</message>
+  <message id="settings_label_stadium_cost_seats_help">per posto</message>
+  <message id="settings_label_stadium_cost_standing_grand">I costi di costruzione sono grandiosi</message>
+  <message id="settings_label_stadium_cost_standing_grand_help">per posto</message>
+  <message id="settings_label_stadium_cost_seats_grand">La costruzione costa il sedile grande</message>
+  <message id="settings_label_stadium_cost_seats_grand_help">per posto</message>
+  <message id="settings_label_stadium_cost_vip">Costi di costruzione Sala VIP</message>
+  <message id="settings_label_stadium_cost_vip_help">per posto</message>
+  <message id="settings_label_stadium_construction_delay">Ritardo lavori in giorni</message>
+  <message id="settings_label_stadium_construction_delay_help">Possibile ritardo nel completamento dei lavori di ampliamento dello stadio quando l'utente ha scelto un costruttore inaffidabile. Dovrebbe essere abbastanza alto in modo che gli utenti trovino più interessanti i fornitori più costosi (ma anche più affidabili).</message>
+  <message id="settings_label_stadium_hide_builders_reliability">Nascondi l'affidabilità del costruttore all'utente.</message>
+  <message id="settings_label_stadium_maintenanceinterval_pitch">Intervallo di manutenzione erba</message>
+  <message id="settings_label_stadium_maintenanceinterval_pitch_help">Partite casalinghe. Dopo quante partite in casa cala il livello di qualità?</message>
+  <message id="settings_label_stadium_maintenanceinterval_videowall">Intervallo di manutenzione videowall</message>
+  <message id="settings_label_stadium_maintenanceinterval_videowall_help">Partite casalinghe</message>
+  <message id="settings_label_stadium_maintenanceinterval_seatsquality">Intervallo di manutenzione sedili</message>
+  <message id="settings_label_stadium_maintenanceinterval_seatsquality_help">Partite casalinghe</message>
+  <message id="settings_label_stadium_maintenanceinterval_vipquality">Intervallo di manutenzione sale VIP</message>
+  <message id="settings_label_stadium_maintenanceinterval_vipquality_help">Partite casalinghe</message>
+  <message id="settings_label_stadium_pitch_price">La manutenzione costa l'erba</message>
+  <message id="settings_label_stadium_pitch_price_help">Costi per ottenere il primo livello. I livelli successivi riceveranno un costo aggiuntivo come configurato di seguito.</message>
+  <message id="settings_label_stadium_videowall_price">Costi di manutenzione video wall</message>
+  <message id="settings_label_stadium_seatsquality_price">Costi di manutenzione postazioni (per postazione)</message>
+  <message id="settings_label_stadium_vipquality_price">Costi di manutenzione Sale VIP (per lounge)</message>
+  <message id="settings_label_stadium_maintenance_priceincrease_per_level">Costi di manutenzione costo aggiuntivo per livello</message>
+  <message id="settings_label_stadium_maintenance_priceincrease_per_level_help">per cento; Addizione cumulativa ai costi di manutenzione per livello. Esempio: 10% significa un'aggiunta del 40% quando si costruisce il livello 5 (costi del livello 1 + 10% + 10% + 10% + 10%). 0 senza costi aggiuntivi.</message>
+  <message id="settings_label_stadium_pitch_effect">Effetto della qualità dell'erba</message>
+  <message id="settings_label_stadium_pitch_effect_help">Diminuzione di quanti punti percentuali di tecnica per la propria squadra quando si gioca in casa per ogni livello sotto il 5.</message>
+  <message id="settings_label_stadium_videowall_effect">Effetto del video wall</message>
+  <message id="settings_label_stadium_videowall_effect_help">Aumento di quanti punti percentuali nella vendita dei biglietti per ogni livello.</message>
+  <message id="settings_label_stadium_seatsquality_effect">Effetto della qualità dei sedili</message>
+  <message id="settings_label_stadium_seatsquality_effect_help">Diminuzione di quanti punti percentuali nella vendita dei biglietti per ogni livello inferiore a 5.</message>
+  <message id="settings_label_stadium_vipquality_effect">Effetto della qualità delle sale VIP</message>
+  <message id="settings_label_stadium_vipquality_effect_help">Diminuzione di quanti punti percentuali nella vendita dei biglietti per ogni livello inferiore a 5.</message>
+</messages>

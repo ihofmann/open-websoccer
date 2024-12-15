@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="teamsgenerator_navlabel">Genera club</message>
+  <message id="teamsgenerator_intro">Di solito è vietato dalle associazioni di lega appropriate utilizzare nomi originali nelle partite di calcio, a meno che il fornitore non abbia ottenuto una licenza speciale a tale scopo dall'associazione. Questo strumento genera per te nomi di fantasia scelti a caso che potrebbero essere simili ai nomi originali, ma non identici.</message>
+  <message id="generator_label_league">Lega</message>
+  <message id="generator_label_numberofteams">Numero di squadre</message>
+  <message id="generator_label_budget">Budget per squadra</message>
+  <message id="generator_label_generatestadium">Genera anche uno stadio per ogni squadra.</message>
+  <message id="generator_label_stadiumpattern">nome dello stadio</message>
+  <message id="generator_label_stadiumpattern_help">mentre "%s" è il segnaposto per il nome della città.</message>
+  <message id="generator_label_stadium_p_stands">Posti in piedi Lati</message>
+  <message id="generator_label_stadium_p_seats">Lati dei sedili</message>
+  <message id="generator_label_stadium_p_stands_grand">Sala in piedi Grandstanding</message>
+  <message id="generator_label_stadium_p_seats_grand">Posti in tribuna</message>
+  <message id="generator_label_stadium_p_vip">Sale VIP</message>
+  <message id="generator_label">Genera record automaticamente</message>
+  <message id="generator_button">creare</message>
+  <message id="generator_validationerror_numberofitems">Devi consentire la generazione di almeno un record.</message>
+  <message id="generator_validationerror_numberofitems_max">Puoi generare un numero massimo di 100 record alla volta.</message>
+  <message id="generator_validationerror_noleague">Devi selezionare una lega.</message>
+  <message id="generator_success">I record sono stati generati correttamente.</message>
+  <message id="generator_err_filedoesnotexist">Per generare dati per questo campionato, è necessario il file: %s</message>
+  <message id="generator_err_emptyfile">Il seguente file non ha voci valide: %s</message>
+  <message id="playersgenerator_label_deviation">Massimo. Deviazione di forza</message>
+  <message id="playersgenerator_label_deviation_help">Se gli attributi di resistenza devono deviare, è possibile specificare una deviazione massima, ad esempio, del 10% per deviazioni da -10 a +10 punti.</message>
+  <message id="playersgenerator_navlabel">Genera giocatori</message>
+  <message id="playersgenerator_noteams">Non ci sono giocatori in questo campionato.</message>
+  <message id="playersgenerator_create_for_all_teams">Crea giocatori per tutte le squadre</message>
+  <message id="playersgenerator_create_for_single_teams">Crea giocatori separatamente per le squadre selezionate</message>
+  <message id="playersgenerator_head_playerscount">Numero di giocatori esistenti</message>
+  <message id="player_age">Età dei giocatori</message>
+  <message id="player_age_help">in anni</message>
+  <message id="player_age_deviation">Massimo. Deviazione dell'età</message>
+  <message id="player_age_deviation_help">Se l'età dei giocatori devia in modo casuale, puoi inserire, ad esempio, 5 per uno scostamento compreso tra -5 e +5 anni.</message>
+  <message id="playersgenerator_generator_for_transfermarket">Generatore per calciomercato</message>
+</messages>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE module SYSTEM "../messages.dtd">
+<messages>
+  <message id="settings_tab_youth">Squadre giovanili</message>
+  <message id="settings_label_youth_enabled">Abilita le squadre giovanili. Gli utenti possono cercare nuovi giovani giocatori e assumerli per la loro squadra di professionisti.</message>
+  <message id="settings_label_youth_scouting_enabled">Gli utenti possono cercare nuovi talenti.</message>
+  <message id="settings_label_youth_matchrequests_enabled">Gli utenti possono pubblicare e accettare richieste di corrispondenza.</message>
+  <message id="settings_label_youth_salary_per_strength">Stipendio per punto di forza</message>
+  <message id="settings_label_youth_salary_per_strength_help">Importo dello stipendio per partita e per punto di forza.</message>
+  <message id="settings_label_youth_min_age_professional">Età minima per la squadra professionistica</message>
+  <message id="settings_label_youth_scouting_break_hours">Pausa tra le esecuzioni di scouting</message>
+  <message id="settings_label_youth_scouting_break_hours_help">in ore; Solo dopo molte ore dall'esecuzione di uno scouting, un utente può eseguire un altro scouting. 0 per nessuna pausa.</message>
+  <message id="settings_label_youth_professionalmove_matches">Partite contrattuali professionali</message>
+  <message id="settings_label_youth_professionalmove_matches_help">Numero di partite a contratto quando un giocatore giovanile viene trasferito in una squadra professionistica.</message>
+  <message id="settings_label_youth_professionalmove_technique">Forza professionale: Tecnica</message>
+  <message id="settings_label_youth_professionalmove_technique_help">%; quando un giocatore giovanile viene trasferito in una squadra professionistica.</message>
+  <message id="settings_label_youth_professionalmove_stamina">Forza professionale: Resistenza</message>
+  <message id="settings_label_youth_professionalmove_stamina_help">%</message>
+  <message id="settings_label_youth_professionalmove_freshness">Punto di forza professionale: Freschezza</message>
+  <message id="settings_label_youth_professionalmove_freshness_help">%</message>
+  <message id="settings_label_youth_professionalmove_satisfaction">Forza professionale: Soddisfazione</message>
+  <message id="settings_label_youth_professionalmove_satisfaction_help">%</message>
+  <message id="settings_label_youth_scouting_success_probability">Scouting: Possibilità di successo</message>
+  <message id="settings_label_youth_scouting_success_probability_help">per cento; Probabilità che uno scout trovi nuovi talenti (indipendente dalla forza del giocatore).</message>
+  <message id="settings_label_youth_scouting_min_strength">Scouting: forza minima del giocatore</message>
+  <message id="settings_label_youth_scouting_min_strength_help">per cento; Quanto deve essere forte almeno un giocatore osservato.</message>
+  <message id="settings_label_youth_scouting_max_strength">Scouting: forza massima del giocatore</message>
+  <message id="settings_label_youth_scouting_max_strength_help">per cento; Quanto deve essere forte al massimo un giocatore osservato.</message>
+  <message id="settings_label_youth_scouting_standard_deviation">Esplorazione: deviazione standard</message>
+  <message id="settings_label_youth_scouting_standard_deviation_help">per cento; Quanto la forza effettiva del giocatore deve deviare dalla forza calcolata. 0 per nessuna deviazione.</message>
+  <message id="settings_label_youth_scouting_min_age">Scouting: Età minima</message>
+  <message id="settings_label_youth_matchrequest_max_open_requests">Richieste di corrispondenza: max. numero per squadra</message>
+  <message id="settings_label_youth_matchrequest_max_open_requests_help">Numero massimo di richieste di partite aperte senza risposta per squadra.</message>
+  <message id="settings_label_youth_matchrequest_max_futuredays">Richieste di corrispondenza: Giorni nel futuro</message>
+  <message id="settings_label_youth_matchrequest_max_futuredays_help">Fino a quanti giorni in futuro può essere inserita una richiesta di corrispondenza.</message>
+  <message id="settings_label_youth_matchrequest_allowedtimes">Richieste di corrispondenza: tempi consentiti</message>
+  <message id="settings_label_youth_matchrequest_allowedtimes_help">separati da virgola (es. '14:00,17:00'). Per evitare un sovraccarico del server se ci sono state anche partite di campionato contemporaneamente.</message>
+  <message id="settings_label_youth_matchrequest_accept_hours_in_advance">Richieste di corrispondenza: Ultima approvazione</message>
+  <message id="settings_label_youth_matchrequest_accept_hours_in_advance_help">in ore; Fino a quante ore prima può essere approvata una richiesta di corrispondenza. Darà l'opportunità ai partecipanti di impostare le loro tattiche.</message>
+  <message id="settings_label_youth_match_maxperday">Massimo. numero di partite consentite al giorno per squadra</message>
+  <message id="settings_label_youth_strengthchange_verygood">Cambio di forza: ottime prestazioni</message>
+  <message id="settings_label_youth_strengthchange_verygood_help">Modifica della forza del giocatore in punti se il punteggio nella partita è 1.3 o superiore.</message>
+  <message id="settings_label_youth_strengthchange_good">Cambio di forza: buone prestazioni</message>
+  <message id="settings_label_youth_strengthchange_good_help">Cambio della forza del giocatore in punti se il punteggio nella partita è compreso tra 1,4 e 2,3.</message>
+  <message id="settings_label_youth_strengthchange_bad">Cambio di forza: cattiva prestazione</message>
+  <message id="settings_label_youth_strengthchange_bad_help">Modifica della forza del giocatore in punti se il punteggio nella partita è compreso tra 4,3 e 5.</message>
+  <message id="settings_label_youth_strengthchange_verybad">Cambio di forza: pessima prestazione</message>
+  <message id="settings_label_youth_strengthchange_verybad_help">Modifica della forza del giocatore in punti se il punteggio nella partita è peggiore di 5.</message>
+  <message id="season_complete_label_youthplayers_age_delete">Età massima dei giovani calciatori</message>
+  <message id="season_complete_label_youthplayers_age_delete_help">I giovani che raggiungono questa età o sono più grandi verranno eliminati.</message>
+</messages>

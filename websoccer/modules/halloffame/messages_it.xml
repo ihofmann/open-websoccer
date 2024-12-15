@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="halloffame_navlabel">gruppo di personaggi famosi</message>
+  <message id="halloffame_no_seasons">Non ci sono ancora stagioni completate.</message>
+  <message id="halloffame_no_cups">Non ci sono gare di coppa completate.</message>
+</messages>

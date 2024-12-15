@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE messages SYSTEM "../messages.dtd">
+<messages>
+  <message id="rename-club_navlabel">Cambia il nome del club</message>
+  <message id="rename-club_success">Il nome del club è stato cambiato con successo.</message>
+  <message id="activitylog_rename-club">%s ha rinominato il suo club.</message>
+</messages>
