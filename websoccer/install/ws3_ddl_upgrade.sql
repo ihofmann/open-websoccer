@@ -761,4 +761,4 @@ ALTER TABLE ws3_spiel ADD blocked ENUM('1', '0') NOT NULL DEFAULT '0';
 ALTER TABLE ws3_spieler ADD st_assists INT(6) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_spieler ADD sa_assists INT(6) NOT NULL DEFAULT 0;
 
-ALTER TABLE ws3_news DROP COLUMN IF EXISTS bild_id;
+ALTER TABLE ws3_news DROP COLUMN bild_id;

@@ -28,7 +28,7 @@ if (!$admin['r_admin'] && !$admin['r_demo'] && !$admin[$page['permissionrole']])
 	throw new Exception($i18n->getMessage('error_access_denied'));
 }
 
-echo '<h1>$mainTitle</h1>';
+echo '<h1>' . $mainTitle .  '</h1>';
 
 //********** search form **********
 if (!$show) {
