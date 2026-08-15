@@ -5,7 +5,7 @@
     <message id="nationalmatches_navlabel">Matches</message>
     <message id="nominate-national-players_navlabel">Nominate Players</message>
     <message id="nationalteams_user_requires_team">You need to be the manager of a national team in order to use this feature.</message>
-    <message id="nationalteams_no_players">You have not nominated any players, yet.</message>
+    <message id="nationalteams_no_players">You have not nominated any players yet.</message>
     <message id="nationalteams_addplayer">Nominate</message>
     <message id="nationalteams_addplayer_err_alreadyinteam">The player already belongs to your team.</message>
     <message id="nationalteams_addplayer_err_toomanyplayer">You may nominate only up to %d players.</message>

@@ -12,7 +12,7 @@
 	
 	<message id="settings_label_user_picture_upload_enabled">Benutzer dürfen ein eigenes Profilbild hochladen.</message>
 	
-	<message id="settings_label_user_picture_upload_maxsize_kb">Bildupload: Maximalgrösse</message>
+	<message id="settings_label_user_picture_upload_maxsize_kb">Bildupload: Maximalgröße</message>
 	<message id="settings_label_user_picture_upload_maxsize_kb_help">in KBytes</message>
 	
 </messages>

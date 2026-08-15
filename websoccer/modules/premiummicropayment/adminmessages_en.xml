@@ -16,7 +16,7 @@
 	<message id="settings_label_micropayment_project_help">You will get that ID once you configure a new project at <a href="https://www.micropayment.de" target="_blank">www.micropayment.de</a>.</message>
 	
 	<message id="settings_label_micropayment_accesskey">micropayment: AccessKey</message> 
-	<message id="settings_label_micropayment_accesskey_help">Will be shown on micropayment.de when you log on and go to "Project and Payment management".</message> 
+	<message id="settings_label_micropayment_accesskey_help">Will be shown on micropayment.de when you log in and go to "Project and Payment management".</message> 
 	
 	<message id="settings_label_micropayment_call2pay_enabled">Enable micropayment module: Call2Pay</message>
 	<message id="settings_label_micropayment_handypay_enabled">Enable micropayment module: HandyPay</message>

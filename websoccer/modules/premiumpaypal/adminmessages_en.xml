@@ -3,8 +3,8 @@
 <messages>
 	
 	<message id="settings_label_paypal_enabled">Enable payments through PayPal.</message> 
-	<message id="settings_label_paypal_receiver_email">PayPal: Account name (E-Mail)</message>
-	<message id="settings_label_paypal_receiver_email_help">Receiver E-Mail. Needs to be the address which is stored as primary address on PayPal.</message>
+	<message id="settings_label_paypal_receiver_email">PayPal: Account name (Email)</message>
+	<message id="settings_label_paypal_receiver_email_help">Receiver Email. Needs to be the address which is stored as primary address on PayPal.</message>
 	<message id="settings_label_paypal_host">PayPal: Host</message>
 	<message id="settings_label_paypal_host_help">Usually <em>www.paypal.com</em>. For testing: <em>www.sandbox.paypal.com</em></message>
 	<message id="settings_label_paypal_url">URL to PayPal</message>

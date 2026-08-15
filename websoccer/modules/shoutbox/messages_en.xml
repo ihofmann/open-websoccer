@@ -5,5 +5,5 @@
     <message id="shoutbox_messageinput_placeholder">Your message...</message>
     <message id="shoutbox_button_go">Go</message>
     
-    <message id="shoutbox_hiddensubmit_note">You need to be signed in and at a match report in order to send messages.</message>
+    <message id="shoutbox_hiddensubmit_note">You need to be signed in and at a match report to send messages.</message>
 </messages>

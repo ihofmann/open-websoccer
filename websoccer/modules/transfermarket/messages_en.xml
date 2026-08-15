@@ -41,7 +41,7 @@
     <message id="transfer_bid_playerinfo">Player Summary</message>
     
     <message id="transfer_bid_existing_max_bid">Existing Highest Bid</message>
-    <message id="transfer_bid_no_existing_max_bid">No bids available for this player, yet!</message>
+    <message id="transfer_bid_no_existing_max_bid">No bids available for this player yet!</message>
     <message id="transfer_bid_yourbid">Your Bid</message>
     
     <message id="transfer_bid_amount">Amount</message>
@@ -51,13 +51,13 @@
     
     <message id="transfer_bid_on_own_player">You cannot bid for your own player.</message>
     
-    <message id="transfer_bid_auction_ended">The auction is already ended.</message>
-    <message id="transfer_bid_player_not_on_list">The player is not on the tranfer list (anymore).</message>
-    <message id="transfer_bid_salary_too_less">The player does not want to move to your team for this salary.</message>
+    <message id="transfer_bid_auction_ended">The auction has already ended.</message>
+    <message id="transfer_bid_player_not_on_list">The player is no longer on the transfer list.</message>
+    <message id="transfer_bid_salary_too_less">The player does not want to join your team for this salary.</message>
     <message id="transfer_bid_goalbonus_too_less">The player wants a higher goal bonus.</message>
-    <message id="transfer_bid_too_many_transactions_with_user">Within the last 30 days you have already done %d trades with the opponent user. Further traded are not allowed at the moment.</message>
+    <message id="transfer_bid_too_many_transactions_with_user">Within the last 30 days you have already completed %d trades with this user. Further trades are not allowed at the moment.</message>
     <message id="transfer_bid_amount_must_be_higher">Your bid amount must be higher than %d.</message>
-    <message id="transfer_bid_contract_conditions_too_low">Your offered contract cinditions are worse than the ones of the current highest bid.</message>
+    <message id="transfer_bid_contract_conditions_too_low">Your offered contract conditions are worse than those of the current highest bid.</message>
     <message id="transfer_bid_budget_too_less">Your team budget is not high enough for such an offer.</message>
     <message id="transfer_bid_budget_for_all_bids_too_less">Your team budget is not enough for all of your current highest bids.</message>
     
@@ -80,10 +80,10 @@
     
     <message id="transfers_tab">Transfers</message>
     
-    <message id="transfer_transaction_subject_handmoney">Paying hand money</message>
+    <message id="transfer_transaction_subject_handmoney">Signing Bonus Payment</message>
     <message id="transfer_transaction_subject_fee">Fee for player transfer</message>
     
     <message id="transfermarket_remove_label">Remove from transfer market</message>
-    <message id="transfermarket_remove_err_bidexists">Someone has submitted a bid for this player. Therefore, he cannot be removed from the transfer market.</message>
-    <message id="transfermarket_remove_success">The player is not on the transfer market anymore.</message>
+    <message id="transfermarket_remove_err_bidexists">Someone has submitted a bid for this player, so they cannot be removed from the transfer market.</message>
+    <message id="transfermarket_remove_success">The player is no longer on the transfer market.</message>
 </messages>

@@ -25,13 +25,13 @@
 	<message id="entity_youthscout_name">Name</message>
 	<message id="entity_youthscout_expertise">Expertise</message>
 	<message id="entity_youthscout_fee">Fee</message>
-	<message id="entity_youthscout_speciality">Speciality</message>
+	<message id="entity_youthscout_speciality">Specialty</message>
 	
 	<message id="entity_youthmatch">Youth Match</message>
 	<message id="entity_youthmatch_matchdate">Date</message>
 	<message id="entity_youthmatch_home_team_id">Home Team</message>
-	<message id="entity_youthmatch_guest_team_id">Guest Team</message>
+	<message id="entity_youthmatch_guest_team_id">Away Team</message>
 	<message id="entity_youthmatch_simulated">Simulated</message>
-	<message id="entity_youthmatch_home_goals">Goals home</message>
-	<message id="entity_youthmatch_guest_goals">Goals guest</message>
+	<message id="entity_youthmatch_home_goals">Home Goals</message>
+	<message id="entity_youthmatch_guest_goals">Away Goals</message>
 </messages>

@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_messages_enabled">Users can send messages to eachother.</message> 
+	<message id="settings_label_messages_enabled">Users can send messages to each other.</message> 
 	<message id="settings_label_messages_break_minutes">Time break between two messages</message> 
-	<message id="settings_label_messages_break_minutes_help">in minutes. Users are allowed to send further messages only after X minutes, in order to prevent spam.</message> 
+	<message id="settings_label_messages_break_minutes_help">in minutes. Users are allowed to send further messages only after X minutes, to prevent spam.</message> 
 </messages>

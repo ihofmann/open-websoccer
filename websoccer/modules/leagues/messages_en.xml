@@ -21,7 +21,7 @@
     <message id="leaguetable_head_defeats">Losses</message>
     <message id="leaguetable_head_defeats_abbr">L</message>
     <message id="leaguetable_head_goals">Goals</message>
-    <message id="leaguetable_head_goalsdiff">Goals Difference</message>
+    <message id="leaguetable_head_goalsdiff">Goal Difference</message>
     <message id="leaguetable_head_goalsdiff_abbr">GD</message>
     <message id="leaguetable_head_score">Points</message>
     

@@ -6,8 +6,8 @@
 	
 	<message id="settings_label_transfermarket_enabled">Enable automatic transfer market.</message>
 	
-	<message id="settings_label_transfermarket_duration_days">How long shall be a player on ther transfer list</message>
-	<message id="settings_label_transfermarket_duration_days_help">days. If the player cannot be sold within the deadline, the deadline will be posponed by the same number of days.</message>
+	<message id="settings_label_transfermarket_duration_days">How long a player stays on the transfer list</message>
+	<message id="settings_label_transfermarket_duration_days_help">days. If the player is not sold by the deadline, it will be postponed by the same number of days.</message>
 	
 	<message id="settings_label_transfermarket_computed_marketvalue">Compute market value automatically. Value depends on player's actual strength.</message>
 	

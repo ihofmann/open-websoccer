@@ -11,7 +11,7 @@
     <message id="youthteam_no_players">There are currently no players in your youth team.</message>
     <message id="youthteam_scout_button">Scout for new talents</message>
     
-    <message id="youthteam_showstatistics_tooltip">Show or collapse statistics</message>
+    <message id="youthteam_showstatistics_tooltip">Show or hide statistics</message>
     
     <message id="youthteam_min_age_info">A player must be at least %d years old in order to be moved to the professional team.</message>
     
@@ -38,7 +38,7 @@
 
     <message id="youthplayer-buy_navlabel">Buy youth player</message>
     <message id="youthplayer-buy_formlabel">Hire this player</message>
-    <message id="youthplayer-buy_confirmationmsg">Do you really want to buy this player? He will be immediately transferred to your team for the above mentioned transfer fee.</message>
+    <message id="youthplayer-buy_confirmationmsg">Do you really want to buy this player? He will be immediately transferred to your team for the above-mentioned transfer fee.</message>
     
     <message id="youthteam_buy_err_ownplayer">The player already belongs to your team.</message>
     <message id="youthteam_buy_err_ownplayer_otherteam">You cannot buy players from one of your other teams.</message>
@@ -62,22 +62,22 @@
 	
 	<message id="youthteam_scouting_lastexecution">Last Scouting</message>
 	<message id="youthteam_scouting_lastexecution_never">Never executed before</message>
-	<message id="youthteam_scouting_nextpossibleexecution">The next scouting is earliest possible on %s</message>
+	<message id="youthteam_scouting_nextpossibleexecution">The next scouting is possible at the earliest on %s</message>
 	
-	<message id="youthteam_scouting_schoosescout">Choose your favourite scout</message>
+	<message id="youthteam_scouting_schoosescout">Choose your favorite scout</message>
 	<message id="youthteam_scouting_noscoutavailable">There is no scout available at the moment.</message>
-	<message id="youthteam_scouting_schoosecountry">At which country shall be searched for new talents?</message>
+	<message id="youthteam_scouting_schoosecountry">In which country should we search for new talents?</message>
 	
 	<message id="youthteam_scouting_err_breakviolation">The earliest date to scout next time would be: %s</message>
-	<message id="youthteam_scouting_err_invalidcountry">It is not possible to scout at the selected country. Please contact the administrator.</message>
+	<message id="youthteam_scouting_err_invalidcountry">It is not possible to scout in the selected country. Please contact the administrator.</message>
 	<message id="youthteam_scouting_err_invalidscout">The selected scout does not exist (anymore).</message>
 	<message id="youthteam_scouting_err_notenoughbudget">You cannot afford the scout's fee at the moment.</message>
 	
 	<message id="youthteam_scouting_fee_subject">Fee for youth player scouting</message>
 	<message id="youthteam_scouting_failure">Unfortunately, the scout has not found any talented player during his trip.</message>
 	
-	<message id="youthteam_scouting_success">Congratulation! The scout could find a new talent.</message>
-	<message id="youthteam_scouting_success_details">Please welcome %s in your youth team!</message>
+	<message id="youthteam_scouting_success">Congratulations! The scout could find a new talent.</message>
+	<message id="youthteam_scouting_success_details">Please welcome %s to your youth team!</message>
 	
 	<message id="youthteam_matchrequest_createnew">Post new request</message>
 	<message id="youthteam_matchrequest_none_available">There are no open match requests at the moment.</message>
@@ -88,15 +88,15 @@
 	<message id="youthteam_matchrequest_create_date">Date and time</message>
 	<message id="youthteam_matchrequest_reward">Reward</message>
 	
-	<message id="youthteam_matchrequest_create_err_invaliddate">The entered date is invalid. If you have used the form properly, then contact an administrator, please.</message>
+	<message id="youthteam_matchrequest_create_err_invaliddate">The entered date is invalid. If you filled out the form correctly, please contact an administrator.</message>
 	<message id="youthteam_matchrequest_create_err_too_many_open_requests">You may have only up to %d open match requests. Cancel your other requests or wait until they are expired.</message>
 	<message id="youthteam_matchrequest_create_err_budgetnotenough">You cannot afford the entered reward at the moment.</message>
-	<message id="youthteam_matchrequest_create_err_notenoughplayers">You do not have enough youth players in order to attend matches.</message>
+	<message id="youthteam_matchrequest_create_err_notenoughplayers">You do not have enough youth players to play matches.</message>
 	
 	<message id="youthteam_matchrequest_create_success">Your match request has been successfully published.</message>
 	
 	<message id="youthteam_matchrequest_cancel_err_notfound">The match request does not exist (anymore). It might have been accepted already.</message>
-	<message id="youthteam_matchrequest_cancel_success">The match request has been succesfully cancelled.</message>
+	<message id="youthteam_matchrequest_cancel_success">The match request has been successfully canceled.</message>
 	
 	<message id="youthteam_matchrequest_accept_err_ownrequest">You cannot play against yourself.</message>
 	

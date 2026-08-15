@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_hide_strength_attributes">Hide the football players' strength attributes. Users cannot see the actual strength of any player then.</message> 
+	<message id="settings_label_hide_strength_attributes">Hide the soccer players' strength attributes. Users then cannot see the actual strength of any player.</message> 
 	<message id="settings_label_players_aging">Aging of players</message>
 	
 	<message id="option_birthday">According to player's birthday</message>

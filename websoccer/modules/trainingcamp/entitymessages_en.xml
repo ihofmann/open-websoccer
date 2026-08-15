@@ -4,7 +4,7 @@
     <message id="entity_trainingcamp">Training Camp</message>
 	<message id="entity_trainingcamp_name">Name</message>
 	<message id="entity_trainingcamp_land">Country</message>
-	<message id="entity_trainingcamp_preis_spieler_tag">Costs per player per day</message>
+	<message id="entity_trainingcamp_preis_spieler_tag">Cost per Player per Day</message>
 	<message id="entity_trainingcamp_p_staerke">Effect Strength</message>
 	<message id="entity_trainingcamp_p_technik">Effect Technique</message>
 	<message id="entity_trainingcamp_p_kondition">Effect Stamina</message>

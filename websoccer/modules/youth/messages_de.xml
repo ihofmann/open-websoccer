@@ -77,7 +77,7 @@
 	<message id="youthteam_scouting_failure">Leider hat der Scout auf seiner Reise keine Talente gefunden.</message>
 	
 	<message id="youthteam_scouting_success">Glückwunsch! Der Scout konnte ein Talent finden.</message>
-	<message id="youthteam_scouting_success_details">Begrüssen Sie %s in Ihrem Jugendteam!</message>
+	<message id="youthteam_scouting_success_details">Begrüßen Sie %s in Ihrem Jugendteam!</message>
 	
 	<message id="youthteam_matchrequest_createnew">Gesuch aufgeben</message>
 	<message id="youthteam_matchrequest_none_available">Im Moment gibt es keine offenen Spielgesuche.</message>
@@ -88,7 +88,7 @@
 	<message id="youthteam_matchrequest_create_date">Datum und Zeit</message>
 	<message id="youthteam_matchrequest_reward">Belohnung</message>
 	
-	<message id="youthteam_matchrequest_create_err_invaliddate">Das angegebene Datum ist ungültig. Wenn Sie das Formular ordnungsgemäss ausgefüllt haben, wenden Sie sich bitte an einen Administrator.</message>
+	<message id="youthteam_matchrequest_create_err_invaliddate">Das angegebene Datum ist ungültig. Wenn Sie das Formular ordnungsgemäß ausgefüllt haben, wenden Sie sich bitte an einen Administrator.</message>
 	<message id="youthteam_matchrequest_create_err_too_many_open_requests">Sie dürfen nur %d Spielgesuche offen haben. Ziehen Sie Ihre anderen Gesuche zurück oder warten Sie bis sie abgelaufen sind.</message>
 	<message id="youthteam_matchrequest_create_err_budgetnotenough">Ihr Budget reicht für die Belohnung nicht aus.</message>
 	<message id="youthteam_matchrequest_create_err_notenoughplayers">Sie haben nicht genügend Jugendspieler, um ein Spiel bestreiten zu können.</message>

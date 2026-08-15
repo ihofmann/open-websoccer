@@ -3,7 +3,7 @@
 <messages>
     <message id="entity_tablemarker">Table Marker</message>
 	<message id="entity_tablemarker_bezeichnung">Label</message>
-	<message id="entity_tablemarker_bezeichnung_help">Can be also a messages key.</message>
+	<message id="entity_tablemarker_bezeichnung_help">Can also be a message key.</message>
 	<message id="entity_tablemarker_liga_id">League</message>
 	<message id="entity_tablemarker_platz_von">Positions from</message>
 	<message id="entity_tablemarker_platz_bis">Positions until</message>

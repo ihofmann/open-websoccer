@@ -7,7 +7,7 @@
 	<message id="managecuprounds_label_create">Create new round</message>
 	
 	<message id="managecuprounds_infoalert_title">Create all rounds first!</message>
-	<message id="managecuprounds_infoalert_msg">In order to let the system generate automatically matches in the winners or losers rounds, you first need to create all rounds before any cup match has been simulated.</message>
+	<message id="managecuprounds_infoalert_msg">To let the system automatically generate matches in the winners or losers rounds, you must create all rounds before any cup match is simulated.</message>
 	
 	<message id="managecuprounds_label_name">Name</message>
 	<message id="managecuprounds_label_firstround_date">Date First Round</message>
@@ -15,7 +15,7 @@
 	<message id="managecuprounds_label_create_secondround">Create second round.</message>
 	<message id="managecuprounds_label_round_generation">Generate matches?</message>
 	<message id="managecuprounds_label_groupmatches">Consists of group matches.</message>
-	<message id="managecuprounds_label_finalround">Is final round (award will be payed after match has completed).</message>
+	<message id="managecuprounds_label_finalround">Is final round (award will be paid after the match has completed).</message>
 	<message id="managecuprounds_label_previous_round">Previous round</message>
 	
 	<message id="managecuprounds_show_matches">Display matches</message>
@@ -31,14 +31,14 @@
 	<message id="option_loosers_from">Automatically generate from losers of previous round</message>
 	<message id="option_generate_from_groups">Generate from groups phase</message>
 	
-	<message id="managecuprounds_generate_navlabel">Cup round: Generae matches</message>
-	<message id="managecuprounds_generate_formlabel">Select attending teams</message>
+	<message id="managecuprounds_generate_navlabel">Cup round: Generate matches</message>
+	<message id="managecuprounds_generate_formlabel">Select participating teams</message>
 	<message id="managecuprounds_generate_submitbutton">Generate matches</message>
 	<message id="managecuprounds_generate_success">Matches successfully generated!</message>
 	<message id="managecuprounds_generate_success_overviewlink">To the rounds overview</message>
 	
-	<message id="managecuprounds_generate_noroundspossible">No knock-out rounds possible with selected number of teams!</message>
-	<message id="managecuprounds_generate_possiblerounds">Possible knock-out rounds</message>
+	<message id="managecuprounds_generate_noroundspossible">No knockout rounds possible with selected number of teams!</message>
+	<message id="managecuprounds_generate_possiblerounds">Possible knockout rounds</message>
 	
 	<message id="managecuprounds_groups_navlabel">Cup round: Manage groups</message>
 	<message id="managecuprounds_groups_back">Back to rounds overview</message>

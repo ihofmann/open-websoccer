@@ -3,7 +3,7 @@
 <messages>
     <message id="premium-feature-requested_navlabel">Premium Features</message>
 	<message id="premium_info_title">Recharge your premium account now!</message>
-	<message id="premium_info_notenoughcredit_alert">The requested feature requires at leat %d %s in your premium account.</message>
+	<message id="premium_info_notenoughcredit_alert">The requested feature requires at least %d %s in your premium account.</message>
 	<message id="premium_info_description">
 		<p>You can play this game for free. However, some pages or features require enough premium balance in your user account.</p>
 	</message>

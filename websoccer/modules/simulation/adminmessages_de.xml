@@ -5,13 +5,13 @@
 	<message id="settings_tab_simulation_expert">Simulation (für Experten)</message> 
 	
 	<message id="settings_label_sim_interval">Simulationsintervall</message> 
-	<message id="settings_label_sim_interval_help">Minuten; Wieviele Spielminuten pro Ausführung simuliert werden sollen. 150 bedeutet, dass das komplette Spiel auf einmal berechnet wird.</message> 
+	<message id="settings_label_sim_interval_help">Minuten; Wie viele Spielminuten pro Ausführung simuliert werden sollen. 150 bedeutet, dass das komplette Spiel auf einmal berechnet wird.</message> 
 	
 	<message id="settings_label_sim_max_matches_per_run">Max. Spiele pro Minute</message> 
-	<message id="settings_label_sim_max_matches_per_run_help">Höchstanzahl an Spiele, die pro Berechnungslauf simuliert werden. Auf langsamen Servern sollte dieser Wert reduziert werden, um grössere Zeitverzögerungen bei der Berechnungen zu vermeiden.</message> 
+	<message id="settings_label_sim_max_matches_per_run_help">Höchstanzahl an Spiele, die pro Berechnungslauf simuliert werden. Auf langsamen Servern sollte dieser Wert reduziert werden, um größere Zeitverzögerungen bei der Berechnung zu vermeiden.</message> 
 	
-	<message id="settings_label_sim_noformation_oneteam">Keine Aufstellung durch User</message> 
-	<message id="settings_label_sim_noformation_oneteam_help">Folge, wenn ein User keine Aufstellung für das Spiel abgegeben hat.</message>
+	<message id="settings_label_sim_noformation_oneteam">Keine Aufstellung durch Benutzer</message> 
+	<message id="settings_label_sim_noformation_oneteam_help">Folge, wenn ein Benutzer keine Aufstellung für das Spiel abgegeben hat.</message>
 	
 	<message id="settings_label_sim_noformation_bothteams">Keine Aufstellung bei beiden Teams</message> 
 	<message id="settings_label_sim_noformation_bothteams_help">Folge, wenn beide Teams eines Spiels keine gesetzte Aufstellung haben.</message>
@@ -67,22 +67,22 @@
 	<message id="settings_label_sim_shootstrength_striker_help">in Prozent der Gesamtspielerstärke.</message> 
 	
 	<message id="settings_label_sim_played_min_minutes">Mindestspielminuten für Stärkeauswirkungen</message> 
-	<message id="settings_label_sim_played_min_minutes_help">in Minuten; ab wievielen Minuten ein Spieler als "hat gespielt" markiert wird. Wirkt sich auf Zufriedenheit und Kondition aus.</message> 
+	<message id="settings_label_sim_played_min_minutes_help">in Minuten; ab wie vielen Minuten ein Spieler als "hat gespielt" markiert wird. Wirkt sich auf Zufriedenheit und Kondition aus.</message> 
 	
 	<message id="settings_label_sim_block_player_after_yellowcards">Sperre nach Anzahl gelber Karten</message> 
-	<message id="settings_label_sim_block_player_after_yellowcards_help">Nach wievielen gelben Karten ein Spieler für ein Spiel gesperrt wird. 0 für nie sperren. Die Gelbsperre wird nach jedem Vielfachen wiederholt (z.B. wenn Wert=5, dann Sperre nach 5, 10, 15, ... Karten)</message> 
+	<message id="settings_label_sim_block_player_after_yellowcards_help">Nach wie vielen gelben Karten ein Spieler für ein Spiel gesperrt wird. 0 für nie sperren. Die Gelbsperre wird nach jedem Vielfachen wiederholt (z.B. wenn Wert=5, dann Sperre nach 5, 10, 15, ... Karten)</message> 
 
-	<message id="settings_label_sim_allow_livechanges">Änderungen an der Taktik während einer Live-Spielberechnung durch den User erlauben.</message> 
+	<message id="settings_label_sim_allow_livechanges">Änderungen an der Taktik während einer Live-Spielberechnung durch den Benutzer erlauben.</message> 
 	<message id="settings_label_sim_allow_offensivechanges">Erlaubte Live-Änderungen der Taktik</message>
 	<message id="settings_label_sim_allow_offensivechanges_help">Wie oft ein Benutzer während dem Spiel die Offensivtaktik und andere Optionen ändern darf. 0 für gar nicht.</message>
 
 	<message id="settings_label_sim_decrease_freshness">Spieler ermüden (verlieren an Frische), wenn sie spielen. Die Höhe ist abhängig von gespielten Minuten, Alter, Kondition und Offensivität.</message> 
 	<message id="settings_label_sim_strengthchange_stamina">Änderung Kondition</message> 
-	<message id="settings_label_sim_strengthchange_stamina_help">Wieviel Punkte der Spieler gewinnt bzw. verliert, wenn er spielt bzw. nicht spielt.</message> 
+	<message id="settings_label_sim_strengthchange_stamina_help">Wie viel Punkte der Spieler gewinnt bzw. verliert, wenn er spielt bzw. nicht spielt.</message> 
 	<message id="settings_label_sim_strengthchange_satisfaction">Änderung Zufriedenheit</message> 
-	<message id="settings_label_sim_strengthchange_satisfaction_help">Wieviel Punkte der Spieler gewinnt bzw. verliert, wenn er spielt bzw. nicht spielt.</message> 
+	<message id="settings_label_sim_strengthchange_satisfaction_help">Wie viel Punkte der Spieler gewinnt bzw. verliert, wenn er spielt bzw. nicht spielt.</message> 
 	<message id="settings_label_sim_strengthchange_freshness_notplayed">Frischegewinn bei Nichtspielen</message> 
-	<message id="settings_label_sim_strengthchange_freshness_notplayed_help">Wieviele Punkte der Spieler gewinnt, wenn er nicht gespielt hat.</message> 
+	<message id="settings_label_sim_strengthchange_freshness_notplayed_help">Wie viele Punkte der Spieler gewinnt, wenn er nicht gespielt hat.</message> 
 
 	<message id="settings_label_sim_strength_reduction_secondary">Stärkeschwächung auf Nebenposition</message>
 	<message id="settings_label_sim_strength_reduction_secondary_help">in Prozent; Schwächung der Spieler, die auf ihrer Nebenposition spielen.</message>

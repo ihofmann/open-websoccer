@@ -7,5 +7,5 @@
 	<message id="entity_transfers_seller_club_id">Seller</message>
 	<message id="entity_transfers_buyer_club_id">Buyer</message>
 	<message id="entity_transfers_bid_amount">Transfer Money (Auction)</message>
-	<message id="entity_transfers_directtransfer_amount">Transfer Money (direct)</message>
+	<message id="entity_transfers_directtransfer_amount">Transfer Money (Direct)</message>
 </messages>

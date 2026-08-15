@@ -6,7 +6,7 @@
     
     <message id="next_match_block_title">Nächstes Spiel</message>
     <message id="next_match_block_previous_matches">Vorherige Begegnungen</message>
-    <message id="next_match_block_no_previous_matches">Sie spielen zum ersten mal gegen diese Mannschaft.</message>
+    <message id="next_match_block_no_previous_matches">Sie spielen zum ersten Mal gegen diese Mannschaft.</message>
     
     <message id="next_match_block_no_nextmatch">Im Moment ist noch kein Spiel für Sie angesetzt.</message>
     

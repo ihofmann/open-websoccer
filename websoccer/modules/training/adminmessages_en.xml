@@ -2,6 +2,6 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_training_min_hours_between_execution">Time break between training sessions</message> 
-	<message id="settings_label_training_min_hours_between_execution_help">in hours. Minimum number of hours which must be between two executed training units.</message> 
+	<message id="settings_label_training_min_hours_between_execution">Break between training sessions</message> 
+	<message id="settings_label_training_min_hours_between_execution_help">in hours. Minimum number of hours between two training units.</message> 
 </messages>

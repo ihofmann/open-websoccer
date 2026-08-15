@@ -32,16 +32,16 @@
 	<message id="settings_label_youth_professionalmove_satisfaction_help">%</message>
 	
 	<message id="settings_label_youth_scouting_success_probability">Scouting: Chance of success</message>
-	<message id="settings_label_youth_scouting_success_probability_help">per cent; Probability that a scout will find any new talent (indeoendent from player strength).</message>
+	<message id="settings_label_youth_scouting_success_probability_help">percent; Probability that a scout will find any new talent (independent from player strength).</message>
 	
 	<message id="settings_label_youth_scouting_min_strength">Scouting: Minimum player strength</message>
-	<message id="settings_label_youth_scouting_min_strength_help">per cent; How strong a scouted player must be at least.</message>
+	<message id="settings_label_youth_scouting_min_strength_help">percent; How strong a scouted player must be at minimum.</message>
 	
-	<message id="settings_label_youth_scouting_max_strength">Scouting: Höchstspielerstärke</message>
-	<message id="settings_label_youth_scouting_max_strength_help">per cent; How strong a scouted player must be at maximum.</message>
+	<message id="settings_label_youth_scouting_max_strength">Scouting: Maximum player strength</message>
+	<message id="settings_label_youth_scouting_max_strength_help">percent; How strong a scouted player can be at maximum.</message>
 	
 	<message id="settings_label_youth_scouting_standard_deviation">Scouting: Standard deviation</message>
-	<message id="settings_label_youth_scouting_standard_deviation_help">per cent; How much the actual player strength shall deviate from the calculated strength. 0 for no deviation.</message>
+	<message id="settings_label_youth_scouting_standard_deviation_help">percent; How much the actual player strength shall deviate from the calculated strength. 0 for no deviation.</message>
 
 	<message id="settings_label_youth_scouting_min_age">Scouting: Minimum age</message>
 	
@@ -52,7 +52,7 @@
 	<message id="settings_label_youth_matchrequest_max_futuredays_help">Up to how many days in future a match request can be placed.</message>
 	
 	<message id="settings_label_youth_matchrequest_allowedtimes">Match requests: Allowed times</message>
-	<message id="settings_label_youth_matchrequest_allowedtimes_help">separated by comma (e.g. '14:00,17:00'). In order to prevent overstressing of the server if there were also league matches at the same time.</message>
+	<message id="settings_label_youth_matchrequest_allowedtimes_help">separated by comma (e.g. '14:00,17:00'). Prevents overloading the server when league matches take place at the same time.</message>
 
 	<message id="settings_label_youth_matchrequest_accept_hours_in_advance">Match requests: Latest approval</message>
 	<message id="settings_label_youth_matchrequest_accept_hours_in_advance_help">in hours; Up to how many hours in advance a match request can be approved. Shall give the opportunity to participants to set their tactics.</message>

@@ -13,7 +13,7 @@
 	<message id="firemanagers_search_lastlogindays">Letzter Log-In</message>
 	<message id="firemanagers_search_lastlogindays_help">Tage. Finde Vereine, deren Manager in den letzten X Tagen nicht angemeldet war.</message>
 	
-	<message id="firemanagers_search_maxplayers">Mindestkadergrösse</message>
+	<message id="firemanagers_search_maxplayers">Mindestkadergröße</message>
 	<message id="firemanagers_search_maxplayers_help">Finde Vereine, die weniger als X Spieler im Team haben.</message>
 	
 	<message id="firemanagers_search_userid">Benutzer</message>
@@ -37,7 +37,7 @@
 	<message id="firemanagers_dismiss_strength_min_satisfaction">Mindeststärke: Zufriedenheit</message>
 	<message id="firemanagers_dismiss_mincontractmatches">Mindestvertragslaufzeit</message>
 	
-	<message id="firemanagers_dismiss_label_minteamsize">Mindestkadergrösse: Aufstockung des Kaders</message>
+	<message id="firemanagers_dismiss_label_minteamsize">Mindestkadergröße: Aufstockung des Kaders</message>
 	<message id="firemanagers_dismiss_label_minteamsize_intro">Existieren weniger Spieler auf einer Position wie unten angegeben, werden automatisch neue Spieler generiert.</message>
 
 	<message id="firemanagers_dismiss_success">Die Benutzer wurden erfolgreich von ihren Vereinen entfernt.</message>

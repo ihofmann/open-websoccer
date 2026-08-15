@@ -5,7 +5,7 @@
 	<message id="entity_sponsor_name">Name</message>
 	<message id="entity_sponsor_liga_id">League</message>
 	<message id="entity_sponsor_bild">Logo</message>
-	<message id="entity_sponsor_b_spiel">Premium per Match</message>
+	<message id="entity_sponsor_b_spiel">Bonus per Match</message>
 	<message id="entity_sponsor_b_heimzuschlag">Bonus per home match</message>
 	<message id="entity_sponsor_b_sieg">Bonus per win</message>
 	<message id="entity_sponsor_b_meisterschaft">Bonus when winning the championship</message>

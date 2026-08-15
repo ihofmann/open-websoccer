@@ -21,7 +21,7 @@
 	<message id="premiumaccount_exchange_link">In Spielgeld eintauschen</message>
 	
 	<message id="premium-exchange_navlabel">Premiumguthaben eintauschen</message>
-	<message id="premium-exchange_intro">Sie können Ihr Premiumguthaben in Spielgeld umwandeln. Geben Sie dazu an, wieviel Guthaben Sie eintauschen möchten.</message>
+	<message id="premium-exchange_intro">Sie können Ihr Premiumguthaben in Spielgeld umwandeln. Geben Sie dazu an, wie viel Guthaben Sie eintauschen möchten.</message>
 	<message id="premium-exchange_amount_label">Einzutauschendes Guthaben</message>
 	
 	<message id="premium-exchange_err_balancenotenough">Ihr Premiumguthaben reicht für die angegebene Menge leider nicht aus.</message>

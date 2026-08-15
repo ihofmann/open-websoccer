@@ -4,7 +4,7 @@
     
     <message id="teamsgenerator_navlabel">Generate Clubs</message>
     
-    <message id="teamsgenerator_intro">Usually it is prohibited by the appropriate league associations to use original names in football games, except the provider has obtained a special licence for this purpose from the association. This tool generates for you randomly picked fantasy names which might be similar to original names, but not identical.</message>
+    <message id="teamsgenerator_intro">Usually it is prohibited by the appropriate league associations to use original names in soccer games, except the provider has obtained a special licence for this purpose from the association. This tool generates for you randomly picked fantasy names which might be similar to original names, but not identical.</message>
     
     <message id="generator_label_league">League</message>
     <message id="generator_label_numberofteams">Number of Teams</message>
