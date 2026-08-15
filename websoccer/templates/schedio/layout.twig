@@ -24,9 +24,6 @@
 		
 		<link rel="shortcut icon" type="image/x-icon" href="{{ env.getConfig("context_root") }}/favicon.ico" />
 		
-		{% if env.getConfig("facebook_appid") %}
-		<meta property="fb:app_id" content="{{ env.getConfig("facebook_appid") }}"/>
-		{% endif %}
 		{{ env.getConfig("head_code")|raw }}
 	</head>
 	<body>

@@ -1,6 +1,0 @@
-{% if env.getConfig("facebook_enable_comments") %}
-	{% set url = env.getInternalUrl(null, "id=" ~ env.getRequestParameter("id"), TRUE) %}
-
-	<hr>
-	<div class="fb-comments" data-href="{{ url }}" data-width="500"></div>
-{% endif %}
