@@ -23,8 +23,7 @@
 /**
  * This is a sample implementation of a custom log-in method.
  * It simply authenticates a user by checking a dummy local data base table. In your real-world implementation,
- * you might connect to another data base and get user data from a table which belongs to a different software product,
- * such as Wordpress or Joomla.
+ * you might connect to another data base and get user data from a table which belongs to a different software product.
  * 
  * @author Ingo Hofmann
  */
