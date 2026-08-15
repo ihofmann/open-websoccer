@@ -6,11 +6,11 @@
   <message id="settings_label_illegal_usernames_help">separado por comas</message>
   <message id="settings_label_max_number_of_users">Número máximo de usuarios aprobados</message>
   <message id="settings_label_max_number_of_users_help">0 para ilimitado</message>
-  <message id="settings_label_register_use_captcha">Utilice el código de seguridad reCAPTCHA para evitar registros de spam. Esto requiere un registro gratuito en <a href="https://www.google.com/recaptcha/admin/create" target="_blank">www.google.com/recaptcha</a> .</message>
-  <message id="settings_label_register_captcha_publickey">Llave pública</message>
-  <message id="settings_label_register_captcha_publickey_help">Tome esta clave de la confirmación de registro de reCAPTCHA.</message>
-  <message id="settings_label_register_captcha_privatekey">Llave privada</message>
-  <message id="settings_label_register_captcha_privatekey_help">Tome esta clave de la confirmación de registro de reCAPTCHA.</message>
+  <message id="settings_label_register_use_captcha">Utilice Google reCAPTCHA v2 para evitar registros de spam. En la <a href="https://www.google.com/recaptcha/admin/create" target="_blank">administración de Google reCAPTCHA</a>, cree una clave nueva para la <strong>casilla de verificación reCAPTCHA v2 «No soy un robot»</strong> y añada los dominios de este sitio web.</message>
+  <message id="settings_label_register_captcha_sitekey">Clave del sitio</message>
+  <message id="settings_label_register_captcha_sitekey_help">Introduzca la clave del sitio de una clave Google reCAPTCHA v2 para la casilla «No soy un robot». Las claves reCAPTCHA v3 o antiguas no son compatibles con esta casilla.</message>
+  <message id="settings_label_register_captcha_secretkey">Clave secreta</message>
+  <message id="settings_label_register_captcha_secretkey_help">Introduzca la clave secreta del mismo par de claves Google reCAPTCHA v2. Manténgala privada; el servidor la usa para verificar los envíos.</message>
   <message id="settings_label_registration_url">URL de registro</message>
   <message id="settings_label_registration_url_help">Si los usuarios deben registrar su cuenta en un sitio web diferente, puede especificar la URL del formulario de registro aquí.</message>
 </messages>

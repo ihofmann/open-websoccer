@@ -7,12 +7,12 @@
     <message id="settings_label_max_number_of_users">Maximum number of approved users</message> 
     <message id="settings_label_max_number_of_users_help">0 for unlimited</message> 
     
-    <message id="settings_label_register_use_captcha">Use reCAPTCHA security code to prevent spam registrations. This requires a free registration at <a href="https://www.google.com/recaptcha/admin/create" target="_blank">www.google.com/recaptcha</a>.</message> 
+    <message id="settings_label_register_use_captcha">Use Google reCAPTCHA v2 to prevent spam registrations. In <a href="https://www.google.com/recaptcha/admin/create" target="_blank">Google reCAPTCHA Admin</a>, create a new key for the <strong>reCAPTCHA v2 &quot;I'm not a robot&quot; Checkbox</strong> and add this website's domains.</message>
     
-    <message id="settings_label_register_captcha_publickey">Public Key</message>
-    <message id="settings_label_register_captcha_publickey_help">Take this key from the reCAPTCHA registration confirmation.</message>
-    <message id="settings_label_register_captcha_privatekey">Private Key</message>
-    <message id="settings_label_register_captcha_privatekey_help">Take this key from the reCAPTCHA registration confirmation.</message>
+    <message id="settings_label_register_captcha_sitekey">Site Key</message>
+    <message id="settings_label_register_captcha_sitekey_help">Enter the site key from a Google reCAPTCHA v2 &quot;I'm not a robot&quot; Checkbox key. v3 or legacy reCAPTCHA keys are not compatible with this checkbox.</message>
+    <message id="settings_label_register_captcha_secretkey">Secret Key</message>
+    <message id="settings_label_register_captcha_secretkey_help">Enter the secret key from the same Google reCAPTCHA v2 key pair. Keep it private; the server uses it to verify submissions.</message>
 
 	<message id="settings_label_registration_url">Registration URL</message>
 	<message id="settings_label_registration_url_help">If users must register their account at a different website, you can specify the URL to the registration form here.</message>

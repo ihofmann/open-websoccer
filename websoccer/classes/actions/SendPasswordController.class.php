@@ -38,16 +38,12 @@ class SendPasswordController implements IActionController {
 		
 		// check captcha
 		if ($this->_websoccer->getConfig("register_use_captcha")
-				&& strlen($this->_websoccer->getConfig("register_captcha_publickey"))
-				&& strlen($this->_websoccer->getConfig("register_captcha_privatekey"))) {
-		
-			include_once(BASE_FOLDER . "/lib/recaptcha/recaptchalib.php");
-		
-			$captchaResponse = recaptcha_check_answer($this->_websoccer->getConfig("register_captcha_privatekey"),
-					$_SERVER["REMOTE_ADDR"],
-					$_POST["recaptcha_challenge_field"],
-					$_POST["recaptcha_response_field"]);
-			if (!$captchaResponse->is_valid) {
+				&& strlen($this->_websoccer->getConfig("register_captcha_sitekey"))
+				&& strlen($this->_websoccer->getConfig("register_captcha_secretkey"))) {
+			if (!RecaptchaService::verify(
+					$this->_websoccer->getConfig("register_captcha_secretkey"),
+					$_POST["g-recaptcha-response"] ?? "",
+					$_SERVER["REMOTE_ADDR"] ?? null)) {
 				throw new Exception($this->_i18n->getMessage("registration_invalidcaptcha"));
 			}
 		}
