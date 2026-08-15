@@ -125,15 +125,15 @@ class UsersDataService {
 		$columns["U.picture"] = "picture";
 		$columns["highscore"] = "highscore";
 		$columns["datum_anmeldung"] = "registration_date";
-		$columns["C.id"] = "team_id";
-		$columns["C.name"] = "team_name";
-		$columns["C.bild"] = "team_picture";
+		$columns["MIN(C.id)"] = "team_id";
+		$columns["MIN(C.name)"] = "team_name";
+		$columns["MIN(C.bild)"] = "team_picture";
 		
 		$limit = $startIndex .",". $entries_per_page;
 		
 		$fromTable = $websoccer->getConfig("db_prefix") . "_user AS U";
 		$fromTable .= " LEFT JOIN " . $websoccer->getConfig("db_prefix") . "_verein AS C ON C.user_id = U.id";
-		$whereCondition = "U.status = 1 AND highscore > 0 GROUP BY id ORDER BY highscore DESC, datum_anmeldung ASC";
+		$whereCondition = "U.status = 1 AND highscore > 0 GROUP BY U.id ORDER BY highscore DESC, datum_anmeldung ASC";
 		
 		$result = $db->querySelect($columns, $fromTable, $whereCondition, null, $limit);
 		
@@ -355,15 +355,15 @@ class UsersDataService {
 		$columns["lastonline"] = "lastonline";
 		$columns["lastaction"] = "lastaction";
 		$columns["c_hideinonlinelist"] = "hideinonlinelist";
-		$columns["C.id"] = "team_id";
-		$columns["C.name"] = "team_name";
-		$columns["C.bild"] = "team_picture";
+		$columns["MIN(C.id)"] = "team_id";
+		$columns["MIN(C.name)"] = "team_name";
+		$columns["MIN(C.bild)"] = "team_picture";
 	
 		$limit = $startIndex .",". $entries_per_page;
 	
 		$fromTable = $websoccer->getConfig("db_prefix") . "_user AS U";
 		$fromTable .= " LEFT JOIN " . $websoccer->getConfig("db_prefix") . "_verein AS C ON C.user_id = U.id";
-		$whereCondition = "U.status = 1 AND lastonline >= %d GROUP BY id ORDER BY lastonline DESC";
+		$whereCondition = "U.status = 1 AND lastonline >= %d GROUP BY U.id ORDER BY lastonline DESC";
 	
 		$result = $db->querySelect($columns, $fromTable, $whereCondition, $timeBoundary, $limit);
 	
