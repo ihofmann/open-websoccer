@@ -91,7 +91,6 @@ CREATE TABLE ws3_news (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   datum INT(10) NOT NULL,
   autor_id SMALLINT(5) NOT NULL,
-  bild_id INT(10) NOT NULL,
   titel VARCHAR(100) NULL,
   nachricht TEXT NULL,
   linktext1 VARCHAR(100) NULL,

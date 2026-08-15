@@ -150,6 +150,22 @@ function printSystemCheck($messages) {
 
 function actionMoveFiles() {
 
+	include(CONFIGFILE);
+
+	$db = DbConnection::getInstance();
+	$db->connect($conf["db_host"], $conf["db_user"], $conf["db_passwort"], $conf["db_name"]);
+	$newsTable = $conf["db_prefix"] . "_news";
+	$columnResult = $db->connection->query("SHOW COLUMNS FROM " . $newsTable . " LIKE 'bild_id'");
+	if ($columnResult->num_rows > 0) {
+		$db->connection->query("ALTER TABLE " . $newsTable . " DROP COLUMN bild_id");
+	}
+	if ($db->connection->errno) {
+		$error = $db->connection->error;
+		$db->close();
+		throw new Exception("Database Query Error: " . $error);
+	}
+	$db->close();
+
 	$fileNames = array("config.inc.php", "adminlog.php", "imprint.php", "entitylog.php");
 	$oldDir = BASE_FOLDER . "/admin/config/";
 	$newDir = BASE_FOLDER . "/generated/";
@@ -256,7 +272,7 @@ function is__writable($path) {
 	//see http://bugs.php.net/bug.php?id=27609
 	//see http://bugs.php.net/bug.php?id=30931
 
-	if ($path{strlen($path)-1}=='/') // recursively return a temporary file path
+	if ($path[strlen($path)-1]=='/') // recursively return a temporary file path
 		return is__writable($path.uniqid(mt_rand()).'.tmp');
 	else if (is_dir($path))
 		return is__writable($path.'/'.uniqid(mt_rand()).'.tmp');
