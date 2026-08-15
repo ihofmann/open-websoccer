@@ -1,3 +1,14 @@
+# ---- Stage 1: install PHP dependencies via Composer -------------------------
+FROM composer:2 AS deps
+
+WORKDIR /app
+
+# Only copy the dependency manifests so this layer is cached on rebuilds.
+COPY websoccer/composer.json websoccer/composer.lock ./
+
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
+
+# ---- Stage 2: final Apache + PHP image --------------------------------------
 FROM php:8.5-apache
 
 LABEL org.opencontainers.image.title="OpenWebSoccer-Sim"
@@ -28,6 +39,10 @@ RUN a2enmod rewrite access_compat
 
 # The application lives in the Apache document root
 COPY websoccer/ /var/www/html/
+
+# PHP dependencies (Twig etc.) built in the Composer stage. Kept separate so
+# the gitignored vendor/ folder does not need to be present on the host.
+COPY --from=deps /app/vendor /var/www/html/vendor
 
 # Folders that must be writable by the web server at runtime
 RUN mkdir -p /var/www/html/generated \

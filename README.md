@@ -13,13 +13,54 @@ OpenWebSoccer-Sim is the official successor of the commercial products _H&H WebS
 It is maintained by Ingo Hofmann who has developed the first version of the software in 2003.
 Ingo is very happy about support from other developers! If you feel like working on a new challenge in your leisure time, please feel free to contribute code or ideas.
 
-You can reach Ingo via: Ingo ( at ) websoccer- sim.com.
-
 ## Documentation and Issue Tracker
 
 Find out how you install, setup and enhance the software at the [Wiki](https://github.com/ihofmann/open-websoccer/wiki/00.-Home).
 
 You found a bug or have an idea for a new feature? Then don't hesitate to open an issue at the [Issue Tracker](https://github.com/ihofmann/open-websoccer/issues).
+
+## PHP Dependencies
+
+OpenWebSoccer-Sim uses [Twig](https://twig.symfony.com/) as its template engine.
+Twig and other third-party PHP libraries are managed with
+[Composer](https://getcomposer.org/).
+
+### Installing dependencies
+
+If you have Composer installed locally, run from the repository root:
+
+```bash
+composer install --no-dev --optimize-autoloader --working-dir=websoccer
+```
+
+If you do **not** have Composer (or PHP) installed, use the official Composer
+Docker image (no local installation required):
+
+```bash
+docker run --rm -v "$(pwd)/websoccer:/app" -w /app composer:2 \
+    install --no-dev --optimize-autoloader
+```
+
+> The Docker image built by `Dockerfile` installs the dependencies automatically
+> during the image build (multi-stage build), so for the Docker-based quick
+> start below you do not need to run Composer yourself.
+
+### Building a release
+
+`gradle build` runs `composer install` automatically before assembling the
+release archive (see `build.gradle`), so the generated `websoccer/vendor/`
+folder is included in the release. This requires `composer` to be available on
+your `PATH` (or run the Gradle build inside an environment that provides it).
+
+### Upgrading Twig
+
+To upgrade Twig to a newer release, run from the repository root:
+
+```bash
+composer update twig/twig --working-dir=websoccer
+```
+
+then commit the updated `websoccer/composer.lock`.
 
 ## Run with Docker (PHP 8.5 + MySQL)
 

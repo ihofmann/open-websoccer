@@ -1,0 +1,15 @@
+{
+    "name": "ihofmann/open-websoccer",
+    "description": "OpenWebSoccer-Sim - Online Football Manager built with PHP.",
+    "type": "project",
+    "license": "LGPL-3.0-or-later",
+    "require": {
+        "php": ">=8.1",
+        "twig/twig": "^3.28"
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

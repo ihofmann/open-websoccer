@@ -110,7 +110,7 @@
 			<option></option>
 			{% for position,players in positionsAndPlayers %}
 				<optgroup label="{{ i18n.getMessage("player_position_" ~ position) }}">
-				{% for player in players if player.transfermarket != "1" %}
+				{% for player in players|filter(p => p.transfermarket != "1") %}
 					<option value="{{ player.id }}" {% if selectedPlayer == player.id  %} selected{% endif %}>{{ player.firstname }} {% if player.pseudonym|length > 0 %}&quot;{{ player.pseudonym }}&quot; {% endif %}{{ player.lastname }}{% if player.position_main|length > 0 %} ({{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}){% endif %}</option>
 				{% endfor %}
 				</optgroup>
