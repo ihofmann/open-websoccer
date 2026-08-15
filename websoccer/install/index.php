@@ -40,6 +40,16 @@ include(BASE_FOLDER . "/classes/DbConnection.class.php");
 include(BASE_FOLDER . "/classes/SecurityUtil.class.php");
 
 /**
+ * Escapes a value for safe output in HTML attribute context.
+ *
+ * @param string $value value to escape.
+ * @return string escaped value.
+ */
+function install_escape($value) {
+	return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
+/**
  * Step 1: Welcome Screen -> Language Selection
  */
 function printWelcomeScreen() {
@@ -189,7 +199,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="db_host"><?php echo $messages["label_db_host"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="db_host" name="db_host" required
-			      	value="<?php echo (isset($_POST["db_host"])) ? $_POST["db_host"] : "localhost"; ?>">
+			      	value="<?php echo (isset($_POST["db_host"])) ? install_escape($_POST["db_host"]) : "localhost"; ?>">
 			      <span class="help-inline"><?php echo $messages["label_db_host_help"] ?></span>
 			    </div>
 			</div>
@@ -198,7 +208,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="db_name"><?php echo $messages["label_db_name"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="db_name" name="db_name" required
-			      	value="<?php echo (isset($_POST["db_name"])) ? $_POST["db_name"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["db_name"])) ? install_escape($_POST["db_name"]) : ""; ?>">
 			    </div>
 			</div>
 			
@@ -206,7 +216,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="db_user"><?php echo $messages["label_db_user"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="db_user" name="db_user" required
-			      	value="<?php echo (isset($_POST["db_user"])) ? $_POST["db_user"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["db_user"])) ? install_escape($_POST["db_user"]) : ""; ?>">
 			    </div>
 			</div>
 			
@@ -214,7 +224,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="db_password"><?php echo $messages["label_db_password"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="db_password" name="db_password" required
-			      	value="<?php echo (isset($_POST["db_password"])) ? $_POST["db_password"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["db_password"])) ? install_escape($_POST["db_password"]) : ""; ?>">
 			    </div>
 			</div>
 			
@@ -222,7 +232,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="db_prefix"><?php echo $messages["label_db_prefix"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="db_prefix" name="db_prefix"
-			      	value="<?php echo (isset($_POST["db_prefix"])) ? $_POST["db_prefix"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["db_prefix"])) ? install_escape($_POST["db_prefix"]) : ""; ?>">
 			      <span class="help-inline"><?php echo $messages["label_db_prefix_help"] ?></span>
 			    </div>
 			</div>
@@ -233,7 +243,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="projectname"><?php echo $messages["label_projectname"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="projectname" name="projectname" required
-			      	value="<?php echo (isset($_POST["projectname"])) ? $_POST["projectname"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["projectname"])) ? install_escape($_POST["projectname"]) : ""; ?>">
 			      <span class="help-inline"><?php echo $messages["label_projectname_help"] ?></span>
 			    </div>
 			</div>
@@ -242,7 +252,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="projectname"><?php echo $messages["label_systememail"] ?></label>
 			    <div class="controls">
 			      <input type="email" id="systememail" name="systememail" required
-			      	value="<?php echo (isset($_POST["systememail"])) ? $_POST["systememail"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["systememail"])) ? install_escape($_POST["systememail"]) : ""; ?>">
 			      <span class="help-inline"><?php echo $messages["label_systememail_help"] ?></span>
 			    </div>
 			</div>
@@ -253,7 +263,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="url"><?php echo $messages["label_url"] ?></label>
 			    <div class="controls">
 			      <input type="url" id="url" name="url" required
-			      	value="<?php echo (isset($_POST["url"])) ? $_POST["url"] : $defaultUrl; ?>">
+			      	value="<?php echo (isset($_POST["url"])) ? install_escape($_POST["url"]) : install_escape($defaultUrl); ?>">
 			      	<span class="help-inline"><?php echo $messages["label_url_help"] ?></span>
 			    </div>
 			</div>
@@ -263,7 +273,7 @@ function printConfigForm($messages) {
 			    <label class="control-label" for="context_root"><?php echo $messages["label_context_root"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="context_root" name="context_root"
-			      	value="<?php echo (isset($_POST["context_root"])) ? $_POST["context_root"] : $defaultRoot; ?>">
+			      	value="<?php echo (isset($_POST["context_root"])) ? install_escape($_POST["context_root"]) : install_escape($defaultRoot); ?>">
 			      	<span class="help-inline"><?php echo $messages["label_context_root_help"] ?></span>
 			    </div>
 			</div>
@@ -433,7 +443,7 @@ function printCreateUserForm($messages) {
 			    <label class="control-label" for="name"><?php echo $messages["label_name"] ?></label>
 			    <div class="controls">
 			      <input type="text" id="name" name="name" required
-			      	value="<?php echo (isset($_POST["name"])) ? $_POST["name"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["name"])) ? install_escape($_POST["name"]) : ""; ?>">
 			    </div>
 			</div>
 			
@@ -441,7 +451,7 @@ function printCreateUserForm($messages) {
 			    <label class="control-label" for="password"><?php echo $messages["label_password"] ?></label>
 			    <div class="controls">
 			      <input type="password" id="password" name="password" required
-			      	value="<?php echo (isset($_POST["password"])) ? $_POST["password"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["password"])) ? install_escape($_POST["password"]) : ""; ?>">
 			    </div>
 			</div>
 			
@@ -449,7 +459,7 @@ function printCreateUserForm($messages) {
 			    <label class="control-label" for="email"><?php echo $messages["label_email"] ?></label>
 			    <div class="controls">
 			      <input type="email" id="email" name="email" required
-			      	value="<?php echo (isset($_POST["email"])) ? $_POST["email"] : ""; ?>">
+			      	value="<?php echo (isset($_POST["email"])) ? install_escape($_POST["email"]) : ""; ?>">
 			    </div>
 			</div>
 			

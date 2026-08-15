@@ -27,7 +27,7 @@
  * @return string escaped input string, ready for secure HTML output.
  */
 function escapeOutput($message) {
-	return htmlspecialchars($message, ENT_COMPAT, 'UTF-8');
+	return htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
 }
 
 /**
