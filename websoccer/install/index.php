@@ -22,7 +22,7 @@
 error_reporting(E_ALL);
 define("BASE_FOLDER", __DIR__ ."/..");
 
-define("PHP_MIN_VERSION", "5.3.0");
+define("PHP_MIN_VERSION", "8.3.0");
 define("WRITABLE_FOLDERS", "generated/,uploads/club/,uploads/cup/,uploads/player/,uploads/sponsor/,uploads/stadium/,uploads/stadiumbuilder/,uploads/stadiumbuilding/,uploads/users/,admin/config/jobs.xml,admin/config/termsandconditions.xml");
 define("DEFAULT_DB_PREFIX", "ws3");
 define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
@@ -332,6 +332,7 @@ function actionSaveConfig() {
 	$filecontent .= "\$conf['context_root'] = \"". $_POST["context_root"] . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['projectname'] = \"". $_POST["projectname"] . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['systememail'] = \"". $_POST["systememail"] . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['session_lifetime'] = \"7200\";" . PHP_EOL;
 	$filecontent .= "?>" . PHP_EOL;
 	
 	$fp = fopen(CONFIGFILE, 'w+');
@@ -403,11 +404,17 @@ function loadAndExecuteDdl($file, $prefix, DbConnection $db) {
 	}
 	
 	$queryResult = $db->connection->multi_query($script);
-	// long script might not be fully executed, hence iterate...
-	while ($db->connection->more_results() && $db->connection->next_result());
 	
 	if (!$queryResult) {
 		throw new Exception("Database Query Error: " . $db->connection->error);
+	}
+
+	// Check every statement. multi_query() may return TRUE even when a later
+	// statement in the script fails.
+	while ($db->connection->more_results()) {
+		if (!$db->connection->next_result()) {
+			throw new Exception("Database Query Error: " . $db->connection->error);
+		}
 	}
 	
 }

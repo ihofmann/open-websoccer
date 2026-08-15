@@ -183,19 +183,19 @@ if ($action == "create") {
 		// delete old ranking config, if now no value exists
 		if (!isset($_REQUEST["rank_" . $groupRank]) || !$_REQUEST["rank_" . $groupRank]) {
 			if (isset($ranks["" . $groupRank])) {
-				$db->queryDelete($dbTable, "cup_round_id = %d AND groupname = '%s' AND rank = %d", array($roundid, $groupName, $groupRank));
+				$db->queryDelete($dbTable, "cup_round_id = %d AND groupname = '%s' AND `rank` = %d", array($roundid, $groupName, $groupRank));
 			}
 		} else if($_REQUEST["rank_" . $groupRank]) {
 			
 			$columns = array();
 			$columns["cup_round_id"] = $roundid;
 			$columns["groupname"] = $groupName;
-			$columns["rank"] = $groupRank;
+			$columns["`rank`"] = $groupRank;
 			$columns["target_cup_round_id"] = $_REQUEST["rank_" . $groupRank];
 			
 			// update
 			if (isset($ranks["" . $groupRank])) {
-				$db->queryUpdate($columns, $dbTable, "cup_round_id = %d AND groupname = '%s' AND rank = %d", array($roundid, $groupName, $groupRank));
+				$db->queryUpdate($columns, $dbTable, "cup_round_id = %d AND groupname = '%s' AND `rank` = %d", array($roundid, $groupName, $groupRank));
 			// insert
 			} else {
 				$db->queryInsert($columns, $dbTable);

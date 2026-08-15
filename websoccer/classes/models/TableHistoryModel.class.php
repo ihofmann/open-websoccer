@@ -69,10 +69,10 @@ class TableHistoryModel implements IModel {
 		if ($season) {
 			$columns = array(
 					'H.matchday' => 'matchday',
-					'H.rank' => 'rank'
+					'H.`rank`' => '`rank`'
 					);
 			$fromTable = $this->_websoccer->getConfig('db_prefix') .'_leaguehistory AS H';
-			$result = $this->_db->querySelect('matchday, rank', $fromTable,
+			$result = $this->_db->querySelect('matchday, `rank`', $fromTable,
 					'season_id = %d AND team_id = %s ORDER BY matchday ASC', array($season['id'], $team['team_id']));
 			while ($historyRecord = $result->fetch_array()) {
 				$history[] = $historyRecord;

@@ -256,7 +256,7 @@ elseif ($show == 'select') {
 					'user_id' => $team['user_id'],
 					'team_id' => $team['id'],
 					'season_id' => $season['id'],
-					'rank' => $rank,
+					'`rank`' => $rank,
 					'date_recorded' => $website->getNowAsTimestamp()
 				), $conf['db_prefix'] .'_achievement');
 

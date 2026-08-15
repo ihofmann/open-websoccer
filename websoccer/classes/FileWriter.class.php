@@ -27,7 +27,7 @@
  */
 class FileWriter {
 
-	private $_filePointer;
+	private $_filePointer = NULL;
 	
 	/**
 	 * Opens a file for writing. If the file does not exist, it gets created.
@@ -59,9 +59,10 @@ class FileWriter {
 	 * closes file writer.
 	 */
 	public function close() {
-		if ($this->_filePointer) {
+		if (is_resource($this->_filePointer)) {
 			@fclose($this->_filePointer);
 		}
+		$this->_filePointer = NULL;
 	}
 	
 	function __destruct() {

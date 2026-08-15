@@ -184,7 +184,7 @@ class TeamsDataService {
 		$columns['U.email'] = 'user_email';
 		$columns['U.picture'] = 'user_picture';
 		
-		$columns['PREVDAY.rank'] = 'previous_rank';
+		$columns['PREVDAY.`rank`'] = 'previous_rank';
 		
 		// order by
 		$whereCondition = 'C.liga_id = %d AND C.status = \'1\' ORDER BY score DESC, goals_diff DESC, wins DESC, draws DESC, goals DESC, name ASC';
@@ -200,7 +200,7 @@ class TeamsDataService {
 			$updateHistory = TRUE;
 			
 			$queryTemplate = 'REPLACE INTO ' . $websoccer->getConfig('db_prefix') . '_leaguehistory ';
-			$queryTemplate .= '(team_id, season_id, user_id, matchday, rank) ';
+			$queryTemplate .= '(team_id, season_id, user_id, matchday, `rank`) ';
 			$queryTemplate .= 'VALUES (%d, ' . $season['id'] . ', %s, %d, %d);';
 		}
 		

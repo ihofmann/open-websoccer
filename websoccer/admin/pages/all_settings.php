@@ -24,11 +24,6 @@ function prepareFielfValueForSaving($fieldValue) {
 
 	$preparedValue = trim($fieldValue);
 
-	// remove automatically added slashes, since config file writer will anyway add slashes.
-	if (get_magic_quotes_gpc()) {
-		$preparedValue = stripslashes($fieldValue);
-	}
-	
 	return $preparedValue;
 }
 
