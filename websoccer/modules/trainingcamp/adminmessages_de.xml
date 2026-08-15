@@ -9,5 +9,5 @@
 	<message id="settings_label_trainingcamp_max_days_help">in Tagen</message> 
 	
 	<message id="settings_label_trainingcamp_booking_max_days_in_future">Späteste Buchung</message> 
-	<message id="settings_label_trainingcamp_booking_max_days_in_future_help">in Tagen; Bis zu wievielen Tagen in der Zukunft ein Trainingslager gebucht werden kann.</message> 
+	<message id="settings_label_trainingcamp_booking_max_days_in_future_help">in Tagen; Bis zu wie vielen Tagen in der Zukunft ein Trainingslager gebucht werden kann.</message> 
 </messages>

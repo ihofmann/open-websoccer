@@ -2,6 +2,6 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_contract_max_number_of_remaining_matches">Ab wievielen Spielen ist eine Vertragsverlängerung möglich</message> 
+	<message id="settings_label_contract_max_number_of_remaining_matches">Ab wie vielen Spielen ist eine Vertragsverlängerung möglich</message> 
 	
 </messages>

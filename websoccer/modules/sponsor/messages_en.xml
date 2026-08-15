@@ -8,9 +8,9 @@
     
     <message id="sponsor_choose_tooearly">You may choose a new sponsor only after the %dth match day.</message>
     
-    <message id="sponsor_choose_novalidsponsor">The selected sponsor does not want to collaborate any more. Probably another team was faster than you.</message>
+    <message id="sponsor_choose_novalidsponsor">The selected sponsor no longer wants to collaborate. Another team may have been faster.</message>
     <message id="sponsor_choose_stillcontract">You still have a contract with a sponsor. This contract must end first.</message>
     <message id="sponsor_choose_success">Congratulations, you have a new sponsor now!</message>
     
-    <message id="sponsor_championship_bonus_subject">Sponsor premium for won championship</message>
+    <message id="sponsor_championship_bonus_subject">Sponsor Bonus for Winning the Championship</message>
 </messages>

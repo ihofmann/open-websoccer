@@ -8,9 +8,9 @@
     <message id="cup_created_from_loosers_of_round">Loser from <strong>%s</strong>.</message>
     <message id="cup_cuproundaward_perround_subject">Award for cup round</message>
     <message id="cup_cuproundaward_winner_subject">Award for winning the cup</message>
-    <message id="cup_cuproundaward_second_subject">Award for silver medal.</message>
+    <message id="cup_cuproundaward_second_subject">Award for silver medal</message>
     
     <message id="cup_title_groups">Groups</message>
-    <message id="cup_group_noteamsavailable">There have not been assigned any team to this group, yet.</message>
+    <message id="cup_group_noteamsavailable">No teams have been assigned to this group yet.</message>
     <message id="cup_group_select_group_placeholder">Please select a group.</message>
 </messages>

@@ -17,9 +17,9 @@
     <message id="entity_stadiumbuilder_name">Name</message>
     <message id="entity_stadiumbuilder_picture">Company logo</message>
     <message id="entity_stadiumbuilder_fixedcosts">Fixed costs</message>
-    <message id="entity_stadiumbuilder_fixedcosts_help">Costs which will be charged independend from number of seats to build.</message>
+    <message id="entity_stadiumbuilder_fixedcosts_help">Costs charged regardless of the number of seats to build.</message>
     <message id="entity_stadiumbuilder_cost_per_seat">Costs per seat</message>
-    <message id="entity_stadiumbuilder_cost_per_seat_help">Will be added to costs which are configured at page "settings". May be also negative.</message>
+    <message id="entity_stadiumbuilder_cost_per_seat_help">Will be added to costs configured on the "settings" page. Can also be negative.</message>
     <message id="entity_stadiumbuilder_construction_time_days">Construction time per 5000 seats</message>
     <message id="entity_stadiumbuilder_construction_time_days_help">days</message>
     <message id="entity_stadiumbuilder_construction_time_days_min">Minimum construction time</message>
@@ -29,7 +29,7 @@
 	<message id="entity_stadiumbuilder_max_stadium_size">Maximum stadium size</message>
 	<message id="entity_stadiumbuilder_max_stadium_size_help">0 for no limitation.</message>
 	<message id="entity_stadiumbuilder_reliability">Reliability</message>
-	<message id="entity_stadiumbuilder_reliability_help">100% means that the extension will be definately completed after the calculated construction time. A value below can cause (repeated) postponing of the deadline.</message>
+	<message id="entity_stadiumbuilder_reliability_help">100% means the extension will definitely be completed after the calculated construction time. A value below can cause (repeated) postponing of the deadline.</message>
 	<message id="entity_stadiumbuilder_premiumfee">Premium Fee</message>
 	
 	<message id="entity_stadiumconstruction">Stadium Extension</message>
@@ -45,11 +45,11 @@
 	
 	<message id="entity_stadium_level_pitch">Grass quality</message>
 	<message id="entity_stadium_level_pitch_help">Between 0 and 5.</message>
-	<message id="entity_stadium_level_videowall">Video wall up-to-dateness</message>
+	<message id="entity_stadium_level_videowall">Video Wall Condition</message>
 	<message id="entity_stadium_level_videowall_help">Between 0 and 5.</message>
-	<message id="entity_stadium_level_seatsquality">Seats quality</message>
+	<message id="entity_stadium_level_seatsquality">Seat Quality</message>
 	<message id="entity_stadium_level_seatsquality_help">Between 0 and 5.</message>
-	<message id="entity_stadium_level_vipquality">VIP lounges quality</message>
+	<message id="entity_stadium_level_vipquality">VIP Lounge Quality</message>
 	<message id="entity_stadium_level_vipquality_help">Between 0 and 5.</message>
 	
 	<message id="entity_stadium_maintenance_pitch">Next maintenance due: Grass</message>

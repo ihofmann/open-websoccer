@@ -5,21 +5,21 @@
     <message id="match_manage_playerstatistics">Formation and player statistics</message>
     <message id="match_manage_complete">Complete match without simulation</message>
     
-    <message id="match_manage_reportitems_noitems">There are no match report messages for this messages.</message>
-    <message id="match_manage_playerstatistics_noitems">There are no players set for this match, yet.</message>
+    <message id="match_manage_reportitems_noitems">There are no match report messages for this match.</message>
+    <message id="match_manage_playerstatistics_noitems">There are no players set for this match yet.</message>
     
     <message id="match_manage_minuten_gespielt">Minutes played</message>
     <message id="match_manage_note">Grade</message>
     <message id="match_manage_tore">Goals</message>
     <message id="match_manage_assists">Assists</message>
     <message id="match_manage_karte_gelb">Yellow cards</message>
-    <message id="match_manage_karte_rot">Red card</message>
+    <message id="match_manage_karte_rot">Red cards</message>
     <message id="match_manage_verletzt">Matches injured</message>
-    <message id="match_manage_gesperrt">Maches blocked</message>
+    <message id="match_manage_gesperrt">Matches blocked</message>
     <message id="match_manage_ballcontacts">Ball contacts</message>
     <message id="match_manage_wontackles">Tackles won</message>
     <message id="match_manage_shoots">Shots</message>
-    <message id="match_manage_passes_successed">Passes success</message>
+    <message id="match_manage_passes_successed">Passes completed</message>
     <message id="match_manage_passes_failed">Passes failed</message>
     
     <message id="match_manage_position_field_1">On pitch</message>
@@ -50,15 +50,15 @@
     <message id="match_manage_substitutions_condition_deficit">Deficit</message>
 	
     <message id="match_manage_createmessage_title">Add message</message>
-    <message id="match_manage_reportitems_noitems">There are no match report messages, yet.</message>
+    <message id="match_manage_reportitems_noitems">There are no match report messages yet.</message>
     <message id="match_manage_reportmsg_minute">Minute</message>
     <message id="match_manage_reportmsg_playernames">Players</message>
-    <message id="match_manage_reportmsg_playernames_help">Separated with semicolon (;). First name stands for {sp1}, second name {sp2}.</message>
+    <message id="match_manage_reportmsg_playernames_help">Separated by semicolons (;). First name is {sp1}, second name is {sp2}.</message>
     <message id="match_manage_reportmsg_intermediateresult">Intermediate result</message>
     <message id="match_manage_reportmsg_message_id">Message</message>
     
-    <message id="match_manage_complete_alreadysimulated">This match has been already marked as simulated.</message>
-    <message id="match_manage_complete_intro">By clicking on the button below, you complete this match and following actions will be executed:
+    <message id="match_manage_complete_alreadysimulated">This match has already been marked as simulated.</message>
+    <message id="match_manage_complete_intro">By clicking on the button below, you complete this match and the following actions will be executed:
         <ul>
             <li>The match will be marked as simulated.</li>
             <li>If enabled, the ticket sales will be computed and the income credited.</li>

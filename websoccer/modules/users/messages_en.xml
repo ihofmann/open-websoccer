@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE messages SYSTEM "../messages.dtd">
 <messages>
-	<message id="highscore_navlabel">Highscore</message>
-	<message id="highscore_title">Users Highscore Ranking</message>
+	<message id="highscore_navlabel">High Score</message>
+	<message id="highscore_title">Users High Score Ranking</message>
 	
 	<message id="highscore_rank">Rank</message>
 	<message id="highscore_user">User</message>

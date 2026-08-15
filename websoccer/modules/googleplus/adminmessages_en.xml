@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_googleplus_enable_login">Enable log-in with Google+. Required a value for the following fields. The PHP extension CURL must be enabled on the server.</message> 
+	<message id="settings_label_googleplus_enable_login">Enable log in with Google+. Required a value for the following fields. The PHP extension CURL must be enabled on the server.</message> 
 
 	<message id="settings_label_googleplus_appname">Google+ Project Name</message> 
 	

@@ -14,8 +14,8 @@
 	<message id="settings_label_transfermarket_value_per_strength">Marktwert pro Stärkepunkt</message>
 	<message id="settings_label_transfermarket_value_per_strength_help">falls der Marktwert automatisch berechnet werden soll.</message>
 
-	<message id="settings_label_transfermarket_min_teamsize">Mindestkadergrösse</message>
-	<message id="settings_label_transfermarket_min_teamsize_help">Anzahl an Spieler, die mindestens im Team sind. Spieler können nicht verkauft werden, wenn die Mindestgrösse unterschritten wird.</message>
+	<message id="settings_label_transfermarket_min_teamsize">Mindestkadergröße</message>
+	<message id="settings_label_transfermarket_min_teamsize_help">Anzahl an Spieler, die mindestens im Team sind. Spieler können nicht verkauft werden, wenn die Mindestgröße unterschritten wird.</message>
 
 	<message id="settings_label_transfermarket_max_transactions_between_users">Transaktionen zwischen Benutzern</message>
 <message id="settings_label_transfermarket_max_transactions_between_users_help">Höchstanzahl erlaubter Transaktionen zwischen zwei Benutzern innerhalb der letzten 30 Tage.</message>

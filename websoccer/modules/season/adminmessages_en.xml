@@ -5,7 +5,7 @@
     <message id="category_season_navlabel">Seasons</message>
 	<message id="complete-season_navlabel">Complete season</message>
 	<message id="season_complete_title">End seasons</message>
-	<message id="season_complete_introduction">A selected season will be tagged as "completed", statistics will be updated and sponsor premiums will be payed. There are no open league matches anymore for the following seasons:</message>
+	<message id="season_complete_introduction">A selected season will be marked as "completed", statistics will be updated, and sponsor bonuses will be paid. There are no remaining open league matches for the following seasons:</message>
     <message id="season_complete_noseasons">No season available that can be ended.</message>
     
     <message id="season_complete_submit">End season</message>
@@ -13,15 +13,15 @@
     <message id="season_complete_label_playerdisableage">Players retirement age</message>
 	<message id="season_complete_label_playerdisableage_help">Players from this age will be disabled.</message>
 	
-	<message id="season_complete_label_target_missed_firemanager">Fire managers of teams which have not exceeded the season target.</message>
+	<message id="season_complete_label_target_missed_firemanager">Fire managers of teams that missed the season target.</message>
 	<message id="season_complete_label_target_missed_popularityreduction">Popularity Reduction</message>
-	<message id="season_complete_label_target_missed_popularityreduction_help">in case of not accomplished the season target. 0 for no consequences.</message>
+	<message id="season_complete_label_target_missed_popularityreduction_help">if the season target is not met. 0 for no consequences.</message>
 	
 	<message id="season_complete_label_target_missed_penalty">Penalty</message>
-	<message id="season_complete_label_target_missed_penalty_help">in case of not accomplished the season target. 0 for no consequences.</message>
+	<message id="season_complete_label_target_missed_penalty_help">if the season target is not met. 0 for no consequences.</message>
 	
 	<message id="season_complete_label_target_accomplished_reward">Reward for Accomplishment</message>
-	<message id="season_complete_label_target_accomplished_reward_help">in case of accomplished the season target. 0 for no consequences.</message>
+	<message id="season_complete_label_target_accomplished_reward_help">if the season target is met. 0 for no consequences.</message>
 	
 	<message id="schedulegenerator_navlabel">Generate Schedule</message>
 	<message id="schedulegenerator_label">Create a whole new season</message>
@@ -39,5 +39,5 @@
 	
 	<message id="schedulegenerator_err_noteams">There are no teams in this league.</message>
 	<message id="schedulegenerator_err_invalidrounds">The number of rounds must be between 1 and 10.</message>
-	<message id="schedulegenerator_err_invalidtimebreak">The number of daysbetween mach days must be between 1 and 50.</message>
+	<message id="schedulegenerator_err_invalidtimebreak">The number of days between match days must be between 1 and 50.</message>
 </messages>

@@ -19,7 +19,7 @@
 	<message id="entity_youthplayer_st_cards_yellow_red">Gelb-Rote Karten</message>
 	<message id="entity_youthplayer_st_cards_red">Rote Karten</message>
 	<message id="entity_youthplayer_transfer_fee">Ablösesumme</message>
-	<message id="entity_youthplayer_transfer_fee_help">Wenn grösser als 0, wird der Spieler zu dieser Summe auf dem Marktplatz angeboten.</message>
+	<message id="entity_youthplayer_transfer_fee_help">Wenn größer als 0, wird der Spieler zu dieser Summe auf dem Marktplatz angeboten.</message>
 
 	<message id="entity_youthscout">Talentscout</message>
 	<message id="entity_youthscout_name">Name</message>

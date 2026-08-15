@@ -3,8 +3,8 @@
 <messages>
 	<message id="entity_admin">Admin Users</message>
 	<message id="entity_admin_name">Username</message>
-	<message id="entity_admin_passwort">Password</message>
-	<message id="entity_admin_email">E-Mail</message>
+	<message id="entity_admin_password">Password</message>
+	<message id="entity_admin_email">Email</message>
 	<message id="entity_admin_r_admin">Is Administrator</message>
 	<message id="entity_admin_r_adminuser">Rights: Can manage admin users</message>
 	<message id="entity_admin_r_user">Rights: Can manage users</message>

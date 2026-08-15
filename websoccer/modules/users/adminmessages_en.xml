@@ -6,9 +6,9 @@
 	<message id="popup_user_inactivity_total">Total</message>
 	<message id="popup_user_inactivity_title_action">Measured Action</message>
 	
-	<message id="settings_label_highscore_win">Highscore per Win</message>
-	<message id="settings_label_highscore_loss">Highscore per Loss</message>
-	<message id="settings_label_highscore_draw">Highscore per Draw</message>
+	<message id="settings_label_highscore_win">High Score per Win</message>
+	<message id="settings_label_highscore_loss">High Score per Loss</message>
+	<message id="settings_label_highscore_draw">High Score per Draw</message>
 	
 	<message id="settings_label_user_picture_upload_enabled">Users may upload their own profile picture.</message>
 	

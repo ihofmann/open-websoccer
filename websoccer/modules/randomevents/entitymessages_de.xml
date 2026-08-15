@@ -11,7 +11,7 @@
 	<message id="entity_randomevent_effect_skillchange">Auswirkung: Stärkenänderung</message>
 	<message id="entity_randomevent_effect_skillchange_help">Positive oder negative Änderung des entsprechenden Spielerattributs.</message>
 	<message id="entity_randomevent_weight">Gewichtung</message>
-	<message id="entity_randomevent_weight_help">Wirkt sich auf die Wahrscheinlichkeit des Eintretens aus. 1 bedeutet normale Wahrscheinlichkeit; 5 bedeutet, dass es fünf mal so wahrscheinlich eintreten kann. 0 deaktiviert das Ereignis.</message>
+	<message id="entity_randomevent_weight_help">Wirkt sich auf die Wahrscheinlichkeit des Eintretens aus. 1 bedeutet normale Wahrscheinlichkeit; 5 bedeutet, dass es fünfmal so wahrscheinlich eintreten kann. 0 deaktiviert das Ereignis.</message>
 
 	<message id="option_money">Vereinskonto wird verändert</message>
 	<message id="option_player_injured">Ein Spieler fällt verletzt aus</message>

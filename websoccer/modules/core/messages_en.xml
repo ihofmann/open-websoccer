@@ -2,10 +2,10 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	<message id="offline_title">We are temporarily offline</message>
-	<message id="error_action_required_team">You need to be manager of a team in order to execute this action.</message>
+	<message id="error_action_required_team">You need to manage a team to perform this action.</message>
 	
 	<message id="requireslogin_box_title">Access denied</message>
-	<message id="requireslogin_box_message">You need to be logged on in order to see the site content.</message>
+	<message id="requireslogin_box_message">You need to be logged in to view this page.</message>
 	
 	<message id="date_yesterday">Yesterday</message>
 	<message id="date_today">Today</message>

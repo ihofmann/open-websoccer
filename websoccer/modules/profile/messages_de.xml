@@ -30,7 +30,7 @@
 	<message id="sendpassword_email_greeting">Guten Tag,</message>
 	<message id="sendpassword_email_introduction">dies ist Ihr neues Passwort, das Sie über unsere Website angefordert haben und in Ihrem Profil ändern können und sollten:</message>
 	<message id="sendpassword_email_newpassword_label">Ihr neues Passwort:</message>
-	<message id="sendpassword_email_ending">Wenn Sie kein neues Passwort beantragt haben und einen Missbrauch Ihrer E-Mail-Adresse vermuten, antworten Sie bitte auf diese E-Mail. Beachten Sie, dass Ihr neues Passwort erst aktiv wird, sobald Sie sich zum ersten mal damit anmelden.</message>
+	<message id="sendpassword_email_ending">Wenn Sie kein neues Passwort beantragt haben und einen Missbrauch Ihrer E-Mail-Adresse vermuten, antworten Sie bitte auf diese E-Mail. Beachten Sie, dass Ihr neues Passwort erst aktiv wird, sobald Sie sich zum ersten Mal damit anmelden.</message>
 	
 	<message id="enter-username_navlabel">Benutzernamen angeben</message>
 	<message id="enter-username_intro">Jetzt brauchen wir nur noch einen Namen, der Sie auf der Webseite identifiziert, und dann kann es losgehen!</message>
@@ -41,7 +41,7 @@
 	
 	<message id="change-profile-picture_err_notprovied">Sie müssen ein Bild auswählen.</message>
 	<message id="change-profile-picture_err_illegalfiletype">Es darf nur ein PNG- oder JPEG-Bild ausgewählt werden.</message>
-	<message id="change-profile-picture_err_illegalfilesize">Die ausgewählte Datei ist zu gross.</message>
+	<message id="change-profile-picture_err_illegalfilesize">Die ausgewählte Datei ist zu groß.</message>
 	<message id="change-profile-picture_err_failed">Das Bild konnte nicht hochgeladen werden. Versuchen Sie es noch einmal.</message>
 	
 	<message id="user_deletepicture_button">Bild löschen</message>

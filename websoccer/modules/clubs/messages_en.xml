@@ -14,14 +14,14 @@
     <message id="team_details_statistic_total">Total</message>
     
         <message id="team_details_statistic_goals">Goals</message>
-	<message id="team_details_statistic_againsts">Goals received</message>
+	<message id="team_details_statistic_againsts">Goals Conceded</message>
 	<message id="team_details_statistic_matches">Matches</message>
 	<message id="team_details_statistic_wins">Wins</message>
 	<message id="team_details_statistic_losses">Losses</message>
 	<message id="team_details_statistic_draws">Draws</message>
 	<message id="team_details_statistic_score">Score</message>
 	
-	<message id="team_details_noleaguevictories">This team has no victories in its league, yet.</message>
+	<message id="team_details_noleaguevictories">This team has no league victories yet.</message>
 	
 	<message id="team_details_season_place">Place %d</message>
 </messages>

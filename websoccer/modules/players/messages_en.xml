@@ -48,13 +48,13 @@
     <message id="player_details_statistic_detailstitle">Player Statistics</message>
     <message id="player_details_statistic_nomatchesplayed">The player has not played in any matches yet.</message>
     
-    <message id="player_details_grades_title">Grading of the last matches</message>
+    <message id="player_details_grades_title">Recent Match Grades</message>
     <message id="player_details_nogradesavailable">There are no grades available for this player, yet.</message>
     <message id="player_details_grade_last_match">Grade in last match</message>
     <message id="player_details_grade_average">Average grade</message>
     <message id="player_details_nohistoryavailable">No history available.</message>
     
-    <message id="player_details_avaiable_on_transfermarket">The player is currently available on the transfer market.</message>
+    <message id="player_details_available_on_transfermarket">The player is currently available on the transfer market.</message>
     <message id="player_details_unsellable">The manager of the player's club marked the player as unsellable.</message>
     
     <message id="player_mainposition_T">GK</message>

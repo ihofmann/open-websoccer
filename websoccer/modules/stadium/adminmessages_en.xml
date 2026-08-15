@@ -3,10 +3,10 @@
 <messages>
     <message id="settings_tab_stadium">Stadium</message>
     <message id="settings_label_stadium_max_side">Max. Side</message>
-	<message id="settings_label_stadium_max_side_help">Maximum number of places at the sides.</message>
+	<message id="settings_label_stadium_max_side_help">Maximum number of seats at the sides.</message>
 	
 	<message id="settings_label_stadium_max_grand">Max. Grandstand</message>
-	<message id="settings_label_stadium_max_grand_help">Maximum number of places at the grandstands.</message>
+	<message id="settings_label_stadium_max_grand_help">Maximum number of seats at the grandstands.</message>
 
 	<message id="settings_label_stadium_max_vip">Max. VIP lounges</message>
 	<message id="settings_label_stadium_max_vip_help">Maximum number of VIP lounges.</message>
@@ -40,14 +40,14 @@
 	<message id="settings_label_stadium_maintenanceinterval_vipquality_help">Home matches</message>
 	
 	<message id="settings_label_stadium_pitch_price">Maintenance costs grass</message>
-	<message id="settings_label_stadium_pitch_price_help">Costs for getting first level. Next levels will get an additional charge as configured below.</message>
+	<message id="settings_label_stadium_pitch_price_help">Cost to reach the first level. Higher levels incur an additional charge as configured below.</message>
 	
 	<message id="settings_label_stadium_videowall_price">Maintenance costs video wall</message>
 	<message id="settings_label_stadium_seatsquality_price">Maintenance costs seats (per seat)</message>
 	<message id="settings_label_stadium_vipquality_price">Maintenance costs VIP lounges (per lounge)</message>
 	
 	<message id="settings_label_stadium_maintenance_priceincrease_per_level">Maintenance costs additional charge per level</message>
-	<message id="settings_label_stadium_maintenance_priceincrease_per_level_help">per cent; Cumulative addition to waintenance costs per level. Example: 10% means an addition of 40% when building level 5 (Costs of level 1 + 10% + 10% + 10% + 10%). 0 for no additional charge.</message>
+	<message id="settings_label_stadium_maintenance_priceincrease_per_level_help">percent; Cumulative addition to maintenance costs per level. Example: 10% means an addition of 40% when building level 5 (Costs of level 1 + 10% + 10% + 10% + 10%). 0 for no additional charge.</message>
 
 	<message id="settings_label_stadium_pitch_effect">Effect of grass quality</message>
 	<message id="settings_label_stadium_pitch_effect_help">Decrease of how many percentage points in technique for the own team when playing at home for each level below 5.</message>

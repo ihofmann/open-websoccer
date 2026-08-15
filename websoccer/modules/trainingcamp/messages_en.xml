@@ -12,10 +12,10 @@
     <message id="trainingcamp_enddate">Departure</message>
     
     <message id="trainingcamp_delete">Cancel Booking</message>
-    <message id="trainingcamp_delete_note">You can cancel thisbooking. However, the costs will not be refunded.</message>
+    <message id="trainingcamp_delete_note">You can cancel this booking. However, the costs will not be refunded.</message>
     
-    <message id="trainingcamp_cancel_illegalid">The booking could not be found. Probably it has been deleted already or was in the past.</message>
-    <message id="trainingcamp_cancel_success">The booking has been successfully cancelled.</message>
+    <message id="trainingcamp_cancel_illegalid">The booking could not be found. It has probably been deleted already or is in the past.</message>
+    <message id="trainingcamp_cancel_success">The booking has been successfully canceled.</message>
     
     <message id="camp-details_navlabel">Book Training Camp</message>
     
@@ -28,9 +28,9 @@
     <message id="trainingcamp_booking_err_invaliddays">The stay must be between %d and %d days.</message>
     <message id="trainingcamp_booking_err_dateinpast">The arrival date must be in the future.</message>
     <message id="trainingcamp_booking_err_datetoofar">The arrival date must be within the next %d days.</message>
-    <message id="trainingcamp_booking_err_existingbookings">You booked already another training camp. You are allowed to book only one camp at once.</message>
+    <message id="trainingcamp_booking_err_existingbookings">You have already booked another training camp. You can book only one camp at a time.</message>
     <message id="trainingcamp_booking_err_tooexpensive">You cannot afford to pay this training camp at the moment.</message>
-    <message id="trainingcamp_booking_err_matcheswithintimeframe">There are matches with your time within the given time frame.</message>
+    <message id="trainingcamp_booking_err_matcheswithintimeframe">There are matches scheduled within the given time frame.</message>
     
     <message id="trainingcamp_booking_costs_subject">Training Camp</message>
     

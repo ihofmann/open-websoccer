@@ -46,16 +46,16 @@
 	<message id="settings_label_youth_scouting_min_age">Scouting: Mindestalter</message>
 	
 	<message id="settings_label_youth_matchrequest_max_open_requests">Spielgesuche: Höchstanzahl pro Team</message>
-	<message id="settings_label_youth_matchrequest_max_open_requests_help">Wieviele offene Spielgesuche ein Team zur selben Zeit haben darf.</message>
+	<message id="settings_label_youth_matchrequest_max_open_requests_help">Wie viele offene Spielgesuche ein Team zur selben Zeit haben darf.</message>
 	
 	<message id="settings_label_youth_matchrequest_max_futuredays">Spielgesuche: Tage in der Zukunft</message>
-	<message id="settings_label_youth_matchrequest_max_futuredays_help">Bis zu wieviel Tagen in der Zukunft ein Gesuch platziert werden kann.</message>
+	<message id="settings_label_youth_matchrequest_max_futuredays_help">Bis zu wie viel Tagen in der Zukunft ein Gesuch platziert werden kann.</message>
 	
 	<message id="settings_label_youth_matchrequest_allowedtimes">Spielgesuche: Erlaubte Uhrzeiten</message>
 	<message id="settings_label_youth_matchrequest_allowedtimes_help">in Komma getrennt (z.B. '14:00,17:00'). Soll eine Überlastung des Servers verhindern, wenn ansonsten zur selben Zeit auch Ligaspiele laufen.</message>
 
 	<message id="settings_label_youth_matchrequest_accept_hours_in_advance">Spielgesuche: Späteste Annahme</message>
-	<message id="settings_label_youth_matchrequest_accept_hours_in_advance_help">in Stunden; Bis zu wieviele Stunden vor der Spielaustragung das Gesuch angenommen werden muss. Den Teilnehmenden soll noch genügend Zeit zum Aufstellen gegeben werden.</message>
+	<message id="settings_label_youth_matchrequest_accept_hours_in_advance_help">in Stunden; Bis zu wie viele Stunden vor der Spielaustragung das Gesuch angenommen werden muss. Den Teilnehmenden soll noch genügend Zeit zum Aufstellen gegeben werden.</message>
 
 	<message id="settings_label_youth_match_maxperday">Höchstanzahl erlaubte Spiele pro Tag pro Team</message>
 	

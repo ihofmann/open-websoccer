@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_facebook_enable_login">Enable Facebook Log-In. Requires a valid APP ID and App Secret (see below).</message> 
+	<message id="settings_label_facebook_enable_login">Enable Facebook Log In. Requires a valid APP ID and App Secret (see below).</message> 
 
 	<message id="settings_label_facebook_appid">Facebook App ID</message> 
 	<message id="settings_label_facebook_appid_help">You can get this information when you <a href="https://developers.facebook.com/apps" target="_blank">register your website as App</a>.</message> 

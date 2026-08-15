@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	<message id="entity_admin">Administratoren</message>
-	<message id="entity_admin_name">Username</message>
+	<message id="entity_admin_name">Benutzername</message>
 	<message id="entity_admin_passwort">Passwort</message>
 	<message id="entity_admin_email">E-Mail</message>
 	<message id="entity_admin_r_admin">Ist Administrator</message>
@@ -14,5 +14,5 @@
 	<message id="entity_admin_r_news">Rechte: Kann News verwalten</message>
 	<message id="entity_admin_r_kalender">Rechte: Kann Kalender verwalten</message>
 	<message id="entity_admin_r_design">Rechte: Kann Design-Dateien ändern</message>
-	<message id="entity_admin_r_demo"><em>Ist Demo-User</em> (kann keine Änderungen speichern)</message>
+	<message id="entity_admin_r_demo"><em>Ist Demo-Benutzer</em> (kann keine Änderungen speichern)</message>
 </messages>

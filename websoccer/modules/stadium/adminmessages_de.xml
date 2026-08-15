@@ -28,7 +28,7 @@
 	<message id="settings_label_stadium_hide_builders_reliability">Zuverlässigkeit von Bauträgern bei Angeboten ausblenden.</message>
 	
 	<message id="settings_label_stadium_maintenanceinterval_pitch">Wartungsintervall Rasen</message>
-	<message id="settings_label_stadium_maintenanceinterval_pitch_help">Heimspiele. Nach wievielen Heimspielen die Rasenqualität sinkt.</message>
+	<message id="settings_label_stadium_maintenanceinterval_pitch_help">Heimspiele. Nach wie vielen Heimspielen die Rasenqualität sinkt.</message>
 	
 	<message id="settings_label_stadium_maintenanceinterval_videowall">Wartungsintervall Videowand</message>
 	<message id="settings_label_stadium_maintenanceinterval_videowall_help">Heimspiele</message>
@@ -50,14 +50,14 @@
 	<message id="settings_label_stadium_maintenance_priceincrease_per_level_help">Prozent; Kumulierter Aufschlag zu den Wartungskosten. Beispiel: 10% bedeutet einen Aufschlag von 40% bei Ausbau zu Stufe 5 (Kosten Stufe 1 + 10% + 10% + 10% + 10%). 0 für keinen Zuschlag.</message>
 
 	<message id="settings_label_stadium_pitch_effect">Auswirkung Rasenzustand</message>
-	<message id="settings_label_stadium_pitch_effect_help">Wieviel Prozentpunkte pro fehlender Stufe das eigene Team bei Heimspielen an Technikstärke verliert.</message>
+	<message id="settings_label_stadium_pitch_effect_help">Wie viel Prozentpunkte pro fehlender Stufe das eigene Team bei Heimspielen an Technikstärke verliert.</message>
 	
 	<message id="settings_label_stadium_videowall_effect">Auswirkung Videowand</message>
-	<message id="settings_label_stadium_videowall_effect_help">Wieviel Prozentpunkte mehr Zuschauer pro Stufe zu Heimspielen kommen.</message>
+	<message id="settings_label_stadium_videowall_effect_help">Wie viel Prozentpunkte mehr Zuschauer pro Stufe zu Heimspielen kommen.</message>
 	
 	<message id="settings_label_stadium_seatsquality_effect">Auswirkung Sitzzustand</message>
-	<message id="settings_label_stadium_seatsquality_effect_help">Wieviel Prozentpunkte weniger Zuschauer pro fehlender Stufe zu Heimspielen kommen.</message>
+	<message id="settings_label_stadium_seatsquality_effect_help">Wie viel Prozentpunkte weniger Zuschauer pro fehlender Stufe zu Heimspielen kommen.</message>
 	
 	<message id="settings_label_stadium_vipquality_effect">Auswirkung Zustand VIP Logen</message>
-	<message id="settings_label_stadium_vipquality_effect_help">Wieviel Prozentpunkte weniger Zuschauer pro fehlender Stufe zu Heimspielen kommen.</message>
+	<message id="settings_label_stadium_vipquality_effect_help">Wie viel Prozentpunkte weniger Zuschauer pro fehlender Stufe zu Heimspielen kommen.</message>
 </messages>

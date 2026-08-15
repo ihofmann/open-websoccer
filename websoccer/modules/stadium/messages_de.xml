@@ -29,7 +29,7 @@
     <message id="stadium_extend_limitation_grand">Plätze Haupttribüne</message>
     <message id="stadium_extend_limitation_vip">VIP Logen</message>
     <message id="stadium_extend_limitation_instruction">Geben Sie zum Ausbau die gewünschte Anzahl neuer Plätze ein und wählen Sie danach ein Angebot von interessierten Bauträgern aus.</message>
-	<message id="stadium_extend_impossible">Sie können Ihr Stadion nicht mehr ausbauen, da es nicht Maximalgrösse bereits erreicht hat.</message>
+	<message id="stadium_extend_impossible">Sie können Ihr Stadion nicht mehr ausbauen, da es die Maximalgröße bereits erreicht hat.</message>
 
 	<message id="stadium_extend_nobuilders">Im Moment gibt es keine Bauträger, die Interesse an diesem Auftrag haben.</message>
 	<message id="stadium_extend_builders_intro">Folgende Bauträger bieten Ihnen ein Angebot an. <strong>Achtung:</strong> Bei der Bauzeitangabe handelt es sich um eine Schätzung des Anbieters. Die tatsächliche Bauzeit kann je nach Kompetenz der Firma später abweichen.</message>

@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	
-	<message id="settings_label_googleplus_enable_login">Log-In über Google+ aktivieren. Erfordert das Ausfüllen der nachfolgenden Felder. Ausserdem muss die PHP-Erweiterung CURL auf dem Server aktiviert sein.</message> 
+	<message id="settings_label_googleplus_enable_login">Log-In über Google+ aktivieren. Erfordert das Ausfüllen der nachfolgenden Felder. Außerdem muss die PHP-Erweiterung CURL auf dem Server aktiviert sein.</message> 
 
 	<message id="settings_label_googleplus_appname">Google+ Projektname</message> 
 	

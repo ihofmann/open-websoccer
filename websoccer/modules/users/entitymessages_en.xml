@@ -5,12 +5,12 @@
 	<message id="entity_users_nick">Username</message>
 	<message id="entity_users_lastonline">Last Login</message>
 	<message id="entity_users_lastaction">Last Action</message>
-	<message id="entity_users_highscore">Highscore</message>
+	<message id="entity_users_highscore">High Score</message>
 	<message id="entity_users_clubname">Club</message>
 	<message id="entity_users_datum_anmeldung">Registration Date</message>
-	<message id="entity_users_email">E-Mail</message>
+	<message id="entity_users_email">Email</message>
 	
-    <message id="entity_users_passwort">Password</message>
+    <message id="entity_users_password">Password</message>
     <message id="entity_users_wunschverein">Wished Clubs</message>
     <message id="entity_users_name">Name</message>
     <message id="entity_users_wohnort">Residence</message>
