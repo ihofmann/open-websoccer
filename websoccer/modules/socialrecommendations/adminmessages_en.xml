@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE module SYSTEM "../messages.dtd">
-<messages>
-	<message id="settings_label_social_likebutton_twitter">Display recommendation button of Twitter.</message> 
-	<message id="settings_label_social_likebutton_werkenntwen">Display recommendation button of wer-kennt-wen.de.</message> 
-	<message id="settings_label_social_likebutton_xing">Display recommendation button of XING.</message> 
-	
-</messages>
