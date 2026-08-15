@@ -3,7 +3,17 @@ def targetDirBase = './release/' + releaseVersion + '/'
 def targetDir = targetDirBase + "/websoccer"
 def targetUpdateDir = targetDirBase + '/update/websoccer'
 
-task release << {
+// Installs PHP dependencies (Twig and others) via Composer into
+// websoccer/vendor/. Composer must be available on the PATH (or run the
+// build inside an environment that provides it, e.g. the Composer Docker
+// image). See the README for details.
+task composerInstall(type: Exec) {
+    description = 'Installs PHP dependencies via Composer (websoccer/vendor).'
+    workingDir './websoccer'
+    commandLine 'composer', 'install', '--no-dev', '--optimize-autoloader'
+}
+
+task release(dependsOn: composerInstall) << {
     println 'Starting release. Make sure you disabled DEBUG mode in software.'
 }
 

@@ -38,7 +38,7 @@
 				<tr>
 					<td{% if markers is defined and markers|length > 0 %}
 					
-					{% for marker in markers if marker.place_from <= place and marker.place_to >= place %}
+					{% for marker in markers|filter(m => m.place_from <= place and m.place_to >= place) %}
 						{% set markerTitle = marker.name %}
 						{% if i18n.hasMessage(markerTitle) %}
 							{% set markerTitle = i18n.getMessage(markerTitle) %}

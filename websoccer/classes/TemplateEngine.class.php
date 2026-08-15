@@ -29,7 +29,7 @@ define('CACHE_FOLDER', BASE_FOLDER . '/cache/templates');
 /**
  * Enables skin dependent HTML templating.
  * 
- * The underlying engine is <a href='http://twig.sensiolabs.org'>Twig</a>.
+ * The underlying engine is <a href='https://twig.symfony.com'>Twig</a>.
  * 
  * @author Ingo Hofmann
  */
@@ -56,10 +56,10 @@ class TemplateEngine {
 	 * Loads the specified template.
 	 * 
 	 * @param string $templateName template name (NOT template file name, i.e. no file extension!).
-	 * @return Twig_TemplateInterface template instance.
+	 * @return \Twig\TemplateWrapper template instance.
 	 */
 	public function loadTemplate($templateName) {
-		return $this->_environment->loadTemplate($this->_skin->getTemplate($templateName));
+		return $this->_environment->load($this->_skin->getTemplate($templateName));
 	}
 	
 	/**
@@ -67,14 +67,16 @@ class TemplateEngine {
 	 */
 	public function clearCache() {
 		if (file_exists(CACHE_FOLDER)) {
-			$this->_environment->clearCacheFiles();
+			// Twig 3 no longer provides a "clear all" method on the environment,
+			// so the compiled template cache is purged directly on disk.
+			$this->_clearCacheDirectory(CACHE_FOLDER);
 		}
 	}
 	
 	/**
 	 * Provides the internal Twig environment in order to register extensions, etc.
 	 * 
-	 * @return Twig_Environment Twig environment instance.
+	 * @return \Twig\Environment Twig environment instance.
 	 * @since 5.0.0
 	 */
 	public function getEnvironment() {
@@ -82,8 +84,7 @@ class TemplateEngine {
 	}
 	
 	private function _initTwig() {
-		require_once(BASE_FOLDER . '/lib/Twig/lib/Twig/Autoloader.php');
-		Twig_Autoloader::register();
+		// Twig is loaded via Composer (see vendor/autoload.php, included in the bootstrap).
 		
 		// file loader
 		$loader = new \Twig\Loader\FilesystemLoader(TEMPLATES_FOLDER . '/' . TEMPLATE_SUBDIR_DEFAULT);
@@ -107,11 +108,36 @@ class TemplateEngine {
 	}
 	
 	private function _addSettingsSupport() {
-		$function = new Twig_SimpleFunction(CONFIG_FUNCTION_NAME, function ($key) {
+		$function = new \Twig\TwigFunction(CONFIG_FUNCTION_NAME, function ($key) {
 			global $i18n;
 			return $i18n->getMessage($key);
 		});
 		$this->_environment->addFunction($function);
+	}
+	
+	/**
+	 * Recursively removes all files and subdirectories within the given cache
+	 * directory, keeping the directory itself in place.
+	 *
+	 * @param string $dir absolute path to the cache directory.
+	 */
+	private function _clearCacheDirectory($dir) {
+		$entries = @scandir($dir);
+		if ($entries === FALSE) {
+			return;
+		}
+		foreach ($entries as $entry) {
+			if ($entry == '.' || $entry == '..') {
+				continue;
+			}
+			$path = $dir . '/' . $entry;
+			if (is_dir($path)) {
+				$this->_clearCacheDirectory($path);
+				@rmdir($path);
+			} else {
+				@unlink($path);
+			}
+		}
 	}
 	
 }
