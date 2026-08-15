@@ -543,17 +543,11 @@ class MatchesDataService {
 		$reportmessages = array();
 		$result = $db->querySelect($columns, $fromTable, $whereCondition, $parameters);
 		$match = null; // required only for team name replacements
-		$removeSlashes = get_magic_quotes_gpc();
 		while ($reportmessage = $result->fetch_array()) {
-			
+
 			// replace placeholders
 			$players = explode(';', $reportmessage['playerNames']);
 			$rmsg = $reportmessage['message'];
-			
-			// remove escaping slashes
-			if ($removeSlashes) {
-				$rmsg = stripslashes($rmsg);
-			}
 			
 			$msgKey = strip_tags($rmsg);
 			if ($i18n->hasMessage($msgKey)) {

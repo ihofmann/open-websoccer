@@ -1,21 +1,22 @@
 <?php 
 /******************************************************
 
-HSE WebSoccer-Sim
+  This file is part of OpenWebSoccer-Sim.
 
-Copyright (c) 2013-2014 by
+  OpenWebSoccer-Sim is free software: you can redistribute it 
+  and/or modify it under the terms of the 
+  GNU Lesser General Public License 
+  as published by the Free Software Foundation, either version 3 of
+  the License, or any later version.
 
-Hofmann Software Engineering
-EMail: info@websoccer-sim.com
-Homepage: http://www.websoccer-sim.com
+  OpenWebSoccer-Sim is distributed in the hope that it will be
+  useful, but WITHOUT ANY WARRANTY; without even the implied
+  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+  See the GNU Lesser General Public License for more details.
 
-THIS IS NOT FREEWARE! YOU NEED TO OBTAIN A
-VALID LICENCE IN ORDER TO BE ALLOWED TO USE
-THIS SOURCE CODE!
-
-DIES IST KEINE FREEWARE (KEINE KOSTENLOSE SOFTWARE).
-SIE MUESSEN EINE KORREKTE LIZENZ BESITZEN, UM DIESEN
-PROGRAMMCODE BENUTZEN ZU DUERFEN!
+  You should have received a copy of the GNU Lesser General Public 
+  License along with OpenWebSoccer-Sim.  
+  If not, see <http://www.gnu.org/licenses/>.
 
 ******************************************************/
 

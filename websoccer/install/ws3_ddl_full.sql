@@ -625,9 +625,9 @@ CREATE TABLE ws3_cup_round_group (
 CREATE TABLE ws3_cup_round_group_next (
   cup_round_id INT(10) NOT NULL,
   groupname VARCHAR(64) NOT NULL,
-  rank INT(4) NOT NULL DEFAULT 0,
+  `rank` INT(4) NOT NULL DEFAULT 0,
   target_cup_round_id INT(10) NOT NULL,
-  PRIMARY KEY(cup_round_id, groupname, rank)
+  PRIMARY KEY(cup_round_id, groupname, `rank`)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_team_league_statistics (
@@ -889,8 +889,8 @@ CREATE TABLE ws3_leaguehistory (
   team_id INT(10) NOT NULL,
   season_id INT(10) NOT NULL,
   user_id INT(10) NULL,
-  matchday TINYINT(3) NULL,
-  rank TINYINT(3) NULL,
+  matchday TINYINT(3) NOT NULL,
+  `rank` TINYINT(3) NULL,
   FOREIGN KEY (team_id) REFERENCES ws3_verein(id) ON DELETE CASCADE,
   FOREIGN KEY (season_id) REFERENCES ws3_saison(id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES ws3_user(id) ON DELETE SET NULL,
@@ -940,7 +940,7 @@ CREATE TABLE ws3_achievement (
   team_id INT(10) NOT NULL REFERENCES ws3_verein(id) ON DELETE CASCADE,
   season_id INT(10) NULL REFERENCES ws3_saison(id) ON DELETE CASCADE,
   cup_round_id INT(10) NULL REFERENCES ws3_cup_round(id) ON DELETE CASCADE,
-  rank TINYINT(3) NULL,
+  `rank` TINYINT(3) NULL,
   date_recorded INT(10) NOT NULL
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 

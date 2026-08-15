@@ -89,7 +89,7 @@ $block = null;
 // init application
 try {
 	$website = WebSoccer::getInstance();
-	if (!file_exists(CONFIGCACHE_FILE_FRONTEND)) {
+	if (!file_exists(CONFIGCACHE_FILE_FRONTEND) || !isset($conf['session_lifetime'])) {
 		$website->resetConfigCache();
 	}
 } catch(Exception $e) {

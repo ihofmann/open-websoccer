@@ -55,7 +55,7 @@ class UserHistoryModel implements IModel {
 				'TEAM.name' => 'team_name',
 				'L.name' => 'league_name',
 				'SEASON.name' => 'season_name',
-				'A.rank' => 'season_rank',
+				'A.`rank`' => 'season_rank',
 				'A.id' => 'achievement_id',
 				'A.date_recorded' => 'achievement_date',
 				'CUP.name' => 'cup_name',

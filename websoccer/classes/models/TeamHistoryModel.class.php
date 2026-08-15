@@ -55,7 +55,7 @@ class TeamHistoryModel implements IModel {
 				'U.nick' => 'user_name',
 				'L.name' => 'league_name',
 				'SEASON.name' => 'season_name',
-				'A.rank' => 'season_rank',
+				'A.`rank`' => 'season_rank',
 				'A.id' => 'achievement_id',
 				'A.date_recorded' => 'achievement_date',
 				'CUP.name' => 'cup_name',

@@ -268,7 +268,7 @@ class SimulationCupMatchHelper {
 		$columns = array();
 		$columns['N.cup_round_id'] = 'round_id';
 		$columns['N.groupname'] = 'groupname';
-		$columns['N.rank'] = 'rank';
+		$columns['N.`rank`'] = '`rank`';
 		$columns['N.target_cup_round_id'] = 'target_cup_round_id';
 		
 		$fromTable = $websoccer->getConfig('db_prefix') . '_cup_round_group_next AS N';

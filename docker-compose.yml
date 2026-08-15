@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: websoccer-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-websoccer_root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-websoccer}
+      MYSQL_USER: ${MYSQL_USER:-websoccer}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-websoccer}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p${MYSQL_ROOT_PASSWORD:-websoccer_root}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: open-websoccer:php8.5
+    container_name: websoccer-web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    # Persist generated files, caches, uploads and admin config by binding
+    # them to the existing folders in the project so that re-creating the
+    # image does not trigger the installation routine again.
+    volumes:
+      - ./websoccer/uploads:/var/www/html/uploads
+      - ./websoccer/generated:/var/www/html/generated
+
+volumes:
+  db_data:

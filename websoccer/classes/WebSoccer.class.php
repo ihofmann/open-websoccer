@@ -36,6 +36,7 @@ class WebSoccer {
 	private $_isAjaxRequest;
 	private $_user;
 	private $_contextParameters;
+	private $_configDefaults;
 	
 	/**
 	 * @return the only instance during current request.
@@ -60,14 +61,69 @@ class WebSoccer {
 	
 	/**
 	 * @return general config value.
-	 * @throws Exception if configuration parameter could not be found.
+	 * @throws Exception if configuration parameter could not be found and has no module default.
 	 */
 	public function getConfig($name) {
 		global $conf;
-		if (!isset($conf[$name])) {
-			throw new Exception('Missing configuration: ' . $name);
+		if (isset($conf[$name])) {
+			return $conf[$name];
 		}
-		return $conf[$name];
+		
+		if ($this->_configDefaults == null) {
+			$this->_configDefaults = $this->_loadConfigDefaults();
+		}
+		
+		if (isset($this->_configDefaults[$name])) {
+			return $this->_configDefaults[$name];
+		}
+		
+		throw new Exception('Missing configuration: ' . $name);
+	}
+	
+	/**
+	 * Loads default values from all module configuration files.
+	 * Used as a fallback when a setting is missing from the generated config.
+	 * 
+	 * @return array associative array setting id => default value.
+	 */
+	private function _loadConfigDefaults() {
+		$defaults = array();
+		
+		if (!defined('FOLDER_MODULES') || !is_dir(FOLDER_MODULES)) {
+			return $defaults;
+		}
+		
+		$modules = scandir(FOLDER_MODULES);
+		foreach ($modules as $module) {
+			$moduleDir = FOLDER_MODULES . '/' . $module;
+			if (!is_dir($moduleDir)) {
+				continue;
+			}
+			
+			$configFile = $moduleDir . '/' . MODULE_CONFIG_FILENAME;
+			if (!file_exists($configFile)) {
+				continue;
+			}
+			
+			$doc = new DOMDocument();
+			if (!@$doc->load($configFile)) {
+				continue;
+			}
+			
+			$settings = $doc->getElementsByTagName('setting');
+			foreach ($settings as $setting) {
+				if (!$setting->hasAttribute('id')) {
+					continue;
+				}
+				
+				$id = $setting->getAttribute('id');
+				if ($setting->hasAttribute('default') && strlen($id)) {
+					$defaults[$id] = $setting->getAttribute('default');
+				}
+			}
+		}
+		
+		return $defaults;
 	}
 	
 	/**
@@ -121,7 +177,7 @@ class WebSoccer {
 	 * @param ViewHandler $viewHandler view handler to use for templates. Can also be NULL.
 	 * @return TemplateEngine current template engine to use.
 	 */
-	public function getTemplateEngine($i18n, ViewHandler $viewHandler = null) {
+	public function getTemplateEngine($i18n, ?ViewHandler $viewHandler = null) {
 		if ($this->_templateEngine == NULL) {
 			$this->_templateEngine = new TemplateEngine($this, $i18n, $viewHandler);
 		}

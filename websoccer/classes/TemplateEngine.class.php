@@ -41,7 +41,7 @@ class TemplateEngine {
 	/**
 	 * Initializes the underlying template engine.
 	 */
-	function __construct(WebSoccer $env, I18n $i18n, ViewHandler $viewHandler = null) {
+	function __construct(WebSoccer $env, I18n $i18n, ?ViewHandler $viewHandler = null) {
 		
 		$this->_skin = $env->getSkin();
 		
