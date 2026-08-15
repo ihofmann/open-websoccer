@@ -29,8 +29,8 @@
       <setting id="registration_url" category="users" type="text" default="" />
       
       <setting id="register_use_captcha" category="users" type="boolean" default="0" />
-      <setting id="register_captcha_publickey" category="users" type="text" default="-" />
-      <setting id="register_captcha_privatekey" category="users" type="text" default="-" />
+      <setting id="register_captcha_sitekey" category="users" type="text" default="-" />
+      <setting id="register_captcha_secretkey" category="users" type="text" default="-" />
       
       <setting id="max_number_of_users" category="users" type="number" default="0" />
       <setting id="illegal_usernames" category="users" type="tags" default="admin,administrator,test" />

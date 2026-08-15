@@ -7,12 +7,12 @@
     <message id="settings_label_max_number_of_users">Höchstanzahl zugelassender Benutzer</message> 
     <message id="settings_label_max_number_of_users_help">0 für uneingeschränkt</message> 
     
-    <message id="settings_label_register_use_captcha">reCAPTCHA Sicherheitscode benutzen, um Spam-Registrierungen zu verhindern. Dies erfordert eine Registrierung auf <a href="https://www.google.com/recaptcha/admin/create" target="_blank">www.google.com/recaptcha</a>.</message> 
+    <message id="settings_label_register_use_captcha">Google reCAPTCHA v2 verwenden, um Spam-Registrierungen zu verhindern. Erstellen Sie in der <a href="https://www.google.com/recaptcha/admin/create" target="_blank">Google reCAPTCHA-Administration</a> einen neuen Schlüssel für die <strong>reCAPTCHA v2-Checkbox „Ich bin kein Roboter“</strong> und fügen Sie die Domains dieser Website hinzu.</message>
     
-    <message id="settings_label_register_captcha_publickey">Public Key</message>
-    <message id="settings_label_register_captcha_publickey_help">Entnehmen Sie diese Angabe aus der reCAPTCHA-Registrierungsbestätigung.</message>
-    <message id="settings_label_register_captcha_privatekey">Private Key</message>
-    <message id="settings_label_register_captcha_privatekey_help">Entnehmen Sie diese Angabe aus der reCAPTCHA-Registrierungsbestätigung.</message>
+    <message id="settings_label_register_captcha_sitekey">Site Key</message>
+    <message id="settings_label_register_captcha_sitekey_help">Tragen Sie den Site Key eines Google reCAPTCHA v2-Schlüssels für die Checkbox „Ich bin kein Roboter“ ein. v3- oder alte reCAPTCHA-Schlüssel sind mit dieser Checkbox nicht kompatibel.</message>
+    <message id="settings_label_register_captcha_secretkey">Secret Key</message>
+    <message id="settings_label_register_captcha_secretkey_help">Tragen Sie den Secret Key desselben Google reCAPTCHA v2-Schlüsselpaars ein. Halten Sie ihn geheim; der Server verwendet ihn zur Prüfung der Formulare.</message>
 
     <message id="settings_label_registration_url">URL zu Registrierung</message>
 	<message id="settings_label_registration_url_help">Falls Benutzer ihr Benutzerkonto auf einer anderen Webseite registrieren sollen, können Sie hier den URL zur Registrierungsmaske angeben.</message>

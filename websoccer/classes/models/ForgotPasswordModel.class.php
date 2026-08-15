@@ -48,18 +48,10 @@ class ForgotPasswordModel implements IModel {
 		
 		$parameters = array();
 		if ($this->_websoccer->getConfig("register_use_captcha")
-				&& strlen($this->_websoccer->getConfig("register_captcha_publickey"))
-				&& strlen($this->_websoccer->getConfig("register_captcha_privatekey"))) {
-			
-			include_once(BASE_FOLDER . "/lib/recaptcha/recaptchalib.php");
-			
-			// support SSL
-			$useSsl = (!empty($_SERVER["HTTPS"]));
-			
-			$captchaCode = recaptcha_get_html($this->_websoccer->getConfig("register_captcha_publickey"), null, $useSsl);
-			
-
-			$parameters["captchaCode"] = $captchaCode;
+				&& strlen($this->_websoccer->getConfig("register_captcha_sitekey"))
+				&& strlen($this->_websoccer->getConfig("register_captcha_secretkey"))) {
+			$parameters["captchaCode"] = RecaptchaService::render(
+					$this->_websoccer->getConfig("register_captcha_sitekey"));
 		}
 		
 		return $parameters;
