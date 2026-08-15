@@ -104,7 +104,13 @@ class FormBuilder {
 					if ($type == 'html') {
 						$class = 'htmleditor';
 					}
-					echo '<textarea id=\''. $fieldId . '\' name=\''. $fieldId . '\' wrap=\'virtual\' class=\''. $class .'\' rows=\'10\'>'. $fieldValue .'</textarea>';
+					echo '<textarea id=\''. $fieldId . '\' name=\''. $fieldId . '\' wrap=\'virtual\' class=\''. $class .'\' rows=\'10\'>';
+					if ($type == 'html') {
+						echo $fieldValue;
+					} else {
+						echo escapeOutput($fieldValue);
+					}
+					echo '</textarea>';
 					break;
 					
 				// date and time picker
@@ -317,7 +323,7 @@ class FormBuilder {
 		} else {
 			
 			echo '<input type=\'hidden\' class=\'pkpicker\' id=\''. $fieldId . '\' name=\''. $fieldId . '\' 
-					value=\'' . $fieldValue . '\' data-dbtable=\''. $fieldInfo['jointable'] . '\' data-labelcolumns=\''. $fieldInfo['labelcolumns'] . '\' data-placeholder=\'' . $i18n->getMessage('manage_select_placeholder') . '\'>';
+					value=\'' . escapeOutput($fieldValue) . '\' data-dbtable=\''. $fieldInfo['jointable'] . '\' data-labelcolumns=\''. $fieldInfo['labelcolumns'] . '\' data-placeholder=\'' . $i18n->getMessage('manage_select_placeholder') . '\'>';
 		
 		}
 		

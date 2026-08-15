@@ -220,7 +220,7 @@ class YouthMatchesDataService {
 				if ($messageData) {
 					foreach ($messageData as $placeholderName => $placeholderValue) {
 						$message = str_replace("{" . $placeholderName . "}",
-								htmlspecialchars($placeholderValue, ENT_COMPAT, "UTF-8"), $message);
+								htmlspecialchars($placeholderValue, ENT_QUOTES, "UTF-8"), $message);
 					}
 				}
 			}

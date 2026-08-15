@@ -168,7 +168,7 @@ elseif ($show == 'selectoptions') {
   <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='form-horizontal'>
 	<input type='hidden' name='site' value='<?php echo $site; ?>'>
 	<input type='hidden' name='show' value='dismiss'>
-	<input type='hidden' name='teamids' value='<?php echo implode(',', $_POST['selectedteams']) ?>'>
+	<input type='hidden' name='teamids' value='<?php echo implode(',', array_map('escapeOutput', $_POST['selectedteams'])) ?>'>
 	
 	<fieldset>
     <legend><?php echo $i18n->getMessage('firemanagers_dismiss_label'); ?></legend>
