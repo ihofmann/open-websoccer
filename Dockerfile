@@ -34,8 +34,7 @@ RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
 
 # Enable Apache modules:
 #   rewrite        - clean URLs / future routing
-#   access_compat  - backward compatible Order/Deny/Allow (.htaccess in webservices/micropayment)
-RUN a2enmod rewrite access_compat
+RUN a2enmod rewrite
 
 # The application lives in the Apache document root
 COPY websoccer/ /var/www/html/

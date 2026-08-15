@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE messages SYSTEM "../messages.dtd">
-<messages>
-    <message id="actionsubject_micropayment-notify">Payment via micropayment</message>
-    <message id="micropayment_link_title">Pay via micropayment™</message>
-
-</messages>
