@@ -8,9 +8,9 @@
 {% block page_content %}
 
 <h4>{{ i18n.getMessage("entity_league") }}</h4>
-<form class="form-inline" method="post">
+<form class="d-flex flex-wrap gap-2 align-items-center" method="post">
 
-	<select id="leagueid" name="leagueid" class="span3">
+	<select id="leagueid" name="leagueid" class="col-md-3 form-select">
 		<option></option>
 	{% for leagueItem in leagues %}
 		<option value="{{ leagueItem.league_id }}"{% if leagueId == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>
@@ -27,7 +27,7 @@
 	<h4>{{ i18n.getMessage("entity_season") }}</h4>
 	<ul class="nav nav-pills">
 		{% for season in seasons %}
-		<li{% if seasonId == season.id %} class="active"{% endif %}><a href="#season{{ loop.index }}" class="ajaxLink"
+		<li class="nav-item"><a href="#season{{ loop.index }}" class="nav-link ajaxLink{% if seasonId == season.id %} active{% endif %}"
 			data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ season.id }}">{{ season.name }}</a></li>
 		{% endfor %}
 	</ul>
@@ -36,10 +36,10 @@
 		<h4>{{ i18n.getMessage("entity_match_spieltag") }}</h4>
 		<ul class="nav nav-pills">
 			{% for matchdayOfSeason in 1..maxMatchDay %}
-			<li{% if matchday == matchdayOfSeason %} class="active"{% endif %}><a href="#matchday{{ loop.index }}" class="ajaxLink"
+			<li class="nav-item"><a href="#matchday{{ loop.index }}" class="nav-link ajaxLink{% if matchday == matchdayOfSeason %} active{% endif %}"
 				data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ seasonId }}&matchday={{ matchdayOfSeason }}">{{ matchdayOfSeason }}</a></li>
 			{% endfor %}
-			<li{% if matchday == -1 %} class="active"{% endif %}><a href="#all" class="ajaxLink"
+			<li class="nav-item"><a href="#all" class="nav-link ajaxLink{% if matchday == -1 %} active{% endif %}"
 				data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ seasonId }}&matchday=-1">{{ i18n.getMessage("teamoftheday_teamoftheseason") }}</a></li>
 		</ul>
 		
@@ -106,7 +106,7 @@
 							{% elseif player.team_picture|length > 0 %}
 								<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" style="max-width: 90px; max-height: 60px;">
 							{% else %}
-								<i class="icon-user" style="font-size: 60px; color: white;"></i>
+								<i class="bi bi-person" style="font-size: 60px; color: white;"></i>
 							{% endif %}
 						</a>
 						{% if player.grade is defined %}

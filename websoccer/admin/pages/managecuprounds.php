@@ -74,7 +74,7 @@ if ($action == "create") {
 		foreach ($formFields as $fieldId => $fieldInfo) {
 			
 			if ($fieldInfo["type"] == "timestamp") {
-				$dateObj = DateTime::createFromFormat($website->getConfig("date_format") .", H:i",
+				$dateObj = DateTime::createFromFormat("Y-m-d, H:i",
 						$_POST[$fieldId ."_date"] .", ". $_POST[$fieldId ."_time"]);
 				$fieldValue = ($dateObj) ? $dateObj->getTimestamp() : 0;
 				
@@ -187,13 +187,13 @@ function renderRound($roundNode) {
 		$columns["finalround"] = (isset($_POST["finalround"]) && $_POST["finalround"] == "1") ? 1 : 0;
 		$columns["groupmatches"] = (isset($_POST["groupmatches"]) && $_POST["groupmatches"] == "1") ? 1 : 0;
 		
-		$firstDateObj = DateTime::createFromFormat($website->getConfig("date_format") .", H:i",
+		$firstDateObj = DateTime::createFromFormat("Y-m-d, H:i",
 				$_POST["firstround_date_date"] .", ". $_POST["firstround_date_time"]);
 		$columns["firstround_date"] = $firstDateObj->getTimestamp();
 		
 		
 		if (isset($_POST["secondround_date_date"])) {
-			$secondDateObj = DateTime::createFromFormat($website->getConfig("date_format") .", H:i",
+			$secondDateObj = DateTime::createFromFormat("Y-m-d, H:i",
 				$_POST["secondround_date_date"] .", ". $_POST["secondround_date_time"]);
 			$columns["secondround_date"] = $secondDateObj->getTimestamp();
 		}
@@ -218,7 +218,7 @@ function renderRound($roundNode) {
 	if($showEditForm) {
 		?>
 		
-		  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+		  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
 	    <input type="hidden" name="action" value="edit-save">
 		<input type="hidden" name="site" value="<?php echo $site; ?>">
 		<input type="hidden" name="cup" value="<?php echo $cupid; ?>">
@@ -240,8 +240,8 @@ function renderRound($roundNode) {
 			echo FormBuilder::createFormGroup($i18n, $fieldId, $fieldInfo, $fieldInfo["value"], "managecuprounds_label_");
 		}	
 		?>
-		<div class="control-group">
-			<div class="controls">
+		<div class="mb-3">
+			<div>
 				<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
 				<a href="<?php echo "?site=" . $site . "&cup=" . $cupid; ?>" class="btn"><?php echo $i18n->getMessage("button_cancel"); ?></a>
 			</div>    
@@ -261,8 +261,8 @@ function renderRound($roundNode) {
 		}
 		echo "</strong>";
 		
-		echo " <a href=\"?site=". $site . "&cup=". $cupid . "&action=edit&id=". $roundNode["round"]["id"] . "\" title=\"". $i18n->getMessage("manage_edit") . "\"><i class=\"icon-pencil\"></i></a>";
-		echo " <a class=\"deleteLink\" href=\"?site=". $site . "&cup=". $cupid . "&action=delete&id=". $roundNode["round"]["id"] . "\" title=\"". $i18n->getMessage("manage_delete") . "\"><i class=\"icon-trash\"></i></a>";
+		echo " <a href=\"?site=". $site . "&cup=". $cupid . "&action=edit&id=". $roundNode["round"]["id"] . "\" title=\"". $i18n->getMessage("manage_edit") . "\"><i class=\"bi bi-pencil\"></i></a>";
+		echo " <a class=\"deleteLink\" href=\"?site=". $site . "&cup=". $cupid . "&action=delete&id=". $roundNode["round"]["id"] . "\" title=\"". $i18n->getMessage("manage_delete") . "\"><i class=\"bi bi-trash\"></i></a>";
 		
 		echo "</p>";
 		echo "<ul>";
@@ -287,11 +287,11 @@ function renderRound($roundNode) {
 				"spieltyp" => "Pokalspiel"));
 
 		if (!$roundNode["round"]["groupmatches"]) {
-			echo "<p><a href=\"$addMatchUrl\" class=\"btn btn-mini\"><i class=\"icon-plus-sign\"></i> ". $i18n->getMessage("managecuprounds_add_match") . "</a>";
-			echo " <a href=\"?site=managecuprounds-generate&round=". $roundNode["round"]["id"] . "\" class=\"btn btn-mini\"><i class=\"icon-random\"></i> ". $i18n->getMessage("managecuprounds_generate_matches") . "</a>";
+			echo "<p><a href=\"$addMatchUrl\" class=\"btn btn-sm\"><i class=\"bi bi-plus-circle\"></i> ". $i18n->getMessage("managecuprounds_add_match") . "</a>";
+			echo " <a href=\"?site=managecuprounds-generate&round=". $roundNode["round"]["id"] . "\" class=\"btn btn-sm\"><i class=\"bi bi-shuffle\"></i> ". $i18n->getMessage("managecuprounds_generate_matches") . "</a>";
 			echo "</p>";
 		} else {
-			echo "<p><a href=\"?site=managecuprounds-groups&round=". $roundNode["round"]["id"] . "\" class=\"btn btn-mini\"><i class=\"icon-list\"></i> ". $i18n->getMessage("managecuprounds_manage_groups") . "</a>";
+			echo "<p><a href=\"?site=managecuprounds-groups&round=". $roundNode["round"]["id"] . "\" class=\"btn btn-sm\"><i class=\"bi bi-list\"></i> ". $i18n->getMessage("managecuprounds_manage_groups") . "</a>";
 			echo "</p>";
 		}
 		
@@ -311,7 +311,7 @@ function renderRound($roundNode) {
 
 // Create new round
 ?>
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
     <input type="hidden" name="action" value="create">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="cup" value="<?php echo $cupid; ?>">
@@ -337,11 +337,11 @@ function renderRound($roundNode) {
 
 	?>
 	
-	<div class="control-group">
-		<label class="control-label" for="from_round_id"><?php echo $i18n->getMessage("managecuprounds_label_previous_round")?></label>
+	<div class="mb-3">
+		<label class="form-label" for="from_round_id"><?php echo $i18n->getMessage("managecuprounds_label_previous_round")?></label>
 		
-		<div class="controls">
-			<select name="from_round_id" id="from_round_id">
+		<div>
+			<select class="form-select" name="from_round_id" id="from_round_id">
 				<option></option>
 				<?php 
 				foreach ($hierarchy as $roundId => $roundInfo) {
@@ -352,7 +352,7 @@ function renderRound($roundNode) {
 		</div>
 	</div>
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
 	</div>    
   </form>

@@ -1,6 +1,6 @@
 <h4>{{ i18n.getMessage("entity_users") }}</h4>
-<div class="row-fluid">
-	<div class="span6 text-center">
+<div class="row">
+	<div class="col-md-6 text-center">
 		{% if homeUser != null %}
 			{% if homeUser.picture|length > 0 %}
 				<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}"><img src="{{ homeUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
@@ -10,7 +10,7 @@
 			<p>{{ i18n.getMessage("matchpreview_nouser", match.match_home_name) }}</p>
 		{% endif %}
 	</div>
-	<div class="span6">
+	<div class="col-md-6">
 		{% if guestUser != null %}
 			{% if guestUser.picture|length > 0 %}
 				<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}"><img src="{{ guestUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
@@ -24,8 +24,8 @@
 
 <h4>{{ i18n.getMessage("matchpreview_last_matches") }}</h4>
 
-<div class="row-fluid">
-	<div class="span6">
+<div class="row">
+	<div class="col-md-6">
 		{% if latestMatchesHome|length > 0 %}
 			{% if match.match_home_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
 			<table class="table table-striped">
@@ -41,7 +41,7 @@
 		{% endif %}
 		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" class="btn">{{ i18n.getMessage("team_navlabel") }}</a></p>
 	</div>
-	<div class="span6">
+	<div class="col-md-6">
 		{% if latestMatchesGuest|length > 0 %}
 			{% if match.match_guest_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
 			<table class="table table-striped">

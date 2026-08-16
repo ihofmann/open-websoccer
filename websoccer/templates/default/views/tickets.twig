@@ -9,10 +9,10 @@
 
 
 {% if env.getConfig("sim_home_field_advantage") > 0 %}
-	<p><i class="icon-info-sign"></i> {{ i18n.getMessage("tickets_info_homefieldadvantage")|raw }}</p>
+	<p><i class="bi bi-info-circle"></i> {{ i18n.getMessage("tickets_info_homefieldadvantage")|raw }}</p>
 {% endif %}
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	{{ formelements.textfield('p_stands', i18n.getMessage('tickets_stands'), tickets.p_stands, true, validationMsg, 'number', 
 		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_stands|number_format(0, ',', ' ') ~ "/" ~ tickets.s_stands|number_format(0, ',', ' ')) }}
@@ -29,7 +29,7 @@
 	{{ formelements.textfield('p_vip', i18n.getMessage('tickets_vip'), tickets.p_vip, true, validationMsg, 'number',
 		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_vip|number_format(0, ',', ' ') ~ "/" ~ tickets.s_vip|number_format(0, ',', ' ')) }}
 	
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary ajaxSubmit"
 			data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_save') }}</button>
 		

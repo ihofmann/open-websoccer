@@ -1,5 +1,2 @@
-@import "bootstrap2/docs/assets/css/bootstrap.css";
-@import "bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
-@import "bootstrap-timepicker/css/bootstrap-timepicker.css";
-@import "select2/select2.css";
-@import "bootstrap-switch/build/css/bootstrap2/bootstrap-switch.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";

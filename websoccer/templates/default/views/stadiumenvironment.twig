@@ -53,12 +53,12 @@
 <h3>{{ i18n.getMessage("stadiumenvironment_availablebuildings") }}</h3>
 
 {% if availableBuildings|length == 0 %}
-	<div class="well">
+	<div class="card card-body">
 	{{ i18n.getMessage("stadiumenvironment_availablebuildings_none") }}
 	</div>
 {% else %}
 
-	<div id="buildingsSelection" class="carousel well slide" style="min-height: 200px">
+	<div id="buildingsSelection" class="carousel card card-body slide" style="min-height: 200px">
 	  <ol class="carousel-indicators">
 	  	{% for building in availableBuildings %}
 	    	<li data-target="#buildingsSelection" data-slide-to="{{ loop.index0 }}"{% if loop.index0 == 0 %} class="active"{% endif %}></li>

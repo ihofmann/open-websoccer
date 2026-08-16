@@ -122,15 +122,15 @@ if (count($errors) > 0) {
 }
 ?>
 		<p><?php echo $i18n->getMessage('sendpassword_admin_intro'); ?></p>
-		<form action='forgot-password.php' method='post' class='form-horizontal'>
-		  <div class='control-group<?php if (isset($errors['inputEmail'])) echo ' error'; ?>'>
-			<label class='control-label' for='inputEmail'><?php echo $i18n->getMessage('sendpassword_admin_label_email'); ?></label>
-			<div class='controls'>
-			  <input type='email' name='inputEmail' id='inputEmail' placeholder='E-Mail' value='<?php echo escapeOutput($inputEmail); ?>'>
+		<form action='forgot-password.php' method='post' class='row'>
+		  <div class='mb-3<?php if (isset($errors['inputEmail'])) echo ' error'; ?>'>
+			<label class='form-label' for='inputEmail'><?php echo $i18n->getMessage('sendpassword_admin_label_email'); ?></label>
+			<div>
+			  <input type='email' class='form-control' name='inputEmail' id='inputEmail' placeholder='E-Mail' value='<?php echo escapeOutput($inputEmail); ?>'>
 			</div>
 		  </div>
-		  <div class='control-group'>
-			<div class='controls'>
+		  <div class='mb-3'>
+			<div>
 			  <button type='submit' class='btn'><?php echo $i18n->getMessage('sendpassword_admin_button'); ?></button>
 			</div>
 		  </div>

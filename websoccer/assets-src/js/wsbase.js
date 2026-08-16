@@ -2,255 +2,436 @@
 
   This file is part of OpenWebSoccer-Sim.
 
-  OpenWebSoccer-Sim is free software: you can redistribute it 
-  and/or modify it under the terms of the 
-  GNU Lesser General Public License 
+  OpenWebSoccer-Sim is free software: you can redistribute it
+  and/or modify it under the terms of the
+  GNU Lesser General Public License
   as published by the Free Software Foundation, either version 3 of
   the License, or any later version.
 
   OpenWebSoccer-Sim is distributed in the hope that it will be
   useful, but WITHOUT ANY WARRANTY; without even the implied
-  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU Lesser General Public License for more details.
 
-  You should have received a copy of the GNU Lesser General Public 
-  License along with OpenWebSoccer-Sim.  
+  You should have received a copy of the GNU Lesser General Public
+  License along with OpenWebSoccer-Sim.
   If not, see <http://www.gnu.org/licenses/>.
 
 ******************************************************/
-$(function() {
-	
-	var WSCONFIG = {
-			AJAX_URL: "ajax.php"
-	};
-	
-	/**
-	 * percent value setting sliders
-	 */
-	$(".slider").each(function(i, component) {
-		$(component).slider().on('slideStop', function(ev){
-			$("input.slider").attr('value', ev.value);
-		});
-	});
-	
-	/**
-	 * Initializations of general components.
-	 */
-	var initComponents = function() {
-		$(".wstooltip").tooltip();
-		$(".wspopover").popover();
-		initAutoComplete();
-	};
-	
-	/**
-	 * autocomplete AJAX support
-	 */
-	var initAutoComplete = function() {
-		$(".autocomplete").typeahead({
-			minLength: 2,
-			
-			source: function(query, process) {
-		        return $.ajax({
-		            url: WSCONFIG.AJAX_URL,
-		            type: 'get',
-		            data: {contentonly: 1, block: $(this)[0].$element.data("ajaxblock"), query: query},
-		            dataType: 'json',
-		            success: function(json) {
-		                return typeof json.options == 'undefined' ? false : process(json.options);
-		            }
-		        });
-		    }
-		});
-	};
-	
-	/**
-	 * AJAXified forms
-	 */
-	$(document).on("click", ".ajaxSubmit", function(e) {
-		e.preventDefault();
-		
-		var form = $(this).closest("form");
-		form.submit(function() {
-			  return false;
-		});
-		
-		ajaxHandler(form.serialize(), $(this).data("ajaxtarget"), $(this).data("ajaxblock"), $(this).data("messagetarget"), form, $(this).data("ignoreemptymessages"));
-	});
-	
-	/**
-	 * AJAXified links
-	 */
-	$(document).on("click", ".ajaxLink", function(e) {
-		e.preventDefault();
-		
-		var targetId = $(this).data("ajaxtarget");
-		if (!$(this).data("ajaxloaded") || $(this).data("ajaxdisabledcache")) {
-			ajaxHandler($(this).data("ajaxquerystr"), targetId, $(this).data("ajaxblock"), $(this).data("messagetarget"), 
-					$("#" + targetId).closest("div"), $(this).data("ignoreemptymessages"));
-			
-			// cache only if area is not updated by any other link
-			if ($("a[data-ajaxtarget='" + targetId + "']").length < 2) {
-				$(this).data("ajaxloaded", "1");
-			}
-			
-		}
-	});
-	
-	var ajaxHandler = function(queryString, targetId, blockId, messagesTargetId, blockedElement, ignoreemptymessages) {
-		if (!blockId) {
-			blockId = "";
-		}
-		var requestUrl = WSCONFIG.AJAX_URL + "?block=" + blockId + "&" + queryString;
-		var ajaxLoader = $("#ajaxLoaderPage");
-		$.ajax({
-				url: requestUrl,
-				dataType: "json",
-				beforeSend: function() {
-					ajaxLoader.show();
-					blockedElement.block({ message: null });
-				}
-			})
-			.done(function(data) {
-				$("#" + targetId).html(data.content);
-				
-				if (!ignoreemptymessages || data.messages.trim().length) {
-					var msgTargetId = (messagesTargetId) ? messagesTargetId : "messages";
-					$("#" + msgTargetId).html(data.messages);
-				}
-				
-			})
-			.always(function() { 
-				blockedElement.unblock();
-				ajaxLoader.hide();
-			});
-	};
-	
-	// enable browser history after AJAX link
-	$(document).ready(function() {
-		var hash = location.hash.replace('#', '');
-		if (hash.length > 0) {
-			$("a.ajaxLink[href$='#" + hash + "']").click();
-		}
-	});
-	
-	// enable browser history for tab panes
-	$('a[data-toggle="tab"]').on('shown', function (e) {
-		  window.location.hash = e.target.hash;
-	});
-	
-	// enable client side "active" marker of nav items
-	$(document).on('click', '.clientsideNavItem', function (e) {
-		$(this).parent().find("> .active").removeClass("active");
-        $(this).addClass("active");
-	});
-	
-	/**
-	 * Init Countdown
-	 */
-	$(".countdown").each(function(i, component) {
-		$(component).countdown($(component).data("date"), function(event) {
-			var $this = $(this);
-			switch (event.type) {
-				case "seconds":
-				case "minutes":
-				case "hours":
-				case "days":
-				case "daysLeft":
-					$this.find('#' + event.type).html(event.value);
-					break;
-				case "finished":
-					$this.hide();
-					break;
-			}
-		});
-	});
-	
-	/**
-	 * init notifications popup
-	 */
-	$("#notificationsLink").popover({ 
-	    html: true, 
-	    placement: "bottom",
-	    content: function() {
-	    	var contentHtml = $("#notificationspopupwrapper").html();
-	    	$("#notificationspopupwrapper").remove();
-	    	return contentHtml;
-	    }
-	});
-	
-	var triggerAjaxLinksOnLoad = function() {
-		$(".triggerClickOnLoad:not(.clicked)").trigger("click");
-		$(".triggerClickOnLoad").addClass("clicked");
-	};
-	
-	var triggerAjaxLoadOfBlocks = function() {
-		$(".ajaxLoadedBlock").each(function() {
-			var queryStr = $(this).data("ajaxquerystr");
-			var elementId = $(this).attr("id");
-			var blockId = $(this).data("ajaxblock");
-			var messagesTarget = $(this).data("messagetarget");
-			var elementToBlock = $(this);
-			var ignoreEmptyMessages = $(this).data("ignoreemptymessages");
-			var refreshPeriod = $(this).data("refreshperiod");
-			
-			ajaxHandler(queryStr, elementId, blockId, messagesTarget, 
-					elementToBlock, ignoreEmptyMessages);
-			
-			// refresh after X seconds
-			if (refreshPeriod) {
-				setInterval(function () {
-					ajaxHandler(queryStr, elementId, blockId, messagesTarget, 
-							elementToBlock, ignoreEmptyMessages);
-			    }, refreshPeriod * 1000);
-			}
-			
-		});
-		
-	};
-	
-	// init components which can be re-rendered on AJX calls
-	$(document).ready(function() {
-		initComponents();
-		triggerAjaxLinksOnLoad();
-		triggerAjaxLoadOfBlocks();
-		
-	});
-	$(document).ajaxComplete(function() {
-		initComponents();
-		blockMatchRefreshButton();
-		triggerAjaxLinksOnLoad();
-	});
-	
-	/**
-	 * Block AJAX refresh button at match reports
-	 */
-	var refreshCountdownStarted = false;
-	var blockMatchRefreshButton = function() {
-		$("#matchReportRefresh").each(function() {
-			var timeToBlock = $(this).data("blockseconds");
-			
-			if (!refreshCountdownStarted) {
-				$(this).each(function() {
-			        $(this).attr('disabled', 'disabled');
-			        var disabledElem = $(this);
-			        var countdownElement = disabledElem.children(".timerCount");
-			        var interval = setInterval(function() {
-			        	refreshCountdownStarted = true;
-			        	countdownElement.text( '(' + --timeToBlock + ')' );
-			            if (timeToBlock === 0) {
-			                disabledElem.removeAttr('disabled');
-			                countdownElement.text('');
-			                refreshCountdownStarted = false;
-			                clearInterval(interval);
-			                
-			                // automatic refresh
-			                $("#matchReportRefresh").trigger("click");
-			            }
-			        }, 1000);
-			    });
-			}
-			
-		});
-	};
-	
-});
+
+import { Tooltip, Popover } from "bootstrap";
+
+(function () {
+  "use strict";
+
+  var WSCONFIG = {
+    AJAX_URL: "ajax.php",
+  };
+
+
+  /* ------------------------------------------------------------------ */
+  /* BlockUI replacement: lightweight overlay                            */
+  /* ------------------------------------------------------------------ */
+  function block(el) {
+    if (!el) return;
+    var overlay = document.createElement("div");
+    overlay.className = "ws-block-overlay";
+    if (getComputedStyle(el).position === "static") {
+      el.style.position = "relative";
+    }
+    el.appendChild(overlay);
+  }
+
+  function unblock(el) {
+    if (!el) return;
+    el.querySelectorAll(".ws-block-overlay").forEach(function (o) {
+      o.remove();
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Autocomplete (vanilla, AJAX)                                        */
+  /* ------------------------------------------------------------------ */
+  function initAutoComplete() {
+    document.querySelectorAll(".autocomplete").forEach(function (input) {
+      if (input.dataset.wsAcInit) return;
+      input.dataset.wsAcInit = "1";
+
+      var listbox = document.createElement("ul");
+      listbox.className = "ws-autocomplete-list list-group";
+      listbox.setAttribute("role", "listbox");
+      input.parentNode.style.position = input.parentNode.style.position || "relative";
+      input.parentNode.appendChild(listbox);
+
+      var debounce = null;
+
+      function close() {
+        listbox.innerHTML = "";
+        listbox.style.display = "none";
+      }
+
+      function render(options, query) {
+        listbox.innerHTML = "";
+        if (!options || !options.length) {
+          close();
+          return;
+        }
+        options.forEach(function (opt) {
+          var value = typeof opt === "object" ? opt.value : opt;
+          var label = typeof opt === "object" ? opt.label : opt;
+          var item = document.createElement("li");
+          item.className = "list-group-item list-group-item-action";
+          item.setAttribute("role", "option");
+          item.textContent = label;
+          item.addEventListener("mousedown", function (e) {
+            e.preventDefault();
+            input.value = value;
+            close();
+          });
+          listbox.appendChild(item);
+        });
+        listbox.style.display = "block";
+      }
+
+      input.addEventListener("input", function () {
+        var query = input.value;
+        if (query.length < 2) {
+          close();
+          return;
+        }
+        clearTimeout(debounce);
+        debounce = setTimeout(function () {
+          var block = input.dataset.ajaxblock;
+          var url =
+            WSCONFIG.AJAX_URL +
+            "?contentonly=1&block=" +
+            encodeURIComponent(block) +
+            "&query=" +
+            encodeURIComponent(query);
+          fetch(url, { headers: { "X-Requested-With": "XMLHttpRequest" } })
+            .then(function (r) {
+              return r.json();
+            })
+            .then(function (json) {
+              if (json && json.options) {
+                render(json.options, query);
+              } else {
+                close();
+              }
+            })
+            .catch(function () {
+              close();
+            });
+        }, 200);
+      });
+
+      input.addEventListener("blur", function () {
+        setTimeout(close, 150);
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Tooltips & popovers                                                */
+  /* ------------------------------------------------------------------ */
+  function initTooltips() {
+    document.querySelectorAll(".wstooltip").forEach(function (el) {
+      if (el.dataset.bsTooltipInit) return;
+      el.dataset.bsTooltipInit = "1";
+      try {
+        new Tooltip(el);
+      } catch (e) {
+        /* ignore */
+      }
+    });
+  }
+
+  function initPopovers() {
+    document.querySelectorAll(".wspopover").forEach(function (el) {
+      if (el.dataset.bsPopoverInit) return;
+      el.dataset.bsPopoverInit = "1";
+      try {
+        new Popover(el);
+      } catch (e) {
+        /* ignore */
+      }
+    });
+
+    /* notifications popup with dynamic content */
+    var notificationsLink = document.getElementById("notificationsLink");
+    if (notificationsLink && !notificationsLink.dataset.bsPopoverInit) {
+      notificationsLink.dataset.bsPopoverInit = "1";
+      var wrapper = document.getElementById("notificationspopupwrapper");
+      var contentHtml = wrapper ? wrapper.innerHTML : "";
+      if (wrapper) wrapper.remove();
+      try {
+        new Popover(notificationsLink, {
+          html: true,
+          placement: "bottom",
+          content: contentHtml,
+        });
+      } catch (e) {
+        /* ignore */
+      }
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Countdown (vanilla)                                                */
+  /* ------------------------------------------------------------------ */
+  function initCountdowns() {
+    document.querySelectorAll(".countdown").forEach(function (component) {
+      if (component.dataset.wsCountdownInit) return;
+      component.dataset.wsCountdownInit = "1";
+
+      var target = new Date(component.dataset.date).getTime();
+      if (isNaN(target)) return;
+
+      function pad(n) {
+        return n < 10 ? "0" + n : "" + n;
+      }
+
+      function update() {
+        var now = Date.now();
+        var diff = target - now;
+        if (diff <= 0) {
+          component.style.display = "none";
+          clearInterval(timer);
+          return;
+        }
+        var seconds = Math.floor(diff / 1000) % 60;
+        var minutes = Math.floor(diff / 60000) % 60;
+        var hours = Math.floor(diff / 3600000) % 24;
+        var days = Math.floor(diff / 86400000);
+        setEl("seconds", pad(seconds));
+        setEl("minutes", pad(minutes));
+        setEl("hours", pad(hours));
+        setEl("days", days);
+        setEl("daysLeft", days);
+      }
+
+      function setEl(id, val) {
+        var el = component.querySelector("#" + id);
+        if (el) el.textContent = val;
+      }
+
+      update();
+      var timer = setInterval(update, 1000);
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* AJAX helper                                                        */
+  /* ------------------------------------------------------------------ */
+  function ajaxHandler(
+    queryString,
+    targetId,
+    blockId,
+    messagesTargetId,
+    blockedElement,
+    ignoreemptymessages
+  ) {
+    if (!blockId) blockId = "";
+    var requestUrl =
+      WSCONFIG.AJAX_URL + "?block=" + encodeURIComponent(blockId) + "&" + queryString;
+    var ajaxLoader = document.getElementById("ajaxLoaderPage");
+
+    if (ajaxLoader) ajaxLoader.style.display = "block";
+    block(blockedElement);
+
+    fetch(requestUrl, { headers: { "X-Requested-With": "XMLHttpRequest" } })
+      .then(function (r) {
+        return r.json();
+      })
+      .then(function (data) {
+        var target = document.getElementById(targetId);
+        if (target && data.content) target.innerHTML = data.content;
+
+        if (
+          (!ignoreemptymessages || (data.messages && data.messages.trim().length)) &&
+          data.messages
+        ) {
+          var msgTargetId = messagesTargetId || "messages";
+          var mt = document.getElementById(msgTargetId);
+          if (mt) mt.innerHTML = data.messages;
+        }
+      })
+      .catch(function () {
+        /* ignore */
+      })
+      .finally(function () {
+        unblock(blockedElement);
+        if (ajaxLoader) ajaxLoader.style.display = "none";
+        initComponents();
+        blockMatchRefreshButton();
+        triggerAjaxLinksOnLoad();
+        document.dispatchEvent(new CustomEvent("ws:ajaxComplete"));
+      });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* AJAXified forms                                                    */
+  /* ------------------------------------------------------------------ */
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".ajaxSubmit");
+    if (!btn) return;
+    e.preventDefault();
+
+    var form = btn.closest("form");
+    if (!form) return;
+
+    var params = new URLSearchParams(new FormData(form));
+    ajaxHandler(
+      params.toString(),
+      btn.dataset.ajaxtarget,
+      btn.dataset.ajaxblock,
+      btn.dataset.messagetarget,
+      form,
+      btn.dataset.ignoreemptymessages
+    );
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* AJAXified links                                                    */
+  /* ------------------------------------------------------------------ */
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest(".ajaxLink");
+    if (!link) return;
+    e.preventDefault();
+
+    var targetId = link.dataset.ajaxtarget;
+    if (!link.dataset.ajaxloaded || link.dataset.ajaxdisabledcache) {
+      var blockedElement = document.getElementById(targetId);
+      ajaxHandler(
+        link.dataset.ajaxquerystr,
+        targetId,
+        link.dataset.ajaxblock,
+        link.dataset.messagetarget,
+        blockedElement ? blockedElement.closest("div") : null,
+        link.dataset.ignoreemptymessages
+      );
+
+      /* cache only if area is not updated by any other link */
+      if (
+        document.querySelectorAll('a[data-ajaxtarget="' + targetId + '"]').length < 2
+      ) {
+        link.dataset.ajaxloaded = "1";
+      }
+    }
+  });
+
+  /* enable browser history after AJAX link */
+  document.addEventListener("DOMContentLoaded", function () {
+    var hash = location.hash.replace("#", "");
+    if (hash.length > 0) {
+      var link = document.querySelector('a.ajaxLink[href$="#' + hash + '"]');
+      if (link) link.click();
+    }
+  });
+
+  /* enable browser history for tab panes */
+  document.querySelectorAll('a[data-bs-toggle="tab"]').forEach(function (a) {
+    a.addEventListener("shown.bs.tab", function (e) {
+      window.location.hash = e.target.hash;
+    });
+  });
+
+  /* client side "active" marker of nav items */
+  document.addEventListener("click", function (e) {
+    var item = e.target.closest(".clientsideNavItem");
+    if (!item) return;
+    var parent = item.parentElement;
+    if (parent) {
+      parent
+        .querySelectorAll(":scope > .active")
+        .forEach(function (el) {
+          el.classList.remove("active");
+        });
+      item.classList.add("active");
+    }
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* Auto-trigger links / blocks on load                                */
+  /* ------------------------------------------------------------------ */
+  function triggerAjaxLinksOnLoad() {
+    document.querySelectorAll(".triggerClickOnLoad").forEach(function (el) {
+      if (!el.classList.contains("clicked")) {
+        el.click();
+        el.classList.add("clicked");
+      }
+    });
+  }
+
+  function triggerAjaxLoadOfBlocks() {
+    document.querySelectorAll(".ajaxLoadedBlock").forEach(function (el) {
+      var queryStr = el.dataset.ajaxquerystr;
+      var elementId = el.id;
+      var blockId = el.dataset.ajaxblock;
+      var messagesTarget = el.dataset.messagetarget;
+      var ignoreEmptyMessages = el.dataset.ignoreemptymessages;
+      var refreshPeriod = el.dataset.refreshperiod;
+
+      ajaxHandler(queryStr, elementId, blockId, messagesTarget, el, ignoreEmptyMessages);
+
+      if (refreshPeriod) {
+        setInterval(function () {
+          ajaxHandler(
+            queryStr,
+            elementId,
+            blockId,
+            messagesTarget,
+            el,
+            ignoreEmptyMessages
+          );
+        }, refreshPeriod * 1000);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Block AJAX refresh button at match reports                         */
+  /* ------------------------------------------------------------------ */
+  var refreshCountdownStarted = false;
+  function blockMatchRefreshButton() {
+    document.querySelectorAll("#matchReportRefresh").forEach(function (btn) {
+      var timeToBlock = parseInt(btn.dataset.blockseconds, 10);
+      if (isNaN(timeToBlock)) return;
+
+      if (!refreshCountdownStarted) {
+        btn.setAttribute("disabled", "disabled");
+        var countdownElement = btn.querySelector(".timerCount");
+        var interval = setInterval(function () {
+          refreshCountdownStarted = true;
+          timeToBlock--;
+          if (countdownElement) countdownElement.textContent = "(" + timeToBlock + ")";
+          if (timeToBlock === 0) {
+            btn.removeAttribute("disabled");
+            if (countdownElement) countdownElement.textContent = "";
+            refreshCountdownStarted = false;
+            clearInterval(interval);
+            /* automatic refresh */
+            btn.click();
+          }
+        }, 1000);
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Init components (also re-run after AJAX updates)                   */
+  /* ------------------------------------------------------------------ */
+  function initComponents() {
+    initTooltips();
+    initPopovers();
+    initAutoComplete();
+    initCountdowns();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initComponents();
+    triggerAjaxLinksOnLoad();
+    triggerAjaxLoadOfBlocks();
+    blockMatchRefreshButton();
+  });
+})();

@@ -10,22 +10,22 @@
 
 {% if env.user.profilepicture|length > 0 %}
 	<a href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}">
-		<img src="{{ env.user.profilepicture }}" class="pull-left" style="width: 40px; height: 40px; margin-right: 10px" alt="{{ env.user.username }}"/>
+		<img src="{{ env.user.profilepicture }}" class="float-start" style="width: 40px; height: 40px; margin-right: 10px" alt="{{ env.user.username }}"/>
 	</a>
 {% endif %}
 
 <p><em>{{ i18n.getMessage('userprofile_block_loggedin_as') }}</em><br/>
 <a href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}"><strong>{{ env.user.username }}</strong></a>
 {% if unseenMessages > 0 %}
-(<a href="{{ env.getInternalUrl("messages") }}" title="{{ i18n.getMessage("messages_new_messages", unseenMessages) }}"><i class="icon-envelope"></i><small>{{ unseenMessages }}</small></a>)
+(<a href="{{ env.getInternalUrl("messages") }}" title="{{ i18n.getMessage("messages_new_messages", unseenMessages) }}"><i class="bi bi-envelope"></i><small>{{ unseenMessages }}</small></a>)
 {% endif %}
 
 <a id="notificationsLink" href="#" title="{{ i18n.getMessage('userprofile_block_notifications') }}"
-	class="ajaxLink" data-ajaxtarget="notificationspopup" data-ajaxblock="notifications"><span class="badge{% if unseenNotifications > 0 %} badge-important{% endif %}"><i class="icon-bell icon-white"></i>{% if unseenNotifications > 0 %} {{ unseenNotifications }}{% endif %}</span></a>
+	class="ajaxLink" data-ajaxtarget="notificationspopup" data-ajaxblock="notifications"><span class="badge{% if unseenNotifications > 0 %} bg-danger{% endif %}"><i class="bi bi-bell"></i>{% if unseenNotifications > 0 %} {{ unseenNotifications }}{% endif %}</span></a>
 </p>
 <div id="notificationspopupwrapper" style="display: none"><div id="notificationspopup">...</div></div>
 
-<p><em>{{ i18n.getMessage('userprofile_block_popularity') }}</em> <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('userprofile_block_tooltip_popularity') }}"></i></p>
+<p><em>{{ i18n.getMessage('userprofile_block_popularity') }}</em> <i class="bi bi-question-circle wstooltip" data-bs-toggle="tooltip" title="{{ i18n.getMessage('userprofile_block_tooltip_popularity') }}"></i></p>
 {{ statisticelements.progressbar(profile.user_popularity) }}
 
 <p><em>{{ i18n.getMessage('userprofile_block_highscore') }}</em><br/>
@@ -43,12 +43,12 @@
 </p>
 
 <div class="dropdown" style="margin-top: -11px; margin-bottom: 12px;">
-  {{ teamPicture|raw }} <a class="dropdown-toggle ajaxLink" data-toggle="dropdown" href="#" data-ajaxblock="user-clubs-selection" data-ajaxtarget="clubsSelectionList">
+  {{ teamPicture|raw }} <a class="dropdown-toggle ajaxLink" data-bs-toggle="dropdown" href="#" data-ajaxblock="user-clubs-selection" data-ajaxtarget="clubsSelectionList">
     {{ userteam.team_name }}
-    <b class="caret"></b>
+    <b></b>
   </a>
-  <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}" style="margin: 0 5px"><i class="icon-info-sign darkIcon"></i></a> 
-  <a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="icon-table darkIcon"></i></a>
+  <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}" style="margin: 0 5px"><i class="bi bi-info-circle darkIcon"></i></a> 
+  <a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="bi bi-table darkIcon"></i></a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="clubsSelectionList">
     
   </ul>
@@ -56,7 +56,7 @@
 {% else %}
 	<br>
 	{{ teamPicture|raw }} <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}">{{ userteam.team_name }}</a> 
-	<a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="icon-table darkIcon"></i></a>
+	<a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="bi bi-table darkIcon"></i></a>
 	</p>
 {% endif %}
 
@@ -69,7 +69,7 @@
 	<a href="{{ env.getInternalUrl("premiumaccount") }}">{{ env.user.premiumBalance|number_format(0, ',', ' ') }} {{ env.getConfig("premium_credit_unit") }}</a></p>
 {% endif %}
 
-<p><i class="icon-off"></i> <a href="{{ env.getInternalActionUrl("logout") }}"> {{ i18n.getMessage('userprofile_block_link_logout') }}</a>
-| <i class="icon-user"></i> <a href="{{ env.getInternalUrl("profile") }}"> {{ i18n.getMessage('userprofile_block_link_profile') }}</a></p>
+<p><i class="bi bi-power"></i> <a href="{{ env.getInternalActionUrl("logout") }}"> {{ i18n.getMessage('userprofile_block_link_logout') }}</a>
+| <i class="bi bi-person"></i> <a href="{{ env.getInternalUrl("profile") }}"> {{ i18n.getMessage('userprofile_block_link_profile') }}</a></p>
 
 {% endblock %}

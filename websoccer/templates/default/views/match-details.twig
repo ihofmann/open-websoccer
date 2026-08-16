@@ -73,22 +73,22 @@
 		<a id="matchReportRefresh" class="btn ajaxLink" data-ajaxtarget="pagecontent" 
 			data-ajaxquerystr="page=match&amp;id={{ match.match_id }}" 
 			data-blockseconds="60"
-			href="#refresh"><i class="icon-refresh"></i> {{ i18n.getMessage("button_refresh") }} <span class="timerCount"></span></a>
+			href="#refresh"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }} <span class="timerCount"></span></a>
 			
 		{% if allowTacticChanges %}
-			<a class="btn" href="{{ env.getInternalUrl("match-live-changes", "id=" ~ match.match_id) }}"><i class="icon-edit"></i> {{ i18n.getMessage("match_details_button_changes") }}</a>
+			<a class="btn" href="{{ env.getInternalUrl("match-live-changes", "id=" ~ match.match_id) }}"><i class="bi bi-pencil"></i> {{ i18n.getMessage("match_details_button_changes") }}</a>
 		{% endif %}
 	
 	{% endif %}
 	</p>
 	
 	<ul class="nav nav-tabs" id="reportTab">
-	  <li class="active"><a href="#report" data-toggle="tab">{{ i18n.getMessage("match_details_comments_title") }}</a></li>
-	  <li><a href="#players" data-toggle="tab" class="ajaxLink"
+	  <li class="nav-item"><a class="nav-link active" href="#report" data-bs-toggle="tab">{{ i18n.getMessage("match_details_comments_title") }}</a></li>
+	  <li class="nav-item"><a class="nav-link ajaxLink" href="#players" data-bs-toggle="tab"
 	  	data-ajaxtarget="players-list" data-ajaxblock="match-result-players"
 	  	data-ajaxquerystr="id={{ match.match_id }}"
 	  	{% if not match.match_simulated %}data-ajaxdisabledcache="1"{% endif %}>{{ i18n.getMessage("match_details_players_title") }}</a></li>
-	  <li><a href="#statistic" data-toggle="tab" class="ajaxLink"
+	  <li class="nav-item"><a class="nav-link ajaxLink" href="#statistic" data-bs-toggle="tab"
 	  	data-ajaxtarget="matchstatistic" data-ajaxblock="match-statistics"
 	  	data-ajaxquerystr="id={{ match.match_id }}"
 	  	{% if not match.match_simulated %}data-ajaxdisabledcache="1"{% endif %}>{{ i18n.getMessage("match_details_statistic_title") }}</a></li>
@@ -97,8 +97,8 @@
 	<div class="tab-content">
 	  <div class="tab-pane active" id="report">
 	  
-	  	<span class="report_team_home">{{ match.match_home_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
-	  	<span style="margin-left: 20px" class="report_team_guest">{{ match.match_guest_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+	  	<span class="report_team_home">{{ match.match_home_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
+	  	<span style="margin-left: 20px" class="report_team_guest">{{ match.match_guest_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
 	  
 		<div id="reportarea">
 		{% if match.match_deprecated_report|length > 0 %}

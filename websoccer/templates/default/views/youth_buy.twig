@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block page_content %}
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	<fieldset>
 		<legend>{{ i18n.getMessage("youthplayer-buy_formlabel") }}</legend>
 		
 		<p><strong>{{ i18n.getMessage("youthplayer-buy_confirmationmsg") }}</strong></p>
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_confirm') }}</button>
 		<a href="{{ env.getInternalUrl("youth-marketplace") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

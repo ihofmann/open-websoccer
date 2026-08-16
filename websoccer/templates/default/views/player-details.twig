@@ -15,17 +15,17 @@
 {% endif %}
 
 <ul class="nav nav-tabs" id="playerTab">
-  <li class="active"><a href="#general" data-toggle="tab">{{ i18n.getMessage("player_details_tab_general") }}</a></li>
-  <li><a href="#statistic" data-toggle="tab">{{ i18n.getMessage("player_details_tab_statistic") }}</a></li>
-  <li><a href="#history" data-toggle="tab">{{ i18n.getMessage("player_details_tab_history") }}</a></li>
+  <li class="nav-item"><a class="nav-link active" href="#general" data-bs-toggle="tab">{{ i18n.getMessage("player_details_tab_general") }}</a></li>
+  <li class="nav-item"><a class="nav-link" href="#statistic" data-bs-toggle="tab">{{ i18n.getMessage("player_details_tab_statistic") }}</a></li>
+  <li class="nav-item"><a class="nav-link" href="#history" data-bs-toggle="tab">{{ i18n.getMessage("player_details_tab_history") }}</a></li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="general">
   
   
-		<div class="row-fluid">
-			<div class="span6">
+		<div class="row">
+			<div class="col-md-6">
 			
 				<dl class="dl-horizontal">
 				  <dt>{{ i18n.getMessage("entity_player_position") }}</dt>
@@ -47,7 +47,7 @@
 				  	<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
 				  	
 				  	{% if player.lending_owner_id > 0 %}
-						<i class="icon-star-empty" title="{{ i18n.getMessage("lending_player_marker_tooltip") }}"></i></em>
+						<i class="bi bi-star" title="{{ i18n.getMessage("lending_player_marker_tooltip") }}"></i></em>
 					{% endif %}
 				  {% else %}
 				  	-
@@ -94,7 +94,7 @@
 				</dl>
 		
 			</div>
-			<div class="span6">
+			<div class="col-md-6">
 			
 				<dl class="dl-horizontal">
 				  <dt>{{ i18n.getMessage("entity_player_vertrag_gehalt") }}</dt>
@@ -122,7 +122,7 @@
 			<div class="alert alert-info">
 			<p>{{ i18n.getMessage("player_details_avaiable_on_transfermarket") }}</p>
 			{% if env.getUser().getClubId() != player.team_id %}
-				<p><a class="btn btn-mini" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.player_id) }}"><i class="icon-hand-up"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
+				<p><a class="btn btn-sm" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.player_id) }}"><i class="bi bi-hand-index-thumb"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
 			{% endif %}
 			</div>
 		{% elseif player.player_unsellable > 0 %}
@@ -133,7 +133,7 @@
 			<div class="alert alert-info">
 			<p>{{ i18n.getMessage("lending_player_lendable_info", player.lending_fee|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency"))|raw }}</p>
 			{% if env.getUser().getClubId() != player.team_id %}
-				<p><a class="btn btn-mini" href="{{ env.getInternalUrl("borrow-player", "id=" ~ player.player_id) }}"><i class="icon-share-alt"></i> {{ i18n.getMessage("lending_player_hire_button") }}</a></p>
+				<p><a class="btn btn-sm" href="{{ env.getInternalUrl("borrow-player", "id=" ~ player.player_id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("lending_player_hire_button") }}</a></p>
 			{% endif %}
 			</div>
 		{% endif %}
@@ -162,8 +162,8 @@
   
   <div class="tab-pane" id="statistic">
   
-		<div class="row-fluid">
-			<div class="span6">
+		<div class="row">
+			<div class="col-md-6">
 				<h4>{{ i18n.getMessage("player_details_statistic_season") }}</h4>
 		
 				<dl class="dl-horizontal">
@@ -187,7 +187,7 @@
 				</dl>
 		
 			</div>
-			<div class="span6">
+			<div class="col-md-6">
 				<h4>{{ i18n.getMessage("player_details_statistic_total") }}</h4>
 		
 				<dl class="dl-horizontal">
@@ -212,21 +212,23 @@
 			</div>
 		</div>
 		
-		<p><a href="#statModal" class="btn btn-small ajaxLink" role="button" data-toggle="modal" data-ajaxtarget="playerStatisticsPerCompetition" 
-			data-ajaxblock="playerstatistics" data-ajaxquerystr="id={{ player.player_id }}" ><i class="icon-bar-chart"></i> {{ i18n.getMessage("player_details_statistic_opendetails") }}</a></p>
+		<p><a href="#statModal" class="btn btn-sm ajaxLink" role="button" data-bs-toggle="modal" data-ajaxtarget="playerStatisticsPerCompetition" 
+			data-ajaxblock="playerstatistics" data-ajaxquerystr="id={{ player.player_id }}" ><i class="bi bi-bar-chart"></i> {{ i18n.getMessage("player_details_statistic_opendetails") }}</a></p>
 		
-		<div id="statModal" class="modal hide fade" tabindex="-1" role="dialog" 
+		<div id="statModal" class="modal fade" tabindex="-1" role="dialog" 
 			aria-labelledby="statModalLabel" aria-hidden="true">
+		  <div class="modal-dialog"><div class="modal-content">
 		  <div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		    <h3 id="statModalLabel">{{ i18n.getMessage("player_details_statistic_detailstitle") }}</h3>
+		    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		    <h5 class="modal-title" id="statModalLabel">{{ i18n.getMessage("player_details_statistic_detailstitle") }}</h5>
 		  </div>
 		  <div class="modal-body">
 		  	<div id="playerStatisticsPerCompetition">...</div>
 		  </div>
 		  <div class="modal-footer">
-		    <a href="#" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_close") }}</a>
+		    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ i18n.getMessage("button_close") }}</button>
 		  </div>
+		  </div></div>
 		</div>
 		
 		<h4>{{ i18n.getMessage("player_details_grades_title") }}</h4>

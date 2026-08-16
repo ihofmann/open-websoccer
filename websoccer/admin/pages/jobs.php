@@ -105,9 +105,9 @@ if (!$show) {
 			$running = ($stop == 0 && $lastPing > $minPing);
 			
 			if ($running) {
-				$status = "<span class=\"label label-success\">". $i18n->getMessage("jobs_status_running") ."</span>";
+				$status = "<span class=\"badge bg-success\">". $i18n->getMessage("jobs_status_running") ."</span>";
 			} else {
-				$status = "<span class=\"label label-important\">". $i18n->getMessage("jobs_status_notrunning") ."</span>";
+				$status = "<span class=\"badge bg-danger\">". $i18n->getMessage("jobs_status_notrunning") ."</span>";
 			}
 			
 			echo "<td>" . $name;

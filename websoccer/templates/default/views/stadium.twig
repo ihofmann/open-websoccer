@@ -18,7 +18,7 @@
 	{{ profile.infofield(i18n.getMessage("stadium_capacity"), capacity|number_format(0, ',', ' ')) }}
 	
 	<div class="row">
-		<div class="span12">
+		<div class="col-md-12">
 			<canvas id="stadium" width="600" height="375" style="margin: 20px;"
 				data-ratioside="{{ ((stadium.places_seats + stadium.places_stands) / env.getConfig("stadium_max_side") * 100)|number_format }}"
 				data-ratiogrand="{{ ((stadium.places_seats_grand + stadium.places_stands_grand) / env.getConfig("stadium_max_grand") * 100)|number_format }}"
@@ -38,10 +38,10 @@
 	<table class="table">
 		{% for upgradetype in ['pitch', 'videowall', 'seatsquality', 'vipquality'] %}
 			<tr>
-				<td>{{ i18n.getMessage("entity_stadium_level_" ~ upgradetype) }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('stadium_maintenance_' ~ upgradetype ~ '_tooltip') }}"></i></td>
+				<td>{{ i18n.getMessage("entity_stadium_level_" ~ upgradetype) }} <i class="bi bi-question-circle wstooltip" data-bs-toggle="tooltip" title="{{ i18n.getMessage('stadium_maintenance_' ~ upgradetype ~ '_tooltip') }}"></i></td>
 				<td>
 					{% for level in 1..5 %}
-						<i class="icon-star{% if level > stadium['level_' ~ upgradetype] %}-empty{% endif %}"></i>
+						<i class="bi bi-star{% if level > stadium['level_' ~ upgradetype] %}{% else %}-fill{% endif %}"></i>
 					{% endfor %}
 				</td>
 				<td>
@@ -54,7 +54,7 @@
 				</td>
 				<td>
 					{% if stadium['level_' ~ upgradetype] < 5 %}
-						<a href="{{ env.getInternalActionUrl("upgrade-stadium", "type=" ~ upgradetype) }}" class="btn btn-small"><i class="icon-external-link-sign"></i> {{ i18n.getMessage("stadium_upgrade_button") }}</a>
+						<a href="{{ env.getInternalActionUrl("upgrade-stadium", "type=" ~ upgradetype) }}" class="btn btn-sm"><i class="bi bi-box-arrow-up-right"></i> {{ i18n.getMessage("stadium_upgrade_button") }}</a>
 					{% endif %}
 				</td>
 			</tr>
@@ -80,7 +80,7 @@
 			{% if construction.deadline > env.getNowAsTimestamp() %}
 				{{ msgbox.box("", i18n.getMessage("stadium_construction_checkstatuslater"), "info") }}
 			{% else %}
-				<p><a href="{{ env.getInternalActionUrl("accept-stadium-construction-work") }}" class="btn btn-primary"><i class="icon-check"></i> {{ i18n.getMessage("stadium_construction_verifystatus") }}</a></p>
+				<p><a href="{{ env.getInternalActionUrl("accept-stadium-construction-work") }}" class="btn btn-primary"><i class="bi bi-check-lg"></i> {{ i18n.getMessage("stadium_construction_verifystatus") }}</a></p>
 			{% endif %}
 		</div>
 	{% else %}
@@ -90,11 +90,11 @@
 		{% set maxVip = env.getConfig("stadium_max_vip") - stadium.places_vip %}
 		
 		{% if maxSide > 0 or maxGrand > 0 or maxVip > 0 %}
-			<form class="form-horizontal" method="post">
+			<form class="row" method="post">
 				<fieldset>
 			    	<legend>{{ i18n.getMessage('stadium_extend_title') }}</legend>
 			    	
-			    	<div class="well">
+			    	<div class="card card-body">
 			    		<p>{{ i18n.getMessage('stadium_extend_limitation_intro') }}:</p>
 			    		
 			    		<ul>
@@ -122,7 +122,7 @@
 						{{ formelements.textfield('vip', i18n.getMessage('entity_stadium_p_vip'), env.getRequestParameter("vip"), false, validationMsg, "number", null) }}
 					{% endif %}
 				</fieldset>
-				<div class="form-actions">
+				<div class="d-flex gap-2 justify-content-center p-3">
 					<button type="submit" class="btn btn-primary">{{ i18n.getMessage('stadium_extend_button') }}</button>
 					<a href="{{ env.getInternalUrl("stadium") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 				</div>

@@ -21,7 +21,7 @@
 {% endif %}
 
 {% if env.getConfig("training_min_hours_between_execution") > 0 %}
-<p style="margin-top: 10px; margin-bottom: 20px;"><i class="icon-info-sign"></i> {{ i18n.getMessage('training_execute_training_note', env.getConfig("training_min_hours_between_execution")) }}</p>
+<p style="margin-top: 10px; margin-bottom: 20px;"><i class="bi bi-info-circle"></i> {{ i18n.getMessage('training_execute_training_note', env.getConfig("training_min_hours_between_execution")) }}</p>
 {% endif %}	
 
 {# Show result of executed training unit #}
@@ -45,10 +45,10 @@
 				<td>
 					{% set changeLabel = effect.technique %}
 					{% if changeLabel > 0 %}
-						{% set changeCssClass = "badge-success" %}
+						{% set changeCssClass = "bg-success" %}
 						{% set changeLabel = "+" ~ changeLabel %}
 					{% elseif changeLabel < 0 %}
-						{% set changeCssClass = "badge-important" %}
+						{% set changeCssClass = "bg-danger" %}
 					{% else %}
 						{% set changeCssClass = "" %}
 					{% endif %}
@@ -57,10 +57,10 @@
 				<td>
 					{% set changeLabel = effect.stamina %}
 					{% if changeLabel > 0 %}
-						{% set changeCssClass = "badge-success" %}
+						{% set changeCssClass = "bg-success" %}
 						{% set changeLabel = "+" ~ changeLabel %}
 					{% elseif changeLabel < 0 %}
-						{% set changeCssClass = "badge-important" %}
+						{% set changeCssClass = "bg-danger" %}
 					{% else %}
 						{% set changeCssClass = "" %}
 					{% endif %}
@@ -69,10 +69,10 @@
 				<td>
 					{% set changeLabel = effect.freshness %}
 					{% if changeLabel > 0 %}
-						{% set changeCssClass = "badge-success" %}
+						{% set changeCssClass = "bg-success" %}
 						{% set changeLabel = "+" ~ changeLabel %}
 					{% elseif changeLabel < 0 %}
-						{% set changeCssClass = "badge-important" %}
+						{% set changeCssClass = "bg-danger" %}
 					{% else %}
 						{% set changeCssClass = "" %}
 					{% endif %}
@@ -81,10 +81,10 @@
 				<td>
 					{% set changeLabel = effect.satisfaction %}
 					{% if changeLabel > 0 %}
-						{% set changeCssClass = "badge-success" %}
+						{% set changeCssClass = "bg-success" %}
 						{% set changeLabel = "+" ~ changeLabel %}
 					{% elseif changeLabel < 0 %}
-						{% set changeCssClass = "badge-important" %}
+						{% set changeCssClass = "bg-danger" %}
 					{% else %}
 						{% set changeCssClass = "" %}
 					{% endif %}
@@ -120,7 +120,7 @@
 				{% if trainer.premiumfee %}
 					<p>{{ premium.premiumbadge(trainer.premiumfee) }}</p>
 				{% endif %}
-				<p><a href="{{ env.getInternalUrl("trainer-details", "id=" ~ trainer.id) }}" class="btn"><i class="icon-hand-right"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
+				<p><a href="{{ env.getInternalUrl("trainer-details", "id=" ~ trainer.id) }}" class="btn"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
 				<td>{{ trainer.salary|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
 				<td>{{ statisticelements.progressbar(trainer.p_technique) }}</td>
 				<td>{{ statisticelements.progressbar(trainer.p_stamina) }}</td>
@@ -147,16 +147,16 @@
 	{{ profile.infofield(i18n.getMessage("entity_trainer_p_technique"), bar_tech|raw, true) }}
 	{{ profile.infofield(i18n.getMessage("entity_trainer_p_stamina"), bar_stamina|raw, true) }}
 	
-	<form class="form-horizontal" method="post">
+	<form class="row" method="post">
 		<fieldset>
 	    	<legend>{{ i18n.getMessage('training_execute_training_title') }}</legend>
 		
-			<div class="control-group">
-				<label class="control-label" for="focus">
+			<div class="mb-3">
+				<label class="form-label" for="focus">
 					<strong>{{ i18n.getMessage('training_execute_focus') }}</strong>
 				</label>
-				<div class="controls">
-					<select id="focus" name="focus">
+				<div>
+					<select id="focus" name="focus" class="form-select">
   						<option value="TE"{% if env.getRequestParameter("focus") == "TE" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_technique') }}</option>
   						<option value="STA"{% if env.getRequestParameter("focus") == "STA" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_stamina') }}</option>
   						<option value="MOT"{% if env.getRequestParameter("focus") == "MOT" %} selected{% endif %}>{{ i18n.getMessage('training_execute_focus_motivation') }}</option>
@@ -165,17 +165,17 @@
 				</div>
 			</div>
 			
-			<div class="control-group">
-				<label class="control-label" for="intensity">
+			<div class="mb-3">
+				<label class="form-label" for="intensity">
 					<strong>{{ i18n.getMessage('training_execute_intensity') }}</strong>
 				</label>
-				<div class="controls">
+				<div>
 					{{ formelements.slider("intensity", (env.getRequestParameter("intensity") > 0) ? env.getRequestParameter("intensity") : 90 ) }}
 				</div>
 			</div>
 			
 		</fieldset>
-		<div class="form-actions">
+		<div class="d-flex gap-2 justify-content-center p-3">
 			<button type="submit" class="btn btn-primary">{{ i18n.getMessage('training_execute_button') }}</button>
 			<a href="{{ env.getInternalUrl("office") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 		</div>

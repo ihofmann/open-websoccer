@@ -27,20 +27,20 @@
 		<p style="text-align: center; margin-top: 10px;">
 		
 		{% if env.getConfig("user_picture_upload_enabled") %}
-			<a href="{{ env.getInternalUrl("change-profile-picture") }}" class="btn btn-small">
-				<i class="icon-upload"></i> {{ i18n.getMessage("user_changepicture_button") }}
+			<a href="{{ env.getInternalUrl("change-profile-picture") }}" class="btn btn-sm">
+				<i class="bi bi-upload"></i> {{ i18n.getMessage("user_changepicture_button") }}
 			</a>
 			{% if user.picture_uploadfile|length > 0 %}
-				<a href="{{ env.getInternalActionUrl("delete-profile-picture") }}" class="btn btn-small">
-					<i class="icon-remove"></i> {{ i18n.getMessage("user_deletepicture_button") }}
+				<a href="{{ env.getInternalActionUrl("delete-profile-picture") }}" class="btn btn-sm">
+					<i class="bi bi-x-lg"></i> {{ i18n.getMessage("user_deletepicture_button") }}
 				</a>
 			{% endif %}
 		{% endif %}
 		
 		{% if env.getConfig("gravatar_enable") %}
 			<a href="http://{{ i18n.getCurrentLanguage() }}.gravatar.com" target="_blank" 
-				title="{{ i18n.getMessage("gravatar_edit_picture") }}" class="btn btn-small">
-				<i class="icon-external-link"></i> {{ i18n.getMessage("gravatar_edit_picture_button") }}
+				title="{{ i18n.getMessage("gravatar_edit_picture") }}" class="btn btn-sm">
+				<i class="bi bi-box-arrow-up-right"></i> {{ i18n.getMessage("gravatar_edit_picture_button") }}
 			</a>
 		{% endif %}
 		
@@ -53,16 +53,16 @@
 {% endif %}
 
 <ul class="nav nav-tabs" id="userTab">
-  <li class="active"><a href="#general" data-toggle="tab">{{ i18n.getMessage("user_tab_profile") }}</a></li>
-  <li><a href="#activities" data-toggle="tab" class="ajaxLink"
+  <li class="nav-item"><a class="nav-link active" href="#general" data-bs-toggle="tab">{{ i18n.getMessage("user_tab_profile") }}</a></li>
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#activities" data-bs-toggle="tab"
   	data-ajaxtarget="activitieslist" data-ajaxblock="user-activities" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("activities_tab") }}</a></li>
-  <li><a href="#results" data-toggle="tab" class="ajaxLink"
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#results" data-bs-toggle="tab"
   	data-ajaxtarget="resultslist" data-ajaxblock="user-results" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("results_tab_latest_results") }}</a></li>
   {% if env.getConfig("transfermarket_enabled") or env.getConfig("transferoffers_enabled") %}
-  <li><a href="#transfers" data-toggle="tab" class="ajaxLink"
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#transfers" data-bs-toggle="tab"
   	data-ajaxtarget="transferslist" data-ajaxblock="usertransfers" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("transfers_tab") }}</a></li>
   {% endif %}
-  <li><a href="#history" data-toggle="tab" class="ajaxLink"
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#history" data-bs-toggle="tab"
   	data-ajaxtarget="historycontent" data-ajaxblock="user-history" data-ajaxquerystr="userid={{ user.id }}">{{ i18n.getMessage("history_tab") }}</a></li>
   
 </ul>
@@ -71,11 +71,11 @@
   <div class="tab-pane active" id="general">
   
   	{% if user.id == env.user.id %}
-  	<p><a href="{{ env.getInternalUrl("profile") }}" class="btn"><i class="icon-edit"></i> {{ i18n.getMessage("button_edit") }}</a></p>
+  	<p><a href="{{ env.getInternalUrl("profile") }}" class="btn"><i class="bi bi-pencil"></i> {{ i18n.getMessage("button_edit") }}</a></p>
   	{% endif %}
   
-	<div class="row-fluid">
-		<div class="span6">
+	<div class="row">
+		<div class="col-md-6">
 			{% if userteams|length > 1 %}
 				{% set team = "<ul class=\"unstyled\">" %}
 				{% for userteam in userteams %}
@@ -100,7 +100,7 @@
 			{{ profile.infofield(i18n.getMessage("entity_users_datum_anmeldung"), env.getFormattedDate(user.registration_date)) }}
 			{{ profile.infofield(i18n.getMessage("entity_users_lastonline"), env.getFormattedDate(user.lastonline)) }}
 		</div>
-		<div class="span6">
+		<div class="col-md-6">
 		
 		{% if user.name|length > 0 %}
 			{{ profile.infofield(i18n.getMessage("entity_users_name"), user.name) }}

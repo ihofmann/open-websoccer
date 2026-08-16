@@ -17,11 +17,11 @@
   				<td><a href="{{ env.getInternalUrl("user", "id=" ~ message.sender_id) }}">{{ message.sender_name }}</a></td>
   				<td>
   				{% if not message.seen %}<strong>{% endif %}
-  				<a href="#showMessage" data-toggle="modal" class="ajaxLink"
+  				<a href="#showMessage" data-bs-toggle="modal" class="ajaxLink"
   					data-ajaxtarget="messagecontent" data-ajaxblock="message-details" data-ajaxquerystr="id={{ message.message_id }}">{{ message.subject }}</a>
   				{% if not message.seen %}</strong>{% endif %}
   				</td>
-  				<td><a href="{{ env.getInternalUrl("messages", "action=delete-message&id=" ~ message.message_id) }}#outbox" title="{{ i18n.getMessage("messages_delete") }}"><i class="icon-trash"></i></a></td>
+  				<td><a href="{{ env.getInternalUrl("messages", "action=delete-message&id=" ~ message.message_id) }}#outbox" title="{{ i18n.getMessage("messages_delete") }}"><i class="bi bi-trash"></i></a></td>
   			</tr>
   		{% endfor %}
   		</tbody>

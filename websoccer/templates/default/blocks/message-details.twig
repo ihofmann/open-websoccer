@@ -3,11 +3,11 @@
 {% set replyRecipient = (message.sender_id == env.getUser().id) ? message.recipient_name : message.sender_name %}
 
 <div class="btn-group">
-	<a href="#composeMessage" class="btn btn-small ajaxLink"
-		 data-toggle="modal"
-		  data-dismiss="modal" aria-hidden="true"
-		  data-ajaxtarget="sendmsgbody" data-ajaxblock="compose-message-body" data-ajaxquerystr="subject={{ replySubject }}&amp;nick={{ replyRecipient }}"><i class="icon-hand-right"></i> {{ i18n.getMessage("messages_reply_button") }}</a>
-	<a href="{{ env.getInternalUrl("messages", "action=delete-message&id=" ~ message.message_id) }}" class="btn btn-small"><i class="icon-trash"></i> {{ i18n.getMessage("button_delete") }}</a>
+	<a href="#composeMessage" class="btn btn-sm ajaxLink"
+		 data-bs-toggle="modal"
+		  data-bs-dismiss="modal" aria-hidden="true"
+		  data-ajaxtarget="sendmsgbody" data-ajaxblock="compose-message-body" data-ajaxquerystr="subject={{ replySubject }}&amp;nick={{ replyRecipient }}"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("messages_reply_button") }}</a>
+	<a href="{{ env.getInternalUrl("messages", "action=delete-message&id=" ~ message.message_id) }}" class="btn btn-sm"><i class="bi bi-trash"></i> {{ i18n.getMessage("button_delete") }}</a>
 </div>
 
 <table style="margin-top: 10px">

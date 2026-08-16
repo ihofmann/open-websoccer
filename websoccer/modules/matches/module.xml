@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../module.dtd">
 <module version="1.0.0">
 
@@ -185,21 +185,10 @@
 	            template="match_live_changes"
 	            model="MatchChangesModel"
 	            role="user">
-                <script file="jquery-ui-1.10.2.custom.min.js" debugonly="true"/>
-	            <script file="formationws4.js" debugonly="true"/>
-	            <script file="formation.min.js" productiononly="true"/>
 	            
-	            <script file="bootstrap-slider.js" />
-	            <script file="bootstrap-switch.js" />
 	            
-	            <css file="slider.css"/>
-	        	<css file="formation.css"/>
-	        	<css file="bootstrap-switch.css"/>
             </page>
             
-            <script file="flot/jquery.flot.min.js" />
-            <script file="flot/jquery.flot.pie.min.js" />
-            <script file="charts.js" />
         </page>
         
         <page

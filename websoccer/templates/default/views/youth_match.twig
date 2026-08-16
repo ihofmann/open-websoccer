@@ -31,8 +31,8 @@
 		</div>
 		
 		{% if reportMessages|length > 0 %}
-			<span class="report_team_home">{{ match.home_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.home_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
-		  	<span style="margin-left: 20px" class="report_team_guest">{{ match.guest_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="icon-info-sign darkIcon"></i></a></span>
+			<span class="report_team_home">{{ match.home_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.home_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
+		  	<span style="margin-left: 20px" class="report_team_guest">{{ match.guest_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
 	  
 			<div id="reportarea">
 				<ul class="unstyled" style="margin: 1px 10px">
@@ -42,15 +42,15 @@
 						<li style="margin-top: 10px">
 						
 						{% if reportMessage.message_key == "ymreport_goal" or reportMessage.message_key == "ymreport_penalty_success"  %}
-							<i class="websoccericon-goal pull-right" style="margin-right: 10px;"></i>
+							<i class="websoccericon-goal float-end" style="margin-right: 10px;"></i>
 						{% elseif reportMessage.message_key == "ymreport_card_yellow" %}
-							<i class="websoccericon-yellowcard pull-right" style="margin-right: 10px;"></i>
+							<i class="websoccericon-yellowcard float-end" style="margin-right: 10px;"></i>
 						{% elseif reportMessage.message_key == "ymreport_card_yellowred" or reportMessage.message_key == "ymreport_card_red" %}
-							<i class="websoccericon-redcard pull-right" style="margin-right: 10px;"></i>
+							<i class="websoccericon-redcard float-end" style="margin-right: 10px;"></i>
 						{% elseif reportMessage.message_key == "ymreport_substitution" %}
-							<i class="websoccericon-substitution pull-right" style="margin-right: 10px;"></i>
+							<i class="websoccericon-substitution float-end" style="margin-right: 10px;"></i>
 						{% elseif reportMessage.message_key == "ymreport_injury" %}
-							<i class="websoccericon-injury pull-right" style="margin-right: 10px;"></i>
+							<i class="websoccericon-injury float-end" style="margin-right: 10px;"></i>
 						{% endif %}
 						
 						<span class="report_minute {{ teamMarkerClass }}">{{ i18n.getMessage("match_report_minute", reportMessage.minute) }}</span>
@@ -64,13 +64,13 @@
 	
 		<h3>{{ i18n.getMessage("match_details_players_title") }}</h3>
 		
-		<div class="row-fluid">
+		<div class="row">
 			{% for teamPrefix,teamPlayers in players %}
-			<div class="span6">
+			<div class="col-md-6">
 				<h5><a href="{{ env.getInternalUrl("team", "id=" ~ match[teamPrefix ~ "_team_id"]) }}" title="{{ i18n.getMessage("team_navlabel") }}">{{ match[teamPrefix ~ "_team_name"] }}</a></h5>
 				
 				{% if teamPlayers|length > 0 %}
-					<table class="table table-striped table-condensed">
+					<table class="table table-striped table-sm">
 						<colgroup>
 							<col style="width: 40px" />
 							<col />
@@ -113,22 +113,22 @@
 								{% if player.assists %}
 								<span title="{{ i18n.getMessage("player_assists") }}">
 									{% for i in 1..player.assists %}
-									<i class="icon-star"></i>
+									<i class="bi bi-star-fill"></i>
 									{% endfor %}
 								</span>
 								{% endif %}
 								
 								{% if player.state == 'Ausgewechselt' %}
-								<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_out") }}"><i class="icon-arrow-down"></i></span>
+								<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_out") }}"><i class="bi bi-arrow-down"></i></span>
 								{% elseif player.minutes_played < 90 %}
-								<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_in") }}"><i class="icon-arrow-up"></i></span>
+								<span class="minutesPlayed" title="{{ i18n.getMessage("player_substitute_in") }}"><i class="bi bi-arrow-up"></i></span>
 								{% endif %}
 								
 								</td>
 								<td
 									{% if player.grade <= 2.3 %}class="text-success"
 									{% elseif player.grade >= 4.3 and player.grade <= 5 %}class="text-warning"
-									{% elseif player.grade > 5 %}class="text-error"
+									{% elseif player.grade > 5 %}class="text-danger"
 									{% endif %}
 								>{{ player.grade }}</td>
 							</tr>
@@ -145,9 +145,9 @@
 		
 		<h3>{{ i18n.getMessage("match_details_statistic_title") }}</h3>
 		
-		<div class="row-fluid">
+		<div class="row">
 			{% for teamPrefix,teamStatistics in statistics %}
-			<div class="span6">
+			<div class="col-md-6">
 				<h5><a href="{{ env.getInternalUrl("team", "id=" ~ match[teamPrefix ~ "_team_id"]) }}" title="{{ i18n.getMessage("team_navlabel") }}">{{ match[teamPrefix ~ "_team_name"] }}</a></h5>
 				
 				{% if teamStatistics|length > 0 %}

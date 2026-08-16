@@ -9,13 +9,13 @@
 {% block page_content %}
 <p>{{ i18n.getMessage("enter-username_intro") }}</p>
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	{{ formelements.textfield('nick', i18n.getMessage('entity_users_nick'), env.getRequestParameter('nick'), true, validationMsg, 'text') }}
 	
 	{{ formelements.checkbox('termsandconditions', i18n.getMessage('termsandconditions_accept', env.getInternalUrl("termsandconditions")), env.getRequestParameter("termsandconditions"), true, validationMsg) }}
 	
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
 	</div>
 	<input type="hidden" name="page" value="enter-username"/>

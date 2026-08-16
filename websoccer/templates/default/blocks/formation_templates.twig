@@ -10,7 +10,7 @@
 					<td><a href="{{ env.getInternalUrl("formation", "id=" ~ env.getRequestParameter("id") ~ "&templateid=" ~ template.id) }}">{{ template.templatename }}</a></td>
 					<td><a href="#" class="darkIcon ajaxLink" 
 						data-ajaxblock="formation_templates" data-ajaxtarget="formation-templates-content" 
-						data-ajaxquerystr="action=remove-formation-template&templateid={{ template.id }}&id={{ env.getRequestParameter("id") }}"><i class="icon-trash"></i></a></td>
+						data-ajaxquerystr="action=remove-formation-template&templateid={{ template.id }}&id={{ env.getRequestParameter("id") }}"><i class="bi bi-trash"></i></a></td>
 				</tr>
 			{% endfor %}
 		</tbody>

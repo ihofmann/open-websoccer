@@ -6,10 +6,10 @@
 
 {% block page_content %}
 
-<form class="form-inline" method="post">
+<form class="d-flex flex-wrap gap-2 align-items-center" method="post">
 
-	<label class="control-label" for="country">{{ i18n.getMessage("entity_league_land") }}</label> 
-	<select id="country" name="country">
+	<label class="form-label" for="country">{{ i18n.getMessage("entity_league_land") }}</label> 
+	<select id="country" name="country" class="form-select">
 		<option></option>
 	{% for country in countries %}
 		<option value="{{ country.name }}">{{ country.name }} ({{ country.noOfLeagues }})</option>

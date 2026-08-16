@@ -34,12 +34,12 @@
 		
 			{% block page_columns %}
 			<div class="row">
-				<div class="span8" id="contentArea">
+				<div class="col-md-8" id="contentArea">
 					<div class="box">
 					
 						{% include 'breadcrumb.twig' %}
 					
-						<div class="page-header">
+						<div class="page-header mb-3">
 						<h1>{{ block("page_title") }}</h1>
 						</div>
 						
@@ -72,7 +72,7 @@
 					
 					</div>
 				</div>
-				<div class="span4">
+				<div class="col-md-4">
 				
 					{% if blocks.sidebar is defined %}
 						{% for uiBlock in blocks.sidebar %}
@@ -91,7 +91,7 @@
 	        	{% if env.getConfig("privacypolicy_url")|length > 0 %}| <a href="{{ env.getConfig("privacypolicy_url") }}">{{ i18n.getMessage("privacypolicy_navlabel") }}</a>{% endif %}
 	        	| <a href="{{ env.getInternalUrl("imprint") }}">{{ i18n.getMessage("imprint_navlabel") }}</a> 
 	        	| Powered by <a href="http://www.websoccer-sim.com" target="_blank">OpenWebSoccer-Sim</a>
-	        	| <i class="icon-time"></i> {{ env.getFormattedDatetime(null) }}
+	        	| <i class="bi bi-clock"></i> {{ env.getFormattedDatetime(null) }}
 	        	</p>
 			</footer>
 			

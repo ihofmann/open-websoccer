@@ -8,7 +8,7 @@
 {% block page_content %}
 
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	{{ formelements.textfield('fname', i18n.getMessage('entity_player_vorname'), env.getRequestParameter('fname'), false, validationMsg, 'text') }}
 	
@@ -16,12 +16,12 @@
 	
 	{{ formelements.autocomplete("club", i18n.getMessage("entity_player_verein_id"), env.getRequestParameter('club'), false, validationMsg, "clubsearch") }}
   
-	<div class="control-group">
-		<label class="control-label" for="position">
+	<div class="mb-3">
+		<label class="form-label" for="position">
 			{{ i18n.getMessage("entity_player_position") }}
 		</label>
-		<div class="controls">
-	  		<select name="position" id="position">
+		<div class="">
+	  		<select name="position" id="position" class="form-select">
 	  			<option></option>
 	  			<option value="Torwart"{% if env.getRequestParameter("position") == "Torwart" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
 	  			<option value="Abwehr"{% if env.getRequestParameter("position") == "Abwehr" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
@@ -32,12 +32,12 @@
 	</div>
 	
 	{% if env.getConfig("hide_strength_attributes") != "1" %}
-	<div class="control-group">
-		<label class="control-label" for="strength">
+	<div class="mb-3">
+		<label class="form-label" for="strength">
 			{{ i18n.getMessage("entity_player_w_staerke") }}
 		</label>
-		<div class="controls">
-	  		<select name="strength" id="strength">
+		<div class="">
+	  		<select name="strength" id="strength" class="form-select">
 	  			<option></option>
 	  			<option value="20"{% if env.getRequestParameter("strength") == "20" %} selected{% endif %}>1% - 20%</option>
 	  			<option value="40"{% if env.getRequestParameter("strength") == "40" %} selected{% endif %}>21% - 40%</option>
@@ -52,7 +52,7 @@
 	{% if env.getConfig("lending_enabled") %}
 		{{ formelements.checkbox('lendable', i18n.getMessage('lending_player_marker_lendable'), env.getRequestParameter('lendable')) }}
 	{% endif %}
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary ajaxSubmit" 
 		data-ajaxblock="playerssearch-results"
 		data-ajaxtarget="playerssearch-results_block">{{ i18n.getMessage('playerssearch_submit') }}</button>

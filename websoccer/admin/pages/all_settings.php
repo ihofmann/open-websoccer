@@ -49,7 +49,7 @@ if (!$show) {
 
   <h1><?php echo $mainTitle; ?></h1>
 
-  <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='form-horizontal'>
+  <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='row'>
     <input type='hidden' name='show' value='speichern'>
 	<input type='hidden' name='site' value='<?php echo $site; ?>'>
 	
@@ -61,7 +61,7 @@ if (!$show) {
 	foreach ($tabs as $tabId => $settings) {
 		echo '<li';
 		if ($firstTab) echo ' class=\'active\'';
-		echo '><a href=\'#'. $tabId . '\' data-toggle=\'tab\'>'. $i18n->getMessage('settings_tab_' . $tabId) .'</a></li>';
+		echo '><a href=\'#'. $tabId . '\' data-bs-toggle=\'tab\'>'. $i18n->getMessage('settings_tab_' . $tabId) .'</a></li>';
 		$firstTab = FALSE;
 	}
 	?>
@@ -88,7 +88,7 @@ if (!$show) {
 	 
 	</div>	
 	
-	<div class='form-actions'>
+	<div class='d-flex gap-2 justify-content-center p-3'>
 		<input type='submit' class='btn btn-primary' accesskey='s' title='Alt + s' value='<?php echo $i18n->getMessage('button_save'); ?>'> 
 		<input type='reset' class='btn' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
 	</div>

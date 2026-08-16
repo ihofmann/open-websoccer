@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block page_content %}
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	<fieldset>
 		<legend>{{ i18n.getMessage("youthplayer-makeprofessional_formlabel") }}</legend>
 		
 		<p>{{ i18n.getMessage("youthplayer-makeprofessional_form_intro")|raw }}</p>
 		
-		<div class="control-group{% if validationMsg['mainposition'] is defined %} error{% endif %}">
-			<label class="control-label" for="mainposition">
+		<div class="mb-3{% if validationMsg['mainposition'] is defined %} error{% endif %}">
+			<label class="form-label" for="mainposition">
 				<strong>{{ i18n.getMessage("entity_player_position_main") }}</strong>
 			</label>
-			<div class="controls">
-		  		<select name="mainposition" id="mainposition">
+			<div>
+		  		<select name="mainposition" id="mainposition" class="form-select">
 		  			<option></option>
 		  			
 		  			{% if player.position == "Torwart" %}
@@ -42,7 +42,7 @@
 		</div>
 		
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
 		<a href="{{ env.getInternalUrl("youth-team") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

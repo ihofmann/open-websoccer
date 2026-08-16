@@ -268,7 +268,7 @@ if (count($groups)) {
 			if ($showEditForm && $_REQUEST["group"] == $groupName) {
 				$nameValue = (isset($_REQUEST["groupname"])) ? $_REQUEST["groupname"] : $groupName;
 				?>
-				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-inline">
+				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="d-flex flex-wrap gap-2 align-items-center">
 					<input type="hidden" name="action" value="editsave">
 					<input type="hidden" name="site" value="<?php echo $site; ?>">
 					<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -287,13 +287,13 @@ if (count($groups)) {
 			echo "<td><ul>";
 			$noOfTeams = 0;
 			foreach ($groupItems as $groupItem) {
-				echo "<li>" . escapeOutput($groupItem["team_name"]) . " <a class=\"deleteLink\" href=\"?site=". $site . "&round=". $roundid . "&group=". urlencode(escapeOutput($groupName)) . "&action=deletegroupassignment&teamid=". $groupItem["team_id"] . "\" title=\"". $i18n->getMessage("manage_delete") . "\"><i class=\"icon-remove-sign\"></i></a></li>";
+				echo "<li>" . escapeOutput($groupItem["team_name"]) . " <a class=\"deleteLink\" href=\"?site=". $site . "&round=". $roundid . "&group=". urlencode(escapeOutput($groupName)) . "&action=deletegroupassignment&teamid=". $groupItem["team_id"] . "\" title=\"". $i18n->getMessage("manage_delete") . "\"><i class=\"bi bi-x-circle\"></i></a></li>";
 				$noOfTeams++;
 			}
 			echo "</ul>\n";
 			
 			?>
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-inline">
+			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="d-flex flex-wrap gap-2 align-items-center">
 				<input type="hidden" name="action" value="addteam">
 				<input type="hidden" name="site" value="<?php echo $site; ?>">
 				<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -303,7 +303,7 @@ if (count($groups)) {
 				FormBuilder::createForeignKeyField($i18n, "teamid", array("entity" => "club", "jointable" => "verein", "labelcolumns" => "name"), "");
 				?>
 				
-				<input type="submit" class="btn btn-small" value="<?php echo $i18n->getMessage("managecuprounds_groups_addteam"); ?>">
+				<input type="submit" class="btn btn-sm" value="<?php echo $i18n->getMessage("managecuprounds_groups_addteam"); ?>">
 			</form>
 			<?php
 			
@@ -311,7 +311,7 @@ if (count($groups)) {
 			echo "<td>";
 			
 			?>
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="form-inline">
+			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="d-flex flex-wrap gap-2 align-items-center">
 				<input type="hidden" name="action" value="saveranks">
 				<input type="hidden" name="site" value="<?php echo $site; ?>">
 				<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -320,7 +320,7 @@ if (count($groups)) {
 			echo "<ol>";
 			for ($rank = 1; $rank <= $noOfTeams; $rank++) {
 				
-				echo "<li><select name=\"rank_$rank\"><option></option>";
+				echo "<li><select class=\"form-select\" name=\"rank_$rank\"><option></option>";
 				foreach ($rounds as $roundItem) {
 
 					echo "<option value=\"" . $roundItem["id"] . "\"";
@@ -334,12 +334,12 @@ if (count($groups)) {
 			}
 			echo "</ol>";
 			?>
-			<input type="submit" class="btn btn-small" value="<?php echo $i18n->getMessage("button_save"); ?>">
+			<input type="submit" class="btn btn-sm" value="<?php echo $i18n->getMessage("button_save"); ?>">
 			</form>
 			<?php
 			echo "</td>";
-			echo "<td><a href=\"?site=". $site . "&round=". $roundid . "&action=edit&group=". urlencode(escapeOutput($groupName)) . "\" title=\"". $i18n->getMessage("manage_edit") . "\"><i class=\"icon-pencil\"></i></a></td>";
-			echo "<td><a class=\"deleteLink\" href=\"?site=". $site . "&round=". $roundid . "&group=". urlencode(escapeOutput($groupName)) . "&action=delete\" title=\"". $i18n->getMessage("manage_delete") . "\"><i class=\"icon-trash\"></i></a></td>";
+			echo "<td><a href=\"?site=". $site . "&round=". $roundid . "&action=edit&group=". urlencode(escapeOutput($groupName)) . "\" title=\"". $i18n->getMessage("manage_edit") . "\"><i class=\"bi bi-pencil\"></i></a></td>";
+			echo "<td><a class=\"deleteLink\" href=\"?site=". $site . "&round=". $roundid . "&group=". urlencode(escapeOutput($groupName)) . "&action=delete\" title=\"". $i18n->getMessage("manage_delete") . "\"><i class=\"bi bi-trash\"></i></a></td>";
 			
 			echo "</tr>\n";
 		}
@@ -355,7 +355,7 @@ if (count($groups)) {
 		}
 		
 		$rounds = (int) $_POST['rounds'];
-		$dateObj = DateTime::createFromFormat($website->getConfig("date_format") .", H:i",
+		$dateObj = DateTime::createFromFormat("Y-m-d, H:i",
 				$_POST["firstmatchday_date"] .", ". $_POST["firstmatchday_time"]);
 		$timeBreakSeconds = 3600 * 24 * $_POST['timebreak'];
 		
@@ -432,27 +432,29 @@ if (count($groups)) {
 	
 	?>
 	
-	<div class="well">
+	<div class="card card-body">
 		<?php if (isset($matches["hits"]) && $matches["hits"]) { ?>
 		<p><a href="<?php echo $matchesUrl; ?>"><strong><?php echo $matches["hits"]; ?></strong> <?php echo $i18n->getMessage("managecuprounds_groups_created_matches"); ?></a></p>
 		<?php } ?>
-		<p><a href="#generateModal" role="button" class="btn" data-toggle="modal"><?php echo $i18n->getMessage("managecuprounds_groups_open_generate_matches_popup"); ?></a></p>
+		<p><a href="#generateModal" role="button" class="btn" data-bs-toggle="modal"><?php echo $i18n->getMessage("managecuprounds_groups_open_generate_matches_popup"); ?></a></p>
 	</div>
 	
-	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
 	    <input type="hidden" name="action" value="generateschedule">
 		<input type="hidden" name="site" value="<?php echo $site; ?>">
 		<input type="hidden" name="round" value="<?php echo $roundid; ?>">
-		<div id="generateModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+		<div id="generateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="generateModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		  <div class="modal-content">
 		  <div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">??</button>
-		    <h3 id="generateModalLabel"><?php echo $i18n->getMessage("managecuprounds_groups_generate_title"); ?></h3>
+		    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		    <h5 class="modal-title" id="generateModalLabel"><?php echo $i18n->getMessage("managecuprounds_groups_generate_title"); ?></h5>
 		  </div>
 		  <div class="modal-body">
 		  	<div class="alert">
 		  		<?php echo $i18n->getMessage("managecuprounds_groups_generate_alert"); ?>
 		  	</div>
-			<?php 
+			<?php
 			foreach ($generateFormFields as $fieldId => $fieldInfo) {
 				echo FormBuilder::createFormGroup($i18n, $fieldId, $fieldInfo, $fieldInfo["value"], "schedulegenerator_label_");
 			}	
@@ -460,7 +462,9 @@ if (count($groups)) {
 		  </div>
 		  <div class="modal-footer">
 		    <button class="btn btn-primary" type="submit"><?php echo $i18n->getMessage("managecuprounds_groups_generate_submit"); ?></button>
-		    <button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo $i18n->getMessage("button_cancel"); ?></button>
+		    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo $i18n->getMessage("button_cancel"); ?></button>
+		  </div>
+		  </div>
 		  </div>
 		</div>
 	</form>
@@ -471,7 +475,7 @@ if (count($groups)) {
 // Create form
 ?>
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
     <input type="hidden" name="action" value="create">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -517,7 +521,7 @@ if (count($groups)) {
 		</div>
 	
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
 	<?php 
 	echo "<a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn\">" . $i18n->getMessage("button_cancel") ."</a>";

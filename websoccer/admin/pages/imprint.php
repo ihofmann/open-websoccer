@@ -34,7 +34,7 @@ if (!$show) {
 
   <p><?php echo escapeOutput($i18n->getMessage('imprint_introduction')); ?></p>
   
-  <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='form-horizontal'>
+  <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='row'>
     <input type='hidden' name='show' value='save'>
 	<input type='hidden' name='site' value='<?php echo $site; ?>'>
 	
@@ -53,7 +53,7 @@ if (!$show) {
 	}	
 	?>
 	</fieldset>
-	<div class='form-actions'>
+	<div class='d-flex gap-2 justify-content-center p-3'>
 		<input type='submit' class='btn btn-primary' accesskey='s' title='Alt + s' value='<?php echo $i18n->getMessage('button_save'); ?>'> 
 		<input type='reset' class='btn' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
 	</div>    

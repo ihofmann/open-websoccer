@@ -44,7 +44,7 @@ class InactivityConverter implements IConverter {
 		
 		$rate = (int)$this->_format($row['entity_user_inactivity']);
 		$color = $this->_color($rate);
-		$output = '<a href=\'#actPopup'. $row['id']. '\' role=\'button\' data-toggle=\'modal\' title=\''. $this->_i18n->getMessage('manage_show_details') . '\' style=\'color: '. $color .'\'>'.$rate .' %</a>';
+		$output = '<a href=\'#actPopup'. $row['id']. '\' role=\'button\' data-bs-toggle=\'modal\' title=\''. $this->_i18n->getMessage('manage_show_details') . '\' style=\'color: '. $color .'\'>'.$rate .' %</a>';
 		$output .= $this->_renderInActivityPopup($row);
 		return $output;
 	}
@@ -72,9 +72,10 @@ class InactivityConverter implements IConverter {
 	
 	private function _renderInActivityPopup($row) {
 		$popup = '';
-		$popup .= '<div id=\'actPopup'. $row['id']. '\' class=\'modal hide fade\' tabindex=\'-1\' role=\'dialog\' aria-labelledby=\'actPopupLabel\' aria-hidden=\'true\'>';
-		$popup .= '<div class=\'modal-header\'><button type=\'button\' class=\'close\' data-dismiss=\'modal\' aria-hidden=\'true\' title=\''. $this->_i18n->getMessage('button_close') . '\'>&times;</button>';
-		$popup .= '<h3 id=\'actPopupLabel'. $row['id']. '\'>'. $this->_i18n->getMessage('entity_user_inactivity') . ': '. escapeOutput($row['entity_users_nick']) . '</h3></div>';
+		$popup .= '<div id=\'actPopup'. $row['id']. '\' class=\'modal fade\' tabindex=\'-1\' role=\'dialog\' aria-labelledby=\'actPopupLabel\' aria-hidden=\'true\'>';
+		$popup .= '<div class=\'modal-dialog\'><div class=\'modal-content\'>';
+		$popup .= '<div class=\'modal-header\'><button type=\'button\' class=\'btn-close\' data-bs-dismiss=\'modal\' aria-label=\''. $this->_i18n->getMessage('button_close') . '\'></button>';
+		$popup .= '<h5 class=\'modal-title\' id=\'actPopupLabel'. $row['id']. '\'>'. $this->_i18n->getMessage('entity_user_inactivity') . ': '. escapeOutput($row['entity_users_nick']) . '</h5></div>';
 		$popup .= '<div class=\'modal-body\'>';
 	
 		$gesamt = $row['entity_user_inactivity_login'] + $row['entity_user_inactivity_aufstellung'] + $row['entity_user_inactivity_transfer']+ $row['entity_user_inactivity_vertragsauslauf'];
@@ -112,8 +113,8 @@ class InactivityConverter implements IConverter {
         </table>';
 	
 		$popup .= '</div>';
-		$popup .= '<div class=\'modal-footer\'><button class=\'btn btn-primary\' data-dismiss=\'modal\' aria-hidden=\'true\'>'. $this->_i18n->getMessage('button_close') . '</button></div>';
-		$popup .= '</div>';
+		$popup .= '<div class=\'modal-footer\'><button type=\'button\' class=\'btn btn-primary\' data-bs-dismiss=\'modal\'>'. $this->_i18n->getMessage('button_close') . '</button></div>';
+		$popup .= '</div></div></div>';
 		return $popup;
 	}	
 	

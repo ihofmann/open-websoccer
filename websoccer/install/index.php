@@ -60,8 +60,8 @@ function printWelcomeScreen() {
 	echo "<form method=\"post\">";
 	$first = TRUE;
 	foreach ($supportedLanguages as $langId => $langLabel) {
-		echo "<label class=\"radio\">";
-		echo "<input type=\"radio\" name=\"lang\" id=\"$langId\" value=\"$langId\"";
+		echo "<label class=\"form-check form-check-label\">";
+		echo "<input type=\"radio\" class=\"form-check-input\" name=\"lang\" id=\"$langId\" value=\"$langId\"";
 		if ($first) {
 			echo " checked";
 			$first = FALSE;
@@ -191,97 +191,97 @@ function printConfigForm($messages) {
 
 	?>
 	
-	<form method="post" class="form-horizontal">
+	<form method="post" class="row">
 		<fieldset>
 			<legend><?php echo $messages["config_formtitle"] ?></legend>
 			
-			<div class="control-group">
-			    <label class="control-label" for="db_host"><?php echo $messages["label_db_host"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="db_host" name="db_host" required
+			<div class="mb-3">
+			    <label class="form-label" for="db_host"><?php echo $messages["label_db_host"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="db_host" name="db_host" required
 			      	value="<?php echo (isset($_POST["db_host"])) ? install_escape($_POST["db_host"]) : "localhost"; ?>">
-			      <span class="help-inline"><?php echo $messages["label_db_host_help"] ?></span>
+			      <span class="form-text"><?php echo $messages["label_db_host_help"] ?></span>
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="db_name"><?php echo $messages["label_db_name"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="db_name" name="db_name" required
+			<div class="mb-3">
+			    <label class="form-label" for="db_name"><?php echo $messages["label_db_name"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="db_name" name="db_name" required
 			      	value="<?php echo (isset($_POST["db_name"])) ? install_escape($_POST["db_name"]) : ""; ?>">
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="db_user"><?php echo $messages["label_db_user"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="db_user" name="db_user" required
+			<div class="mb-3">
+			    <label class="form-label" for="db_user"><?php echo $messages["label_db_user"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="db_user" name="db_user" required
 			      	value="<?php echo (isset($_POST["db_user"])) ? install_escape($_POST["db_user"]) : ""; ?>">
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="db_password"><?php echo $messages["label_db_password"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="db_password" name="db_password" required
+			<div class="mb-3">
+			    <label class="form-label" for="db_password"><?php echo $messages["label_db_password"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="db_password" name="db_password" required
 			      	value="<?php echo (isset($_POST["db_password"])) ? install_escape($_POST["db_password"]) : ""; ?>">
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="db_prefix"><?php echo $messages["label_db_prefix"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="db_prefix" name="db_prefix"
+			<div class="mb-3">
+			    <label class="form-label" for="db_prefix"><?php echo $messages["label_db_prefix"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="db_prefix" name="db_prefix"
 			      	value="<?php echo (isset($_POST["db_prefix"])) ? install_escape($_POST["db_prefix"]) : ""; ?>">
-			      <span class="help-inline"><?php echo $messages["label_db_prefix_help"] ?></span>
+			      <span class="form-text"><?php echo $messages["label_db_prefix_help"] ?></span>
 			    </div>
 			</div>
 			
 			<hr>
 			
-			<div class="control-group">
-			    <label class="control-label" for="projectname"><?php echo $messages["label_projectname"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="projectname" name="projectname" required
+			<div class="mb-3">
+			    <label class="form-label" for="projectname"><?php echo $messages["label_projectname"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="projectname" name="projectname" required
 			      	value="<?php echo (isset($_POST["projectname"])) ? install_escape($_POST["projectname"]) : ""; ?>">
-			      <span class="help-inline"><?php echo $messages["label_projectname_help"] ?></span>
+			      <span class="form-text"><?php echo $messages["label_projectname_help"] ?></span>
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="projectname"><?php echo $messages["label_systememail"] ?></label>
-			    <div class="controls">
-			      <input type="email" id="systememail" name="systememail" required
+			<div class="mb-3">
+			    <label class="form-label" for="projectname"><?php echo $messages["label_systememail"] ?></label>
+			    <div>
+			      <input type="email" class="form-control" id="systememail" name="systememail" required
 			      	value="<?php echo (isset($_POST["systememail"])) ? install_escape($_POST["systememail"]) : ""; ?>">
-			      <span class="help-inline"><?php echo $messages["label_systememail_help"] ?></span>
+			      <span class="form-text"><?php echo $messages["label_systememail_help"] ?></span>
 			    </div>
 			</div>
 			
 			<?php $defaultUrl = "http://" . $_SERVER["HTTP_HOST"]; ?>
 			
-			<div class="control-group">
-			    <label class="control-label" for="url"><?php echo $messages["label_url"] ?></label>
-			    <div class="controls">
-			      <input type="url" id="url" name="url" required
+			<div class="mb-3">
+			    <label class="form-label" for="url"><?php echo $messages["label_url"] ?></label>
+			    <div>
+			      <input type="url" class="form-control" id="url" name="url" required
 			      	value="<?php echo (isset($_POST["url"])) ? install_escape($_POST["url"]) : install_escape($defaultUrl); ?>">
-			      	<span class="help-inline"><?php echo $messages["label_url_help"] ?></span>
+			      	<span class="form-text"><?php echo $messages["label_url_help"] ?></span>
 			    </div>
 			</div>
 			
 			<?php $defaultRoot = substr($_SERVER["REQUEST_URI"], 0, strrpos($_SERVER["REQUEST_URI"], "/install")); ?>
-			<div class="control-group">
-			    <label class="control-label" for="context_root"><?php echo $messages["label_context_root"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="context_root" name="context_root"
+			<div class="mb-3">
+			    <label class="form-label" for="context_root"><?php echo $messages["label_context_root"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="context_root" name="context_root"
 			      	value="<?php echo (isset($_POST["context_root"])) ? install_escape($_POST["context_root"]) : install_escape($defaultRoot); ?>">
-			      	<span class="help-inline"><?php echo $messages["label_context_root_help"] ?></span>
+			      	<span class="form-text"><?php echo $messages["label_context_root_help"] ?></span>
 			    </div>
 			</div>
 			
 			
 		</fieldset>
 		
-		<div class="form-actions">
+		<div class="d-flex gap-2 justify-content-center p-3">
 		  <button type="submit" class="btn btn-primary"><?php echo $messages["button_next"]; ?></button>
 		</div>
 		
@@ -365,18 +365,18 @@ function printPreDbCreate($messages) {
 	<h2><?php echo $messages["predb_title"]; ?></h2>
 	
 	<form method="post">
-		<label class="radio">
-			<input type="radio" name="install" value="new" checked> <?php echo $messages["predb_label_new"]; ?>
+		<label class="form-check form-check-label">
+			<input type="radio" class="form-check-input" name="install" value="new" checked> <?php echo $messages["predb_label_new"]; ?>
 		</label>
-		<label class="radio">
-			<input type="radio" name="install" value="migrate"> <?php echo $messages["predb_label_migrate"]; ?>
+		<label class="form-check form-check-label">
+			<input type="radio" class="form-check-input" name="install" value="migrate"> <?php echo $messages["predb_label_migrate"]; ?>
 		</label>
 		
 		<button type="submit" class="btn btn-primary"><?php echo $messages["button_next"]; ?></button>
 		<input type="hidden" name="action" value="actionCreateDb">
 	</form>
 	
-	<p><i class="icon-warning-sign"></i> <?php echo $messages["predb_label_warning"]; ?></p>
+	<p><i class="bi bi-exclamation-triangle"></i> <?php echo $messages["predb_label_warning"]; ?></p>
 	
 	<?php 
 }
@@ -435,37 +435,37 @@ function loadAndExecuteDdl($file, $prefix, DbConnection $db) {
 function printCreateUserForm($messages) {
 	?>
 	
-	<form method="post" class="form-horizontal">
+	<form method="post" class="row">
 		<fieldset>
 			<legend><?php echo $messages["user_formtitle"] ?></legend>
 			
-			<div class="control-group">
-			    <label class="control-label" for="name"><?php echo $messages["label_name"] ?></label>
-			    <div class="controls">
-			      <input type="text" id="name" name="name" required
+			<div class="mb-3">
+			    <label class="form-label" for="name"><?php echo $messages["label_name"] ?></label>
+			    <div>
+			      <input type="text" class="form-control" id="name" name="name" required
 			      	value="<?php echo (isset($_POST["name"])) ? install_escape($_POST["name"]) : ""; ?>">
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="password"><?php echo $messages["label_password"] ?></label>
-			    <div class="controls">
-			      <input type="password" id="password" name="password" required
+			<div class="mb-3">
+			    <label class="form-label" for="password"><?php echo $messages["label_password"] ?></label>
+			    <div>
+			      <input type="password" class="form-control" id="password" name="password" required
 			      	value="<?php echo (isset($_POST["password"])) ? install_escape($_POST["password"]) : ""; ?>">
 			    </div>
 			</div>
 			
-			<div class="control-group">
-			    <label class="control-label" for="email"><?php echo $messages["label_email"] ?></label>
-			    <div class="controls">
-			      <input type="email" id="email" name="email" required
+			<div class="mb-3">
+			    <label class="form-label" for="email"><?php echo $messages["label_email"] ?></label>
+			    <div>
+			      <input type="email" class="form-control" id="email" name="email" required
 			      	value="<?php echo (isset($_POST["email"])) ? install_escape($_POST["email"]) : ""; ?>">
 			    </div>
 			</div>
 			
 		</fieldset>
 		
-		<div class="form-actions">
+		<div class="d-flex gap-2 justify-content-center p-3">
 		  <button type="submit" class="btn btn-primary"><?php echo $messages["button_next"]; ?></button>
 		</div>
 		
@@ -522,7 +522,7 @@ function printFinalPage($messages) {
 	
 	<div class="alert"><strong><?php echo $messages["final_success_note"]; ?></strong></div>
 	
-	<p><i class="icon-arrow-right"></i> <a href="<?php echo $conf["context_root"]; ?>/admin"><?php echo $messages["final_link"]; ?></a></p>
+	<p><i class="bi bi-arrow-right"></i> <a href="<?php echo $conf["context_root"]; ?>/admin"><?php echo $messages["final_link"]; ?></a></p>
 	<?php 
 }
 ?>
@@ -571,7 +571,7 @@ function printFinalPage($messages) {
 		
 		if (count($errors)) {
 			foreach($errors as $error) {
-				echo "<div class=\"alert alert-error\">$error</div>";
+				echo "<div class=\"alert alert-danger\">$error</div>";
 			}
 		}
 		

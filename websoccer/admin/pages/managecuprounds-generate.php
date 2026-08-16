@@ -94,7 +94,7 @@ if ($action == "generate" && isset($_POST["teams"]) && is_array($_POST["teams"])
 		<h5><?php echo $i18n->getMessage("managecuprounds_generate_possiblerounds"); ?>: <span id="roundsNo">0</span></h5>
 	</div>
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
     <input type="hidden" name="action" value="generate">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -135,7 +135,7 @@ if ($action == "generate" && isset($_POST["teams"]) && is_array($_POST["teams"])
 			</table>
 		</div>
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("managecuprounds_generate_submitbutton"); ?>"> 
 		<?php 
 		echo " <a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn\">" . $i18n->getMessage("button_cancel") ."</a>";

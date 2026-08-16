@@ -9,9 +9,9 @@
 
 {% block page_content %}
 
-    <form class="form-inline">
+    <form class="d-flex flex-wrap gap-2 align-items-center">
   		<label for="position">{{ i18n.getMessage("transfermarket_filter_by_position") }}</label>
-  		<select name="position" id="position">
+  		<select name="position" id="position" class="form-select">
   			<option></option>
   			<option value="Torwart"{% if env.getRequestParameter("position") == "Torwart" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
   			<option value="Abwehr"{% if env.getRequestParameter("position") == "Abwehr" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
@@ -71,11 +71,11 @@
 					{% endif %}
 					{% if env.user.clubId == player.team_id %}
 						<a href="{{ env.getInternalActionUrl("remove-youthplayer-from-market", "id=" ~ player.player_id) }}"
-							title="{{ i18n.getMessage("youthteam_action_removefrommarket") }}"><i class="icon-share darkIcon"></i></a>
+							title="{{ i18n.getMessage("youthteam_action_removefrommarket") }}"><i class="bi bi-share darkIcon"></i></a>
 					{% endif %}</p>
 					
 					{% if env.user.clubId != player.team_id %}
-						<a href="{{ env.getInternalUrl("youthplayer-buy", "id=" ~ player.player_id) }}" class="btn btn-small"><i class="icon-shopping-cart"></i> {{ i18n.getMessage("youthteam_action_buy") }}</a>
+						<a href="{{ env.getInternalUrl("youthplayer-buy", "id=" ~ player.player_id) }}" class="btn btn-sm"><i class="bi bi-cart"></i> {{ i18n.getMessage("youthteam_action_buy") }}</a>
 					{% endif %}
 				</td>
 				<td>
@@ -93,7 +93,7 @@
 					{% endif %}
 				</td>
 				<td>{{ statisticelements.progressbar(player.strength, "noBottomMargin") }}</td>
-				<td>{{ player.st_matches }} <a href="#statistics{{ player.player_id }}" data-toggle="collapse" title="{{ i18n.getMessage("youthteam_showstatistics_tooltip") }}"><i class="icon-zoom-in darkIcon"></i></a>
+				<td>{{ player.st_matches }} <a href="#statistics{{ player.player_id }}" data-bs-toggle="collapse" title="{{ i18n.getMessage("youthteam_showstatistics_tooltip") }}"><i class="bi bi-zoom-in darkIcon"></i></a>
 					<div id="statistics{{ player.player_id }}" class="collapse">
 					<dl>
 						<dt>{{ i18n.getMessage("entity_youthplayer_st_goals") }}</dt>

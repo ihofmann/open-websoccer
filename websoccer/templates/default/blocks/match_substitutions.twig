@@ -22,14 +22,14 @@
   			{% set disabledState = (substitutions[subsNo].minute > 0 and substitutions[subsNo].minute <= match.match_minutes) %}
   			<tr>
   				<td>
-  					<p><select class="sub_out_select" id="sub{{ subsNo }}_out" name="sub{{ subsNo }}_out"{% if disabledState %} disabled{% endif %}>
+  					<p><select class="form-select sub_out_select" id="sub{{ subsNo }}_out" name="sub{{ subsNo }}_out"{% if disabledState %} disabled{% endif %}>
   						<option value="0">{{ i18n.getMessage("formation_substitutions_out") }}</option>
   						{% for player in players.field %}
   						<option value="{{ player.id }}"{% if substitutions[subsNo].out == player.id %} selected{% endif %}>{{ player.name }} ({{ i18n.getMessage("option_" ~ player.position) }})</option>
   						{% endfor %}
   					</select></p>
   					<p>
-  					<select class="sub_in_select" id="sub{{ subsNo }}_in" name="sub{{ subsNo }}_in"{% if disabledState %} disabled{% endif %}>
+  					<select class="form-select sub_in_select" id="sub{{ subsNo }}_in" name="sub{{ subsNo }}_in"{% if disabledState %} disabled{% endif %}>
   						<option value="0">{{ i18n.getMessage("formation_substitutions_in") }}</option>
   						{% for player in players.bench %}
   						<option value="{{ player.id }}"{% if substitutions[subsNo].in == player.id %} selected{% endif %}>{{ player.name }} ({{ i18n.getMessage("option_" ~ player.position) }})</option>
@@ -37,7 +37,7 @@
   					</select>	
   					</p>
   					<p>
-  						<select id="sub{{ subsNo }}_condition" name="sub{{ subsNo }}_condition"{% if disabledState %} disabled{% endif %}>
+  						<select id="sub{{ subsNo }}_condition" name="sub{{ subsNo }}_condition"{% if disabledState %} disabled{% endif %} class="form-select">
 							<option value="">{{ i18n.getMessage("formation_substitutions_condition_none") }}</option>
 							<option value="Tie"{% if substitutions[subsNo].condition == "Tie" %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_tie") }}</option>
 							<option value="Leading"{% if substitutions[subsNo].condition == "Leading" %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_leading") }}</option>
@@ -45,7 +45,7 @@
 						</select>
   					</p>	
   				</td>
-  				<td><input class="input-mini" type="number" id="sub{{ subsNo }}_minute" name="sub{{ subsNo }}_minute" 
+  				<td><input class="form-control form-control-sm w-auto" type="number" id="sub{{ subsNo }}_minute" name="sub{{ subsNo }}_minute" 
   					value="{% if substitutions[subsNo].minute > 0 %}{{ substitutions[subsNo].minute }}{% endif %}" min="1" max="90" {% if disabledState %} disabled{% endif %}/></td>
   			</tr>
   			{% endfor %}

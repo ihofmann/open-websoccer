@@ -30,7 +30,7 @@
 			{% set salarySum = 0 %}
 			{% for player in players %}
 			{% set salarySum = salarySum + player.contract_salary %}
-			<tr{% if player.contract_matches < 10 %} class="error"{% endif %}>
+			<tr{% if player.contract_matches < 10 %} class="table-danger"{% endif %}>
 				<td style="text-align: center"><img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
 					alt="{{ i18n.getMessage("player_position_" ~ player.position) }}" title="{{ i18n.getMessage("player_position_" ~ player.position) }}" />
 					{% if (player.position_main|length > 0) %}
@@ -40,17 +40,17 @@
 				<td><p><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a>
 				{% if player.unsellable == 1 %}
 					<a class="ajaxLink" href="#" title="{{ i18n.getMessage("myteam_unsellable_unmark_tooltip") }}"
-								data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=unmarkUnsellable&id={{ player.id }}"><i class="icon-eye-close darkIcon"></i></a>
+								data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=unmarkUnsellable&id={{ player.id }}"><i class="bi bi-eye-slash darkIcon"></i></a>
 				{% endif %}
 				{% if player.lending_fee > 0 and player.lending_owner_id == 0 %}
 					<a class="ajaxLink wstooltip" href="#" title="{{ i18n.getMessage("lending_lendable_unmark", player.lending_fee) }}"
-								data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=unmarkLendable&id={{ player.id }}"><i class="icon-share-alt darkIcon"></i></a>
+								data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=unmarkLendable&id={{ player.id }}"><i class="bi bi-share darkIcon"></i></a>
 				{% endif %}
 				{% if player.transfermarket %}
-					<a class="wstooltip" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.id) }}" title="{{ i18n.getMessage("entity_player_transfermarkt") }}"><i class="icon-hand-up darkIcon"></i></a>
+					<a class="wstooltip" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.id) }}" title="{{ i18n.getMessage("entity_player_transfermarkt") }}"><i class="bi bi-hand-index-thumb darkIcon"></i></a>
 				{% endif %}
 				{% if player.id == captain_id %}
-					<i class="icon-group wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>
+					<i class="bi bi-people wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>
 				{% endif %}
 				</p>
 				
@@ -61,42 +61,43 @@
 					or env.getConfig("lending_enabled") == 0
 					or player.id != captain_id %}
 					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }} <span class="caret"></span></a>
+						<a class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }} </a>
 						<ul class="dropdown-menu">
 						
 							{% if player.unsellable == 0 %}
 								{% if env.getConfig("transfermarket_enabled") and player.lending_fee == 0 %}
-									<li><a href="{{ env.getInternalUrl("sell-player", "id=" ~ player.id) }}"><i class="icon-share"></i> {{ i18n.getMessage("myteam_player_sell") }}</a></li>
+									<li><a href="{{ env.getInternalUrl("sell-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("myteam_player_sell") }}</a></li>
 								{% endif %}
 									<li><a class="ajaxLink" href="#" title="{{ i18n.getMessage("myteam_unsellable_tooltip") }}"
-										data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=markAsUnsellable&id={{ player.id }}"><i class="icon-eye-close"></i> {{ i18n.getMessage("myteam_unsellable") }}</a></li>
+										data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=markAsUnsellable&id={{ player.id }}"><i class="bi bi-eye-slash"></i> {{ i18n.getMessage("myteam_unsellable") }}</a></li>
 							
 								{% if player.transfermarket == 0 and player.lending_fee == 0 and env.getConfig("lending_enabled") %}
-									<li><a href="{{ env.getInternalUrl("lend-player", "id=" ~ player.id) }}"><i class="icon-share-alt"></i> {{ i18n.getMessage("lending_lend_button") }}</a></li>
+									<li><a href="{{ env.getInternalUrl("lend-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("lending_lend_button") }}</a></li>
 								{% endif %}
 							
 							{% endif %}
 							
 							{% if player.contract_matches <= env.getConfig("contract_max_number_of_remaining_matches") %}
-								<li><a href="{{ env.getInternalUrl("extend-contract", "id=" ~ player.id) }}"><i class="icon-briefcase"></i> {{ i18n.getMessage("myteam_player_extend_contract") }}</a></li>
+								<li><a href="{{ env.getInternalUrl("extend-contract", "id=" ~ player.id) }}"><i class="bi bi-briefcase"></i> {{ i18n.getMessage("myteam_player_extend_contract") }}</a></li>
 							{% endif %}
 							
 							{% if player.id != captain_id %}
-								<li><a href="{{ env.getInternalActionUrl("select-captain", "id=" ~ player.id) }}"><i class="icon-group"></i> {{ i18n.getMessage("myteam_player_select_as_captain") }}</a></li>
+								<li><a href="{{ env.getInternalActionUrl("select-captain", "id=" ~ player.id) }}"><i class="bi bi-people"></i> {{ i18n.getMessage("myteam_player_select_as_captain") }}</a></li>
 							{% endif %}
 							
 							{% if env.getConfig("enable_player_resignation") %}
-								<li><a href="#fire{{ player.id }}Modal" role="button" data-toggle="modal"><i class="icon-remove-circle"></i> {{ i18n.getMessage("fireplayer_button") }}</a></li>
+								<li><a href="#fire{{ player.id }}Modal" role="button" data-bs-toggle="modal"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("fireplayer_button") }}</a></li>
 							{% endif %}
 						</ul>
 					</div>
 				
 					{% if env.getConfig("enable_player_resignation") %}
-						<div id="fire{{ player.id }}Modal" class="modal hide fade" tabindex="-1" role="dialog" 
+						<div id="fire{{ player.id }}Modal" class="modal fade" tabindex="-1" role="dialog" 
 							aria-labelledby="fire{{ player.id }}ModalLabel" aria-hidden="true">
+						  <div class="modal-dialog"><div class="modal-content">
 						  <div class="modal-header">
-						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						    <h3 id="fire{{ player.id }}ModalLabel">{{ i18n.getMessage("fireplayer_modal_title" ) }}</h3>
+						    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						    <h5 class="modal-title" id="fire{{ player.id }}ModalLabel">{{ i18n.getMessage("fireplayer_modal_title" ) }}</h5>
 						  </div>
 						  <div class="modal-body">
 						  	<p>{{ i18n.getMessage("fireplayer_modal_content",player.firstname ~ " " ~ player.lastname) }}</p>
@@ -108,8 +109,9 @@
 						  </div>
 						  <div class="modal-footer">
 						  	<a href="{{ env.getInternalActionUrl("fire-player", "id=" ~ player.id) }}" class="btn btn-primary">{{ i18n.getMessage("fireplayer_modal_confirm") }}</a>
-						    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_cancel") }}</a>
+						    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ i18n.getMessage("button_cancel") }}</button>
 						  </div>
+						  </div></div>
 						</div>
 					{% endif %}
 				{% endif %}
@@ -118,7 +120,7 @@
 				
 				{% if env.getConfig("hide_strength_attributes") != "1" %}
 					<td>
-						<ul class="unstyled">
+						<ul class="list-unstyled">
 							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength") }}">{{ i18n.getMessage("playertable_head_strength_abbr") }}</abbr>:</span> 
 								<span {{ playerlists.strengthClass(player.strength) }}>{{ player.strength }}</span></li>
 							<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr>:</span> 
@@ -141,10 +143,10 @@
 				</td>
 				<td>
 					{% if player.lending_matches > 0 %}
-						<em title="{{ i18n.getMessage("lending_player_marker_tooltip") }}">{{ player.lending_matches }} <i class="icon-star-empty"></i></em>
+						<em title="{{ i18n.getMessage("lending_player_marker_tooltip") }}">{{ player.lending_matches }} <i class="bi bi-star"></i></em>
 					{% else %}
 						{{ player.contract_matches }}
-						{% if player.contract_matches < 10 %}<i class="icon-warning-sign" title="{{ i18n.getMessage("myteam_player_contract_is_ending") }}"></i>{% endif %}
+						{% if player.contract_matches < 10 %}<i class="bi bi-exclamation-triangle" title="{{ i18n.getMessage("myteam_player_contract_is_ending") }}"></i>{% endif %}
 					{% endif %}
 				
 				</td>

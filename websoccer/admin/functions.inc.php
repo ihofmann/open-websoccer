@@ -83,8 +83,9 @@ function createSuccessMessage($title, $message) {
  * @return string HTML code displaying an alert.
  */
 function createMessage($severity, $title, $message) {
-  $html = '<div class=\'alert alert-'. $severity . '\'>';
-  $html .= '<button type=\'button\' class=\'close\' data-dismiss=\'alert\'>&times;</button>';
+  $cssSeverity = ($severity === 'error') ? 'danger' : $severity;
+  $html = '<div class=\'alert alert-'. $cssSeverity . ' alert-dismissible\'>';
+  $html .= '<button type=\'button\' class=\'btn-close\' data-bs-dismiss=\'alert\' aria-label=\'Close\'></button>';
   $html .= '<h4>'. $title .'</h4>';
   $html .= $message;
   $html .= '</div>';

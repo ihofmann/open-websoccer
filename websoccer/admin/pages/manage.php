@@ -140,7 +140,7 @@ if ($show == "add" || $show == "edit") {
 				}
 				
 				if ($fieldInfo["type"] == "timestamp") {
-					$dateObj = DateTime::createFromFormat($website->getConfig("date_format") .", H:i", 
+					$dateObj = DateTime::createFromFormat("Y-m-d, H:i",
 							$_POST[$fieldId ."_date"] .", ". $_POST[$fieldId ."_time"]);
 					$fieldValue = ($dateObj) ? $dateObj->getTimestamp() : 0;
 				} elseif ($fieldInfo["type"] == "boolean") {
@@ -159,7 +159,7 @@ if ($show == "add" || $show == "edit") {
 				
 				// convert date
 				if (strlen($fieldValue) && $fieldInfo["type"] == "date") {
-					$dateObj = DateTime::createFromFormat($website->getConfig("date_format"), $fieldValue);
+					$dateObj = DateTime::createFromFormat("Y-m-d", $fieldValue);
 					$fieldValue = $dateObj->format("Y-m-d");
 				} else if ($fieldInfo["type"] == "timestamp" && $fieldInfo["readonly"] && $show == "add") {
 					$fieldValue = $website->getNowAsTimestamp();

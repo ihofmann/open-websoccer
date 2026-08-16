@@ -159,21 +159,21 @@ if ($forwarded) {
 
 		<p><a href='?lang=en'>English</a> | <a href='?lang=de'>Deutsch</a></p>
 		
-		<form action='login.php' method='post' class='form-horizontal'>
-		  <div class='control-group<?php if (isset($errors['inputUser'])) echo ' error'; ?>'>
-			<label class='control-label' for='inputUser'><?php echo $i18n->getMessage('login_label_user');?></label>
-			<div class='controls'>
-			  <input type='text' name='inputUser' id='inputUser' placeholder='<?php echo $i18n->getMessage('login_label_user');?>' required>
+		<form action='login.php' method='post' class='row'>
+		  <div class='mb-3<?php if (isset($errors['inputUser'])) echo ' error'; ?>'>
+			<label class='form-label' for='inputUser'><?php echo $i18n->getMessage('login_label_user');?></label>
+			<div>
+			  <input type='text' class='form-control' name='inputUser' id='inputUser' placeholder='<?php echo $i18n->getMessage('login_label_user');?>' required>
 			</div>
 		  </div>
-		  <div class='control-group<?php if (isset($errors['inputPassword'])) echo ' error'; ?>'>
-			<label class='control-label' for='inputPassword'><?php echo $i18n->getMessage('login_label_password');?></label>
-			<div class='controls'>
-			  <input type='password' name='inputPassword' id='inputPassword' placeholder='<?php echo $i18n->getMessage('login_label_password');?>' required>
+		  <div class='mb-3<?php if (isset($errors['inputPassword'])) echo ' error'; ?>'>
+			<label class='form-label' for='inputPassword'><?php echo $i18n->getMessage('login_label_password');?></label>
+			<div>
+			  <input type='password' class='form-control' name='inputPassword' id='inputPassword' placeholder='<?php echo $i18n->getMessage('login_label_password');?>' required>
 			</div>
 		  </div>
-		  <div class='control-group'>
-			<div class='controls'>
+		  <div class='mb-3'>
+			<div>
 			  <button type='submit' class='btn'><?php echo $i18n->getMessage('login_button_logon');?></button>
 			</div>
 		  </div>
