@@ -51,7 +51,7 @@ class CupGroupDetailsModel implements IModel {
 		$round = $result->fetch_array();
 		$result->free();
 		
-		$matches = MatchesDataService::getMatchesByCupRoundAndGroup($this->_websoccer, $this->_db, $round["cup_name"], $round["round_name"], $cupGroup);
+		$matches = MatchesDataService::getMatchesByCupRoundAndGroup($this->_websoccer, $this->_db, $round["cup_name"] ?? null, $round["round_name"] ?? null, $cupGroup);
 		
 		return array("matches" => $matches, "groupteams" => CupsDataService::getTeamsOfCupGroupInRankingOrder($this->_websoccer, 
 			$this->_db, $cupRoundId, $cupGroup));

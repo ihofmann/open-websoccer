@@ -44,6 +44,17 @@ class I18n {
 		}
 		return self::$_instance;
 	}
+
+	/**
+	 * Replaces the singleton instance with a (mock) instance.
+	 *
+	 * Intended for unit tests only. Pass NULL to clear the instance again.
+	 *
+	 * @param I18n|null $instance mock instance or NULL to reset.
+	 */
+	public static function setInstanceForTesting(?I18n $instance = null) {
+		self::$_instance = $instance;
+	}
 	
 	/**
 	 * @return string current set language. If no language is selected, return the user's browser configured language. 

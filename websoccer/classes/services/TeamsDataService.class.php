@@ -437,7 +437,7 @@ class TeamsDataService {
 		$fromTable = $websoccer->getConfig('db_prefix') . '_verein';
 		$whereCondition = 'UPPER(name) LIKE \'%s%%\' AND status = 1';
 		
-		$result = $db->querySelect($columns, $fromTable, $whereCondition, strtoupper($query), 10);
+		$result = $db->querySelect($columns, $fromTable, $whereCondition, strtoupper((string) $query), 10);
 		
 		$teams = array();
 		while($team = $result->fetch_array()) {

@@ -73,7 +73,7 @@ class CupResultsModel implements IModel {
 		
 		$groups = array();
 		$preSelectedGroup = '';
-		if ($round['is_groupround']) {
+		if (!empty($round) && $round['is_groupround']) {
 			
 			$userTeamId = $this->_websoccer->getUser()->getClubId($this->_websoccer, $this->_db);
 			

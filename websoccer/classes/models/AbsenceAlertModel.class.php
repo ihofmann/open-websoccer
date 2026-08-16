@@ -27,6 +27,7 @@ class AbsenceAlertModel implements IModel {
 	private $_db;
 	private $_i18n;
 	private $_websoccer;
+	private $_absence;
 	
 	public function __construct($db, $i18n, $websoccer) {
 		$this->_db = $db;

@@ -47,6 +47,19 @@ class WebSoccer {
 		}
         return self::$_instance;
     }
+
+	/**
+	 * Replaces the singleton instance with a (mock) instance.
+	 *
+	 * Intended for unit tests only, so that classes which fetch the context
+	 * through WebSoccer::getInstance() can be tested in isolation.
+	 * Pass NULL to clear the instance again.
+	 *
+	 * @param WebSoccer|null $instance mock instance or NULL to reset.
+	 */
+	public static function setInstanceForTesting(?WebSoccer $instance = null) {
+		self::$_instance = $instance;
+	}
     
     /**
      * @return User the request's current user

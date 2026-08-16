@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         cacheDirectory="tests/.phpunit.cache"
+         executionOrder="depends,defects"
+         beStrictAboutTestsThatDoNotTestAnything="true"
+         failOnRisky="true">
+    <testsuites>
+        <testsuite name="OpenWebSoccer unit tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>classes</directory>
+        </include>
+    </source>
+</phpunit>

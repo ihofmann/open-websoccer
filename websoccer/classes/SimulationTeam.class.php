@@ -120,7 +120,7 @@ class SimulationTeam {
     	$this->positionsAndPlayers[PLAYER_POSITION_DEFENCE] = array();
     	$this->positionsAndPlayers[PLAYER_POSITION_MIDFIELD] = array();
     	$this->positionsAndPlayers[PLAYER_POSITION_STRIKER] = array();
-    	
+
     	$this->goals = 0;
     	$this->morale = 0;
     	

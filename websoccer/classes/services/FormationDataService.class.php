@@ -230,9 +230,9 @@ class FormationDataService {
 		foreach ($openPositions as $position => $requiredPlayers) {
 			for ($i = 0; $i < $requiredPlayers; $i++) {
 				for ($playerIndex = 0; $playerIndex < count($unusedPlayers); $playerIndex++) {
-					if ($unusedPlayer[$playerIndex]['position_second'] == $position) {
-						$players[] = array('id' => $unusedPlayer[$playerIndex]['id'], 'position' => $unusedPlayer[$playerIndex]['position_second']);
-						unset($unusedPlayer[$playerIndex]);
+					if (isset($unusedPlayers[$playerIndex]) && $unusedPlayers[$playerIndex]['position_second'] == $position) {
+						$players[] = array('id' => $unusedPlayers[$playerIndex]['id'], 'position' => $unusedPlayers[$playerIndex]['position_second']);
+						unset($unusedPlayers[$playerIndex]);
 						break;
 					}
 					

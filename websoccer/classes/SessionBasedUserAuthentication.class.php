@@ -129,7 +129,7 @@ class SessionBasedUserAuthentication implements IUserAuthentication {
 		$currentUser->id = $userdata['id'];
 		$currentUser->username = $userdata['nick'];
 		$currentUser->email = $userdata['email'];
-		$currentUser->lang = $userdata['lang'];
+		$currentUser->language = $userdata['lang'];
 		$currentUser->premiumBalance = $userdata['premium_balance'];
 		$currentUser->setProfilePicture($this->_website, $userdata['picture']);
 		
