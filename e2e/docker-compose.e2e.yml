@@ -1,0 +1,75 @@
+# Docker Compose stack used exclusively for End-to-End tests.
+#
+# It starts a fresh MySQL 8.0 database that is pre-populated on first
+# start (see docker/initdb/init-db.sh) and the OpenWebSoccer web container
+# built from the repository Dockerfile, but with a pre-built config file
+# bind-mounted in so the interactive installer is skipped.
+#
+# The host ports (8081 / 3308) differ from docker-compose.yml (8080 / 3307)
+# so the E2E stack can run alongside the development stack.
+#
+# Bring up (from the repository root):
+#   docker compose -f e2e/docker-compose.e2e.yml up -d --build
+#
+# Tear down (also removes the database volume so the seed re-runs):
+#   docker compose -f e2e/docker-compose.e2e.yml down -v
+services:
+  db:
+    image: mysql:8.0
+    container_name: websoccer-e2e-db
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: websoccer_root
+      MYSQL_DATABASE: websoccer
+      MYSQL_USER: websoccer
+      MYSQL_PASSWORD: websoccer
+    volumes:
+      # The MySQL entrypoint runs *.sql files in /docker-entrypoint-initdb.d
+      # in alphabetical order, but only when the data volume is still empty.
+      # 01 creates the schema, 02 loads the E2E sample data.
+      - ../websoccer/install/ws3_ddl_full.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./seed/seed_data.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+      - e2e_db_data:/var/lib/mysql
+    # Deliberately different host ports than docker-compose.yml so the E2E
+    # stack can run alongside the development stack.
+    ports:
+      - "3308:3306"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-pwebsoccer_root",
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: open-websoccer-e2e:php8.5
+    container_name: websoccer-e2e-web
+    restart: "no"
+    ports:
+      - "8081:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    # Mount the pre-built generated/ folder (config.inc.php) so the installer
+    # never runs. The folder is writable because the application appends the
+    # default value of every module setting to config.inc.php on its first
+    # request. It is created by the run scripts, which copy
+    # docker/config.template.inc.php into it - run those (or perform the copy
+    # manually, see e2e/README.md) before `docker compose up`.
+    volumes:
+      - ./docker/generated:/var/www/html/generated
+
+volumes:
+  e2e_db_data:

@@ -1,0 +1,12 @@
+node_modules/
+
+# Playwright output
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
+# Working copy of config.template.inc.php. The application rewrites it at
+# runtime (it appends the default value of every module setting), so it must
+# not be tracked. Recreated by run-e2e.ps1 / run-e2e.sh on every run.
+docker/generated/

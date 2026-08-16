@@ -150,3 +150,25 @@ If you do not have PHP/Composer locally, use the official Composer image:
 docker run --rm -v "$(pwd)/websoccer:/app" -w /app composer:2 install
 docker run --rm -v "$(pwd)/websoccer:/app" -w /app composer:2 ./vendor/bin/phpunit
 ```
+
+### Run End-to-End tests
+
+The repository ships with a Playwright E2E suite in [`e2e/`](e2e/README.md) that
+runs the whole application in Docker against a pre-populated MySQL database.
+
+Prerequisites: Docker with Compose v2, Node.js 18+, and free host ports `8081`
+(web) and `3308` (MySQL). The development stack can keep running, it uses
+different ports.
+
+```bash
+# Linux / macOS / Git Bash
+./e2e/run-e2e.sh
+
+# Windows PowerShell
+./e2e/run-e2e.ps1
+```
+
+The script builds the frontend assets, starts the E2E Docker stack (web +
+pre-seeded database), installs Playwright, runs the tests and tears the stack
+down again. See [`e2e/README.md`](e2e/README.md) for details, the sample data
+and how to keep the stack running between runs.
