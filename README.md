@@ -1,140 +1,97 @@
-# OpenWebSoccer-Sim - Start your own Online Football Manager!
+# OpenWebSoccer-Sim — Start your own online football manager
 
-With with PHP based web application your website visitors can manage a virtual fantasy football (soccer) team and play with it against other users.
-They set the tactics for the next match, trade players, train their team, look for new talents in their youth section or extend their stadium.
-The software simulates all matches automatically and in real-time. It produces match reports with a live ticker similar to what you know from popular news websites.
-Setup your own football online game in order to attract new website visitors, make money through premium features or for playing against colleagues in your company intranet.
+OpenWebSoccer-Sim is a PHP-based web application that lets visitors manage a virtual football (soccer) team and compete against other players.
+
+Managers set tactics for the next match, trade players, train their squad, scout talent in the youth academy, and expand their stadium. Matches are simulated automatically in real time, with match reports and a live ticker similar to those on major sports news sites.
+
+Use it to run your own online football game — whether to attract website visitors, offer premium features, or play against colleagues on a company intranet.
+
+> [!WARNING]
+> The current release has severe security vulnerabilities and does not run on modern web servers. With the help of GenAI, a new release will be published soon. It will run on PHP 8.3 and use updated libraries.
 
 **[Download now!](https://github.com/ihofmann/open-websoccer/releases)**
 
 ## Successor of HSE WebSoccer-Sim
 
 OpenWebSoccer-Sim is the official successor of the commercial products _H&H WebSoccer_ and _HSE WebSoccer-Sim_.
-It is maintained by Ingo Hofmann who has developed the first version of the software in 2003.
-Ingo is very happy about support from other developers! If you feel like working on a new challenge in your leisure time, please feel free to contribute code or ideas.
+It is maintained by Ingo Hofmann, who developed the first version in 2003.
+Contributions of code and ideas from other developers are very welcome.
 
-## Documentation and Issue Tracker
+## Documentation and issue tracker
 
-Find out how you install, setup and enhance the software at the [Wiki](https://github.com/ihofmann/open-websoccer/wiki/00.-Home).
+How to install, set up, and extend the software: [Wiki](https://github.com/ihofmann/open-websoccer/wiki/00.-Home).
 
-You found a bug or have an idea for a new feature? Then don't hesitate to open an issue at the [Issue Tracker](https://github.com/ihofmann/open-websoccer/issues).
+Bugs and feature ideas: [Issue Tracker](https://github.com/ihofmann/open-websoccer/issues).
 
-## PHP Dependencies
+## Development
 
-OpenWebSoccer-Sim uses [Twig](https://twig.symfony.com/) as its template engine.
-Twig and other third-party PHP libraries are managed with
-[Composer](https://getcomposer.org/).
+### Prerequisites
 
-### Installing dependencies
+- [Git](https://git-scm.com/)
+- [Docker](https://docs.docker.com/get-docker/) 20.10 or newer, with [Docker Compose](https://docs.docker.com/compose/install/) v2 (the `docker compose` plugin is bundled with current Docker Desktop)
+- [Node.js](https://nodejs.org/) 18 or newer (npm is included) — for building browser assets
+- [PHP](https://www.php.net/) 8.1 or newer and [Composer](https://getcomposer.org/) — for PHP dependencies, if you are not using Docker
+- [Gradle](https://gradle.org/) — optional; used only to assemble a release archive (`gradle build`)
 
-If you have Composer installed locally, run from the repository root:
+### Build
+
+Clone the repository and install both the PHP and frontend dependencies.
+
+PHP libraries (Twig and others) are managed with Composer. From the repository root:
 
 ```bash
 composer install --no-dev --optimize-autoloader --working-dir=websoccer
 ```
 
-If you do **not** have Composer (or PHP) installed, use the official Composer
-Docker image (no local installation required):
+If you do not have Composer (or PHP) installed locally, use the official Composer Docker image:
 
 ```bash
 docker run --rm -v "$(pwd)/websoccer:/app" -w /app composer:2 \
     install --no-dev --optimize-autoloader
 ```
 
-> The Docker image built by `Dockerfile` installs the dependencies automatically
-> during the image build (multi-stage build), so for the Docker-based quick
-> start below you do not need to run Composer yourself.
-
-### Building a release
-
-`gradle build` runs `composer install` automatically before assembling the
-release archive (see `build.gradle`), so the generated `websoccer/vendor/`
-folder is included in the release. This requires `composer` to be available on
-your `PATH` (or run the Gradle build inside an environment that provides it).
-
-### Upgrading Twig
-
-To upgrade Twig to a newer release, run from the repository root:
-
-```bash
-composer update twig/twig --working-dir=websoccer
-```
-
-then commit the updated `websoccer/composer.lock`.
-
-## Frontend dependencies and asset bundles
-
-The JavaScript and CSS dependencies are built locally with
-[npm](https://nodejs.org/) and [esbuild](https://esbuild.github.io/).
-Install Node.js 18 or newer (npm is included).
-
-Install the frontend dependencies from the repository root:
+Browser assets are built with npm and [esbuild](https://esbuild.github.io/). From the repository root:
 
 ```bash
 npm install
-```
-
-Build the browser assets during development:
-
-```bash
 npm run build
 ```
 
-The output is written to `websoccer/assets/`. It contains one shared
-`admincenter` bundle, reused by the admin, install, and update pages, plus one
-JavaScript/CSS bundle for the bundled `default` skin.
-The generated directory is ignored by Git.
+The output is written to `websoccer/assets/` (ignored by Git). It contains one shared `admincenter` bundle, reused by the admin, install, and update pages, plus one JavaScript/CSS bundle for the bundled `default` skin.
 
-To rebuild automatically while editing frontend files:
+Rebuild automatically while editing frontend files:
 
 ```bash
 npm run build:watch
 ```
 
-The Gradle release build runs both dependency installation steps and the asset
-build automatically:
+To assemble a full release archive, run:
 
 ```bash
 gradle build
 ```
 
-## Run with Docker (PHP 8.5 + MySQL)
+This runs `composer install` and the asset build, then packages the application. `composer` must be on your `PATH` (or run the Gradle build in an environment that provides it). The Docker image built from `Dockerfile` installs PHP dependencies during the image build, so you do not need to run Composer yourself for the Docker workflow below.
 
-The project ships with a `Dockerfile` and a `docker-compose.yml` that bring up a
-slim Apache web server running **PHP 8.5** together with a **MySQL 8.0** database.
-This is the quickest way to get a local instance running.
+### Run locally
 
-### Prerequisites
+The project ships with a `Dockerfile` and a `docker-compose.yml` that start Apache with **PHP 8.5** and a **MySQL 8.0** database. This is the quickest way to run a local instance.
 
-- [Docker](https://docs.docker.com/get-docker/) 20.10 or newer
-- [Docker Compose](https://docs.docker.com/compose/install/) v2 (the `docker compose` plugin is bundled with modern Docker)
-
-### 1. Build the image
-
-From the repository root run:
+From the repository root:
 
 ```bash
 docker compose build
-```
-
-This builds the `open-websoccer:php8.5` image, which contains Apache with PHP 8.5
-and the required extensions (`mysqli`, `gd`, `xml`, `curl`, `mbstring`).
-
-### 2. Start the containers
-
-```bash
 docker compose up -d
 ```
 
-This starts two containers:
+`docker compose build` creates the `open-websoccer:php8.5` image (Apache + PHP 8.5 with the `mysqli`, `gd`, `xml`, `curl`, and `mbstring` extensions). `docker compose up -d` starts two containers:
 
 | Container       | Image                   | Port mapping | Purpose                     |
 | --------------- | ----------------------- | ------------ | --------------------------- |
 | `websoccer-web` | `open-websoccer:php8.5` | `8080:80`    | Apache + PHP 8.5 web server |
 | `websoccer-db`  | `mysql:8.0`             | `3307:3306`  | MySQL 8.0 database          |
 
-The MySQL database is created automatically with these default credentials
-(override them via environment variables if needed):
+The MySQL database is created with these defaults (override them with environment variables if needed):
 
 | Setting               | Default value    |
 | --------------------- | ---------------- |
@@ -143,37 +100,53 @@ The MySQL database is created automatically with these default credentials
 | `MYSQL_PASSWORD`      | `websoccer`      |
 | `MYSQL_ROOT_PASSWORD` | `websoccer_root` |
 
-### 3. Run the web installer
-
-Once both containers are up, open your browser and navigate to:
+When both containers are running, open the installer:
 
 ```
 http://localhost:8080/install/
 ```
 
-Follow the installation wizard. On the **database configuration** step enter:
+On the **database configuration** step enter:
 
-- **Database host:** `db` (this is the MySQL container's service name)
+- **Database host:** `db` (the MySQL service name)
 - **Database name:** `websoccer`
 - **Database user:** `websoccer`
 - **Database password:** `websoccer`
 
-Complete the remaining steps (project settings, schema import, admin user
-creation). After installation your site is available at
-`http://localhost:8080/` and the admin area at `http://localhost:8080/admin/`.
+After installation the site is at `http://localhost:8080/` and the admin area at `http://localhost:8080/admin/`.
 
-### 4. Stop the containers
+Stop the stack with `docker compose down`. Add `--volumes` to also remove the MySQL data volume (`db_data`).
 
-```bash
-docker compose down
-```
+### Run tests
 
-Add `--volumes` if you also want to remove the MySQL data:
+PHPUnit is a Composer **dev** dependency, so install PHP packages **without** `--no-dev` (that flag is only for production/release builds). From the repository root:
 
 ```bash
-docker compose down --volumes
+composer install --working-dir=websoccer
 ```
 
-### Notes
+Then run the suite (the config is `websoccer/phpunit.xml`):
 
-- The MySQL data is stored in a named Docker volume (`db_data`).
+```bash
+websoccer/vendor/bin/phpunit --configuration websoccer/phpunit.xml
+```
+
+Or from `websoccer/` (PHPUnit picks up `phpunit.xml` automatically):
+
+```bash
+cd websoccer
+vendor/bin/phpunit
+```
+
+To run a single test class:
+
+```bash
+vendor/bin/phpunit tests/Unit/WebSoccerTest.php
+```
+
+If you do not have PHP/Composer locally, use the official Composer image:
+
+```bash
+docker run --rm -v "$(pwd)/websoccer:/app" -w /app composer:2 install
+docker run --rm -v "$(pwd)/websoccer:/app" -w /app composer:2 ./vendor/bin/phpunit
+```
