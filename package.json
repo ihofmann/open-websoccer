@@ -21,7 +21,7 @@
     "bootstrap-timepicker": "^0.5.2",
     "bootstrap2": "^2.3.2",
     "flot": "^0.8.3",
-    "jquery": "^1.11.1",
+    "jquery": "^4.0.0",
     "jquery-blockui": "^2.7.0",
     "jquery-countdown": "^2.2.0",
     "jquery-ui-dist": "^1.13.3",
