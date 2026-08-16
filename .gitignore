@@ -3,3 +3,5 @@ release
 websoccer/vendor/
 node_modules/
 websoccer/assets/
+composer.phar
+websoccer/tests/.phpunit.cache
