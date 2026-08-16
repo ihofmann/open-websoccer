@@ -135,7 +135,7 @@
   <message id="settings_label_time_format">Formato solo orario</message>
   <message id="settings_label_time_format_help">Secondo PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a> -funzione</message>
   <message id="settings_label_skin">Pelle</message>
-  <message id="settings_label_skin_help">Nome della classe della pelle. Per impostazione predefinita sono disponibili <em>DefaultBootstrapSkin</em> , <em>GreenBootstrapSkin</em> e <em>SchedioartFootballSkin</em> .</message>
+  <message id="settings_label_skin_help">Nome della classe della pelle. Per impostazione predefinita è disponibile <em>DefaultBootstrapSkin</em>.</message>
   <message id="settings_label_session_lifetime">Sessione utente a vita</message>
   <message id="settings_label_session_lifetime_help">in secondi. Per quanto tempo un utente può essere inattivo finché il sistema non disabilita la sua sessione.</message>
   <message id="settings_label_time_zone">Fuso orario</message>

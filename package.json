@@ -3,12 +3,10 @@
   "private": true,
   "description": "OpenWebSoccer-Sim browser assets",
   "scripts": {
-    "build": "npm run build:admincenter && npm run build:default && npm run build:green && npm run build:schedio",
+    "build": "npm run build:admincenter && npm run build:default",
     "build:admincenter": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/admincenter.js",
     "build:default": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/default.js",
-    "build:green": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/green.js",
-    "build:schedio": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/schedio.js",
-    "build:watch": "esbuild --bundle --sourcemap --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets --watch websoccer/assets-src/admincenter.js websoccer/assets-src/default.js websoccer/assets-src/green.js websoccer/assets-src/schedio.js"
+    "build:watch": "esbuild --bundle --sourcemap --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets --watch websoccer/assets-src/admincenter.js websoccer/assets-src/default.js"
   },
   "devDependencies": {
     "esbuild": "^0.25.0"

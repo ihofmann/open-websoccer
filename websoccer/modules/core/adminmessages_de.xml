@@ -152,7 +152,7 @@
 	<message id="settings_label_time_format">Uhrzeitformat</message> 
 	<message id="settings_label_time_format_help">Gemäß PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-Funktion</message> 
 	<message id="settings_label_skin">Skin</message> 
-	<message id="settings_label_skin_help">Name einer Skin-Klasse. Mitgeliefert sind <em>DefaultBootstrapSkin</em>, <em>GreenBootstrapSkin</em> und <em>SchedioartFootballSkin</em>.</message> 
+	<message id="settings_label_skin_help">Name einer Skin-Klasse. Mitgeliefert ist <em>DefaultBootstrapSkin</em>.</message>
 	<message id="settings_label_session_lifetime">Dauer einer Benutzersitzung</message> 
 	<message id="settings_label_session_lifetime_help">in Sekunden. Wie lange ein Benutzer inaktiv sein kann bis seine Sitzung automatisch deaktiviert wird.</message> 
 	

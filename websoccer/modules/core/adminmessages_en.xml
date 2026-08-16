@@ -158,7 +158,7 @@
 	<message id="settings_label_time_format">Time Only Format</message> 
 	<message id="settings_label_time_format_help">According to PHP <a href="http://www.php.net/manual/en/function.date.php" target="_blank">date()</a>-function</message> 
 	<message id="settings_label_skin">Skin</message>
-	<message id="settings_label_skin_help">Name of the skin class. By default available are <em>DefaultBootstrapSkin</em>, <em>GreenBootstrapSkin</em> and <em>SchedioartFootballSkin</em>.</message> 
+	<message id="settings_label_skin_help">Name of the skin class. By default available is <em>DefaultBootstrapSkin</em>.</message>
 	<message id="settings_label_session_lifetime">User Session Lifetime</message> 
 	<message id="settings_label_session_lifetime_help">in seconds. How long a user can be inactive before the session expires.</message> 
 	

@@ -82,7 +82,7 @@ npm run build
 
 The output is written to `websoccer/assets/`. It contains one shared
 `admincenter` bundle, reused by the admin, install, and update pages, plus one
-JavaScript/CSS bundle for each bundled skin: `default`, `green`, and `schedio`.
+JavaScript/CSS bundle for the bundled `default` skin.
 The generated directory is ignored by Git.
 
 To rebuild automatically while editing frontend files:
