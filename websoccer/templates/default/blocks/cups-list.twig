@@ -1,21 +1,23 @@
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-md-3">
 
 		
 		{% if cups is defined and cups|length > 0 %}
 		<div class="accordion" id="cups">
 			{% for cupName, rounds in cups %}
-				<div class="accordion-group">
-					<div class="accordion-heading">
-						<a class="accordion-toggle" data-toggle="collapse" data-parent="#cups" href="#collapseCup{{ loop.index }}"><strong>{{ cupName }}</strong></a>
-					</div>
-					<div id="collapseCup{{ loop.index }}" class="accordion-body collapse">
-						<div class="accordion-inner">
-							<ul class="unstyled">
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCup{{ loop.index }}">
+							<strong>{{ cupName }}</strong>
+						</button>
+					</h2>
+					<div id="collapseCup{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#cups">
+						<div class="accordion-body">
+							<ul class="list-unstyled">
 							{% set cupIndex = loop.index %}
 							{% for round in rounds %}
 								<li><a href="#cup{{ cupIndex }}round{{ loop.index }}" class="ajaxLink"
-									data-ajaxblock="cup-results" data-ajaxtarget="cup-results" 
+									data-ajaxblock="cup-results" data-ajaxtarget="cup-results"
 									data-ajaxquerystr="cup={{ cupName }}&amp;round={{ round }}">{{ round }}</a></li>
 							{% endfor %}
 							</ul>
@@ -28,7 +30,7 @@
 		
 		
 	</div>
-	<div class="span9">
+	<div class="col-md-9">
 	
 		<div id="cup-results"></div>
 		

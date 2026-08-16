@@ -22,7 +22,7 @@
 
 if (!$showOverview) {
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal"<?php 
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row"<?php 
 	if ($enableFileUpload) echo " enctype=\"multipart/form-data\""; 
 ?>>
 	<input type="hidden" name="show" value="<?php echo $show; ?>">
@@ -47,7 +47,7 @@ if (!$showOverview) {
 	}	
 	?>
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
 		<a class="btn" href="?site=<?php echo $site; ?>&entity=<?php echo $entity; ?>"><?php echo $i18n->getMessage("button_cancel"); ?></a>
 	</div>

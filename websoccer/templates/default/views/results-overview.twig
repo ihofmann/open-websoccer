@@ -7,33 +7,35 @@
 {% block page_content %}
 
 <ul class="nav nav-tabs" id="resultsTab">
-  <li class="active"><a href="#leagues" data-toggle="tab">{{ i18n.getMessage("results_tab_leagues") }}</a></li>
-  <li><a href="#cups" data-toggle="tab" class="ajaxLink"
+  <li class="nav-item"><a class="nav-link active" href="#leagues" data-bs-toggle="tab">{{ i18n.getMessage("results_tab_leagues") }}</a></li>
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#cups" data-bs-toggle="tab"
   	data-ajaxblock="cups-list" data-ajaxtarget="cups-content">{{ i18n.getMessage("results_tab_cups") }}</a></li>
-  <li><a href="#latest" data-toggle="tab" class="ajaxLink"
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#latest" data-bs-toggle="tab"
   	data-ajaxblock="latest-results" data-ajaxtarget="latest-results_block">{{ i18n.getMessage("results_tab_latest_results") }}</a></li>
 </ul>
 
 <div class="tab-content">
 	<div class="tab-pane active" id="leagues">
 	
-		<div class="row-fluid">
-			<div class="span3">
+		<div class="row">
+			<div class="col-md-3">
 
 				
 				{% if countries is defined and countries|length > 0 %}
 				<div class="accordion" id="countries">
 					{% for countryName, leagues in countries %}
-						<div class="accordion-group">
-							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="#countries" href="#collapse{{ loop.index }}"><strong>{{ countryName }}</strong></a>
-							</div>
-							<div id="collapse{{ loop.index }}" class="accordion-body collapse">
-								<div class="accordion-inner">
-									<ul class="unstyled">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}">
+									<strong>{{ countryName }}</strong>
+								</button>
+							</h2>
+							<div id="collapse{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#countries">
+								<div class="accordion-body">
+									<ul class="list-unstyled">
 									{% for league in leagues %}
 										<li><a href="#league{{ league.id }}" class="ajaxLink"
-											data-ajaxblock="season-picker" data-ajaxtarget="season-picker_block" 
+											data-ajaxblock="season-picker" data-ajaxtarget="season-picker_block"
 											data-ajaxquerystr="leagueid={{ league.id }}">{{ league.name }}</a></li>
 									{% endfor %}
 									</ul>
@@ -46,7 +48,7 @@
 				
 				
 			</div>
-			<div class="span9">
+			<div class="col-md-9">
 			
 				<span id="season-picker_block">{{ viewHandler.renderBlock("season-picker")|raw }}</span>
 				

@@ -62,7 +62,7 @@ $editEnabled = ($overviewConfig[0]->attributes()->edit == "true") ? TRUE : FALSE
 
 // add button
 if ($addEnabled) {
-	echo "<p><a class=\"btn btn-small\" href=\"?site=". $site ."&entity=". $entity . "&show=add\"><i class=\"icon-file\"></i> ". $i18n->getMessage("manage_add") . "</a></p>";
+	echo "<p><a class=\"btn btn-sm btn-primary\" href=\"?site=". $site ."&entity=". $entity . "&show=add\"><i class=\"bi bi-plus\"></i> ". $i18n->getMessage("manage_add") . "</a></p>";
 }
 
 // build meta data
@@ -217,7 +217,7 @@ if (!$rows['hits']) {
 				$icon = "";
 				if ($sortColumn == $fieldId) {
 					$iconSuffix = ($sortAscending) ? "up" : "down";
-					$icon = " <i class=\"icon-circle-arrow-". $iconSuffix ."\"></i>";
+					$icon = " <i class=\"bi bi-arrow-". $iconSuffix ."-circle\"></i>";
 				}
 				
 				$tooltipKey = ($sortAscending) ? "manage_sort_column_desc" : "manage_sort_column_asc";
@@ -229,7 +229,7 @@ if (!$rows['hits']) {
 					$header .= " <a href=\"". UrlUtil::buildCurrentUrlWithParameters(array(
 							"site" => $site, 
 							"entity"=>$entity, 
-							PARAM_RESETSORT => 1)) . "\" title=\"". $i18n->getMessage("manage_sort_column_reset") ."\"><i class=\"icon-remove-sign\"></i></a>";
+							PARAM_RESETSORT => 1)) . "\" title=\"". $i18n->getMessage("manage_sort_column_reset") ."\"><i class=\"bi bi-x-circle\"></i></a>";
 				}
 			}
 			
@@ -284,8 +284,8 @@ if (!$rows['hits']) {
 			
 				echo $converter->toHtml($row);
 			} elseif ($fieldId == "entity_". $entity ."_status") {
-				if ($columnValue == 1) echo "<i class=\"icon-ok-sign\" title=\"". $i18n->getMessage("manage_status_active") . "\"></i>";
-				else echo "<i class=\"icon-ban-circle\" title=\"". $i18n->getMessage("manage_status_blocked") . "\"></i>";
+				if ($columnValue == 1) echo "<i class=\"bi bi-check-circle\" title=\"". $i18n->getMessage("manage_status_active") . "\"></i>";
+				else echo "<i class=\"bi bi-slash-circle\" title=\"". $i18n->getMessage("manage_status_blocked") . "\"></i>";
 			} elseif ($type == "date") {
 				echo date($dateFormat, $columnValue);
 			} elseif ($type == "timestamp") {
@@ -296,11 +296,11 @@ if (!$rows['hits']) {
 				}
 				
 			} elseif ($type == "email") {
-				echo "<a href=\"mailto:". escapeOutput($columnValue ) ."\" title=\"". escapeOutput($columnValue) . "\"><i class=\"icon-envelope\"></i></a>";
+				echo "<a href=\"mailto:". escapeOutput($columnValue ) ."\" title=\"". escapeOutput($columnValue) . "\"><i class=\"bi bi-envelope\"></i></a>";
 			} elseif ($type == "select" && $i18n->hasMessage("option_" . $columnValue)) {
 				echo $i18n->getMessage("option_" . $columnValue);
 			} elseif ($type == "boolean") {
-				$iconName = ($columnValue) ? "icon-ok" : "icon-minus-sign"; 
+				$iconName = ($columnValue) ? "bi bi-check-lg" : "bi bi-dash-circle"; 
 				$iconTooltip = ($columnValue) ? $i18n->getMessage("option_yes") : $i18n->getMessage("option_no");
 				echo "<i class=\"". $iconName ."\" title=\"". $iconTooltip . "\"></i>";
 			} elseif ($type == "number") {
@@ -329,11 +329,11 @@ if (!$rows['hits']) {
 		// action columns
 		if ($editEnabled) {
 			$url = "?site=" . $site ."&entity=" . $entity . "&show=edit&id=" . $row["id"];
-			echo "<td><a href=\"". $url ."\" title=\"". $editTooltip . "\"><i class=\"icon-pencil\"></i></a></td>";
+			echo "<td><a href=\"". $url ."\" title=\"". $editTooltip . "\"><i class=\"bi bi-pencil\"></i></a></td>";
 		}
 		if ($deleteEnabled) {
 			$url = "?site=" . $site ."&entity=" . $entity . "&action=delete&id=" . $row["id"];
-			echo "<td><a href=\"". $url ."\" title=\"". $deleteTooltip . "\" class=\"deleteLink\"><i class=\"icon-trash\"></i></a></td>";
+			echo "<td><a href=\"". $url ."\" title=\"". $deleteTooltip . "\" class=\"deleteLink\"><i class=\"bi bi-trash\"></i></a></td>";
 		}
 		
 		echo "</tr>";
@@ -345,9 +345,9 @@ if (!$rows['hits']) {
 	echo "</table>";
 	
 	?>
-		<p><label class="checkbox"><input type="checkbox" name="selAll" value="1" onClick="selectAll()"><?php echo $i18n->getMessage("manage_select_all_label"); ?></label></p>
+		<p><div class="form-check"><input class="form-check-input" type="checkbox" name="selAll" value="1" id="selAll" onClick="selectAll()"><label class="form-check-label" for="selAll"><?php echo $i18n->getMessage("manage_select_all_label"); ?></label></div></p>
 		
-		<p><?php echo $i18n->getMessage("manage_selected_items_label"); ?> <input type="button" class="btn deleteBtn" accesskey="l" title="Alt + l" value="<?php echo $i18n->getMessage("button_delete"); ?>"></p>
+		<p><?php echo $i18n->getMessage("manage_selected_items_label"); ?> <input type="button" class="btn btn-sm btn-secondary deleteBtn" accesskey="l" title="Alt + l" value="<?php echo $i18n->getMessage("button_delete"); ?>"></p>
 	
 	</form>
 	
@@ -355,7 +355,7 @@ if (!$rows['hits']) {
 	//paginator
 	if ($rows['hits'] > $eps) {
 	
-		echo "<div class=\"pagination\"><ul>";
+		echo "<ul class=\"pagination\">";
 	
 	
 		//prev
@@ -363,7 +363,7 @@ if (!$rows['hits']) {
 	
 			$back = $seite - 1;
 			$url = UrlUtil::buildCurrentUrlWithParameters(array("site" => $site, "entity" => $entity, PARAM_PAGE => $back));
-			echo "<li><a href=\"". $url ."\">&laquo;</a></li>";
+			echo "<li class=\"page-item\"><a class=\"page-link\" href=\"". $url ."\">&laquo;</a></li>";
 	
 		}
 		
@@ -373,33 +373,33 @@ if (!$rows['hits']) {
 		// ...
 		if ($startIndex > 1) {
 			$url = UrlUtil::buildCurrentUrlWithParameters(array("site" => $site, "entity" => $entity, PARAM_PAGE => 1));
-			echo "<li><a href=\"". $url ."\">1</a></li>";
-			echo "<li class=\"disabled\"><span>...</span></li>";
+			echo "<li class=\"page-item\"><a class=\"page-link\" href=\"". $url ."\">1</a></li>";
+			echo "<li class=\"page-item disabled\"><span class=\"page-link\">...</span></li>";
 		}
 	
 		// pages
 		for ($i = $startIndex; $i <= $endIndex; $i++) {
 			$url = UrlUtil::buildCurrentUrlWithParameters(array("site" => $site, "entity" => $entity, PARAM_PAGE => $i));
-			echo "<li";
-			if ($i == $seite) echo " class=\"active\"";
-			echo "><a href=\"". $url ."\">". $i ."</a></li>";
+			echo "<li class=\"page-item";
+			if ($i == $seite) echo " active";
+			echo "\"><a class=\"page-link\" href=\"". $url ."\">". $i ."</a></li>";
 		}
 		
 		// ...
 		if ($endIndex < $seiten) {
-			echo "<li class=\"disabled\"><span>...</span></li>";
+			echo "<li class=\"page-item disabled\"><span class=\"page-link\">...</span></li>";
 			$url = UrlUtil::buildCurrentUrlWithParameters(array("site" => $site, "entity" => $entity, PARAM_PAGE => $seiten));
-			echo "<li><a href=\"". $url ."\">$seiten</a></li>";
+			echo "<li class=\"page-item\"><a class=\"page-link\" href=\"". $url ."\">$seiten</a></li>";
 		}
 	
 		// next
 		if ($seite < $seiten) {
 			$next = $seite + 1;
 			$url = UrlUtil::buildCurrentUrlWithParameters(array("site" => $site, "entity" => $entity, PARAM_PAGE => $next));
-			echo "<li><a href=\"". $url ."\">&raquo;</a></li>";
+			echo "<li class=\"page-item\"><a class=\"page-link\" href=\"". $url ."\">&raquo;</a></li>";
 		}
 	
-		echo "</ul></div>";
+		echo "</ul>";
 	
 	}
 	

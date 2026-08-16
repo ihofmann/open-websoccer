@@ -18,13 +18,13 @@
 			{% else %}
 				{% set countryLabel = country %}
 			{% endif %}
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse"
-					data-parent="#leagues" href="#collapse{{ loop.index }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %} {{ countryLabel }} - {{ league }}</a>
-			</div>
-			<div id="collapse{{ loop.index }}" class="accordion-body collapse">
-				<div class="accordion-inner">
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+					data-bs-target="#collapse{{ loop.index }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %} {{ countryLabel }} - {{ league }}</button>
+			</h2>
+			<div id="collapse{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#leagues">
+				<div class="accordion-body">
 					<table class="table table-striped">
 						<thead>
 							<tr>

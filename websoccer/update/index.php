@@ -51,8 +51,8 @@ function printWelcomeScreen() {
 	echo "<form method=\"post\">";
 	$first = TRUE;
 	foreach ($supportedLanguages as $langId => $langLabel) {
-		echo "<label class=\"radio\">";
-		echo "<input type=\"radio\" name=\"lang\" id=\"$langId\" value=\"$langId\"";
+		echo "<label class=\"form-check form-check-label\">";
+		echo "<input type=\"radio\" class=\"form-check-input\" name=\"lang\" id=\"$langId\" value=\"$langId\"";
 		if ($first) {
 			echo " checked";
 			$first = FALSE;
@@ -191,7 +191,7 @@ function printFinalPage($messages) {
 	
 	<div class="alert"><strong><?php echo $messages["final_success_note"]; ?></strong></div>
 	
-	<p><i class="icon-arrow-right"></i> <a href="<?php echo $conf["context_root"]; ?>/admin"><?php echo $messages["final_link"]; ?></a></p>
+	<p><i class="bi bi-arrow-right"></i> <a href="<?php echo $conf["context_root"]; ?>/admin"><?php echo $messages["final_link"]; ?></a></p>
 	<?php 
 }
 ?>
@@ -240,7 +240,7 @@ function printFinalPage($messages) {
 		
 		if (count($errors)) {
 			foreach($errors as $error) {
-				echo "<div class=\"alert alert-error\">$error</div>";
+				echo "<div class=\"alert alert-danger\">$error</div>";
 			}
 		}
 		

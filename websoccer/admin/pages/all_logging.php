@@ -60,7 +60,7 @@ if (!$show) {
     $gr_kb = round($datei_gr / 1024);
     if ($datei_gr && !$gr_kb) $gr_kb = 1;
 
-    echo '<div class=\'well\'>'. sprintf($i18n->getMessage('all_logging_filesize'), number_format($gr_kb, 0, ' ', ',')) .'</div>';
+    echo '<div class=\'card card-body\'>'. sprintf($i18n->getMessage('all_logging_filesize'), number_format($gr_kb, 0, ' ', ',')) .'</div>';
 
     if (!$datei_gr) echo '<p>'. $i18n->getMessage('empty_list') . '</p>';
     else {

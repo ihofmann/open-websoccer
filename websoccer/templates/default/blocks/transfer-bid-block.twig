@@ -35,16 +35,16 @@
 	<p>{{ i18n.getMessage("transfer_bid_no_existing_max_bid") }}</p>
 
 	{% if env.user.clubId > 0 and player.team_id == env.user.clubId %}
-		<p><a href="{{ env.getInternalActionUrl("remove-player-from-transfermarket", "id=" ~ player.player_id) }}" class="btn btn-danger"><i class="icon-remove-circle"></i> {{ i18n.getMessage("transfermarket_remove_label") }}</a></p>
+		<p><a href="{{ env.getInternalActionUrl("remove-player-from-transfermarket", "id=" ~ player.player_id) }}" class="btn btn-danger"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("transfermarket_remove_label") }}</a></p>
 	{% endif %}
 {% endif %}
 
 <p><a href="#highestbid" style="margin-top: 30px" class="btn ajaxLink" data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid"
-	data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"><i class="icon-refresh"></i> {{ i18n.getMessage("button_refresh") }}</a></p>
+	data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a></p>
 
 <h3>{{ i18n.getMessage("transfer_bid_yourbid") }}</h3>
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	{% if player.team_id > 0 %}
 	{{ formelements.textfield('amount', i18n.getMessage('transfer_bid_amount'), env.getRequestParameter('amount'), true, validationMsg, 'number') }}
@@ -58,7 +58,7 @@
 	
 	{{ formelements.textfield('contract_matches', i18n.getMessage('entity_player_vertrag_spiele'), env.getRequestParameter('contract_matches'), true, validationMsg, 'number') }}
 	
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary ajaxSubmit" 
 		data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid" data-messagetarget="bidmessages">{{ i18n.getMessage('transfermarket_bid') }}</button>
 		<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>

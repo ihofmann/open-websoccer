@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../module.dtd">
 <module version="1.0.0">
 
@@ -74,8 +74,6 @@
             model="TableHistoryModel"
             role="user,guest"
             parentItem="league">
-            <script file="flot/jquery.flot.min.js" />
-            <script file="charts.js" />
         </page>
 
     </pages> 

@@ -9,22 +9,31 @@
 
 <form method="post">
 
-	{%  if env.getConfig("login_type") == "email" %}
-    <label for="loginstr">{{ i18n.getMessage('entity_users_email') }}</label>
-    <input type="email" id="loginstr" name="loginstr" placeholder="{{ i18n.getMessage('entity_users_email') }}" required>
- 	{% else %}
- 	<label for="loginstr">{{ i18n.getMessage('entity_users_nick') }}</label>
-    <input type="text" id="loginstr" name="loginstr" placeholder="{{ i18n.getMessage('entity_users_nick') }}" required>
- 	{% endif %}
+	<div class="mb-3">
+		{%  if env.getConfig("login_type") == "email" %}
+		<label for="loginstr">{{ i18n.getMessage('entity_users_email') }}</label>
+		<input type="email" id="loginstr" name="loginstr" placeholder="{{ i18n.getMessage('entity_users_email') }}" required class="form-control">
+		{% else %}
+		<label for="loginstr">{{ i18n.getMessage('entity_users_nick') }}</label>
+		<input type="text" id="loginstr" name="loginstr" placeholder="{{ i18n.getMessage('entity_users_nick') }}" required class="form-control">
+		{% endif %}
+	</div>
  	
-    <label for="loginpassword">{{ i18n.getMessage('entity_users_passwort') }}</label>
-    <input type="password" id="loginpassword" name="loginpassword" placeholder="{{ i18n.getMessage('entity_users_passwort') }}" required>
+	<div class="mb-3">
+		<label for="loginpassword">{{ i18n.getMessage('entity_users_passwort') }}</label>
+		<input type="password" id="loginpassword" name="loginpassword" placeholder="{{ i18n.getMessage('entity_users_passwort') }}" required class="form-control">
+    </div>
+
+	<div class="mb-3">
+		<label class="form-check form-check-label">
+		<input type="checkbox" id="rememberme" name="rememberme" value="1" class="form-check-input"> {{ i18n.getMessage('formlogin_option_rememberme') }}
+		</label>
+	</div>
     
-    <label class="checkbox">
-      <input type="checkbox" id="rememberme" name="rememberme" value="1"> {{ i18n.getMessage('formlogin_option_rememberme') }}
-    </label>
-    
-	<button type="submit" class="btn btn-primary">{{ i18n.getMessage('formlogin_submit_button') }}</button>
+	<div class="mb-3">
+		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('formlogin_submit_button') }}</button>
+	</div>
+	
 	<input type="hidden" name="page" value="login"/>
 	<input type="hidden" name="action" value="login"/>
 </form>

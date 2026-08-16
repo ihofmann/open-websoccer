@@ -9,7 +9,7 @@
 {% block page_content %}
 
 {% if env.getConfig("youth_scouting_enabled") %}
-<p><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn"><i class="icon-search"></i> {{ i18n.getMessage("youthteam_scout_button") }}</a></p>
+<p><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn"><i class="bi bi-search"></i> {{ i18n.getMessage("youthteam_scout_button") }}</a></p>
 {% endif %}
 
 {% if players is defined and players|length > 0 %}
@@ -60,23 +60,23 @@
 					{% endif %}
 					{% if player.transfer_fee > 0 %}
 						<a href="{{ env.getInternalActionUrl("remove-youthplayer-from-market", "id=" ~ player.id) }}"
-							title="{{ i18n.getMessage("youthteam_action_removefrommarket") }}"><i class="icon-share darkIcon"></i></a>
+							title="{{ i18n.getMessage("youthteam_action_removefrommarket") }}"><i class="bi bi-share darkIcon"></i></a>
 					{% endif %}</p>
 				
 					<div class="btn-group">
-						<a class="btn btn-mini dropdown-toggle" data-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }} <span class="caret"></span></a>
+						<a class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }}</a>
 						<ul class="dropdown-menu">
 						
 							{% if player.age >= env.getConfig("youth_min_age_professional") %}
-							<li><a href="{{ env.getInternalUrl("youthplayer-makeprofessional", "id=" ~ player.id) }}"><i class="icon-briefcase"></i> {{ i18n.getMessage("youthteam_action_make_professional") }}</a></li>
-							<li class="divider"></li>
+							<li><a href="{{ env.getInternalUrl("youthplayer-makeprofessional", "id=" ~ player.id) }}"><i class="bi bi-briefcase"></i> {{ i18n.getMessage("youthteam_action_make_professional") }}</a></li>
+							<li class="dropdown-divider"></li>
 							{% endif %}
 							
 							{% if player.transfer_fee == 0 %}
-								<li><a href="{{ env.getInternalUrl("youthplayer-sell", "id=" ~ player.id) }}"><i class="icon-share"></i> {{ i18n.getMessage("youthteam_action_sell") }}</a></li>
+								<li><a href="{{ env.getInternalUrl("youthplayer-sell", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("youthteam_action_sell") }}</a></li>
 							{% endif %}
 							
-							<li><a href="{{ env.getInternalUrl("youthplayer-fire", "id=" ~ player.id) }}"><i class="icon-remove-circle"></i> {{ i18n.getMessage("youthteam_action_fire") }}</a></li>
+							<li><a href="{{ env.getInternalUrl("youthplayer-fire", "id=" ~ player.id) }}"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("youthteam_action_fire") }}</a></li>
 						</ul>
 					</div>
 				</td>
@@ -84,17 +84,17 @@
 				<td>{{ statisticelements.progressbar(player.strength, "noBottomMargin") }}
 					{% set changeLabel = player.strength_last_change %}
 					{% if player.strength_last_change > 0 %}
-						{% set changeCssClass = "badge-success" %}
+						{% set changeCssClass = "bg-success" %}
 						{% set changeLabel = "+" ~ changeLabel %}
 					{% elseif player.strength_last_change < 0 %}
-						{% set changeCssClass = "badge-important" %}
+						{% set changeCssClass = "bg-danger" %}
 					{% else %}
 						{% set changeCssClass = "" %}
 					{% endif %}
 					<span class="badge {{ changeCssClass }}" title="{{ i18n.getMessage("entity_youthplayer_strength_last_change") }}">{{ changeLabel }}</span>
 				</td>
 				<td>{{ (player.strength * env.getConfig("youth_salary_per_strength"))|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
-				<td>{{ player.st_matches }} <a href="#statistics{{ player.id }}" data-toggle="collapse" title="{{ i18n.getMessage("youthteam_showstatistics_tooltip") }}"><i class="icon-zoom-in darkIcon"></i></a>
+				<td>{{ player.st_matches }} <a href="#statistics{{ player.id }}" data-bs-toggle="collapse" title="{{ i18n.getMessage("youthteam_showstatistics_tooltip") }}"><i class="bi bi-zoom-in darkIcon"></i></a>
 					<div id="statistics{{ player.id }}" class="collapse">
 					<dl>
 						<dt>{{ i18n.getMessage("entity_youthplayer_st_goals") }}</dt>

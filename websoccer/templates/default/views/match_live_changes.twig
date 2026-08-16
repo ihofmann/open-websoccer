@@ -33,7 +33,7 @@
 							{{ i18n.getMessage("option_T") }}
 						{% else %}
 							{% set playerPos = formation['player' ~ loop.index ~ '_pos'] %}
-							<select name="player{{ loop.index }}_pos">
+							<select name="player{{ loop.index }}_pos" class="form-select">
 								<option value=""></option>
 								{% for mainPos in ["LV", "IV", "RV", "DM", "LM", "ZM", "RM", "OM", "LS", "MS", "RS"] %}
 									<option value="{{ mainPos }}"{% if playerPos == mainPos %} selected{% endif %}>{{ i18n.getMessage("option_" ~ mainPos) }}</option>
@@ -67,7 +67,7 @@
 				{% endif %}
 				<tr>
 					<td>
-						<select name="sub{{ subsNo }}_out" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+						<select name="sub{{ subsNo }}_out" class="col-md-2 form-select"{% if subIsDisabled %} disabled{% endif %} >
 							<option value=""></option>
 							{% for player in players['field'] %}
 								{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
@@ -80,7 +80,7 @@
 						</select>
 					</td>
 					<td>
-						<select name="sub{{ subsNo }}_in" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+						<select name="sub{{ subsNo }}_in" class="col-md-2 form-select"{% if subIsDisabled %} disabled{% endif %} >
 							<option value=""></option>
 							{% for player in players['bench'] %}
 								{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
@@ -92,7 +92,7 @@
 							{% endfor %}
 						</select>
 						
-							<select name="sub{{ subsNo }}_position" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+							<select name="sub{{ subsNo }}_position" class="col-md-2 form-select"{% if subIsDisabled %} disabled{% endif %} >
 								<option value="">{{ i18n.getMessage("formation_substitutions_position_default") }}</option>
 								{% for subPosition in ['T','LV','IV', 'RV', 'LM', 'DM', 'ZM', 'OM', 'RM', 'LS', 'MS', 'RS'] %}
 									<option value="{{ subPosition }}"{% if subPosition == formation["sub" ~  subsNo ~ "_position"] %} selected{% endif %}>{{ i18n.getMessage("option_" ~ subPosition) }}</option>
@@ -100,10 +100,10 @@
 							</select>
 					</td>
 					<td>
-						<input type="number" class="input-mini" name="sub{{ subsNo }}_minute" value="{{ formation["sub" ~  subsNo ~ "_minute"] }}"{% if subIsDisabled %} disabled{% endif %} />
+						<input type="number" class="form-control form-control-sm w-auto" name="sub{{ subsNo }}_minute" value="{{ formation["sub" ~  subsNo ~ "_minute"] }}"{% if subIsDisabled %} disabled{% endif %} />
 					</td>
 					<td>
-						<select name="sub{{ subsNo }}_condition" class="span2"{% if subIsDisabled %} disabled{% endif %}>
+						<select name="sub{{ subsNo }}_condition" class="col-md-2 form-select"{% if subIsDisabled %} disabled{% endif %} >
 							{% for condition in ["none", "Tie", "Leading", "Deficit"] %}
 								<option value="{{ condition }}"{% if formation["sub" ~  subsNo ~ "_condition"] == condition %} selected{% endif %}>{{ i18n.getMessage("formation_substitutions_condition_" ~ condition|lower) }}</option>
 							{% endfor %}
@@ -117,7 +117,7 @@
 	
 	<h4>{{ i18n.getMessage("formation_freekickplayer") }}</h4>
 	
-	<select name="freekickplayer" id="freekickplayer" class="span4">
+	<select name="freekickplayer" id="freekickplayer" class="col-md-4 form-select" >
 		<option value=""></option>
 		{% for player in players['field'] %}
 			{% if player.pseudonym is defined and player.pseudonym|length > 0 %}
@@ -135,31 +135,31 @@
 	
 	{{ formelements.slider("offensive", formation.offensive) }}
 	
-		<div class="form-horizontal" style="margin-top: 10px">
-			<div class="control-group">
-				<label class="control-label" for="longpasses">{{ i18n.getMessage("formation_option_longpasses") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_longpasses_help') }}"></i></label>
-				<div class="controls">
+		<div class="row" style="margin-top: 10px">
+			<div class="mb-3">
+				<label class="form-label" for="longpasses">{{ i18n.getMessage("formation_option_longpasses") }} <i class="bi bi-question-circle wstooltip" data-bs-toggle="tooltip" title="{{ i18n.getMessage('formation_option_longpasses_help') }}"></i></label>
+				<div class="">
 					<div class="make-switch" 
 						data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
 						data-on="success" data-off="warning">
-						<input type="checkbox" id="longpasses" name="longpasses" value="1"{% if formation.longpasses is defined and formation.longpasses %} checked{% endif %}>
+						<input type="checkbox" class="form-check-input" id="longpasses" name="longpasses" value="1"{% if formation.longpasses is defined and formation.longpasses %} checked{% endif %}>
 					</div>
 				</div>
 			</div>
 			
-			<div class="control-group">
-				<label class="control-label" for="counterattacks">{{ i18n.getMessage("formation_option_counterattacks") }} <i class="icon-question-sign wstooltip" data-toggle="tooltip" title="{{ i18n.getMessage('formation_option_counterattacks_help') }}"></i></label>
-				<div class="controls">
+			<div class="mb-3">
+				<label class="form-label" for="counterattacks">{{ i18n.getMessage("formation_option_counterattacks") }} <i class="bi bi-question-circle wstooltip" data-bs-toggle="tooltip" title="{{ i18n.getMessage('formation_option_counterattacks_help') }}"></i></label>
+				<div class="">
 					<div class="make-switch" 
 						data-on-label="{{ i18n.getMessage("formation_switch_on") }}" data-off-label="{{ i18n.getMessage("formation_switch_off") }}" 
 						data-on="success" data-off="warning">
-						<input type="checkbox" id="counterattacks" name="counterattacks" value="1"{% if formation.counterattacks is defined and formation.counterattacks %} checked{% endif %}>
+						<input type="checkbox" class="form-check-input" id="counterattacks" name="counterattacks" value="1"{% if formation.counterattacks is defined and formation.counterattacks %} checked{% endif %}>
 					</div>
 				</div>
 			</div>
 		</div>
 	
-		<div class="form-actions" style="text-align: center">
+		<div class="d-flex gap-2 justify-content-center p-3" style="text-align: center">
 			<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
 			<a href="{{ env.getInternalUrl("match", "id=" ~ env.getRequestParameter("id")) }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 		</div>

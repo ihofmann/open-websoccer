@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../module.dtd">
 <module version="1.0.0">
   
@@ -13,7 +13,7 @@
 		    	<join type="LEFT" jointable="admin AS AdminTab" joincondition="AdminTab.id = NewsTab.autor_id" />
 		    </overview>
 		    <editform>
-		        <field id="autor_id" type="foreign_key" jointable="admin" labelcolumns="name" required="true"/>
+		        <field id="autor_id" type="foreign_key" jointable="admin" entity="users" labelcolumns="name" required="true"/>
 				<field id="titel" type="text" required="true" />
 				<field id="datum" type="timestamp" required="true"/>
 				<field id="nachricht" type="textarea" required="true" />

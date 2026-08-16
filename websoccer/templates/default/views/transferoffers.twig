@@ -10,9 +10,9 @@
 {% block page_content %}
 
 <ul class="nav nav-tabs" id="offersTab">
-  <li class="active"><a href="#received" data-toggle="tab">{{ i18n.getMessage("transferoffers_tab_received") }}</a></li>
-  <li><a href="#sent" data-toggle="tab"
-  	data-ajaxtarget="sent" data-ajaxblock="directtransfer-sentoffers" class="ajaxLink">{{ i18n.getMessage("transferoffers_tab_sent") }}</a></li>
+  <li class="nav-item"><a class="nav-link active" href="#received" data-bs-toggle="tab">{{ i18n.getMessage("transferoffers_tab_received") }}</a></li>
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#sent" data-bs-toggle="tab"
+  	data-ajaxtarget="sent" data-ajaxblock="directtransfer-sentoffers">{{ i18n.getMessage("transferoffers_tab_sent") }}</a></li>
 </ul>
 
 <div class="tab-content">
@@ -34,7 +34,7 @@
 				<tr>
 					<td><p>{{ env.getFormattedDatetime(offer.offer_submitted_date) }}</p>
 					{% if offer.offer_message|length > 0 %}
-					<a href="#" class="btn btn-mini wspopover" data-toggle="popover" 
+					<a href="#" class="btn btn-sm wspopover" data-bs-toggle="popover" 
 						data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.sender_user_name) }}" 
 						data-content="{{ offer.offer_message }}">{{ i18n.getMessage("transferoffers_offer_showcomment") }}</a>
 					{% endif %}
@@ -60,30 +60,34 @@
 					</td>
 					<td>
 						{% if offer.offer_admin_approval_pending %}
-							<span class="label label-info">{{ i18n.getMessage("transferoffers_offer_status_adminapprovalpending") }}</span>
+							<span class="badge bg-info">{{ i18n.getMessage("transferoffers_offer_status_adminapprovalpending") }}</span>
 						{% else %}
-							<p><a href="#" class="btn btn-success btn-small btn-block ajaxLink"
+							<p><a href="#" class="btn btn-success btn-sm btn-block ajaxLink"
 								data-ajaxtarget="pagecontent"
 								data-ajaxquerystr="page=transferoffers&action=directtransfer-accept&id={{ offer.offer_id }}">{{ i18n.getMessage("transferoffers_offer_reaction_accept") }}</a></p>
 							
-							<p><a href="#rejectModal{{ offer.offer_id }}" role="button" data-toggle="modal" class="btn btn-danger btn-small btn-block">{{ i18n.getMessage("transferoffers_offer_reaction_reject") }}</a></p>
+							<p><a href="#rejectModal{{ offer.offer_id }}" role="button" data-bs-toggle="modal" class="btn btn-danger btn-sm btn-block">{{ i18n.getMessage("transferoffers_offer_reaction_reject") }}</a></p>
 							
-							<form method="post" class="form-horizontal">
-								<div id="rejectModal{{ offer.offer_id }}" class="modal hide fade" tabindex="-1" role="dialog" 
+							<form method="post" class="row">
+								<div id="rejectModal{{ offer.offer_id }}" class="modal fade" tabindex="-1" role="dialog" 
 									aria-labelledby="rejectModalLabel{{ offer.offer_id }}" aria-hidden="true">
-								  <div class="modal-header">
-								    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								    <h3 id="rejectModalLabel{{ offer.offer_id }}">{{ i18n.getMessage("transferoffer_reject_modal_title") }}</h3>
-								  </div>
-								  <div class="modal-body">
-								  	{{ formelements.textarea("comment", i18n.getMessage("transferoffer_reject_label_comment"), "") }}
-								  	{{ formelements.checkbox("allow_alternative", i18n.getMessage("transferoffer_reject_label_allow_alternative"), "1", true) }}
-								  </div>
-								  <div class="modal-footer">
-								  	<button type="submit" class="btn btn-primary ajaxSubmit"
-								  	data-ajaxtarget="pagecontent"
-								  	data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_submit") }}</button>
-								    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">{{ i18n.getMessage("button_cancel") }}</a>
+								  <div class="modal-dialog">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								        <h5 class="modal-title" id="rejectModalLabel{{ offer.offer_id }}">{{ i18n.getMessage("transferoffer_reject_modal_title") }}</h5>
+								      </div>
+								      <div class="modal-body">
+								      	{{ formelements.textarea("comment", i18n.getMessage("transferoffer_reject_label_comment"), "") }}
+								      	{{ formelements.checkbox("allow_alternative", i18n.getMessage("transferoffer_reject_label_allow_alternative"), "1", true) }}
+								      </div>
+								      <div class="modal-footer">
+								      	<button type="submit" class="btn btn-primary ajaxSubmit"
+								      	data-ajaxtarget="pagecontent"
+								      	data-bs-dismiss="modal">{{ i18n.getMessage("button_submit") }}</button>
+								        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ i18n.getMessage("button_cancel") }}</button>
+								      </div>
+								    </div>
 								  </div>
 								</div>
 								

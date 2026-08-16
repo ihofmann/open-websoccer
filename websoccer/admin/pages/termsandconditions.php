@@ -49,11 +49,11 @@ if (!$show) {
 
   <p><?php echo $i18n->getMessage("termsandconditions_introduction"); ?></p>
   
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-inline">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="d-flex flex-wrap gap-2 align-items-center">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	
 	<label for="lang"><?php echo $i18n->getMessage("termsandconditions_label_language"); ?></label>
-	<select name="lang" id="lang">
+	<select class="form-select" name="lang" id="lang">
 		<?php 
 		foreach($i18n->getSupportedLanguages() as $language) {
 			echo "<option value=\"$language\"";
@@ -65,7 +65,7 @@ if (!$show) {
 	<button type="submit" class="btn"><?php echo $i18n->getMessage("button_display"); ?></button>
   </form>
   
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
     <input type="hidden" name="show" value="save">
     <input type="hidden" name="lang" value="<?php echo escapeOutput($selectedLang); ?>">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
@@ -82,7 +82,7 @@ if (!$show) {
 	}	
 	?>
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
 		<input type="reset" class="btn" value="<?php echo $i18n->getMessage("button_reset"); ?>">
 	</div>    

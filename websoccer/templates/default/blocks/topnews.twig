@@ -6,13 +6,13 @@
 
 {% block box_content %}
 
-<ul class="unstyled">
+<ul class="unstyled mb-3">
 	{% for article in topnews %}
 		<li><small>{{ article.date }}</small> <a href="{{ env.getInternalUrl("news-details", "id=" ~ article.id) }}">{{ article.title }}</a></li>
 	{% endfor %}
   
 </ul>
 
-<p><a href="{{ env.getInternalUrl("news") }}" class="btn btn-primary">{{ i18n.getMessage("button_more") }}</a></p>
+<p><a href="{{ env.getInternalUrl("news") }}">{{ i18n.getMessage("button_more") }}</a></p>
 
 {% endblock %}

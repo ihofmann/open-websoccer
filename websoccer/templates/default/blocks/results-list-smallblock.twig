@@ -7,7 +7,7 @@
 {% block box_content %}
 
 {% if matches|length > 0 %}
-<table class="table table-borderless table-striped">
+<table class="table table-borderless table-striped mb-3">
 	{% for match in matches %}
 	  <tr>
 	    <td><a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a> - <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a></td>
@@ -17,6 +17,6 @@
 </table>
 {% endif %}
 
-<p><a href="{{ env.getInternalUrl("results") }}" class="btn btn-primary">{{ i18n.getMessage("button_more") }}</a></p>
+<p><a href="{{ env.getInternalUrl("results") }}">{{ i18n.getMessage("button_more") }}</a></p>
 
 {% endblock %}

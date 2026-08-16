@@ -6,13 +6,13 @@
 {% endblock %}
 
 {% block page_content %}
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
 	<fieldset>
 		<legend>{{ i18n.getMessage("youthplayer-sell_formlabel") }}</legend>
 		{{ formelements.textfield('transfer_fee', i18n.getMessage('entity_youthplayer_transfer_fee'), env.getRequestParameter('transfer_fee'), true, validationMsg, 'number') }}
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
 		<a href="{{ env.getInternalUrl("youth-team") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

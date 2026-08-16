@@ -36,9 +36,9 @@ if (!$show) {
 	
   ?>
   
-    <form class="form-inline">
+    <form class="d-flex flex-wrap gap-2 align-items-center">
   		<label for="leagueid"><?php echo $i18n->getMessage("generator_label_league") ?></label>
-  		<select name="leagueid" id="leagueid">
+  		<select class="form-select" name="leagueid" id="leagueid">
   			<option></option>
   			
   			<?php 
@@ -115,7 +115,7 @@ if (!$show) {
 elseif ($show == "generateform") {
 	?>
 	
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="form-horizontal">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
     <input type="hidden" name="show" value="generate">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="teamid" value="<?php echo $teamid; ?>">
@@ -164,7 +164,7 @@ elseif ($show == "generateform") {
 	}	
 	?>
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("generator_button"); ?>"> 
 		<input type="reset" class="btn" value="<?php echo $i18n->getMessage("button_reset"); ?>">
 	</div>    

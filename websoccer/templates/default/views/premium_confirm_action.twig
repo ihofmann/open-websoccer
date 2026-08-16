@@ -6,11 +6,11 @@
 
 {% block page_content %}
 
-<div class="well">
+<div class="card card-body">
 {{ i18n.getMessage("premium-confirm-action_question")|format(env.getContextParameters()["premium_balance_required"], env.getConfig("premium_credit_unit"))|raw }}
 </div>
 
-<div class="form-actions">
+<div class="d-flex gap-2 justify-content-center p-3">
 	<form method="post" style="display: inline">
 		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
 			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">

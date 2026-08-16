@@ -12,18 +12,18 @@
 
 	<h3>{{ team_name }}</h3>
 	
-	<form class="form-horizontal" method="post">
+	<form class="row" method="post">
 	
 		{{ formelements.textfield('fname', i18n.getMessage('entity_player_vorname'), env.getRequestParameter('fname'), false, validationMsg, 'text') }}
 		
 		{{ formelements.textfield('lname', i18n.getMessage('entity_player_nachname'), env.getRequestParameter('lname'), false, validationMsg, 'text') }}
 		
-		<div class="control-group">
-			<label class="control-label" for="position">
+		<div class="mb-3">
+			<label class="form-label" for="position">
 				{{ i18n.getMessage("entity_player_position") }}
 			</label>
-			<div class="controls">
-		  		<select name="position" id="position">
+			<div class="">
+		  		<select name="position" id="position" class="form-select">
 		  			<option></option>
 		  			<option value="Torwart"{% if env.getRequestParameter("position") == "Torwart" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
 		  			<option value="Abwehr"{% if env.getRequestParameter("position") == "Abwehr" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
@@ -33,12 +33,12 @@
 			</div>
 		</div>
 		
-		<div class="control-group">
-			<label class="control-label" for="position_main">
+		<div class="mb-3">
+			<label class="form-label" for="position_main">
 				{{ i18n.getMessage("entity_player_position_main") }}
 			</label>
-			<div class="controls">
-		  		<select name="position_main" id="position_main">
+			<div class="">
+		  		<select name="position_main" id="position_main" class="form-select">
 		  			<option></option>
 		  			<option value="T"{% if env.getRequestParameter("position_main") == "T" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
 		  			<option value="LV"{% if env.getRequestParameter("position_main") == "LV" %} selected{% endif %}>{{ i18n.getMessage("option_LV") }}</option>
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		
-		<div class="form-actions">
+		<div class="d-flex gap-2 justify-content-center p-3">
 			<button type="submit" class="btn btn-primary">{{ i18n.getMessage('playerssearch_submit') }}</button>
 		</div>
 		<input type="hidden" name="page" value="nominate-national-players"/>
@@ -101,7 +101,7 @@
 						
 						{% if env.getConfig("hide_strength_attributes") != "1" %}
 							<td>
-								<ul class="unstyled">
+								<ul class="list-unstyled">
 									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength") }}">{{ i18n.getMessage("playertable_head_strength_abbr") }}</abbr>:</span> 
 										<span {{ playerlists.strengthClass(player.strength) }}>{{ player.strength }}</span></li>
 									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr>:</span> 
@@ -116,7 +116,7 @@
 							</td>
 						{% endif %}
 						
-						<td><a class="btn btn-small" href="{{ env.getInternalActionUrl("add-national-player", "id=" ~ player.id) }}"><i class="icon-flag-alt"></i> {{ i18n.getMessage("nationalteams_addplayer") }}</a></td>
+						<td><a class="btn btn-sm" href="{{ env.getInternalActionUrl("add-national-player", "id=" ~ player.id) }}"><i class="bi bi-flag"></i> {{ i18n.getMessage("nationalteams_addplayer") }}</a></td>
 						
 					</tr>
 					{% endfor %}

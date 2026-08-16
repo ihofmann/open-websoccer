@@ -92,7 +92,7 @@ elseif ($show == 'select') {
 	$result->free();
 
 	?>
-	<form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='form-horizontal'>
+	<form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='row'>
 	<input type='hidden' name='show' value='complete'>
 	<input type='hidden' name='id' value='<?php echo $id; ?>'>
 	<input type='hidden' name='site' value='<?php echo $site; ?>'>
@@ -114,7 +114,7 @@ elseif ($show == 'select') {
 	}	
 	?>
 	</fieldset>
-	<div class='form-actions'>
+	<div class='d-flex gap-2 justify-content-center p-3'>
 		<input type='submit' class='btn btn-primary' accesskey='s' title='Alt + s' value='<?php echo $i18n->getMessage('season_complete_submit'); ?>'> 
 		<input type='reset' class='btn' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
 	</div>    

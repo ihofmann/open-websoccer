@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../module.dtd">
 <module version="1.0.0">
 
@@ -81,8 +81,6 @@
 	            model="TrainerDetailsModel"
 	            role="user" />
 	        
-	        <script file="bootstrap-slider.js" />
-	        <css file="slider.css"/>
         </page>
 
     </pages> 

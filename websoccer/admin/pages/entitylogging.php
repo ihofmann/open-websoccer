@@ -79,9 +79,9 @@ if (!$show) {
                   <td>'; 
                   
                   	if ($row[3] == LOG_TYPE_EDIT) {
-						echo '<span class=\'label label-info\'><i class=\'icon-white icon-pencil\'></i> '. $i18n->getMessage('entitylogging_action_edit') . '</span>';
+						echo '<span class=\'badge bg-info\'><i class=\'bi bi-pencil\'></i> '. $i18n->getMessage('entitylogging_action_edit') . '</span>';
 					} elseif ($row[3] == LOG_TYPE_DELETE) {
-						echo '<span class=\'label label-important\'><i class=\'icon-white icon-trash\'></i> '. $i18n->getMessage('entitylogging_action_delete') . '</span>';
+						echo '<span class=\'badge bg-danger\'><i class=\'bi bi-trash\'></i> '. $i18n->getMessage('entitylogging_action_delete') . '</span>';
 					} else {
 						echo $row[3];
 					}

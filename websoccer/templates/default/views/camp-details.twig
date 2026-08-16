@@ -17,7 +17,7 @@
 {{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_frische"), camp.effect_strength_freshness) }}
 {{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_zufriedenheit"), camp.effect_strength_satisfaction) }}
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 	<fieldset>
     	<legend>{{ i18n.getMessage('camp-detail_form_title') }}</legend>
 		{{ formelements.textfield('start_date', i18n.getMessage('camp-detail_start_date'), (env.getRequestParameter("start_date")) ? env.getRequestParameter("start_date") : env.getFormattedDate(defaultDate), true, validationMsg) }}
@@ -26,7 +26,7 @@
 		{{ formelements.textfield('days', i18n.getMessage('camp-detail_days'), env.getRequestParameter("days"), true, validationMsg, "number", daysLabel) }}
 	
 	</fieldset>
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
 		<a href="{{ env.getInternalUrl("trainingcamp") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

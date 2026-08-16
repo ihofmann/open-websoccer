@@ -6,10 +6,10 @@
 
 {% block page_content %}
 
-<form class="form-inline" method="post">
+<form class="d-flex flex-wrap gap-2 align-items-center" method="post">
 
-	<label class="control-label" for="country">{{ i18n.getMessage("entity_league") }}</label> 
-	<select id="id" name="id" class="span3">
+	<label class="form-label" for="country">{{ i18n.getMessage("entity_league") }}</label> 
+	<select id="id" name="id" class="col-md-3 form-select" >
 		<option></option>
 	{% for leagueItem in leagues %}
 		<option value="{{ leagueItem.league_id }}"{% if league.league_id is defined and league.league_id == leagueItem.league_id or env.getRequestParameter("id") == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>

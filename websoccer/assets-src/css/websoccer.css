@@ -29,10 +29,6 @@
 }
 
 /* bootstrap fixes */
-.collapse {
-  overflow: hidden;
-}
-
 .dl-horizontal dt {
   white-space: normal;
 }
@@ -45,6 +41,19 @@
   max-width: 500px;
 }
 
+/* fixing label position in series charts */
+.yAxis .tickLabel {
+  left: -20px !important;
+}
+
+#stadium {
+  background: url("../../img/pitch_bg.png") no-repeat 110px 90px;
+}
+
+#notificationspopup {
+  width: 350px;
+}
+
 /* Ajax loader */
 #ajaxLoaderPage {
   display: none;
@@ -53,6 +62,100 @@
   width: 100%;
   position: fixed;
   bottom: 10px;
+  z-index: 1030;
+}
+
+/* blockUI replacement overlay */
+.ws-block-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5) url("../../img/ajaxloaderbar.gif")
+    no-repeat center center;
+  z-index: 1020;
+}
+
+/* vanilla autocomplete / pkpicker suggestion lists */
+.ws-autocomplete-list,
+.pkpicker-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 200px;
+  max-height: 260px;
+  overflow-y: auto;
+  border-radius: 4px;
+}
+
+.ws-autocomplete-list .list-group-item,
+.pkpicker-list .list-group-item {
+  cursor: pointer;
+}
+
+.ws-autocomplete-list .list-group-item:hover,
+.pkpicker-list .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* ------------------------------------------------------------------ */
+/* Bootstrap 2 utility compatibility aliases (BS5 dropped these)       */
+/* ------------------------------------------------------------------ */
+.ul-unstyled,
+.unstyled {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+ul.inline,
+.inline {
+  list-style: none;
+  padding-left: 0;
+}
+ul.inline > li,
+.inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.img-rounded {
+  border-radius: 0.375rem;
+}
+
+.img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dl-horizontal dt {
+  float: left;
+  width: 160px;
+  clear: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.dl-horizontal dd {
+  margin-left: 180px;
+}
+
+.dl-horizontal dd::after {
+  display: table;
+  content: "";
+  clear: both;
 }
 
 /* language switcher */
@@ -232,19 +335,6 @@
   width: 34px;
   height: 34px;
   display: inline-block;
-}
-
-/* fixing label position in series charts */
-.yAxis .tickLabel {
-  left: -20px !important;
-}
-
-#stadium {
-  background: url("../../img/pitch_bg.png") no-repeat 110px 90px;
-}
-
-#notificationspopup {
-  width: 350px;
 }
 
 /* shout box */

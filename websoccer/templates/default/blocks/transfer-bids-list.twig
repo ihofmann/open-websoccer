@@ -15,9 +15,9 @@
   
 	  	{% for bid in bids %}
 			<tr>
-				<td><a class="btn btn-mini {% if bid.ishighest %}btn-success{% else %}btn-danger{% endif %} wstooltip" 
+				<td><a class="btn btn-sm {% if bid.ishighest %}btn-success{% else %}btn-danger{% endif %} wstooltip" 
 					href="{{ env.getInternalUrl("transfer-bid", "id=" ~ bid.player_id) }}"
-					title="{% if bid.ishighest %}{{ i18n.getMessage("transfer_bids_ishighest") }}{% else %}{{ i18n.getMessage("transfer_bids_overbidden") }}{% endif %}"><i class="icon-hand-up"></i> {{ env.getFormattedDatetime(bid.date) }}</a></td>
+					title="{% if bid.ishighest %}{{ i18n.getMessage("transfer_bids_ishighest") }}{% else %}{{ i18n.getMessage("transfer_bids_overbidden") }}{% endif %}"><i class="bi bi-hand-index-thumb"></i> {{ env.getFormattedDatetime(bid.date) }}</a></td>
 				<td><a href="{{ env.getInternalUrl("player", "id=" ~ bid.player_id) }}">{{ bid.player_firstname }} {{ bid.player_lastname }}</a></td>
 				<td>{{ env.getFormattedDatetime(bid.auction_end) }}</td>
 				<td>{{ bid.amount|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</td>

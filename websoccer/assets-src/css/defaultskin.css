@@ -8,19 +8,19 @@ body {
 }
 
 .box {
-	padding: 8px 10px;
-	background: #fdfdfd;
-	border: 1px solid #eeeeee;
-	border-bottom: 3px solid #eee;
-	border-radius: 6px;
-	margin-bottom: 30px;
+  padding: 8px 10px;
+  background: #fdfdfd;
+  border: 1px solid #eeeeee;
+  border-bottom: 3px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 30px;
 }
 
 .box table {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .box > h4 {
-	border-bottom: 1px solid #eeeeee;
-	padding-bottom: 7px;
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 7px;
 }

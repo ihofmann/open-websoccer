@@ -56,7 +56,7 @@
 						<a href="{{ env.getInternalUrl("youth-match", "id=" ~ match.match_id) }}" 
 							title="{{ i18n.getMessage("match_navlabel") }}">{{ match.home_goals }} - {{ match.guest_goals }}</a>
 					{% else %}
-						<a href="{{ env.getInternalUrl("youth-formation", "matchid=" ~ match.match_id) }}" class="btn btn-small"><i class="icon-sitemap"></i> {{ i18n.getMessage("formation_navlabel") }}</a>
+						<a href="{{ env.getInternalUrl("youth-formation", "matchid=" ~ match.match_id) }}" class="btn btn-sm"><i class="bi bi-diagram-3"></i> {{ i18n.getMessage("formation_navlabel") }}</a>
 					{% endif %}
 				</td>
 			</tr>

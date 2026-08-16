@@ -11,9 +11,9 @@
 <h3>{{ i18n.getMessage("entity_users_premium_balance") }}: {{ env.user.premiumBalance|number_format(0, ',', ' ') }} {{ env.getConfig("premium_credit_unit") }}</h3>
 
 <p>
-	<a href="{{ env.getInternalUrl(env.getConfig("premium_infopage")) }}" class="btn"><i class="icon-info-sign"></i> {{ i18n.getMessage("premiumaccount_recharge_button") }}</a>
+	<a href="{{ env.getInternalUrl(env.getConfig("premium_infopage")) }}" class="btn"><i class="bi bi-info-circle"></i> {{ i18n.getMessage("premiumaccount_recharge_button") }}</a>
 	{% if env.getConfig("premium_exchangerate_gamecurrency") > 0 %}
-		<a href="{{ env.getInternalUrl("premium-exchange") }}" class="btn"><i class="icon-money"></i> {{ i18n.getMessage("premiumaccount_exchange_link") }}</a>
+		<a href="{{ env.getInternalUrl("premium-exchange") }}" class="btn"><i class="bi bi-cash"></i> {{ i18n.getMessage("premiumaccount_exchange_link") }}</a>
 	{% endif %}	
 </p>
 

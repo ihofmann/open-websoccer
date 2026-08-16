@@ -7,14 +7,14 @@
 
 {% block page_content %}
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 		
-	<div class="control-group{% if validationMsg['matchdate'] is defined %} error{% endif %}">
-		<label class="control-label" for="matchdate">
+	<div class="mb-3{% if validationMsg['matchdate'] is defined %} error{% endif %}">
+		<label class="form-label" for="matchdate">
 			<strong>{{ i18n.getMessage("youthteam_matchrequest_create_date") }}</strong>
 		</label>
-		<div class="controls">
-	  		<select name="matchdate" id="matchdate">
+		<div>
+	  		<select name="matchdate" id="matchdate" class="form-select">
 	  			<option></option>
 	  			
 	  			{% for dateOptionLabelValue, dateOptionLabel in dateOptions %}
@@ -26,7 +26,7 @@
 	
 	{{ formelements.textfield('reward', i18n.getMessage('youthteam_matchrequest_reward'), env.getRequestParameter('reward'), false, validationMsg, 'number', env.getConfig("game_currency")) }}
 		
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
 		<a href="{{ env.getInternalUrl("youth-matchrequests") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

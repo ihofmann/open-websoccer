@@ -1,7 +1,7 @@
-.accordion-body.in {
+.accordion-collapse.show {
   overflow: visible;
 }
-.accordion-body.in:hover {
+.accordion-collapse.show:hover {
   overflow: visible;
 }
 
@@ -40,7 +40,7 @@
   }
 }
 
-#playersSelection .accordion-inner {
+#playersSelection .accordion-body {
   padding: 0;
 }
 
@@ -87,7 +87,7 @@
   clear: both;
 }
 
-.playerinfoStrength > .bar {
+.playerinfoStrength > .progress-bar {
   font-size: 10px;
   line-height: 14px;
 }
@@ -124,6 +124,8 @@
   font-size: 0.9em;
   font-weight: bold;
   cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .positionPlayer {
@@ -334,17 +336,11 @@
   color: red;
 }
 
-.playerinfo.ui-draggable-dragging {
-  background-color: #ffffff;
-  border: 1px solid black;
-  border-radius: 6px;
-  opacity: 0.95;
-  max-width: 150px;
+.playerDraggable {
+  cursor: grab;
 }
-
-.playerinfo.ui-draggable-dragging .playerinfoIcons,
-.playerinfo.ui-draggable-dragging .playerinfoStrengthRow {
-  display: none;
+.playerDraggable:active {
+  cursor: grabbing;
 }
 
 .benchPlaceholder {

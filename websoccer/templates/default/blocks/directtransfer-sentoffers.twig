@@ -18,7 +18,7 @@
 			<tr>
 				<td><p>{{ env.getFormattedDatetime(offer.offer_submitted_date) }}</p>
 				{% if offer.offer_message|length > 0 %}
-				<a href="#" class="btn btn-mini wspopover" data-toggle="popover" 
+				<a href="#" class="btn btn-sm wspopover" data-bs-toggle="popover"
 					data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.sender_user_name) }}" 
 					data-content="{{ offer.offer_message }}">{{ i18n.getMessage("transferoffers_offer_showcomment") }}</a>
 				{% endif %}
@@ -44,18 +44,18 @@
 				</td>
 				<td>
 					{% if offer.offer_rejected_date == 0 %}
-					<p><a href="#" class="btn btn-info btn-small btn-block ajaxLink"
+					<p><a href="#" class="btn btn-info btn-sm btn-block ajaxLink"
 						data-ajaxtarget="sent"
 						data-ajaxquerystr="block=directtransfer-sentoffers&action=directtransfer-cancel&id={{ offer.offer_id }}">{{ i18n.getMessage("transferoffers_offer_cancellation_button") }}</a></p>
 					{% else %}
-						<span class="label label-important">{{ i18n.getMessage("transferoffers_offer_status_rejected") }}</span>
+						<span class="badge bg-danger">{{ i18n.getMessage("transferoffers_offer_status_rejected") }}</span>
 						
 						{% if offer.offer_rejected_message|length > 0 %}
-						<a href="#" class="wspopover" data-toggle="popover" 
+						<a href="#" class="wspopover" data-bs-toggle="popover"
 							data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.receiver_user_name) }}" 
 							data-content="{{ offer.offer_rejected_message }}"
 							data-placement="left"
-							data-trigger="hover"><i class="icon-envelope"></i></a>
+							data-trigger="hover"><i class="bi bi-envelope"></i></a>
 						{% endif %}
 						
 					{% endif %}

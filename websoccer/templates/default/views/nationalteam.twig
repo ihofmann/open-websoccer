@@ -10,7 +10,7 @@
 
 	<h3>{{ team_name }}</h3>
 	
-	<p><a class="btn btn-small" href="{{ env.getInternalUrl("nominate-national-players") }}"><i class="icon-phone-sign"></i> {{ i18n.getMessage("nominate-national-players_navlabel") }}</a></p>
+	<p><a class="btn btn-sm" href="{{ env.getInternalUrl("nominate-national-players") }}"><i class="bi bi-telephone"></i> {{ i18n.getMessage("nominate-national-players_navlabel") }}</a></p>
 	
 	{% if players|length == 0 %}
 		{{ messagebox.box("", i18n.getMessage("nationalteams_no_players"), "info") }}
@@ -51,7 +51,7 @@
 							</td>
 							{% if env.getConfig("hide_strength_attributes") != "1" %}
 								<td>
-								<ul class="unstyled">
+								<ul class="list-unstyled">
 									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength") }}">{{ i18n.getMessage("playertable_head_strength_abbr") }}</abbr>:</span> 
 										<span {{ playerlists.strengthClass(player.strength) }}>{{ player.strength }}</span></li>
 									<li><span class="incell-strength-label"><abbr title="{{ i18n.getMessage("playertable_head_strength_technic") }}">{{ i18n.getMessage("playertable_head_strength_technic_abbr") }}</abbr>:</span> 
@@ -66,7 +66,7 @@
 								</td>
 							{% endif %}
 							<td>{{ player.age }}</td>
-							<td><a href="{{ env.getInternalActionUrl("remove-national-player", "id=" ~ player.id) }}" class="btn btn-small"><i class="icon-remove"></i> {{ i18n.getMessage("nationalteams_remove_from_team") }}</a></td>
+							<td><a href="{{ env.getInternalActionUrl("remove-national-player", "id=" ~ player.id) }}" class="btn btn-sm"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("nationalteams_remove_from_team") }}</a></td>
 						</tr>
 					{% endfor %}
 				</tbody>

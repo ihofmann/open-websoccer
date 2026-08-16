@@ -37,7 +37,7 @@ body {
   margin-top: 60px;
 }
 
-.navbar-inner {
+.navbar {
   background-image: url(../../../img/schedioartskin/nav-bg.png);
   background-repeat: repeat;
 }
@@ -102,7 +102,7 @@ body {
   border-right-width: 0;
 }
 
-.master-head .hero-unit {
+.master-head > div {
   background: url(../../../img/schedioartskin/crowd-banner.png) no-repeat center
     center;
   background-size: cover;

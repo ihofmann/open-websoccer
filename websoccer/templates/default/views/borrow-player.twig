@@ -27,25 +27,25 @@
   <dd>{{ player.player_contract_matches  }} {{ i18n.getMessage("player_details_unit_matches") }}</dd>
 </dl>
 
-<p style="margin-top: 30px"><i class="icon-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("player_navlabel") }}</a></p>
+<p style="margin-top: 30px"><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("player_navlabel") }}</a></p>
 
 <p>{{ i18n.getMessage("borrow-player_intro") }}</p>
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 
-	<div class="control-group">
-		<label class="control-label">
+	<div class="mb-3">
+		<label class="form-label">
 			<strong>{{ i18n.getMessage("entity_player_lending_fee") }}</strong>
 		</label>
-		<div class="controls">
-			<span class="help-inline">{{ player.lending_fee|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</span>
+		<div class="">
+			<span class="form-text">{{ player.lending_fee|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</span>
 		</div>
 	</div>
 	
 	{{ formelements.textfield('matches', i18n.getMessage('entity_player_lending_matches'), env.getRequestParameter('matches'), true, validationMsg, 'number', 
 		i18n.getMessage("lending_matches_durationhelp")|format(env.getConfig("lending_matches_min"), env.getConfig("lending_matches_max"))) }}
 	
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('lending_player_hire_button') }}</button>
 		<a href="{{ env.getInternalUrl("myteam") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

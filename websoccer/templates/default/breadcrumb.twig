@@ -1,14 +1,15 @@
 {% if breadcrumbItems is defined %}
-<ul class="breadcrumb">
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
 	{% for breadcrumbItemKey,breadcrumbItemLabel in breadcrumbItems %}
 		{% if loop.last %}
-		<li class="active">{{ breadcrumbItemLabel }}</li>
+		<li class="breadcrumb-item active" aria-current="page">{{ breadcrumbItemLabel }}</li>
 		{% else %}
-		<li>
-			<a href="{{ env.getInternalUrl(breadcrumbItemKey) }}">{{ breadcrumbItemLabel }}</a> 
-			<span class="divider">/</span>
+		<li class="breadcrumb-item">
+			<a href="{{ env.getInternalUrl(breadcrumbItemKey) }}">{{ breadcrumbItemLabel }}</a>
 		</li>
 		{% endif %}
 	{% endfor %}
-</ul>
+</ol>
+</nav>
 {% endif %}

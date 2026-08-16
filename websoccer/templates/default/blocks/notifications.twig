@@ -11,7 +11,7 @@
 				<span>{{ notification.message|raw }}</span>
 			{% endif %}
 			<br>
-			<small class="{% if notification.seen == 0 %}text-error{% else %}muted{% endif %}">{{ env.getFormattedDateTime(notification.eventdate) }}</small>
+			<small class="{% if notification.seen == 0 %}text-danger{% else %}text-muted{% endif %}">{{ env.getFormattedDateTime(notification.eventdate) }}</small>
 		</li>
 	{% endfor %}
 </ul>

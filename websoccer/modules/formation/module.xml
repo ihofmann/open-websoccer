@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE module SYSTEM "../module.dtd">
 <module version="1.0.0">
 
@@ -22,16 +22,8 @@
             role="user"
             parentItem="office">
             
-            <script file="jquery-ui-1.10.2.custom.min.js" debugonly="true"/>
-            <script file="formationws4.js?v=5" debugonly="true"/>
-            <script file="formation.min.js?v=5" productiononly="true"/>
             
-            <script file="bootstrap-slider.js" />
-            <script file="bootstrap-switch.js" />
             
-            <css file="slider.css"/>
-        	<css file="formation.css"/>
-        	<css file="bootstrap-switch.css"/>
         </page>
 
     </pages> 

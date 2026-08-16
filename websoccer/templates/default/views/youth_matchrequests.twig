@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block page_content %}
-<p><a href="{{ env.getInternalUrl("youth-matchrequests-create") }}" class="btn"><i class="icon-bullhorn"></i> {{ i18n.getMessage("youthteam_matchrequest_createnew") }}</a></p>
+<p><a href="{{ env.getInternalUrl("youth-matchrequests-create") }}" class="btn"><i class="bi bi-megaphone"></i> {{ i18n.getMessage("youthteam_matchrequest_createnew") }}</a></p>
 
 {% if requests|length == 0 %}
 	{{ messagebox.box(i18n.getMessage("youthteam_matchrequest_none_available"), "", "info") }}
@@ -46,9 +46,9 @@
 				</td>
 				<td>
 					{% if env.user.clubId == request.team_id %}
-						<a href="{{ env.getInternalActionUrl("cancel-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-small btn-danger"><i class="icon-remove icon-white"></i> {{ i18n.getMessage("youthteam_matchrequest_cancel") }}</a>
+						<a href="{{ env.getInternalActionUrl("cancel-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-sm btn-danger"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("youthteam_matchrequest_cancel") }}</a>
 					{% else %}
-						<a href="{{ env.getInternalActionUrl("accept-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-small btn-success"><i class="icon-ok icon-white"></i> {{ i18n.getMessage("youthteam_matchrequest_accept") }}</a>
+						<a href="{{ env.getInternalActionUrl("accept-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i> {{ i18n.getMessage("youthteam_matchrequest_accept") }}</a>
 					{% endif %}
 				</td>
 			</tr>

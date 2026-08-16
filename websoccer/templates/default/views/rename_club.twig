@@ -7,7 +7,7 @@
 
 {% block page_content %}
 
-<form class="form-horizontal" method="post">
+<form class="row" method="post">
 	
 	{{ formelements.textfield('name', i18n.getMessage('entity_club_name'), env.getRequestParameter('name'), true, validationMsg, 'text') }}
 	
@@ -15,7 +15,7 @@
 	
 	{{ formelements.textfield('stadium', i18n.getMessage('entity_stadium'), env.getRequestParameter('stadium'), true, validationMsg, 'text') }}
 	
-	<div class="form-actions">
+	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
 		<a href="{{ env.getInternalUrl("team", "id=" ~ env.user.clubId) }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>

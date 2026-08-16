@@ -10,7 +10,7 @@
 {% block page_header %}
 
 {% if env.user.id == null %}
-<div class="hero-unit">
+<div class="py-4 px-3 mb-4 bg-primary-subtle rounded-3">
   <h1>{{ block("browser_title") }}</h1>
   <p>{{ i18n.getMessage("home_teaser") }}</p>
   
@@ -19,7 +19,7 @@
 		{% if env.getConfig("registration_url")|length > 0 %}
 			{% set registerUrl = env.getConfig("registration_url") %}
 		{% endif %}
-		<div style="text-align:center;"><a href="{{ registerUrl }}" class="btn btn-large">{{ i18n.getMessage("home_teaser_link_register") }}</a></div>
+		<div class="text-center"><a href="{{ registerUrl }}" class="btn btn-primary">{{ i18n.getMessage("home_teaser_link_register") }}</a></div>
 	{% endif %} 
   
 </div>
@@ -42,14 +42,14 @@
 </div>
 
 <div class="row">
-	<div class="span4">
+	<div class="col-md-4">
 		{{ viewHandler.renderBlock('news')|raw }}
 		
 		<div class="ajaxLoadedBlock" id="projectStatisticsBlock" 
 			data-ajaxblock="projectstatistics" data-ignoreemptymessages="true">
 		</div>
 	</div>
-	<div class="span4">
+	<div class="col-md-4">
 		
 		<div class="ajaxLoadedBlock" id="latestResultsBlock" 
 				data-ajaxblock="latest-results-summary" data-ignoreemptymessages="true"></div>
@@ -58,7 +58,7 @@
 				data-ajaxblock="user-activities-all" data-ignoreemptymessages="true" data-refreshperiod="10"></div>
 	</div>
 		
-	<div class="span4">
+	<div class="col-md-4">
 		{% if blocks.sidebar is defined %}
 			{% for uiBlock in blocks.sidebar %}
 				{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}

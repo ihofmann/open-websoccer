@@ -30,16 +30,16 @@
 				</td>
 				<td><p><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a>
 				{% if player.unsellable %}
-					<i class="icon-eye-close" title="{{ i18n.getMessage("entity_player_unsellable") }}"></i>
+					<i class="bi bi-eye-slash" title="{{ i18n.getMessage("entity_player_unsellable") }}"></i>
 				{% elseif player.lending_owner_id == 0 and player.lending_fee > 0 and env.getConfig("lending_enabled") %}
-					<i class="icon-share-alt" title="{{ i18n.getMessage("lending_player_marker_lendable") }}"></i>
+					<i class="bi bi-share" title="{{ i18n.getMessage("lending_player_marker_lendable") }}"></i>
 				{% endif %}</p></td>
 				<td>
 				{% if player.team_id > 0 %}
 				<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
 				
 					{% if player.lending_owner_id > 0 %}
-						<i class="icon-star-empty" title="{{ i18n.getMessage("lending_player_marker_tooltip") }}"></i></em>
+						<i class="bi bi-star" title="{{ i18n.getMessage("lending_player_marker_tooltip") }}"></i></em>
 					{% endif %}
 				{% else %}
 				-

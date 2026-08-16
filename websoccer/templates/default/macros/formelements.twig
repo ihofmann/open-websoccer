@@ -5,19 +5,17 @@
 {% else %}
 	{% set error = '' %}
 {% endif %}
-<div class="control-group{% if error|length > 0 %} error{% endif %}">
-	<label class="control-label" for="{{ fieldId }}">
+<div class="mb-3">
+	<label class="form-label" for="{{ fieldId }}">
 	{% if required %}
 		<strong>{{ label }}</strong>
 	{% else %}
 		{{ label }}
 	{% endif %}
 	</label>
-	<div class="controls">
-		<input type="{{ type }}"{% if type == "number" %} class="input-small"{% endif %} id="{{ fieldId }}" name="{{ fieldId }}" value="{{ value }}" placeholder="{{ label }}"{% if required %} required{% endif %}{% if disabled %} disabled{% endif %}>
-		{% if error|length > 0 %}<span class="help-inline">{{ error }}</span>{% endif %}
-		{% if helptext|length > 0 %}<span class="help-inline">{{ helptext }}</span>{% endif %}
-	</div>
+	<input type="{{ type }}" class="form-control{% if type == "number" %} w-auto d-inline-block{% endif %}{% if error|length > 0 %} is-invalid{% endif %}" id="{{ fieldId }}" name="{{ fieldId }}" value="{{ value }}" placeholder="{{ label }}"{% if required %} required{% endif %}{% if disabled %} disabled{% endif %}>
+	{% if error|length > 0 %}<div class="invalid-feedback d-block">{{ error }}</div>{% endif %}
+	{% if helptext|length > 0 %}<div class="form-text">{{ helptext }}</div>{% endif %}
 </div>
 {% endmacro %}
 
@@ -28,31 +26,26 @@
 {% else %}
 	{% set error = '' %}
 {% endif %}
-<div class="control-group{% if error|length > 0 %} error{% endif %}">
-	<label class="control-label" for="{{ fieldId }}">
+<div class="mb-3">
+	<label class="form-label" for="{{ fieldId }}">
 	{% if required %}
 		<strong>{{ label }}</strong>
 	{% else %}
 		{{ label }}
 	{% endif %}
 	</label>
-	<div class="controls">
-		<input type="text" id="{{ fieldId }}" class="autocomplete" autocomplete="off" data-provide="typeahead" data-ajaxblock="{{ ajaxblock }}" name="{{ fieldId }}" value="{{ value }}" placeholder="{{ label }}"{% if required %} required{% endif %}>
-		{% if error|length > 0 %}<span class="help-inline">{{ error }}</span>{% endif %}
-		{% if helptext|length > 0 %}<span class="help-inline">{{ helptext }}</span>{% endif %}
-	</div>
+	<input type="text" id="{{ fieldId }}" class="form-control autocomplete" autocomplete="off" data-ajaxblock="{{ ajaxblock }}" name="{{ fieldId }}" value="{{ value }}" placeholder="{{ label }}"{% if required %} required{% endif %}{% if error|length > 0 %} is-invalid{% endif %}>
+	{% if error|length > 0 %}<div class="invalid-feedback d-block">{{ error }}</div>{% endif %}
+	{% if helptext|length > 0 %}<div class="form-text">{{ helptext }}</div>{% endif %}
 </div>
 {% endmacro %}
 
 {% macro checkbox(fieldId, label, value, colspan=false, errormsg = null) %}
-<div class="control-group{% if errormsg|length > 0 %} error{% endif %}"">
-	{% if colspan == false %}<div class="controls">{% endif %}
-	
-	    <label class="checkbox">
-	      <input type="checkbox" id="{{ fieldId }}" name="{{ fieldId }}" value="1"{% if value == 1 %} checked{% endif %}> {{ label|raw }}
-	    </label>	
-	
-	{% if colspan == false %}</div>{% endif %}
+<div class="mb-3">
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" id="{{ fieldId }}" name="{{ fieldId }}" value="1"{% if value == 1 %} checked{% endif %}>
+		<label class="form-check-label" for="{{ fieldId }}">{{ label|raw }}</label>
+	</div>
 </div>
 {% endmacro %}
 
@@ -63,59 +56,52 @@
 {% else %}
 	{% set error = '' %}
 {% endif %}
-<div class="control-group{% if error|length > 0 %} error{% endif %}">
-	<label for="{{ fieldId }}">
+<div class="mb-3">
+	<label class="form-label" for="{{ fieldId }}">
 	{% if required %}
 		<strong>{{ label }}</strong>
 	{% else %}
 		{{ label }}
 	{% endif %}
 	</label>
-	<textarea id="{{ fieldId }}" name="{{ fieldId }}" rows="{{ rows }}" class="span5">{{ value }}</textarea>
-	{% if error|length > 0 %}<span class="help-inline">{{ error }}</span>{% endif %}
-	{% if helptext|length > 0 %}<span class="help-inline">{{ helptext }}</span>{% endif %}
+	<textarea id="{{ fieldId }}" name="{{ fieldId }}" rows="{{ rows }}" class="form-control{% if error|length > 0 %} is-invalid{% endif %}">{{ value }}</textarea>
+	{% if error|length > 0 %}<div class="invalid-feedback d-block">{{ error }}</div>{% endif %}
+	{% if helptext|length > 0 %}<div class="form-text">{{ helptext }}</div>{% endif %}
 </div>
 {% endmacro %}
 
 {% macro readonly(label, value) %}
 
-<div class="control-group">
-	<label class="control-label">
+<div class="mb-3">
+	<label class="form-label">
 		{{ label }}
 	</label>
-	<div class="controls">
-		<span class="input-large uneditable-input">{{ value }}</span>
+	<div>
+		<span class="form-control-plaintext">{{ value }}</span>
 	</div>
 </div>
 {% endmacro %}
 
 {% macro slider(fieldId, value) %}
-  <input type="text" id="{{ fieldId }}" name="{{ fieldId }}" class="span6 slider" value="{{ value }}" 
-  	data-slider-min="1" data-slider-max="100" 
-  	data-slider-step="1" 
-  	data-slider-value="{{ value }}" 
-  	data-slider-orientation="horizontal" 
-  	data-slider-selection="before" />
-  	<span>{{ i18n.getMessage("unit_percent") }}</span>
+  <input type="range" id="{{ fieldId }}" name="{{ fieldId }}" class="form-range" min="1" max="100" step="1" value="{{ value }}">
+  <span>{{ i18n.getMessage("unit_percent") }}</span>
 {% endmacro %}
 
 {% macro teamPlayerSelection(fieldId, label, selectedPlayer = null, positionsAndPlayers) %}
 
-<div class="control-group">
-	<label class="control-label" for="{{ fieldId }}">
+<div class="mb-3">
+	<label class="form-label" for="{{ fieldId }}">
 		{{ label }}
 	</label>
-	<div class="controls">
-		<select name="{{ fieldId }}" id="{{ fieldId }}">
-			<option></option>
-			{% for position,players in positionsAndPlayers %}
-				<optgroup label="{{ i18n.getMessage("player_position_" ~ position) }}">
-				{% for player in players|filter(p => p.transfermarket != "1") %}
-					<option value="{{ player.id }}" {% if selectedPlayer == player.id  %} selected{% endif %}>{{ player.firstname }} {% if player.pseudonym|length > 0 %}&quot;{{ player.pseudonym }}&quot; {% endif %}{{ player.lastname }}{% if player.position_main|length > 0 %} ({{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}){% endif %}</option>
-				{% endfor %}
-				</optgroup>
+	<select name="{{ fieldId }}" id="{{ fieldId }}" class="form-select">
+		<option></option>
+		{% for position,players in positionsAndPlayers %}
+			<optgroup label="{{ i18n.getMessage("player_position_" ~ position) }}">
+			{% for player in players|filter(p => p.transfermarket != "1") %}
+				<option value="{{ player.id }}" {% if selectedPlayer == player.id  %} selected{% endif %}>{{ player.firstname }} {% if player.pseudonym|length > 0 %}&quot;{{ player.pseudonym }}&quot; {% endif %}{{ player.lastname }}{% if player.position_main|length > 0 %} ({{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}){% endif %}</option>
 			{% endfor %}
-		</select>
-	</div>
+			</optgroup>
+		{% endfor %}
+	</select>
 </div>
 {% endmacro %}

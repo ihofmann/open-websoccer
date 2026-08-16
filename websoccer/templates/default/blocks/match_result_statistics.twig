@@ -2,14 +2,14 @@
 
 <h3>{{ i18n.getMessage("match_details_statistic_shoots") }}: {{ homeStatistics.shoots }} - {{ guestStatistics.shoots }}</h3>
 
-<div class="row-fluid">
-	<div class="span6">
+<div class="row">
+	<div class="col-md-6">
 	<h3>{{ i18n.getMessage("match_details_statistic_tackles") }}</h3>
 	{%  if homeStatistics.wontackles > 0 or guestStatistics.wontackles > 0 %}
 {{ statisticelements.piechart(match.match_home_name, (homeStatistics.wontackles * 100 / (homeStatistics.wontackles + guestStatistics.wontackles))|number_format, match.match_guest_name , (guestStatistics.wontackles * 100 / (homeStatistics.wontackles + guestStatistics.wontackles))|number_format) }}
 	{% endif %}
 	</div>
-	<div class="span6">
+	<div class="col-md-6">
 	<h3>{{ i18n.getMessage("match_details_statistic_ballcontacts") }}</h3>
 	{%  if homeStatistics.ballcontacts > 0 or guestStatistics.ballcontacts > 0 %}
 {{ statisticelements.piechart(match.match_home_name, (homeStatistics.ballcontacts * 100 / (homeStatistics.ballcontacts + guestStatistics.ballcontacts))|number_format, match.match_guest_name , (guestStatistics.ballcontacts * 100 / (homeStatistics.ballcontacts + guestStatistics.ballcontacts))|number_format) }}

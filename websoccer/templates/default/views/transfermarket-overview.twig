@@ -11,21 +11,21 @@
 {% block page_content %}
 
 <ul class="nav nav-tabs" id="transferTab">
-  <li class="active"><a href="#overview" data-toggle="tab">{{ i18n.getMessage("transfermarket_tab_overview") }}</a></li>
-  <li><a href="#mybids" data-toggle="tab"
-  	data-ajaxtarget="mybidslist" data-ajaxblock="transfermarket-mybids" class="ajaxLink">{{ i18n.getMessage("transfermarket_tab_mybids") }}</a></li>
-  <li><a href="#lasttransfers" data-toggle="tab"
-  	data-ajaxtarget="lasttransferslist" data-ajaxblock="transfermarket-lasttransfers" class="ajaxLink">{{ i18n.getMessage("transfermarket_tab_lasttransfers") }}</a></li>
-  <li><a href="#mytransfers" data-toggle="tab"
-  	data-ajaxtarget="mytransferslist" data-ajaxblock="transfermarket-mytransfers" class="ajaxLink">{{ i18n.getMessage("transfermarket_tab_mytransfers") }}</a></li>
+  <li class="nav-item"><a class="nav-link active" href="#overview" data-bs-toggle="tab">{{ i18n.getMessage("transfermarket_tab_overview") }}</a></li>
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#mybids" data-bs-toggle="tab"
+  	data-ajaxtarget="mybidslist" data-ajaxblock="transfermarket-mybids">{{ i18n.getMessage("transfermarket_tab_mybids") }}</a></li>
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#lasttransfers" data-bs-toggle="tab"
+  	data-ajaxtarget="lasttransferslist" data-ajaxblock="transfermarket-lasttransfers">{{ i18n.getMessage("transfermarket_tab_lasttransfers") }}</a></li>
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#mytransfers" data-bs-toggle="tab"
+  	data-ajaxtarget="mytransferslist" data-ajaxblock="transfermarket-mytransfers">{{ i18n.getMessage("transfermarket_tab_mytransfers") }}</a></li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="overview">
   
-    <form class="form-inline">
+    <form class="d-flex flex-wrap gap-2 align-items-center">
   		<label for="position">{{ i18n.getMessage("transfermarket_filter_by_position") }}</label>
-  		<select name="position" id="position">
+  		<select name="position" id="position" class="form-select">
   			<option></option>
   			<option value="goaly"{% if env.getRequestParameter("position") == "goaly" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
   			<option value="defense"{% if env.getRequestParameter("position") == "defense" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
@@ -109,7 +109,7 @@
 				{% endif %}</p>
 				
 				{% if env.getUser().getClubId() != player.team_id %}
-				<p><a class="btn btn-mini" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.id) }}"><i class="icon-hand-up"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
+				<p><a class="btn btn-sm" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.id) }}"><i class="bi bi-hand-index-thumb"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
 				{% endif %}
 				</td>
 			</tr>

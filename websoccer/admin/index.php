@@ -4,19 +4,19 @@
 
   This file is part of OpenWebSoccer-Sim.
 
-  OpenWebSoccer-Sim is free software: you can redistribute it 
-  and/or modify it under the terms of the 
-  GNU Lesser General Public License 
+  OpenWebSoccer-Sim is free software: you can redistribute it
+  and/or modify it under the terms of the
+  GNU Lesser General Public License
   as published by the Free Software Foundation, either version 3 of
   the License, or any later version.
 
   OpenWebSoccer-Sim is distributed in the hope that it will be
   useful, but WITHOUT ANY WARRANTY; without even the implied
-  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU Lesser General Public License for more details.
 
-  You should have received a copy of the GNU Lesser General Public 
-  License along with OpenWebSoccer-Sim.  
+  You should have received a copy of the GNU Lesser General Public
+  License along with OpenWebSoccer-Sim.
   If not, see <http://www.gnu.org/licenses/>.
 
 ******************************************************/
@@ -31,13 +31,13 @@ $navItems['website'] = array();
 
 foreach ($adminpage as $pageId => $pageData) {
 	$pageInfo = json_decode($pageData, true);
-	
+
 	// check permission
-	if ((!isset($admin['r_admin']) || !$admin['r_admin']) && (!isset($admin['r_demo']) || !$admin['r_demo']) 
+	if ((!isset($admin['r_admin']) || !$admin['r_admin']) && (!isset($admin['r_demo']) || !$admin['r_demo'])
 			&& (!isset($admin[$pageInfo['permissionrole']]) || !$admin[$pageInfo['permissionrole']])) {
 		continue;
 	}
-	
+
 	if (isset($pageInfo['entity']) && $pageInfo['entity']) {
 		$siteInfo['label'] = $i18n->getMessage('entity_' . $pageInfo['entity']);
 		$siteInfo['pageid'] = 'manage';
@@ -47,23 +47,24 @@ foreach ($adminpage as $pageId => $pageData) {
 		$siteInfo['pageid'] = $pageInfo['filename'];
 		$siteInfo['entity'] = null;
 	}
-	
+
 	$navItems[$pageInfo['navcategory']][] = $siteInfo;
 }
 
 function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
-	
+
 	$url = '?site='. $pageId;
 	$active = ($currentSite == $pageId);
-	
+
 	if (strlen($entity)) {
 		$url .= '&entity=' . escapeOutput($entity);
 		$active = (isset($_REQUEST['entity']) &&  $_REQUEST['entity'] == $entity);
 	}
-	
-	echo '<li';
-	if ($active) echo ' class=\'active\'';
-	echo '><a href=\''. $url . '\'>'. $navLabel . '</a></li>';
+
+	echo '<li class="nav-item">';
+	echo '<a class="nav-link';
+	if ($active) echo ' active';
+	echo '" href=\''. $url . '\'>'. $navLabel . '</a></li>';
 }
 
 ?>
@@ -73,70 +74,67 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
     <title><?php echo $i18n->getMessage("main_title")?></title>
     <link href="../assets/admincenter.css" rel="stylesheet" media="screen">
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
     <style type="text/css">
       body {
-        padding-top: 60px;
+        padding-top: 70px;
         padding-bottom: 40px;
       }
       .sidebar-nav {
         padding: 9px 0;
       }
-      
+
       .cupround {
 			margin-left: 30px;
 			border-left: 1px solid #CCCCCC;
 			padding: 3px 5px 0px 10px;
 		}
-    </style>	
+    </style>
   </head>
   <body>
-  
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="index.php" title="<?php echo $i18n->getMessage("admincenter_homelink_tooltip"); ?>"><?php echo $i18n->getMessage("admincenter_brand") ?></a>
-          <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.php" title="<?php echo $i18n->getMessage("admincenter_homelink_tooltip"); ?>"><?php echo $i18n->getMessage("admincenter_brand") ?></a>
+        <div class="collapse navbar-collapse" id="adminNavbar">
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item"><a class="nav-link" href="<?php
+              $contextRoot = $website->getConfig("context_root");
+              echo  (strlen($contextRoot)) ? $contextRoot : "/"; ?>"><i class="bi bi-globe"></i> <?php echo $i18n->getMessage("admincenter_link_website"); ?></a></li>
+			  <li class="nav-item"><a class="nav-link" href="?site=profile"><i class="bi bi-person"></i> <?php echo $i18n->getMessage("admincenter_link_profile"); ?></a></li>
+			  <li class="nav-item"><a class="nav-link" href="?site=clearcache"><i class="bi bi-arrow-clockwise"></i> <?php echo $i18n->getMessage("admincenter_link_clear_cache"); ?></a></li>
+			  <li class="nav-item"><a class="nav-link" href="logout.php"><i class="bi bi-power"></i> <?php echo $i18n->getMessage("admincenter_logout"); ?></a></li>
+          </ul>
+          <p class="navbar-text">
               <?php echo $i18n->getMessage("admincenter_loggedin_as"); ?> <a href="?site=profile" class="navbar-link" title="<?php echo $i18n->getMessage("admincenter_editprofile_tooltip"); ?>"><?php echo escapeOutput($admin['name']); ?></a> (<a href="logout.php" class="navbar-link"><?php echo $i18n->getMessage("admincenter_logout"); ?></a>)
             </p>
-            <ul class="nav">
-              <li><a href="<?php 
-              $contextRoot = $website->getConfig("context_root");
-              echo  (strlen($contextRoot)) ? $contextRoot : "/"; ?>"><i class="icon-globe icon-white"></i> <?php echo $i18n->getMessage("admincenter_link_website"); ?></a></li>
-			  <li><a href="?site=profile"><i class="icon-user icon-white"></i> <?php echo $i18n->getMessage("admincenter_link_profile"); ?></a></li>
-			  <li><a href="?site=clearcache"><i class="icon-refresh icon-white"></i> <?php echo $i18n->getMessage("admincenter_link_clear_cache"); ?></a></li>
-			  <li><a href="logout.php"><i class="icon-off icon-white"></i> <?php echo $i18n->getMessage("admincenter_logout"); ?></a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+        </div><!--/.navbar-collapse -->
       </div>
-    </div>  
-  
+    </nav>
+
     <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span2">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              
+      <div class="row">
+        <div class="col-md-4 col-lg-3 py-3">
+          <div class="card sidebar-nav">
+            <ul class="nav flex-column nav-pills gap-1">
+
 			  <?php
 				foreach ($navItems as $navCategory => $categoryItems) {
-					echo "<li class=\"nav-header\">". $i18n->getNavigationLabel("category_" . $navCategory) . "</li>";
+					echo "<li class=\"nav-item\"><span class=\"nav-link fw-bold text-secondary\">". $i18n->getNavigationLabel("category_" . $navCategory) . "</span></li>";
 					foreach ($categoryItems as $navInfo) {
 						printNavItem($site, $navInfo["pageid"], $navInfo["label"], $navInfo["entity"]);
 					}
 				}
 			  ?>
             </ul>
-          </div><!--/.well -->
+          </div><!--/.card -->
         </div><!--/span-->
-        <div class="span10">
-        
+        <div class="col-md-8 col-lg-9 p-3">
+
         	<div id="ajaxSpinner" style="display: none">
         		<img src="../img/ajax-loader.gif" width="16" height="16" />
         	</div>
@@ -158,60 +156,48 @@ if (preg_match('#^[a-z0-9_-]+$#i', $site) && file_exists($includeFile) ) {
 ?>
         </div><!--/span-->
       </div><!--/row-->
-	  
+
       <hr>
-	  
-<!--[if lte IE 9]> 
-<div class="alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <h4><?php echo $i18n->getMessage("internetexplorer_warning_title"); ?></h4>
-  <?php echo $i18n->getMessage("internetexplorer_warning_message"); ?>
-</div>
-<![endif]--> 
 
       <footer>
         <p>Powered by <a href="http://www.websoccer-sim.com" target="_blank">OpenWebSoccer-Sim</a></p>
-      </footer>		  
+      </footer>
 	</div>
-	
+
 
     <script src="../assets/admincenter.js"></script>
-    
+
 	<script>
-	$(function() {
-		$(document).on("click", ".deleteBtn", function(e) {
-			bootbox.confirm("<?php echo $i18n->getMessage("manage_delete_multiselect_confirm"); ?>", 
-					"<?php echo $i18n->getMessage("option_no"); ?>",
-					"<?php echo $i18n->getMessage("option_yes"); ?>",
-			function(result) {
-				if (result) {
-					document.frmMain.submit();
-				}
-				
-			});
-		});
-		$(document).on("click", ".deleteLink", function(e) {
-			e.preventDefault();
-	
-			var link = $(this);
-			
-			bootbox.confirm("<?php echo $i18n->getMessage("manage_delete_link_confirm"); ?>", 
-					"<?php echo $i18n->getMessage("option_no"); ?>",
-					"<?php echo $i18n->getMessage("option_yes"); ?>",
-			function(result) {
-				if (result) {
-					window.location = link.attr("href");
-				}
-				
-			});
-		});
-		$(".datepicker").datepicker({
-			format: "<?php echo str_replace("Y", "yyyy", $website->getConfig("date_format")); ?>",
-			language: "<?php echo $i18n->getCurrentLanguage(); ?>",
-			autoclose: true
+	document.addEventListener("DOMContentLoaded", function() {
+		document.addEventListener("click", function(e) {
+			var deleteBtn = e.target.closest(".deleteBtn");
+			if (deleteBtn) {
+				e.preventDefault();
+				wsConfirm("<?php echo $i18n->getMessage("manage_delete_multiselect_confirm"); ?>",
+						"<?php echo $i18n->getMessage("option_no"); ?>",
+						"<?php echo $i18n->getMessage("option_yes"); ?>",
+				function(result) {
+					if (result) {
+						document.frmMain.submit();
+					}
+				});
+				return;
+			}
+			var deleteLink = e.target.closest(".deleteLink");
+			if (deleteLink) {
+				e.preventDefault();
+				wsConfirm("<?php echo $i18n->getMessage("manage_delete_link_confirm"); ?>",
+						"<?php echo $i18n->getMessage("option_no"); ?>",
+						"<?php echo $i18n->getMessage("option_yes"); ?>",
+				function(result) {
+					if (result) {
+						window.location = deleteLink.getAttribute("href");
+					}
+				});
+			}
 		});
 	});
 </script>
-	
+
   </body>
 </html>
