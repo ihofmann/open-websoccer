@@ -47,33 +47,14 @@ class DefaultBootstrapSkin implements ISkin {
 	 * @see ISkin::getCssSources()
 	 */
 	public function getCssSources() {
-		$files[] = '//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css';
-		$files[] = '//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css';
-		
-		$dir = $this->_websoccer->getConfig('context_root') . '/css/';
-		$files[] = $dir . 'defaultskin.css';
-		$files[] = $dir . 'websoccer.css';
-		$files[] = $dir . 'bootstrap-responsive.min.css';
-		
-		return $files;
+		return array($this->_websoccer->getConfig('context_root') . '/assets/default.css');
 	}
 	
 	/**
 	 * @see ISkin::getJavaScriptSources()
 	 */
 	public function getJavaScriptSources() {
-		$dir = $this->_websoccer->getConfig('context_root') . '/js/';
-		$files[] = '//code.jquery.com/jquery-1.11.1.min.js';
-		
-		if (DEBUG) {
-			$files[] = $dir . 'bootstrap.min.js';
-			$files[] = $dir . 'jquery.blockUI.js';
-			$files[] = $dir . 'wsbase.js';
-		} else {
-			$files[] = $dir . 'websoccer.min.js';
-		}
-		
-		return $files;
+		return array($this->_websoccer->getConfig('context_root') . '/assets/default.js');
 	}
 	
 	/**

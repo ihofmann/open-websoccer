@@ -1,3 +1,5 @@
 release
 .gradle
 websoccer/vendor/
+node_modules/
+websoccer/assets/

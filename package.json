@@ -1,0 +1,31 @@
+{
+  "name": "open-websoccer-assets",
+  "private": true,
+  "description": "OpenWebSoccer-Sim browser assets",
+  "scripts": {
+    "build": "npm run build:admincenter && npm run build:default && npm run build:green && npm run build:schedio",
+    "build:admincenter": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/admincenter.js",
+    "build:default": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/default.js",
+    "build:green": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/green.js",
+    "build:schedio": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/schedio.js",
+    "build:watch": "esbuild --bundle --sourcemap --loader:.png=file --loader:.gif=file --loader:.jpg=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets --watch websoccer/assets-src/admincenter.js websoccer/assets-src/default.js websoccer/assets-src/green.js websoccer/assets-src/schedio.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  },
+  "dependencies": {
+    "bootbox": "^4.4.0",
+    "bootstrap-datepicker": "^1.10.1",
+    "bootstrap-slider": "^4.14.2",
+    "bootstrap-switch": "^2.0.1",
+    "bootstrap-timepicker": "^0.5.2",
+    "bootstrap2": "^2.3.2",
+    "flot": "^0.8.3",
+    "jquery": "^1.11.1",
+    "jquery-blockui": "^2.7.0",
+    "jquery-countdown": "^2.2.0",
+    "jquery-ui-dist": "^1.13.3",
+    "markitup": "^3.0.0-0",
+    "select2": "^3.5.1"
+  }
+}

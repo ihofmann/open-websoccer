@@ -16,11 +16,6 @@
 		{% for cssSource in skin.getCssSources() %}
 		<link href="{{ cssSource }}" media="all" rel="stylesheet" type="text/css" />
 		{% endfor %}
-		{% if cssReferences is defined %}
-			{% for cssSource in cssReferences %}
-			<link href="{{ env.getConfig("context_root") }}/css/{{ cssSource }}" media="all" rel="stylesheet" type="text/css" />
-			{% endfor %}
-		{% endif %}
 		
 		<link rel="shortcut icon" type="image/x-icon" href="{{ env.getConfig("context_root") }}/favicon.ico" />
 		
@@ -107,14 +102,5 @@
 		{% for jsSource in skin.getJavaScriptSources() %}
 		<script src="{{ jsSource }}" ></script>
 		{% endfor %}
-		{% if scriptReferences is defined %}
-			{% for jsSource in scriptReferences %}
-			<script src="{{ env.getConfig("context_root") }}/js/{{ jsSource }}" ></script>
-			{% endfor %}
-		{% endif %}
-		
-		<!--[if lt IE 9]>
-		<script src="js/extcanvas/excanvas.compiled.js"></script>
-		<![endif]-->
 	</body>
 </html>

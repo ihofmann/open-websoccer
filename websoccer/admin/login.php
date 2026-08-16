@@ -129,7 +129,7 @@ header('Content-type: text/html; charset=utf-8');
 <html lang='de'>
   <head>
     <title><?php echo $i18n->getMessage('login_title');?></title>
-    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen'>
+    <link href='../assets/admincenter.css' rel='stylesheet' media='screen'>
     <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
     <meta charset='UTF-8'>
     <style type='text/css'>
@@ -189,7 +189,6 @@ if ($forwarded) {
 	</div>
 	
 
-    <script src='https://code.jquery.com/jquery-latest.min.js'></script>
-    <script src='bootstrap/js/bootstrap.min.js'></script>
+    <script src='../assets/admincenter.js'></script>
   </body>
 </html>
