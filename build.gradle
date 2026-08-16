@@ -13,7 +13,17 @@ task composerInstall(type: Exec) {
     commandLine 'composer', 'install', '--no-dev', '--optimize-autoloader'
 }
 
-task release(dependsOn: composerInstall) << {
+task npmInstall(type: Exec) {
+    description = 'Installs JavaScript and CSS build dependencies via npm.'
+    commandLine 'npm', 'install'
+}
+
+task assetsBuild(type: Exec, dependsOn: npmInstall) {
+    description = 'Bundles browser assets with esbuild.'
+    commandLine 'npm', 'run', 'build'
+}
+
+task release(dependsOn: [composerInstall, assetsBuild]) << {
     println 'Starting release. Make sure you disabled DEBUG mode in software.'
 }
 
@@ -37,6 +47,7 @@ release << {
         exclude 'dberrorlog.txt'
         exclude 'admin/dberrorlog.txt'
         exclude 'build.gradle'
+        exclude 'assets-src'
         exclude 'cache/*'
         exclude 'update'
         exclude 'uploads/club/*'

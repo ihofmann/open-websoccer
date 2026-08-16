@@ -62,6 +62,42 @@ composer update twig/twig --working-dir=websoccer
 
 then commit the updated `websoccer/composer.lock`.
 
+## Frontend dependencies and asset bundles
+
+The JavaScript and CSS dependencies are built locally with
+[npm](https://nodejs.org/) and [esbuild](https://esbuild.github.io/).
+Install Node.js 18 or newer (npm is included).
+
+Install the frontend dependencies from the repository root:
+
+```bash
+npm install
+```
+
+Build the browser assets during development:
+
+```bash
+npm run build
+```
+
+The output is written to `websoccer/assets/`. It contains one shared
+`admincenter` bundle, reused by the admin, install, and update pages, plus one
+JavaScript/CSS bundle for each bundled skin: `default`, `green`, and `schedio`.
+The generated directory is ignored by Git.
+
+To rebuild automatically while editing frontend files:
+
+```bash
+npm run build:watch
+```
+
+The Gradle release build runs both dependency installation steps and the asset
+build automatically:
+
+```bash
+gradle build
+```
+
 ## Run with Docker (PHP 8.5 + MySQL)
 
 The project ships with a `Dockerfile` and a `docker-compose.yml` that bring up a

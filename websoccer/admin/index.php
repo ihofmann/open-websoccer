@@ -71,13 +71,7 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
 <html lang="<?php echo $i18n->getCurrentLanguage(); ?>">
   <head>
     <title><?php echo $i18n->getMessage("main_title")?></title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="bootstrap-datepicker/css/datepicker.css" rel="stylesheet">
-    <link href="bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" >
-    <link href="select2/select2.css" rel="stylesheet"/>
-    <link href="markitup/skins/simple/style.css" rel="stylesheet" />
-	<link href="markitup/sets/ws/style.css" rel="stylesheet" />
-	<link href="bootstrap/bootstrap-tag.css" rel="stylesheet" >
+    <link href="../assets/admincenter.css" rel="stylesheet" media="screen">
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
     <style type="text/css">
@@ -181,30 +175,7 @@ if (preg_match('#^[a-z0-9_-]+$#i', $site) && file_exists($includeFile) ) {
 	</div>
 	
 
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-    <script src="bootstrap-datepicker/js/locales/bootstrap-datepicker.<?php echo $i18n->getCurrentLanguage(); ?>.js"></script>
-    <script src="bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
-	<script src="select2/select2.min.js"></script>
-	<?php 
-	if ($i18n->getCurrentLanguage() != "en") {
-		echo "<script src=\"select2/select2_locale_". $i18n->getCurrentLanguage() . ".js\"></script>";
-	}
-	?>
-	
-	<script src="markitup/jquery.markitup.js"></script>
-	
-	<?php if ($i18n->getCurrentLanguage() == "de") { ?>
-		<script src="markitup/sets/ws/set_de.js"></script>
-	<?php } else { ?>
-		<script src="markitup/sets/ws/set.js"></script>
-	<?php } ?>
-	<script src="js/admincenter.js"></script>
-	
-	<script src="js/bootbox.min.js"></script>
-	
-	<script src="js/bootstrap-tag.js"></script>
+    <script src="../assets/admincenter.js"></script>
     
 	<script>
 	$(function() {

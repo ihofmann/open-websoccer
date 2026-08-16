@@ -97,7 +97,7 @@ function _sendEmail($email, $password, $website, $i18n) {
 <html>
   <head>
     <title>AdminCenter - <?php echo $i18n->getMessage('sendpassword_admin_title'); ?></title>
-    <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' media='screen'>
+    <link href='../assets/admincenter.css' rel='stylesheet' media='screen'>
     <meta charset='UTF-8'>
     <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
     <style type='text/css'>
@@ -146,7 +146,6 @@ if (count($errors) > 0) {
 	</div>
 	
 
-    <script src='https://code.jquery.com/jquery-latest.min.js'></script>
-    <script src='bootstrap/js/bootstrap.min.js'></script>
+    <script src='../assets/admincenter.js'></script>
   </body>
 </html>

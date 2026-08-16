@@ -530,7 +530,7 @@ function printFinalPage($messages) {
 <html lang="de">
   <head>
     <title>OpenWebSoccer-Sim Installation</title>
-    <link href="../admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../assets/admincenter.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
     <meta charset="UTF-8">
     <style type="text/css">
@@ -590,8 +590,7 @@ function printFinalPage($messages) {
       </footer>		  
 	</div>
 	
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../admin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/admincenter.js"></script>
   </body>
 </html>
 
