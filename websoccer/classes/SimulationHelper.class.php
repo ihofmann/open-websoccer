@@ -228,7 +228,7 @@ class SimulationHelper {
 		$team = $playerOut->team;
 		
 		// no players on bench
-		if (count($team->playersOnBench) < 1) {
+		if (empty($team->playersOnBench)) {
 			return FALSE;
 		}
 		

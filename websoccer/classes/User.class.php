@@ -145,10 +145,10 @@ class User {
 	 * @param String $fileName file name of picture.
 	 */
 	public function setProfilePicture(WebSoccer $websoccer, $fileName) {
-		if (strlen($fileName)) {
+		if ($fileName !== null && strlen($fileName)) {
 			$this->_profilePicture = UsersDataService::getUserProfilePicture($websoccer, $fileName, null);
 		}
-		
+
 	}
 	
 	/**

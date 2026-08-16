@@ -44,6 +44,19 @@ class DbConnection {
 		}
 		return self::$_instance;
 	}
+
+	/**
+	 * Replaces the singleton instance with a (mock) instance.
+	 *
+	 * This is intended for unit tests only, so that classes which fetch the
+	 * connection through DbConnection::getInstance() can be tested without an
+	 * actual database connection. Pass NULL to clear the instance again.
+	 *
+	 * @param DbConnection|null $instance mock instance or NULL to reset.
+	 */
+	public static function setInstanceForTesting(?DbConnection $instance = null) {
+		self::$_instance = $instance;
+	}
 	
 	// hide constructor (Singleton implementation)
 	private function __construct() {

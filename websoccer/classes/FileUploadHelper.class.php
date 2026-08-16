@@ -48,7 +48,7 @@ class FileUploadHelper {
 			throw new Exception($i18n->getMessage('validationerror_imageupload_noimagefile'));
 		}
 		
-		$imagesize = getimagesize($_FILES[$requestParameter]['tmp_name']);
+		$imagesize = @getimagesize($_FILES[$requestParameter]['tmp_name']);
 		if ($imagesize === FALSE) {
 			throw new Exception($i18n->getMessage('validationerror_imageupload_noimagefile'));
 		}

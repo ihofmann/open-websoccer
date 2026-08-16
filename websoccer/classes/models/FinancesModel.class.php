@@ -57,7 +57,7 @@ class FinancesModel implements IModel {
 			$statements = array();
 		}
 		
-		return array("budget" => $team["team_budget"], "statements" => $statements, "paginator" => $paginator);
+		return array("budget" => ($team ? $team["team_budget"] : null), "statements" => $statements, "paginator" => $paginator);
 	}
 	
 }

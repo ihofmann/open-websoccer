@@ -37,7 +37,7 @@ class LeagueSelectionModel implements IModel {
 	
 	public function renderView() {
 		$this->_country = $this->_websoccer->getRequestParameter("country");
-		return (strlen($this->_country));
+		return strlen($this->_country ?? '');
 	}
 	
 	public function getTemplateParameters() {

@@ -308,7 +308,7 @@ class TransfermarketDataService {
 		BadgesDataService::awardBadgeIfApplicable($websoccer, $db, $userId, 'x_trades', $transactions['hits']);
 	}
 	
-	private function extendDuration($websoccer, $db, $playerId) {
+	private static function extendDuration($websoccer, $db, $playerId) {
 		$fromTable = $websoccer->getConfig('db_prefix') . '_spieler';
 		
 		$columns['transfer_ende'] = $websoccer->getNowAsTimestamp() + 24 * 3600 * $websoccer->getConfig('transfermarket_duration_days');
@@ -318,7 +318,7 @@ class TransfermarketDataService {
 		$db->queryUpdate($columns, $fromTable, $whereCondition, $playerId);
 	}
 	
-	private function transferPlayer(WebSoccer $websoccer, DbConnection $db, $player, $bid) {
+	private static function transferPlayer(WebSoccer $websoccer, DbConnection $db, $player, $bid) {
 		
 		$playerName = (strlen($player['pseudonym'])) ? $player['pseudonym'] : $player['first_name'] . ' ' . $player['last_name'];
 		

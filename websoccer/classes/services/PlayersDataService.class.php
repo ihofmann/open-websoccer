@@ -357,7 +357,7 @@ class PlayersDataService {
 		
 		$whereCondition = 'P.status = 1 AND P.id = %d';
 		$players = $db->queryCachedSelect($columns, $fromTable, $whereCondition, $playerId, 1);
-		if (count($players)) {
+		if (!empty($players)) {
 			$player = $players[0];
 			
 			$player['player_position'] = self::_convertPosition($player['player_position']);
@@ -669,7 +669,7 @@ class PlayersDataService {
 	 * @return string fag file name.
 	 */
 	public static function getFlagFilename($nationality) {
-		if (!strlen($nationality)) {
+		if ($nationality === null || !strlen($nationality)) {
 			return $nationality;
 		}
 		
