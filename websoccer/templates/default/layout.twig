@@ -27,7 +27,7 @@
 		{% include 'navigationbar.twig' %}
 		{% endblock %}
 	
-		<div class="container">	
+		<div class="container mt-3">	
 		
 			{% block page_header %}
 			{% endblock %}
@@ -91,7 +91,6 @@
 	        	{% if env.getConfig("privacypolicy_url")|length > 0 %}| <a href="{{ env.getConfig("privacypolicy_url") }}">{{ i18n.getMessage("privacypolicy_navlabel") }}</a>{% endif %}
 	        	| <a href="{{ env.getInternalUrl("imprint") }}">{{ i18n.getMessage("imprint_navlabel") }}</a> 
 	        	| Powered by <a href="http://www.websoccer-sim.com" target="_blank">OpenWebSoccer-Sim</a>
-	        	| <i class="bi bi-clock"></i> {{ env.getFormattedDatetime(null) }}
 	        	</p>
 			</footer>
 			

@@ -1,21 +1,23 @@
 
+{% import "macros/navitem.twig" as navitemTemplate %}
+
 <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
 	<div class="container">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wsNavbar" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wsNavbar" aria-controls="wsNavbar" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="{{ env.getConfig("context_root") }}" title="{{ i18n.getNavigationLabel("home") }}">{{ env.getConfig("projectname") }}</a>
+		<a class="navbar-brand" href="{{ env.getInternalUrl("home") }}" title="{{ i18n.getNavigationLabel("home") }}">{{ env.getConfig("projectname") }}</a>
 
 		<div class="collapse navbar-collapse" id="wsNavbar">
-			<ul class="navbar-nav" role="menu">
+			<ul class="navbar-nav">
 				{% for navItem in navItems %}
 
 				{% if navItem.children|length > 0 %}
 				<li class="nav-item dropdown{% if navItem.isActive %} active{% endif %}">
-					<a class="nav-link dropdown-toggle" id="label{{ navItem.pageId }}" role="button"
-						data-bs-toggle="dropdown" href="#">
+					<button class="nav-link dropdown-toggle" id="label{{ navItem.pageId }}" type="button"
+						data-bs-toggle="dropdown" aria-expanded="false">
 						{{ navItem.label }}
-					</a>
+					</button>
 					<ul class="dropdown-menu" aria-labelledby="label{{ navItem.pageId }}">
 						<li><a class="dropdown-item" href="{{ env.getInternalUrl(navItem.pageId) }}">{{ navItem.label }}</a></li>
 						{% for navChild in navItem.children %}

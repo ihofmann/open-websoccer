@@ -29,10 +29,6 @@
 }
 
 /* bootstrap fixes */
-.collapse {
-  overflow: hidden;
-}
-
 .dl-horizontal dt {
   white-space: normal;
 }
@@ -73,8 +69,8 @@
 .ws-block-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.5)
-    url("../../img/ajaxloaderbar.gif") no-repeat center center;
+  background: rgba(255, 255, 255, 0.5) url("../../img/ajaxloaderbar.gif")
+    no-repeat center center;
   z-index: 1020;
 }
 
