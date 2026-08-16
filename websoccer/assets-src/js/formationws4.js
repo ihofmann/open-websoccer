@@ -22,7 +22,7 @@
 (function () {
   "use strict";
 
-  var CSS_CONFIG = {
+  const CSS_CONFIG = {
     PITCH_POSITION: "position",
     PITCH_POSITION_LABEL: "positionLabel",
     PITCH_FREE_POSITION: "freePosition",
@@ -51,7 +51,7 @@
     return (ctx || document).querySelector(sel);
   }
   function qsa(sel, ctx) {
-    return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
+    return Array.from((ctx || document).querySelectorAll(sel));
   }
   function dataInt(el, key) {
     return parseInt(el.dataset[key], 10) || 0;
@@ -73,17 +73,17 @@
       .replace(/>/g, "&gt;");
   }
 
-  var draggedPlayerId = null;
+  let draggedPlayerId = null;
 
   /* ---------- core actions ---------- */
   function addPlayerToPitch(playerId, targetPos) {
-    var player = qs("#playerinfo" + playerId);
+    const player = qs("#playerinfo" + playerId);
     if (!player) return false;
 
-    var targetPosition = qs(
+    let targetPosition = qs(
       ".position." + targetPos + "." + CSS_CONFIG.PITCH_FREE_POSITION
     );
-    var playerToSwap = 0;
+    let playerToSwap = 0;
 
     /* is position already occupied? */
     if (!targetPosition) {
@@ -105,9 +105,9 @@
 
     /* if player has been already on pitch, remove him (move to new position) */
     if (player.classList.contains(CSS_CONFIG.PLAYER_ON_PITCH)) {
-      var originalPosition = null;
+      let originalPosition = null;
       if (playerToSwap > 0) {
-        var pos = qsa("." + CSS_CONFIG.PITCH_POSITION).find(function (el) {
+        const pos = qsa("." + CSS_CONFIG.PITCH_POSITION).find(function (el) {
           return String(el.dataset.playerid) === String(playerId);
         });
         originalPosition = pos ? pos.dataset.mainposition : null;
@@ -127,10 +127,10 @@
     }
 
     /* check position state */
-    var playerStrength = dataFloat(player, "strength");
-    var mainPos = player.dataset.mainposition;
-    var secondPos = player.dataset.secondposition;
-    var playerPos = player.dataset.position;
+    let playerStrength = dataFloat(player, "strength");
+    const mainPos = player.dataset.mainposition;
+    const secondPos = player.dataset.secondposition;
+    const playerPos = player.dataset.position;
 
     if (
       (mainPos && targetPosition.classList.contains(mainPos)) ||
@@ -152,8 +152,8 @@
     targetPosition.dataset.playerid = playerId;
 
     /* add strength bar */
-    if (typeof playerStrength !== "undefined" && !isNaN(playerStrength)) {
-      var progress_status = "danger";
+    if (!Number.isNaN(playerStrength)) {
+      let progress_status = "danger";
       if (playerStrength > 80) progress_status = "success";
       else if (playerStrength > 50) progress_status = "info";
       else if (playerStrength > 30) progress_status = "warning";
@@ -219,13 +219,12 @@
     targetPosition.setAttribute("draggable", "true");
 
     /* add to hidden input field */
-    var playerField = qs('.playerField[value="' + playerId + '"]');
-    if (!playerField) {
-      playerField = qs(".playerField[value='']");
-    }
+    const playerField =
+      qs('.playerField[value="' + playerId + '"]') ||
+      qs(".playerField[value='']");
     if (playerField) {
       playerField.value = playerId;
-      var posField = playerField.nextElementSibling;
+      const posField = playerField.nextElementSibling;
       if (posField) posField.value = targetPos.substring(0, 2);
     }
 
@@ -242,7 +241,7 @@
     });
 
     /* add to free kick taker selection */
-    var fk = qs("#freekickplayer");
+    const fk = qs("#freekickplayer");
     if (fk) {
       fk.insertAdjacentHTML(
         "beforeend",
@@ -258,7 +257,7 @@
   }
 
   function removePlayerFromPitch(playerId) {
-    var positionDiv = qsa("." + CSS_CONFIG.PITCH_POSITION).find(function (el) {
+    const positionDiv = qsa("." + CSS_CONFIG.PITCH_POSITION).find(function (el) {
       return String(el.dataset.playerid) === String(playerId);
     });
     if (!positionDiv) return;
@@ -286,7 +285,7 @@
     positionDiv.removeAttribute("draggable");
     positionDiv.draggable = false;
 
-    var player = qs("#playerinfo" + playerId);
+    const player = qs("#playerinfo" + playerId);
     if (player) {
       player.classList.remove(CSS_CONFIG.PLAYER_ON_PITCH);
       qsa("." + CSS_CONFIG.ACTIONLINK_REMOVE, player).forEach(hide);
@@ -319,17 +318,17 @@
     });
 
     /* remove from hidden input field */
-    var playerField = qs('.playerField[value="' + playerId + '"]');
+    const playerField = qs('.playerField[value="' + playerId + '"]');
     if (playerField) {
       playerField.value = "";
-      var posField = playerField.nextElementSibling;
+      const posField = playerField.nextElementSibling;
       if (posField) posField.value = "";
     }
   }
 
   function addPlayerToBench(playerId) {
-    var player = qs("#playerinfo" + playerId);
-    var targetPosition = qs(
+    const player = qs("#playerinfo" + playerId);
+    const targetPosition = qs(
       "." +
         CSS_CONFIG.BENCH_POSITION +
         "." +
@@ -349,27 +348,19 @@
     player.classList.add(CSS_CONFIG.PLAYER_ON_BENCH);
     targetPosition.dataset.playerid = playerId;
 
-    var playerInfoCell = qs(" > .benchPlayerInfo", targetPosition);
+    const playerInfoCell = qs(" > .benchPlayerInfo", targetPosition);
     if (playerInfoCell) {
       hide(qs(" > .benchPlaceholder", playerInfoCell));
 
-      var playerLabel = player.dataset.pname;
+      let playerLabel = player.dataset.pname;
       if (player.dataset.mainposition) {
-        playerLabel =
-          playerLabel +
-          " (" +
-          (qs(".mainposition", player)
-            ? qs(".mainposition", player).textContent
-            : "");
+        const mainPosEl = qs(".mainposition", player);
+        playerLabel += " (" + (mainPosEl ? mainPosEl.textContent : "");
         if (player.dataset.secondposition) {
-          playerLabel =
-            playerLabel +
-            " / " +
-            (qs(".secondposition", player)
-              ? qs(".secondposition", player).textContent
-              : "");
+          const secondPosEl = qs(".secondposition", player);
+          playerLabel += " / " + (secondPosEl ? secondPosEl.textContent : "");
         }
-        playerLabel = playerLabel + ")";
+        playerLabel += ")";
       }
 
       playerInfoCell.insertAdjacentHTML(
@@ -392,19 +383,17 @@
 
     targetPosition.classList.remove(CSS_CONFIG.PITCH_FREE_POSITION);
 
-    var playerIndex =
-      Array.prototype.indexOf.call(
-        targetPosition.parentElement.children,
-        targetPosition
-      ) + 1;
-    var benchField = qs("#bench" + playerIndex);
+    const playerIndex =
+      Array.from(targetPosition.parentElement.children).indexOf(targetPosition) +
+      1;
+    const benchField = qs("#bench" + playerIndex);
     if (benchField) benchField.value = playerId;
 
     return true;
   }
 
   function removePlayerFromBench(playerId) {
-    var positionDiv = qsa("." + CSS_CONFIG.BENCH_POSITION).find(function (el) {
+    const positionDiv = qsa("." + CSS_CONFIG.BENCH_POSITION).find(function (el) {
       return String(el.dataset.playerid) === String(playerId);
     });
     if (!positionDiv) return;
@@ -419,7 +408,7 @@
     });
     show(qs(".benchPlaceholder", positionDiv));
 
-    var player = qs("#playerinfo" + playerId);
+    const player = qs("#playerinfo" + playerId);
     if (player) {
       player.classList.remove(CSS_CONFIG.PLAYER_ON_BENCH);
       qsa("." + CSS_CONFIG.ACTIONLINK_REMOVE, player).forEach(hide);
@@ -430,12 +419,9 @@
     hide(qs("." + CSS_CONFIG.BENCH_PLAYER_REMOVE_LINK, positionDiv));
     hide(qs("." + CSS_CONFIG.BENCH_PLAYER_SUB_LINK, positionDiv));
 
-    var playerIndex =
-      Array.prototype.indexOf.call(
-        positionDiv.parentElement.children,
-        positionDiv
-      ) + 1;
-    var benchField = qs("#bench" + playerIndex);
+    const playerIndex =
+      Array.from(positionDiv.parentElement.children).indexOf(positionDiv) + 1;
+    const benchField = qs("#bench" + playerIndex);
     if (benchField) benchField.value = "";
   }
 
@@ -444,8 +430,8 @@
       return false;
     }
 
-    var playerIn = qs("#playerinfo" + playerInId);
-    var playerOut = qs("#playerinfo" + playerOutId);
+    const playerIn = qs("#playerinfo" + playerInId);
+    const playerOut = qs("#playerinfo" + playerOutId);
     if (!playerIn || !playerOut) return false;
 
     if (
@@ -455,20 +441,20 @@
       return false;
     }
 
-    var numberOfExistingSubs = qsa(
+    const numberOfExistingSubs = qsa(
       "." + CSS_CONFIG.BENCH_ACTIVE_SUBSTITUTION
     ).length;
     if (numberOfExistingSubs >= 3) return false;
 
-    var benchPosition = qsa("." + CSS_CONFIG.BENCH_POSITION).find(function (el) {
+    const benchPosition = qsa("." + CSS_CONFIG.BENCH_POSITION).find(function (el) {
       return String(el.dataset.playerid) === String(playerInId);
     });
     if (!benchPosition) return false;
 
-    var minuteEl = qs(".benchPlayerSubInfoMinute", benchPosition);
+    const minuteEl = qs(".benchPlayerSubInfoMinute", benchPosition);
     if (minuteEl) minuteEl.textContent = minute;
 
-    var outPlayerInfo = qs(".benchPlayerSubInfoPlayer", benchPosition);
+    const outPlayerInfo = qs(".benchPlayerSubInfoPlayer", benchPosition);
     if (outPlayerInfo) {
       outPlayerInfo.textContent = playerOut.dataset.pname;
       outPlayerInfo.dataset.playerid = playerOutId;
@@ -482,14 +468,14 @@
     }
 
     if (position) {
-      var positionInfoElement = qs(
+      const positionInfoElement = qs(
         ".benchPlayerSubInfoPosition",
         benchPosition
       );
       if (positionInfoElement) {
         show(positionInfoElement);
-        var opt = qs('option[value="' + position + '"]', benchPosition);
-        var labelEl = qs(".subPositionLabel", positionInfoElement);
+        const opt = qs('option[value="' + position + '"]', benchPosition);
+        const labelEl = qs(".subPositionLabel", positionInfoElement);
         if (opt && labelEl) labelEl.textContent = opt.textContent;
       }
     }
@@ -507,7 +493,7 @@
       qsa("." + CSS_CONFIG.BENCH_PLAYER_SUB_LINK).forEach(hide);
     }
 
-    var subNo = numberOfExistingSubs + 1;
+    const subNo = numberOfExistingSubs + 1;
     setVal("#sub" + subNo + "_out", playerOutId);
     setVal("#sub" + subNo + "_in", playerInId);
     setVal("#sub" + subNo + "_minute", minute);
@@ -517,15 +503,14 @@
   }
 
   function setVal(sel, val) {
-    var el = qs(sel);
+    const el = qs(sel);
     if (el) el.value = val;
   }
 
   function removeSubstitution(positionElement) {
-    var playerOutId = qs(".benchPlayerSubInfoPlayer", positionElement)
-      ? qs(".benchPlayerSubInfoPlayer", positionElement).dataset.playerid
-      : null;
-    var playerOut = qs("#playerinfo" + playerOutId);
+    const outPlayerEl = qs(".benchPlayerSubInfoPlayer", positionElement);
+    const playerOutId = outPlayerEl ? outPlayerEl.dataset.playerid : null;
+    const playerOut = qs("#playerinfo" + playerOutId);
 
     if (playerOut) {
       qsa(".playersOutSelection").forEach(function (sel) {
@@ -559,9 +544,9 @@
     ).forEach(show);
 
     /* remove from hidden input fields */
-    var subField = qs('.subsInputOutPlayer[value="' + playerOutId + '"]');
+    const subField = qs('.subsInputOutPlayer[value="' + playerOutId + '"]');
     if (subField) {
-      var subNo = subField.dataset.subno;
+      const subNo = subField.dataset.subno;
       if (subNo > 0) {
         setVal("#sub" + subNo + "_out", "");
         setVal("#sub" + subNo + "_in", "");
@@ -579,19 +564,19 @@
   /* ---------- event handlers (delegated) ---------- */
   document.addEventListener("click", function (e) {
     /* remove player link on pitch */
-    var removeOnPitch = e.target.closest("." + CSS_CONFIG.PITCH_PLAYER_REMOVE_LINK);
+    const removeOnPitch = e.target.closest("." + CSS_CONFIG.PITCH_PLAYER_REMOVE_LINK);
     if (removeOnPitch) {
       e.preventDefault();
-      var positionDiv = removeOnPitch.closest("." + CSS_CONFIG.PITCH_POSITION);
+      const positionDiv = removeOnPitch.closest("." + CSS_CONFIG.PITCH_POSITION);
       if (positionDiv) removePlayerFromPitch(positionDiv.dataset.playerid);
       return;
     }
 
     /* remove player link in players selection list */
-    var removeLink = e.target.closest("." + CSS_CONFIG.ACTIONLINK_REMOVE);
+    const removeLink = e.target.closest("." + CSS_CONFIG.ACTIONLINK_REMOVE);
     if (removeLink) {
       e.preventDefault();
-      var player = removeLink.closest("." + CSS_CONFIG.PLAYER_INFO);
+      const player = removeLink.closest("." + CSS_CONFIG.PLAYER_INFO);
       if (!player) return;
       if (player.classList.contains(CSS_CONFIG.PLAYER_ON_PITCH)) {
         removePlayerFromPitch(player.dataset.playerid);
@@ -602,44 +587,44 @@
     }
 
     /* add player link handler */
-    var addPitchItem = e.target.closest(
+    const addPitchItem = e.target.closest(
       "." + CSS_CONFIG.ACTIONLINK_ADD_TO_PITCH_ITEM
     );
     if (addPitchItem) {
       e.preventDefault();
-      var p = addPitchItem.closest("." + CSS_CONFIG.PLAYER_INFO);
+      const p = addPitchItem.closest("." + CSS_CONFIG.PLAYER_INFO);
       if (p) addPlayerToPitch(p.dataset.playerid, addPitchItem.dataset.target);
       return;
     }
 
     /* add player to bench link handler */
-    var addBench = e.target.closest("." + CSS_CONFIG.ACTIONLINK_ADD_TO_BENCH);
+    const addBench = e.target.closest("." + CSS_CONFIG.ACTIONLINK_ADD_TO_BENCH);
     if (addBench) {
       e.preventDefault();
-      var pb = addBench.closest("." + CSS_CONFIG.PLAYER_INFO);
+      const pb = addBench.closest("." + CSS_CONFIG.PLAYER_INFO);
       if (pb) addPlayerToBench(pb.dataset.playerid);
       return;
     }
 
     /* remove player link on bench handler */
-    var benchRemove = e.target.closest("." + CSS_CONFIG.BENCH_PLAYER_REMOVE_LINK);
+    const benchRemove = e.target.closest("." + CSS_CONFIG.BENCH_PLAYER_REMOVE_LINK);
     if (benchRemove) {
       e.preventDefault();
-      var bp = benchRemove.closest("." + CSS_CONFIG.BENCH_POSITION);
+      const bp = benchRemove.closest("." + CSS_CONFIG.BENCH_POSITION);
       if (bp) removePlayerFromBench(bp.dataset.playerid);
       return;
     }
 
     /* save substitution handler */
-    var saveSub = e.target.closest(".saveSubstitutionBtn");
+    const saveSub = e.target.closest(".saveSubstitutionBtn");
     if (saveSub) {
-      var pe = saveSub.closest("." + CSS_CONFIG.BENCH_POSITION);
+      const pe = saveSub.closest("." + CSS_CONFIG.BENCH_POSITION);
       if (pe) {
-        var playerInId = pe.dataset.playerid;
-        var minuteEl = qs('input[id^="sub_minute"]', pe);
-        var outSel = qs(".playersOutSelection", pe);
-        var condSel = qs('select[id^="sub_condition"]', pe);
-        var posSel = qs('select[id^="sub_position"]', pe);
+        const playerInId = pe.dataset.playerid;
+        const minuteEl = qs('input[id^="sub_minute"]', pe);
+        const outSel = qs(".playersOutSelection", pe);
+        const condSel = qs('select[id^="sub_condition"]', pe);
+        const posSel = qs('select[id^="sub_position"]', pe);
         addSubstitution(
           playerInId,
           outSel ? outSel.value : null,
@@ -652,16 +637,16 @@
     }
 
     /* remove substitution handler */
-    var removeSub = e.target.closest(".removeSubstitutionBtn");
+    const removeSub = e.target.closest(".removeSubstitutionBtn");
     if (removeSub) {
       e.preventDefault();
-      var rpe = removeSub.closest("." + CSS_CONFIG.BENCH_POSITION);
+      const rpe = removeSub.closest("." + CSS_CONFIG.BENCH_POSITION);
       if (rpe) removeSubstitution(rpe);
       return;
     }
 
     /* clear all */
-    var clearAll = e.target.closest(".clearAllBtn");
+    const clearAll = e.target.closest(".clearAllBtn");
     if (clearAll) {
       e.preventDefault();
       qsa("." + CSS_CONFIG.PITCH_POSITION).forEach(function (el) {
@@ -674,12 +659,12 @@
     }
 
     /* submit setup form with pre-filled positions */
-    var setupSubmit = e.target.closest(".formationSetupSubmit");
+    const setupSubmit = e.target.closest(".formationSetupSubmit");
     if (setupSubmit) {
       e.preventDefault();
-      var preselect = qs("#preselect");
+      const preselect = qs("#preselect");
       if (preselect) preselect.value = setupSubmit.dataset.preselect;
-      var form = setupSubmit.closest("form");
+      const form = setupSubmit.closest("form");
       if (form) form.submit();
       return;
     }
@@ -687,20 +672,20 @@
 
   /* double click on a pitch position removes the player */
   document.addEventListener("dblclick", function (e) {
-    var pos = e.target.closest("." + CSS_CONFIG.PITCH_POSITION);
+    const pos = e.target.closest("." + CSS_CONFIG.PITCH_POSITION);
     if (pos) {
       removePlayerFromPitch(pos.dataset.playerid);
       return;
     }
 
-    var draggable = e.target.closest("." + CSS_CONFIG.PLAYER_DRAGGABLE);
+    const draggable = e.target.closest("." + CSS_CONFIG.PLAYER_DRAGGABLE);
     if (draggable) {
-      var position = draggable.dataset.mainposition;
+      let position = draggable.dataset.mainposition;
 
       if (!position || positionIsOccupied(position)) {
         position = draggable.dataset.secondposition;
         if (!position || positionIsOccupied(position)) {
-          var positionDiv = qs(
+          const positionDiv = qs(
             ".position." +
               CSS_CONFIG.PITCH_FREE_POSITION +
               '[data-position="' +
@@ -721,21 +706,24 @@
     el.setAttribute("draggable", "true");
   });
 
+  function setDragData(e, playerId) {
+    try {
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", playerId);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   document.addEventListener("dragstart", function (e) {
-    var fromPlayer = e.target.closest("." + CSS_CONFIG.PLAYER_DRAGGABLE);
-    var fromPosition = e.target.closest("." + CSS_CONFIG.PITCH_POSITION);
+    const fromPlayer = e.target.closest("." + CSS_CONFIG.PLAYER_DRAGGABLE);
+    const fromPosition = e.target.closest("." + CSS_CONFIG.PITCH_POSITION);
     if (fromPlayer && fromPlayer.dataset.playerid) {
       draggedPlayerId = fromPlayer.dataset.playerid;
-      try {
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/plain", draggedPlayerId);
-      } catch (err) {}
+      setDragData(e, draggedPlayerId);
     } else if (fromPosition && fromPosition.dataset.playerid) {
       draggedPlayerId = fromPosition.dataset.playerid;
-      try {
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/plain", draggedPlayerId);
-      } catch (err) {}
+      setDragData(e, draggedPlayerId);
     } else {
       draggedPlayerId = null;
     }
@@ -749,23 +737,25 @@
   });
 
   document.addEventListener("dragover", function (e) {
-    var target = e.target.closest("." + CSS_CONFIG.PITCH_POSITION + ", ." + CSS_CONFIG.BENCH_POSITION);
+    const target = e.target.closest("." + CSS_CONFIG.PITCH_POSITION + ", ." + CSS_CONFIG.BENCH_POSITION);
     if (target && draggedPlayerId) {
       e.preventDefault();
       try {
         e.dataTransfer.dropEffect = "move";
-      } catch (err) {}
+      } catch (err) {
+        console.error(err);
+      }
       target.classList.add("playerDropHover");
     }
   });
 
   document.addEventListener("dragleave", function (e) {
-    var target = e.target.closest("." + CSS_CONFIG.PITCH_POSITION + ", ." + CSS_CONFIG.BENCH_POSITION);
+    const target = e.target.closest("." + CSS_CONFIG.PITCH_POSITION + ", ." + CSS_CONFIG.BENCH_POSITION);
     if (target) target.classList.remove("playerDropHover");
   });
 
   document.addEventListener("drop", function (e) {
-    var target = e.target.closest("." + CSS_CONFIG.PITCH_POSITION + ", ." + CSS_CONFIG.BENCH_POSITION);
+    const target = e.target.closest("." + CSS_CONFIG.PITCH_POSITION + ", ." + CSS_CONFIG.BENCH_POSITION);
     if (!target || !draggedPlayerId) return;
     e.preventDefault();
     target.classList.remove("playerDropHover");
@@ -780,29 +770,29 @@
 
   /* ---------- pre-select players / subs on load ---------- */
   document.addEventListener("DOMContentLoaded", function () {
-    for (var playerIndex = 1; playerIndex <= 11; playerIndex++) {
-      var preSelectedPlayer = qs("#player" + playerIndex);
+    for (let playerIndex = 1; playerIndex <= 11; playerIndex++) {
+      const preSelectedPlayer = qs("#player" + playerIndex);
       if (preSelectedPlayer && preSelectedPlayer.value > 0) {
-        var posField = qs("#player" + playerIndex + "_pos");
+        const posField = qs("#player" + playerIndex + "_pos");
         if (!addPlayerToPitch(preSelectedPlayer.value, posField ? posField.value : null)) {
           preSelectedPlayer.value = "";
         }
       }
     }
-    for (var benchIndex = 1; benchIndex <= 5; benchIndex++) {
-      var preBench = qs("#bench" + benchIndex);
+    for (let benchIndex = 1; benchIndex <= 5; benchIndex++) {
+      const preBench = qs("#bench" + benchIndex);
       if (preBench && preBench.value > 0) {
         if (!addPlayerToBench(preBench.value)) {
           preBench.value = "";
         }
       }
     }
-    for (var subNo = 1; subNo <= 3; subNo++) {
-      var playerOutId = qs("#sub" + subNo + "_out");
-      var playerInId = qs("#sub" + subNo + "_in");
-      var minute = qs("#sub" + subNo + "_minute");
-      var condition = qs("#sub" + subNo + "_condition");
-      var position = qs("#sub" + subNo + "_position");
+    for (let subNo = 1; subNo <= 3; subNo++) {
+      const playerOutId = qs("#sub" + subNo + "_out");
+      const playerInId = qs("#sub" + subNo + "_in");
+      const minute = qs("#sub" + subNo + "_minute");
+      const condition = qs("#sub" + subNo + "_condition");
+      const position = qs("#sub" + subNo + "_position");
       if (
         playerOutId &&
         playerInId &&
@@ -830,7 +820,7 @@
     }
 
     /* pre-selected free kick taker */
-    var fk = qs("#freekickplayer");
+    const fk = qs("#freekickplayer");
     if (fk && fk.dataset.preselect) {
       fk.value = fk.dataset.preselect;
     }

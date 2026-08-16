@@ -28,15 +28,15 @@ import { Modal } from "bootstrap";
     return (ctx || document).querySelector(sel);
   }
   function qsa(sel, ctx) {
-    return Array.prototype.slice.call((ctx || document).querySelectorAll(sel));
+    return Array.from((ctx || document).querySelectorAll(sel));
   }
 
   /* expose selectAll for legacy onclick handlers */
   window.selectAll = function () {
-    var c = document.frmMain.selAll.checked;
-    for (var i = 0; i < document.frmMain.elements.length; i++) {
-      var el = document.frmMain.elements[i];
-      if (el.type == "checkbox" && el.name != document.frmMain.selAll.name) {
+    const c = document.frmMain.selAll.checked;
+    for (let i = 0; i < document.frmMain.elements.length; i++) {
+      const el = document.frmMain.elements[i];
+      if (el.type === "checkbox" && el.name !== document.frmMain.selAll.name) {
         el.checked = c;
       }
     }
@@ -46,10 +46,10 @@ import { Modal } from "bootstrap";
   /* wsConfirm: bootbox.confirm replacement using a shared BS5 modal     */
   /* ------------------------------------------------------------------ */
   function ensureConfirmModal() {
-    var modal = document.getElementById("wsConfirmModal");
-    if (modal) return modal;
+    const existing = document.getElementById("wsConfirmModal");
+    if (existing) return existing;
 
-    modal = document.createElement("div");
+    const modal = document.createElement("div");
     modal.id = "wsConfirmModal";
     modal.className = "modal fade";
     modal.setAttribute("tabindex", "-1");
@@ -67,14 +67,14 @@ import { Modal } from "bootstrap";
   }
 
   window.wsConfirm = function (message, noLabel, yesLabel, callback) {
-    var modalEl = ensureConfirmModal();
+    const modalEl = ensureConfirmModal();
     qs("#wsConfirmMessage", modalEl).textContent = message;
-    var noBtn = qs("#wsConfirmNo", modalEl);
-    var yesBtn = qs("#wsConfirmYes", modalEl);
+    const noBtn = qs("#wsConfirmNo", modalEl);
+    const yesBtn = qs("#wsConfirmYes", modalEl);
     noBtn.textContent = noLabel || "Cancel";
     yesBtn.textContent = yesLabel || "OK";
 
-    var instance = new Modal(modalEl);
+    const instance = new Modal(modalEl);
 
     function cleanup() {
       noBtn.removeEventListener("click", onNo);
@@ -109,14 +109,14 @@ import { Modal } from "bootstrap";
       if (hidden.dataset.wsPkInit) return;
       hidden.dataset.wsPkInit = "1";
 
-      var wrapper = hidden.parentElement;
-      var display = wrapper.querySelector(".pkpicker-display");
-      var list = wrapper.querySelector(".pkpicker-list");
+      const wrapper = hidden.parentElement;
+      const display = wrapper.querySelector(".pkpicker-display");
+      const list = wrapper.querySelector(".pkpicker-list");
       if (!display || !list) return;
 
-      var dbtable = hidden.dataset.dbtable;
-      var labelcolumns = hidden.dataset.labelcolumns;
-      var debounce = null;
+      const dbtable = hidden.dataset.dbtable;
+      const labelcolumns = hidden.dataset.labelcolumns;
+      let debounce = null;
 
       function close() {
         list.innerHTML = "";
@@ -125,7 +125,7 @@ import { Modal } from "bootstrap";
 
       function fetchLabel() {
         if (!hidden.value || hidden.value === "0") return;
-        var url =
+        const url =
           "itemsprovider.php?dbtable=" +
           encodeURIComponent(dbtable) +
           "&labelcolumns=" +
@@ -139,11 +139,13 @@ import { Modal } from "bootstrap";
           .then(function (data) {
             if (data && data[0]) display.value = data[0].text;
           })
-          .catch(function () {});
+          .catch(function (err) {
+            console.error(err);
+          });
       }
 
       function search(query) {
-        var url =
+        const url =
           "itemsprovider.php?dbtable=" +
           encodeURIComponent(dbtable) +
           "&labelcolumns=" +
@@ -157,7 +159,8 @@ import { Modal } from "bootstrap";
           .then(function (items) {
             render(items);
           })
-          .catch(function () {
+          .catch(function (err) {
+            console.error(err);
             close();
           });
       }
@@ -169,7 +172,7 @@ import { Modal } from "bootstrap";
           return;
         }
         items.forEach(function (item) {
-          var li = document.createElement("li");
+          const li = document.createElement("li");
           li.className = "list-group-item list-group-item-action";
           li.setAttribute("role", "option");
           li.textContent = item.text;
@@ -185,7 +188,7 @@ import { Modal } from "bootstrap";
       }
 
       display.addEventListener("input", function () {
-        var query = display.value;
+        const query = display.value;
         if (query.length < 2) {
           close();
           return;
@@ -198,12 +201,6 @@ import { Modal } from "bootstrap";
 
       display.addEventListener("blur", function () {
         setTimeout(close, 150);
-      });
-
-      display.addEventListener("focus", function () {
-        if (display.value && !hidden.value) {
-          /* nothing preloaded yet */
-        }
       });
 
       fetchLabel();
@@ -220,11 +217,15 @@ import { Modal } from "bootstrap";
     qsa(".startStopJobLink").forEach(function (link) {
       link.addEventListener("click", function (e) {
         e.preventDefault();
-        var spinner = document.getElementById("ajaxSpinner");
+        const spinner = document.getElementById("ajaxSpinner");
         if (spinner) spinner.style.display = "block";
         fetch(link.getAttribute("href"), {
           headers: { "X-Requested-With": "XMLHttpRequest" },
-        }).finally(function () {
+        })
+          .catch(function (err) {
+            console.error(err);
+          })
+          .finally(function () {
           if (spinner) spinner.style.display = "none";
           location.reload();
         });
@@ -234,24 +235,24 @@ import { Modal } from "bootstrap";
     /* enable table row multiple selection */
     qsa(".tableRowSelectionCell").forEach(function (cell) {
       cell.addEventListener("click", function () {
-        var cb = cell.parentElement.querySelector("input[type=checkbox]");
+        const cb = cell.parentElement.querySelector("input[type=checkbox]");
         if (cb) cb.click();
       });
     });
 
     /* select teams for cup match creation */
     function teamForCupChangeHandler() {
-      var noOfTeams = qsa(".teamForCupCheckbox:checked").length;
-      var noOfRounds = Math.log2(noOfTeams);
+      const noOfTeams = qsa(".teamForCupCheckbox:checked").length;
+      const noOfRounds = Math.log2(noOfTeams);
 
-      var countEl = document.getElementById("numberOfTeamsSelected");
+      const countEl = document.getElementById("numberOfTeamsSelected");
       if (countEl) countEl.textContent = noOfTeams;
 
-      var noAlert = document.getElementById("noCupPossibleAlert");
-      var okAlert = document.getElementById("possibleCupRoundsAlert");
+      const noAlert = document.getElementById("noCupPossibleAlert");
+      const okAlert = document.getElementById("possibleCupRoundsAlert");
 
       /* 0 rounds or not a natural number */
-      if (noOfRounds === 0 || !/^(0|([1-9]\d*))$/.test(noOfRounds)) {
+      if (!Number.isInteger(noOfRounds) || noOfRounds === 0) {
         if (noAlert) noAlert.style.display = "block";
         if (okAlert) okAlert.style.display = "none";
         return;
@@ -260,7 +261,7 @@ import { Modal } from "bootstrap";
       if (okAlert) okAlert.style.display = "block";
       if (noAlert) noAlert.style.display = "none";
 
-      var roundsEl = document.getElementById("roundsNo");
+      const roundsEl = document.getElementById("roundsNo");
       if (roundsEl) roundsEl.textContent = Math.round(noOfRounds);
     }
 

@@ -24,7 +24,7 @@ import { Tooltip, Popover } from "bootstrap";
 (function () {
   "use strict";
 
-  var WSCONFIG = {
+  const WSCONFIG = {
     AJAX_URL: "ajax.php",
   };
 
@@ -34,7 +34,7 @@ import { Tooltip, Popover } from "bootstrap";
   /* ------------------------------------------------------------------ */
   function block(el) {
     if (!el) return;
-    var overlay = document.createElement("div");
+    const overlay = document.createElement("div");
     overlay.className = "ws-block-overlay";
     if (getComputedStyle(el).position === "static") {
       el.style.position = "relative";
@@ -57,29 +57,29 @@ import { Tooltip, Popover } from "bootstrap";
       if (input.dataset.wsAcInit) return;
       input.dataset.wsAcInit = "1";
 
-      var listbox = document.createElement("ul");
+      const listbox = document.createElement("ul");
       listbox.className = "ws-autocomplete-list list-group";
       listbox.setAttribute("role", "listbox");
       input.parentNode.style.position = input.parentNode.style.position || "relative";
       input.parentNode.appendChild(listbox);
 
-      var debounce = null;
+      let debounce = null;
 
       function close() {
         listbox.innerHTML = "";
         listbox.style.display = "none";
       }
 
-      function render(options, query) {
+      function render(options) {
         listbox.innerHTML = "";
         if (!options || !options.length) {
           close();
           return;
         }
         options.forEach(function (opt) {
-          var value = typeof opt === "object" ? opt.value : opt;
-          var label = typeof opt === "object" ? opt.label : opt;
-          var item = document.createElement("li");
+          const value = typeof opt === "object" ? opt.value : opt;
+          const label = typeof opt === "object" ? opt.label : opt;
+          const item = document.createElement("li");
           item.className = "list-group-item list-group-item-action";
           item.setAttribute("role", "option");
           item.textContent = label;
@@ -94,15 +94,15 @@ import { Tooltip, Popover } from "bootstrap";
       }
 
       input.addEventListener("input", function () {
-        var query = input.value;
+        const query = input.value;
         if (query.length < 2) {
           close();
           return;
         }
         clearTimeout(debounce);
         debounce = setTimeout(function () {
-          var block = input.dataset.ajaxblock;
-          var url =
+          const block = input.dataset.ajaxblock;
+          const url =
             WSCONFIG.AJAX_URL +
             "?contentonly=1&block=" +
             encodeURIComponent(block) +
@@ -114,12 +114,13 @@ import { Tooltip, Popover } from "bootstrap";
             })
             .then(function (json) {
               if (json && json.options) {
-                render(json.options, query);
+                render(json.options);
               } else {
                 close();
               }
             })
-            .catch(function () {
+            .catch(function (err) {
+              console.error(err);
               close();
             });
         }, 200);
@@ -141,7 +142,7 @@ import { Tooltip, Popover } from "bootstrap";
       try {
         new Tooltip(el);
       } catch (e) {
-        /* ignore */
+        console.error(e);
       }
     });
   }
@@ -153,16 +154,16 @@ import { Tooltip, Popover } from "bootstrap";
       try {
         new Popover(el);
       } catch (e) {
-        /* ignore */
+        console.error(e);
       }
     });
 
     /* notifications popup with dynamic content */
-    var notificationsLink = document.getElementById("notificationsLink");
+    const notificationsLink = document.getElementById("notificationsLink");
     if (notificationsLink && !notificationsLink.dataset.bsPopoverInit) {
       notificationsLink.dataset.bsPopoverInit = "1";
-      var wrapper = document.getElementById("notificationspopupwrapper");
-      var contentHtml = wrapper ? wrapper.innerHTML : "";
+      const wrapper = document.getElementById("notificationspopupwrapper");
+      const contentHtml = wrapper ? wrapper.innerHTML : "";
       if (wrapper) wrapper.remove();
       try {
         new Popover(notificationsLink, {
@@ -171,7 +172,7 @@ import { Tooltip, Popover } from "bootstrap";
           content: contentHtml,
         });
       } catch (e) {
-        /* ignore */
+        console.error(e);
       }
     }
   }
@@ -184,25 +185,26 @@ import { Tooltip, Popover } from "bootstrap";
       if (component.dataset.wsCountdownInit) return;
       component.dataset.wsCountdownInit = "1";
 
-      var target = new Date(component.dataset.date).getTime();
-      if (isNaN(target)) return;
+      const target = new Date(component.dataset.date).getTime();
+      if (Number.isNaN(target)) return;
 
       function pad(n) {
         return n < 10 ? "0" + n : "" + n;
       }
 
+      let timer = null;
       function update() {
-        var now = Date.now();
-        var diff = target - now;
+        const now = Date.now();
+        const diff = target - now;
         if (diff <= 0) {
           component.style.display = "none";
           clearInterval(timer);
           return;
         }
-        var seconds = Math.floor(diff / 1000) % 60;
-        var minutes = Math.floor(diff / 60000) % 60;
-        var hours = Math.floor(diff / 3600000) % 24;
-        var days = Math.floor(diff / 86400000);
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / 60000) % 60;
+        const hours = Math.floor(diff / 3600000) % 24;
+        const days = Math.floor(diff / 86400000);
         setEl("seconds", pad(seconds));
         setEl("minutes", pad(minutes));
         setEl("hours", pad(hours));
@@ -211,12 +213,14 @@ import { Tooltip, Popover } from "bootstrap";
       }
 
       function setEl(id, val) {
-        var el = component.querySelector("#" + id);
+        const el = component.querySelector("#" + id);
         if (el) el.textContent = val;
       }
 
       update();
-      var timer = setInterval(update, 1000);
+      if (target > Date.now()) {
+        timer = setInterval(update, 1000);
+      }
     });
   }
 
@@ -232,9 +236,9 @@ import { Tooltip, Popover } from "bootstrap";
     ignoreemptymessages
   ) {
     if (!blockId) blockId = "";
-    var requestUrl =
+    const requestUrl =
       WSCONFIG.AJAX_URL + "?block=" + encodeURIComponent(blockId) + "&" + queryString;
-    var ajaxLoader = document.getElementById("ajaxLoaderPage");
+    const ajaxLoader = document.getElementById("ajaxLoaderPage");
 
     if (ajaxLoader) ajaxLoader.style.display = "block";
     block(blockedElement);
@@ -244,20 +248,20 @@ import { Tooltip, Popover } from "bootstrap";
         return r.json();
       })
       .then(function (data) {
-        var target = document.getElementById(targetId);
+        const target = document.getElementById(targetId);
         if (target && data.content) target.innerHTML = data.content;
 
         if (
           (!ignoreemptymessages || (data.messages && data.messages.trim().length)) &&
           data.messages
         ) {
-          var msgTargetId = messagesTargetId || "messages";
-          var mt = document.getElementById(msgTargetId);
+          const msgTargetId = messagesTargetId || "messages";
+          const mt = document.getElementById(msgTargetId);
           if (mt) mt.innerHTML = data.messages;
         }
       })
-      .catch(function () {
-        /* ignore */
+      .catch(function (err) {
+        console.error(err);
       })
       .finally(function () {
         unblock(blockedElement);
@@ -273,14 +277,14 @@ import { Tooltip, Popover } from "bootstrap";
   /* AJAXified forms                                                    */
   /* ------------------------------------------------------------------ */
   document.addEventListener("click", function (e) {
-    var btn = e.target.closest(".ajaxSubmit");
+    const btn = e.target.closest(".ajaxSubmit");
     if (!btn) return;
     e.preventDefault();
 
-    var form = btn.closest("form");
+    const form = btn.closest("form");
     if (!form) return;
 
-    var params = new URLSearchParams(new FormData(form));
+    const params = new URLSearchParams(new FormData(form));
     ajaxHandler(
       params.toString(),
       btn.dataset.ajaxtarget,
@@ -295,13 +299,13 @@ import { Tooltip, Popover } from "bootstrap";
   /* AJAXified links                                                    */
   /* ------------------------------------------------------------------ */
   document.addEventListener("click", function (e) {
-    var link = e.target.closest(".ajaxLink");
+    const link = e.target.closest(".ajaxLink");
     if (!link) return;
     e.preventDefault();
 
-    var targetId = link.dataset.ajaxtarget;
+    const targetId = link.dataset.ajaxtarget;
     if (!link.dataset.ajaxloaded || link.dataset.ajaxdisabledcache) {
-      var blockedElement = document.getElementById(targetId);
+      const blockedElement = document.getElementById(targetId);
       ajaxHandler(
         link.dataset.ajaxquerystr,
         targetId,
@@ -322,9 +326,9 @@ import { Tooltip, Popover } from "bootstrap";
 
   /* enable browser history after AJAX link */
   document.addEventListener("DOMContentLoaded", function () {
-    var hash = location.hash.replace("#", "");
+    const hash = location.hash.replace("#", "");
     if (hash.length > 0) {
-      var link = document.querySelector('a.ajaxLink[href$="#' + hash + '"]');
+      const link = document.querySelector('a.ajaxLink[href$="#' + hash + '"]');
       if (link) link.click();
     }
   });
@@ -338,9 +342,9 @@ import { Tooltip, Popover } from "bootstrap";
 
   /* client side "active" marker of nav items */
   document.addEventListener("click", function (e) {
-    var item = e.target.closest(".clientsideNavItem");
+    const item = e.target.closest(".clientsideNavItem");
     if (!item) return;
-    var parent = item.parentElement;
+    const parent = item.parentElement;
     if (parent) {
       parent
         .querySelectorAll(":scope > .active")
@@ -365,12 +369,12 @@ import { Tooltip, Popover } from "bootstrap";
 
   function triggerAjaxLoadOfBlocks() {
     document.querySelectorAll(".ajaxLoadedBlock").forEach(function (el) {
-      var queryStr = el.dataset.ajaxquerystr;
-      var elementId = el.id;
-      var blockId = el.dataset.ajaxblock;
-      var messagesTarget = el.dataset.messagetarget;
-      var ignoreEmptyMessages = el.dataset.ignoreemptymessages;
-      var refreshPeriod = el.dataset.refreshperiod;
+      const queryStr = el.dataset.ajaxquerystr;
+      const elementId = el.id;
+      const blockId = el.dataset.ajaxblock;
+      const messagesTarget = el.dataset.messagetarget;
+      const ignoreEmptyMessages = el.dataset.ignoreemptymessages;
+      const refreshPeriod = el.dataset.refreshperiod;
 
       ajaxHandler(queryStr, elementId, blockId, messagesTarget, el, ignoreEmptyMessages);
 
@@ -392,16 +396,16 @@ import { Tooltip, Popover } from "bootstrap";
   /* ------------------------------------------------------------------ */
   /* Block AJAX refresh button at match reports                         */
   /* ------------------------------------------------------------------ */
-  var refreshCountdownStarted = false;
+  let refreshCountdownStarted = false;
   function blockMatchRefreshButton() {
     document.querySelectorAll("#matchReportRefresh").forEach(function (btn) {
-      var timeToBlock = parseInt(btn.dataset.blockseconds, 10);
-      if (isNaN(timeToBlock)) return;
+      let timeToBlock = parseInt(btn.dataset.blockseconds, 10);
+      if (Number.isNaN(timeToBlock)) return;
 
       if (!refreshCountdownStarted) {
         btn.setAttribute("disabled", "disabled");
-        var countdownElement = btn.querySelector(".timerCount");
-        var interval = setInterval(function () {
+        const countdownElement = btn.querySelector(".timerCount");
+        const interval = setInterval(function () {
           refreshCountdownStarted = true;
           timeToBlock--;
           if (countdownElement) countdownElement.textContent = "(" + timeToBlock + ")";

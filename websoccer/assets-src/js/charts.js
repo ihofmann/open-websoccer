@@ -25,17 +25,18 @@ import Chart from "chart.js/auto";
   "use strict";
 
   function parseSeries(el) {
-    var raw = el.dataset.series;
+    const raw = el.dataset.series;
     if (!raw) return null;
     try {
       return JSON.parse(raw);
     } catch (e) {
+      console.error(e);
       return null;
     }
   }
 
   function ensureCanvas(el) {
-    var canvas = el.querySelector("canvas");
+    let canvas = el.querySelector("canvas");
     if (!canvas) {
       canvas = document.createElement("canvas");
       el.innerHTML = "";
@@ -48,12 +49,12 @@ import Chart from "chart.js/auto";
   /* Grades line chart                                                  */
   /* ------------------------------------------------------------------ */
   function initGradesChart() {
-    var el = document.getElementById("grades");
+    const el = document.getElementById("grades");
     if (!el) return;
-    var series = parseSeries(el);
+    const series = parseSeries(el);
     if (!series) return;
 
-    var labels = series.map(function (v, i) {
+    const labels = series.map(function (v, i) {
       return i + 1;
     });
 
@@ -88,13 +89,13 @@ import Chart from "chart.js/auto";
   /* League history line chart                                          */
   /* ------------------------------------------------------------------ */
   function initLeagueHistoryChart() {
-    var el = document.getElementById("leaguehistorychart");
+    const el = document.getElementById("leaguehistorychart");
     if (!el) return;
-    var series = parseSeries(el);
+    const series = parseSeries(el);
     if (!series) return;
-    var maxPos = parseInt(el.dataset.maxpos, 10) || 1;
+    const maxPos = parseInt(el.dataset.maxpos, 10) || 1;
 
-    var labels = series.map(function (v, i) {
+    const labels = series.map(function (v, i) {
       return i + 1;
     });
 
@@ -129,20 +130,20 @@ import Chart from "chart.js/auto";
   /* Pie / doughnut charts                                              */
   /* ------------------------------------------------------------------ */
   function initPieChart(el) {
-    var series = parseSeries(el);
+    const series = parseSeries(el);
     if (!series) return;
 
-    var labels = series.map(function (s) {
+    const labels = series.map(function (s) {
       return s.label;
     });
-    var data = series.map(function (s) {
+    const data = series.map(function (s) {
       return parseFloat(s.data);
     });
-    var colors = series.map(function (s) {
+    const colors = series.map(function (s) {
       return s.color || "#999999";
     });
 
-    var chart = new Chart(ensureCanvas(el), {
+    new Chart(ensureCanvas(el), {
       type: "doughnut",
       data: {
         labels: labels,
@@ -161,10 +162,10 @@ import Chart from "chart.js/auto";
           tooltip: {
             callbacks: {
               label: function (ctx) {
-                var total = ctx.dataset.data.reduce(function (a, b) {
+                const total = ctx.dataset.data.reduce(function (a, b) {
                   return a + b;
                 }, 0);
-                var pct = Math.round((ctx.parsed / total) * 100);
+                const pct = Math.round((ctx.parsed / total) * 100);
                 return ctx.label + ": " + pct + "%";
               },
             },
@@ -174,7 +175,7 @@ import Chart from "chart.js/auto";
     });
 
     /* render a textual legend into the external label container */
-    var labelContainer = el.parentElement.querySelector(".pieChartLabel");
+    const labelContainer = el.parentElement && el.parentElement.querySelector(".pieChartLabel");
     if (labelContainer) {
       labelContainer.innerHTML = "";
     }

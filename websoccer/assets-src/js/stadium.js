@@ -31,7 +31,7 @@
       return;
     }
 
-    var stadiumGraph = {
+    const stadiumGraph = {
       CONFIG: {
         GRAND_WIDTH: 380,
         GRAND_HEIGHT: 90,
@@ -61,13 +61,13 @@
         this._drawSideLeft(100);
         this._drawSideRight(100);
 
-        var graphInstance = this;
-        var ratioGrand = dataFloat(this.stadiumCanvas, "ratiogrand");
-        var ratioSide = dataFloat(this.stadiumCanvas, "ratioside");
+        const graphInstance = this;
+        const ratioGrand = dataFloat(this.stadiumCanvas, "ratiogrand");
+        const ratioSide = dataFloat(this.stadiumCanvas, "ratioside");
 
-        var imageObj = new Image();
+        const imageObj = new Image();
         imageObj.onload = function () {
-          var pattern = graphInstance.canvasContext.createPattern(
+          const pattern = graphInstance.canvasContext.createPattern(
             imageObj,
             "repeat"
           );
@@ -79,14 +79,14 @@
           graphInstance._drawSideRight(ratioSide, true);
           graphInstance._drawSideLeft(ratioSide, true);
 
-          var ratioVip = dataFloat(graphInstance.stadiumCanvas, "ratiovip");
+          const ratioVip = dataFloat(graphInstance.stadiumCanvas, "ratiovip");
           graphInstance._drawVip(ratioVip);
         };
         imageObj.src = this.CONFIG.IMG_SEAT;
       },
 
       _drawGrandTop: function (perCent) {
-        var targetY =
+        const targetY =
           this.CONFIG.GRAND_HEIGHT - (perCent / 100) * this.CONFIG.GRAND_HEIGHT;
 
         this.canvasContext.fillRect(
@@ -98,11 +98,11 @@
       },
 
       _drawGrandBottom: function (perCent, drawStanding) {
-        var targetY =
+        const targetY =
           this.CONFIG.GRAND_HEIGHT - (perCent / 100) * this.CONFIG.GRAND_HEIGHT;
 
-        var startX = this.CONFIG.SIDE_WIDTH;
-        var startY = this.stadiumCanvas.height - this.CONFIG.GRAND_HEIGHT;
+        const startX = this.CONFIG.SIDE_WIDTH;
+        const startY = this.stadiumCanvas.height - this.CONFIG.GRAND_HEIGHT;
 
         this.canvasContext.fillRect(
           startX,
@@ -112,23 +112,23 @@
         );
 
         if (drawStanding) {
-          var graphInstance = this;
-          var imageObj = new Image();
+          const graphInstance = this;
+          const imageObj = new Image();
           imageObj.onload = function () {
-            var pattern = graphInstance.canvasContext.createPattern(
+            const pattern = graphInstance.canvasContext.createPattern(
               imageObj,
               "repeat"
             );
             graphInstance.canvasContext.fillStyle = pattern;
 
-            var standingWidth =
+            const standingWidth =
               (dataFloat(graphInstance.stadiumCanvas, "standingratiogrand") /
                 100) *
               graphInstance.CONFIG.GRAND_WIDTH;
-            startX =
+            const standingStartX =
               startX + graphInstance.CONFIG.GRAND_WIDTH / 2 - standingWidth / 2;
             graphInstance.canvasContext.fillRect(
-              startX,
+              standingStartX,
               startY,
               standingWidth,
               graphInstance.CONFIG.GRAND_HEIGHT - targetY
@@ -141,16 +141,16 @@
       },
 
       _drawVip: function (perCent) {
-        var maxWidth = 0.9 * this.CONFIG.GRAND_WIDTH;
-        var actualWidth = (maxWidth * perCent) / 100;
-        var startX =
+        const maxWidth = 0.9 * this.CONFIG.GRAND_WIDTH;
+        const actualWidth = (maxWidth * perCent) / 100;
+        const startX =
           this.CONFIG.SIDE_WIDTH + this.CONFIG.GRAND_WIDTH / 2 - actualWidth / 2;
-        var startY = this.CONFIG.GRAND_HEIGHT - this.CONFIG.VIP_HEIGHT;
+        const startY = this.CONFIG.GRAND_HEIGHT - this.CONFIG.VIP_HEIGHT;
 
-        var graphInstance = this;
-        var imageObj = new Image();
+        const graphInstance = this;
+        const imageObj = new Image();
         imageObj.onload = function () {
-          var pattern = graphInstance.canvasContext.createPattern(
+          const pattern = graphInstance.canvasContext.createPattern(
             imageObj,
             "repeat"
           );
@@ -170,11 +170,11 @@
       _drawSideLeft: function (perCent, drawStanding) {
         this.canvasContext.beginPath();
 
-        var targetY =
+        const targetY =
           this.CONFIG.SIDE_WIDTH - (perCent / 100) * this.CONFIG.SIDE_WIDTH;
         this.canvasContext.moveTo(this.CONFIG.SIDE_WIDTH, targetY);
 
-        var targetX =
+        const targetX =
           this.CONFIG.SIDE_WIDTH - (perCent / 100) * this.CONFIG.SIDE_WIDTH;
         this.canvasContext.quadraticCurveTo(
           targetX + 10,
@@ -200,23 +200,23 @@
         this.canvasContext.fill();
 
         if (drawStanding) {
-          var graphInstance = this;
-          var imageObj = new Image();
+          const graphInstance = this;
+          const imageObj = new Image();
           imageObj.onload = function () {
-            var pattern = graphInstance.canvasContext.createPattern(
+            const pattern = graphInstance.canvasContext.createPattern(
               imageObj,
               "repeat"
             );
             graphInstance.canvasContext.fillStyle = pattern;
 
-            var standingWidth = graphInstance.CONFIG.SIDE_WIDTH - targetX;
-            var standingHeight =
+            const standingWidth = graphInstance.CONFIG.SIDE_WIDTH - targetX;
+            const standingHeight =
               (dataFloat(graphInstance.stadiumCanvas, "standingratioside") /
                 100) *
               (graphInstance.stadiumCanvas.height -
                 graphInstance.CONFIG.GRAND_HEIGHT -
                 targetY);
-            var startY =
+            const startY =
               graphInstance.stadiumCanvas.height / 2 - standingHeight / 2;
 
             graphInstance.canvasContext.fillRect(
@@ -235,14 +235,14 @@
       _drawSideRight: function (perCent, drawStanding) {
         this.canvasContext.beginPath();
 
-        var targetY =
+        const targetY =
           this.CONFIG.SIDE_WIDTH - (perCent / 100) * this.CONFIG.SIDE_WIDTH;
         this.canvasContext.moveTo(
           this.CONFIG.SIDE_WIDTH + this.CONFIG.GRAND_WIDTH,
           targetY
         );
 
-        var targetX =
+        const targetX =
           this.CONFIG.SIDE_WIDTH - (perCent / 100) * this.CONFIG.SIDE_WIDTH;
         this.canvasContext.quadraticCurveTo(
           this.stadiumCanvas.width - targetX - 10,
@@ -268,25 +268,25 @@
         this.canvasContext.fill();
 
         if (drawStanding) {
-          var graphInstance = this;
-          var imageObj = new Image();
+          const graphInstance = this;
+          const imageObj = new Image();
           imageObj.onload = function () {
-            var pattern = graphInstance.canvasContext.createPattern(
+            const pattern = graphInstance.canvasContext.createPattern(
               imageObj,
               "repeat"
             );
             graphInstance.canvasContext.fillStyle = pattern;
 
-            var standingWidth = graphInstance.CONFIG.SIDE_WIDTH - targetX;
-            var standingHeight =
+            const standingWidth = graphInstance.CONFIG.SIDE_WIDTH - targetX;
+            const standingHeight =
               (dataFloat(graphInstance.stadiumCanvas, "standingratioside") /
                 100) *
               (graphInstance.stadiumCanvas.height -
                 graphInstance.CONFIG.GRAND_HEIGHT -
                 targetY);
-            var startY =
+            const startY =
               graphInstance.stadiumCanvas.height / 2 - standingHeight / 2;
-            var startX =
+            const startX =
               graphInstance.CONFIG.SIDE_WIDTH + graphInstance.CONFIG.GRAND_WIDTH;
 
             graphInstance.canvasContext.fillRect(
@@ -301,8 +301,8 @@
       },
 
       _drawGrandLabel: function () {
-        var label = this.stadiumCanvas.dataset.labelgrand;
-        var textSize = this.canvasContext.measureText(label);
+        const label = this.stadiumCanvas.dataset.labelgrand;
+        const textSize = this.canvasContext.measureText(label);
 
         this.canvasContext.globalAlpha = 0.8;
         this.canvasContext.fillStyle = this.CONFIG.LABEL_BACKGROUND;
@@ -323,7 +323,7 @@
       },
 
       _drawSideLabel: function () {
-        var label = this.stadiumCanvas.dataset.labelside;
+        const label = this.stadiumCanvas.dataset.labelside;
 
         this.canvasContext.globalAlpha = 0.8;
         this.canvasContext.fillStyle = this.CONFIG.LABEL_BACKGROUND;
@@ -347,10 +347,10 @@
       },
 
       _drawVipLabel: function () {
-        var label = this.stadiumCanvas.dataset.labelvip;
-        var textSize = this.canvasContext.measureText(label);
+        const label = this.stadiumCanvas.dataset.labelvip;
+        const textSize = this.canvasContext.measureText(label);
 
-        var startX =
+        const startX =
           this.CONFIG.SIDE_WIDTH +
           this.CONFIG.GRAND_WIDTH / 2 -
           textSize.width / 2;
@@ -374,13 +374,13 @@
       },
 
       _wrapText: function (context, text, x, y, maxWidth, lineHeight) {
-        var words = text.split(" ");
-        var line = "";
+        const words = text.split(" ");
+        let line = "";
 
-        for (var n = 0; n < words.length; n++) {
-          var testLine = line + words[n] + " ";
-          var metrics = context.measureText(testLine);
-          var testWidth = metrics.width;
+        for (let n = 0; n < words.length; n++) {
+          const testLine = line + words[n] + " ";
+          const metrics = context.measureText(testLine);
+          const testWidth = metrics.width;
           if (testWidth > maxWidth) {
             context.fillText(line, x, y);
             line = words[n] + " ";
@@ -396,7 +396,7 @@
     stadiumGraph.drawStadium("stadium");
 
     /* fix resizing on this page (prevent overlapping of stadium with right boxes) */
-    var contentArea = document.getElementById("contentArea");
+    const contentArea = document.getElementById("contentArea");
     function fixMinWidth() {
       if (contentArea) contentArea.style.minWidth = "670px";
     }
