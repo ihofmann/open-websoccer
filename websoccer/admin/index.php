@@ -118,7 +118,7 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-4 col-lg-3 py-3">
           <div class="card sidebar-nav">
             <ul class="nav flex-column nav-pills gap-1">
 
@@ -133,7 +133,7 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
             </ul>
           </div><!--/.card -->
         </div><!--/span-->
-        <div class="col-md-10">
+        <div class="col-md-8 col-lg-9 p-3">
 
         	<div id="ajaxSpinner" style="display: none">
         		<img src="../img/ajax-loader.gif" width="16" height="16" />

@@ -59,9 +59,9 @@ if (!$show) {
 	// tab headers
 	$firstTab = TRUE;
 	foreach ($tabs as $tabId => $settings) {
-		echo '<li';
-		if ($firstTab) echo ' class=\'active\'';
-		echo '><a href=\'#'. $tabId . '\' data-bs-toggle=\'tab\'>'. $i18n->getMessage('settings_tab_' . $tabId) .'</a></li>';
+		echo '<li class=\'nav-item\'><a class=\'nav-link';
+		if ($firstTab) echo ' active';
+		echo '\' href=\'#'. $tabId . '\' data-bs-toggle=\'tab\'>'. $i18n->getMessage('settings_tab_' . $tabId) .'</a></li>';
 		$firstTab = FALSE;
 	}
 	?>

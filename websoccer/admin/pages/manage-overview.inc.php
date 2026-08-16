@@ -62,7 +62,7 @@ $editEnabled = ($overviewConfig[0]->attributes()->edit == "true") ? TRUE : FALSE
 
 // add button
 if ($addEnabled) {
-	echo "<p><a class=\"btn btn-sm\" href=\"?site=". $site ."&entity=". $entity . "&show=add\"><i class=\"bi bi-file\"></i> ". $i18n->getMessage("manage_add") . "</a></p>";
+	echo "<p><a class=\"btn btn-sm btn-primary\" href=\"?site=". $site ."&entity=". $entity . "&show=add\"><i class=\"bi bi-plus\"></i> ". $i18n->getMessage("manage_add") . "</a></p>";
 }
 
 // build meta data
@@ -347,7 +347,7 @@ if (!$rows['hits']) {
 	?>
 		<p><div class="form-check"><input class="form-check-input" type="checkbox" name="selAll" value="1" id="selAll" onClick="selectAll()"><label class="form-check-label" for="selAll"><?php echo $i18n->getMessage("manage_select_all_label"); ?></label></div></p>
 		
-		<p><?php echo $i18n->getMessage("manage_selected_items_label"); ?> <input type="button" class="btn deleteBtn" accesskey="l" title="Alt + l" value="<?php echo $i18n->getMessage("button_delete"); ?>"></p>
+		<p><?php echo $i18n->getMessage("manage_selected_items_label"); ?> <input type="button" class="btn btn-sm btn-secondary deleteBtn" accesskey="l" title="Alt + l" value="<?php echo $i18n->getMessage("button_delete"); ?>"></p>
 	
 	</form>
 	

@@ -22,10 +22,10 @@
 
 
 ?>
-<div class="accordion" id="searchFrm">
+<div class="accordion mb-3" id="searchFrm">
 	<div class="accordion-item">
 		<h2 class="accordion-header">
-			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+			<button class="accordion-button collapsed gap-2" type="button" data-bs-toggle="collapse"
 				data-bs-target="#collapseOne"
 				title="<?php echo $i18n->getMessage("manage_search_collapse"); ?>"> <i class="bi bi-funnel"></i>
 				<?php echo $i18n->getMessage("manage_search_title"); ?>
