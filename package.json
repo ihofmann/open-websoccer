@@ -25,7 +25,6 @@
     "jquery-blockui": "^2.7.0",
     "jquery-countdown": "^2.2.0",
     "jquery-ui-dist": "^1.13.3",
-    "markitup": "^3.0.0-0",
     "select2": "^3.5.1"
   }
 }

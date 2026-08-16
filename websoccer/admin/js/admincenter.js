@@ -51,9 +51,6 @@ $(function() {
 	    showMeridian: false
 	});
 	
-	// HTML editor
-	$(".htmleditor").markItUp(mySettings);
-	
 	// start (cron) job
 	$(document).on("click", ".startStopJobLink", function(e) {
 		e.preventDefault();
