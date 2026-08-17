@@ -762,3 +762,37 @@ ALTER TABLE ws3_spieler ADD st_assists INT(6) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_spieler ADD sa_assists INT(6) NOT NULL DEFAULT 0;
 
 ALTER TABLE ws3_news DROP COLUMN bild_id;
+
+-- Allow creating AdminCenter records without filling every NOT NULL column.
+ALTER TABLE ws3_liga MODIFY admin_id SMALLINT(5) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_saison MODIFY platz_1_id INT(10) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_saison MODIFY platz_2_id INT(10) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_saison MODIFY platz_3_id INT(10) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_saison MODIFY platz_4_id INT(10) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_saison MODIFY platz_5_id INT(10) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_verein MODIFY finanz_budget INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_verein MODIFY preis_stehen SMALLINT(4) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_verein MODIFY preis_sitz SMALLINT(4) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_verein MODIFY preis_haupt_stehen SMALLINT(4) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_verein MODIFY preis_haupt_sitze SMALLINT(4) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_verein MODIFY preis_vip SMALLINT(4) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY geburtstag DATE NULL;
+ALTER TABLE ws3_spieler MODIFY w_staerke TINYINT(3) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY w_technik TINYINT(3) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY w_kondition TINYINT(3) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY w_frische TINYINT(3) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY w_zufriedenheit TINYINT(3) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY vertrag_gehalt INT(10) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY vertrag_spiele SMALLINT(5) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_spieler MODIFY vertrag_torpraemie INT(10) NOT NULL DEFAULT 0;
+
+ALTER TABLE ws3_transfer MODIFY datum BIGINT NOT NULL;
+ALTER TABLE ws3_transfer_offer MODIFY submitted_date BIGINT NOT NULL;
+ALTER TABLE ws3_stadium_construction MODIFY started BIGINT NOT NULL;
+ALTER TABLE ws3_stadium_construction MODIFY deadline BIGINT NOT NULL;
+ALTER TABLE ws3_youthmatch MODIFY matchdate BIGINT NOT NULL;
+ALTER TABLE ws3_youthmatch_request MODIFY matchdate BIGINT NOT NULL;
+ALTER TABLE ws3_userabsence MODIFY from_date BIGINT NOT NULL;
+ALTER TABLE ws3_userabsence MODIFY to_date BIGINT NOT NULL;
+ALTER TABLE ws3_premiumpayment MODIFY created_date BIGINT NOT NULL;
+ALTER TABLE ws3_premiumstatement MODIFY created_date BIGINT NOT NULL;

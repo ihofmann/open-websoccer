@@ -77,6 +77,25 @@
                 	<join type="LEFT" jointable="spieler AS ExPlayer1Tab" joincondition="TransferTab.directtransfer_player1 = ExPlayer1Tab.id" />
                 	<join type="LEFT" jointable="spieler AS ExPlayer2Tab" joincondition="TransferTab.directtransfer_player2 = ExPlayer2Tab.id" />
                 </overview>
+
+                <editform>
+                    <field id="datum" type="timestamp" required="true" />
+                    <field id="spieler_id" type="foreign_key" entity="player"
+                        jointable="spieler" labelcolumns="nachname, vorname" required="true" />
+                    <field id="seller_user_id" type="foreign_key" entity="users"
+                        jointable="user" labelcolumns="nick" />
+                    <field id="seller_club_id" type="foreign_key" entity="club"
+                        jointable="verein" labelcolumns="name" />
+                    <field id="buyer_user_id" type="foreign_key" entity="users"
+                        jointable="user" labelcolumns="nick" />
+                    <field id="buyer_club_id" type="foreign_key" entity="club"
+                        jointable="verein" labelcolumns="name" required="true" />
+                    <field id="directtransfer_amount" type="number" required="true" />
+                    <field id="directtransfer_player1" type="foreign_key" entity="player"
+                        jointable="spieler" labelcolumns="nachname, vorname" />
+                    <field id="directtransfer_player2" type="foreign_key" entity="player"
+                        jointable="spieler" labelcolumns="nachname, vorname" />
+                </editform>
                 
             </entity>
         </adminpage>
