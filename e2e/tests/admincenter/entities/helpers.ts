@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 
 /**
- * Shared AdminCenter helpers for entity CRUD E2E tests.
+ * Shared AdminCenter helpers for E2E tests.
  *
  * Seed data: AdminCenter login is `admin` / `admin`.
  */
@@ -31,14 +31,37 @@ export type EntityCrudConfig = {
   editFields?: Record<string, FieldFill>;
 };
 
-export async function loginAsAdmin(page: Page): Promise<void> {
+export async function loginAsAdmin(page: Page, password = 'admin'): Promise<void> {
   await page.goto('/admin/');
   await expect(page).toHaveURL(/login\.php/);
   await page.fill('#inputUser', 'admin');
-  await page.fill('#inputPassword', 'admin');
+  await page.fill('#inputPassword', password);
   await page.click('button[type=submit]');
   await expect(page).toHaveURL(/\/admin\/index\.php$/);
   await expect(page.locator('.navbar-text')).toContainText('admin');
+}
+
+export async function logoutAdmin(page: Page): Promise<void> {
+  await page.goto('/admin/logout.php');
+  await expect(page).toHaveURL(/login\.php\?loggedout=1/);
+}
+
+/**
+ * Submits an AdminCenter page form that posts `show=save` (imprint, terms, profile, …).
+ */
+export async function submitPageSaveForm(page: Page): Promise<void> {
+  await page
+    .locator('form')
+    .filter({ has: page.locator('input[name="show"][value="save"]') })
+    .locator('input[type=submit]')
+    .click();
+
+  const errorBox = page.locator('.alert-danger');
+  if (await errorBox.count()) {
+    throw new Error(`Saving failed: ${((await errorBox.innerText()).trim())}`);
+  }
+
+  await expect(page.locator('.alert-success')).toBeVisible();
 }
 
 async function fillForeignKey(page: Page, fieldId: string, value: string): Promise<void> {
