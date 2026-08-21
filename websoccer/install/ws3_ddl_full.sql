@@ -118,7 +118,7 @@ CREATE TABLE ws3_liga (
   preis_steh SMALLINT(5) NOT NULL,
   preis_sitz SMALLINT(5) NOT NULL,
   preis_vip SMALLINT(5) NOT NULL,
-  admin_id SMALLINT(5) NOT NULL
+  admin_id SMALLINT(5) NOT NULL DEFAULT 0
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_tabelle_markierung (
@@ -135,11 +135,11 @@ CREATE TABLE ws3_saison (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(20) NULL,
   liga_id SMALLINT(5) NOT NULL,
-  platz_1_id INT(10) NOT NULL,
-  platz_2_id INT(10) NOT NULL,
-  platz_3_id INT(10) NOT NULL,
-  platz_4_id INT(10) NOT NULL,
-  platz_5_id INT(10) NOT NULL,
+  platz_1_id INT(10) NOT NULL DEFAULT 0,
+  platz_2_id INT(10) NOT NULL DEFAULT 0,
+  platz_3_id INT(10) NOT NULL DEFAULT 0,
+  platz_4_id INT(10) NOT NULL DEFAULT 0,
+  platz_5_id INT(10) NOT NULL DEFAULT 0,
   beendet ENUM('1','0') NOT NULL DEFAULT '0'
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
@@ -155,12 +155,12 @@ CREATE TABLE ws3_verein (
   training_id INT(5) NULL,
   platz TINYINT(2) NULL,
   sponsor_spiele SMALLINT(5) NOT NULL DEFAULT 0,
-  finanz_budget INT(11) NOT NULL,
-  preis_stehen SMALLINT(4) NOT NULL,
-  preis_sitz SMALLINT(4) NOT NULL,
-  preis_haupt_stehen SMALLINT(4) NOT NULL,
-  preis_haupt_sitze SMALLINT(4) NOT NULL,
-  preis_vip SMALLINT(4) NOT NULL,
+  finanz_budget INT(11) NOT NULL DEFAULT 0,
+  preis_stehen SMALLINT(4) NOT NULL DEFAULT 0,
+  preis_sitz SMALLINT(4) NOT NULL DEFAULT 0,
+  preis_haupt_stehen SMALLINT(4) NOT NULL DEFAULT 0,
+  preis_haupt_sitze SMALLINT(4) NOT NULL DEFAULT 0,
+  preis_vip SMALLINT(4) NOT NULL DEFAULT 0,
   last_steh INT(6) NOT NULL DEFAULT 0,
   last_sitz INT(6) NOT NULL DEFAULT 0,
   last_haupt_steh INT(6) NOT NULL DEFAULT 0,
@@ -197,7 +197,7 @@ CREATE TABLE ws3_spieler (
   vorname VARCHAR(30) NULL,
   nachname VARCHAR(30) NULL,
   kunstname VARCHAR(30) NULL,
-  geburtstag DATE NOT NULL,
+  geburtstag DATE NULL,
   verein_id INT(10) NULL,
   position ENUM('Torwart','Abwehr','Mittelfeld','Sturm') NOT NULL DEFAULT 'Mittelfeld',
   position_main ENUM('T','LV','IV', 'RV', 'LM', 'DM', 'ZM', 'OM', 'RM', 'LS', 'MS', 'RS') NULL,
@@ -212,17 +212,17 @@ CREATE TABLE ws3_spieler (
   transfer_start INT(11) NOT NULL DEFAULT 0,
   transfer_ende INT(11) NOT NULL DEFAULT 0,
   transfer_mindestgebot INT(11) NOT NULL DEFAULT 0,
-  w_staerke TINYINT(3) NOT NULL,
-  w_technik TINYINT(3) NOT NULL,
-  w_kondition TINYINT(3) NOT NULL,
-  w_frische TINYINT(3) NOT NULL,
-  w_zufriedenheit TINYINT(3) NOT NULL,
+  w_staerke TINYINT(3) NOT NULL DEFAULT 0,
+  w_technik TINYINT(3) NOT NULL DEFAULT 0,
+  w_kondition TINYINT(3) NOT NULL DEFAULT 0,
+  w_frische TINYINT(3) NOT NULL DEFAULT 0,
+  w_zufriedenheit TINYINT(3) NOT NULL DEFAULT 0,
   einzeltraining ENUM('1','0') NOT NULL DEFAULT '0',
   note_last REAL(4,2) NOT NULL DEFAULT 0,
   note_schnitt REAL(4,2) NOT NULL DEFAULT 0,
-  vertrag_gehalt INT(10) NOT NULL,
-  vertrag_spiele SMALLINT(5) NOT NULL,
-  vertrag_torpraemie INT(10) NOT NULL,
+  vertrag_gehalt INT(10) NOT NULL DEFAULT 0,
+  vertrag_spiele SMALLINT(5) NOT NULL DEFAULT 0,
+  vertrag_torpraemie INT(10) NOT NULL DEFAULT 0,
   marktwert INT(10) NOT NULL DEFAULT 0,
   st_tore INT(6) NOT NULL DEFAULT 0,
   st_assists INT(6) NOT NULL DEFAULT 0,
@@ -538,7 +538,7 @@ CREATE TABLE ws3_transfer (
   seller_club_id INT(10) NULL,
   buyer_user_id INT(10) NULL,
   buyer_club_id INT(10) NOT NULL,
-  datum INT(11) NOT NULL,
+  datum BIGINT NOT NULL,
   bid_id INT(11) NOT NULL DEFAULT 0,
   directtransfer_amount INT(10) NOT NULL,
   directtransfer_player1 INT(10) NOT NULL DEFAULT 0,
@@ -662,7 +662,7 @@ CREATE TABLE ws3_transfer_offer (
   sender_user_id INT(10) NOT NULL,
   sender_club_id INT(10) NOT NULL,
   receiver_club_id INT(10) NOT NULL,
-  submitted_date INT(11) NOT NULL,
+  submitted_date BIGINT NOT NULL,
   offer_amount INT(10) NOT NULL,
   offer_message VARCHAR(255) NULL,
   offer_player1 INT(10) NOT NULL DEFAULT 0,
@@ -716,13 +716,13 @@ CREATE TABLE ws3_youthscout (
 CREATE TABLE ws3_youthmatch_request (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   team_id INT(10) NOT NULL,
-  matchdate INT(11) NOT NULL,
+  matchdate BIGINT NOT NULL,
   reward INT(10) NOT NULL DEFAULT 0
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_youthmatch (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  matchdate INT(11) NOT NULL,
+  matchdate BIGINT NOT NULL,
   home_team_id INT(10) NOT NULL,
   home_noformation ENUM('1','0') DEFAULT '0',
   home_s1_out INT(10) NULL,
@@ -815,8 +815,8 @@ CREATE TABLE ws3_stadium_construction (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   team_id INT(10) NOT NULL,
   builder_id INT(10) NOT NULL,
-  started INT(11) NOT NULL,
-  deadline INT(11) NOT NULL,
+  started BIGINT NOT NULL,
+  deadline BIGINT NOT NULL,
   p_steh INT(6) NOT NULL DEFAULT 0,
   p_sitz INT(6) NOT NULL DEFAULT 0,
   p_haupt_steh INT(6) NOT NULL DEFAULT 0,
@@ -845,7 +845,7 @@ CREATE TABLE ws3_premiumstatement (
   user_id INT(10) NOT NULL,
   action_id VARCHAR(255) NULL,
   amount INT(10) NOT NULL,
-  created_date INT(11) NOT NULL,
+  created_date BIGINT NOT NULL,
   subject_data VARCHAR(255) NULL
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
@@ -853,7 +853,7 @@ CREATE TABLE ws3_premiumpayment (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT(10) NOT NULL,
   amount INT(10) NOT NULL,
-  created_date INT(11) NOT NULL
+  created_date BIGINT NOT NULL
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_useractionlog (
@@ -878,8 +878,8 @@ CREATE TABLE ws3_userabsence (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT(10) NOT NULL,
   deputy_id INT(10) NULL,
-  from_date INT(11) NOT NULL,
-  to_date INT(11) NOT NULL,
+  from_date BIGINT NOT NULL,
+  to_date BIGINT NOT NULL,
   FOREIGN KEY (user_id) REFERENCES ws3_user(id) ON DELETE CASCADE,
   FOREIGN KEY (deputy_id) REFERENCES ws3_user(id) ON DELETE SET NULL
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;

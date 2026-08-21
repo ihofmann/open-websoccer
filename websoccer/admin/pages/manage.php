@@ -148,6 +148,13 @@ if ($show == "add" || $show == "edit") {
 				} else {
 					$fieldValue = (isset($_POST[$fieldId])) ? $_POST[$fieldId] : "";
 				}
+
+				// Empty optional numbers/FKs/dates would be stored as '' and fail
+				// under MySQL strict mode. Omit them so the column default applies.
+				if (!$fieldInfo["required"] && $fieldValue === ""
+						&& in_array($fieldInfo["type"], array("number", "percent", "foreign_key", "date"), true)) {
+					continue;
+				}
 				
 				FormBuilder::validateField($i18n, $fieldId, $fieldInfo, $fieldValue, $labelPrefix);
 					

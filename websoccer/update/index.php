@@ -148,6 +148,29 @@ function printSystemCheck($messages) {
 }
 
 
+function executeUpdateDdl(DbConnection $db, $prefix) {
+	$ddlPath = __DIR__ . "/" . DDL_FILE;
+	if (!file_exists($ddlPath)) {
+		return;
+	}
+
+	$script = file_get_contents($ddlPath);
+	if ($prefix !== DEFAULT_DB_PREFIX) {
+		$script = str_replace(DEFAULT_DB_PREFIX . "_", $prefix . "_", $script);
+	}
+
+	$queryResult = $db->connection->multi_query($script);
+	if (!$queryResult) {
+		throw new Exception("Database Query Error: " . $db->connection->error);
+	}
+
+	while ($db->connection->more_results()) {
+		if (!$db->connection->next_result()) {
+			throw new Exception("Database Query Error: " . $db->connection->error);
+		}
+	}
+}
+
 function actionMoveFiles() {
 
 	include(CONFIGFILE);
@@ -164,6 +187,14 @@ function actionMoveFiles() {
 		$db->close();
 		throw new Exception("Database Query Error: " . $error);
 	}
+
+	try {
+		executeUpdateDdl($db, $conf["db_prefix"]);
+	} catch (Exception $e) {
+		$db->close();
+		throw $e;
+	}
+
 	$db->close();
 
 	$fileNames = array("config.inc.php", "adminlog.php", "imprint.php", "entitylog.php");
