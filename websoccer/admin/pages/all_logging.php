@@ -60,7 +60,7 @@ if (!$show) {
     $gr_kb = round($datei_gr / 1024);
     if ($datei_gr && !$gr_kb) $gr_kb = 1;
 
-    echo '<div class=\'card card-body\'>'. sprintf($i18n->getMessage('all_logging_filesize'), number_format($gr_kb, 0, ' ', ',')) .'</div>';
+    echo '<div class=\'card card-body mb-3\'>'. sprintf($i18n->getMessage('all_logging_filesize'), number_format($gr_kb, 0, ' ', ',')) .'</div>';
 
     if (!$datei_gr) echo '<p>'. $i18n->getMessage('empty_list') . '</p>';
     else {
@@ -70,7 +70,7 @@ if (!$show) {
       <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post'>
         <input type='hidden' name='action' value='leeren'>
 		<input type='hidden' name='site' value='<?php echo $site; ?>'>
-        <p><input type='submit' class='btn' value='<?php echo $i18n->getMessage('all_logging_button_empty_file'); ?>'></p>
+        <p><input type='submit' class='btn btn-outline-primary' value='<?php echo $i18n->getMessage('all_logging_button_empty_file'); ?>'></p>
         
       </form>
 

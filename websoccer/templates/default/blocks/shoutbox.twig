@@ -8,7 +8,7 @@
 <div id="shoutboxvalmessages"></div>
 
 <div style="text-align: right;">
-	<a href="#shrefresh" id="shrefresh" class="btn btn-sm ajaxLink" 
+	<a href="#shrefresh" id="shrefresh" class="btn btn-sm btn-outline-primary ajaxLink" 
 		data-ajaxtarget="shoutbox_block" data-ajaxblock="shoutbox" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"
 		style="margin-bottom: 5px;"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a>
 </div>
@@ -32,7 +32,7 @@
 	
 	<input class="form-control col-md-3" id="msgtext" name="msgtext" type="text" placeholder="{{ i18n.getMessage("shoutbox_messageinput_placeholder") }}" required="true" 
 		value="{% if validationMsg["msgtext"] is defined %}{{ env.getRequestParameter("msgtext") }}{% endif %}">
-	<input type="submit" class="btn ajaxSubmit"
+	<input type="submit" class="btn btn-outline-primary ajaxSubmit"
 		data-ajaxtarget="shoutbox_block" data-messagetarget="shoutboxvalmessages" value="{{ i18n.getMessage("shoutbox_button_go") }}"/>
 		
 	{% if validationMsg["msgtext"] is defined %}<p class="text-danger">{{ validationMsg["msgtext"] }}</p>{% endif %}

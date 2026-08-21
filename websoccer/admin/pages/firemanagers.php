@@ -61,7 +61,7 @@ if (!$show) {
 	</fieldset>
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage('button_search'); ?>"> 
-		<input type="reset" class="btn" value="<?php echo $i18n->getMessage('button_reset'); ?>">
+		<input type="reset" class="btn btn-secondary" value="<?php echo $i18n->getMessage('button_reset'); ?>">
 	</div>    
   </form>
 
@@ -161,7 +161,7 @@ if (!$show) {
 elseif ($show == 'selectoptions') {
 	if (!isset($_POST['selectedteams']) || !count($_POST['selectedteams'])) {
 		echo createErrorMessage($i18n->getMessage('firemanagers_dismiss_noneselected'), '');
-		echo '<a href=\'?site='. $site .'\' class=\'btn\'>'. $i18n->getMessage('back_label') .'</a>';
+		echo '<a href=\'?site='. $site .'\' class=\'btn btn-outline-primary\'>'. $i18n->getMessage('back_label') .'</a>';
 	} else {
 ?>
 
@@ -245,7 +245,7 @@ elseif ($show == 'selectoptions') {
 	</fieldset>
 	<div class='d-flex gap-2 justify-content-center p-3'>
 		<input type='submit' class='btn btn-primary' accesskey='s' title='Alt + s' value='<?php echo $i18n->getMessage('firemanagers_dismiss_button'); ?>'> 
-		<a class='btn' href='?site=<?php echo $site; ?>'><?php echo $i18n->getMessage('button_cancel'); ?></a>
+		<a class='btn btn-secondary' href='?site=<?php echo $site; ?>'><?php echo $i18n->getMessage('button_cancel'); ?></a>
 	</div>    
   </form>
 

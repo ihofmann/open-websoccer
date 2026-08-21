@@ -6,7 +6,7 @@
 
 {% block page_content %}
 
-	<p><a href="{{ env.getInternalUrl("league", "id=" ~ leagueid) }}" class="btn"><i class="bi bi-table"></i> {{ i18n.getMessage("league_navlabel") }}</a></p>
+	<p><a href="{{ env.getInternalUrl("league", "id=" ~ leagueid) }}" class="btn btn-outline-primary"><i class="bi bi-table"></i> {{ i18n.getMessage("league_navlabel") }}</a></p>
 	
 
 	{% if history|length > 0 %}

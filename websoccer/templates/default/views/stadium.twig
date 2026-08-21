@@ -54,7 +54,7 @@
 				</td>
 				<td>
 					{% if stadium['level_' ~ upgradetype] < 5 %}
-						<a href="{{ env.getInternalActionUrl("upgrade-stadium", "type=" ~ upgradetype) }}" class="btn btn-sm"><i class="bi bi-box-arrow-up-right"></i> {{ i18n.getMessage("stadium_upgrade_button") }}</a>
+						<a href="{{ env.getInternalActionUrl("upgrade-stadium", "type=" ~ upgradetype) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-box-arrow-up-right"></i> {{ i18n.getMessage("stadium_upgrade_button") }}</a>
 					{% endif %}
 				</td>
 			</tr>
@@ -124,7 +124,7 @@
 				</fieldset>
 				<div class="d-flex gap-2 justify-content-center p-3">
 					<button type="submit" class="btn btn-primary">{{ i18n.getMessage('stadium_extend_button') }}</button>
-					<a href="{{ env.getInternalUrl("stadium") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+					<a href="{{ env.getInternalUrl("stadium") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
 				</div>
 				<input type="hidden" name="page" value="stadium"/>
 				<input type="hidden" name="validate-only" value="1"/>

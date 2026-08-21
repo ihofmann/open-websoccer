@@ -34,7 +34,7 @@
 				<tr>
 					<td><p>{{ env.getFormattedDatetime(offer.offer_submitted_date) }}</p>
 					{% if offer.offer_message|length > 0 %}
-					<a href="#" class="btn btn-sm wspopover" data-bs-toggle="popover" 
+					<a href="#" class="btn btn-sm btn-outline-primary wspopover" data-bs-toggle="popover" 
 						data-title="{{ i18n.getMessage("transferoffers_offer_comment_title", offer.sender_user_name) }}" 
 						data-content="{{ offer.offer_message }}">{{ i18n.getMessage("transferoffers_offer_showcomment") }}</a>
 					{% endif %}

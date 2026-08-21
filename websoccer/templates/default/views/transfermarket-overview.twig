@@ -33,7 +33,7 @@
   			<option value="striker"{% if env.getRequestParameter("position") == "striker" %} selected{% endif %}>{{ i18n.getMessage("option_Sturm") }}</option>
   		</select>
 	  	<button type="submit" class="btn btn-primary">{{ i18n.getMessage("button_display") }}</button>
-	  	<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn">{{ i18n.getMessage("button_reset") }}</a>
+	  	<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn btn-secondary">{{ i18n.getMessage("button_reset") }}</a>
 	  	
 	  	<input type="hidden" name="page" value="transfermarket" />
 	</form>
@@ -109,7 +109,7 @@
 				{% endif %}</p>
 				
 				{% if env.getUser().getClubId() != player.team_id %}
-				<p><a class="btn btn-sm" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.id) }}"><i class="bi bi-hand-index-thumb"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
+				<p><a class="btn btn-sm btn-outline-primary" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.id) }}"><i class="bi bi-hand-index-thumb"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
 				{% endif %}
 				</td>
 			</tr>

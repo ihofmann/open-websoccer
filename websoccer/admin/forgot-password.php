@@ -131,7 +131,7 @@ if (count($errors) > 0) {
 		  </div>
 		  <div class='mb-3'>
 			<div>
-			  <button type='submit' class='btn'><?php echo $i18n->getMessage('sendpassword_admin_button'); ?></button>
+			  <button type='submit' class='btn btn-outline-primary'><?php echo $i18n->getMessage('sendpassword_admin_button'); ?></button>
 			</div>
 		  </div>
 		</form>		

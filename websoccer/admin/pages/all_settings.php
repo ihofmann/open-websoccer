@@ -73,7 +73,7 @@ if (!$show) {
 	// tab content
 	$firstTab = TRUE;
 	foreach ($tabs as $tabId => $settings) {
-		echo '<div class=\'tab-pane';
+		echo '<div class=\'tab-pane pt-3';
 		if ($firstTab) echo ' active';
 		echo '\' id=\''. $tabId . '\'>';
 		
@@ -90,7 +90,7 @@ if (!$show) {
 	
 	<div class='d-flex gap-2 justify-content-center p-3'>
 		<input type='submit' class='btn btn-primary' accesskey='s' title='Alt + s' value='<?php echo $i18n->getMessage('button_save'); ?>'> 
-		<input type='reset' class='btn' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
+		<input type='reset' class='btn btn-secondary' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
 	</div>
          
   </form>

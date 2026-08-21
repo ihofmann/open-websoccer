@@ -10,7 +10,7 @@
 
 	<h3>{{ team_name }}</h3>
 	
-	<p><a class="btn btn-sm" href="{{ env.getInternalUrl("nominate-national-players") }}"><i class="bi bi-telephone"></i> {{ i18n.getMessage("nominate-national-players_navlabel") }}</a></p>
+	<p><a class="btn btn-sm btn-outline-primary" href="{{ env.getInternalUrl("nominate-national-players") }}"><i class="bi bi-telephone"></i> {{ i18n.getMessage("nominate-national-players_navlabel") }}</a></p>
 	
 	{% if players|length == 0 %}
 		{{ messagebox.box("", i18n.getMessage("nationalteams_no_players"), "info") }}
@@ -66,7 +66,7 @@
 								</td>
 							{% endif %}
 							<td>{{ player.age }}</td>
-							<td><a href="{{ env.getInternalActionUrl("remove-national-player", "id=" ~ player.id) }}" class="btn btn-sm"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("nationalteams_remove_from_team") }}</a></td>
+							<td><a href="{{ env.getInternalActionUrl("remove-national-player", "id=" ~ player.id) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("nationalteams_remove_from_team") }}</a></td>
 						</tr>
 					{% endfor %}
 				</tbody>

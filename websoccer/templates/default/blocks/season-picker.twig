@@ -28,7 +28,7 @@
 		data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker">{{ i18n.getMessage("button_display") }}</button>
 	  	
 	  		{% if currentMatchDay > 0 %}
-	  			<a href="#" class="btn ajaxLink"
+	  			<a href="#" class="btn btn-secondary ajaxLink"
 	data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
 	data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ currentMatchDay }}">{{ i18n.getMessage("seasonpicker_currentmachday") }}</a>
 	  		{% endif %}
@@ -59,6 +59,6 @@
 
 {% if env.getRequestParameter("matchday") > 0 %}
 	<h4>{{ i18n.getMessage("entity_match_spieltag") }}: {{ env.getRequestParameter("matchday") }}</h4>
-	<p><a href="{{ env.getInternalUrl("teamoftheday", "leagueid=" ~ env.getRequestParameter("leagueid") ~ "&seasonid=" ~ env.getRequestParameter("seasonid") ~ "&matchday=" ~ env.getRequestParameter("matchday")) }}" class="btn btn-sm"><i class="bi bi-heart"></i> {{ i18n.getMessage("teamoftheday_navlabel") }}</a></p>
+	<p><a href="{{ env.getInternalUrl("teamoftheday", "leagueid=" ~ env.getRequestParameter("leagueid") ~ "&seasonid=" ~ env.getRequestParameter("seasonid") ~ "&matchday=" ~ env.getRequestParameter("matchday")) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-heart"></i> {{ i18n.getMessage("teamoftheday_navlabel") }}</a></p>
 {% endif %}
 <span id="results-list_block">{{ viewHandler.renderBlock("results-list")|raw }}</span>

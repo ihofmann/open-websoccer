@@ -9,7 +9,7 @@
 {% block page_content %}
 
 {% if env.getConfig("youth_scouting_enabled") %}
-<p><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn"><i class="bi bi-search"></i> {{ i18n.getMessage("youthteam_scout_button") }}</a></p>
+<p><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn btn-outline-primary"><i class="bi bi-search"></i> {{ i18n.getMessage("youthteam_scout_button") }}</a></p>
 {% endif %}
 
 {% if players is defined and players|length > 0 %}
@@ -64,7 +64,7 @@
 					{% endif %}</p>
 				
 					<div class="btn-group">
-						<a class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }}</a>
+						<a class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }}</a>
 						<ul class="dropdown-menu">
 						
 							{% if player.age >= env.getConfig("youth_min_age_professional") %}

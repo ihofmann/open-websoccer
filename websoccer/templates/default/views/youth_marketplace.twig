@@ -19,7 +19,7 @@
   			<option value="Sturm"{% if env.getRequestParameter("position") == "Sturm" %} selected{% endif %}>{{ i18n.getMessage("option_Sturm") }}</option>
   		</select>
 	  	<button type="submit" class="btn btn-primary">{{ i18n.getMessage("button_display") }}</button>
-	  	<a href="{{ env.getInternalUrl("youth-marketplace") }}" class="btn">{{ i18n.getMessage("button_reset") }}</a>
+	  	<a href="{{ env.getInternalUrl("youth-marketplace") }}" class="btn btn-secondary">{{ i18n.getMessage("button_reset") }}</a>
 	  	
 	  	<input type="hidden" name="page" value="youth-marketplace" />
 	</form>
@@ -75,7 +75,7 @@
 					{% endif %}</p>
 					
 					{% if env.user.clubId != player.team_id %}
-						<a href="{{ env.getInternalUrl("youthplayer-buy", "id=" ~ player.player_id) }}" class="btn btn-sm"><i class="bi bi-cart"></i> {{ i18n.getMessage("youthteam_action_buy") }}</a>
+						<a href="{{ env.getInternalUrl("youthplayer-buy", "id=" ~ player.player_id) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-cart"></i> {{ i18n.getMessage("youthteam_action_buy") }}</a>
 					{% endif %}
 				</td>
 				<td>

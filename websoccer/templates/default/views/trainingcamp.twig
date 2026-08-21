@@ -27,7 +27,7 @@
 	
 	<form method="post">
 		<div class="d-flex gap-2 justify-content-center p-3">
-			<button type="submit" class="btn"><i class="bi bi-x-circle"></i> {{ i18n.getMessage('trainingcamp_delete') }}</button>
+			<button type="submit" class="btn btn-outline-primary"><i class="bi bi-x-circle"></i> {{ i18n.getMessage('trainingcamp_delete') }}</button>
 		</div>
 		<input type="hidden" name="page" value="trainingcamp"/>
 		<input type="hidden" name="action" value="cancel-camp"/>
@@ -55,7 +55,7 @@
 			{% for camp in camps %}
 				<tr>
 					<td><p>{{ camp.name }} ({{ camp.country }})</p>
-					<p><a href="{{ env.getInternalUrl("camp-details", "id=" ~ camp.id) }}" class="btn"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
+					<p><a href="{{ env.getInternalUrl("camp-details", "id=" ~ camp.id) }}" class="btn btn-outline-primary"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
 					<td>{{ camp.costs|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
 					<td>{{ camp.effect_strength }}</td>
 					<td>{{ camp.effect_strength_technique }}</td>

@@ -40,7 +40,7 @@
 						{% endif %}
 					</dl>
 					
-					<p><a href="#details{{ offer.builder_id }}" data-bs-toggle="collapse" class="btn btn-sm"><i class="bi bi-zoom-in"></i> {{ i18n.getMessage("stadium_extend_builders_details") }}</a></p>
+					<p><a href="#details{{ offer.builder_id }}" data-bs-toggle="collapse" class="btn btn-sm btn-outline-primary"><i class="bi bi-zoom-in"></i> {{ i18n.getMessage("stadium_extend_builders_details") }}</a></p>
 					<div id="details{{ offer.builder_id }}" class="collapse">
 						<dl>
 							<dt>{{ i18n.getMessage("entity_stadiumbuilder_fixedcosts") }}</dt>
@@ -77,6 +77,6 @@
 	{% endif %}
 	
 	<hr/>
-	<p><a class="btn" href="{{ env.getInternalUrl("stadium") }}">{{ i18n.getMessage("button_cancel") }}</a></p>
+	<p><a class="btn btn-outline-primary" href="{{ env.getInternalUrl("stadium") }}">{{ i18n.getMessage("button_cancel") }}</a></p>
 
 {% endblock %}

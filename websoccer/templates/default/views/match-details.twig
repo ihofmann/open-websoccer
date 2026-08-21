@@ -70,13 +70,13 @@
 	
 	<p style="margin-top: 10px">
 	{% if not match.match_simulated %}
-		<a id="matchReportRefresh" class="btn ajaxLink" data-ajaxtarget="pagecontent" 
+		<a id="matchReportRefresh" class="btn btn-outline-primary ajaxLink" data-ajaxtarget="pagecontent" 
 			data-ajaxquerystr="page=match&amp;id={{ match.match_id }}" 
 			data-blockseconds="60"
 			href="#refresh"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }} <span class="timerCount"></span></a>
 			
 		{% if allowTacticChanges %}
-			<a class="btn" href="{{ env.getInternalUrl("match-live-changes", "id=" ~ match.match_id) }}"><i class="bi bi-pencil"></i> {{ i18n.getMessage("match_details_button_changes") }}</a>
+			<a class="btn btn-outline-primary" href="{{ env.getInternalUrl("match-live-changes", "id=" ~ match.match_id) }}"><i class="bi bi-pencil"></i> {{ i18n.getMessage("match_details_button_changes") }}</a>
 		{% endif %}
 	
 	{% endif %}

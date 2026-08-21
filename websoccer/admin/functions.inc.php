@@ -84,10 +84,10 @@ function createSuccessMessage($title, $message) {
  */
 function createMessage($severity, $title, $message) {
   $cssSeverity = ($severity === 'error') ? 'danger' : $severity;
-  $html = '<div class=\'alert alert-'. $cssSeverity . ' alert-dismissible\'>';
-  $html .= '<button type=\'button\' class=\'btn-close\' data-bs-dismiss=\'alert\' aria-label=\'Close\'></button>';
-  $html .= '<h4>'. $title .'</h4>';
+  $html = '<div class=\'alert alert-'. $cssSeverity . ' alert-dismissible fade show\' role=\'alert\'>';
+  $html .= '<strong>'. $title .'</strong> ';
   $html .= $message;
+  $html .= '<button type=\'button\' class=\'btn-close\' data-bs-dismiss=\'alert\' aria-label=\'Close\'></button>';
   $html .= '</div>';
   return $html;
 }

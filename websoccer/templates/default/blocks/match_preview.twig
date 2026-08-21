@@ -39,7 +39,7 @@
 		{% else %}
 			<p>{{ i18n.getMessage("matchpreview_nolastmatches", match.match_home_name) }}</p>
 		{% endif %}
-		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" class="btn">{{ i18n.getMessage("team_navlabel") }}</a></p>
+		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" class="btn btn-outline-primary">{{ i18n.getMessage("team_navlabel") }}</a></p>
 	</div>
 	<div class="col-md-6">
 		{% if latestMatchesGuest|length > 0 %}
@@ -55,6 +55,6 @@
 		{% else %}
 			<p>{{ i18n.getMessage("matchpreview_nolastmatches", match.match_guest_name) }}</p>
 		{% endif %}
-		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" class="btn">{{ i18n.getMessage("team_navlabel") }}</a></p>
+		<p><a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" class="btn btn-outline-primary">{{ i18n.getMessage("team_navlabel") }}</a></p>
 	</div>
 </div>

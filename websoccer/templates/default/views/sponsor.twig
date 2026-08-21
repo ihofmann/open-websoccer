@@ -52,7 +52,7 @@
 			
 				<tr>
 					<td><p>{{ sponsor.name }}</p>
-					<p><a href="#" class="btn ajaxLink"
+					<p><a href="#" class="btn btn-outline-primary ajaxLink"
 						data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&amp;action=choose-sponsor&amp;id={{ sponsor.sponsor_id }}"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("button_choose") }}</a></p></td>
 					<td>{{ sponsor.amount_match|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>
 					<td>{{ sponsor.amount_home_bonus|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</td>

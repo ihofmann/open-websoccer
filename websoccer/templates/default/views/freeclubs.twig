@@ -63,9 +63,9 @@
 							{% if env.getConfig("assign_team_automatically") %}
 							<td>
 								{% if env.user.clubId < 1 %}
-									<a href="{{ env.getInternalActionUrl("choose-team", "teamId=" ~ club.team_id) }}" class="btn btn-sm"><i class="bi bi-file-text"></i> {{ i18n.getMessage("freeclubs_button_choose") }}</a>
+									<a href="{{ env.getInternalActionUrl("choose-team", "teamId=" ~ club.team_id) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-file-text"></i> {{ i18n.getMessage("freeclubs_button_choose") }}</a>
 								{% elseif env.getConfig("max_number_teams_per_user") > 1 %}
-									<a href="{{ env.getInternalActionUrl("choose-additional-team", "teamId=" ~ club.team_id) }}" class="btn btn-sm"><i class="bi bi-file-text"></i> {{ i18n.getMessage("freeclubs_button_choose_another") }}</a>
+									<a href="{{ env.getInternalActionUrl("choose-additional-team", "teamId=" ~ club.team_id) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-file-text"></i> {{ i18n.getMessage("freeclubs_button_choose_another") }}</a>
 								{% endif %}
 							</td>
 							{% endif %}

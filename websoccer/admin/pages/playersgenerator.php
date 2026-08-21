@@ -55,12 +55,12 @@ if (!$show) {
   			
   		</select>
 	  	<button type="submit" class="btn btn-primary"><?php echo $i18n->getMessage("button_display") ?></button>
-	  	<a href="index.php?site=<?php echo $site ?>" class="btn"><?php echo $i18n->getMessage("button_reset") ?></a>
+	  	<a href="index.php?site=<?php echo $site ?>" class="btn btn-secondary"><?php echo $i18n->getMessage("button_reset") ?></a>
 	  	
 	  	<input type="hidden" name="site" value="<?php echo $site ?>" />
 	</form>
 	
-	<p><a href="index.php?site=<?php echo $site ?>&show=generateform&transfermarket=1" class="btn"><?php echo $i18n->getMessage("playersgenerator_generator_for_transfermarket") ?></a></p>
+	<p><a href="index.php?site=<?php echo $site ?>&show=generateform&transfermarket=1" class="btn btn-outline-primary"><?php echo $i18n->getMessage("playersgenerator_generator_for_transfermarket") ?></a></p>
 
   <?php
   if ($leagueid > 0) {
@@ -79,7 +79,7 @@ if (!$show) {
 	  	?>
 	  	
 	  	<p><a href="?site=<?php echo $site ?>&show=generateform&leagueid=<?php echo $leagueid ?>"
-	  		class="btn"><?php echo $i18n->getMessage("playersgenerator_create_for_all_teams"); ?></a></p>
+	  		class="btn btn-outline-primary"><?php echo $i18n->getMessage("playersgenerator_create_for_all_teams"); ?></a></p>
 	  		
 	  	<h4 style="margin-top:20px"><?php echo $i18n->getMessage("playersgenerator_create_for_single_teams"); ?></h4>
 	    
@@ -166,7 +166,7 @@ elseif ($show == "generateform") {
 	</fieldset>
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("generator_button"); ?>"> 
-		<input type="reset" class="btn" value="<?php echo $i18n->getMessage("button_reset"); ?>">
+		<input type="reset" class="btn btn-secondary" value="<?php echo $i18n->getMessage("button_reset"); ?>">
 	</div>    
   </form>
 	

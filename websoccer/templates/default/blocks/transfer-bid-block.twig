@@ -39,7 +39,7 @@
 	{% endif %}
 {% endif %}
 
-<p><a href="#highestbid" style="margin-top: 30px" class="btn ajaxLink" data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid"
+<p><a href="#highestbid" style="margin-top: 30px" class="btn btn-outline-primary ajaxLink" data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid"
 	data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a></p>
 
 <h3>{{ i18n.getMessage("transfer_bid_yourbid") }}</h3>
@@ -61,7 +61,7 @@
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary ajaxSubmit" 
 		data-ajaxtarget="transfer-bid_block" data-ajaxblock="transfer-bid" data-messagetarget="bidmessages">{{ i18n.getMessage('transfermarket_bid') }}</button>
-		<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+		<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
 	<input type="hidden" name="page" value="transfer-bid"/>
 	<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>

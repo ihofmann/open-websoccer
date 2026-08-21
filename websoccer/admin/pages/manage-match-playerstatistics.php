@@ -26,7 +26,7 @@ if (!$admin["r_admin"] && !$admin["r_demo"] && !$admin["r_spiele"]) {
 	throw new Exception($i18n->getMessage("error_access_denied"));
 }
 
-echo "<p><a href=\"?site=manage&entity=match\" class=\"btn\">". $i18n->getMessage("back_label") . "</a></p>";
+echo "<p><a href=\"?site=manage&entity=match\" class=\"btn btn-outline-primary\">". $i18n->getMessage("back_label") . "</a></p>";
 
 $matchId = (isset($_REQUEST["match"]) && is_numeric($_REQUEST["match"])) ? $_REQUEST["match"] : 0;
 
@@ -266,7 +266,7 @@ foreach ($teamPrefixes as $teamPrefix) {
 		$formationCount = $fresult->fetch_array();
 		$fresult->free();
 		if ($formationCount && $formationCount["hits"]) {
-			echo "<p><a href=\"?site=$site&match=$matchId&team=$teamPrefix&action=generate\" class=\"btn\"><i class=\"bi bi-hand-index\"></i> ". $i18n->getMessage("match_manage_playerstatistics_createfromfrmation") . "</a></p>";
+			echo "<p><a href=\"?site=$site&match=$matchId&team=$teamPrefix&action=generate\" class=\"btn btn-outline-primary\"><i class=\"bi bi-hand-index\"></i> ". $i18n->getMessage("match_manage_playerstatistics_createfromfrmation") . "</a></p>";
 		} else {
 			echo "<p><i class=\"bi bi-exclamation-triangle\"></i> ". $i18n->getMessage("match_manage_playerstatistics_noformationavailable") . "</p>";
 		}
@@ -405,7 +405,7 @@ foreach ($teamPrefixes as $teamPrefix) {
 
 echo "<div class=\"d-flex gap-2 justify-content-center p-3\">";
 echo "<button type=\"submit\" class=\"btn btn-primary\">". $i18n->getMessage("button_save") . "</button>";
-echo " <button type=\"reset\" class=\"btn\">". $i18n->getMessage("button_reset") . "</button>";
+echo " <button type=\"reset\" class=\"btn btn-secondary\">". $i18n->getMessage("button_reset") . "</button>";
 echo "</div></form>";
 
 ?>

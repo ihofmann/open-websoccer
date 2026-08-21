@@ -26,7 +26,7 @@ $r_prefix = ""; #Prefix der Datei
 
 echo "<h1>$mainTitle</h1>";
 
-echo "<p><a href=\"?site=manage&entity=cup\" class=\"btn\">" . $i18n->getMessage("button_cancel") ."</a></p>";
+echo "<p><a href=\"?site=manage&entity=cup\" class=\"btn btn-outline-primary\">" . $i18n->getMessage("button_cancel") ."</a></p>";
 
 if (!$admin["r_admin"] && !$admin["r_demo"] && !$admin["r_spiele"]) {
 	throw new Exception($i18n->getMessage("error_access_denied"));
@@ -243,7 +243,7 @@ function renderRound($roundNode) {
 		<div class="mb-3">
 			<div>
 				<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
-				<a href="<?php echo "?site=" . $site . "&cup=" . $cupid; ?>" class="btn"><?php echo $i18n->getMessage("button_cancel"); ?></a>
+				<a href="<?php echo "?site=" . $site . "&cup=" . $cupid; ?>" class="btn btn-secondary"><?php echo $i18n->getMessage("button_cancel"); ?></a>
 			</div>    
 		</div>
 	  </form>

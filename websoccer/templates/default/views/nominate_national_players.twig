@@ -116,7 +116,7 @@
 							</td>
 						{% endif %}
 						
-						<td><a class="btn btn-sm" href="{{ env.getInternalActionUrl("add-national-player", "id=" ~ player.id) }}"><i class="bi bi-flag"></i> {{ i18n.getMessage("nationalteams_addplayer") }}</a></td>
+						<td><a class="btn btn-sm btn-outline-primary" href="{{ env.getInternalActionUrl("add-national-player", "id=" ~ player.id) }}"><i class="bi bi-flag"></i> {{ i18n.getMessage("nationalteams_addplayer") }}</a></td>
 						
 					</tr>
 					{% endfor %}

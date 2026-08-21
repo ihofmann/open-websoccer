@@ -34,7 +34,7 @@ if (!$show) {
 
   <p><?php echo $i18n->getMessage("jobs_introduction"); ?></p>
   
-  <div class="alert">
+  <div class="alert alert-info">
   <?php echo $i18n->getMessage("jobs_warning"); ?>
   </div>
   
@@ -126,10 +126,10 @@ if (!$show) {
 			echo "<td>" . $status . "</td>";
 			echo "<td>";
 			if ($running) {
-				echo "<a href=\"job.php?action=stop&id=". $jobid . "\" class=\"btn startStopJobLink\">". $i18n->getMessage("jobs_button_stop") ."</a>";
+				echo "<a href=\"job.php?action=stop&id=". $jobid . "\" class=\"btn btn-outline-primary startStopJobLink\">". $i18n->getMessage("jobs_button_stop") ."</a>";
 			} else {
 				echo "<a href=\"job.php?action=start&id=". $jobid . "\" class=\"btn btn-primary startStopJobLink\">". $i18n->getMessage("jobs_button_start") ."</a>";
-				echo " <a href=\"?site=". $site . "&action=execute&id=". $jobid . "\" class=\"btn\">". $i18n->getMessage("jobs_button_execute_once") ."</a>";
+				echo " <a href=\"?site=". $site . "&action=execute&id=". $jobid . "\" class=\"btn btn-secondary\">". $i18n->getMessage("jobs_button_execute_once") ."</a>";
 			}
 			echo "</td>";
 			

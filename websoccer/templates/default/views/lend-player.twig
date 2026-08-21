@@ -36,7 +36,7 @@
 	
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
-		<a href="{{ env.getInternalUrl("myteam") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+		<a href="{{ env.getInternalUrl("myteam") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
 	<input type="hidden" name="page" value="lend-player"/>
 	<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>

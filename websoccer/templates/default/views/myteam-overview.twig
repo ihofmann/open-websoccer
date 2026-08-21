@@ -61,7 +61,7 @@
 					or env.getConfig("lending_enabled") == 0
 					or player.id != captain_id %}
 					<div class="btn-group">
-						<a class="btn btn-sm dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }} </a>
+						<a class="btn btn-sm btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" href="#">{{ i18n.getMessage("myteam_action_button") }} </a>
 						<ul class="dropdown-menu">
 						
 							{% if player.unsellable == 0 %}

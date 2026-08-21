@@ -174,7 +174,7 @@ if ($forwarded) {
 		  </div>
 		  <div class='mb-3'>
 			<div>
-			  <button type='submit' class='btn'><?php echo $i18n->getMessage('login_button_logon');?></button>
+			  <button type='submit' class='btn btn-primary'><?php echo $i18n->getMessage('login_button_logon');?></button>
 			</div>
 		  </div>
 		</form>		

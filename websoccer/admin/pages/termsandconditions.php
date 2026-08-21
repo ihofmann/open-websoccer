@@ -49,7 +49,7 @@ if (!$show) {
 
   <p><?php echo $i18n->getMessage("termsandconditions_introduction"); ?></p>
   
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="d-flex flex-wrap gap-2 align-items-center">
+  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="d-flex flex-wrap gap-2 align-items-center mb-3">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	
 	<label for="lang"><?php echo $i18n->getMessage("termsandconditions_label_language"); ?></label>
@@ -62,7 +62,7 @@ if (!$show) {
 		}
 		?>
 	</select>
-	<button type="submit" class="btn"><?php echo $i18n->getMessage("button_display"); ?></button>
+	<button type="submit" class="btn btn-outline-primary"><?php echo $i18n->getMessage("button_display"); ?></button>
   </form>
   
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
@@ -84,7 +84,7 @@ if (!$show) {
 	</fieldset>
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
-		<input type="reset" class="btn" value="<?php echo $i18n->getMessage("button_reset"); ?>">
+		<input type="reset" class="btn btn-secondary" value="<?php echo $i18n->getMessage("button_reset"); ?>">
 	</div>    
   </form>
 

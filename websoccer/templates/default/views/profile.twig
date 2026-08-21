@@ -33,7 +33,7 @@
 	
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
-		<a href="{{ env.getInternalUrl("profile") }}" class="btn">{{ i18n.getMessage('button_reset') }}</a>
+		<a href="{{ env.getInternalUrl("profile") }}" class="btn btn-secondary">{{ i18n.getMessage('button_reset') }}</a>
 	</div>
 	<input type="hidden" name="page" value="profile"/>
 	<input type="hidden" name="action" value="save-profile"/>

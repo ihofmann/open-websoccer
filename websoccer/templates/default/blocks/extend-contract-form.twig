@@ -6,7 +6,7 @@
 {{ statisticelements.progressbar(player.player_strength_satisfaction) }}
 
 {% if frontMessages is defined and frontMessages|length == 1 and frontMessages[0].type == "success" %}
-<a href="{{ env.getInternalUrl("myteam") }}" class="btn">{{ i18n.getMessage('myteam_navlabel') }}</a>
+<a href="{{ env.getInternalUrl("myteam") }}" class="btn btn-outline-primary">{{ i18n.getMessage('myteam_navlabel') }}</a>
 {% else %}
 <h3>{{ i18n.getMessage("extend-contract_offer_title") }}</h3>
 
@@ -21,7 +21,7 @@
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<button type="submit" class="btn btn-primary ajaxSubmit" 
 		data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_submit') }}</button>
-		<a href="{{ env.getInternalUrl("myteam") }}" class="btn">{{ i18n.getMessage('button_cancel') }}</a>
+		<a href="{{ env.getInternalUrl("myteam") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
 	<input type="hidden" name="page" value="extend-contract"/>
 	<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>

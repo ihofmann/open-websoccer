@@ -26,7 +26,7 @@ if (!$admin["r_admin"] && !$admin["r_demo"] && !$admin["r_spiele"]) {
 	throw new Exception($i18n->getMessage("error_access_denied"));
 }
 
-echo "<p><a href=\"?site=manage&entity=match\" class=\"btn\">". $i18n->getMessage("back_label") . "</a></p>";
+echo "<p><a href=\"?site=manage&entity=match\" class=\"btn btn-outline-primary\">". $i18n->getMessage("back_label") . "</a></p>";
 
 $matchId = (isset($_REQUEST["match"]) && is_numeric($_REQUEST["match"])) ? $_REQUEST["match"] : 0;
 $match = MatchesDataService::getMatchById($website, $db, $matchId, FALSE, FALSE);

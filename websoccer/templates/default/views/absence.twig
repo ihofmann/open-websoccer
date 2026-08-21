@@ -13,7 +13,7 @@
 	{% if currentAbsence %}
 		<div class="card card-body">
 			<p>{{ i18n.getMessage("absence_reportinfo")|format(env.getFormattedDate(currentAbsence.to_date), deputyName|e)|raw }}</p>
-			<p><a href="{{ env.getInternalActionUrl("return-from-absence") }}" class="btn"><i class="bi bi-box-arrow-in-right"></i> {{ i18n.getMessage("absence_return_button") }}</a></p>
+			<p><a href="{{ env.getInternalActionUrl("return-from-absence") }}" class="btn btn-outline-primary"><i class="bi bi-box-arrow-in-right"></i> {{ i18n.getMessage("absence_return_button") }}</a></p>
 		</div>
 	{% else %}
 		

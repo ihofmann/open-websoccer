@@ -138,7 +138,7 @@ if ($action == "generate" && isset($_POST["teams"]) && is_array($_POST["teams"])
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("managecuprounds_generate_submitbutton"); ?>"> 
 		<?php 
-		echo " <a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn\">" . $i18n->getMessage("button_cancel") ."</a>";
+		echo " <a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn btn-secondary\">" . $i18n->getMessage("button_cancel") ."</a>";
 		?>
 	</div>    
   </form>

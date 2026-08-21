@@ -41,7 +41,7 @@ if (!isset($round["round_name"])) {
 
 echo "<h2>". $i18n->getMessage("entity_cup") . " - " . escapeOutput($round["round_name"]) . "</h2>";
 
-echo "<p><a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn\">" . $i18n->getMessage("managecuprounds_groups_back") ."</a></p>";
+echo "<p><a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn btn-outline-primary\">" . $i18n->getMessage("managecuprounds_groups_back") ."</a></p>";
 
 // get teams for team selection
 $result = $db->querySelect("T.id AS team_id,T.name AS team_name,L.name AS league_name,L.land AS league_country",
@@ -275,7 +275,7 @@ if (count($groups)) {
 					<input type="hidden" name="group" value="<?php echo escapeOutput($groupName); ?>">
 					
 					<input id="groupname" name="groupname" type="text" value="<?php echo escapeOutput($nameValue) ?>">
-					<input type="submit" class="btn" value="<?php echo $i18n->getMessage("button_save"); ?>">
+					<input type="submit" class="btn btn-outline-primary" value="<?php echo $i18n->getMessage("button_save"); ?>">
 				</form>
 				<?php
 			} else {
@@ -303,7 +303,7 @@ if (count($groups)) {
 				FormBuilder::createForeignKeyField($i18n, "teamid", array("entity" => "club", "jointable" => "verein", "labelcolumns" => "name"), "");
 				?>
 				
-				<input type="submit" class="btn btn-sm" value="<?php echo $i18n->getMessage("managecuprounds_groups_addteam"); ?>">
+				<input type="submit" class="btn btn-sm btn-outline-primary" value="<?php echo $i18n->getMessage("managecuprounds_groups_addteam"); ?>">
 			</form>
 			<?php
 			
@@ -334,7 +334,7 @@ if (count($groups)) {
 			}
 			echo "</ol>";
 			?>
-			<input type="submit" class="btn btn-sm" value="<?php echo $i18n->getMessage("button_save"); ?>">
+			<input type="submit" class="btn btn-sm btn-outline-primary" value="<?php echo $i18n->getMessage("button_save"); ?>">
 			</form>
 			<?php
 			echo "</td>";
@@ -436,7 +436,7 @@ if (count($groups)) {
 		<?php if (isset($matches["hits"]) && $matches["hits"]) { ?>
 		<p><a href="<?php echo $matchesUrl; ?>"><strong><?php echo $matches["hits"]; ?></strong> <?php echo $i18n->getMessage("managecuprounds_groups_created_matches"); ?></a></p>
 		<?php } ?>
-		<p><a href="#generateModal" role="button" class="btn" data-bs-toggle="modal"><?php echo $i18n->getMessage("managecuprounds_groups_open_generate_matches_popup"); ?></a></p>
+		<p><a href="#generateModal" role="button" class="btn btn-outline-primary" data-bs-toggle="modal"><?php echo $i18n->getMessage("managecuprounds_groups_open_generate_matches_popup"); ?></a></p>
 	</div>
 	
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
@@ -524,7 +524,7 @@ if (count($groups)) {
 	<div class="d-flex gap-2 justify-content-center p-3">
 		<input type="submit" class="btn btn-primary" accesskey="s" title="Alt + s" value="<?php echo $i18n->getMessage("button_save"); ?>"> 
 	<?php 
-	echo "<a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn\">" . $i18n->getMessage("button_cancel") ."</a>";
+	echo "<a href=\"?site=managecuprounds&cup=". $round["cup_id"] . "\" class=\"btn btn-secondary\">" . $i18n->getMessage("button_cancel") ."</a>";
 	
 	?>
 	

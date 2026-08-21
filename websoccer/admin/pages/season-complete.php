@@ -116,7 +116,7 @@ elseif ($show == 'select') {
 	</fieldset>
 	<div class='d-flex gap-2 justify-content-center p-3'>
 		<input type='submit' class='btn btn-primary' accesskey='s' title='Alt + s' value='<?php echo $i18n->getMessage('season_complete_submit'); ?>'> 
-		<input type='reset' class='btn' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
+		<input type='reset' class='btn btn-secondary' value='<?php echo $i18n->getMessage('button_reset'); ?>'>
 	</div>    
   </form>
 	<?php 

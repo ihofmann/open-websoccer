@@ -5,5 +5,5 @@
 	- 
 	<a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a>
 	</strong></p>
-<p><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" class="btn">{{ i18n.getMessage("match_navlabel") }}</a>
-<a href="{{ env.getInternalUrl("formation", "nationalteam=1&id=" ~ match.id) }}" class="btn">{{ i18n.getMessage("formation_navlabel") }}</a></p>
+<p><a href="{{ env.getInternalUrl("match", "id=" ~ match.id) }}" class="btn btn-outline-primary">{{ i18n.getMessage("match_navlabel") }}</a>
+<a href="{{ env.getInternalUrl("formation", "nationalteam=1&id=" ~ match.id) }}" class="btn btn-outline-primary">{{ i18n.getMessage("formation_navlabel") }}</a></p>

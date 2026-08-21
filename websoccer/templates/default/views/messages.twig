@@ -10,8 +10,8 @@
 {% block page_content %}
 
 {% if env.getConfig("messages_enabled") %}
-	<p><a href="{{ env.getInternalUrl() }}" class="btn btn-sm"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a>
-	<a href="#composeMessage" class="btn btn-sm" data-bs-toggle="modal"><i class="bi bi-pencil"></i> {{ i18n.getMessage("messages_compose_button") }}</a></p>
+	<p><a href="{{ env.getInternalUrl() }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a>
+	<a href="#composeMessage" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"><i class="bi bi-pencil"></i> {{ i18n.getMessage("messages_compose_button") }}</a></p>
 	<form class="row">
 		<div id="composeMessage" class="modal fade" tabindex="-1" role="dialog" 
 			aria-labelledby="composeModalLabel" aria-hidden="true">

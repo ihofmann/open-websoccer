@@ -122,7 +122,7 @@
 			<div class="alert alert-info">
 			<p>{{ i18n.getMessage("player_details_avaiable_on_transfermarket") }}</p>
 			{% if env.getUser().getClubId() != player.team_id %}
-				<p><a class="btn btn-sm" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.player_id) }}"><i class="bi bi-hand-index-thumb"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
+				<p><a class="btn btn-sm btn-outline-primary" href="{{ env.getInternalUrl("transfer-bid", "id=" ~ player.player_id) }}"><i class="bi bi-hand-index-thumb"></i> {{ i18n.getMessage("transfermarket_bid") }}</a></p>
 			{% endif %}
 			</div>
 		{% elseif player.player_unsellable > 0 %}
@@ -133,7 +133,7 @@
 			<div class="alert alert-info">
 			<p>{{ i18n.getMessage("lending_player_lendable_info", player.lending_fee|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency"))|raw }}</p>
 			{% if env.getUser().getClubId() != player.team_id %}
-				<p><a class="btn btn-sm" href="{{ env.getInternalUrl("borrow-player", "id=" ~ player.player_id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("lending_player_hire_button") }}</a></p>
+				<p><a class="btn btn-sm btn-outline-primary" href="{{ env.getInternalUrl("borrow-player", "id=" ~ player.player_id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("lending_player_hire_button") }}</a></p>
 			{% endif %}
 			</div>
 		{% endif %}
@@ -212,7 +212,7 @@
 			</div>
 		</div>
 		
-		<p><a href="#statModal" class="btn btn-sm ajaxLink" role="button" data-bs-toggle="modal" data-ajaxtarget="playerStatisticsPerCompetition" 
+		<p><a href="#statModal" class="btn btn-sm btn-outline-primary ajaxLink" role="button" data-bs-toggle="modal" data-ajaxtarget="playerStatisticsPerCompetition" 
 			data-ajaxblock="playerstatistics" data-ajaxquerystr="id={{ player.player_id }}" ><i class="bi bi-bar-chart"></i> {{ i18n.getMessage("player_details_statistic_opendetails") }}</a></p>
 		
 		<div id="statModal" class="modal fade" tabindex="-1" role="dialog" 

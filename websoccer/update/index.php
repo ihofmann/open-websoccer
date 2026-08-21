@@ -61,7 +61,7 @@ function printWelcomeScreen() {
 		echo "</label>";
 	}
 	
-	echo "<button type=\"submit\" class=\"btn\">Wählen / Choose</button>";
+	echo "<button type=\"submit\" class=\"btn btn-outline-primary\">Wählen / Choose</button>";
 	echo "<input type=\"hidden\" name=\"action\" value=\"actionSetLanguage\">";
 	echo "</form>";
 }
@@ -139,7 +139,7 @@ function printSystemCheck($messages) {
 	
 	if ($valid) {
 		echo "<form method=\"post\">";
-		echo "<button type=\"submit\" class=\"btn\">". $messages["button_next"] . "</button>";
+		echo "<button type=\"submit\" class=\"btn btn-outline-primary\">". $messages["button_next"] . "</button>";
 		echo "<input type=\"hidden\" name=\"action\" value=\"actionMoveFiles\">";
 		echo "</form>";
 	} else {

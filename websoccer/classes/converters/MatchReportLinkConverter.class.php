@@ -39,7 +39,7 @@ class MatchReportLinkConverter implements IConverter {
 	 */
 	public function toHtml($row) {
 		$output = '<div class=\'btn-group\'>';
-		$output .= '<a class=\'btn btn-sm dropdown-toggle\' data-bs-toggle=\'dropdown\' href=\'#\'>';
+		$output .= '<a class=\'btn btn-sm btn-outline-primary dropdown-toggle\' data-bs-toggle=\'dropdown\' href=\'#\'>';
 		$output .= $this->_i18n->getMessage('entity_match_matchreportitems') . ' <span class=\'caret\'></span>';
 		$output .= '</a>';
 		$output .= '<ul class=\'dropdown-menu\'>';

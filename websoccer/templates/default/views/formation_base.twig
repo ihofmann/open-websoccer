@@ -205,7 +205,7 @@
 							<a class="benchPlayerRemove" href="#" title="{{ i18n.getMessage("player_button_remove_from_pitch") }}"><i class="bi bi-x-lg darkIcon"></i></a>
 						</td>
 						<td>
-							<a class="benchPlayerSubAdd btn btn-sm" href="#subModal{{ benchNo }}" role="button" data-bs-toggle="modal"><i class="bi bi-arrow-right-circle"></i> {{ i18n.getMessage("formation_bench_sub_in") }}</a>
+							<a class="benchPlayerSubAdd btn btn-sm btn-outline-primary" href="#subModal{{ benchNo }}" role="button" data-bs-toggle="modal"><i class="bi bi-arrow-right-circle"></i> {{ i18n.getMessage("formation_bench_sub_in") }}</a>
 
 							<div id="subModal{{ benchNo }}" class="modal fade" tabindex="-1" role="dialog"
 								aria-labelledby="subModal{{ benchNo }}Label" aria-hidden="true">
@@ -320,7 +320,7 @@
 										{% if playerPosition != "bench" and (player.matches_injured is not defined or player.matches_injured == 0) and (player.matches_blocked is not defined or player.matches_blocked == 0) %}
 											<div class="playerinfoIcons text-end">
 													<div class="dropdown d-inline-block">
-														<a id="addLink{{ player.id }}" href="#" data-bs-toggle="dropdown" class="btn btn-sm dropdown-toggle playerAddToPitchLink"><i class="bi bi-plus-circle"></i> {{ i18n.getMessage("player_button_to_pitch") }}</a>
+														<a id="addLink{{ player.id }}" href="#" data-bs-toggle="dropdown" class="btn btn-sm btn-outline-primary dropdown-toggle playerAddToPitchLink"><i class="bi bi-plus-circle"></i> {{ i18n.getMessage("player_button_to_pitch") }}</a>
 														<ul class="dropdown-menu text-start" role="menu" aria-labelledby="addLink{{ player.id }}">
 															<li><a href="#" class="dropdown-item playerAddToPitchLinkItem" data-target="T" >{{ i18n.getMessage("option_T") }}</a></li>
 															<li><hr class="dropdown-divider"></li>
@@ -339,10 +339,10 @@
 															<li><a href="#" class="dropdown-item playerAddToPitchLinkItem" data-target="RS" >{{ i18n.getMessage("option_RS") }}</a></li>
 														</ul>
 													</div>
-												<a href="#" class="btn btn-sm playerRemoveLink"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("player_button_remove_from_pitch") }}</a>
-												<a href="#" class="btn btn-sm playerAddToBenchLink"><i class="bi bi-arrow-repeat"></i> {{ i18n.getMessage("player_button_to_bench") }}</a>
+												<a href="#" class="btn btn-sm btn-outline-primary playerRemoveLink"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("player_button_remove_from_pitch") }}</a>
+												<a href="#" class="btn btn-sm btn-outline-primary playerAddToBenchLink"><i class="bi bi-arrow-repeat"></i> {{ i18n.getMessage("player_button_to_bench") }}</a>
 												{% if youthFormation is not defined or not youthFormation %}
-												<a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}" class="btn btn-sm" target="_blank"><i class="bi bi-info-circle"></i> {{ i18n.getMessage("player_navlabel") }}</a>
+												<a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-info-circle"></i> {{ i18n.getMessage("player_navlabel") }}</a>
 												{% endif %}
 											</div>
 										{% endif %}
