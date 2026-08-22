@@ -68,15 +68,15 @@
 						<ul class="dropdown-menu">
 						
 							{% if player.age >= env.getConfig("youth_min_age_professional") %}
-							<li><a href="{{ env.getInternalUrl("youthplayer-makeprofessional", "id=" ~ player.id) }}"><i class="bi bi-briefcase"></i> {{ i18n.getMessage("youthteam_action_make_professional") }}</a></li>
-							<li class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="{{ env.getInternalUrl("youthplayer-makeprofessional", "id=" ~ player.id) }}"><i class="bi bi-briefcase"></i> {{ i18n.getMessage("youthteam_action_make_professional") }}</a></li>
+							<li><hr class="dropdown-divider"></li>
 							{% endif %}
 							
 							{% if player.transfer_fee == 0 %}
-								<li><a href="{{ env.getInternalUrl("youthplayer-sell", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("youthteam_action_sell") }}</a></li>
+								<li><a class="dropdown-item" href="{{ env.getInternalUrl("youthplayer-sell", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("youthteam_action_sell") }}</a></li>
 							{% endif %}
 							
-							<li><a href="{{ env.getInternalUrl("youthplayer-fire", "id=" ~ player.id) }}"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("youthteam_action_fire") }}</a></li>
+							<li><a class="dropdown-item" href="{{ env.getInternalUrl("youthplayer-fire", "id=" ~ player.id) }}"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("youthteam_action_fire") }}</a></li>
 						</ul>
 					</div>
 				</td>

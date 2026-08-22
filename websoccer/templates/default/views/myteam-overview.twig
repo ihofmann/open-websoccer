@@ -66,27 +66,27 @@
 						
 							{% if player.unsellable == 0 %}
 								{% if env.getConfig("transfermarket_enabled") and player.lending_fee == 0 %}
-									<li><a href="{{ env.getInternalUrl("sell-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("myteam_player_sell") }}</a></li>
+									<li><a class="dropdown-item" href="{{ env.getInternalUrl("sell-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("myteam_player_sell") }}</a></li>
 								{% endif %}
-									<li><a class="ajaxLink" href="#" title="{{ i18n.getMessage("myteam_unsellable_tooltip") }}"
+									<li><a class="dropdown-item ajaxLink" href="#" title="{{ i18n.getMessage("myteam_unsellable_tooltip") }}"
 										data-ajaxtarget="pagecontent" data-ajaxquerystr="page=myteam&action=markAsUnsellable&id={{ player.id }}"><i class="bi bi-eye-slash"></i> {{ i18n.getMessage("myteam_unsellable") }}</a></li>
 							
 								{% if player.transfermarket == 0 and player.lending_fee == 0 and env.getConfig("lending_enabled") %}
-									<li><a href="{{ env.getInternalUrl("lend-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("lending_lend_button") }}</a></li>
+									<li><a class="dropdown-item" href="{{ env.getInternalUrl("lend-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("lending_lend_button") }}</a></li>
 								{% endif %}
 							
 							{% endif %}
 							
 							{% if player.contract_matches <= env.getConfig("contract_max_number_of_remaining_matches") %}
-								<li><a href="{{ env.getInternalUrl("extend-contract", "id=" ~ player.id) }}"><i class="bi bi-briefcase"></i> {{ i18n.getMessage("myteam_player_extend_contract") }}</a></li>
+								<li><a class="dropdown-item" href="{{ env.getInternalUrl("extend-contract", "id=" ~ player.id) }}"><i class="bi bi-briefcase"></i> {{ i18n.getMessage("myteam_player_extend_contract") }}</a></li>
 							{% endif %}
 							
 							{% if player.id != captain_id %}
-								<li><a href="{{ env.getInternalActionUrl("select-captain", "id=" ~ player.id) }}"><i class="bi bi-people"></i> {{ i18n.getMessage("myteam_player_select_as_captain") }}</a></li>
+								<li><a class="dropdown-item" href="{{ env.getInternalActionUrl("select-captain", "id=" ~ player.id) }}"><i class="bi bi-people"></i> {{ i18n.getMessage("myteam_player_select_as_captain") }}</a></li>
 							{% endif %}
 							
 							{% if env.getConfig("enable_player_resignation") %}
-								<li><a href="#fire{{ player.id }}Modal" role="button" data-bs-toggle="modal"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("fireplayer_button") }}</a></li>
+								<li><a class="dropdown-item" href="#fire{{ player.id }}Modal" role="button" data-bs-toggle="modal"><i class="bi bi-x-circle"></i> {{ i18n.getMessage("fireplayer_button") }}</a></li>
 							{% endif %}
 						</ul>
 					</div>

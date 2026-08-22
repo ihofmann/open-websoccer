@@ -21,12 +21,13 @@
 	
 	{% if groups|length > 0 %}
 		<h5>{{ i18n.getMessage("cup_title_groups") }}</h5>
-		<ul class="nav nav-pills">
+		<ul class="nav nav-pills" role="tablist">
 			{% for group in groups %}
-			<li class="clientsideNavItem{% if group == preSelectedGroup %} active{% endif %}"><a href="#" 
-			class="ajaxLink{% if group == preSelectedGroup %} triggerClickOnLoad{% endif %}"
-			data-ajaxtarget="grouptable" data-ajaxblock="cupgroupdetails"
-			data-ajaxquerystr="roundid={{ round.round_id }}&group={{ group }}">{{ group }}</a></li>
+			<li class="nav-item" role="presentation">
+				<a href="#" class="nav-link ajaxLink clientsideNavItem{% if group == preSelectedGroup %} active triggerClickOnLoad{% endif %}"
+				data-ajaxtarget="grouptable" data-ajaxblock="cupgroupdetails"
+				data-ajaxquerystr="roundid={{ round.round_id }}&group={{ group }}">{{ group }}</a>
+			</li>
 			{% endfor %}
 		</ul>
 		
