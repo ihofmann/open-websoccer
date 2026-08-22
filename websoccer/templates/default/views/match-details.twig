@@ -94,7 +94,7 @@
 	  	{% if not match.match_simulated %}data-ajaxdisabledcache="1"{% endif %}>{{ i18n.getMessage("match_details_statistic_title") }}</a></li>
 	</ul>
 	 
-	<div class="tab-content">
+	<div class="tab-content py-3">
 	  <div class="tab-pane active" id="report">
 	  
 	  	<span class="report_team_home">{{ match.match_home_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>

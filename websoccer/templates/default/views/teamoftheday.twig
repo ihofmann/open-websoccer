@@ -8,7 +8,7 @@
 {% block page_content %}
 
 <h4>{{ i18n.getMessage("entity_league") }}</h4>
-<form class="d-flex flex-wrap gap-2 align-items-center" method="post">
+<form class="d-flex flex-wrap gap-2 align-items-center mb-3" method="post">
 
 	<select id="leagueid" name="leagueid" class="col-md-3 form-select">
 		<option></option>
@@ -25,7 +25,7 @@
 
 {% if seasons|length > 0 %}
 	<h4>{{ i18n.getMessage("entity_season") }}</h4>
-	<ul class="nav nav-pills">
+	<ul class="nav nav-pills mb-3">
 		{% for season in seasons %}
 		<li class="nav-item"><a href="#season{{ loop.index }}" class="nav-link ajaxLink{% if seasonId == season.id %} active{% endif %}"
 			data-ajaxtarget="pagecontent" data-ajaxquerystr="page={{ env.getPageId() }}&leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ season.id }}">{{ season.name }}</a></li>

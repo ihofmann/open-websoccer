@@ -14,13 +14,12 @@
   	data-ajaxblock="latest-results" data-ajaxtarget="latest-results_block">{{ i18n.getMessage("results_tab_latest_results") }}</a></li>
 </ul>
 
-<div class="tab-content">
+<div class="tab-content py-3">
 	<div class="tab-pane active" id="leagues">
 	
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-lg-4">
 
-				
 				{% if countries is defined and countries|length > 0 %}
 				<div class="accordion" id="countries">
 					{% for countryName, leagues in countries %}
@@ -48,7 +47,7 @@
 				
 				
 			</div>
-			<div class="col-md-9">
+			<div class="col-lg-8">
 			
 				<span id="season-picker_block">{{ viewHandler.renderBlock("season-picker")|raw }}</span>
 				

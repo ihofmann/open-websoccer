@@ -117,8 +117,7 @@ CREATE TABLE ws3_liga (
   p_vip TINYINT(3) NOT NULL,
   preis_steh SMALLINT(5) NOT NULL,
   preis_sitz SMALLINT(5) NOT NULL,
-  preis_vip SMALLINT(5) NOT NULL,
-  admin_id SMALLINT(5) NOT NULL DEFAULT 0
+  preis_vip SMALLINT(5) NOT NULL
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_tabelle_markierung (

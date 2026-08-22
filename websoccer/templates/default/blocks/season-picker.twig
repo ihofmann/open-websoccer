@@ -39,26 +39,18 @@
   	<input type="hidden" name="leagueid" value="{{ env.getRequestParameter("leagueid") }}" />
 </form>
 
-<ul class="pager">
-	{% if env.getRequestParameter("matchday") > 1 %}
-  <li class="previous">
-    <a href="#" class="ajaxLink"
-	data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
-	data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ env.getRequestParameter("matchday") - 1 }}">&larr; {{ i18n.getMessage("seasonpicker_previous") }}</a>
-  </li>
-  {% endif %}
+<div class="d-flex justify-content-between mb-3">
+	<a href="#" class="btn btn-outline-primary ajaxLink{% if env.getRequestParameter("matchday") < 2 %} disabled{% endif %}"
+		data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
+		data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ env.getRequestParameter("matchday") - 1 }}">&larr; {{ i18n.getMessage("seasonpicker_previous") }}</a>
 
-  {% if env.getRequestParameter("matchday") < maxMatchDay %}
-  <li class="next">
-    <a href="#" class="ajaxLink"
-	data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
-	data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ env.getRequestParameter("matchday") + 1 }}">{{ i18n.getMessage("seasonpicker_next") }} &rarr;</a>
-  </li>
-  {% endif %}
-</ul>
+    <a href="#" class="btn btn-outline-primary ajaxLink{% if env.getRequestParameter("matchday") >= maxMatchDay %} disabled{% endif %}"
+		data-ajaxtarget="season-picker_block" data-ajaxblock="season-picker"
+		data-ajaxquerystr="leagueid={{ env.getRequestParameter("leagueid") }}&seasonid={{ env.getRequestParameter("seasonid") }}&matchday={{ env.getRequestParameter("matchday") + 1 }}">{{ i18n.getMessage("seasonpicker_next") }} &rarr;</a>
+</div>
 
 {% if env.getRequestParameter("matchday") > 0 %}
 	<h4>{{ i18n.getMessage("entity_match_spieltag") }}: {{ env.getRequestParameter("matchday") }}</h4>
 	<p><a href="{{ env.getInternalUrl("teamoftheday", "leagueid=" ~ env.getRequestParameter("leagueid") ~ "&seasonid=" ~ env.getRequestParameter("seasonid") ~ "&matchday=" ~ env.getRequestParameter("matchday")) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-heart"></i> {{ i18n.getMessage("teamoftheday_navlabel") }}</a></p>
 {% endif %}
-<span id="results-list_block">{{ viewHandler.renderBlock("results-list")|raw }}</span>
+<div id="results-list_block" class="overflow-auto">{{ viewHandler.renderBlock("results-list")|raw }}</div>

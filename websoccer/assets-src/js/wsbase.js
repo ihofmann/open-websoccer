@@ -344,10 +344,10 @@ import { Tooltip, Popover } from "bootstrap";
   document.addEventListener("click", function (e) {
     const item = e.target.closest(".clientsideNavItem");
     if (!item) return;
-    const parent = item.parentElement;
-    if (parent) {
-      parent
-        .querySelectorAll(":scope > .active")
+    const nav = item.closest(".nav");
+    if (nav) {
+      nav
+        .querySelectorAll(".clientsideNavItem.active")
         .forEach(function (el) {
           el.classList.remove("active");
         });

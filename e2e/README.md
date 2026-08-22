@@ -62,6 +62,21 @@ order:
    * A few rows for (almost) every other table in the schema (stadions,
      sponsors, trainings, cups, seasons, youth players, badges, transfers,
      finances, notifications, etc.).
+   * **24 match records** (`ws3_spiel`):
+     * 10 completed league matches for **matchday 1** of League 1, Season 1
+       (all 20 teams play, `berechnet = 1`).
+     * 10 future league matches for **matchday 2**, scheduled ~10 years ahead
+       (`berechnet = 0`) so tests remain stable for years.
+     * 1 completed + 1 future **cup match** ("Demo Cup", "First Round").
+     * 1 completed + 1 scheduled **friendly** for today.
+   * **Team season statistics** (`ws3_verein.sa_*` columns) updated for all
+     20 League 1 teams to reflect the matchday 1 results, so the league table
+     renders meaningful standings.
+   * **Player season statistics** (`ws3_spieler.sa_tore`, `sa_assists`,
+     `sa_spiele`) set for 6 strikers, so the Top Scorers and Top Strikers
+     pages return ranked players.
+   * **League history** (`ws3_leaguehistory`) for all 20 teams after matchday
+     1, so the Table History chart has data.
 
 > Passwords are hashed in SQL with `SHA2` using exactly the same scheme as
 > `SecurityUtil::hashPassword`: `sha256( salt . sha256( password ) )`.
@@ -151,6 +166,12 @@ While the stack is up you can also browse it manually:
 | ---------------------------------- | --------------------------------------------------------------------------------- |
 | `tests/admin-news.spec.ts`         | `admin` signs in at the AdminCenter, publishes a news article, edits it and deletes it. |
 | `tests/my-team.spec.ts`            | `user1` logs in to the frontend, opens **My Team** and verifies that his 24 players are listed. |
+| `tests/league-table.spec.ts`       | Guest opens the **Leagues** page, verifies the league selector, the 20-team standings with correct stats, table markers, and league switching. |
+| `tests/results.spec.ts`            | Guest opens **Results and Schedules**, verifies the Leagues/Cups/Latest-Results tabs, matchday results, and future match schedules. |
+| `tests/match-details.spec.ts`      | Guest opens **Match Details** for a completed league match, a completed cup match, a future (unscheduled) match, and an invalid match id. |
+| `tests/top-scorers.spec.ts`        | Guest opens **Top Scorers** and **Top Strikers**, verifies player rankings, tie-breaker ordering, and league filtering. |
+| `tests/todays-matches.spec.ts`     | Guest opens **Today's Matches**, verifies completed and scheduled friendly matches. |
+| `tests/table-history.spec.ts`      | Guest opens **Table History** for a team, verifies the chart data-series and back-to-league link. |
 
 ## Re-seeding the database
 
