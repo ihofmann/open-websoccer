@@ -762,9 +762,9 @@ ALTER TABLE ws3_spieler ADD st_assists INT(6) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_spieler ADD sa_assists INT(6) NOT NULL DEFAULT 0;
 
 ALTER TABLE ws3_news DROP COLUMN bild_id;
+ALTER TABLE ws3_liga DROP COLUMN admin_id;
 
 -- Allow creating AdminCenter records without filling every NOT NULL column.
-ALTER TABLE ws3_liga MODIFY admin_id SMALLINT(5) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_saison MODIFY platz_1_id INT(10) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_saison MODIFY platz_2_id INT(10) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_saison MODIFY platz_3_id INT(10) NOT NULL DEFAULT 0;

@@ -2,7 +2,7 @@
 -- The same changes are part of install/ws3_ddl_full.sql for new installations.
 -- Statements are idempotent MODIFY COLUMN operations.
 
-ALTER TABLE ws3_liga MODIFY admin_id SMALLINT(5) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_liga DROP COLUMN admin_id;
 
 ALTER TABLE ws3_saison MODIFY platz_1_id INT(10) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_saison MODIFY platz_2_id INT(10) NOT NULL DEFAULT 0;
