@@ -65,7 +65,7 @@
 						<ul class="dropdown-menu">
 						
 							{% if player.unsellable == 0 %}
-								{% if env.getConfig("transfermarket_enabled") and player.lending_fee == 0 %}
+								{% if env.getConfig("transfermarket_enabled") and player.transfermarket == 0 and player.lending_fee == 0 %}
 									<li><a class="dropdown-item" href="{{ env.getInternalUrl("sell-player", "id=" ~ player.id) }}"><i class="bi bi-share"></i> {{ i18n.getMessage("myteam_player_sell") }}</a></li>
 								{% endif %}
 									<li><a class="dropdown-item ajaxLink" href="#" title="{{ i18n.getMessage("myteam_unsellable_tooltip") }}"

@@ -348,9 +348,9 @@
     player.classList.add(CSS_CONFIG.PLAYER_ON_BENCH);
     targetPosition.dataset.playerid = playerId;
 
-    const playerInfoCell = qs(" > .benchPlayerInfo", targetPosition);
+    const playerInfoCell = qs(":scope > .benchPlayerInfo", targetPosition);
     if (playerInfoCell) {
-      hide(qs(" > .benchPlaceholder", playerInfoCell));
+      hide(qs(":scope > .benchPlaceholder", playerInfoCell));
 
       let playerLabel = player.dataset.pname;
       if (player.dataset.mainposition) {

@@ -172,6 +172,7 @@ While the stack is up you can also browse it manually:
 | `tests/top-scorers.spec.ts`        | Guest opens **Top Scorers** and **Top Strikers**, verifies player rankings, tie-breaker ordering, and league filtering. |
 | `tests/todays-matches.spec.ts`     | Guest opens **Today's Matches**, verifies completed and scheduled friendly matches. |
 | `tests/table-history.spec.ts`      | Guest opens **Table History** for a team, verifies the chart data-series and back-to-league link. |
+| `tests/team-management.spec.ts`    | `user1` manages his own team: office, squad, formation and tactics, training, sponsor, stadium, stadium environment, finances, ticket prices, selling players, contract extensions, transfer market and transfer offers - including form validation and login protection. |
 
 ## Re-seeding the database
 
@@ -181,4 +182,20 @@ remove the volume and start again:
 ```bash
 docker compose -f e2e/docker-compose.e2e.yml down -v
 docker compose -f e2e/docker-compose.e2e.yml up -d
+```
+
+`tests/team-management.spec.ts` changes persistent data (it nominates a
+captain, saves a formation, changes ticket prices, sells a player, extends a
+contract and rejects a transfer offer), so it is not idempotent: re-seed the
+database before running it again.
+
+## Changing the application under test
+
+The image copies the PHP sources, templates and the built assets in
+`websoccer/assets`, so a change to the application is only picked up after a
+rebuild:
+
+```bash
+npm run build   # only when assets-src/ changed
+docker compose -f e2e/docker-compose.e2e.yml up -d --build
 ```

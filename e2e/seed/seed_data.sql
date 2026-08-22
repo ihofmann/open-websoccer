@@ -51,10 +51,10 @@ VALUES
 -- -----------------------------------------------------------------------------
 INSERT INTO ws3_liga
     (id, name, kurz, land, p_steh, p_sitz, p_haupt_steh, p_haupt_sitz, p_vip,
-     preis_steh, preis_sitz, preis_vip, admin_id)
+     preis_steh, preis_sitz, preis_vip)
 VALUES
-    (1, 'Premier Sample League', 'PSL', 'England',     10, 10, 10, 10, 5, 7, 12, 100, 1),
-    (2, 'Demo Bundesliga',       'DBL', 'Deutschland', 10, 10, 10, 10, 5, 7, 12, 100, 1);
+    (1, 'Premier Sample League', 'PSL', 'England',     10, 10, 10, 10, 5, 7, 12, 100),
+    (2, 'Demo Bundesliga',       'DBL', 'Deutschland', 10, 10, 10, 10, 5, 7, 12, 100);
 
 -- -----------------------------------------------------------------------------
 -- Helper tables used to generate teams and players set-based (no stored

@@ -1,5 +1,9 @@
 {% extends "views/formation_base.twig" %}
 
+{# Macro imports of the parent template are not visible inside the blocks
+   defined here, so they have to be imported again. #}
+{% import "macros/formelements.twig" as formelements %}
+
 {% block formation_setup %}
 	<form method="post" class="d-flex flex-wrap gap-2 align-items-center">
 		<input type="hidden" name="page" value="formation" />
