@@ -74,63 +74,61 @@
   	<p><a href="{{ env.getInternalUrl("profile") }}" class="btn btn-outline-primary"><i class="bi bi-pencil"></i> {{ i18n.getMessage("button_edit") }}</a></p>
   	{% endif %}
   
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				{% if userteams|length > 1 %}
-					{% set team = "<ul class=\"unstyled\">" %}
-					{% for userteam in userteams %}
-						{% set team = team ~ "<li><a href=\"" ~ env.getInternalUrl("team", "id=" ~ userteam.id) ~ "\">" ~ userteam.name|e ~ "</a></li>" %}
-					{% endfor %}
-					{% set team = team ~ "</ul>" %}
-				{% elseif userteams|length == 1 %}
-					{% set team = "<a href=\"" ~ env.getInternalUrl("team", "id=" ~ userteams[0].id) ~ "\">" ~ userteams[0].name|e ~ "</a>" %}
-				{% else %}
-					{% set team = "-" %}
-				{% endif %}
-				
-				{{ profile.infofield(i18n.getMessage("entity_club"), team, true) }}
-				
-				{% if user.nationalteam is defined %}
-					{% set nationalteam = "<a href=\"" ~ env.getInternalUrl("team", "id=" ~ user.nationalteam.id) ~ "\">" ~ user.nationalteam.name|e ~ "</a>" %}
-					{{ profile.infofield(i18n.getMessage("nationalteams_team_label"), nationalteam, true) }}
-				{% endif %}
-				
-				{{ profile.infofield(i18n.getMessage("entity_users_highscore"), user.highscore) }}
-				{{ profile.infofield(i18n.getMessage("entity_users_fanbeliebtheit"), user.popularity ~ "%") }}
-				{{ profile.infofield(i18n.getMessage("entity_users_datum_anmeldung"), env.getFormattedDate(user.registration_date)) }}
-				{{ profile.infofield(i18n.getMessage("entity_users_lastonline"), env.getFormattedDate(user.lastonline)) }}
-			</div>
-			<div class="col-md-6">
+	<div class="row">
+		<div class="col-md-6">
+			{% if userteams|length > 1 %}
+				{% set team = "<ul class=\"unstyled\">" %}
+				{% for userteam in userteams %}
+					{% set team = team ~ "<li><a href=\"" ~ env.getInternalUrl("team", "id=" ~ userteam.id) ~ "\">" ~ userteam.name|e ~ "</a></li>" %}
+				{% endfor %}
+				{% set team = team ~ "</ul>" %}
+			{% elseif userteams|length == 1 %}
+				{% set team = "<a href=\"" ~ env.getInternalUrl("team", "id=" ~ userteams[0].id) ~ "\">" ~ userteams[0].name|e ~ "</a>" %}
+			{% else %}
+				{% set team = "-" %}
+			{% endif %}
 			
-			{% if user.name|length > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_name"), user.name) }}
-			{% endif %}
-			{% if user.place|length > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_wohnort"), user.place) }}
-			{% endif %}
-			{% if user.country|length > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_land"), user.country) }}
-			{% endif %}
-			{% if user.birthday > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_geburtstag"), user.birthday|date(env.getConfig("date_format"))) }}
-			{% endif %}
-			{% if user.occupation|length > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_beruf"), user.occupation) }}
-			{% endif %}
-			{% if user.interests|length > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_interessen"), user.interests) }}
-			{% endif %}
-			{% if user.favorite_club|length > 0 %}
-				{{ profile.infofield(i18n.getMessage("entity_users_lieblingsverein"), user.favorite_club) }}
-			{% endif %}
-			{% if user.homepage|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_club"), team, true) }}
 			
-				{% set websiteLink = "<a href=\"" ~ user.homepage ~ "\" target=\"_blank\">" ~ i18n.getMessage("user_visit_website") ~ "</a>" %}
-			
-				{{ profile.infofield(i18n.getMessage("entity_users_homepage"), websiteLink, true) }}
+			{% if user.nationalteam is defined %}
+				{% set nationalteam = "<a href=\"" ~ env.getInternalUrl("team", "id=" ~ user.nationalteam.id) ~ "\">" ~ user.nationalteam.name|e ~ "</a>" %}
+				{{ profile.infofield(i18n.getMessage("nationalteams_team_label"), nationalteam, true) }}
 			{% endif %}
-			</div>
+			
+			{{ profile.infofield(i18n.getMessage("entity_users_highscore"), user.highscore) }}
+			{{ profile.infofield(i18n.getMessage("entity_users_fanbeliebtheit"), user.popularity ~ "%") }}
+			{{ profile.infofield(i18n.getMessage("entity_users_datum_anmeldung"), env.getFormattedDate(user.registration_date)) }}
+			{{ profile.infofield(i18n.getMessage("entity_users_lastonline"), env.getFormattedDate(user.lastonline)) }}
+		</div>
+		<div class="col-md-6">
+		
+		{% if user.name|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_name"), user.name) }}
+		{% endif %}
+		{% if user.place|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_wohnort"), user.place) }}
+		{% endif %}
+		{% if user.country|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_land"), user.country) }}
+		{% endif %}
+		{% if user.birthday > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_geburtstag"), user.birthday|date(env.getConfig("date_format"))) }}
+		{% endif %}
+		{% if user.occupation|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_beruf"), user.occupation) }}
+		{% endif %}
+		{% if user.interests|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_interessen"), user.interests) }}
+		{% endif %}
+		{% if user.favorite_club|length > 0 %}
+			{{ profile.infofield(i18n.getMessage("entity_users_lieblingsverein"), user.favorite_club) }}
+		{% endif %}
+		{% if user.homepage|length > 0 %}
+		
+			{% set websiteLink = "<a href=\"" ~ user.homepage ~ "\" target=\"_blank\">" ~ i18n.getMessage("user_visit_website") ~ "</a>" %}
+		
+			{{ profile.infofield(i18n.getMessage("entity_users_homepage"), websiteLink, true) }}
+		{% endif %}
 		</div>
 	</div>
   

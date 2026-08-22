@@ -1,7 +1,9 @@
 {% macro infofield(label, value, doNotEscape = false) %}
 
-<div class="row inforow">
-	<div class="col-md-6 infolabel">{% if doNotEscape %}{{ label|raw }}{% else %}{{ label }}{% endif %}</div>
-	<div class="col-md-6 infovalue">{% if doNotEscape %}{{ value|raw }}{% else %}{{ value }}{% endif %}</div>
+<div class="container">
+	<div class="row inforow">
+		<div class="col-md-6 infolabel">{% if doNotEscape %}{{ label|raw }}{% else %}{{ label }}{% endif %}</div>
+		<div class="col-md-6 infovalue">{% if doNotEscape %}{{ value|raw }}{% else %}{{ value }}{% endif %}</div>
+	</div>
 </div>
 {% endmacro %}

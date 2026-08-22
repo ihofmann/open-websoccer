@@ -6,9 +6,9 @@
 
 {% block page_content %}
 
-<form class="d-flex flex-wrap gap-2 align-items-center" method="post">
+<form class="d-flex flex-wrap gap-2 align-items-center mb-3" method="post">
 
-	<label class="form-label" for="id">{{ i18n.getMessage("entity_league") }}</label> 
+	<label class="form-label mb-0" for="id">{{ i18n.getMessage("entity_league") }}</label> 
 	<select id="id" name="id" class="col-md-3 form-select" >
 		<option></option>
 	{% for leagueItem in leagues %}
