@@ -2,7 +2,7 @@
 <!DOCTYPE messages SYSTEM "../messages.dtd">
 <messages>
     
-    <message id="badge_notification">Glückwunsch! Sie haben eine neue Auszeichnung gewonnen.</message>
+    <message id="badge_notification">Glückwunsch! Du hast eine neue Auszeichnung gewonnen.</message>
     
     <message id="badge_level_gold">Goldene Auszeichnung</message>
     <message id="badge_level_silver">Silberne Auszeichnung</message>

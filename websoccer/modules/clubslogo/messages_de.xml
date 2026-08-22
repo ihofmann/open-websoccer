@@ -3,7 +3,7 @@
 <messages>
     <message id="upload-clublogo_navlabel">Neues Vereinslogo hochladen</message>
     
-    <message id="upload-clublogo_intro">Sie können hier ein PNG- oder JPEG-Bild hochladen. Es muss <strong>rechteckig</strong> sein mit einer Mindestbreite von <strong>120 Pixel</strong> und einer maximalen Dateigröße von <strong>%d KBytes</strong>.</message>
+    <message id="upload-clublogo_intro">Du kannst hier ein PNG- oder JPEG-Bild hochladen. Es muss <strong>rechteckig</strong> sein mit einer Mindestbreite von <strong>120 Pixel</strong> und einer maximalen Dateigröße von <strong>%d KBytes</strong>.</message>
 	<message id="upload-clublogo_success">Das neue Vereinslogo wurde erfolgreich hochgeladen!</message>
 	
 	<message id="activitylog_upload-club-picture">%s hat ein neues Vereinslogo hochgeladen.</message>

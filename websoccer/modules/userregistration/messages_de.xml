@@ -18,13 +18,13 @@
     
     
     <message id="register-success_navlabel">Registrierung abgeschickt</message>
-    <message id="register-success_message_title">Registrierung abgeschickt - Prüfen Sie Ihre E-Mails</message>
-    <message id="register-success_message_content">Zur Überprüfung auf die Echtheit der von Ihnen angegebenen E-Mail-Adresse wurde Ihnen vom System automatisch eine E-Mail mit Aktivierungslink geschickt.</message>
-	<message id="register-success_nextstep">Rufen Sie nun Ihre E-Mails ab und folgen Sie den Anweisungen in der von uns versendeten E-Mail. Es kann passieren, dass die E-Mail etwas zeitversetzt ankommt.</message>
+    <message id="register-success_message_title">Registrierung abgeschickt - Prüfe deine E-Mails</message>
+    <message id="register-success_message_content">Zur Überprüfung auf die Echtheit der von dir angegebenen E-Mail-Adresse wurde dir vom System automatisch eine E-Mail mit Aktivierungslink geschickt.</message>
+	<message id="register-success_nextstep">Ruf nun deine E-Mails ab und Folge den Anweisungen in der von uns versendeten E-Mail. Es kann passieren, dass die E-Mail etwas zeitversetzt ankommt.</message>
     
-	<message id="activation_email_subject">Vervollständigung Ihrer Registrierung</message>
+	<message id="activation_email_subject">Vervollständigung deiner Registrierung</message>
 	<message id="activation_email_greeting">Guten Tag,</message>
-	<message id="activation_email_introduction">zur Vervollständigung Ihrer Benutzerregistrierung rufen Sie bitte folgende Internetadresse auf:</message>
-	<message id="activation_email_ending">Wenn Sie sich nicht bei uns registriert haben und einen Missbrauch Ihrer E-Mail-Adresse vermuten, antworten Sie bitte auf diese E-Mail.</message>
+	<message id="activation_email_introduction">zur Vervollständigung deiner Benutzerregistrierung rufe bitte folgende Internetadresse auf:</message>
+	<message id="activation_email_ending">Wenn du dich nicht bei uns registriert hast und einen Missbrauch deiner E-Mail-Adresse vermutest, antworte bitte auf diese E-Mail.</message>
 	
 </messages>

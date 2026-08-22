@@ -94,7 +94,7 @@
 	<message id="settings_label_sim_home_field_advantage_help">Anzahl Stärkepunkte, die die Spieler der Heimmannschaft gewinnen, wenn das Stadion ausverkauft ist. 0 für kein Heimvorteil.</message>
 	
 	<message id="settings_label_sim_maxmatches_injured">Max. Spiele verletzt</message>
-	<message id="settings_label_sim_maxmatches_injured_help">Höchstanzahl an Spiele, für die ein Spieler verletzt ausfällt. Beachten Sie, dass die Wahrscheinlichkeit, dass ein Spieler für mehr als 7 Spiele gesperrt wird nur bei 1% liegt.</message>
+	<message id="settings_label_sim_maxmatches_injured_help">Höchstanzahl an Spiele, für die ein Spieler verletzt ausfällt. Beachte, dass die Wahrscheinlichkeit, dass ein Spieler für mehr als 7 Spiele gesperrt wird nur bei 1% liegt.</message>
 	
 	<message id="settings_label_sim_maxmatches_blocked">Max. Spiele gesperrt</message>
 	<message id="settings_label_sim_maxmatches_blocked_help">Höchstanzahl an Spiele, für die ein Spieler wegen einer roten Karte gesperrt wird.</message>

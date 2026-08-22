@@ -16,13 +16,13 @@ $messages["check_req_off"] = "off";
 $messages["check_req_on"] = "on";
 $messages["check_req_writable"] = "Datei/Ordner hat Schreibrechte (in Linux, führe aus: CHMOD a+w <filename>): ";
 
-$messages["check_req_error"] = "Die Mindestanforderungen sind auf diesem Webserver nicht erfüllt. Sie können die Software mit dieser Konfiguration nicht installieren. Kontaktieren Sie Ihren Webhoster oder den Hersteller.";
+$messages["check_req_error"] = "Die Mindestanforderungen sind auf diesem Webserver nicht erfüllt. Du kannst die Software mit dieser Konfiguration nicht installieren. Kontaktiere deinen Webhoster oder den Hersteller.";
 
-$messages["err_already_installed"] = "Die Installation wurde offensichtlich bereits ausgeführt. Für eine Neuinstallation müssen Sie die Datei /admin/config/config.inc.php leeren.";
+$messages["err_already_installed"] = "Die Installation wurde offensichtlich bereits ausgeführt. Für eine Neuinstallation musst du die Datei /admin/config/config.inc.php leeren.";
 
-$messages["invalid_db_credentials"] = "Es konnte keine Verbindung mit der Datenbank aufgebaut werden. Prüfen Sie die eingegebenen Daten.";
+$messages["invalid_db_credentials"] = "Es konnte keine Verbindung mit der Datenbank aufgebaut werden. Prüfe die eingegebenen Daten.";
 
 $messages["final_success_alert"] = "Glückwunsch, das Update wurde erfolgreich installiert!";
-$messages["final_success_note"] = "Löschen Sie nun unbedingt das komplette Verzeichnis <i>/update</i> innerhalb Ihres Websoccer-Ordners auf diesem Server!";
+$messages["final_success_note"] = "Lösche nun unbedingt das komplette Verzeichnis <i>/update</i> innerhalb deines Websoccer-Ordners auf diesem Server!";
 $messages["final_link"] = "Als Administrator anmelden";
 ?>

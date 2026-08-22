@@ -2,8 +2,8 @@
 <!DOCTYPE messages SYSTEM "../messages.dtd">
 <messages>
     <message id="shoutbox_title">Shoutbox</message>
-    <message id="shoutbox_messageinput_placeholder">Ihre Nachricht...</message>
+    <message id="shoutbox_messageinput_placeholder">Deine Nachricht...</message>
     <message id="shoutbox_button_go">Go</message>
     
-    <message id="shoutbox_hiddensubmit_note">Sie müssen angemeldet sein und ein Spielbericht öffnen, um Nachrichten schreiben zu können.</message>
+    <message id="shoutbox_hiddensubmit_note">Du musst angemeldet sein und ein Spielbericht öffnen, um Nachrichten schreiben zu können.</message>
 </messages>

@@ -9,7 +9,7 @@
     <message id="matchtype_friendly">Freundschaftsspiel</message>
     
     <message id="last_match_block_title">Mein letztes Spiel</message>
-    <message id="last_match_block_no_lastmatch">Ihr Team hat noch kein Spiel bestritten.</message>
+    <message id="last_match_block_no_lastmatch">Dein Team hat noch kein Spiel bestritten.</message>
     
     <message id="match_details_date">Datum</message>
     <message id="match_details_type">Typ</message>
@@ -31,7 +31,7 @@
     <message id="match_details_players_title">Spieler</message>
     <message id="match_details_statistic_title">Statistik</message>
     
-    <message id="match_details_nostatistics_available">Für dieses Spiel sind keine Statistiken verfügbar. Schauen Sie im Spielbericht nach.</message>
+    <message id="match_details_nostatistics_available">Für dieses Spiel sind keine Statistiken verfügbar. Schau im Spielbericht nach.</message>
     
     <message id="match_details_noplayersset">Keine Aufstellung vorhanden.</message>
     <message id="match_details_no_players_on_bench">Es wurden keine Spieler auf die Ersatzbank gesetzt.</message>
@@ -81,7 +81,7 @@
     <message id="match_details_changes_max_help">Darf %d mal pro Spiel geändert werden.</message>
     <message id="match_details_changes_too_late">Eine Auswechslung muss mindestens %d Minuten vorher platziert werden.</message>
     <message id="match_details_changes_too_late_altered">Die Einwechslung Nr. %d wurde auf den nächst möglichen Zeitpunkt verschoben.</message>
-	<message id="match_details_changes_too_often">Die Taktik dürfen Sie nur %d mal während dem Spiel ändern.</message>
+	<message id="match_details_changes_too_often">Die Taktik darfst du nur %d mal während dem Spiel ändern.</message>
     
 	<message id="match_details_report_halftime">Halbzeit! Zwischenstand: %s</message>
 	<message id="match_details_report_extension">Es geht in die Verlängerung! Zwischenstand: %s</message>

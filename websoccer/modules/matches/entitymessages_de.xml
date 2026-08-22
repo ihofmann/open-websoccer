@@ -23,7 +23,7 @@
 	<message id="entity_match_bericht_help">Nur angeben, wenn der automatisch generierte Bericht nicht angezeigt werden soll.</message>
 	
 	<message id="entity_match_soldout">ausverkauft</message>
-	<message id="entity_match_blocked">Ist für die Simulation blockiert. Wurde diese Option nicht manuell gesetzt, wird das Spiel entweder gerade simuliert oder es ist ein Fehler bei der Simulation aufgetreten. Deaktivieren Sie das Kästchen wenn das Spiel bei der nächsten Möglichkeit simuliert werden soll.</message>
+	<message id="entity_match_blocked">Ist für die Simulation blockiert. Wurde diese Option nicht manuell gesetzt, wird das Spiel entweder gerade simuliert oder es ist ein Fehler bei der Simulation aufgetreten. Deaktiviere das Kästchen wenn das Spiel bei der nächsten Möglichkeit simuliert werden soll.</message>
 	
 	<message id="option_Ligaspiel">Ligaspiel</message>
 	<message id="option_Pokalspiel">Pokalspiel</message>
@@ -32,7 +32,7 @@
 	<message id="entity_matchtext">Spielberichtmeldung</message>
 	<message id="entity_matchtext_aktion">Aktionstyp</message>
 	<message id="entity_matchtext_nachricht">Meldung</message>
-	<message id="entity_matchtext_nachricht_help">Kann auch nur ein Nachrichtenschlüssel (messages key) sein. Sie können Meldungen übersetzen, indem Sie die Nachricht in einer Messages Konfigurationsdatei hinzufügen. Beispiele dafür gibt es in der Datei <em>/modules/matches/messages_en.xml</em>.</message>
+	<message id="entity_matchtext_nachricht_help">Kann auch nur ein Nachrichtenschlüssel (messages key) sein. Du kannst Meldungen übersetzen, indem du die Nachricht in einer Messages Konfigurationsdatei hinzufügen. Beispiele dafür gibt es in der Datei <em>/modules/matches/messages_en.xml</em>.</message>
 	
 	<message id="option_Tor">Tor</message>
 	<message id="option_Auswechslung">Auswechslung</message>

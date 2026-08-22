@@ -3,7 +3,7 @@
 <messages>
     <message id="teamsgenerator_navlabel">Vereine generieren</message>
     
-    <message id="teamsgenerator_intro">In der Regel erlauben die bekannten Fußballverbände keine Benutzung von realen Namen in Spielen, es sei denn der Betreiber hat bei dem jeweiligen Verband eine entsprechende Lizenz erworben. Mit diesem Tool können Sie ganz einfach Vereine mit zufällig generierten Fantasienamen erzeugen, die zwar im Einzelfall den Originalnamen ähneln, aber grundsätzlich nicht identisch sind.</message>
+    <message id="teamsgenerator_intro">In der Regel erlauben die bekannten Fußballverbände keine Benutzung von realen Namen in Spielen, es sei denn der Betreiber hat bei dem jeweiligen Verband eine entsprechende Lizenz erworben. Mit diesem Tool kannst du ganz einfach Vereine mit zufällig generierten Fantasienamen erzeugen, die zwar im Einzelfall den Originalnamen ähneln, aber grundsätzlich nicht identisch sind.</message>
     
     <message id="generator_label_league">Liga</message>
     <message id="generator_label_numberofteams">Anzahl Teams</message>
@@ -21,13 +21,13 @@
     <message id="generator_label_stadium_p_seats_grand">Sitzplätze Haupttribüne</message>
     <message id="generator_label_stadium_p_vip">VIP Logen</message>
     
-    <message id="generator_validationerror_numberofitems">Sie müssen mindestens einen Datensatz generieren lassen.</message>
-    <message id="generator_validationerror_numberofitems_max">Sie können höchstens 100 Datensätze auf einmal generieren lassen.</message>
+    <message id="generator_validationerror_numberofitems">Du musst mindestens einen Datensatz generieren lassen.</message>
+    <message id="generator_validationerror_numberofitems_max">Du kannst höchstens 100 Datensätze auf einmal generieren lassen.</message>
     <message id="generator_validationerror_noleague">Es muss eine Liga ausgewählt werden.</message>
     
     <message id="generator_success">Daten wurden erfolgreich generiert.</message>
     
-	<message id="generator_err_filedoesnotexist">Um Daten für diese Liga generieren zu können, benötigen Sie die Datei: %s</message>
+	<message id="generator_err_filedoesnotexist">Um Daten für diese Liga generieren zu können, benötigst du die Datei: %s</message>
 	<message id="generator_err_emptyfile">Die folgende Datei hat keine gültigen Einträge: %s</message>
 	
 	<message id="playersgenerator_navlabel">Spieler generieren</message>

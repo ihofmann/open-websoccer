@@ -5,11 +5,11 @@
     <message id="fireplayer_button">Entlassen</message>
     
     <message id="fireplayer_modal_title">Spieler wirklich entlassen?</message>
-    <message id="fireplayer_modal_content">Möchten Sie den Vertrag mit %s wirklich fristlos kündigen?</message>
+    <message id="fireplayer_modal_content">Möchtest du den Vertrag mit %s wirklich fristlos kündigen?</message>
     <message id="fireplayer_modal_confirm">Ja, entlassen</message>
     
     <message id="fireplayer_modal_compensation">Der Spieler fordert eine Abfindung in Höhe von <strong>%s %s</strong>!</message>
-    <message id="fireplayer_tooexpensive">Die geforderte Abfindung können Sie sich im Moment nicht leisten.</message>
+    <message id="fireplayer_tooexpensive">Die geforderte Abfindung kannst du dir im Moment nicht leisten.</message>
     
     <message id="fireplayer_success">Der Spieler wurde erfolgreich entlassen.</message>
     

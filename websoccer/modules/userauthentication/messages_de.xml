@@ -2,7 +2,7 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
     
-    <message id="error_access_denied">Sie verfügen nicht über die nötige Berechtigung für diese Seite.</message>
-    <message id="logout_message_title">Sie haben sich erfolgreich abgemeldet. Bis zum nächsten Mal!</message>
+    <message id="error_access_denied">Du verfügst nicht über die nötige Berechtigung für diese Seite.</message>
+    <message id="logout_message_title">Du hast dich erfolgreich abgemeldet. Bis zum nächsten Mal!</message>
     
 </messages>

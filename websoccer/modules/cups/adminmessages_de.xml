@@ -47,7 +47,7 @@
 	<message id="managecuprounds_groups_label_create">Neue Gruppe erstellen</message>
 	<message id="managecuprounds_group_label_name">Gruppenname</message>
 	<message id="managecuprounds_group_label_teams">Vereine in der Gruppe</message>
-	<message id="managecuprounds_groups_label_selectteams">Wählen Sie die Teams für diese Gruppe aus.</message>
+	<message id="managecuprounds_groups_label_selectteams">Wähle die Teams für diese Gruppe aus.</message>
 	<message id="managecuprounds_groups_addteam">Team hinzufügen</message>
 	
 	<message id="managecuprounds_groups_open_generate_matches_popup">Spiele erzeugen</message>

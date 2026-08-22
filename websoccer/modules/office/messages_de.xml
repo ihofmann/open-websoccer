@@ -4,7 +4,7 @@
     <message id="office_navlabel">Büro</message>
     <message id="office_title">Mein Büro</message>
     
-    <message id="feature_requires_team">Sie müssen Manager eines Vereins sein, um diese Funktion benutzen zu können.</message>
+    <message id="feature_requires_team">Du musst Manager eines Vereins sein, um diese Funktion benutzen zu können.</message>
     
     <message id="myteam_navlabel">Mein Kader</message>
     <message id="myteam_title">Meine Spieler</message>
@@ -24,7 +24,7 @@
     <message id="myteam_captain_tooltip">Ist Kapitän und für die Moral bei Spielrückstand verantwortlich</message>
     <message id="myteam_player_select_as_captain">Als Kapitän ernennen</message>
     <message id="myteam_player_select_as_captain_success">Der Kapitän wurde erfolgreich ausgewählt!</message>
-    <message id="myteam_player_select_as_captain_warning_old_captain">Ihr bisheriger Kapitän, %s, ist über diese Entscheidung sehr enttäuscht.</message>
+    <message id="myteam_player_select_as_captain_warning_old_captain">Dein bisheriger Kapitän, %s, ist über diese Entscheidung sehr enttäuscht.</message>
     
     <message id="extend-contract_navlabel">Vertragsverlängerung</message>
     <message id="extend-contract_title">Verhandlung mit %s</message>
@@ -32,18 +32,18 @@
     <message id="extend-contract_existing_contract_title">Bisheriger Vertrag</message>
     <message id="extend-contract_link_profile">Zum Spielerprofil</message>
     
-    <message id="extend-contract_offer_title">Ihr Angebot</message>
+    <message id="extend-contract_offer_title">Dein Angebot</message>
     
-    <message id="extend-contract_decrease_satisfaction_hint">Beachten Sie, dass die Zufriedenheit des Spielers unter jedem zu schlechten Angebot leidet.</message>
+    <message id="extend-contract_decrease_satisfaction_hint">Beachte, dass die Zufriedenheit des Spielers unter jedem zu schlechten Angebot leidet.</message>
     
     <message id="extend-contract_success">Der Vertrag wurde erfolgreich zu den neuen Konditionen verlängert!</message>
     
-    <message id="extend-contract_player_is_unhappy">Der Spieler fühlt sich in Ihrem Verein nicht mehr wohl und möchte den Vertrag daher im Moment nicht verlängern.</message>
+    <message id="extend-contract_player_is_unhappy">Der Spieler fühlt sich in deinem Verein nicht mehr wohl und möchte den Vertrag daher im Moment nicht verlängern.</message>
     <message id="extend-contract_lower_than_current_salary">Der Spieler akzeptiert keine Gehaltskürzung.</message>
     
     <message id="extend-contract_salary_too_low">Das gebotene Gehalt ist dem Spieler zu niedrig. Er fordert ein höheres Gehalt pro Spiel.</message>
     
-    <message id="extend-contract_cannot_afford_offer">Mit ihrem aktuellen Budget können Sie sich dieses Gehalt nicht leisten.</message>
+    <message id="extend-contract_cannot_afford_offer">Mit deinem aktuellen Budget kannst du dir dieses Gehalt nicht leisten.</message>
     
     <message id="extend-contract_goalbonus_too_low">Die Torprämie ist dem Spieler zu gering.</message>
     
@@ -64,7 +64,7 @@
     
     <message id="tickets_sold_last_match">Im letzten Spiel verkauft</message>
     
-    <message id="tickets_info_homefieldadvantage"><strong>Tipp:</strong> Ihr Team ist bei Heimspielen besonders motiviert, wenn das Stadion ausverkauft ist. Berücksichtigen Sie dies bei der Festlegung der Eintrittspreise!</message>
+    <message id="tickets_info_homefieldadvantage"><strong>Tipp:</strong> Dein Team ist bei Heimspielen besonders motiviert, wenn das Stadion ausverkauft ist. Berücksichtige dies bei der Festlegung der Eintrittspreise!</message>
     
     <message id="notification_soon_ending_playercontracts">Manche Spielerverträge laufen bald aus!</message>
 </messages>

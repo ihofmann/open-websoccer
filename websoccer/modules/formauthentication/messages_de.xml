@@ -17,17 +17,17 @@
     <message id="forgot-password_title">Neues Passwort generieren</message>
     <message id="forgot-password_submit_button">Neues Passwort zusenden</message>
     
-    <message id="forgot-password_email-not-found">Es wurde kein aktiver Benutzer mit diese E-Mail Adresse gefunden. Bitte kontrollieren Sie die Schreibweise.</message>
-    <message id="forgot-password_already-sent">Sie haben innerhalb der letzten 24 Stunden bereits ein neues Passwort angefordert. Es kann nur einmal am Tag ein neues Passwort versendet werden.</message>
+    <message id="forgot-password_email-not-found">Es wurde kein aktiver Benutzer mit diese E-Mail Adresse gefunden. Bitte kontrolliere die Schreibweise.</message>
+    <message id="forgot-password_already-sent">Du hast innerhalb der letzten 24 Stunden bereits ein neues Passwort angefordert. Es kann nur einmal am Tag ein neues Passwort versendet werden.</message>
     
     <message id="forgot-password_message_title">Ein neues Passwort wurde versendet</message>
-    <message id="forgot-password_message_content">Bitte rufen Sie Ihre E-Mails ab.</message>
+    <message id="forgot-password_message_content">Bitte ruf deine E-Mails ab.</message>
     
     <message id="activate-user_navlabel">Benutzeraktivierung</message>
     <message id="activate-user_title">Benutzerkonto aktivieren</message>
-    <message id="activate-user_content">Haben Sie Probleme mit Ihrem Benutzerkonto? Dann kontaktieren Sie uns bitte.</message>
-    <message id="activate-user_user-not-found">Entweder ist Ihr Benutzerkonto bereits aktiv oder Sie haben eine falsche Adresse aufgerufen. Bitte überprüfen Sie den Link in der Aktivierungs-E-Mail.</message>
-    <message id="activate-user_message_title">Ihr Benutzerkonto wurde erfolgreich aktiviert!</message>
-    <message id="activate-user_message_content">Sie können sich nun mit Ihrer E-Mail-Adresse und Ihrem Passwort anmelden. Viel Erfolg!</message>
+    <message id="activate-user_content">Hast du Probleme mit deinem Benutzerkonto? Dann kontaktiere uns bitte.</message>
+    <message id="activate-user_user-not-found">Entweder ist dein Benutzerkonto bereits aktiv oder du hast eine falsche Adresse aufgerufen. Bitte überprüfe den Link in der Aktivierungs-E-Mail.</message>
+    <message id="activate-user_message_title">Dein Benutzerkonto wurde erfolgreich aktiviert!</message>
+    <message id="activate-user_message_content">Du kannst dich nun mit deiner E-Mail-Adresse und deinem Passwort anmelden. Viel Erfolg!</message>
     
 </messages>

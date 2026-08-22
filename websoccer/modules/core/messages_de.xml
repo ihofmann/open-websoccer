@@ -2,10 +2,10 @@
 <!DOCTYPE module SYSTEM "../messages.dtd">
 <messages>
 	<message id="offline_title">Wir sind vorübergehend nicht erreichbar</message>
-	<message id="error_action_required_team">Sie müssen Manager eines Teams sein, um diese Aktion ausführen zu können.</message>
+	<message id="error_action_required_team">Du musst Manager eines Teams sein, um diese Aktion ausführen zu können.</message>
 	
 	<message id="requireslogin_box_title">Zugriff verweigert</message>
-	<message id="requireslogin_box_message">Sie müssen angemeldet sein, um die angefragte Seite sehen zu dürfen.</message>
+	<message id="requireslogin_box_message">Du musst angemeldet sein, um die angefragte Seite sehen zu dürfen.</message>
 	
 	<message id="date_yesterday">Gestern</message>
 	<message id="date_today">Heute</message>

@@ -3,7 +3,7 @@
 <messages>
 	
 	<message id="firemanagers_navlabel">Manager kündigen</message> 
-	<message id="firemanagers_introduction">Suchen Sie hier nach Vereinen, deren Manager Sie kündigen möchten. Eine Kündigung bedeutet, dass der Manager den Verein verliert. Die entsprechenden Benutzerkonten werden <strong>nicht</strong> gelöscht, können aber auf Wunsch deaktiviert werden. Hat ein Benutzer seinen Verein heruntergewirtschaftet, kann das System den Verein wieder für andere Benutzer attraktiv machen.</message>
+	<message id="firemanagers_introduction">Suche hier nach Vereinen, deren Manager du kündigen möchtest. Eine Kündigung bedeutet, dass der Manager den Verein verliert. Die entsprechenden Benutzerkonten werden <strong>nicht</strong> gelöscht, können aber auf Wunsch deaktiviert werden. Hat ein Benutzer seinen Verein heruntergewirtschaftet, kann das System den Verein wieder für andere Benutzer attraktiv machen.</message>
 
 	<message id="firemanagers_search_label">Nach Vereinen suchen</message>
 	
@@ -21,14 +21,14 @@
 	<message id="firemanagers_search_nohits">Keine Vereine gefunden.</message>
 	<message id="firemanagers_dismiss_button">Ausgewählte Benutzer kündigen</message>
 	
-	<message id="firemanagers_dismiss_noneselected">Sie müssen mindestens ein Verein auswählen.</message>
+	<message id="firemanagers_dismiss_noneselected">Du musst mindestens ein Verein auswählen.</message>
 	
 	<message id="firemanagers_dismiss_label">Optionen zur Managerkündigung</message>
 	<message id="firemanagers_dismiss_disableusers">Benutzerkonten deaktivieren</message>
 	<message id="firemanagers_dismiss_minbudget">Mindestvereinsbudget</message>
 	<message id="firemanagers_dismiss_minbudget_help">Hat der Verein eines gekündigten Managers ein niedrigeres Budget, wird es aufgestockt.</message>
 	<message id="firemanagers_dismiss_message_subject">Nachricht an Benutzer: Betreff</message>
-	<message id="firemanagers_dismiss_message_subject_help">Falls dem Benutzer eine private Nachricht zugesendet werden soll. Beachten Sie, dass deaktivierte Benutzer diese Nachricht nicht abrufen können.</message>
+	<message id="firemanagers_dismiss_message_subject_help">Falls dem Benutzer eine private Nachricht zugesendet werden soll. Beachte, dass deaktivierte Benutzer diese Nachricht nicht abrufen können.</message>
 	<message id="firemanagers_dismiss_message_content">Nachricht an Benutzer: Inhalt</message>
 	
 	<message id="firemanagers_dismiss_label_players">Auswirkungen auf den Kader</message>

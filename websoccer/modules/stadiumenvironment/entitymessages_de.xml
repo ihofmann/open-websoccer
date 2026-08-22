@@ -9,7 +9,7 @@
 	<message id="entity_stadiumbuilding_picture">Bild</message>
 	
 	<message id="entity_stadiumbuilding_required_building_id">Erforderliches Gebäude</message>
-	<message id="entity_stadiumbuilding_required_building_id_help">Ein ausgewähltes Gebäude muss dann vorher gebaut werden. Beachten Sie, dass das vorher gebaute Gebäude auch nach Bau des neuen Gebäudes erhalten bleibt. Die unten eingegebenen Auswirkungen werden dann aufaddiert.</message>
+	<message id="entity_stadiumbuilding_required_building_id_help">Ein ausgewähltes Gebäude muss dann vorher gebaut werden. Beachte, dass das vorher gebaute Gebäude auch nach Bau des neuen Gebäudes erhalten bleibt. Die unten eingegebenen Auswirkungen werden dann aufaddiert.</message>
 	
 	<message id="entity_stadiumbuilding_costs">Baukosten</message>
 	<message id="entity_stadiumbuilding_premiumfee">Premiumkosten</message>

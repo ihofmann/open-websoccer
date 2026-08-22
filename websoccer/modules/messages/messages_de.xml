@@ -29,14 +29,14 @@
     <message id="messages_compose_title">Nachricht schreiben</message>
     
     <message id="messages_send_err_invalidrecipient">Es konnte kein Benutzer mit diesem Benutzernamen gefunden werden.</message>
-    <message id="messages_send_err_sendtoyourself">Sie können sich selbst keine Nachrichten zusenden.</message>
-    <message id="messages_send_err_timebreak">Es müssen mindestens %d Minuten zwischen Ihrer zuletzt versendeten Nachricht liegen.</message>
+    <message id="messages_send_err_sendtoyourself">Du kannst dir selbst keine Nachrichten zusenden.</message>
+    <message id="messages_send_err_timebreak">Es müssen mindestens %d Minuten zwischen deiner zuletzt versendeten Nachricht liegen.</message>
     
     <message id="messages_reply_button">Antworten</message>
     
     <message id="messages_send_success">Nachricht versendet</message>
     <message id="messages_send_button">Senden</message>
     
-    <message id="messages_new_messages">Sie haben %d neue Nachrichten</message>
+    <message id="messages_new_messages">Du hast %d neue Nachrichten</message>
     
 </messages>
