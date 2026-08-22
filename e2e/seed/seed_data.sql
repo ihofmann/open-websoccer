@@ -249,8 +249,8 @@ VALUES
 INSERT INTO ws3_team_league_statistics (team_id, season_id) VALUES
     (1, 1), (2, 1), (21, 2);
 
-INSERT INTO ws3_leaguehistory (team_id, season_id, user_id, matchday, `rank`)
-VALUES (1, 1, 1, 1, 1);
+-- League history is populated below, after team statistics have been set
+-- (see "Match data + standings" section).
 
 INSERT INTO ws3_tabelle_markierung (liga_id, bezeichnung, farbe, platz_von, platz_bis, target_league_id)
 VALUES
@@ -260,6 +260,150 @@ VALUES
 
 INSERT INTO ws3_teamoftheday (season_id, matchday, statistic_id, player_id, position_main)
 VALUES (1, 1, 1, 1, 'T');
+
+-- -----------------------------------------------------------------------------
+-- Match data + standings
+-- -----------------------------------------------------------------------------
+-- Completed league matches for matchday 1 (League 1, Season 1), a completed
+-- cup match, future matches scheduled ~10 years ahead, and today's friendlies.
+-- Team and player season statistics are updated to reflect the results so that
+-- the league table, top-scorers and top-strikers pages render meaningful data.
+
+-- Timestamps: matchday 1 = yesterday; future = ~10 years from now; today = now.
+SET @md1_date   := UNIX_TIMESTAMP() - 86400;
+SET @future_ts := UNIX_TIMESTAMP() + 315360000;  -- 3650 * 86400
+
+-- --- Matchday 1: 10 completed league matches (Teams 1-20) -----------------
+INSERT INTO ws3_spiel
+    (id, spieltyp, liga_id, saison_id, spieltag, datum, home_verein, gast_verein,
+     home_user_id, gast_user_id, home_tore, gast_tore, berechnet, minutes,
+     stadion_id, zuschauer)
+VALUES
+    (1,  'Ligaspiel', 1, 1, 1, @md1_date, 1,  2,  1,    2,    3, 0, '1', 90, 1, 10000),
+    (2,  'Ligaspiel', 1, 1, 1, @md1_date, 3,  4,  3,    4,    2, 1, '1', 90, NULL, 8000),
+    (3,  'Ligaspiel', 1, 1, 1, @md1_date, 5,  6,  5,    NULL, 1, 1, '1', 90, NULL, 7000),
+    (4,  'Ligaspiel', 1, 1, 1, @md1_date, 7,  8,  NULL, NULL, 0, 2, '1', 90, NULL, 6000),
+    (5,  'Ligaspiel', 1, 1, 1, @md1_date, 9,  10, NULL, NULL, 4, 0, '1', 90, NULL, 9000),
+    (6,  'Ligaspiel', 1, 1, 1, @md1_date, 11, 12, NULL, NULL, 1, 0, '1', 90, NULL, 5000),
+    (7,  'Ligaspiel', 1, 1, 1, @md1_date, 13, 14, NULL, NULL, 2, 2, '1', 90, NULL, 7500),
+    (8,  'Ligaspiel', 1, 1, 1, @md1_date, 15, 16, NULL, NULL, 3, 1, '1', 90, NULL, 8500),
+    (9,  'Ligaspiel', 1, 1, 1, @md1_date, 17, 18, NULL, NULL, 0, 0, '1', 90, NULL, 4000),
+    (10, 'Ligaspiel', 1, 1, 1, @md1_date, 19, 20, NULL, NULL, 1, 2, '1', 90, NULL, 6500);
+
+-- --- Matchday 2: 10 future league matches (~10 years ahead) ----------------
+INSERT INTO ws3_spiel
+    (id, spieltyp, liga_id, saison_id, spieltag, datum, home_verein, gast_verein,
+     home_user_id, gast_user_id, berechnet)
+VALUES
+    (11, 'Ligaspiel', 1, 1, 2, @future_ts, 1,  3,  1,    3,    '0'),
+    (12, 'Ligaspiel', 1, 1, 2, @future_ts, 2,  4,  2,    4,    '0'),
+    (13, 'Ligaspiel', 1, 1, 2, @future_ts, 5,  7,  5,    NULL, '0'),
+    (14, 'Ligaspiel', 1, 1, 2, @future_ts, 6,  8,  NULL, NULL, '0'),
+    (15, 'Ligaspiel', 1, 1, 2, @future_ts, 9,  11, NULL, NULL, '0'),
+    (16, 'Ligaspiel', 1, 1, 2, @future_ts, 10, 12, NULL, NULL, '0'),
+    (17, 'Ligaspiel', 1, 1, 2, @future_ts, 13, 15, NULL, NULL, '0'),
+    (18, 'Ligaspiel', 1, 1, 2, @future_ts, 14, 16, NULL, NULL, '0'),
+    (19, 'Ligaspiel', 1, 1, 2, @future_ts, 17, 19, NULL, NULL, '0'),
+    (20, 'Ligaspiel', 1, 1, 2, @future_ts, 18, 20, NULL, NULL, '0');
+
+-- --- Cup matches: one completed, one future (~10 years ahead) ---------------
+INSERT INTO ws3_spiel
+    (id, spieltyp, pokalname, pokalrunde, datum, home_verein, gast_verein,
+     home_user_id, gast_user_id, home_tore, gast_tore, berechnet, minutes,
+     stadion_id, zuschauer)
+VALUES
+    (21, 'Pokalspiel', 'Demo Cup', 'First Round', @md1_date,  1, 2, 1, 2, 2, 1, '1', 90, 1, 12000);
+
+INSERT INTO ws3_spiel
+    (id, spieltyp, pokalname, pokalrunde, datum, home_verein, gast_verein,
+     home_user_id, gast_user_id, berechnet)
+VALUES
+    (22, 'Pokalspiel', 'Demo Cup', 'First Round', @future_ts, 3, 4, 3, 4, '0');
+
+-- --- Today's friendly matches (one completed, one scheduled) ----------------
+INSERT INTO ws3_spiel
+    (id, spieltyp, datum, home_verein, gast_verein, home_user_id, gast_user_id,
+     home_tore, gast_tore, berechnet, minutes, stadion_id, zuschauer)
+VALUES
+    (23, 'Freundschaft', UNIX_TIMESTAMP(), 5, 6, 5, NULL, 2, 1, '1', 90, 1, 5000),
+    (24, 'Freundschaft', UNIX_TIMESTAMP(), 7, 8, NULL, NULL, NULL, NULL, '0', NULL, NULL, NULL);
+
+-- --- Team season statistics (reflect matchday 1 results) --------------------
+-- Columns: sa_spiele, sa_siege, sa_niederlagen, sa_unentschieden,
+--          sa_tore, sa_gegentore, sa_punkte
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=3, sa_gegentore=0, sa_punkte=3 WHERE id=1;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=0, sa_gegentore=3, sa_punkte=0 WHERE id=2;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=2, sa_gegentore=1, sa_punkte=3 WHERE id=3;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=1, sa_gegentore=2, sa_punkte=0 WHERE id=4;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=0, sa_unentschieden=1, sa_tore=1, sa_gegentore=1, sa_punkte=1 WHERE id=5;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=0, sa_unentschieden=1, sa_tore=1, sa_gegentore=1, sa_punkte=1 WHERE id=6;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=0, sa_gegentore=2, sa_punkte=0 WHERE id=7;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=2, sa_gegentore=0, sa_punkte=3 WHERE id=8;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=4, sa_gegentore=0, sa_punkte=3 WHERE id=9;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=0, sa_gegentore=4, sa_punkte=0 WHERE id=10;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=1, sa_gegentore=0, sa_punkte=3 WHERE id=11;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=0, sa_gegentore=1, sa_punkte=0 WHERE id=12;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=0, sa_unentschieden=1, sa_tore=2, sa_gegentore=2, sa_punkte=1 WHERE id=13;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=0, sa_unentschieden=1, sa_tore=2, sa_gegentore=2, sa_punkte=1 WHERE id=14;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=3, sa_gegentore=1, sa_punkte=3 WHERE id=15;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=1, sa_gegentore=3, sa_punkte=0 WHERE id=16;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=0, sa_unentschieden=1, sa_tore=0, sa_gegentore=0, sa_punkte=1 WHERE id=17;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=0, sa_unentschieden=1, sa_tore=0, sa_gegentore=0, sa_punkte=1 WHERE id=18;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=0, sa_niederlagen=1, sa_unentschieden=0, sa_tore=1, sa_gegentore=2, sa_punkte=0 WHERE id=19;
+UPDATE ws3_verein SET sa_spiele=1, sa_siege=1, sa_niederlagen=0, sa_unentschieden=0, sa_tore=2, sa_gegentore=1, sa_punkte=3 WHERE id=20;
+
+-- --- Player season statistics (for top-scorers / top-strikers pages) --------
+-- Players are named Player<teamNo>_<positionMain><slot>. We update strikers
+-- (LS/RS position_main) so that goals+assists are meaningful.
+--   Player9_LS1 : 5 goals, 2 assists, 1 match → score 7  (overall top scorer)
+--   Player15_LS1: 3 goals, 2 assists, 1 match → score 5
+--   Player9_RS1 : 3 goals, 1 assist,  1 match → score 4
+--   Player1_LS1 : 3 goals, 0 assists, 1 match → score 3  (top striker, 0 assists)
+--   Player8_LS1 : 2 goals, 1 assist,  1 match → score 3
+--   Player20_LS1: 2 goals, 0 assists, 1 match → score 2
+UPDATE ws3_spieler SET sa_tore=5, sa_assists=2, sa_spiele=1 WHERE vorname='Player9_LS1';
+UPDATE ws3_spieler SET sa_tore=3, sa_assists=2, sa_spiele=1 WHERE vorname='Player15_LS1';
+UPDATE ws3_spieler SET sa_tore=3, sa_assists=1, sa_spiele=1 WHERE vorname='Player9_RS1';
+UPDATE ws3_spieler SET sa_tore=3, sa_assists=0, sa_spiele=1 WHERE vorname='Player1_LS1';
+UPDATE ws3_spieler SET sa_tore=2, sa_assists=1, sa_spiele=1 WHERE vorname='Player8_LS1';
+UPDATE ws3_spieler SET sa_tore=2, sa_assists=0, sa_spiele=1 WHERE vorname='Player20_LS1';
+
+-- --- League history (matchday 1 rankings for table-history page) ------------
+-- Standings order after matchday 1 (see team stats above):
+--   1. Team 9  (3 pts, GD +4)    8.  Team 13 (1 pt,  GD 0, goals 2)
+--   2. Team 1  (3 pts, GD +3)    9.  Team 14 (1 pt,  GD 0, goals 2)
+--   3. Team 15 (3 pts, GD +2, G3)10.  Team 5  (1 pt,  GD 0, goals 1)
+--   4. Team 8  (3 pts, GD +2, G2)11.  Team 6  (1 pt,  GD 0, goals 1)
+--   5. Team 20 (3 pts, GD +1, G2)12.  Team 17 (1 pt,  GD 0, goals 0)
+--   6. Team 3  (3 pts, GD +1, G2)13.  Team 18 (1 pt,  GD 0, goals 0)
+--   7. Team 11 (3 pts, GD +1, G1)14.  Team 19 (0 pts, GD -1, goals 1)
+--                               15.  Team 4  (0 pts, GD -1, goals 1)
+--                               16.  Team 12 (0 pts, GD -1, goals 0)
+--                               17.  Team 16 (0 pts, GD -2, goals 0)
+--                               18.  Team 7  (0 pts, GD -2, goals 0)
+--                               19.  Team 2  (0 pts, GD -3, goals 0)
+--                               20.  Team 10 (0 pts, GD -4, goals 0)
+INSERT INTO ws3_leaguehistory (team_id, season_id, user_id, matchday, `rank`) VALUES
+    (9,  1, NULL, 1,  1),
+    (1,  1, 1,    1,  2),
+    (15, 1, NULL, 1,  3),
+    (8,  1, NULL, 1,  4),
+    (20, 1, NULL, 1,  5),
+    (3,  1, 3,    1,  6),
+    (11, 1, NULL, 1,  7),
+    (13, 1, NULL, 1,  8),
+    (14, 1, NULL, 1,  9),
+    (5,  1, 5,    1, 10),
+    (6,  1, NULL, 1, 11),
+    (17, 1, NULL, 1, 12),
+    (18, 1, NULL, 1, 13),
+    (19, 1, NULL, 1, 14),
+    (4,  1, 4,    1, 15),
+    (12, 1, NULL, 1, 16),
+    (16, 1, NULL, 1, 17),
+    (7,  1, NULL, 1, 18),
+    (2,  1, 2,    1, 19),
+    (10, 1, NULL, 1, 20);
 
 -- -----------------------------------------------------------------------------
 -- Youth module
