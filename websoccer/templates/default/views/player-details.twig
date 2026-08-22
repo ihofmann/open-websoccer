@@ -141,19 +141,19 @@
   		{% if env.getConfig("hide_strength_attributes") != "1" %}
 			<h4>{{ i18n.getMessage("player_details_strength_title") }}</h4>
 			
-			<p><em>{{ i18n.getMessage('entity_player_w_staerke') }} ({{ player.player_strength }}%)</em></p>
+			<p class="mb-1"><em>{{ i18n.getMessage('entity_player_w_staerke') }} ({{ player.player_strength }}%)</em></p>
 			{{ statisticelements.progressbar(player.player_strength) }}
 			
-			<p><em>{{ i18n.getMessage('entity_player_w_technik') }} ({{ player.player_strength_technique }}%)</em></p>
+			<p class="mb-1"><em>{{ i18n.getMessage('entity_player_w_technik') }} ({{ player.player_strength_technique }}%)</em></p>
 			{{ statisticelements.progressbar(player.player_strength_technique) }}
 			
-			<p><em>{{ i18n.getMessage('entity_player_w_kondition') }} ({{ player.player_strength_stamina }}%)</em></p>
+			<p class="mb-1"><em>{{ i18n.getMessage('entity_player_w_kondition') }} ({{ player.player_strength_stamina }}%)</em></p>
 			{{ statisticelements.progressbar(player.player_strength_stamina) }}
 			
-			<p><em>{{ i18n.getMessage('entity_player_w_frische') }} ({{ player.player_strength_freshness }}%)</em></p>
+			<p class="mb-1"><em>{{ i18n.getMessage('entity_player_w_frische') }} ({{ player.player_strength_freshness }}%)</em></p>
 			{{ statisticelements.progressbar(player.player_strength_freshness) }}
 			
-			<p><em>{{ i18n.getMessage('entity_player_w_zufriedenheit') }} ({{ player.player_strength_satisfaction }}%)</em></p>
+			<p class="mb-1"><em>{{ i18n.getMessage('entity_player_w_zufriedenheit') }} ({{ player.player_strength_satisfaction }}%)</em></p>
 			{{ statisticelements.progressbar(player.player_strength_satisfaction) }}
 		{% endif %}
 

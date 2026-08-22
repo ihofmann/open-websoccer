@@ -8,7 +8,7 @@
 {% else %}
 	{% set progress_status = 'danger' %}
 {% endif %}
-<div class="progress {{ cssClass }}" title="{{ percentvalue }}%">
+<div class="progress mb-3 {{ cssClass }}" title="{{ percentvalue }}%">
   <div class="progress-bar bg-{{ progress_status }}" role="progressbar" style="width: {{ percentvalue }}%" aria-valuenow="{{ percentvalue }}" aria-valuemin="0" aria-valuemax="100">{{ percentvalue }}%</div>
 </div>
 {% endmacro %}
