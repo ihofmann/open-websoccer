@@ -137,7 +137,9 @@ if ($isOffline) {
 
 function renderErrorPage($website, $i18n, $viewHandler, $message, $parameters) {
 	$parameters['title'] = $i18n->getMessage('errorpage_title');
-	$parameters['message'] = DEBUG ? $message : $i18n->getMessage('technical_error_message');
+	// The view-handler catch block only catches Exception (not Throwable),
+	// so $message is always an application-defined user-facing message.
+	$parameters['message'] = $message;
 	echo $website->getTemplateEngine($i18n, $viewHandler)->loadTemplate('error')->render($parameters);
 }
 

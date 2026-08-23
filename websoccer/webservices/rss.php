@@ -50,6 +50,6 @@ $viewHandler = new ViewHandler($website, $db, $i18n, $page, $block, null);
 try {
 	echo $viewHandler->handlePage($pageId, array());
 } catch (Throwable $e) {
-	echo DEBUG ? $e->getMessage() : $i18n->getMessage('technical_error_message');
+	echo (DEBUG || $e instanceof Exception) ? $e->getMessage() : $i18n->getMessage('technical_error_message');
 }
 ?>
