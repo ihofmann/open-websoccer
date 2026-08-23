@@ -54,4 +54,22 @@ if ($website->getUser()->language != null) {
 include(sprintf(CONFIGCACHE_MESSAGES, $i18n->getCurrentLanguage()));
 include(sprintf(CONFIGCACHE_ENTITYMESSAGES, $i18n->getCurrentLanguage()));
 
+/**
+ * Returns an error message that is safe to display in the frontend.
+ *
+ * Detailed exception messages are useful during development, but may contain
+ * SQL queries and database details in production.
+ *
+ * @param I18n $i18n current frontend translation provider.
+ * @param Throwable $exception caught exception.
+ * @return string detailed or translated generic error message.
+ */
+function getFrontendErrorMessage(I18n $i18n, Throwable $exception) {
+	if (DEBUG) {
+		return $exception->getMessage();
+	}
+
+	return $i18n->getMessage('technical_error_message');
+}
+
 ?>

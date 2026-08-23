@@ -4,6 +4,7 @@
     <message id="home_navlabel">Home</message>
     
     <message id="errorpage_title">Error</message>
+    <message id="technical_error_message">A technical error occured, please try again later</message>
     
     <message id="error_page_not_found">The requested page does not exist (anymore). Please check the entered address.</message>
     

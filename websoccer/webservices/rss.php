@@ -49,7 +49,7 @@ header('Content-type: application/rss+xml; charset=utf-8');
 $viewHandler = new ViewHandler($website, $db, $i18n, $page, $block, null);
 try {
 	echo $viewHandler->handlePage($pageId, array());
-} catch (Exception $e) {
-	echo $e->getMessage();
+} catch (Throwable $e) {
+	echo DEBUG ? $e->getMessage() : $i18n->getMessage('technical_error_message');
 }
 ?>

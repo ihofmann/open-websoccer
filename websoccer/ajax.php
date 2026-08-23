@@ -58,10 +58,10 @@ if ($website->getConfig('offline') !== 'offline') {
 			$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR, 
 					$i18n->getMessage('validation_error_box_title'), 
 					$i18n->getMessage('validation_error_box_message')));
-		} catch (Exception $e) {
+		} catch (Throwable $e) {
 			$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR,
 					$i18n->getMessage('errorpage_title'),
-					$e->getMessage()));
+					getFrontendErrorMessage($i18n, $e)));
 		}
 	}
 	
@@ -82,11 +82,10 @@ if ($website->getConfig('offline') !== 'offline') {
 			}
 		}
 		
-	} catch (Exception $e) {
+	} catch (Throwable $e) {
 		$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR,
 				$i18n->getMessage('errorpage_title'),
-				$e->getMessage()));
-		$output['messages'] = $e->getMessage();
+				getFrontendErrorMessage($i18n, $e)));
 	}
 	
 }

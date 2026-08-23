@@ -98,10 +98,10 @@ if ($isOffline) {
 			$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR, 
 					$i18n->getMessage('validation_error_box_title'), 
 					$i18n->getMessage('validation_error_box_message')));
-		} catch (Exception $e) {
+		} catch (Throwable $e) {
 			$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR,
 					$i18n->getMessage('errorpage_title'),
-					$e->getMessage()));
+					getFrontendErrorMessage($i18n, $e)));
 		}
 	}
 	
@@ -136,8 +136,8 @@ if ($isOffline) {
 }
 
 function renderErrorPage($website, $i18n, $viewHandler, $message, $parameters) {
-	$parameters['title'] = $message;
-	$parameters['message'] = '';
+	$parameters['title'] = $i18n->getMessage('errorpage_title');
+	$parameters['message'] = DEBUG ? $message : $i18n->getMessage('technical_error_message');
 	echo $website->getTemplateEngine($i18n, $viewHandler)->loadTemplate('error')->render($parameters);
 }
 
