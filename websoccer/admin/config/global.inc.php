@@ -146,6 +146,11 @@ session_set_save_handler(
 // the following prevents unexpected effects when using objects as save handlers
 // see http://php.net/manual/en/function.session-set-save-handler.php
 register_shutdown_function('session_write_close');
+session_set_cookie_params(array(
+	'lifetime' => 0,
+	'path' => '/',
+	'samesite' => 'Lax'
+));
 session_start();
 
 // always set time zone in order to prevent PHP warnings

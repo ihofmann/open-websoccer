@@ -39,7 +39,11 @@ class CookieHelper {
 	public static function createCookie($name, $value, $lifetimeInDays = null) {
 		$expiry = ($lifetimeInDays != null) ? time() + 86400 * $lifetimeInDays : 0;
 		
-		setcookie(COOKIE_PREFIX . $name, $value, $expiry);
+		setcookie(COOKIE_PREFIX . $name, $value, array(
+			'expires' => $expiry,
+			'path' => '/',
+			'samesite' => 'Lax'
+		));
 	}
 	
 	/**
@@ -65,7 +69,11 @@ class CookieHelper {
 			return;
 		}
 	
-		setcookie(COOKIE_PREFIX . $name, '', time()-86400);
+		setcookie(COOKIE_PREFIX . $name, '', array(
+			'expires' => time()-86400,
+			'path' => '/',
+			'samesite' => 'Lax'
+		));
 	}
 	
 }

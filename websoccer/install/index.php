@@ -33,6 +33,11 @@ define("DDL_FULL", "ws3_ddl_full.sql");
 define("DDL_MIGRATION", "ws3_ddl_upgrade.sql");
 define("DDL_INDEX", "ws3_ddl_index.sql");
 
+session_set_cookie_params(array(
+	'lifetime' => 0,
+	'path' => '/',
+	'samesite' => 'Lax'
+));
 session_start();
 $supportedLanguages = array("de" => "Deutsch", "en" => "English");
 

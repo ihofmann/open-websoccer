@@ -47,6 +47,55 @@ function sendAdminSecurityHeaders() {
 }
 
 /**
+ * Returns the per-session CSRF token used by AdminCenter forms.
+ *
+ * @return string
+ */
+function getAdminCsrfToken() {
+	if (!isset($_SESSION['admin_csrf_token'])) {
+		$_SESSION['admin_csrf_token'] = bin2hex(random_bytes(32));
+	}
+	return $_SESSION['admin_csrf_token'];
+}
+
+/**
+ * Rejects forged state-changing AdminCenter requests.
+ */
+function validateAdminCsrfToken() {
+	if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+		return;
+	}
+
+	$submittedToken = isset($_POST['admin_csrf_token']) ? $_POST['admin_csrf_token'] : '';
+	$sessionToken = isset($_SESSION['admin_csrf_token']) ? $_SESSION['admin_csrf_token'] : '';
+	if (!is_string($submittedToken) || !$sessionToken || !$submittedToken || !hash_equals($sessionToken, $submittedToken)) {
+		http_response_code(403);
+		die('Invalid CSRF token.');
+	}
+}
+
+/**
+ * Adds a CSRF field to each rendered AdminCenter POST form.
+ *
+ * Login and password-reset pages do not use the AdminCenter bootstrap and
+ * therefore remain intentionally exempt.
+ *
+ * @param string $output
+ * @return string
+ */
+function injectAdminCsrfFields($output) {
+	$csrfField = '<input type="hidden" name="admin_csrf_token" value="' .
+		escapeOutput(getAdminCsrfToken()) . '">';
+	return preg_replace_callback(
+		'/<form\b(?=[^>]*\bmethod\s*=\s*["\']?post\b)[^>]*>/i',
+		function ($match) use ($csrfField) {
+			return $match[0] . $csrfField;
+		},
+		$output
+	);
+}
+
+/**
  * Creates code for displaying an alert with severity Warning.
  * 
  * @param string $title message title.

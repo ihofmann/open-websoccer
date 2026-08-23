@@ -35,6 +35,11 @@ define("CONFIGFILE_OLD", BASE_FOLDER . "/admin/config/config.inc.php");
 
 define("DDL_FILE", "update_ddl.sql");
 
+session_set_cookie_params(array(
+	'lifetime' => 0,
+	'path' => '/',
+	'samesite' => 'Lax'
+));
 session_start();
 $supportedLanguages = array("de" => "Deutsch", "en" => "English");
 

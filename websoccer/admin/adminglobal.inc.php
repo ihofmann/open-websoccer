@@ -49,6 +49,12 @@ if (SecurityUtil::isAdminLoggedIn()) {
 	exit;
 }
 
+validateAdminCsrfToken();
+// Generate the token before the session is closed by the registered shutdown
+// handler. The output callback only renders this already-persisted value.
+getAdminCsrfToken();
+ob_start('injectAdminCsrfFields');
+
 // include messages
 $i18n = I18n::getInstance($website->getConfig('supported_languages'));
 if ($admin['lang']) {
