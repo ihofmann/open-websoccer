@@ -89,12 +89,12 @@
 			<button type="submit" class="btn btn-secondary" name="buttonSetupChange" value="1">{{ i18n.getMessage("formation_setup_button") }}</button>
 
 			{% if env.getConfig("hide_strength_attributes") != "1" %}
-			<button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+			<button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-testid="preselect-dropdown-toggle" aria-expanded="false">
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#" class="dropdown-item formationSetupSubmit" data-preselect="strongest"><i class="bi bi-rocket"></i> {{ i18n.getMessage("formation_setup_strongest") }}</a></li>
-				<li><a href="#" class="dropdown-item formationSetupSubmit" data-preselect="freshest"><i class="bi bi-heart-fill"></i> {{ i18n.getMessage("formation_setup_freshest") }}</a></li>
-				<li><a href="#" class="dropdown-item formationSetupSubmit" data-preselect="motivated"><i class="bi bi-emoji-smile"></i> {{ i18n.getMessage("formation_setup_motivated") }}</a></li>
+				<li><a href="#" class="dropdown-item formationSetupSubmit" data-preselect="strongest" data-testid="formation-setup-submit"><i class="bi bi-rocket"></i> {{ i18n.getMessage("formation_setup_strongest") }}</a></li>
+				<li><a href="#" class="dropdown-item formationSetupSubmit" data-preselect="freshest" data-testid="formation-setup-submit"><i class="bi bi-heart-fill"></i> {{ i18n.getMessage("formation_setup_freshest") }}</a></li>
+				<li><a href="#" class="dropdown-item formationSetupSubmit" data-preselect="motivated" data-testid="formation-setup-submit"><i class="bi bi-emoji-smile"></i> {{ i18n.getMessage("formation_setup_motivated") }}</a></li>
 			</ul>
 			{% endif %}
 		</div>
@@ -103,7 +103,7 @@
 			data-ajaxblock="formation_templates" data-ajaxtarget="formation-templates-content"
 			data-ajaxquerystr="id={{ next_match.match_id }}"><i class="bi bi-folder2-open"></i> {{ i18n.getMessage("formation_load_from_template") }}</a>
 		{% endif %}
-		<a class="btn btn-secondary clearAllBtn" href="#"><i class="bi bi-trash"></i> {{ i18n.getMessage("formation_clearall") }}</a>
+		<a class="btn btn-secondary clearAllBtn" href="#" data-testid="clear-all"><i class="bi bi-trash"></i> {{ i18n.getMessage("formation_clearall") }}</a>
 	</form>
 
 	<div id="templatesModal" class="modal fade" tabindex="-1" role="dialog"

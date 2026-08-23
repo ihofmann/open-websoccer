@@ -26,7 +26,7 @@
 
 <p style="margin-top: 30px"><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("extend-contract_link_profile") }}</a></p>
 
-<form class="row" method="post">
+<form id="sellPlayerForm" class="row" method="post">
 
 	{{ formelements.textfield('min_bid', i18n.getMessage('transfermarket_min_bid'), env.getRequestParameter('min_bid'), true, validationMsg, 'number') }}
 	

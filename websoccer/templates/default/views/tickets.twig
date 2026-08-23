@@ -12,7 +12,7 @@
 	<p><i class="bi bi-info-circle"></i> {{ i18n.getMessage("tickets_info_homefieldadvantage")|raw }}</p>
 {% endif %}
 
-<form class="row" method="post">
+<form id="ticketsForm" class="row" method="post">
 
 	{{ formelements.textfield('p_stands', i18n.getMessage('tickets_stands'), tickets.p_stands, true, validationMsg, 'number', 
 		i18n.getMessage("tickets_sold_last_match") ~ ": " ~ tickets.l_stands|number_format(0, ',', ' ') ~ "/" ~ tickets.s_stands|number_format(0, ',', ' ')) }}
