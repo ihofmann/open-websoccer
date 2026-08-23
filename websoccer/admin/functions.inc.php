@@ -22,12 +22,28 @@
 
 /**
  * Escapes for HTML output. Uses <code>htmlspecialchars</code> (UTF-8).
- * 
+ *
  * @param string $message message string to escape.
  * @return string escaped input string, ready for secure HTML output.
  */
 function escapeOutput($message) {
 	return htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Sends strict security headers for AdminCenter pages.
+ *
+ * The Content-Security-Policy allows only same-origin scripts, styles,
+ * images, fonts and connections, and explicitly forbids inline scripts,
+ * inline styles, inline event handlers, plugins, framing and form
+ * submissions to other origins. It must be called before any HTML output,
+ * like header('Content-type: ...').
+ */
+function sendAdminSecurityHeaders() {
+	header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'");
+	header("X-Content-Type-Options: nosniff");
+	header("X-Frame-Options: DENY");
+	header("Referrer-Policy: strict-origin-when-cross-origin");
 }
 
 /**

@@ -198,14 +198,14 @@ if (!$rows['hits']) {
 	
 	// checkbox
 	if ($deleteEnabled) {
-		echo "<th style=\"width: 20px;\">&nbsp;</th>";
+		echo "<th class=\"col-w-20\">&nbsp;</th>";
 	}
 	
 	// columns
 	foreach($outputColumns as $fieldId => $columnInfo) {
 		echo "<th";
 		if ($fieldId == "entity_". $entity ."_status") {
-			echo " style=\"width: 20px;\">&nbsp;";
+			echo " class=\"col-w-20\">&nbsp;";
 		} else {
 			$header = $i18n->getMessage($fieldId);
 			if ($columnInfo["sort"]) {
@@ -242,10 +242,10 @@ if (!$rows['hits']) {
 	
 	// action columns
 	if ($editEnabled) {
-		echo "<th style=\"width: 20px;\">&nbsp;</th>";
+		echo "<th class=\"col-w-20\">&nbsp;</th>";
 	}
 	if ($deleteEnabled) {
-		echo "<th style=\"width: 20px;\">&nbsp;</th>";
+		echo "<th class=\"col-w-20\">&nbsp;</th>";
 	}
 	
 	echo "</tr></thead>";
@@ -345,7 +345,7 @@ if (!$rows['hits']) {
 	echo "</table>";
 	
 	?>
-		<p><div class="form-check"><input class="form-check-input" type="checkbox" name="selAll" value="1" id="selAll" onClick="selectAll()"><label class="form-check-label" for="selAll"><?php echo $i18n->getMessage("manage_select_all_label"); ?></label></div></p>
+		<p><div class="form-check"><input class="form-check-input" type="checkbox" name="selAll" value="1" id="selAll"><label class="form-check-label" for="selAll"><?php echo $i18n->getMessage("manage_select_all_label"); ?></label></div></p>
 		
 		<p><?php echo $i18n->getMessage("manage_selected_items_label"); ?> <input type="button" class="btn btn-sm btn-secondary deleteBtn" accesskey="l" title="Alt + l" value="<?php echo $i18n->getMessage("button_delete"); ?>"></p>
 	

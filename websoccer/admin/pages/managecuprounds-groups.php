@@ -247,8 +247,8 @@ if (count($groups)) {
 			<col>
 			<col>
 			<col>
-			<col style="width: 20px">
-			<col style="width: 20px">
+			<col class="col-w-20">
+			<col class="col-w-20">
 		</colgroup>
 		<thead>
 			<tr>
@@ -492,10 +492,10 @@ if (count($groups)) {
 	<label><?php echo $i18n->getMessage("managecuprounds_groups_label_selectteams"); ?></label>
 	</div>
 	
-		<div style="width: 600px; height: 300px; overflow: auto; border: 1px solid #cccccc;">
+		<div class="cup-team-box">
 			<table class="table table-striped table-hover">
 				<colgroup>
-					<col style="width: 30px">
+					<col class="col-w-30">
 					<col>
 					<col>
 				</colgroup>

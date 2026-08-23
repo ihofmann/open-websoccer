@@ -48,7 +48,7 @@ if (!$show) {
 
     ?>
 
-          <table class='table table-bordered table-striped' style='margin-top: 10px'>
+          <table class='table table-bordered table-striped entity-log-table'>
             <tr>
               <th><?php echo $i18n->getMessage('entitylogging_label_no'); ?></th>
               <th><?php echo $i18n->getMessage('entitylogging_label_time'); ?></th>

@@ -1,2 +1,67 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* ------------------------------------------------------------------ */
+/* AdminCenter page styles                                             */
+/* Moved out of inline <style> blocks so a strict CSP can be applied. */
+/* ------------------------------------------------------------------ */
+
+/* Main admin layout (fixed-top navbar) */
+body.admin-main {
+  padding-top: 70px;
+  padding-bottom: 40px;
+}
+
+/* Standalone login / password-reset pages (no navbar) */
+body.admin-login {
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.sidebar-nav {
+  padding: 9px 0;
+}
+
+.cupround {
+  margin-left: 30px;
+  border-left: 1px solid #CCCCCC;
+  padding: 3px 5px 0px 10px;
+}
+
+/* Initially hidden elements (replaces inline style="display: none").
+   Visibility is toggled via JavaScript using the CSSOM. */
+.ws-hidden {
+  display: none;
+}
+
+/* Narrow table columns (checkbox / action columns) */
+.col-w-20 {
+  width: 20px;
+}
+
+.col-w-30 {
+  width: 30px;
+}
+
+/* Scrollable team-selection box used on cup round pages */
+.cup-team-box {
+  width: 600px;
+  height: 300px;
+  overflow: auto;
+  border: 1px solid #cccccc;
+}
+
+/* Home page info tables */
+.home-info-table {
+  width: 500px;
+}
+
+/* Entity log table */
+.entity-log-table {
+  margin-top: 10px;
+}
+
+/* Players generator section spacing */
+.players-section-heading {
+  margin-top: 20px;
+}

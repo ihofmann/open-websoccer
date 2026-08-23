@@ -31,7 +31,7 @@ import { Modal } from "bootstrap";
     return Array.from((ctx || document).querySelectorAll(sel));
   }
 
-  /* expose selectAll for legacy onclick handlers */
+  /* expose selectAll so initSelectAll() can call it */
   window.selectAll = function () {
     const c = document.frmMain.selAll.checked;
     for (let i = 0; i < document.frmMain.elements.length; i++) {
@@ -208,10 +208,62 @@ import { Modal } from "bootstrap";
   }
 
   /* ------------------------------------------------------------------ */
+  /* Delete confirmation (moved out of an inline <script> block)         */
+  /* The translated labels are supplied via data attributes on <body>.   */
+  /* ------------------------------------------------------------------ */
+  function initDeleteConfirmation() {
+    var body = document.body;
+    var ds = body.dataset;
+    var multiselectConfirm = ds.deleteMultiselectConfirm;
+    var linkConfirm = ds.deleteLinkConfirm;
+    var noLabel = ds.optionNo;
+    var yesLabel = ds.optionYes;
+
+    if (!multiselectConfirm && !linkConfirm) return;
+
+    document.addEventListener("click", function (e) {
+      var deleteBtn = e.target.closest(".deleteBtn");
+      if (deleteBtn) {
+        e.preventDefault();
+        wsConfirm(multiselectConfirm, noLabel, yesLabel, function (result) {
+          if (result) {
+            document.frmMain.submit();
+          }
+        });
+        return;
+      }
+      var deleteLink = e.target.closest(".deleteLink");
+      if (deleteLink) {
+        e.preventDefault();
+        wsConfirm(linkConfirm, noLabel, yesLabel, function (result) {
+          if (result) {
+            window.location = deleteLink.getAttribute("href");
+          }
+        });
+      }
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* "Select all" checkbox (replaces inline onClick="selectAll()")       */
+  /* ------------------------------------------------------------------ */
+  function initSelectAll() {
+    var selAll = document.getElementById("selAll");
+    if (selAll && !selAll.dataset.wsSelAllInit) {
+      selAll.dataset.wsSelAllInit = "1";
+      selAll.addEventListener("click", function () {
+        window.selectAll();
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Init                                                                */
   /* ------------------------------------------------------------------ */
   document.addEventListener("DOMContentLoaded", function () {
     initPkPickers();
+    initDeleteConfirmation();
+    initSelectAll();
 
     /* start / stop (cron) job */
     qsa(".startStopJobLink").forEach(function (link) {

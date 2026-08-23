@@ -62,3 +62,4 @@ include(sprintf(CONFIGCACHE_ADMINMESSAGES, $i18n->getCurrentLanguage()));
 include(sprintf(CONFIGCACHE_ENTITYMESSAGES, $i18n->getCurrentLanguage()));
 
 header('Content-type: text/html; charset=utf-8');
+sendAdminSecurityHeaders();

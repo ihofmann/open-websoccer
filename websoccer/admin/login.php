@@ -124,6 +124,7 @@ if ($inputUser or $inputPassword) {
 }
 
 header('Content-type: text/html; charset=utf-8');
+sendAdminSecurityHeaders();
 ?>
 <!DOCTYPE html>
 <html lang='de'>
@@ -132,14 +133,8 @@ header('Content-type: text/html; charset=utf-8');
     <link href='../assets/admincenter.css' rel='stylesheet' media='screen'>
     <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
     <meta charset='UTF-8'>
-    <style type='text/css'>
-      body {
-        padding-top: 100px;
-        padding-bottom: 40px;
-      }
-    </style>
   </head>
-  <body>
+  <body class='admin-login'>
   
 	<div class='container'>
 	

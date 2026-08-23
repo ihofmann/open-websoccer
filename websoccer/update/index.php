@@ -24,6 +24,9 @@
 error_reporting(E_ALL);
 define("BASE_FOLDER", __DIR__ ."/..");
 
+// Suppress the PHP version disclosure header.
+@header_remove('X-Powered-By');
+
 define("WRITABLE_FOLDERS", "generated/");
 define("DEFAULT_DB_PREFIX", "ws3");
 

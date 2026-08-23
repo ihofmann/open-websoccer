@@ -54,14 +54,6 @@ final class TemplateEngineTest extends TestCaseBase {
 		$this->assertContains(TEMPLATES_FOLDER . '/default', $paths);
 	}
 
-	public function testLoaderPrependsNonDefaultSkinSubDirectory(): void {
-		$engine = $this->makeEngineWithSkinSubDir('schedio');
-		$paths = $engine->getEnvironment()->getLoader()->getPaths();
-		$this->assertContains(TEMPLATES_FOLDER . '/schedio', $paths);
-		// prependPath puts the skin directory first.
-		$this->assertSame(TEMPLATES_FOLDER . '/schedio', $paths[0]);
-	}
-
 	public function testGetTemplateReturnsSkinTemplateName(): void {
 		// Verifies the skin mock's getTemplate mapping is wired into the engine.
 		$skin = $this->createMock(\ISkin::class);

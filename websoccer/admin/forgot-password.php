@@ -92,6 +92,7 @@ function _sendEmail($email, $password, $website, $i18n) {
 		'sendpassword_admin',
 		$tplparameters);
 }
+sendAdminSecurityHeaders();
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,14 +101,8 @@ function _sendEmail($email, $password, $website, $i18n) {
     <link href='../assets/admincenter.css' rel='stylesheet' media='screen'>
     <meta charset='UTF-8'>
     <link rel='shortcut icon' type='image/x-icon' href='../favicon.ico' />
-    <style type='text/css'>
-      body {
-        padding-top: 100px;
-        padding-bottom: 40px;
-      }
-    </style>
   </head>
-  <body>
+  <body class='admin-login'>
   
 	<div class='container'>
 	
