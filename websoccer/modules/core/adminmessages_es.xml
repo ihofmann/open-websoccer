@@ -189,8 +189,6 @@
   <message id="sendpassword_admin_email_introduction">Encuentre a continuación su nueva contraseña que ha solicitado a través de AdminCenter y que puede y debe cambiar en nuestro sitio web:</message>
   <message id="sendpassword_admin_email_newpassword_label">Tu nueva contraseña:</message>
   <message id="sendpassword_admin_email_ending">Tenga en cuenta que la nueva contraseña solo se activa tan pronto como inicie sesión con ella por primera vez. </message>
-  <message id="sendpassword_admin_usernotfound">Usuario no encontrado.</message>
-  <message id="sendpassword_admin_alreadysent">Ha solicitado una nueva contraseña recientemente. Inténtalo más tarde de nuevo.</message>
   <message id="sendpassword_admin_title">Solicitud de contraseña</message>
   <message id="sendpassword_admin_intro">¿Olvidaste tu contraseña? Simplemente ingrese su dirección de correo electrónico y le enviaremos una nueva contraseña.</message>
   <message id="sendpassword_admin_label_email">Correo electrónico</message>

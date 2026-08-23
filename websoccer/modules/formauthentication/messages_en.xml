@@ -17,9 +17,6 @@
     <message id="forgot-password_title">Request New Password</message>
     <message id="forgot-password_submit_button">Send new password</message>
     
-    <message id="forgot-password_email-not-found">No active user found with this email. Please check the spelling.</message>
-    <message id="forgot-password_already-sent">You already requested a new password in the last 24 hours. Please try again tomorrow.</message>
-    
     <message id="forgot-password_message_title">A new password has been sent</message>
     <message id="forgot-password_message_content">Please check your email now.</message>
     

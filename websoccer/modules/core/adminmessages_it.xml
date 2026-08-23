@@ -189,8 +189,6 @@
   <message id="sendpassword_admin_email_introduction">Di seguito trovi la nuova password che hai richiesto tramite l'AdminCenter e che puoi e devi cambiare sul nostro sito web:</message>
   <message id="sendpassword_admin_email_newpassword_label">La tua nuova password:</message>
   <message id="sendpassword_admin_email_ending">Tieni presente che la nuova password diventa attiva non appena accedi con essa per la prima volta. </message>
-  <message id="sendpassword_admin_usernotfound">Utente non trovato.</message>
-  <message id="sendpassword_admin_alreadysent">Hai richiesto una nuova password di recente. Si prega di riprovare più tardi.</message>
   <message id="sendpassword_admin_title">Richiedi password</message>
   <message id="sendpassword_admin_intro">Hai dimenticato la tua password? Basta inserire il tuo indirizzo e-mail e ti invieremo una nuova password.</message>
   <message id="sendpassword_admin_label_email">E-Mail</message>

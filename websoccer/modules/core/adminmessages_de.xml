@@ -220,10 +220,7 @@
 	<message id="sendpassword_admin_email_introduction">dies ist dein neues Passwort, das du über das AdminCenter angefordert hast und in deinem Profil ändern kannst und solltest:</message>
 	<message id="sendpassword_admin_email_newpassword_label">dein neues Passwort:</message>
 	<message id="sendpassword_admin_email_ending">Beachte, dass dein neues Passwort erst aktiv wird, sobald du dich zum ersten Mal damit anmeldest.</message>
-	
-	<message id="sendpassword_admin_usernotfound">Benutzer nicht bekannt.</message>
-	<message id="sendpassword_admin_alreadysent">Du hast erst kürzlich ein Passwort angefordert. Probier es später noch einmal.</message>
-	
+
 	<message id="sendpassword_admin_title">Passwort anfordern</message>
 	<message id="sendpassword_admin_intro">Du hast dein Passwort vergessen? Gib einfach deine E-Mail-Adresse an und wir senden dir ein neues Passwort zu.</message>
 	<message id="sendpassword_admin_label_email">E-Mail</message>

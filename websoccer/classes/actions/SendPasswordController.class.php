@@ -59,16 +59,24 @@ class SendPasswordController implements IActionController {
 		$userdata = $result->fetch_array();
 		$result->free();
 		
+		$successMessage = new FrontMessage(MESSAGE_TYPE_SUCCESS,
+				$this->_i18n->getMessage("forgot-password_message_title"),
+				$this->_i18n->getMessage("forgot-password_message_content"));
+		
 		if (!isset($userdata["id"])) {
+			// Do not reveal whether the email address is registered.
 			sleep(5);
-			throw new Exception($this->_i18n->getMessage("forgot-password_email-not-found"));
+			$this->_websoccer->addFrontMessage($successMessage);
+			return "login";
 		}
 		
 		$now = $this->_websoccer->getNowAsTimestamp();
 		
 		$timeBoundary = $now - 24 * 3600;
 		if ($userdata["passwort_neu_angefordert"] > $timeBoundary) {
-			throw new Exception($this->_i18n->getMessage("forgot-password_already-sent"));
+			// Do not reveal that the email exists but a reset was already requested.
+			$this->_websoccer->addFrontMessage($successMessage);
+			return "login";
 		}
 		
 		// create new password
@@ -85,10 +93,11 @@ class SendPasswordController implements IActionController {
 		$parameter = $userdata["id"];
 		$this->_db->queryUpdate($columns, $fromTable, $whereCondition, $parameter);
 		
+		// Send the e-mail. If delivery fails the exception propagates so that
+		// the user sees a meaningful error (e.g. "e-mail not sent.").
 		$this->_sendEmail($email, $password);
 		
-		$this->_websoccer->addFrontMessage(new FrontMessage(MESSAGE_TYPE_SUCCESS, $this->_i18n->getMessage("forgot-password_message_title"),
-				$this->_i18n->getMessage("forgot-password_message_content")));
+		$this->_websoccer->addFrontMessage($successMessage);
 		
 		return "login";
 	}

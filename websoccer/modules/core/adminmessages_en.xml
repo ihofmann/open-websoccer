@@ -221,10 +221,7 @@
 	<message id="sendpassword_admin_email_introduction">Please find below your new password, requested via the AdminCenter. Please change it on our website:</message>
 	<message id="sendpassword_admin_email_newpassword_label">Your new Password:</message>
 	<message id="sendpassword_admin_email_ending">The new password becomes active when you log in for the first time.</message>
-	
-	<message id="sendpassword_admin_usernotfound">User not found.</message>
-	<message id="sendpassword_admin_alreadysent">You recently requested a new password. Please try again later.</message>
-	
+
 	<message id="sendpassword_admin_title">Request Password</message>
 	<message id="sendpassword_admin_intro">Forgot your password? Enter your email address and we will send you a new one.</message>
 	<message id="sendpassword_admin_label_email">Email</message>

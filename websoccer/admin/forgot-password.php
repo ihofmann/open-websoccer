@@ -53,9 +53,15 @@ if ($inputEmail) {
 		$admin = $result->fetch_array();
 		
 		if($result->num_rows < 1) {
-			$errors['inputEmail'] = $i18n->getMessage('sendpassword_admin_usernotfound');
+			// Do not reveal whether the email address is registered.
+			$result->free();
+			header('location: login.php?newpwd=1');
+			die();
 		} elseif ($admin['passwort_neu_angefordert'] > ($now-120*60)) {
-			$errors['inputEmail'] = $i18n->getMessage('sendpassword_admin_alreadysent');
+			// Do not reveal that the email exists but a reset was already requested.
+			$result->free();
+			header('location: login.php?newpwd=1');
+			die();
 		} else {
 			$newPassword = SecurityUtil::generatePassword();
 			$hashedPw = SecurityUtil::hashPassword($newPassword, $admin['passwort_salt']);
@@ -68,17 +74,17 @@ if ($inputEmail) {
 			$parameter = $admin['id'];
 			$db->queryUpdate($columns, $fromTable, $whereCondition, $parameter);
 
-            try {
-            	_sendEmail($inputEmail, $newPassword, $website, $i18n);
-            	
-            	header('location: login.php?newpwd=1');
-            	die();
-            } catch(Exception $e) {
-            	$errors['inputEmail'] = $e->getMessage();
-            }
-		
+			$result->free();
+
+			try {
+				_sendEmail($inputEmail, $newPassword, $website, $i18n);
+				
+				header('location: login.php?newpwd=1');
+				die();
+			} catch(Exception $e) {
+				$errors['inputEmail'] = $e->getMessage();
+			}
 		}
-		$result->free();
 		
 	}
 }

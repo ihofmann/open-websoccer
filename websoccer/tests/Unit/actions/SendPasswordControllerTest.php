@@ -29,31 +29,44 @@ final class SendPasswordControllerTest extends TestCaseBase {
 		$controller->executeAction(['useremail' => 'a@b.com']);
 	}
 
-	public function testThrowsWhenEmailNotFound(): void {
-		$i18n = $this->mockI18n(['forgot-password_email-not-found' => 'not found']);
+	public function testShowsSuccessWhenEmailNotFound(): void {
+		$i18n = $this->mockI18n([
+			'forgot-password_message_title' => 'sent title',
+			'forgot-password_message_content' => 'sent content',
+		]);
 		$ws = $this->mockWebsoccerAt(1000000, $this->config());
 		$ws->method('getUser')->willReturn($this->makeUser([]));
+		$added = [];
+		$ws->method('addFrontMessage')->willReturnCallback(function ($m) use (&$added) { $added[] = $m; });
 		// No matching user.
 		$db = $this->mockDb();
 
-		$this->expectException(Exception::class);
-		$this->expectExceptionMessage('not found');
-
 		$controller = new SendPasswordController($i18n, $ws, $db);
-		$controller->executeAction(['useremail' => 'ghost@b.com']);
+		$result = $controller->executeAction(['useremail' => 'ghost@b.com']);
+
+		$this->assertSame('login', $result);
+		$this->assertCount(1, $added);
+		$this->assertSame(MESSAGE_TYPE_SUCCESS, $added[0]->type);
+		$this->assertSame('sent title', $added[0]->title);
 	}
 
-	public function testThrowsWhenPasswordAlreadyRequestedRecently(): void {
-		$i18n = $this->mockI18n(['forgot-password_already-sent' => 'already sent']);
+	public function testShowsSuccessWhenPasswordAlreadyRequestedRecently(): void {
+		$i18n = $this->mockI18n([
+			'forgot-password_message_title' => 'sent title',
+			'forgot-password_message_content' => 'sent content',
+		]);
 		$ws = $this->mockWebsoccerAt(1000000, $this->config());
 		$ws->method('getUser')->willReturn($this->makeUser([]));
+		$added = [];
+		$ws->method('addFrontMessage')->willReturnCallback(function ($m) use (&$added) { $added[] = $m; });
 		// passwort_neu_angefordert == now -> within the 24h boundary.
 		$db = $this->makeDb([], ['ws_user' => [['id' => 5, 'passwort_salt' => 'salt', 'passwort_neu_angefordert' => 1000000]]]);
 
-		$this->expectException(Exception::class);
-		$this->expectExceptionMessage('already sent');
-
 		$controller = new SendPasswordController($i18n, $ws, $db);
-		$controller->executeAction(['useremail' => 'a@b.com']);
+		$result = $controller->executeAction(['useremail' => 'a@b.com']);
+
+		$this->assertSame('login', $result);
+		$this->assertCount(1, $added);
+		$this->assertSame(MESSAGE_TYPE_SUCCESS, $added[0]->type);
 	}
 }
