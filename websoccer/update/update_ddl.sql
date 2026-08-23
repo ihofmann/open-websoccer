@@ -38,3 +38,8 @@ ALTER TABLE ws3_userabsence MODIFY from_date BIGINT NOT NULL;
 ALTER TABLE ws3_userabsence MODIFY to_date BIGINT NOT NULL;
 ALTER TABLE ws3_premiumpayment MODIFY created_date BIGINT NOT NULL;
 ALTER TABLE ws3_premiumstatement MODIFY created_date BIGINT NOT NULL;
+
+-- AdminCenter e-mail second factor: verification code, failed attempts, lockout.
+ALTER TABLE ws3_admin ADD verification_code VARCHAR(6);
+ALTER TABLE ws3_admin ADD login_attempts INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_admin ADD blocked_until INT(11) NOT NULL DEFAULT 0;

@@ -69,6 +69,19 @@
     
     <message id="login_link_forgotpassword">Forgot Password?</message>    
     
+    <message id="login_2fa_title">Verification Code</message>
+    <message id="login_2fa_email_sent_title">Verification code sent</message>
+    <message id="login_2fa_email_sent">A verification code has been sent to your e-mail address. Please check your e-mails and enter the code below.</message>
+    <message id="login_2fa_email_not_sent_title">E-Mail could not be sent</message>
+    <message id="login_2fa_email_not_sent">E-Mail could not be sent. Here is the verification code: %s</message>
+    <message id="login_2fa_label_code">Verification code</message>
+    <message id="login_2fa_button_verify">Verify</message>
+    <message id="login_2fa_link_back">Back to Login</message>
+    <message id="login_2fa_error_nocode">No verification code provided.</message>
+    <message id="login_2fa_error_wrong_code">Wrong verification code.</message>
+    <message id="login_2fa_error_blocked">Too many failed attempts. You can try again in 5 minutes.</message>
+    <message id="login_2fa_email_subject">%s Verification code: %s</message>
+    
     <message id="admincenter_brand">AdminCenter</message>
     <message id="admincenter_homelink_tooltip">To AdminCenter Home Page</message>
     <message id="admincenter_loggedin_as">Signed in as</message>

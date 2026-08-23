@@ -3,6 +3,9 @@ ALTER TABLE ws3_admin ADD passwort_salt VARCHAR(5);
 ALTER TABLE ws3_admin MODIFY passwort VARCHAR(64);
 ALTER TABLE ws3_admin MODIFY passwort_neu VARCHAR(64);
 ALTER TABLE ws3_admin ADD lang VARCHAR(2);
+ALTER TABLE ws3_admin ADD verification_code VARCHAR(6);
+ALTER TABLE ws3_admin ADD login_attempts INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_admin ADD blocked_until INT(11) NOT NULL DEFAULT 0;
 
 ALTER TABLE ws3_user ADD passwort_salt VARCHAR(5);
 ALTER TABLE ws3_user ADD tokenid VARCHAR(255);

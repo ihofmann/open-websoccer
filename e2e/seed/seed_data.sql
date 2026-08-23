@@ -33,6 +33,18 @@ VALUES
      'admin@example.com', 'en',
      '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0');
 
+-- Second admin used exclusively by the 2FA lockout E2E test.
+-- It is intentionally NOT used by any other test so that locking it
+-- does not interfere with the rest of the suite.
+INSERT INTO ws3_admin
+    (id, name, passwort, passwort_salt, email, lang, r_admin, r_adminuser,
+     r_user, r_daten, r_staerken, r_spiele, r_news, r_faq, r_umfrage,
+     r_kalender, r_seiten, r_design, r_demo)
+VALUES
+    (2, 'locktest', SHA2(CONCAT(@salt, SHA2('locktest', 256)), 256), @salt,
+     'locktest@example.com', 'en',
+     '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+
 -- -----------------------------------------------------------------------------
 -- Frontend users (login: userN / userN)
 -- -----------------------------------------------------------------------------

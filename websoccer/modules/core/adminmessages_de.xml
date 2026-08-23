@@ -66,6 +66,19 @@
     
     <message id="login_link_forgotpassword">Passwort vergessen?</message>    
     
+    <message id="login_2fa_title">Bestätigungscode</message>
+    <message id="login_2fa_email_sent_title">Bestätigungscode versendet</message>
+    <message id="login_2fa_email_sent">Ein Bestätigungscode wurde an deine E-Mail-Adresse gesendet. Bitte überprüfe deine E-Mails und gib den Code unten ein.</message>
+    <message id="login_2fa_email_not_sent_title">E-Mail konnte nicht gesendet werden</message>
+    <message id="login_2fa_email_not_sent">E-Mail konnte nicht gesendet werden. Hier ist der Bestätigungscode: %s</message>
+    <message id="login_2fa_label_code">Bestätigungscode</message>
+    <message id="login_2fa_button_verify">Bestätigen</message>
+    <message id="login_2fa_link_back">Zurück zur Anmeldung</message>
+    <message id="login_2fa_error_nocode">Es wurde kein Bestätigungscode angegeben.</message>
+    <message id="login_2fa_error_wrong_code">Falscher Bestätigungscode.</message>
+    <message id="login_2fa_error_blocked">Zu viele fehlgeschlagene Versuche. Du kannst es in 5 Minuten erneut versuchen.</message>
+    <message id="login_2fa_email_subject">%s Bestätigungscode: %s</message>
+    
     <message id="admincenter_brand">AdminCenter</message>
     <message id="admincenter_homelink_tooltip">Zur AdminCenter Startseite</message>
     <message id="admincenter_loggedin_as">Angemeldet als</message>
