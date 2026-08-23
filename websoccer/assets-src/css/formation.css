@@ -346,12 +346,3 @@
 .benchPlaceholder {
   font-style: italic;
 }
-
-.benchPlayerRemove,
-.benchPlayerSubAdd,
-.benchPlayerSubInfo,
-.benchPlayerSubInfoConditionTie,
-.benchPlayerSubInfoConditionLeading,
-.benchPlayerSubInfoConditionDeficit {
-  display: none;
-}

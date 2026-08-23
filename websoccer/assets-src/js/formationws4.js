@@ -189,7 +189,7 @@
       "beforeend",
       '<div class="' +
         CSS_CONFIG.PITCH_PLAYER_NAME +
-        '">' +
+        '" data-testid="pitch-player-name">' +
         escapeHtml(player.dataset.pname) +
         "</div>"
     );
@@ -199,7 +199,7 @@
       "beforeend",
       '<a class="' +
         CSS_CONFIG.PITCH_PLAYER_REMOVE_LINK +
-        '" href="#"><i class="bi bi-x-lg darkIcon"></i></a>'
+        '" href="#" data-testid="pitch-player-remove"><i class="bi bi-x-lg darkIcon"></i></a>'
     );
 
     /* mark as on pitch */
@@ -348,9 +348,9 @@
     player.classList.add(CSS_CONFIG.PLAYER_ON_BENCH);
     targetPosition.dataset.playerid = playerId;
 
-    const playerInfoCell = qs(" > .benchPlayerInfo", targetPosition);
+    const playerInfoCell = qs(":scope > .benchPlayerInfo", targetPosition);
     if (playerInfoCell) {
-      hide(qs(" > .benchPlaceholder", playerInfoCell));
+      hide(qs(":scope > .benchPlaceholder", playerInfoCell));
 
       let playerLabel = player.dataset.pname;
       if (player.dataset.mainposition) {
@@ -365,7 +365,7 @@
 
       playerInfoCell.insertAdjacentHTML(
         "beforeend",
-        '<span class="benchPlayer">' + escapeHtml(playerLabel) + "</span>"
+        '<span class="benchPlayer" data-testid="bench-player-label">' + escapeHtml(playerLabel) + "</span>"
       );
     }
 

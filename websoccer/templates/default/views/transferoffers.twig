@@ -19,7 +19,7 @@
 	<div class="tab-pane active" id="received">
 	{% if offers|length > 0 %}
 	
-		<table class="table table-striped">
+		<table id="receivedOffersTable" class="table table-striped">
 			<thead>
 				<tr>
 					<th>{{ i18n.getMessage("entity_transfer_offer_submitted_date") }}</th>
@@ -62,14 +62,14 @@
 						{% if offer.offer_admin_approval_pending %}
 							<span class="badge bg-info">{{ i18n.getMessage("transferoffers_offer_status_adminapprovalpending") }}</span>
 						{% else %}
-							<p><a href="#" class="btn btn-success btn-sm btn-block ajaxLink"
+							<p><a href="#" class="btn btn-success btn-sm btn-block ajaxLink" data-testid="accept-offer"
 								data-ajaxtarget="pagecontent"
 								data-ajaxquerystr="page=transferoffers&action=directtransfer-accept&id={{ offer.offer_id }}">{{ i18n.getMessage("transferoffers_offer_reaction_accept") }}</a></p>
 							
-							<p><a href="#rejectModal{{ offer.offer_id }}" role="button" data-bs-toggle="modal" class="btn btn-danger btn-sm btn-block">{{ i18n.getMessage("transferoffers_offer_reaction_reject") }}</a></p>
+							<p><a href="#rejectModal{{ offer.offer_id }}" role="button" data-bs-toggle="modal" data-testid="reject-offer" class="btn btn-danger btn-sm btn-block">{{ i18n.getMessage("transferoffers_offer_reaction_reject") }}</a></p>
 							
 							<form method="post" class="row">
-								<div id="rejectModal{{ offer.offer_id }}" class="modal fade" tabindex="-1" role="dialog" 
+								<div id="rejectModal{{ offer.offer_id }}" class="modal fade" data-testid="reject-offer-modal" tabindex="-1" role="dialog" 
 									aria-labelledby="rejectModalLabel{{ offer.offer_id }}" aria-hidden="true">
 								  <div class="modal-dialog">
 								    <div class="modal-content">

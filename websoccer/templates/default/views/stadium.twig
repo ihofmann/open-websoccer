@@ -35,7 +35,7 @@
 	
 	<h2>{{ i18n.getMessage("stadium_maintenance_title") }}</h2>
 	
-	<table class="table">
+	<table id="stadiumUpgradesTable" class="table">
 		{% for upgradetype in ['pitch', 'videowall', 'seatsquality', 'vipquality'] %}
 			<tr>
 				<td>{{ i18n.getMessage("entity_stadium_level_" ~ upgradetype) }} <i class="bi bi-question-circle wstooltip" data-bs-toggle="tooltip" title="{{ i18n.getMessage('stadium_maintenance_' ~ upgradetype ~ '_tooltip') }}"></i></td>

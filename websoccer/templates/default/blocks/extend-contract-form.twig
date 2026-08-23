@@ -10,7 +10,7 @@
 {% else %}
 <h3>{{ i18n.getMessage("extend-contract_offer_title") }}</h3>
 
-<form class="row" method="post">
+<form id="extendContractForm" class="row" method="post">
 
 	{{ formelements.textfield('salary', i18n.getMessage('entity_player_vertrag_gehalt'), env.getRequestParameter('salary'), true, validationMsg, 'number') }}
 	
@@ -19,7 +19,7 @@
 	{{ formelements.textfield('matches', i18n.getMessage('entity_player_vertrag_spiele'), env.getRequestParameter('matches'), true, validationMsg, 'number') }}
 	
 	<div class="d-flex gap-2 justify-content-center p-3">
-		<button type="submit" class="btn btn-primary ajaxSubmit" 
+		<button type="submit" class="btn btn-primary ajaxSubmit" data-testid="submit-contract-offer"
 		data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_submit') }}</button>
 		<a href="{{ env.getInternalUrl("myteam") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
