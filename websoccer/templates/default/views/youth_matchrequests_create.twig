@@ -7,14 +7,14 @@
 
 {% block page_content %}
 
-<form class="row" method="post">
+<form class="row" method="post" data-testid="matchrequest-create-form">
 		
 	<div class="mb-3{% if validationMsg['matchdate'] is defined %} error{% endif %}">
 		<label class="form-label" for="matchdate">
 			<strong>{{ i18n.getMessage("youthteam_matchrequest_create_date") }}</strong>
 		</label>
 		<div>
-	  		<select name="matchdate" id="matchdate" class="form-select">
+	  		<select name="matchdate" id="matchdate" class="form-select" data-testid="matchrequest-create-matchdate">
 	  			<option></option>
 	  			
 	  			{% for dateOptionLabelValue, dateOptionLabel in dateOptions %}
@@ -24,11 +24,11 @@
 		</div>
 	</div>
 	
-	{{ formelements.textfield('reward', i18n.getMessage('youthteam_matchrequest_reward'), env.getRequestParameter('reward'), false, validationMsg, 'number', env.getConfig("game_currency")) }}
+	{{ formelements.textfield('reward', i18n.getMessage('youthteam_matchrequest_reward'), env.getRequestParameter('reward'), false, validationMsg, 'number', env.getConfig("game_currency"), false, 'matchrequest-create-reward') }}
 		
 	<div class="d-flex gap-2 justify-content-center p-3">
-		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
-		<a href="{{ env.getInternalUrl("youth-matchrequests") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
+		<button type="submit" class="btn btn-primary" data-testid="matchrequest-create-submit">{{ i18n.getMessage('button_submit') }}</button>
+		<a href="{{ env.getInternalUrl("youth-matchrequests") }}" class="btn btn-secondary" data-testid="matchrequest-create-cancel">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
 	<input type="hidden" name="page" value="youth-matchrequests-create"/>
 	<input type="hidden" name="action" value="create-youthmatch-request"/>

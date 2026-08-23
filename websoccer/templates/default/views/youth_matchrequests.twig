@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block page_content %}
-<p><a href="{{ env.getInternalUrl("youth-matchrequests-create") }}" class="btn btn-outline-primary"><i class="bi bi-megaphone"></i> {{ i18n.getMessage("youthteam_matchrequest_createnew") }}</a></p>
+<p><a href="{{ env.getInternalUrl("youth-matchrequests-create") }}" class="btn btn-outline-primary" data-testid="matchrequest-create-button"><i class="bi bi-megaphone"></i> {{ i18n.getMessage("youthteam_matchrequest_createnew") }}</a></p>
 
 {% if requests|length == 0 %}
 	{{ messagebox.box(i18n.getMessage("youthteam_matchrequest_none_available"), "", "info") }}
@@ -25,7 +25,7 @@
 		</thead>
 		<tbody>
 		{% for request in requests %}
-			<tr>
+			<tr data-testid="matchrequest-row" data-request-id="{{ request.request_id }}">
 				<td>{{ env.getFormattedDatetime(request.matchdate, i18n) }}</td>
 				<td><a href="{{ env.getInternalUrl("team", "id=" ~ request.team_id) }}"
 					title="{{ i18n.getMessage("team_navlabel") }}">{{ request.team_name }}</a></td>
@@ -46,9 +46,9 @@
 				</td>
 				<td>
 					{% if env.user.clubId == request.team_id %}
-						<a href="{{ env.getInternalActionUrl("cancel-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-sm btn-danger"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("youthteam_matchrequest_cancel") }}</a>
+						<a href="{{ env.getInternalActionUrl("cancel-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-sm btn-danger" data-testid="matchrequest-cancel"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("youthteam_matchrequest_cancel") }}</a>
 					{% else %}
-						<a href="{{ env.getInternalActionUrl("accept-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-sm btn-success"><i class="bi bi-check-lg"></i> {{ i18n.getMessage("youthteam_matchrequest_accept") }}</a>
+						<a href="{{ env.getInternalActionUrl("accept-youth-match-request", "id=" ~ request.request_id) }}" class="btn btn-sm btn-success" data-testid="matchrequest-accept"><i class="bi bi-check-lg"></i> {{ i18n.getMessage("youthteam_matchrequest_accept") }}</a>
 					{% endif %}
 				</td>
 			</tr>

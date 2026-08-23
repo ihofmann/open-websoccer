@@ -69,6 +69,11 @@ order:
        (`berechnet = 0`) so tests remain stable for years.
      * 1 completed + 1 future **cup match** ("Demo Cup", "First Round").
      * 1 completed + 1 scheduled **friendly** for today.
+     * 1 completed + 1 future **national team friendly** (England vs
+       Deutschland).
+   * **3 national teams** (IDs 41-43): "England" (user1), "Deutschland"
+     (user2), "Italy" (user3, empty). 5 pre-nominated English players and
+     12 German players for nomination searches.
    * **Team season statistics** (`ws3_verein.sa_*` columns) updated for all
      20 League 1 teams to reflect the matchday 1 results, so the league table
      renders meaningful standings.
@@ -173,6 +178,8 @@ While the stack is up you can also browse it manually:
 | `tests/todays-matches.spec.ts`     | Guest opens **Today's Matches**, verifies completed and scheduled friendly matches. |
 | `tests/table-history.spec.ts`      | Guest opens **Table History** for a team, verifies the chart data-series and back-to-league link. |
 | `tests/team-management.spec.ts`    | `user1` manages his own team: office, squad, formation and tactics, training, sponsor, stadium, stadium environment, finances, ticket prices, selling players, contract extensions, transfer market and transfer offers - including form validation and login protection. |
+| `tests/youth-team-management/`     | `user1` manages his youth team: squad listing with action dropdowns and statistics, scouting (scout/country selection, cooldown), marketplace (filtering, buy, remove from market), sell/fire/make-professional player flows, match requests (create, cancel, accept), matches list, formation setup, and completed match report - including form validation and login protection. 66 tests across 13 spec files. |
+| `tests/national-team-management/`  | `user1` manages his national team ("England"): squad listing grouped by position with player details and remove action, nominate players page with search form (name, position, main position) and nominate action, national team matches page with next-matches and results AJAX blocks plus formation link - including login protection, requires-team error, and empty-team states. 36 tests across 4 spec files. |
 
 ## Re-seeding the database
 
@@ -188,6 +195,15 @@ docker compose -f e2e/docker-compose.e2e.yml up -d
 captain, saves a formation, changes ticket prices, sells a player, extends a
 contract and rejects a transfer offer), so it is not idempotent: re-seed the
 database before running it again.
+
+`tests/youth-team-management/` also changes persistent data (buys, fires, sells
+and promotes youth players, creates and accepts match requests, saves a
+formation, and runs a scouting action), so it is not idempotent either:
+re-seed the database before running it again.
+
+`tests/national-team-management/` also changes persistent data (removes a
+nominated player and nominates a new one), so it is not idempotent either:
+re-seed the database before running it again.
 
 ## Changing the application under test
 

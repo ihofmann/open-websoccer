@@ -3,7 +3,7 @@
 
 {% if matches is defined and matches|length > 0 %}
 	
-	<table class="table table-striped">
+	<table class="table table-striped" data-testid="results-list-table">
 		<thead>
 			<tr>
 				<th>{{ i18n.getMessage("entity_match_datum") }}</th>
@@ -14,7 +14,7 @@
 		</thead>
 		<tbody>
 		{% for match in matches %}
-			<tr>
+			<tr data-testid="results-list-row" data-match-id="{{ match.id }}">
 				<td>
 					{% if match.type == "Ligaspiel" %}
 						<i class="bi bi-shield wstooltip" title="{{ i18n.getMessage("option_Ligaspiel") }}"></i>
@@ -76,5 +76,5 @@
 	{% endif %}
 	
 {% else %}
-	{{ messagebox.box(i18n.getMessage("results_no_matches_found"), "", "info") }}
+	{{ messagebox.box(i18n.getMessage("results_no_matches_found"), "", "info", "results-list-no-matches") }}
 {% endif %}

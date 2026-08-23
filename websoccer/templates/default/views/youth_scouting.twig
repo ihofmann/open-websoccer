@@ -18,8 +18,10 @@
 	
 	{% if not scoutingPossible %}
 		<hr>
+		<div data-testid="scouting-not-possible">
 		{{ messagebox.box(i18n.getMessage("youthteam_scouting_nextpossibleexecution", 
 			env.getFormattedDatetime(nextPossibleExecutionTimestamp)), "", "warning") }}
+		</div>
 	{% else %}
 	
 		{% if env.getRequestParameter("scoutid") == null %}
@@ -29,7 +31,7 @@
 				<p>{{ i18n.getMessage("youthteam_scouting_noscoutavailable") }}</p>
 			{% else %}
 			
-				<table class="table table-striped">
+				<table class="table table-striped" data-testid="scouts-table">
 					<thead>
 						<tr>
 							<th>{{ i18n.getMessage("entity_youthscout_name") }}</th>
@@ -41,12 +43,12 @@
 					</thead>
 					<tbody>
 					{% for scout in scouts %}
-						<tr>
+						<tr data-testid="scout-row" data-scout-id="{{ scout.id }}">
 							<td>{{ scout.name }}</td>
 							<td>{{ statisticelements.progressbar(scout.expertise) }}</td>
 							<td>{{ scout.fee|number_format(0, ',', ' ')  }} {{ env.getConfig("game_currency") }}</td>
 							<td>{% if scout.speciality|length %}{{ i18n.getMessage("option_" ~ scout.speciality) }}{% else %}-{% endif %}</td>
-							<td><a href="{{ env.getInternalUrl("youth-scouting", "scoutid=" ~ scout.id) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("button_choose") }}</a></td>
+							<td><a href="{{ env.getInternalUrl("youth-scouting", "scoutid=" ~ scout.id) }}" class="btn btn-sm btn-outline-primary" data-testid="scout-choose"><i class="bi bi-hand-index"></i> {{ i18n.getMessage("button_choose") }}</a></td>
 						</tr>
 					{% endfor %}
 					</tbody>
@@ -63,7 +65,7 @@
 				{% else %}
 					{% set countryLabel = country %}
 				{% endif %}
-				<a href="{{ env.getInternalActionUrl("scout-youthplayer", "scoutid=" ~ env.getRequestParameter("scoutid") ~ "&country=" ~ country) }}" class="btn btn-lg btn-block btn-outline-primary">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %}{{ countryLabel }}</a>
+				<a href="{{ env.getInternalActionUrl("scout-youthplayer", "scoutid=" ~ env.getRequestParameter("scoutid") ~ "&country=" ~ country) }}" class="btn btn-lg btn-block btn-outline-primary" data-testid="scout-country" data-country="{{ country }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %}{{ countryLabel }}</a>
 			{% endfor %}
 			
 			<p style="margin-top: 10px"><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn btn-outline-primary">{{ i18n.getMessage("button_cancel") }}</a></p>

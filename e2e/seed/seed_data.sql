@@ -408,14 +408,115 @@ INSERT INTO ws3_leaguehistory (team_id, season_id, user_id, matchday, `rank`) VA
 -- -----------------------------------------------------------------------------
 -- Youth module
 -- -----------------------------------------------------------------------------
-INSERT INTO ws3_youthscout (id, name, expertise, fee)
-VALUES (1, 'Scout Sam', 80, 5000);
+-- Scouts (2): one without speciality, one specialised on goalkeepers.
+INSERT INTO ws3_youthscout (id, name, expertise, fee, speciality)
+VALUES
+    (1, 'Scout Sam',  80, 5000, NULL),
+    (2, 'Scout Alex', 60, 3000, 'Torwart');
 
-INSERT INTO ws3_youthplayer (team_id, firstname, lastname, age, position, strength, nation)
-VALUES (1, 'Young', 'Talent', 16, 'Mittelfeld', 50, 'England');
+-- Team 1 youth players (12, IDs 1-12).  IDs are explicit so that youth matches
+-- and tests can reference them.
+--   1  Young Talent       16  Mittelfeld  – used by sell-player test
+--   2  Young Goalie       17  Torwart     – used by make-professional test
+--   3  Teen Defender      15  Abwehr      – too young for professional (age < 16)
+--   4  Market Midfielder  16  Mittelfeld  – already on market (transfer_fee > 0)
+--   5  Youth Striker      17  Sturm       – used by fire-player test
+--   6-12 fillers (various positions / ages, untouched by action tests)
+INSERT INTO ws3_youthplayer
+    (id, team_id, firstname, lastname, age, position, strength, nation,
+     transfer_fee, st_matches, st_goals, st_assists, st_cards_yellow,
+     st_cards_yellow_red, st_cards_red, strength_last_change)
+VALUES
+    ( 1, 1, 'Young',          'Talent',      16, 'Mittelfeld', 50, 'England',      0,      5, 2, 1, 1, 0, 0,  1),
+    ( 2, 1, 'Young',          'Goalie',      17, 'Torwart',    60, 'England',      0,      3, 0, 0, 0, 0, 0,  0),
+    ( 3, 1, 'Teen',           'Defender',    15, 'Abwehr',     40, 'Deutschland',  0,      2, 0, 0, 0, 0, 0,  0),
+    ( 4, 1, 'Market',         'Midfielder',  16, 'Mittelfeld', 55, 'England',  200000,      4, 1, 1, 0, 0, 0,  0),
+    ( 5, 1, 'Youth',          'Striker',     17, 'Sturm',      65, 'England',      0,      6, 4, 2, 1, 0, 0,  2),
+    ( 6, 1, 'Young',          'Defender',    16, 'Abwehr',     45, 'England',      0,      3, 0, 0, 0, 0, 0,  0),
+    ( 7, 1, 'Youth',          'Midfielder',  16, 'Mittelfeld', 48, 'Deutschland',  0,      4, 1, 1, 0, 0, 0,  0),
+    ( 8, 1, 'Youth',          'Keeper',      16, 'Torwart',    52, 'England',      0,      2, 0, 0, 0, 0, 0,  0),
+    ( 9, 1, 'Young',          'Wing',        17, 'Sturm',      42, 'England',      0,      5, 2, 1, 1, 0, 0,  0),
+    (10, 1, 'Teen',           'Mid',         15, 'Mittelfeld', 38, 'England',      0,      1, 0, 0, 0, 0, 0,  0),
+    (11, 1, 'Youth',          'Back',        16, 'Abwehr',     44, 'England',      0,      3, 0, 0, 0, 0, 0,  0),
+    (12, 1, 'Young',          'Forward',     16, 'Sturm',      50, 'England',      0,      4, 1, 0, 0, 0, 0,  0);
 
-INSERT INTO ws3_youthmatch_request (team_id, matchdate, reward)
-VALUES (1, UNIX_TIMESTAMP() + 604800, 5000);
+-- Team 2 youth players (12, IDs 13-24).  None are touched by action tests, so
+-- they are safe to reference from the completed-match seed below.
+INSERT INTO ws3_youthplayer
+    (id, team_id, firstname, lastname, age, position, strength, nation, transfer_fee)
+VALUES
+    (13, 2, 'Guest', 'Keeper',     17, 'Torwart',    55, 'England',      0),
+    (14, 2, 'Guest', 'Defender',   16, 'Abwehr',     50, 'England',      0),
+    (15, 2, 'Guest', 'Midfielder', 16, 'Mittelfeld', 52, 'Deutschland',  0),
+    (16, 2, 'Guest', 'Striker',    17, 'Sturm',      58, 'England',      0),
+    (17, 2, 'Guest', 'Fullback',   16, 'Abwehr',     46, 'England',      0),
+    (18, 2, 'Guest', 'Winger',     17, 'Mittelfeld', 49, 'England',      0),
+    (19, 2, 'Guest', 'Center',     16, 'Mittelfeld', 47, 'Deutschland',  0),
+    (20, 2, 'Guest', 'Forward',    17, 'Sturm',      53, 'England',      0),
+    (21, 2, 'Guest', 'Backup1',    16, 'Torwart',    41, 'England',      0),
+    (22, 2, 'Guest', 'Backup2',    16, 'Abwehr',     43, 'England',      0),
+    (23, 2, 'Guest', 'Backup3',    16, 'Mittelfeld', 44, 'England',      0),
+    (24, 2, 'Guest', 'Backup4',    16, 'Sturm',      45, 'England',      0);
+
+-- Team 3 youth player on the market, buyable by user1 (budget 5 000 000).
+INSERT INTO ws3_youthplayer
+    (id, team_id, firstname, lastname, age, position, strength, nation, transfer_fee)
+VALUES (25, 3, 'Buyable', 'Youth', 16, 'Sturm', 50, 'England', 150000);
+
+-- Team 2 youth player on the market (for marketplace filter / buy-button tests).
+INSERT INTO ws3_youthplayer
+    (id, team_id, firstname, lastname, age, position, strength, nation, transfer_fee)
+VALUES (26, 2, 'Market', 'Keeper', 16, 'Torwart', 50, 'England', 120000);
+
+-- Scouting state:
+--   Team 1 (user1): never scouted  → scouting is possible.
+--   Team 2 (user2): scouted just now → scouting blocked for 24 h (break test).
+UPDATE ws3_verein SET scouting_last_execution = 0                WHERE id = 1;
+UPDATE ws3_verein SET scouting_last_execution = UNIX_TIMESTAMP() WHERE id = 2;
+
+-- Youth match requests (2):
+--   Request 1: Team 1, 7 days ahead, reward 5 000 → user1 sees "Cancel".
+--   Request 2: Team 2, 5 days ahead, no reward    → user1 sees "Accept".
+INSERT INTO ws3_youthmatch_request (id, team_id, matchdate, reward)
+VALUES
+    (1, 1, UNIX_TIMESTAMP() + 604800, 5000),
+    (2, 2, UNIX_TIMESTAMP() + 432000, 0);
+
+-- Youth matches (2):
+--   Match 1: completed (simulated), Team 1 vs Team 2, 2-1.
+--   Match 2: scheduled (not simulated), Team 1 vs Team 2, ~8 days ahead.
+SET @ymatch_future_ts := UNIX_TIMESTAMP() + 691200; -- 8 days
+INSERT INTO ws3_youthmatch
+    (id, matchdate, home_team_id, guest_team_id, simulated,
+     home_goals, guest_goals)
+VALUES
+    (1, UNIX_TIMESTAMP() - 86400, 1, 2, '1', 2, 1),
+    (2, @ymatch_future_ts,        1, 2, '0', NULL, NULL);
+
+-- Players who took part in the completed match (Match 1).
+-- Uses safe youth-player IDs (untouched by any action test).
+INSERT INTO ws3_youthmatch_player
+    (match_id, team_id, player_id, playernumber, position, position_main,
+     grade, minutes_played, strength, name, goals, assists,
+     ballcontacts, wontackles, shoots, passes_successed, passes_failed, state)
+VALUES
+    (1, 1,  6, 1, 'Abwehr',     'IV', 2.5, 90, 45, 'Young Defender',    0, 0, 10, 5, 2, 8, 2, '1'),
+    (1, 1,  7, 2, 'Mittelfeld', 'ZM', 3.0, 90, 48, 'Youth Midfielder',  0, 1, 15, 6, 3, 12, 3, '1'),
+    (1, 1,  9, 3, 'Sturm',      'MS', 1.8, 90, 42, 'Young Wing',        2, 0, 8, 3, 5, 6, 1, '1'),
+    (1, 1, 12, 4, 'Sturm',      'RS', 2.8, 75, 50, 'Young Forward',     0, 1, 7, 2, 3, 5, 2, 'Ausgewechselt'),
+    (1, 2, 13, 1, 'Torwart',    'T',  3.2, 90, 55, 'Guest Keeper',      0, 0, 6, 2, 1, 4, 1, '1'),
+    (1, 2, 15, 2, 'Mittelfeld', 'ZM', 2.7, 90, 52, 'Guest Midfielder',  1, 0, 14, 7, 4, 10, 4, '1'),
+    (1, 2, 16, 3, 'Sturm',      'LS', 2.0, 90, 58, 'Guest Striker',     0, 0, 9, 4, 6, 7, 2, '1');
+
+-- Match report items for the completed match.
+INSERT INTO ws3_youthmatch_reportitem
+    (match_id, minute, message_key, message_data, home_on_ball)
+VALUES
+    (1, 12, 'ymreport_goal',          '{"scorer":"Young Wing"}',     '1'),
+    (1, 25, 'ymreport_card_yellow',   '{"player":"Guest Midfielder"}','0'),
+    (1, 55, 'ymreport_goal',          '{"scorer":"Guest Midfielder"}','0'),
+    (1, 78, 'ymreport_substitution',  '{"in":"Youth Midfielder","out":"Young Forward"}','1'),
+    (1, 85, 'ymreport_goal',          '{"scorer":"Young Wing"}',     '1');
 
 -- -----------------------------------------------------------------------------
 -- Stadium builder / buildings
@@ -484,3 +585,72 @@ VALUES (1, 2, 2, 1, 1, UNIX_TIMESTAMP(), 1000000);
 -- -----------------------------------------------------------------------------
 INSERT INTO ws3_news (datum, autor_id, titel, nachricht, status)
 VALUES (UNIX_TIMESTAMP(), 1, 'Welcome to OpenWebSoccer', 'This is a sample news entry.', '1');
+
+-- -----------------------------------------------------------------------------
+-- National teams module
+-- -----------------------------------------------------------------------------
+-- Three national teams (IDs 41-43, beyond the 40 club teams):
+--   41 "England"      managed by user1  (players have nation = "England")
+--   42 "Deutschland"  managed by user2  (needs German players – see below)
+--   43 "Italy"        managed by user3  (no players – empty team test)
+-- user4 and user5 do NOT manage a national team (requires-team error test).
+--
+-- The AddNationalPlayerController checks player.nation == team.name, so the
+-- national team name must match the nation column of ws3_spieler.
+-- All 960 seeded players have nation = "England", so user1 can nominate any
+-- uninjured English player.  German players are added below for user2.
+INSERT INTO ws3_verein
+    (id, name, kurz, liga_id, user_id, user_id_actual, nationalteam, status)
+VALUES
+    (41, 'England',     'ENG', 1, 1, 1, '1', '1'),
+    (42, 'Deutschland', 'GER', 2, 2, 2, '1', '1'),
+    (43, 'Italy',       'ITA', 1, 3, 3, '1', '1');
+
+-- German players (IDs 961-972, 2 per position_main) belonging to Team 2 so
+-- that user2 (managing "Deutschland") can search and nominate them.
+INSERT INTO ws3_spieler
+    (id, vorname, nachname, verein_id, position, position_main, geburtstag,
+     nation, w_staerke, w_technik, w_kondition, w_frische, w_zufriedenheit,
+     vertrag_gehalt, vertrag_spiele, vertrag_torpraemie, marktwert, age, status)
+VALUES
+    (961, 'German', 'Keeper',     2, 'Torwart',    'T',  '1996-03-10', 'Deutschland', 78, 72, 82, 66, 58, 50000, 30, 1000, 1000000, 24, '1'),
+    (962, 'German', 'Keeper2',    2, 'Torwart',    'T',  '1997-07-22', 'Deutschland', 73, 68, 78, 62, 55, 50000, 30, 1000,  900000, 23, '1'),
+    (963, 'German', 'Defender',   2, 'Abwehr',     'LV', '1995-01-15', 'Deutschland', 76, 71, 80, 64, 59, 50000, 30, 1000,  950000, 25, '1'),
+    (964, 'German', 'Defender2',  2, 'Abwehr',     'IV', '1996-09-03', 'Deutschland', 77, 70, 81, 65, 57, 50000, 30, 1000,  980000, 24, '1'),
+    (965, 'German', 'Defender3',  2, 'Abwehr',     'RV', '1994-11-20', 'Deutschland', 74, 69, 79, 63, 56, 50000, 30, 1000,  920000, 26, '1'),
+    (966, 'German', 'Midfielder', 2, 'Mittelfeld', 'ZM', '1996-05-18', 'Deutschland', 79, 74, 83, 67, 60, 50000, 30, 1000, 1100000, 24, '1'),
+    (967, 'German', 'Midfielder2',2, 'Mittelfeld', 'DM', '1995-08-30', 'Deutschland', 75, 73, 80, 64, 58, 50000, 30, 1000,  950000, 25, '1'),
+    (968, 'German', 'Midfielder3',2, 'Mittelfeld', 'OM', '1997-02-12', 'Deutschland', 72, 75, 77, 61, 54, 50000, 30, 1000,  880000, 23, '1'),
+    (969, 'German', 'Winger',     2, 'Mittelfeld', 'LM', '1996-04-25', 'Deutschland', 71, 76, 76, 60, 53, 50000, 30, 1000,  850000, 24, '1'),
+    (970, 'German', 'Striker',    2, 'Sturm',      'MS', '1995-06-08', 'Deutschland', 80, 77, 82, 68, 61, 50000, 30, 1000, 1200000, 25, '1'),
+    (971, 'German', 'Striker2',   2, 'Sturm',      'LS', '1997-10-14', 'Deutschland', 76, 73, 79, 63, 55, 50000, 30, 1000,  950000, 23, '1'),
+    (972, 'German', 'Striker3',   2, 'Sturm',      'RS', '1996-12-01', 'Deutschland', 74, 70, 78, 62, 54, 50000, 30, 1000,  900000, 24, '1');
+
+-- Pre-nominate 5 English players to Team 41 ("England"), covering all 4
+-- position groups, so the nationalteam page renders populated tables.
+--   Player  1: Player1_T1  (Torwart,     T)   – Team 1
+--   Player  3: Player1_LV1 (Abwehr,      LV)  – Team 1
+--   Player  5: Player1_IV1 (Abwehr,      IV)  – Team 1
+--   Player  9: Player1_LM1 (Mittelfeld,  LM)  – Team 1
+--   Player 19: Player1_LS1 (Sturm,       LS)  – Team 1
+INSERT INTO ws3_nationalplayer (team_id, player_id) VALUES
+    (41,  1),
+    (41,  3),
+    (41,  5),
+    (41,  9),
+    (41, 19);
+
+-- National team matches (IDs 25-26, after the 24 existing matches):
+--   Match 25: England (41) vs Deutschland (42), completed, 3-1, yesterday.
+--   Match 26: England (41) vs Deutschland (42), future, ~10 years ahead.
+INSERT INTO ws3_spiel
+    (id, spieltyp, datum, home_verein, gast_verein, home_user_id, gast_user_id,
+     home_tore, gast_tore, berechnet, minutes, stadion_id, zuschauer)
+VALUES
+    (25, 'Freundschaft', @md1_date, 41, 42, 1, 2, 3, 1, '1', 90, NULL, 50000);
+
+INSERT INTO ws3_spiel
+    (id, spieltyp, datum, home_verein, gast_verein, home_user_id, gast_user_id,
+     berechnet)
+VALUES
+    (26, 'Freundschaft', @future_ts, 41, 42, 1, 2, '0');

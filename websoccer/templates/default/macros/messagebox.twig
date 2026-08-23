@@ -1,4 +1,4 @@
-{% macro box(title, message, type) %}
+{% macro box(title, message, type, testId = null) %}
 
 {% if type is null or type|length == 0 %}
 	{% set type = 'danger' %}
@@ -6,7 +6,7 @@
 	{% set type = 'danger' %}
 {% endif %}
 
-<div class="alert alert-{{ type|default('danger') }}">
+<div class="alert alert-{{ type|default('danger') }}"{% if testId %} data-testid="{{ testId }}"{% endif %}>
   <strong>{{ title }}</strong>
   {{ message }}
 </div>

@@ -1,4 +1,4 @@
-{% macro textfield(fieldId, label, value, required = false, errormsg = null, type = 'text', helptext = null, disabled = false) %}
+{% macro textfield(fieldId, label, value, required = false, errormsg = null, type = 'text', helptext = null, disabled = false, testId = null) %}
 
 {% if errormsg[fieldId] is defined %}
 	{% set error = errormsg[fieldId] %}
@@ -13,7 +13,7 @@
 		{{ label }}
 	{% endif %}
 	</label>
-	<input type="{{ type }}" class="form-control{% if type == "number" %} w-auto d-inline-block{% endif %}{% if error|length > 0 %} is-invalid{% endif %}" id="{{ fieldId }}" name="{{ fieldId }}" value="{{ value }}" placeholder="{{ label }}"{% if required %} required{% endif %}{% if disabled %} disabled{% endif %}>
+	<input type="{{ type }}" class="form-control{% if type == "number" %} w-auto d-inline-block{% endif %}{% if error|length > 0 %} is-invalid{% endif %}" id="{{ fieldId }}" name="{{ fieldId }}" value="{{ value }}" placeholder="{{ label }}"{% if required %} required{% endif %}{% if disabled %} disabled{% endif %}{% if testId %} data-testid="{{ testId }}"{% endif %}>
 	{% if error|length > 0 %}<div class="invalid-feedback d-block">{{ error }}</div>{% endif %}
 	{% if helptext|length > 0 %}<div class="form-text">{{ helptext }}</div>{% endif %}
 </div>

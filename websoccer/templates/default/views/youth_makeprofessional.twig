@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block page_content %}
-<form class="row" method="post">
+<form class="row" method="post" data-testid="youth-makeprofessional-form">
 
 	<fieldset>
 		<legend>{{ i18n.getMessage("youthplayer-makeprofessional_formlabel") }}</legend>
@@ -17,7 +17,7 @@
 				<strong>{{ i18n.getMessage("entity_player_position_main") }}</strong>
 			</label>
 			<div>
-		  		<select name="mainposition" id="mainposition" class="form-select">
+		  		<select name="mainposition" id="mainposition" class="form-select" data-testid="youth-makeprofessional-mainposition">
 		  			<option></option>
 		  			
 		  			{% if player.position == "Torwart" %}
@@ -43,8 +43,8 @@
 		
 	</fieldset>
 	<div class="d-flex gap-2 justify-content-center p-3">
-		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_submit') }}</button>
-		<a href="{{ env.getInternalUrl("youth-team") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
+		<button type="submit" class="btn btn-primary" data-testid="youth-makeprofessional-submit">{{ i18n.getMessage('button_submit') }}</button>
+		<a href="{{ env.getInternalUrl("youth-team") }}" class="btn btn-secondary" data-testid="youth-makeprofessional-cancel">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
 	<input type="hidden" name="page" value="youthplayer-makeprofessional"/>
 	<input type="hidden" name="id" value="{{ env.getRequestParameter('id') }}"/>

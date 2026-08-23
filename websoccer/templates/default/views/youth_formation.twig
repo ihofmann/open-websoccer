@@ -7,58 +7,58 @@
 	<p>{{ env.getFormattedDatetime(matchinfo.matchdate) }}: <a href="{{ env.getInternalUrl("team", "id=" ~ matchinfo.home_team_id) }}">{{ matchinfo.home_team_name }}</a>
 		- <a href="{{ env.getInternalUrl("team", "id=" ~ matchinfo.guest_team_id) }}">{{ matchinfo.guest_team_name }}</a></p>
 
-	<form method="post" class="d-flex flex-wrap gap-2 align-items-center">
+	<form method="post" class="d-flex flex-wrap gap-2 align-items-center" data-testid="youth-formation-setup-form">
 		<input type="hidden" name="page" value="youth-formation" />
 		<input type="hidden" name="matchid" value="{{ env.getRequestParameter("matchid") }}" />
 		
 		<h4>{{ i18n.getMessage("formation_setup_title") }}</h4>
 		
-		<select class="form-select form-select-sm w-auto wstooltip" name="formation_defense" title="{{ i18n.getMessage("player_position_defense") }}">
+		<select class="form-select form-select-sm w-auto wstooltip" name="formation_defense" data-testid="formation-defense" title="{{ i18n.getMessage("player_position_defense") }}">
 			{% for i in 1..4 %}
 				<option value="{{ i }}"{% if setup.defense == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
-		<select class="form-select form-select-sm w-auto wstooltip" name="formation_defensemidfield" title="{{ i18n.getMessage("option_DM") }}">
+		<select class="form-select form-select-sm w-auto wstooltip" name="formation_defensemidfield" data-testid="formation-defensemidfield" title="{{ i18n.getMessage("option_DM") }}">
 			{% for i in 0..2 %}
 				<option value="{{ i }}"{% if setup.dm == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
-		<select class="form-select form-select-sm w-auto wstooltip" name="formation_midfield" title="{{ i18n.getMessage("player_position_midfield") }}">
+		<select class="form-select form-select-sm w-auto wstooltip" name="formation_midfield" data-testid="formation-midfield" title="{{ i18n.getMessage("player_position_midfield") }}">
 			{% for i in 0..4 %}
 				<option value="{{ i }}"{% if setup.midfield == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
-		<select class="form-select form-select-sm w-auto wstooltip" name="formation_offensivemidfield" title="{{ i18n.getMessage("option_OM") }}">
+		<select class="form-select form-select-sm w-auto wstooltip" name="formation_offensivemidfield" data-testid="formation-offensivemidfield" title="{{ i18n.getMessage("option_OM") }}">
 			{% for i in 0..2 %}
 				<option value="{{ i }}"{% if setup.om == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		<span>-</span>
-		<select class="form-select form-select-sm w-auto wstooltip" name="formation_forward" title="{{ i18n.getMessage("player_position_striker") }}">
+		<select class="form-select form-select-sm w-auto wstooltip" name="formation_forward" data-testid="formation-forward" title="{{ i18n.getMessage("player_position_striker") }}">
 			{% for i in 0..3 %}
 				<option value="{{ i }}"{% if setup.striker == i %} selected{% endif %}>{{ i }}</option>
 			{% endfor %}
 		</select>
 		
 		
-		<button type="submit" class="btn btn-outline-primary" name="buttonSetupChange" value="1">{{ i18n.getMessage("formation_setup_button") }}</button>
+		<button type="submit" class="btn btn-outline-primary" name="buttonSetupChange" value="1" data-testid="formation-setup-change">{{ i18n.getMessage("formation_setup_button") }}</button>
 			
 		
-		<a class="btn btn-outline-primary clearAllBtn" href="#"><i class="bi bi-trash"></i> {{ i18n.getMessage("formation_clearall") }}</a>
+		<a class="btn btn-outline-primary clearAllBtn" href="#" data-testid="formation-clear-all"><i class="bi bi-trash"></i> {{ i18n.getMessage("formation_clearall") }}</a>
 	</form>
 {% endblock %}
 
 {% block form_footer %}
 
 	<div class="d-flex gap-2 justify-content-center p-3" style="text-align: center">
-		<button type="submit" class="btn btn-primary">{{ i18n.getMessage('button_save') }}</button>
+		<button type="submit" class="btn btn-primary" data-testid="youth-formation-save">{{ i18n.getMessage('button_save') }}</button>
 		
-		<a href="{{ env.getInternalUrl(env.getPageId(), "matchid=" ~ env.getRequestParameter("matchid")) }}" class="btn btn-secondary">{{ i18n.getMessage('button_reset') }}</a>
+		<a href="{{ env.getInternalUrl(env.getPageId(), "matchid=" ~ env.getRequestParameter("matchid")) }}" class="btn btn-secondary" data-testid="youth-formation-reset">{{ i18n.getMessage('button_reset') }}</a>
 		
-		<a href="{{ env.getInternalUrl("youth-matches") }}" class="btn btn-secondary">{{ i18n.getMessage('button_cancel') }}</a>
+		<a href="{{ env.getInternalUrl("youth-matches") }}" class="btn btn-secondary" data-testid="youth-formation-cancel">{{ i18n.getMessage('button_cancel') }}</a>
 	</div>
 	<input type="hidden" name="setup" value="{{ setup.defense }}-{{ setup.dm }}-{{ setup.midfield }}-{{ setup.om }}-{{ setup.striker }}"/>
 	<input type="hidden" name="page" value="youth-formation"/>

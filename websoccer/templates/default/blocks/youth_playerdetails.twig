@@ -1,5 +1,6 @@
 {% import "macros/profileelements.twig" as profile %}
 
+<div data-testid="youth-player-details">
 <h3>{{ player.firstname }} {{ player.lastname }}</h3>
 
 {{ profile.infofield(i18n.getMessage("entity_youthplayer_position"), i18n.getMessage("option_" ~ player.position)) }}
@@ -30,4 +31,5 @@
 {{ profile.infofield(i18n.getMessage("entity_youthplayer_st_cards_yellow_red"), player.st_cards_yellow_red) }}
 
 {{ profile.infofield(i18n.getMessage("entity_youthplayer_st_cards_red"), player.st_cards_red) }}
+</div>
 </div>

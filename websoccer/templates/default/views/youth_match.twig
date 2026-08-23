@@ -15,7 +15,7 @@
 	
 		<h3>{{ i18n.getMessage("match_details_report_title") }}</h3>
 		
-		<div id="report_result">
+		<div id="report_result" data-testid="youth-match-score">
 			<span id="report_goals_home">{{ match.home_goals }}</span>
 			<span id="report_goals_separator">-</span>
 			<span id="report_goals_guest">{{ match.guest_goals }}</span>
@@ -34,7 +34,7 @@
 			<span class="report_team_home">{{ match.home_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.home_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
 		  	<span style="margin-left: 20px" class="report_team_guest">{{ match.guest_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
 	  
-			<div id="reportarea">
+			<div id="reportarea" data-testid="youth-match-report">
 				<ul class="unstyled" style="margin: 1px 10px">
 					{% for reportMessage in reportMessages %}
 					

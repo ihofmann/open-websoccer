@@ -10,7 +10,7 @@
 
 {% if matches is defined and matches|length > 0 %}
 
-	<table class="table table-striped">
+	<table class="table table-striped" data-testid="youth-matches-table">
 		<thead>
 			<tr>
 				<th>{{ i18n.getMessage("entity_youthmatch_matchdate") }}</th>
@@ -21,7 +21,7 @@
 		</thead>
 		<tbody>
 		{% for match in matches %}
-			<tr>
+			<tr data-testid="youth-match-row" data-match-id="{{ match.match_id }}">
 				<td>{{ env.getFormattedDatetime(match.date, i18n) }}</td>
 				<td>
 					{% if match.home_team_picture|length %}
@@ -54,9 +54,10 @@
 				<td>
 					{% if match.simulated == 1 %}
 						<a href="{{ env.getInternalUrl("youth-match", "id=" ~ match.match_id) }}" 
+							data-testid="youth-match-result"
 							title="{{ i18n.getMessage("match_navlabel") }}">{{ match.home_goals }} - {{ match.guest_goals }}</a>
 					{% else %}
-						<a href="{{ env.getInternalUrl("youth-formation", "matchid=" ~ match.match_id) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-diagram-3"></i> {{ i18n.getMessage("formation_navlabel") }}</a>
+						<a href="{{ env.getInternalUrl("youth-formation", "matchid=" ~ match.match_id) }}" class="btn btn-sm btn-outline-primary" data-testid="youth-match-formation"><i class="bi bi-diagram-3"></i> {{ i18n.getMessage("formation_navlabel") }}</a>
 					{% endif %}
 				</td>
 			</tr>
