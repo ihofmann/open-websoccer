@@ -15,13 +15,13 @@
 {% endif %}
 
 <ul class="nav nav-tabs" id="playerTab">
-  <li class="nav-item"><a class="nav-link active" href="#general" data-bs-toggle="tab">{{ i18n.getMessage("player_details_tab_general") }}</a></li>
-  <li class="nav-item"><a class="nav-link" href="#statistic" data-bs-toggle="tab">{{ i18n.getMessage("player_details_tab_statistic") }}</a></li>
-  <li class="nav-item"><a class="nav-link" href="#history" data-bs-toggle="tab">{{ i18n.getMessage("player_details_tab_history") }}</a></li>
+  <li class="nav-item"><a class="nav-link active" href="#general" data-bs-toggle="tab" data-testid="player-tab-general">{{ i18n.getMessage("player_details_tab_general") }}</a></li>
+  <li class="nav-item"><a class="nav-link" href="#statistic" data-bs-toggle="tab" data-testid="player-tab-statistic">{{ i18n.getMessage("player_details_tab_statistic") }}</a></li>
+  <li class="nav-item"><a class="nav-link" href="#history" data-bs-toggle="tab" data-testid="player-tab-history">{{ i18n.getMessage("player_details_tab_history") }}</a></li>
 </ul>
 
 <div class="tab-content py-3">
-  <div class="tab-pane active" id="general">
+  <div class="tab-pane active" id="general" data-testid="player-tab-content-general">
   
   
 		<div class="row">
@@ -160,7 +160,7 @@
   
   </div>
   
-  <div class="tab-pane" id="statistic">
+  <div class="tab-pane" id="statistic" data-testid="player-tab-content-statistic">
   
 		<div class="row">
 			<div class="col-md-6">
@@ -213,7 +213,7 @@
 		</div>
 		
 		<p><a href="#statModal" class="btn btn-sm btn-outline-primary ajaxLink" role="button" data-bs-toggle="modal" data-ajaxtarget="playerStatisticsPerCompetition" 
-			data-ajaxblock="playerstatistics" data-ajaxquerystr="id={{ player.player_id }}" ><i class="bi bi-bar-chart"></i> {{ i18n.getMessage("player_details_statistic_opendetails") }}</a></p>
+			data-ajaxblock="playerstatistics" data-ajaxquerystr="id={{ player.player_id }}" data-testid="player-advanced-statistics-button"><i class="bi bi-bar-chart"></i> {{ i18n.getMessage("player_details_statistic_opendetails") }}</a></p>
 		
 		<div id="statModal" class="modal fade" tabindex="-1" role="dialog" 
 			aria-labelledby="statModalLabel" aria-hidden="true">
@@ -223,7 +223,7 @@
 		    <h5 class="modal-title" id="statModalLabel">{{ i18n.getMessage("player_details_statistic_detailstitle") }}</h5>
 		  </div>
 		  <div class="modal-body">
-		  	<div id="playerStatisticsPerCompetition">...</div>
+		  	<div id="playerStatisticsPerCompetition" data-testid="player-statistics-per-competition">...</div>
 		  </div>
 		  <div class="modal-footer">
 		    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ i18n.getMessage("button_close") }}</button>
@@ -247,7 +247,7 @@
   		
   </div>
   
-  <div class="tab-pane" id="history">
+  <div class="tab-pane" id="history" data-testid="player-tab-content-history">
   
   	{% if player.player_history|length > 0 %}
 		<p>{{ player.player_history|nl2br }}</p>

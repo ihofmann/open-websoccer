@@ -654,3 +654,22 @@ INSERT INTO ws3_spiel
      berechnet)
 VALUES
     (26, 'Freundschaft', @future_ts, 41, 42, 1, 2, '0');
+
+-- -----------------------------------------------------------------------------
+-- High score ranking (page=highscore)
+-- -----------------------------------------------------------------------------
+-- Set distinct highscore values and registration dates on the frontend users
+-- so the "Users High Score Ranking" page renders a deterministic result.
+-- The page lists only active users with highscore > 0, ordered by
+-- highscore DESC, datum_anmeldung ASC.
+--
+--   user1: 1500 pts, registered 2024-01-15  → rank 1
+--   user2: 1200 pts, registered 2024-02-20  → rank 2 (tie-break: earlier date)
+--   user3: 1200 pts, registered 2024-03-10  → rank 3 (same score, later date)
+--   user4:  900 pts, registered 2024-04-05  → rank 4
+--   user5:    0 pts                         → excluded (highscore must be > 0)
+UPDATE ws3_user SET highscore = 1500, datum_anmeldung = UNIX_TIMESTAMP('2024-01-15') WHERE id = 1;
+UPDATE ws3_user SET highscore = 1200, datum_anmeldung = UNIX_TIMESTAMP('2024-02-20') WHERE id = 2;
+UPDATE ws3_user SET highscore = 1200, datum_anmeldung = UNIX_TIMESTAMP('2024-03-10') WHERE id = 3;
+UPDATE ws3_user SET highscore = 900,  datum_anmeldung = UNIX_TIMESTAMP('2024-04-05') WHERE id = 4;
+-- user5 keeps the default highscore = 0 and is excluded from the ranking.

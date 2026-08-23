@@ -8,7 +8,7 @@
 					{% if player.position_main|length > 0 %}<abbr title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</abbr>{% endif %}
 					{% if player.position_second|length > 0 %}/ <abbr title="{{ i18n.getMessage("option_" ~ player.position_second) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_second) }}</abbr>{% endif %}
 				</td>
-				<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a>
+				<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}" data-testid="team-player-link-{{ player.id }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a>
 					{% if env.getRequestParameter("captain") == player.id %}
 						<i class="bi bi-people wstooltip" title="{{ i18n.getMessage("myteam_captain_tooltip") }}"></i>
 					{% endif %}

@@ -82,6 +82,10 @@ order:
      pages return ranked players.
    * **League history** (`ws3_leaguehistory`) for all 20 teams after matchday
      1, so the Table History chart has data.
+   * **User high scores** set on `user1`&ndash;`user4` (1500, 1200, 1200, 900)
+     with distinct registration dates, so the High Score Ranking page returns
+     a deterministic, tie-broken ordering. `user5` keeps a highscore of 0 and
+     is excluded from the ranking.
 
 > Passwords are hashed in SQL with `SHA2` using exactly the same scheme as
 > `SecurityUtil::hashPassword`: `sha256( salt . sha256( password ) )`.
@@ -175,6 +179,8 @@ While the stack is up you can also browse it manually:
 | `tests/results.spec.ts`            | Guest opens **Results and Schedules**, verifies the Leagues/Cups/Latest-Results tabs, matchday results, and future match schedules. |
 | `tests/match-details.spec.ts`      | Guest opens **Match Details** for a completed league match, a completed cup match, a future (unscheduled) match, and an invalid match id. |
 | `tests/top-scorers.spec.ts`        | Guest opens **Top Scorers** and **Top Strikers**, verifies player rankings, tie-breaker ordering, and league filtering. |
+| `tests/highscore.spec.ts`          | Guest opens the **Users High Score Ranking**, verifies the ranked user table (highscore DESC, registration date tie-breaker), score/date formatting, exclusion of zero-score users, and user/club profile links. |
+| `tests/team-and-player-details.spec.ts` | Guest navigates from the **League Table** to a **Team Detail** page, exercises all tabs, then opens a **Player Detail** page and verifies every tab including the advanced statistics modal. |
 | `tests/todays-matches.spec.ts`     | Guest opens **Today's Matches**, verifies completed and scheduled friendly matches. |
 | `tests/table-history.spec.ts`      | Guest opens **Table History** for a team, verifies the chart data-series and back-to-league link. |
 | `tests/team-management.spec.ts`    | `user1` manages his own team: office, squad, formation and tactics, training, sponsor, stadium, stadium environment, finances, ticket prices, selling players, contract extensions, transfer market and transfer offers - including form validation and login protection. |

@@ -1,3 +1,4 @@
+<div data-testid="player-advanced-statistics-content">
 {% if leagueStatistics|length == 0 and cupStatistics|length == 0 %}
 	<p>{{ i18n.getMessage("player_details_statistic_nomatchesplayed") }}</p>
 {% else %}
@@ -71,3 +72,4 @@
 	{% endfor %}
 
 {% endif %}
+</div>

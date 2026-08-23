@@ -187,7 +187,7 @@ class TeamsDataService {
 		$columns['PREVDAY.`rank`'] = 'previous_rank';
 		
 		// order by
-		$whereCondition = 'C.liga_id = %d AND C.status = \'1\' ORDER BY score DESC, goals_diff DESC, wins DESC, draws DESC, goals DESC, name ASC';
+		$whereCondition = 'C.liga_id = %d AND C.status = \'1\' AND C.nationalteam != \'1\' ORDER BY score DESC, goals_diff DESC, wins DESC, draws DESC, goals DESC, name ASC';
 		$parameters = $leagueId;
 		
 		$teams = array();

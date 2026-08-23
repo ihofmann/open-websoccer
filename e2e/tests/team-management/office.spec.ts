@@ -17,7 +17,7 @@ test.describe('Office page (logged in as user1)', () => {
     await expect(content).toContainText('Team 1');
     await expect(content).toContainText('Team 3');
     await expect(content).toContainText('My Last Match');
-    await expect(content.getByRole('link', { name: 'Formation' })).toBeVisible();
+    await expect(page.locator('[data-testid="office-next-match-formation"]')).toBeVisible();
   });
 
   test('navigation menu links to the team management pages', async ({ page }) => {

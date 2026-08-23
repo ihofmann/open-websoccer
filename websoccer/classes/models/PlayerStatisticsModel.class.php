@@ -60,7 +60,7 @@ class PlayerStatisticsModel implements IModel {
 		$columns = array(
 			'L.name' => 'league_name',	
 			'SEAS.name' => 'season_name',
-			'M.pokalname' => 'cup_name',
+			'IFNULL(M.pokalname, \'\')' => 'cup_name',
 			'COUNT(S.id)' => 'matches',
 			'SUM(S.assists)' => 'assists',
 			'AVG(S.note)' => 'grade',
@@ -77,7 +77,7 @@ class PlayerStatisticsModel implements IModel {
 		$fromTable .= ' LEFT JOIN ' . $this->_websoccer->getConfig('db_prefix') . '_saison AS SEAS ON SEAS.id = M.saison_id';
 		$fromTable .= ' LEFT JOIN ' . $this->_websoccer->getConfig('db_prefix') . '_liga AS L ON SEAS.liga_id = L.id';
 		
-		$whereCondition = 'S.spieler_id = %d AND S.minuten_gespielt > 0 AND ((M.spieltyp = \'Pokalspiel\' AND M.pokalname IS NOT NULL AND M.pokalname != \'\') OR (M.spieltyp = \'Ligaspiel\' AND SEAS.id IS NOT NULL)) GROUP BY IFNULL(M.pokalname,\'\'), SEAS.id ORDER BY L.name ASC, SEAS.id ASC, M.pokalname ASC';		
+		$whereCondition = 'S.spieler_id = %d AND S.minuten_gespielt > 0 AND ((M.spieltyp = \'Pokalspiel\' AND M.pokalname IS NOT NULL AND M.pokalname != \'\') OR (M.spieltyp = \'Ligaspiel\' AND SEAS.id IS NOT NULL)) GROUP BY IFNULL(M.pokalname,\'\'), SEAS.id, L.name, SEAS.name ORDER BY L.name ASC, SEAS.id ASC, IFNULL(M.pokalname,\'\') ASC';		
 		
 		// execute
 		$result = $this->_db->querySelect($columns, $fromTable, $whereCondition, $playerId);

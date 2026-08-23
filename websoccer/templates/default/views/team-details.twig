@@ -20,31 +20,31 @@
 {% endif %}
 
 <ul class="nav nav-tabs" id="teamTab">
-  <li class="nav-item"><a class="nav-link active" href="#general" data-bs-toggle="tab">{{ i18n.getMessage("team_details_tab_general") }}</a></li>
-  {% if not team.is_nationalteam %}<li class="nav-item"><a class="nav-link" href="#statistic" data-bs-toggle="tab">{{ i18n.getMessage("team_details_tab_statistic") }}</a></li>{% endif %}
-  <li class="nav-item"><a class="nav-link ajaxLink" href="#results" data-bs-toggle="tab"
+  <li class="nav-item"><a class="nav-link active" href="#general" data-bs-toggle="tab" data-testid="team-tab-general">{{ i18n.getMessage("team_details_tab_general") }}</a></li>
+  {% if not team.is_nationalteam %}<li class="nav-item"><a class="nav-link" href="#statistic" data-bs-toggle="tab" data-testid="team-tab-statistic">{{ i18n.getMessage("team_details_tab_statistic") }}</a></li>{% endif %}
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#results" data-bs-toggle="tab" data-testid="team-tab-results"
   	data-ajaxtarget="resultslist" data-ajaxblock="team-results" data-ajaxquerystr="teamid={{ team.team_id }}">{{ i18n.getMessage("results_tab_latest_results") }}</a></li>
   
-  <li class="nav-item"><a class="nav-link ajaxLink" href="#players" data-bs-toggle="tab"
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#players" data-bs-toggle="tab" data-testid="team-tab-players"
   	data-ajaxtarget="playerslist" data-ajaxblock="teamplayers" data-ajaxquerystr="teamid={{ team.team_id }}{% if team.is_nationalteam %}&nationalteam=1{% endif %}{% if team.captain_id %}&captain={{ team.captain_id }}{% endif %}">{{ i18n.getMessage("team_details_tab_players") }}</a></li>
   
   {% if not team.is_nationalteam %}
 	  {% if env.getConfig("youth_enabled") %}
-	  <li class="nav-item"><a class="nav-link ajaxLink" href="#youthplayers" data-bs-toggle="tab"
+	  <li class="nav-item"><a class="nav-link ajaxLink" href="#youthplayers" data-bs-toggle="tab" data-testid="team-tab-youthplayers"
 	  	data-ajaxtarget="youthplayerslist" data-ajaxblock="youthplayers_of_team" data-ajaxquerystr="teamid={{ team.team_id }}">{{ i18n.getMessage("team_details_tab_youthplayers") }}</a></li>
 	  {% endif %}
 	
 	  {% if env.getConfig("transfermarket_enabled") or env.getConfig("transferoffers_enabled") %}
-	  <li class="nav-item"><a class="nav-link ajaxLink" href="#transfers" data-bs-toggle="tab"
+	  <li class="nav-item"><a class="nav-link ajaxLink" href="#transfers" data-bs-toggle="tab" data-testid="team-tab-transfers"
 	  	data-ajaxtarget="transferslist" data-ajaxblock="teamtransfers" data-ajaxquerystr="teamid={{ team.team_id }}">{{ i18n.getMessage("transfers_tab") }}</a></li>
 	  {% endif %}
   {% endif %}
-  <li class="nav-item"><a class="nav-link ajaxLink" href="#victories" data-bs-toggle="tab"
+  <li class="nav-item"><a class="nav-link ajaxLink" href="#victories" data-bs-toggle="tab" data-testid="team-tab-victories"
   	data-ajaxtarget="historycontent" data-ajaxblock="team-history" data-ajaxquerystr="teamid={{ team.team_id }}">{{ i18n.getMessage("team_details_tab_victories") }}</a></li>
 </ul>
  
 <div class="tab-content py-3">
-  <div class="tab-pane active" id="general">
+  <div class="tab-pane active" id="general" data-testid="team-tab-content-general">
   
   {% if team.team_league_id > 0 %}
 	{% set league = "<a href=\"" ~ env.getInternalUrl("league", "id=" ~ team.team_league_id) ~ "\">" ~ team.team_league_name|e ~ "</a>" %}
@@ -115,7 +115,7 @@
   {% endif %}
   </div>
   
-  <div class="tab-pane" id="statistic">
+  <div class="tab-pane" id="statistic" data-testid="team-tab-content-statistic">
   
 		<div class="row">
 			<div class="col-md-6">
@@ -175,7 +175,7 @@
   
   </div>
   
-  <div class="tab-pane" id="victories">
+  <div class="tab-pane" id="victories" data-testid="team-tab-content-victories">
   
   	{% if team.victories is defined and team.victories|length > 0 %}
   	
@@ -199,7 +199,7 @@
   		</ul>
   	{% endif %}
   	
-  	<div id="historycontent">
+  	<div id="historycontent" data-testid="team-history-content">
   	{% if team.victories|length == 0 %}
   		<p>{{ i18n.getMessage("team_details_noleaguevictories") }}</p>
   	{% endif %}
@@ -212,12 +212,12 @@
   
   </div>
   
-  <div class="tab-pane" id="results">
-  	<div id="resultslist">...</div>
+  <div class="tab-pane" id="results" data-testid="team-tab-content-results">
+  	<div id="resultslist" data-testid="team-results-list">...</div>
   </div>
   
-  <div class="tab-pane" id="players">
-  	<div id="playerslist">...</div>
+  <div class="tab-pane" id="players" data-testid="team-tab-content-players">
+  	<div id="playerslist" data-testid="team-players-list">...</div>
   </div>
   
   {% if env.getConfig("youth_enabled") %}

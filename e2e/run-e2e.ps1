@@ -34,8 +34,9 @@ $e2eDir   = Join-Path $repoRoot 'e2e'
 $compose  = Join-Path $e2eDir 'docker-compose.e2e.yml'
 $baseUrl  = 'http://localhost:8081'
 
-# Number of players the seed creates: 40 teams x 12 position_main x 2.
-$expectedPlayers = 960
+# Number of players the seed creates: 40 teams x 12 position_main x 2
+# plus 12 additional German players for national team tests.
+$expectedPlayers = 972
 
 # NOTE: the parameter must NOT be called $args - that is a PowerShell
 # automatic variable and the passed values would be silently discarded.

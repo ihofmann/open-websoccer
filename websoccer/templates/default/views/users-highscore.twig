@@ -43,7 +43,7 @@
 					-
 				{% endif %}
 			</td>
-			<td>{{ env.getFormattedDate(user.registration_date) }}</td>
+			<td>{{ user.registration_date|date("Y-m-d") }}</td>
 			<td>{{ user.highscore|number_format(0, ',', ' ') }}</td>
 		</tr>
 		{% endfor %}

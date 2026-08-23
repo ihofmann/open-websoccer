@@ -72,7 +72,7 @@
 	            model="UserDetailsModel"
 	            navitem="false"
 	            template="user-details"
-	            role="user" />
+	            role="guest,user" />
         </page>
     </pages>
     

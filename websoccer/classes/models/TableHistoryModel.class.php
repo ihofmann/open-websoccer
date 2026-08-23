@@ -82,7 +82,7 @@ class TableHistoryModel implements IModel {
 		
 		// count teams in league
 		$result = $this->_db->querySelect('COUNT(*) AS cnt', $this->_websoccer->getConfig('db_prefix') .'_verein',
-				'liga_id = %d AND status = \'1\'', $team['team_league_id'], 1);
+				'liga_id = %d AND status = \'1\' AND nationalteam != \'1\'', $team['team_league_id'], 1);
 		$teams = $result->fetch_array();
 		$result->free();
 		
