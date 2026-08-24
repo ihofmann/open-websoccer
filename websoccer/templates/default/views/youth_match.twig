@@ -21,7 +21,7 @@
 			<span id="report_goals_guest">{{ match.guest_goals }}</span>
 		</div>
 		
-		<div style="margin-top: 10px">
+		<div class="mt-2">
 		{% if match.home_noformation %}
 		{{ msgbox.box("", i18n.getMessage("match_details_noformation", match.home_team_name), "warning") }}
 		{% endif %}
@@ -32,25 +32,25 @@
 		
 		{% if reportMessages|length > 0 %}
 			<span class="report_team_home">{{ match.home_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.home_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
-		  	<span style="margin-left: 20px" class="report_team_guest">{{ match.guest_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
+		  	<span class="ms-3 report_team_guest">{{ match.guest_team_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
 	  
 			<div id="reportarea" data-testid="youth-match-report">
-				<ul class="unstyled" style="margin: 1px 10px">
+				<ul class="unstyled ws-margin-1-10">
 					{% for reportMessage in reportMessages %}
 					
 						{% set teamMarkerClass = (reportMessage.active_home) ? "report_team_home" : "report_team_guest" %}
-						<li style="margin-top: 10px">
+						<li class="mt-2">
 						
 						{% if reportMessage.message_key == "ymreport_goal" or reportMessage.message_key == "ymreport_penalty_success"  %}
-							<i class="websoccericon-goal float-end" style="margin-right: 10px;"></i>
+							<i class="websoccericon-goal float-end me-2"></i>
 						{% elseif reportMessage.message_key == "ymreport_card_yellow" %}
-							<i class="websoccericon-yellowcard float-end" style="margin-right: 10px;"></i>
+							<i class="websoccericon-yellowcard float-end me-2"></i>
 						{% elseif reportMessage.message_key == "ymreport_card_yellowred" or reportMessage.message_key == "ymreport_card_red" %}
-							<i class="websoccericon-redcard float-end" style="margin-right: 10px;"></i>
+							<i class="websoccericon-redcard float-end me-2"></i>
 						{% elseif reportMessage.message_key == "ymreport_substitution" %}
-							<i class="websoccericon-substitution float-end" style="margin-right: 10px;"></i>
+							<i class="websoccericon-substitution float-end me-2"></i>
 						{% elseif reportMessage.message_key == "ymreport_injury" %}
-							<i class="websoccericon-injury float-end" style="margin-right: 10px;"></i>
+							<i class="websoccericon-injury float-end me-2"></i>
 						{% endif %}
 						
 						<span class="report_minute {{ teamMarkerClass }}">{{ i18n.getMessage("match_report_minute", reportMessage.minute) }}</span>
@@ -72,9 +72,9 @@
 				{% if teamPlayers|length > 0 %}
 					<table class="table table-striped table-sm">
 						<colgroup>
-							<col style="width: 40px" />
+							<col class="ws-col-40" />
 							<col />
-							<col style="width: 50px" />
+							<col class="ws-col-50" />
 						</colgroup>
 						<thead>
 							<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>

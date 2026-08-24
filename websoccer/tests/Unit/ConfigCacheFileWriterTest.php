@@ -52,6 +52,25 @@ final class ConfigCacheFileWriterTest extends TestCaseBase {
 		$this->assertStringContainsString('guest', $line);
 	}
 
+	public function testBuildConfigLineEscapesApostrophesInGeneratedPhpString(): void {
+		$doc = new \DOMDocument();
+		$el = $doc->createElement('setting');
+		$el->setAttribute('id', 'csp_header');
+		$el->setAttribute('default', "default-src 'none'; script-src 'self';");
+		$doc->appendChild($el);
+
+		$line = $this->invokePrivate('_buildConfigLine', ['setting', 'id', $el, 'core']);
+
+		$this->assertStringContainsString('\u0027none\u0027', $line);
+		$this->assertStringNotContainsString("default-src 'none'", $line);
+
+		$json = substr($line, strpos($line, " = '") + 4, -2);
+		$this->assertSame(
+			"default-src 'none'; script-src 'self';",
+			json_decode($json, true)['default']
+		);
+	}
+
 	public function testBuildConfigLineForEventListenerUsesEventKey(): void {
 		$doc = new \DOMDocument();
 		$parent = $doc->createElement('eventlistener');

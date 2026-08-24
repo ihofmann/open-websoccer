@@ -58,7 +58,7 @@
 			{% endif %}
 		
 			<tr data-testid="youth-marketplace-row" data-player-id="{{ player.player_id }}">
-				<td style="text-align: center">
+				<td class="text-center">
 					<img src="{{ skin.getImage("icons/playertype_" ~ positionId ~ ".png") }}"
 					alt="{{ i18n.getMessage("player_position_" ~ positionId) }}" title="{{ i18n.getMessage("player_position_" ~ positionId) }}" />
 					<br>
@@ -80,14 +80,14 @@
 				</td>
 				<td>
 					{% if player.team_picture|length %}
-						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" style="max-width: 20px"/>
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" class="ws-logo-max-20"/>
 					{% endif %}
 					<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
 					
 					{% if player.user_id > 0 %}
 						<br>
 						{% if player.user_picture|length > 0 %}
-							<a href="{{ env.getInternalUrl("user", "id=" ~ player.user_id) }}"><img src="{{ player.user_picture }}" style="width: 20px; height: 20px"/></a>
+							<a href="{{ env.getInternalUrl("user", "id=" ~ player.user_id) }}"><img src="{{ player.user_picture }}" class="ws-avatar-20"/></a>
 						{% endif %}
 						<small><a href="{{ env.getInternalUrl("user", "id=" ~ player.user_id) }}">{{ player.user_nick }}</a></small>
 					{% endif %}

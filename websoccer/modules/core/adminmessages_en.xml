@@ -145,6 +145,7 @@
 	<message id="settings_tab_offlinemode">Offline Mode</message> 
 	<message id="settings_tab_game">Game</message> 
 	<message id="settings_tab_social">Social Networks</message> 
+	<message id="settings_tab_security">Security</message> 
 	
 	<message id="settings_saved_note_restartjobs">Restart your jobs!</message>
 	<message id="settings_saved_note_restartjobs_details">Changes which affect any job require its restart.</message>
@@ -189,6 +190,9 @@
 	
 	<message id="settings_label_offline_times">Recurring Offline Mode</message>
 	<message id="settings_label_offline_times_help">Comma-separated time spans in 24-hour format during which the website automatically switches to offline mode. Example: 09:00-12:00, 13:00-17:00</message>
+	
+	<message id="settings_label_csp_header">Content-Security-Policy Header</message>
+	<message id="settings_label_csp_header_help">CSP header sent on every frontend page response. The placeholder ${NONCE} is replaced with a unique per-request nonce, available to JavaScript as <em>window.wsNonce</em> and to templates as <em>nonce</em>. Keep the policy as strict as possible. Google reCAPTCHA and Gravatar.com are whitelisted by default.</message>
 	
 	<message id="manage_add">Add New Record</message>
 	<message id="manage_edit">Edit</message>

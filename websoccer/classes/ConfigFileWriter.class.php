@@ -62,7 +62,12 @@ class ConfigFileWriter {
     	$content = "<?php" . PHP_EOL;
     	
     	foreach ($this->_settings as $id => $value) {
-    		$content .= "\$conf[\"". $id . "\"] = \"". addslashes($value) ."\";". PHP_EOL;
+    		// Escape characters that have special meaning inside PHP double-quoted
+    		// strings: backslash, double-quote and dollar sign.  Single quotes do
+    		// NOT need escaping (and addslashes' \' would be preserved literally,
+    		// corrupting values such as CSP source lists that contain 'self').
+    		$escapedValue = addcslashes($value, '\\$"');
+    		$content .= "\$conf[\"". $id . "\"] = \"". $escapedValue ."\";". PHP_EOL;
     	}
     	
     	$content .= "?>";

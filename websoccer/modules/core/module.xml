@@ -52,5 +52,6 @@
       <setting id="offline" category="offlinemode" type="select" selection="online,offline" default="online" />
       <setting id="offline_text" category="offlinemode" type="textarea" default="We are offline at the moment." />
       <setting id="offline_times" category="offlinemode" type="tags" default="" />
+      <setting id="csp_header" category="security" type="textarea" default="default-src 'none'; script-src 'self' 'nonce-${NONCE}' https://www.google.com https://www.gstatic.com; style-src 'self' 'nonce-${NONCE}'; img-src 'self' data: https://secure.gravatar.com https://www.gravatar.com; font-src 'self'; connect-src 'self' https://www.google.com; frame-src https://www.google.com https://recaptcha.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';" />
   </settings>
 </module>

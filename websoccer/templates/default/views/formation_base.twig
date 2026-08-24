@@ -39,7 +39,7 @@
 <h4>{{ i18n.getMessage("formation_playground_title") }}</h4>
 
 
-<div class="row" style="margin-top:10px">
+<div class="row mt-2">
 	<div class="col-md-5 pitchColumn">
 
 		<div id="pitch">
@@ -190,7 +190,7 @@
 
 		<h4>{{ i18n.getMessage("formation_bench") }}</h4>
 
-		<table class="table table-bordered" style="width: 450px">
+		<table class="table table-bordered ws-formation-table">
 			<thead>
 				<tr>
 					<th>{{ i18n.getMessage("entity_player") }}</th>
@@ -202,10 +202,10 @@
 					<tr class="benchposition freePosition" data-testid="bench-row">
 						<td class="benchPlayerInfo">
 							<span class="benchPlaceholder" data-testid="bench-placeholder">{{ i18n.getMessage("formation_bench_placeholder") }}</span>
-							<a class="benchPlayerRemove" href="#" data-testid="bench-remove" style="display: none;" title="{{ i18n.getMessage("player_button_remove_from_pitch") }}"><i class="bi bi-x-lg darkIcon"></i></a>
+							<a class="benchPlayerRemove ws-hidden" href="#" data-testid="bench-remove" title="{{ i18n.getMessage("player_button_remove_from_pitch") }}"><i class="bi bi-x-lg darkIcon"></i></a>
 						</td>
 						<td>
-							<a class="benchPlayerSubAdd btn btn-sm btn-outline-primary" href="#subModal{{ benchNo }}" data-testid="bench-sub-add" style="display: none;" role="button" data-bs-toggle="modal"><i class="bi bi-arrow-right-circle"></i> {{ i18n.getMessage("formation_bench_sub_in") }}</a>
+							<a class="benchPlayerSubAdd btn btn-sm btn-outline-primary ws-hidden" href="#subModal{{ benchNo }}" data-testid="bench-sub-add" role="button" data-bs-toggle="modal"><i class="bi bi-arrow-right-circle"></i> {{ i18n.getMessage("formation_bench_sub_in") }}</a>
 
 							<div id="subModal{{ benchNo }}" class="modal fade" tabindex="-1" role="dialog"
 								aria-labelledby="subModal{{ benchNo }}Label" aria-hidden="true">
@@ -254,17 +254,17 @@
 							</div>
 
 
-							<small class="benchPlayerSubInfo" data-testid="bench-sub-info" style="display: none;">
+							<small class="benchPlayerSubInfo ws-hidden" data-testid="bench-sub-info">
 								{{ i18n.getMessage("formation_substitutions_minute") }}: <strong class="benchPlayerSubInfoMinute" data-testid="bench-sub-minute"></strong>, <br>
 								{% if validationMsg["sub" ~ benchNo ~ "_minute"] is defined %}
 									<span class="text-danger"><strong>{{ validationMsg["sub" ~ benchNo ~ "_minute"] }}</strong></span><br>
 								{% endif %}
 
 								{{ i18n.getMessage("formation_substitutions_out") }}: <strong class="benchPlayerSubInfoPlayer" data-testid="bench-sub-player"></strong>
-								<span class="benchPlayerSubInfoConditionTie" data-testid="bench-sub-condition-tie" style="display: none;">,<br> {{ i18n.getMessage("formation_substitutions_condition_tie") }}</span>
-								<span class="benchPlayerSubInfoConditionLeading" data-testid="bench-sub-condition-leading" style="display: none;">,<br> {{ i18n.getMessage("formation_substitutions_condition_leading") }}</span>
-								<span class="benchPlayerSubInfoConditionDeficit" style="display: none;">,<br> {{ i18n.getMessage("formation_substitutions_condition_deficit") }}</span>
-								<span class="benchPlayerSubInfoPosition" style="display: none">,<br> <span class="subPositionLabel"></span></span>
+								<span class="benchPlayerSubInfoConditionTie ws-hidden" data-testid="bench-sub-condition-tie">,<br> {{ i18n.getMessage("formation_substitutions_condition_tie") }}</span>
+								<span class="benchPlayerSubInfoConditionLeading ws-hidden" data-testid="bench-sub-condition-leading">,<br> {{ i18n.getMessage("formation_substitutions_condition_leading") }}</span>
+								<span class="benchPlayerSubInfoConditionDeficit ws-hidden">,<br> {{ i18n.getMessage("formation_substitutions_condition_deficit") }}</span>
+								<span class="benchPlayerSubInfoPosition ws-hidden">,<br> <span class="subPositionLabel"></span></span>
 								<a href="#" class="removeSubstitutionBtn" data-testid="remove-substitution" title="{{ i18n.getMessage("player_button_remove_from_pitch") }}"><i class="bi bi-x-lg"></i></a>
 							</small>
 						</td>
@@ -285,7 +285,7 @@
 							{% set typeImage = skin.getImage("icons/playertype_" ~ playerPosition ~ ".png") %}
 							<button class="accordion-button{% if not loop.last %} collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ playerPosition }}" data-testid="position-section-button">
 								{% if typeImage != null %}
-								<img src="{{ typeImage }}" class="float-start" style="margin: 5px 5px 0px 2px" alt="{{ i18n.getMessage("player_position_" ~ playerPosition) }}">
+								<img src="{{ typeImage }}" class="float-start ws-formation-player-img" alt="{{ i18n.getMessage("player_position_" ~ playerPosition) }}">
 								{% endif %}
 								{{ i18n.getMessage("player_position_" ~ playerPosition) }}
 							</button>
@@ -340,7 +340,7 @@
 															<li><a href="#" class="dropdown-item playerAddToPitchLinkItem" data-testid="player-add-pitch-item" data-target="RS" >{{ i18n.getMessage("option_RS") }}</a></li>
 														</ul>
 													</div>
-												<a href="#" class="btn btn-sm btn-outline-primary playerRemoveLink" data-testid="player-remove"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("player_button_remove_from_pitch") }}</a>
+												<a href="#" class="btn btn-sm btn-outline-primary playerRemoveLink ws-hidden" data-testid="player-remove"><i class="bi bi-x-lg"></i> {{ i18n.getMessage("player_button_remove_from_pitch") }}</a>
 												<a href="#" class="btn btn-sm btn-outline-primary playerAddToBenchLink" data-testid="player-add-bench"><i class="bi bi-arrow-repeat"></i> {{ i18n.getMessage("player_button_to_bench") }}</a>
 												{% if youthFormation is not defined or not youthFormation %}
 												<a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}" class="btn btn-sm btn-outline-primary" target="_blank"><i class="bi bi-info-circle"></i> {{ i18n.getMessage("player_navlabel") }}</a>
@@ -357,7 +357,7 @@
 										{% if player.player_nationality_filename is defined %}
 											{% set nationImg = skin.getImage("flags/players/" ~ player.player_nationality_filename ~ ".png") %}
 											{% if nationImg %}<img src="{{ nationImg }}" title="{{ player.player_nationality }}" alt="{{ player.player_nationality }}"
-												style="width: 15px; height: 10px; vertical-align: baseline"/>{% endif %}
+												class="ws-icon-15-10"/>{% endif %}
 										{% endif %}
 
 										{% if player.matches_injured is defined and player.matches_injured > 0 %}
@@ -366,7 +366,7 @@
 											</span>
 										{% elseif player.matches_blocked is defined and player.matches_blocked > 0 %}
 											<span class="playerBlockedLabel" title="{{ i18n.getMessage("formation_team_blocked_cards") }}">
-												<img src="{{ skin.getImage("icons/blocked_cards.png") }}" alt="{{ i18n.getMessage("formation_team_blocked_cards") }}" style="width: 13px; height: 13px" /> {{ player.matches_blocked }}
+												<img src="{{ skin.getImage("icons/blocked_cards.png") }}" alt="{{ i18n.getMessage("formation_team_blocked_cards") }}" class="ws-icon-13" /> {{ player.matches_blocked }}
 											</span>
 										{% endif %}
 

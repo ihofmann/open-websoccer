@@ -123,6 +123,7 @@
   <message id="settings_tab_offlinemode">Modalità offline</message>
   <message id="settings_tab_game">Gioco</message>
   <message id="settings_tab_social">Social networks</message>
+  <message id="settings_tab_security">Sicurezza</message>
   <message id="settings_saved_note_restartjobs">Ricomincia i tuoi lavori!</message>
   <message id="settings_saved_note_restartjobs_details">Le modifiche che interessano qualsiasi lavoro richiedono il suo riavvio.</message>
   <message id="settings_label_context_root">Percorso server relativo (radice di contesto)</message>
@@ -160,6 +161,8 @@
   <message id="settings_label_offline_text">Messaggio non in linea</message>
   <message id="settings_label_offline_times">Modalità offline ricorrente</message>
   <message id="settings_label_offline_times_help">Intervalli di tempo separati da virgole nel formato 24 ore in cui il sito Web passa automaticamente alla modalità offline. Esempio: 09:00-12:00, 13:00-17:00</message>
+  <message id="settings_label_csp_header">Intestazione Content-Security-Policy</message>
+  <message id="settings_label_csp_header_help">Intestazione CSP inviata ad ogni risposta di pagina del frontend. Il segnaposto ${NONCE} viene sostituito con un nonce univoco per richiesta, disponibile in JavaScript come <em>window.wsNonce</em> e nei template come <em>nonce</em>. Mantenere la direttiva il più rigorosa possibile. Google reCAPTCHA e Gravatar.com sono consentiti per impostazione predefinita.</message>
   <message id="manage_add">Aggiungi nuovo record</message>
   <message id="manage_edit">Modificare</message>
   <message id="manage_delete">Elimina</message>

@@ -20,7 +20,7 @@
   <dd>{{ player.player_contract_matches  }} {{ i18n.getMessage("player_details_unit_matches") }}</dd>
 </dl>
 
-<p style="margin-top: 30px"><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("extend-contract_link_profile") }}</a></p>
+<p class="mt-4"><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("extend-contract_link_profile") }}</a></p>
 
 <p><i class="bi bi-exclamation-triangle"></i> {{ i18n.getMessage("extend-contract_decrease_satisfaction_hint") }}</p>
 {% endblock %}

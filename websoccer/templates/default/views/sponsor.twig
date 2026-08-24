@@ -15,7 +15,7 @@
 
 
 	{% if sponsor.picture|length > 0 %}
-	<div style="text-align: center; margin-bottom: 10px;">
+	<div class="text-center mb-2">
 	<img src="{{ env.getConfig("context_root") }}/uploads/sponsor/{{ sponsor.picture }}" class="img-rounded">
 	</div>
 	{% endif %}
@@ -34,7 +34,7 @@
 		{{ messagebox.box(i18n.getMessage("sponsor_choose_tooearly", env.getConfig("sponsor_earliest_matchday")), "", "warning") }}
 	{% else %}
 
-		<p style="margin-top: 10px; margin-bottom: 20px;">{{ i18n.getMessage('sponsor_contractduraction_info', env.getConfig("sponsor_matches")) }}</p>
+		<p class="mt-2 mb-3">{{ i18n.getMessage('sponsor_contractduraction_info', env.getConfig("sponsor_matches")) }}</p>
 	
 		{% if sponsors|length > 0 %}
 		<table class="table table-striped">

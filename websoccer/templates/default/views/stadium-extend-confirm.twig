@@ -17,11 +17,11 @@
 		
 		<div class="row">
 			{% for offer in offers %}
-				<div class="col-md-4"{% if not loop.last %} style="border-right: 1px solid grey;"{% endif %}>
+				<div class="col-md-4{% if not loop.last %} ws-border-end-grey{% endif %}">
 					<h4>{{ offer.builder_name }}</h4>
 					
 					{% if offer.builder_picture|length > 0 %}
-						<img src="{{ env.getConfig("context_root") }}/uploads/stadiumbuilder/{{ offer.builder_picture }}" style="max-width: 140px;">
+						<img src="{{ env.getConfig("context_root") }}/uploads/stadiumbuilder/{{ offer.builder_picture }}" class="ws-logo-max-140">
 					{% endif %}
 					{% if offer.builder_premiumfee > 0 %}
 						<p>{{ premium.premiumbadge(offer.builder_premiumfee) }}</p>

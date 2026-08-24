@@ -228,8 +228,10 @@ class WebSoccer {
 			$pageId = $this->getPageId();
 		}
 		
-		if (strlen($queryString)) {
+		if (is_scalar($queryString) && strlen((string) $queryString)) {
 			$queryString = '&' . $queryString;
+		} else {
+			$queryString = '';
 		}
 		
 		if ($fullUrl) {
@@ -290,7 +292,7 @@ class WebSoccer {
 	 * @param I18n|NULL $i18n If provided, the date will be converted into 'Today'/'Yesterday'/'Tomorrow' if applicable.
 	 * @return string formatted date and time.
 	 */
-	public function getFormattedDatetime($timestamp, I18n $i18n = null) {
+	public function getFormattedDatetime($timestamp, ?I18n $i18n = null) {
 		if ($timestamp == null) {
 			$timestamp = $this->getNowAsTimestamp();
 		}

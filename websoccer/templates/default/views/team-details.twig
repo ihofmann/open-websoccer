@@ -7,15 +7,15 @@
 
 {% block page_content %}
 
-<p style="font-size: 20px; margin-top: -15px">
+<p class="ws-team-subtitle">
 {% for strengthlevel in 1..5 %}
 	<i class="bi bi-star{% if (30 + strengthlevel * 10) > team.team_strength %}{% else %}-fill{% endif %}"></i>
 {% endfor %}
 </p>
 
 {% if team.team_logo|length > 0 %}
-<div style="text-align: center; margin-bottom: 10px;">
-<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ team.team_logo }}" class="img-rounded" style="max-width: 120px; max-height: 120px">
+<div class="text-center mb-2">
+<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ team.team_logo }}" class="img-rounded ws-logo-max-120">
 </div>
 {% endif %}
 
@@ -56,7 +56,7 @@
 	{% set manager = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_user_id) ~ "\">" ~ team.team_user_name|e ~ "</a>" %}
 
 	{% if team.user_picture|length > 0 %}
-		{% set manager = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_user_id) ~ "\"><img src=\"" ~ team.user_picture ~ "\" style=\"width: 20px; height: 20px\"/></a> " ~ manager %}
+		{% set manager = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_user_id) ~ "\"><img src=\"" ~ team.user_picture ~ "\" class=\"ws-avatar-20\"/></a> " ~ manager %}
 	{% endif %}
 	
 	{% if team.interimmanager %}
@@ -70,7 +70,7 @@
 	{% set deputy = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_deputyuser_id) ~ "\">" ~ team.team_deputyuser_name|e ~ "</a>" %}
 
 	{% if team.user_picture|length > 0 %}
-		{% set deputy = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_deputyuser_id) ~ "\"><img src=\"" ~ team.deputyuser_picture ~ "\" style=\"width: 20px; height: 20px\"/></a> " ~ deputy %}
+		{% set deputy = "<a href=\"" ~ env.getInternalUrl("user", "id=" ~ team.team_deputyuser_id) ~ "\"><img src=\"" ~ team.deputyuser_picture ~ "\" class=\"ws-avatar-20\"/></a> " ~ deputy %}
 	{% endif %}
   {% endif %}
   
@@ -95,7 +95,7 @@
 	  
 	  {{ profile.infofield(i18n.getMessage("entity_club_stadion_id"), stadiumLabel, true) }}
 	  {% if stadium.stadium_id is defined and stadium.stadium_id > 0 and stadium.picture|length > 0 %}
-		<div style="text-align: center; margin: 10px;">
+		<div class="text-center m-2">
 		<img src="{{ env.getConfig("context_root") }}/uploads/stadium/{{ stadium.picture }}" class="img-rounded">
 		</div>
 	  {% endif %}
@@ -103,7 +103,7 @@
 		{% if team.team_sponsor_name|length > 0 %}	
 			{{ profile.infofield(i18n.getMessage("entity_club_sponsor_id"), team.team_sponsor_name) }}
 			{% if team.team_sponsor_picture|length > 0 %}
-				<div style="text-align: center; margin: 10px;">
+				<div class="text-center m-2">
 				<img src="{{ env.getConfig("context_root") }}/uploads/sponsor/{{ team.team_sponsor_picture }}" class="img-rounded">
 				</div>
 			{% endif %}

@@ -7,17 +7,17 @@
 {% block box_content %}
 <div id="shoutboxvalmessages"></div>
 
-<div style="text-align: right;">
-	<a href="#shrefresh" id="shrefresh" class="btn btn-sm btn-outline-primary ajaxLink" 
+<div class="text-end">
+	<a href="#shrefresh" id="shrefresh" class="btn btn-sm btn-outline-primary ajaxLink mb-1"
 		data-ajaxtarget="shoutbox_block" data-ajaxblock="shoutbox" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}"
-		style="margin-bottom: 5px;"><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a>
+		><i class="bi bi-arrow-clockwise"></i> {{ i18n.getMessage("button_refresh") }}</a>
 </div>
 <div class="shoutboxmessages">
 
 	{% for message in messages %}
 	<div>
 		{% if env.user.isAdmin() %}<a href="#" class="ajaxLink" 
-		data-ajaxtarget="shoutbox_block" data-ajaxblock="shoutbox" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}&action=delete-shoutbox-message&mid={{ message.message_id }}" title="{{ i18n.getMessage("button_delete") }}"><i class="bi bi-trash"></i></a>{% endif %} <small class="text-muted" style="font-size: 9px">[{{ env.getFormattedDatetime(message.date, i18n) }}] <a href="{{ env.getInternalUrl("match", "id=" ~ message.match_id) }}" class="text-muted">{{ message.home_name }} - {{ message.guest_name }}</a></small>
+		data-ajaxtarget="shoutbox_block" data-ajaxblock="shoutbox" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}&action=delete-shoutbox-message&mid={{ message.message_id }}" title="{{ i18n.getMessage("button_delete") }}"><i class="bi bi-trash"></i></a>{% endif %} <small class="text-muted ws-fs-9">[{{ env.getFormattedDatetime(message.date, i18n) }}] <a href="{{ env.getInternalUrl("match", "id=" ~ message.match_id) }}" class="text-muted">{{ message.home_name }} - {{ message.guest_name }}</a></small>
 		<br>
 		<a href="{{ env.getInternalUrl("user", "id=" ~ message.user_id) }}">{{ message.user_name }}</a>: {{ message.message }}
 	</div>

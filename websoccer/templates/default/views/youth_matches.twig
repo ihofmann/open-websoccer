@@ -25,28 +25,28 @@
 				<td>{{ env.getFormattedDatetime(match.date, i18n) }}</td>
 				<td>
 					{% if match.home_team_picture|length %}
-						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.home_team_picture }}" style="max-width: 20px"/>
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.home_team_picture }}" class="ws-logo-max-20"/>
 					{% endif %}
 					<a href="{{ env.getInternalUrl("team", "id=" ~ match.home_id) }}">{{ match.home_team }}</a>
 					
 					{% if match.home_user_id > 0 %}
 						<br>
 						{% if match.home_user_picture|length > 0 %}
-							<a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}"><img src="{{ match.home_user_picture }}" style="width: 20px; height: 20px"/></a>
+							<a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}"><img src="{{ match.home_user_picture }}" class="ws-avatar-20"/></a>
 						{% endif %}
 						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.home_user_id) }}">{{ match.home_user_nick }}</a></small>
 					{% endif %}
 				</td>
 				<td>
 					{% if match.guest_team_picture|length %}
-						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.guest_team_picture }}" style="max-width: 20px"/>
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.guest_team_picture }}" class="ws-logo-max-20"/>
 					{% endif %}
 					<a href="{{ env.getInternalUrl("team", "id=" ~ match.guest_id) }}">{{ match.guest_team }}</a>
 					
 					{% if match.guest_user_id > 0 %}
 						<br>
 						{% if match.guest_user_picture|length > 0 %}
-							<a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}"><img src="{{ match.guest_user_picture }}" style="width: 20px; height: 20px"/></a>
+							<a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}"><img src="{{ match.guest_user_picture }}" class="ws-avatar-20"/></a>
 						{% endif %}
 						<small><a href="{{ env.getInternalUrl("user", "id=" ~ match.guest_user_id) }}">{{ match.guest_user_nick }}</a></small>
 					{% endif %}

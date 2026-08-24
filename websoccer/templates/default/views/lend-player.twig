@@ -26,7 +26,7 @@
   <dd>{{ player.player_contract_matches  }} {{ i18n.getMessage("player_details_unit_matches") }}</dd>
 </dl>
 
-<p style="margin-top: 30px"><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("player_navlabel") }}</a></p>
+<p class="mt-4"><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}">{{ i18n.getMessage("player_navlabel") }}</a></p>
 
 <p>{{ i18n.getMessage("lend-player_intro", env.getConfig("lending_matches_max"))|raw }}</p>
 

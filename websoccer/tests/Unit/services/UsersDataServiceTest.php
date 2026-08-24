@@ -159,7 +159,7 @@ final class UsersDataServiceTest extends TestCaseBase {
 	public function testGetGravatarUserProfilePictureReturnsUrlWhenEnabled(): void {
 		$ws = $this->mockWebsoccer(['gravatar_enable' => 1]);
 		$url = UsersDataService::getGravatarUserProfilePicture($ws, 'A@B.com', 40);
-		$this->assertSame('http://www.gravatar.com/avatar/' . md5('a@b.com') . '?s=40&d=mm', $url);
+		$this->assertSame('https://secure.gravatar.com/avatar/' . md5('a@b.com') . '?s=40&d=mm', $url);
 	}
 
 	public function testGetGravatarUserProfilePictureReturnsNullWhenDisabled(): void {

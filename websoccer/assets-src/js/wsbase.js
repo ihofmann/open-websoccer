@@ -423,6 +423,39 @@ import { Tooltip, Popover } from "bootstrap";
   }
 
   /* ------------------------------------------------------------------ */
+  /* Direct-transfer offer form: hide submit button on success          */
+  /* (replaces an inline <script> that used jQuery $("#offerSubmit")    */
+  /* .hide() — moved out so a strict CSP can be applied)                */
+  /* ------------------------------------------------------------------ */
+  function initDirectTransferOfferSuccess() {
+    var offerFormBlock = document.getElementById("offerFormBlock");
+    if (offerFormBlock && offerFormBlock.querySelector(".transfer-offer-success")) {
+      var submitBtn = document.getElementById("offerSubmit");
+      if (submitBtn) submitBtn.style.display = "none";
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* Dynamic styles via data attributes (CSP-safe replacements for      */
+  /* inline style="width: X%" and style="background-color: X")          */
+  /* ------------------------------------------------------------------ */
+  function initDynamicStyles() {
+    /* Progress bar widths (Bootstrap progress-bar with data-width) */
+    document.querySelectorAll(".progress-bar[data-width]").forEach(function (bar) {
+      bar.style.width = bar.dataset.width + "%";
+    });
+
+    /* Table marker / legend background colours */
+    document.querySelectorAll("[data-bg-color]").forEach(function (el) {
+      var color = el.dataset.bgColor;
+      if (color && color.charAt(0) !== "#") {
+        color = "#" + color;
+      }
+      el.style.backgroundColor = color;
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Init components (also re-run after AJAX updates)                   */
   /* ------------------------------------------------------------------ */
   function initComponents() {
@@ -430,6 +463,8 @@ import { Tooltip, Popover } from "bootstrap";
     initPopovers();
     initAutoComplete();
     initCountdowns();
+    initDirectTransferOfferSuccess();
+    initDynamicStyles();
   }
 
   document.addEventListener("DOMContentLoaded", function () {

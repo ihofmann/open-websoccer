@@ -24,6 +24,17 @@ define('BASE_FOLDER', __DIR__);
 
 include(BASE_FOLDER . '/frontbase.inc.php');
 
+// Generate a per-request CSP nonce and set the Content-Security-Policy header.
+// The nonce is exposed to JavaScript (window.wsNonce) and Twig templates (nonce)
+// so that module integrations can add the nonce attribute to inline scripts.
+$cspNonce = bin2hex(random_bytes(16));
+$cspHeader = $website->getConfig('csp_header');
+$cspHeader = str_replace('${NONCE}', $cspNonce, $cspHeader);
+header('Content-Security-Policy: ' . $cspHeader);
+
+$parameters = array();
+$parameters['nonce'] = $cspNonce;
+
 // offline mode
 $isOffline = FALSE;
 if ($website->getConfig('offline') == 'offline') {

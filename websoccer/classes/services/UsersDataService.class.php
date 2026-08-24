@@ -298,11 +298,10 @@ class UsersDataService {
 		// use gravatar
 		if (strlen($email) && $websoccer->getConfig("gravatar_enable")) {
 			
-			if (empty($_SERVER['HTTPS'])) {
-				$picture = "http://www.";
-			} else {
-				$picture = "https://secure.";
-			}
+			// Always use HTTPS so that a strict CSP (allowing only https://
+			// gravatar sources) can be enforced even when the page itself is
+			// served over HTTP.
+			$picture = "https://secure.";
 			
 			$picture .= "gravatar.com/avatar/" . md5(strtolower($email));
 			$picture .= "?s=" . $size; // size param

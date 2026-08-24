@@ -144,9 +144,12 @@ test.describe('Leagues page – league table', () => {
     const rows = leagueTable(page).locator('tbody tr');
 
     // Positions 1-4 should have a green background (Champions League).
+    // The colour is applied via the CSSOM (el.style.backgroundColor), so the
+    // browser may normalise #00FF00 to rgb(0, 255, 0) in the style attribute.
     for (let i = 0; i < 4; i++) {
       const placeCell = rows.nth(i).locator('td').nth(0);
-      await expect(placeCell).toHaveAttribute('style', /background-color:\s*#?00FF00/i);
+      await expect(placeCell).toHaveAttribute('style',
+        /background-color:\s*(?:#?00ff00|rgb\(\s*0\s*,\s*255\s*,\s*0\s*\))/i);
     }
 
     // Position 5 should NOT have a background colour.

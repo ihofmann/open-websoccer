@@ -3,7 +3,7 @@
 <h3>{{ env.getRequestParameter("cup") }}</h3>
 
 {% if round|length > 0 and round.cup_logo|length > 0 %}
-<div style="text-align: center; margin-bottom: 10px;">
+<div class="text-center mb-2">
 	<img src="{{ env.getConfig("context_root") }}/uploads/cup/{{ round.cup_logo }}" class="img-rounded">
 </div>
 {% endif %}

@@ -123,6 +123,7 @@
   <message id="settings_tab_offlinemode">Modo offline</message>
   <message id="settings_tab_game">Juego</message>
   <message id="settings_tab_social">Redes sociales</message>
+  <message id="settings_tab_security">Seguridad</message>
   <message id="settings_saved_note_restartjobs">¡Reinicia tus trabajos!</message>
   <message id="settings_saved_note_restartjobs_details">Los cambios que afectan a cualquier trabajo requieren su reinicio.</message>
   <message id="settings_label_context_root">Ruta de servidor relativa (raíz de contexto)</message>
@@ -160,6 +161,8 @@
   <message id="settings_label_offline_text">Mensaje fuera de línea</message>
   <message id="settings_label_offline_times">Modo fuera de línea recurrente</message>
   <message id="settings_label_offline_times_help">Lapsos de tiempo separados por comas en formato de 24 horas en los que el sitio web cambiará automáticamente al modo fuera de línea. Ejemplo: 09:00-12:00, 13:00-17:00</message>
+  <message id="settings_label_csp_header">Cabecera Content-Security-Policy</message>
+  <message id="settings_label_csp_header_help">Cabecera CSP enviada en cada respuesta de página del frontend. El marcador de posición ${NONCE} se sustituye por un nonce único por solicitud, disponible en JavaScript como <em>window.wsNonce</em> y en plantillas como <em>nonce</em>. Mantenga la directiva lo más estricta posible. Google reCAPTCHA y Gravatar.com están permitidos por defecto.</message>
   <message id="manage_add">Añadir nuevo registro</message>
   <message id="manage_edit">Editar</message>
   <message id="manage_delete">Borrar</message>

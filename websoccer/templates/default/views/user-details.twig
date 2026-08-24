@@ -20,7 +20,7 @@
 <div class="text-center">
 
 	{% if user.picture|length > 0 %}
-		<img src="{{ user.picture }}" class="img-rounded mb-3" style="width:120px;height:120px"/>
+		<img src="{{ user.picture }}" class="img-rounded mb-3 ws-avatar-120"/>
 	{% endif %}
 
 	{% if user.id == env.user.id %}

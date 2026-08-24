@@ -17,7 +17,7 @@
 		</ul>
 	{% endif %}
 	
-	<div class="btn-group" style="margin-bottom: 10px;">
+	<div class="btn-group mb-2">
 		<a class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" href="#showAll">
 			{{ i18n.getMessage("leaguetable_button_type") }}
 		</a>
@@ -32,7 +32,7 @@
 	  
 		
 	</div>
-	<a class="btn btn-outline-primary" style="margin-bottom: 10px;" href="{{ env.getInternalUrl("results", "leagueid=" ~ leagueId ~ "&seasonid=" ~ env.getRequestParameter("seasonid")) }}"><i class="bi bi-list"></i> {{ i18n.getMessage("results_navlabel") }}</a>
+	<a class="btn btn-outline-primary mb-2" href="{{ env.getInternalUrl("results", "leagueid=" ~ leagueId ~ "&seasonid=" ~ env.getRequestParameter("seasonid")) }}"><i class="bi bi-list"></i> {{ i18n.getMessage("results_navlabel") }}</a>
 	
 	{% if env.getRequestParameter("seasonid") == null and env.getRequestParameter("type") != null %}
 	<p><i class="bi bi-info-circle"></i> <em>{{ i18n.getMessage("leaguetable_timedelay_info") }}</em></p>

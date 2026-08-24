@@ -20,7 +20,7 @@
 
 ******************************************************/
 
-define('DEBUG', FALSE);
+define('DEBUG', TRUE);
 
 if (DEBUG) {
 	error_reporting(E_ALL);
@@ -134,14 +134,7 @@ try {
 
 // register own session handler
 $handler = new DbSessionManager($db, $website);
-session_set_save_handler(
-	array($handler, 'open'),
-	array($handler, 'close'),
-	array($handler, 'read'),
-	array($handler, 'write'),
-	array($handler, 'destroy'),
-	array($handler, 'gc')
-);
+session_set_save_handler($handler, TRUE);
 
 // the following prevents unexpected effects when using objects as save handlers
 // see http://php.net/manual/en/function.session-set-save-handler.php

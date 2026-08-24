@@ -53,7 +53,7 @@
 
 {% block form_footer %}
 
-	<div class="d-flex gap-2 justify-content-center p-3" style="text-align: center">
+	<div class="d-flex gap-2 justify-content-center p-3 text-center">
 		<button type="submit" class="btn btn-primary" data-testid="youth-formation-save">{{ i18n.getMessage('button_save') }}</button>
 		
 		<a href="{{ env.getInternalUrl(env.getPageId(), "matchid=" ~ env.getRequestParameter("matchid")) }}" class="btn btn-secondary" data-testid="youth-formation-reset">{{ i18n.getMessage('button_reset') }}</a>

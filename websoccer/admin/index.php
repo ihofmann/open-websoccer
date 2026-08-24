@@ -56,7 +56,7 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
 	$url = '?site='. $pageId;
 	$active = ($currentSite == $pageId);
 
-	if (strlen($entity)) {
+	if (is_scalar($entity) && strlen((string) $entity)) {
 		$url .= '&entity=' . escapeOutput($entity);
 		$active = (isset($_REQUEST['entity']) &&  $_REQUEST['entity'] == $entity);
 	}

@@ -7,7 +7,7 @@
 	
 	<table class="table">
 		<colgroup>
-			<col style="width: 40px" />
+			<col class="ws-col-40" />
 			<col />
 			<col />
 			<col />
@@ -43,21 +43,21 @@
 						{% if i18n.hasMessage(markerTitle) %}
 							{% set markerTitle = i18n.getMessage(markerTitle) %}
 						{% endif %}
-						style="background-color: {{ marker.color }}"
+						data-bg-color="{{ marker.color }}"
 					{% endfor %}
 					
-					{% endif %}>{% if markerTitle|length > 0 %}<div class="wstooltip" title="{{ markerTitle }}" style="cursor: default;">{% endif %}{{ place }}{% if markerTitle|length > 0 %}</div>{% endif %}</td>
+					{% endif %}>{% if markerTitle|length > 0 %}<div class="wstooltip ws-cursor-default" title="{{ markerTitle }}">{% endif %}{{ place }}{% if markerTitle|length > 0 %}</div>{% endif %}</td>
 					<td>{% if (env.getUser().id > 0 and team.user_id == env.getUser().id) %}<strong>{% endif %}
 					
 					{% if team.picture|length %}
-						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ team.picture }}" style="max-width: 20px"/>
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ team.picture }}" class="ws-logo-max-20"/>
 					{% endif %}
 					
 					<a href="{{ env.getInternalUrl("team", "id=" ~ team.id) }}" data-testid="league-table-team-link-{{ team.id }}">{{ team.name }}</a>
 					{% if team.user_id > 0 %}
 						<br>
 						{% if team.user_picture|length > 0 %}
-							<a href="{{ env.getInternalUrl("user", "id=" ~ team.user_id) }}"><img src="{{ team.user_picture }}" style="width: 20px; height: 20px"/></a>
+							<a href="{{ env.getInternalUrl("user", "id=" ~ team.user_id) }}"><img src="{{ team.user_picture }}" class="ws-avatar-20"/></a>
 						{% endif %}
 						<small><a href="{{ env.getInternalUrl("user", "id=" ~ team.user_id) }}">{{ team.user_name }}</a></small>
 					{% endif %}
@@ -71,7 +71,7 @@
 					<td>{{ team.goals_diff }}</td>
 					<td>{{ team.score }}
 					{% if team.previous_rank is defined and team.previous_rank > 0 %}
-						<a href="{{ env.getInternalUrl("tablehistory", "id=" ~ team.id) }}" style="text-decoration: none" title="{{ i18n.getMessage("tablehistory_navlabel") }}">
+						<a href="{{ env.getInternalUrl("tablehistory", "id=" ~ team.id) }}" class="text-decoration-none" title="{{ i18n.getMessage("tablehistory_navlabel") }}">
 						{% if team.previous_rank < place %}
 							<i class="bi bi-arrow-down text-danger"></i>
 						{% elseif team.previous_rank > place %}
@@ -89,9 +89,9 @@
 	
 	{% if markers is defined and markers|length > 0 %}
 		<h5>{{ i18n.getMessage("entity_tablemarker") }}</h5>
-		<table class="table table-sm" style="width: auto;">
+		<table class="table table-sm w-auto">
 			<colgroup>
-				<col style="width: 40px" />
+				<col class="ws-col-40" />
 				<col />
 			</colgroup>
 			<tbody>
@@ -101,7 +101,7 @@
 					{% set markerTitle = i18n.getMessage(markerTitle) %}
 				{% endif %}
 				<tr>
-					<td style="background-color: {{ marker.color }}">&nbsp;</td>
+					<td data-bg-color="{{ marker.color }}">&nbsp;</td>
 					<td>{{ markerTitle }}</td>
 				</tr>
 			{% endfor %}

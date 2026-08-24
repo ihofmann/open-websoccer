@@ -27,7 +27,7 @@
 				{% else %}
 					{% if user.picture|length > 0 %}
 						<a href="{{ env.getInternalUrl("user", "id=" ~ user.id) }}" 
-						title="{{ i18n.getMessage("user_navlabel") }}"><img src="{{ user.picture }}" alt="{{ user.nick }}" style="width: 40px; height: 40px"/></a>
+						title="{{ i18n.getMessage("user_navlabel") }}"><img src="{{ user.picture }}" alt="{{ user.nick }}" class="ws-avatar-40"/></a>
 					{% endif %}
 					<a href="{{ env.getInternalUrl("user", "id=" ~ user.id) }}">{{ user.nick }}</a>
 				{% endif %}
@@ -37,7 +37,7 @@
 				{% if user.team_id > 0 and not user.hideinonlinelist %}
 					{% if user.team_picture|length > 0 %}
 						<a href="{{ env.getInternalUrl("team", "id=" ~ user.team_id) }}" 
-						title="{{ i18n.getMessage("team_navlabel") }}"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ user.team_picture }}" alt="{{ user.team_name }}" style="max-width: 40px;"/></a>
+						title="{{ i18n.getMessage("team_navlabel") }}"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ user.team_picture }}" alt="{{ user.team_name }}" class="ws-logo-max-40"/></a>
 					{% endif %}
 					
 					<a href="{{ env.getInternalUrl("team", "id=" ~ user.team_id) }}" 

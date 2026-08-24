@@ -58,7 +58,7 @@
 	</div>
 {% else %}
 
-	<div id="buildingsSelection" class="carousel card card-body slide" style="min-height: 200px">
+	<div id="buildingsSelection" class="carousel card card-body slide ws-min-h-200">
 	  <ol class="carousel-indicators">
 	  	{% for building in availableBuildings %}
 	    	<li data-target="#buildingsSelection" data-slide-to="{{ loop.index0 }}"{% if loop.index0 == 0 %} class="active"{% endif %}></li>
@@ -76,7 +76,7 @@
 			{% else %}
 				{% set buildingDescription = building.description %}
 			{% endif %}
-	    	<div class="item{% if loop.index0 == 0 %} active{% endif %}" style="padding: 0 50px">
+	    	<div class="item{% if loop.index0 == 0 %} active{% endif %} ws-carousel-item-padding">
 				<h4>{{ buildingName }}</h4>
 				<p>{{ buildingDescription }}</p>
 				

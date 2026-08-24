@@ -148,8 +148,8 @@ $wherePart = "1=1";
 $parameters = array();
 
 foreach($filterFields as $filterFieldId => $filterFieldInfo) {
-	if (strlen(trim($filterFieldInfo["value"]))) {
-		$searchValue = strtoupper(trim($filterFieldInfo["value"]));
+	if (strlen(trim($filterFieldInfo["value"] ?? ""))) {
+		$searchValue = strtoupper(trim($filterFieldInfo["value"] ?? ""));
 		$wherePart .= " AND UCASE(". $filterFieldInfo["field"] . ") LIKE '%%%s%%'";
 		$parameters[] = $searchValue;
 	}

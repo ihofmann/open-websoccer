@@ -48,7 +48,7 @@ if (!$overviewConfig) {
 }
 
 // shall delete and edit be logged?
-$loggingEnabled = (boolean) $overviewConfig[0]->attributes()->logging;
+$loggingEnabled = (bool) $overviewConfig[0]->attributes()->logging;
 if ($loggingEnabled) {
 	$loggingColumns = (string) $overviewConfig[0]->attributes()->loggingcolumns;
 	if (!strlen($loggingColumns)) {
@@ -82,7 +82,7 @@ if ($show == "add" || $show == "edit") {
 	foreach($fields as $field) {
 		$attrs = $field->attributes();
 		
-		if ($show == "add" && (boolean) $attrs["editonly"]) {
+		if ($show == "add" && (bool) $attrs["editonly"]) {
 			continue;
 		}
 		
@@ -107,7 +107,7 @@ if ($show == "add" || $show == "edit") {
 		$fieldInfo = array();
 		$fieldInfo["type"] = (string) $attrs["type"];
 		$fieldInfo["required"] = ($attrs["required"] == "true" && !($show == "edit" && $fieldInfo["type"] == "password"));
-		$fieldInfo["readonly"] = (boolean) $attrs["readonly"];
+		$fieldInfo["readonly"] = (bool) $attrs["readonly"];
 		$fieldInfo["jointable"] = (string) $attrs["jointable"];
 		$fieldInfo["entity"] = (string) $attrs["entity"];
 		$fieldInfo["labelcolumns"] = (string) $attrs["labelcolumns"];

@@ -307,7 +307,7 @@ test.describe.serial('Formation page (logged in as user1)', () => {
 
     // Two defenders are left over after the preselect - put both on the bench.
     // Available players are those whose add-to-bench link is still visible
-    // (players already on the pitch have it hidden by the JS).
+    // (players already on the pitch have it hidden by the JS via ws-hidden).
     const defenders = await expandAccordion(page, 'Defense');
     const availableIds = await defenders
       .getByTestId('player-selectable')
@@ -315,7 +315,8 @@ test.describe.serial('Formation page (logged in as user1)', () => {
         els
           .filter((el) => {
             const link = el.querySelector('[data-testid="player-add-bench"]');
-            return link instanceof HTMLElement && link.style.display !== 'none';
+            return link instanceof HTMLElement &&
+              !link.classList.contains('ws-hidden');
           })
           .map((el) => (el as HTMLElement).dataset.playerid),
       );

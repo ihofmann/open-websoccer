@@ -6,6 +6,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
+		<script nonce="{{ nonce }}">window.wsNonce = "{{ nonce }}";</script>
+		
 		{% if env.getRequestParameter("id") != null %}
 			{% set url = env.getInternalUrl(null, "id=" ~ env.getRequestParameter("id"), TRUE) %}
 		{% else %}

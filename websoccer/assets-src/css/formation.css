@@ -294,9 +294,8 @@
   opacity: 1;
 }
 
-.playerRemoveLink {
-  display: none;
-}
+/* playerRemoveLink visibility is toggled via the ws-hidden class
+   (added/removed by formationws4.js), so no static display:none here. */
 
 .formationPlayerPicture {
   position: absolute;

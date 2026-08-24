@@ -19,7 +19,7 @@
 	
 	<div class="row">
 		<div class="col-md-12">
-			<canvas id="stadium" width="600" height="375" style="margin: 20px;"
+			<canvas id="stadium" width="600" height="375" class="ws-stadium-canvas"
 				data-ratioside="{{ ((stadium.places_seats + stadium.places_stands) / env.getConfig("stadium_max_side") * 100)|number_format }}"
 				data-ratiogrand="{{ ((stadium.places_seats_grand + stadium.places_stands_grand) / env.getConfig("stadium_max_grand") * 100)|number_format }}"
 				data-ratiovip="{{ ((stadium.places_vip) / env.getConfig("stadium_max_vip") * 100)|number_format }}"
@@ -76,7 +76,7 @@
 		{{ profile.infofield(i18n.getMessage("entity_stadiumconstruction_p_haupt_sitz"), construction.p_haupt_sitz) }}
 		{{ profile.infofield(i18n.getMessage("entity_stadiumconstruction_p_vip"), construction.p_vip) }}
 		
-		<div style="margin-top: 10px">
+		<div class="mt-2">
 			{% if construction.deadline > env.getNowAsTimestamp() %}
 				{{ msgbox.box("", i18n.getMessage("stadium_construction_checkstatuslater"), "info") }}
 			{% else %}
