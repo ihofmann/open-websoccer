@@ -4,6 +4,7 @@ import { expect, test, type Page } from '@playwright/test';
  * Shared AdminCenter helpers for E2E tests.
  *
  * Seed data: AdminCenter login is `admin` / `admin`.
+ * A second admin `locktest` / `locktest` exists only for the 2FA lockout test.
  */
 
 export type FieldFill =
@@ -31,12 +32,37 @@ export type EntityCrudConfig = {
   editFields?: Record<string, FieldFill>;
 };
 
+/**
+ * Completes the e-mail second factor after credentials have been submitted.
+ *
+ * There is no mail server in the E2E stack, so mail() fails and the
+ * verification code is rendered on the page with the "E-Mail could not be
+ * sent" warning. This helper extracts the code and submits it.
+ */
+async function completeEmail2FA(page: Page): Promise<void> {
+  await expect(page.locator('h2')).toHaveText('Verification Code');
+  await expect(page.locator('.alert-warning')).toContainText(/E-Mail could not be sent/i);
+  const code = await page
+    .locator('.alert-warning')
+    .textContent();
+  const match = code!.match(/(\d{6})/);
+  if (!match) {
+    throw new Error('Could not extract the 6-digit verification code from the page.');
+  }
+  await page.fill('#inputVerificationCode', match[1]);
+  await page.click('button[type=submit]');
+}
+
 export async function loginAsAdmin(page: Page, password = 'admin'): Promise<void> {
   await page.goto('/admin/');
   await expect(page).toHaveURL(/login\.php/);
   await page.fill('#inputUser', 'admin');
   await page.fill('#inputPassword', password);
   await page.click('button[type=submit]');
+
+  // Step 2: e-mail verification code (no mail server → code is shown on page)
+  await completeEmail2FA(page);
+
   await expect(page).toHaveURL(/\/admin\/index\.php$/);
   await expect(page.locator('.navbar-text')).toContainText('admin');
 }

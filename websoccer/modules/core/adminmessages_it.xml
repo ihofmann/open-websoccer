@@ -54,6 +54,18 @@
   <message id="login_label_password">Parola d'ordine</message>
   <message id="login_button_logon">Firmare</message>
   <message id="login_link_forgotpassword">Ha dimenticato la password?</message>
+  <message id="login_2fa_title">Codice di verifica</message>
+  <message id="login_2fa_email_sent_title">Codice di verifica inviato</message>
+  <message id="login_2fa_email_sent">Un codice di verifica è stato inviato al tuo indirizzo e-mail. Controlla le tue e-mail e inserisci il codice qui sotto.</message>
+  <message id="login_2fa_email_not_sent_title">Impossibile inviare l'e-mail</message>
+  <message id="login_2fa_email_not_sent">Impossibile inviare l'e-mail. Ecco il codice di verifica: %s</message>
+  <message id="login_2fa_label_code">Codice di verifica</message>
+  <message id="login_2fa_button_verify">Verifica</message>
+  <message id="login_2fa_link_back">Torna all'accesso</message>
+  <message id="login_2fa_error_nocode">Nessun codice di verifica fornito.</message>
+  <message id="login_2fa_error_wrong_code">Codice di verifica errato.</message>
+  <message id="login_2fa_error_blocked">Troppi tentativi falliti. Puoi riprovare tra 5 minuti.</message>
+  <message id="login_2fa_email_subject">%s Codice di verifica: %s</message>
   <message id="admincenter_brand">AdminCenter</message>
   <message id="admincenter_homelink_tooltip">Alla home page di AdminCenter</message>
   <message id="admincenter_loggedin_as">Effettuato l'accesso come</message>
@@ -111,6 +123,7 @@
   <message id="settings_tab_offlinemode">Modalità offline</message>
   <message id="settings_tab_game">Gioco</message>
   <message id="settings_tab_social">Social networks</message>
+  <message id="settings_tab_security">Sicurezza</message>
   <message id="settings_saved_note_restartjobs">Ricomincia i tuoi lavori!</message>
   <message id="settings_saved_note_restartjobs_details">Le modifiche che interessano qualsiasi lavoro richiedono il suo riavvio.</message>
   <message id="settings_label_context_root">Percorso server relativo (radice di contesto)</message>
@@ -148,6 +161,8 @@
   <message id="settings_label_offline_text">Messaggio non in linea</message>
   <message id="settings_label_offline_times">Modalità offline ricorrente</message>
   <message id="settings_label_offline_times_help">Intervalli di tempo separati da virgole nel formato 24 ore in cui il sito Web passa automaticamente alla modalità offline. Esempio: 09:00-12:00, 13:00-17:00</message>
+  <message id="settings_label_csp_header">Intestazione Content-Security-Policy</message>
+  <message id="settings_label_csp_header_help">Intestazione CSP inviata ad ogni risposta di pagina del frontend. Il segnaposto ${NONCE} viene sostituito con un nonce univoco per richiesta, disponibile in JavaScript come <em>window.wsNonce</em> e nei template come <em>nonce</em>. Mantenere la direttiva il più rigorosa possibile. Google reCAPTCHA e Gravatar.com sono consentiti per impostazione predefinita.</message>
   <message id="manage_add">Aggiungi nuovo record</message>
   <message id="manage_edit">Modificare</message>
   <message id="manage_delete">Elimina</message>
@@ -189,8 +204,6 @@
   <message id="sendpassword_admin_email_introduction">Di seguito trovi la nuova password che hai richiesto tramite l'AdminCenter e che puoi e devi cambiare sul nostro sito web:</message>
   <message id="sendpassword_admin_email_newpassword_label">La tua nuova password:</message>
   <message id="sendpassword_admin_email_ending">Tieni presente che la nuova password diventa attiva non appena accedi con essa per la prima volta. </message>
-  <message id="sendpassword_admin_usernotfound">Utente non trovato.</message>
-  <message id="sendpassword_admin_alreadysent">Hai richiesto una nuova password di recente. Si prega di riprovare più tardi.</message>
   <message id="sendpassword_admin_title">Richiedi password</message>
   <message id="sendpassword_admin_intro">Hai dimenticato la tua password? Basta inserire il tuo indirizzo e-mail e ti invieremo una nuova password.</message>
   <message id="sendpassword_admin_label_email">E-Mail</message>

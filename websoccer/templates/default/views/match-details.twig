@@ -39,27 +39,27 @@
 	
 	<div id="report_result">
 		<span id="report_goals_home">
-		{% if match.match_home_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; margin-right: 20px"/>{% endif %}
+		{% if match.match_home_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" class="ws-match-img-120 me-3"/>{% endif %}
 		{{ match.match_goals_home }}</span>
 		<span id="report_goals_separator">-</span>
 		<span id="report_goals_guest">{{ match.match_goals_guest }}
-		{% if match.match_guest_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; margin-left: 20px"/>{% endif %}
+		{% if match.match_guest_picture|length %}<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" class="ws-match-img-120 ms-3"/>{% endif %}
 		</span>
-		<div class="row" style="margin: -10px 0 10px 0">
-			<div style="width: 50%; float: left;">
+		<div class="row ws-match-goals-row">
+			<div class="w-50 float-start">
 				{% for goalMessage in homeStrikerMessages %}
-				<small style="font-weight: bold">{{ goalMessage.playerNames|split(';')[0] }} ({{ goalMessage.minute }}.{% if goalMessage.type == "Elfmeter_erfolg" %}, {{ i18n.getMessage("match_details_commenttitle_penalty")|slice(0, 1) }}.{% endif %})<br></small>
+				<small class="fw-bold">{{ goalMessage.playerNames|split(';')[0] }} ({{ goalMessage.minute }}.{% if goalMessage.type == "Elfmeter_erfolg" %}, {{ i18n.getMessage("match_details_commenttitle_penalty")|slice(0, 1) }}.{% endif %})<br></small>
 				{% endfor %}
 			</div>
-			<div style="width: 50%; float: right;">
+			<div class="w-50 float-end">
 				{% for goalMessage in guestStrikerMessages %}
-				<small style="font-weight: bold">{{ goalMessage.playerNames|split(';')[0] }} ({{ goalMessage.minute }}.{% if goalMessage.type == "Elfmeter_erfolg" %}, {{ i18n.getMessage("match_details_commenttitle_penalty")|slice(0, 1) }}.{% endif %})<br></small>
+				<small class="fw-bold">{{ goalMessage.playerNames|split(';')[0] }} ({{ goalMessage.minute }}.{% if goalMessage.type == "Elfmeter_erfolg" %}, {{ i18n.getMessage("match_details_commenttitle_penalty")|slice(0, 1) }}.{% endif %})<br></small>
 				{% endfor %}
 			</div>
 		</div>
 	</div>
 	
-	<div style="margin-top: 10px">
+	<div class="mt-2">
 	{% if match.match_home_noformation %}
 	{{ msgbox.box("", i18n.getMessage("match_details_noformation", match.match_home_name), "warning") }}
 	{% endif %}
@@ -68,7 +68,7 @@
 	{% endif %}
 	</div>
 	
-	<p style="margin-top: 10px">
+	<p class="mt-2">
 	{% if not match.match_simulated %}
 		<a id="matchReportRefresh" class="btn btn-outline-primary ajaxLink" data-ajaxtarget="pagecontent" 
 			data-ajaxquerystr="page=match&amp;id={{ match.match_id }}" 
@@ -98,7 +98,7 @@
 	  <div class="tab-pane active" id="report">
 	  
 	  	<span class="report_team_home">{{ match.match_home_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_home_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
-	  	<span style="margin-left: 20px" class="report_team_guest">{{ match.match_guest_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
+	  	<span class="ms-3 report_team_guest">{{ match.match_guest_name }} <a href="{{ env.getInternalUrl("team", "id=" ~ match.match_guest_id) }}" title="{{ i18n.getMessage("team_navlabel") }}"><i class="bi bi-info-circle darkIcon"></i></a></span>
 	  
 		<div id="reportarea">
 		{% if match.match_deprecated_report|length > 0 %}
@@ -107,13 +107,13 @@
 		
 			<table id="reporttable">
 				<colgroup>
-					<col style="width: 60px" />
+					<col class="ws-col-60" />
 					<col />
 				</colgroup>
 				<tbody>
 					{% if match.match_simulated %}
 					<tr>
-						<td style="text-align: center"><i class="websoccericon-matchcompleted"></i></td>
+						<td class="text-center"><i class="websoccericon-matchcompleted"></i></td>
 						<td><h4>{{ i18n.getMessage("match_details_match_completed") }}</h4></td>
 					</tr>
 					{% endif %}
@@ -141,7 +141,7 @@
 							{% set displayPenaltyMsg = 0 %}
 						{% endif %}
 							<tr>
-								<td style="text-align: center">
+								<td class="text-center">
 								{% if reportmessage.type == "Tor" or reportmessage.type == "Elfmeter_erfolg" or reportmessage.type == "Tor_mit_vorlage" or reportmessage.type == "Freistoss_treffer"  %}
 									<i class="websoccericon-goal"></i>
 								{% elseif reportmessage.type == "Karte_gelb" %}

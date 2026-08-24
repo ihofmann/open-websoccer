@@ -22,6 +22,9 @@
 error_reporting(E_ALL);
 define("BASE_FOLDER", __DIR__ ."/..");
 
+// Suppress the PHP version disclosure header.
+@header_remove('X-Powered-By');
+
 define("PHP_MIN_VERSION", "8.3.0");
 define("WRITABLE_FOLDERS", "generated/,uploads/club/,uploads/cup/,uploads/player/,uploads/sponsor/,uploads/stadium/,uploads/stadiumbuilder/,uploads/stadiumbuilding/,uploads/users/,admin/config/jobs.xml,admin/config/termsandconditions.xml");
 define("DEFAULT_DB_PREFIX", "ws3");
@@ -30,6 +33,11 @@ define("DDL_FULL", "ws3_ddl_full.sql");
 define("DDL_MIGRATION", "ws3_ddl_upgrade.sql");
 define("DDL_INDEX", "ws3_ddl_index.sql");
 
+session_set_cookie_params(array(
+	'lifetime' => 0,
+	'path' => '/',
+	'samesite' => 'Lax'
+));
 session_start();
 $supportedLanguages = array("de" => "Deutsch", "en" => "English");
 
@@ -533,14 +541,8 @@ function printFinalPage($messages) {
     <link href="../assets/admincenter.css" rel="stylesheet" media="screen">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
     <meta charset="UTF-8">
-    <style type="text/css">
-      body {
-        padding-top: 100px;
-        padding-bottom: 40px;
-      }
-    </style>
   </head>
-  <body>
+  <body class="admin-login">
   
 	<div class="container">
 	

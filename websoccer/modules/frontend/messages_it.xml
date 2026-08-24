@@ -3,6 +3,7 @@
 <messages>
   <message id="home_navlabel">Casa</message>
   <message id="errorpage_title">Errore</message>
+  <message id="technical_error_message">Si è verificato un errore tecnico, riprova più tardi</message>
   <message id="error_page_not_found">La pagina richiesta non esiste (più). Si prega di controllare l'indirizzo inserito.</message>
   <message id="error_double_submit">Hai appena eseguito questa azione un paio di secondi fa. Si prega di riprovare presto.</message>
   <message id="validation_error_box_title">inserimento non valido</message>

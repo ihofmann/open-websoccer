@@ -31,7 +31,7 @@
 			{% for player in players %}
 			{% set salarySum = salarySum + player.contract_salary %}
 			<tr{% if player.contract_matches < 10 %} class="table-danger"{% endif %}>
-				<td style="text-align: center"><img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
+				<td class="text-center"><img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
 					alt="{{ i18n.getMessage("player_position_" ~ player.position) }}" title="{{ i18n.getMessage("player_position_" ~ player.position) }}" />
 					{% if (player.position_main|length > 0) %}
 					<p title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</p>

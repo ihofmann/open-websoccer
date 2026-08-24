@@ -215,7 +215,10 @@ class ConfigCacheFileWriter {
 		}
 		$itemAttrs['module'] = $module;
 		
-		$line .= ' = \'' . json_encode($itemAttrs, JSON_HEX_QUOT) . '\';';
+		// The generated cache uses single-quoted PHP strings. Encode apostrophes
+		// as JSON escape sequences so values such as CSP directives cannot end
+		// the surrounding PHP string. json_decode() restores them when read.
+		$line .= ' = \'' . json_encode($itemAttrs, JSON_HEX_QUOT | JSON_HEX_APOS) . '\';';
 		
 		// handle new setting
 		if ($itemname == 'setting') {

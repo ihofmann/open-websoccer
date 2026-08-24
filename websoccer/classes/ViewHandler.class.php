@@ -252,7 +252,7 @@ class ViewHandler {
 	 * @param array $b item b
 	 * @return number comparison result
 	 */
-	static function sortByWeight(&$a, &$b) {
+	static function sortByWeight($a, $b) {
 		if (!isset($a['weight']) || !isset($b['weight'])) {
 			return 0;
 		}

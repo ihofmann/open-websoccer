@@ -10,7 +10,7 @@
 
 {% if env.user.profilepicture|length > 0 %}
 	<a href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}">
-		<img src="{{ env.user.profilepicture }}" class="float-start" style="width: 40px; height: 40px; margin-right: 10px" alt="{{ env.user.username }}"/>
+		<img src="{{ env.user.profilepicture }}" class="float-start ws-avatar-40 me-2" alt="{{ env.user.username }}"/>
 	</a>
 {% endif %}
 
@@ -23,7 +23,7 @@
 <a id="notificationsLink" href="#" title="{{ i18n.getMessage('userprofile_block_notifications') }}"
 	class="ajaxLink" data-ajaxtarget="notificationspopup" data-ajaxblock="notifications"><span class="badge{% if unseenNotifications > 0 %} bg-danger{% endif %}"><i class="bi bi-bell"></i>{% if unseenNotifications > 0 %} {{ unseenNotifications }}{% endif %}</span></a>
 </p>
-<div id="notificationspopupwrapper" style="display: none"><div id="notificationspopup">...</div></div>
+<div id="notificationspopupwrapper" class="ws-hidden"><div id="notificationspopup">...</div></div>
 
 <p class="mb-1"><em>{{ i18n.getMessage('userprofile_block_popularity') }}</em> <i class="bi bi-question-circle wstooltip" data-bs-toggle="tooltip" title="{{ i18n.getMessage('userprofile_block_tooltip_popularity') }}"></i></p>
 {{ statisticelements.progressbar(profile.user_popularity) }}
@@ -34,7 +34,7 @@
 {% if env.getUser().clubId > 0 %}
 <p><em>{{ i18n.getMessage('entity_club') }}</em>
 {% if userteam.team_picture|length %}
-	{% set teamPicture = "<img src=\""~ env.getConfig("context_root") ~ "/uploads/club/" ~ userteam.team_picture ~ "\" style=\"width: 20px; height: 20px;\" />" %}
+	{% set teamPicture = "<img src=\""~ env.getConfig("context_root") ~ "/uploads/club/" ~ userteam.team_picture ~ "\" class=\"ws-avatar-20\" />" %}
 {% else %}
 	{% set teamPicture = "" %}
 {% endif %}
@@ -42,12 +42,12 @@
 {% if env.getConfig("max_number_teams_per_user") > 1 %}
 </p>
 
-<div class="dropdown" style="margin-top: -11px; margin-bottom: 12px;">
+<div class="dropdown ws-userprofile-dropdown">
   {{ teamPicture|raw }} <a class="dropdown-toggle ajaxLink" data-bs-toggle="dropdown" href="#" data-ajaxblock="user-clubs-selection" data-ajaxtarget="clubsSelectionList">
     {{ userteam.team_name }}
     <b></b>
   </a>
-  <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}" style="margin: 0 5px"><i class="bi bi-info-circle darkIcon"></i></a> 
+  <a href="{{ env.getInternalUrl("team", "id=" ~ userteam.team_id) }}" title="{{ i18n.getMessage("team_navlabel") }}" class="ws-margin-0-5"><i class="bi bi-info-circle darkIcon"></i></a> 
   <a href="{{ env.getInternalUrl("league", "id=" ~ userteam.team_league_id) }}" title="{{ i18n.getMessage("userprofile_block_link_table") }}"><i class="bi bi-table darkIcon"></i></a>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" id="clubsSelectionList">
     

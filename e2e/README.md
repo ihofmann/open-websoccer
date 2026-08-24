@@ -46,6 +46,7 @@ order:
    sample data:
 
    * **1 admin user** &mdash; AdminCenter login `admin` / `admin`.
+   * **1 admin user for lockout tests** &mdash; login `locktest` / `locktest` (used only by the 2FA lockout test so it cannot interfere with other tests).
    * **5 frontend users** &mdash; login `user1`..`user5` / `user1`..`user5`.
    * **2 leagues**, each with **20 teams** (40 teams total). Teams 1&ndash;5
      are managed by `user1`..`user5`.
@@ -174,6 +175,8 @@ While the stack is up you can also browse it manually:
 | File                               | Scenario                                                                          |
 | ---------------------------------- | --------------------------------------------------------------------------------- |
 | `tests/admin-news.spec.ts`         | `admin` signs in at the AdminCenter, publishes a news article, edits it and deletes it. |
+| `tests/admincenter/login-2fa.spec.ts` | `admin` completes the e-mail second factor after credentials (code shown on page because there is no mail server in the E2E stack). Also verifies that a wrong code shows an error. |
+| `tests/admincenter/login-2fa-lockout.spec.ts` | `locktest` admin enters three wrong verification codes and is blocked for 5 minutes; correct credentials and codes are also rejected while blocked. Uses a dedicated admin user so other tests are not affected. |
 | `tests/my-team.spec.ts`            | `user1` logs in to the frontend, opens **My Team** and verifies that his 24 players are listed. |
 | `tests/league-table.spec.ts`       | Guest opens the **Leagues** page, verifies the league selector, the 20-team standings with correct stats, table markers, and league switching. |
 | `tests/results.spec.ts`            | Guest opens **Results and Schedules**, verifies the Leagues/Cups/Latest-Results tabs, matchday results, and future match schedules. |

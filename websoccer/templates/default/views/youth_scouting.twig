@@ -68,7 +68,7 @@
 				<a href="{{ env.getInternalActionUrl("scout-youthplayer", "scoutid=" ~ env.getRequestParameter("scoutid") ~ "&country=" ~ country) }}" class="btn btn-lg btn-block btn-outline-primary" data-testid="scout-country" data-country="{{ country }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %}{{ countryLabel }}</a>
 			{% endfor %}
 			
-			<p style="margin-top: 10px"><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn btn-outline-primary">{{ i18n.getMessage("button_cancel") }}</a></p>
+			<p class="mt-2"><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn btn-outline-primary">{{ i18n.getMessage("button_cancel") }}</a></p>
 		
 		{% endif %}
 	

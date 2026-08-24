@@ -56,7 +56,7 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
 	$url = '?site='. $pageId;
 	$active = ($currentSite == $pageId);
 
-	if (strlen($entity)) {
+	if (is_scalar($entity) && strlen((string) $entity)) {
 		$url .= '&entity=' . escapeOutput($entity);
 		$active = (isset($_REQUEST['entity']) &&  $_REQUEST['entity'] == $entity);
 	}
@@ -76,23 +76,12 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
-    <style type="text/css">
-      body {
-        padding-top: 70px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-
-      .cupround {
-			margin-left: 30px;
-			border-left: 1px solid #CCCCCC;
-			padding: 3px 5px 0px 10px;
-		}
-    </style>
   </head>
-  <body>
+  <body class="admin-main"
+        data-delete-multiselect-confirm="<?php echo escapeOutput($i18n->getMessage('manage_delete_multiselect_confirm')); ?>"
+        data-delete-link-confirm="<?php echo escapeOutput($i18n->getMessage('manage_delete_link_confirm')); ?>"
+        data-option-no="<?php echo escapeOutput($i18n->getMessage('option_no')); ?>"
+        data-option-yes="<?php echo escapeOutput($i18n->getMessage('option_yes')); ?>">
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
@@ -135,7 +124,7 @@ function printNavItem($currentSite, $pageId, $navLabel, $entity = '') {
         </div><!--/span-->
         <div class="col-md-8 col-lg-9 p-3">
 
-        	<div id="ajaxSpinner" style="display: none">
+        	<div id="ajaxSpinner" class="ws-hidden">
         		<img src="../img/ajax-loader.gif" width="16" height="16" />
         	</div>
 <?php
@@ -166,38 +155,6 @@ if (preg_match('#^[a-z0-9_-]+$#i', $site) && file_exists($includeFile) ) {
 
 
     <script src="../assets/admincenter.js"></script>
-
-	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-		document.addEventListener("click", function(e) {
-			var deleteBtn = e.target.closest(".deleteBtn");
-			if (deleteBtn) {
-				e.preventDefault();
-				wsConfirm("<?php echo $i18n->getMessage("manage_delete_multiselect_confirm"); ?>",
-						"<?php echo $i18n->getMessage("option_no"); ?>",
-						"<?php echo $i18n->getMessage("option_yes"); ?>",
-				function(result) {
-					if (result) {
-						document.frmMain.submit();
-					}
-				});
-				return;
-			}
-			var deleteLink = e.target.closest(".deleteLink");
-			if (deleteLink) {
-				e.preventDefault();
-				wsConfirm("<?php echo $i18n->getMessage("manage_delete_link_confirm"); ?>",
-						"<?php echo $i18n->getMessage("option_no"); ?>",
-						"<?php echo $i18n->getMessage("option_yes"); ?>",
-				function(result) {
-					if (result) {
-						window.location = deleteLink.getAttribute("href");
-					}
-				});
-			}
-		});
-	});
-</script>
 
   </body>
 </html>

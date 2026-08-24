@@ -8,6 +8,12 @@ import { loginAsAdmin, logoutAdmin } from './admincenter/entities/helpers';
  * the application error "e-mail not sent." after the user row has already been
  * created (status = 2 / inactive). An admin must then activate the account
  * before the new user can log in.
+ *
+ * Data privacy: registering with an already existing e-mail address must NOT
+ * reveal that the address is in use. Instead the standard success state is
+ * shown and a password reset is triggered in the background. The background
+ * mail delivery fails (no mail server), which is treated as success, so no
+ * error is displayed.
  */
 
 const PASSWORD = 'Secret1';
@@ -74,11 +80,34 @@ test('rejects registration with mismatched passwords', async ({ page }) => {
     email: `${nick}@e2e.test`,
     emailRepeat: `${nick}@e2e.test`,
     password: PASSWORD,
-    passwordRepeat: 'Different1',
+    passwordRepeat: '**********',
   });
 
   await expect(page.locator('.alert-danger')).toContainText('Passwords do not match.');
   await expect(page.locator('h1')).toHaveText('Register as a new user');
+});
+
+test('duplicate e-mail shows success state (no error) and triggers password reset', async ({ page }) => {
+  // user5@example.com is a seeded, active user that no other E2E test logs in
+  // as, so triggering a background password reset for it is side-effect-free.
+  const existingEmail = 'user5@example.com';
+  const stamp = Date.now();
+  const nick = `dupreg${stamp}`;
+
+  await fillRegistrationForm(page, {
+    nick,
+    email: existingEmail,
+    emailRepeat: existingEmail,
+    password: PASSWORD,
+    passwordRepeat: PASSWORD,
+  });
+
+  // The standard registration success state is shown, identical to a genuine
+  // registration, so the existing e-mail address is not revealed.
+  await expect(page.locator('.alert-success')).toContainText('Registration submitted');
+  // No error must be displayed, even though the background password-reset
+  // mail could not be sent (no mail server in the E2E stack).
+  await expect(page.locator('.alert-danger')).toHaveCount(0);
 });
 
 test('registers a user, admin enables account, then user can log in', async ({ page, context }) => {

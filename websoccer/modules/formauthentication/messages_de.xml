@@ -17,9 +17,6 @@
     <message id="forgot-password_title">Neues Passwort generieren</message>
     <message id="forgot-password_submit_button">Neues Passwort zusenden</message>
     
-    <message id="forgot-password_email-not-found">Es wurde kein aktiver Benutzer mit diese E-Mail Adresse gefunden. Bitte kontrolliere die Schreibweise.</message>
-    <message id="forgot-password_already-sent">Du hast innerhalb der letzten 24 Stunden bereits ein neues Passwort angefordert. Es kann nur einmal am Tag ein neues Passwort versendet werden.</message>
-    
     <message id="forgot-password_message_title">Ein neues Passwort wurde versendet</message>
     <message id="forgot-password_message_content">Bitte ruf deine E-Mails ab.</message>
     

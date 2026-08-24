@@ -279,7 +279,7 @@ class DbConnection {
 		// mask input
 		$arrayLength = count($parameters);
 		for($i = 0; $i < $arrayLength; $i++) {
-			$parameters[$i] = $this->connection->real_escape_string(trim($parameters[$i]));
+			$parameters[$i] = $this->connection->real_escape_string(trim((string) $parameters[$i]));
 		}
 		
 		return $parameters;

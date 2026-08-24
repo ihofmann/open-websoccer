@@ -54,4 +54,25 @@ if ($website->getUser()->language != null) {
 include(sprintf(CONFIGCACHE_MESSAGES, $i18n->getCurrentLanguage()));
 include(sprintf(CONFIGCACHE_ENTITYMESSAGES, $i18n->getCurrentLanguage()));
 
+/**
+ * Returns an error message that is safe to display in the frontend.
+ *
+ * Application-thrown Exceptions carry user-facing messages (e.g. validation
+ * or business-rule errors) that are safe to display.  Other Throwable
+ * subtypes (Error, TypeError, etc.) may contain internal details such as
+ * SQL queries or file paths and are masked with a generic message in
+ * production.
+ *
+ * @param I18n $i18n current frontend translation provider.
+ * @param Throwable $exception caught exception.
+ * @return string detailed or translated generic error message.
+ */
+function getFrontendErrorMessage(I18n $i18n, Throwable $exception) {
+	if (DEBUG || $exception instanceof Exception) {
+		return $exception->getMessage();
+	}
+
+	return $i18n->getMessage('technical_error_message');
+}
+
 ?>

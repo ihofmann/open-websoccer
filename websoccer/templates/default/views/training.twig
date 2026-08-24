@@ -21,7 +21,7 @@
 {% endif %}
 
 {% if env.getConfig("training_min_hours_between_execution") > 0 %}
-<p style="margin-top: 10px; margin-bottom: 20px;"><i class="bi bi-info-circle"></i> {{ i18n.getMessage('training_execute_training_note', env.getConfig("training_min_hours_between_execution")) }}</p>
+<p class="mt-2 mb-3"><i class="bi bi-info-circle"></i> {{ i18n.getMessage('training_execute_training_note', env.getConfig("training_min_hours_between_execution")) }}</p>
 {% endif %}	
 
 {# Show result of executed training unit #}

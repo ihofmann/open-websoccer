@@ -14,6 +14,14 @@ error_reporting(E_ALL);
 // The application root (the "websoccer" folder itself).
 define('BASE_FOLDER', dirname(__DIR__));
 
+// Mirrors admin/config/global.inc.php: DEBUG is referenced by TemplateEngine
+// (and ViewHandler). Defining it here lets unit tests exercise code paths
+// that render e-mail templates (e.g. EmailHelper) without hitting an
+// "undefined constant" error.
+if (!defined('DEBUG')) {
+	define('DEBUG', FALSE);
+}
+
 // Composer autoloader (provides PHPUnit and Twig).
 require_once BASE_FOLDER . '/vendor/autoload.php';
 

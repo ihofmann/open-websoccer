@@ -38,7 +38,7 @@
 								<td>{{ season.season_name }}</td>
 								<td>
 									{% if season.team_picture|length %}
-										<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ season.team_picture }}" style="max-width: 40px"/>
+										<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ season.team_picture }}" class="ws-logo-max-40"/>
 									{% endif %}
 									<a href="{{ env.getInternalUrl("team", "id=" ~ season.team_id ) }}">{{ season.team_name }}</a>
 								</td>
@@ -72,7 +72,7 @@
 				<td>{{ cup.cup_name }}</td>
 				<td>
 					{% if cup.team_picture|length %}
-						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ cup.team_picture }}" style="max-width: 40px"/>
+						<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ cup.team_picture }}" class="ws-logo-max-40"/>
 					{% endif %}
 					<a href="{{ env.getInternalUrl("team", "id=" ~ cup.team_id ) }}">{{ cup.team_name }}</a>
 				</td>

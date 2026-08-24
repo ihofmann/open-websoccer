@@ -85,6 +85,12 @@ final class DbConnectionTest extends TestCaseBase {
 		$this->assertSame('SELECT id FROM mytable WHERE name = \'bob\'', $this->capturedSql);
 	}
 
+	public function testQuerySelectHandlesNullParameters(): void {
+		$db = $this->makeDb($this->makeFakeConnection());
+		$db->querySelect('id', 'mytable', 'name = \'%s\'', null);
+		$this->assertSame('SELECT id FROM mytable WHERE name = \'\'', $this->capturedSql);
+	}
+
 	public function testQuerySelectWithMultipleParameters(): void {
 		$db = $this->makeDb($this->makeFakeConnection());
 		$db->querySelect('id', 'mytable', 'a = %d AND b = \'%s\'', [5, 'x']);

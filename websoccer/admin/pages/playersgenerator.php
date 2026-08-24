@@ -81,7 +81,7 @@ if (!$show) {
 	  	<p><a href="?site=<?php echo $site ?>&show=generateform&leagueid=<?php echo $leagueid ?>"
 	  		class="btn btn-outline-primary"><?php echo $i18n->getMessage("playersgenerator_create_for_all_teams"); ?></a></p>
 	  		
-	  	<h4 style="margin-top:20px"><?php echo $i18n->getMessage("playersgenerator_create_for_single_teams"); ?></h4>
+	  	<h4 class="players-section-heading"><?php echo $i18n->getMessage("playersgenerator_create_for_single_teams"); ?></h4>
 	    
 	    <table class="table table-striped">
 	    	<thead>

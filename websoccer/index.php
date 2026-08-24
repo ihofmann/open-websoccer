@@ -24,6 +24,17 @@ define('BASE_FOLDER', __DIR__);
 
 include(BASE_FOLDER . '/frontbase.inc.php');
 
+// Generate a per-request CSP nonce and set the Content-Security-Policy header.
+// The nonce is exposed to JavaScript (window.wsNonce) and Twig templates (nonce)
+// so that module integrations can add the nonce attribute to inline scripts.
+$cspNonce = bin2hex(random_bytes(16));
+$cspHeader = $website->getConfig('csp_header');
+$cspHeader = str_replace('${NONCE}', $cspNonce, $cspHeader);
+header('Content-Security-Policy: ' . $cspHeader);
+
+$parameters = array();
+$parameters['nonce'] = $cspNonce;
+
 // offline mode
 $isOffline = FALSE;
 if ($website->getConfig('offline') == 'offline') {
@@ -98,10 +109,10 @@ if ($isOffline) {
 			$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR, 
 					$i18n->getMessage('validation_error_box_title'), 
 					$i18n->getMessage('validation_error_box_message')));
-		} catch (Exception $e) {
+		} catch (Throwable $e) {
 			$website->addFrontMessage(new FrontMessage(MESSAGE_TYPE_ERROR,
 					$i18n->getMessage('errorpage_title'),
-					$e->getMessage()));
+					getFrontendErrorMessage($i18n, $e)));
 		}
 	}
 	
@@ -136,8 +147,10 @@ if ($isOffline) {
 }
 
 function renderErrorPage($website, $i18n, $viewHandler, $message, $parameters) {
-	$parameters['title'] = $message;
-	$parameters['message'] = '';
+	$parameters['title'] = $i18n->getMessage('errorpage_title');
+	// The view-handler catch block only catches Exception (not Throwable),
+	// so $message is always an application-defined user-facing message.
+	$parameters['message'] = $message;
 	echo $website->getTemplateEngine($i18n, $viewHandler)->loadTemplate('error')->render($parameters);
 }
 

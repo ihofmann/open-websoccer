@@ -89,13 +89,31 @@ class RegisterFormController implements IActionController {
 			}
 		}
 		
-		// check if e-mail or user exists
-		$wherePart = "UPPER(nick) = '%s' OR UPPER(email) = '%s'";
-		$result = $this->_db->querySelect($columns, $fromTable, $wherePart, array(strtoupper($parameters["nick"]), strtoupper($parameters["email"])));
+		// Check nickname collision. Nicknames are public, so a duplicate
+		// nickname can still be rejected without leaking e-mail addresses.
+		$wherePart = "UPPER(nick) = '%s'";
+		$result = $this->_db->querySelect($columns, $fromTable, $wherePart, array(strtoupper($parameters["nick"])));
 		$rows = $result->fetch_array();
 		$result->free();
 		if ($rows["hits"]) {
 			throw new Exception($this->_i18n->getMessage("registration_user_exists"));
+		}
+		
+		// If the e-mail is already registered, do NOT reveal this (data privacy).
+		// Instead, show the standard success state and trigger a password reset
+		// in the background so the legitimate account owner is notified of the
+		// attempt. Any mail delivery failure (e.g. no mail server available) is
+		// silently ignored so that the user still sees the success state.
+		$wherePart = "UPPER(email) = '%s'";
+		$result = $this->_db->querySelect($columns, $fromTable, $wherePart, array(strtoupper($parameters["email"])));
+		$rows = $result->fetch_array();
+		$result->free();
+		if ($rows["hits"]) {
+			$this->_triggerSendPassword($parameters["email"], $fromTable);
+			$this->_websoccer->addFrontMessage(new FrontMessage(MESSAGE_TYPE_SUCCESS,
+					$this->_i18n->getMessage("register-success_message_title"),
+					$this->_i18n->getMessage("register-success_message_content")));
+			return "register-success";
 		}
 		
 		$this->_createUser($parameters, $fromTable);
@@ -104,6 +122,56 @@ class RegisterFormController implements IActionController {
 				$this->_i18n->getMessage("register-success_message_content")));
 		
 		return "register-success";
+	}
+	
+	/**
+	 * Triggers a password reset for the owner of an already registered e-mail
+	 * address, without revealing that the address is in use. Any failure (e.g.
+	 * no mail server available, or the account is not in an active state) is
+	 * silently ignored so that the registration always reports success.
+	 *
+	 * @param string $email e-mail address entered in the registration form.
+	 * @param string $fromTable fully qualified user table name.
+	 */
+	private function _triggerSendPassword($email, $fromTable) {
+		try {
+			$columns = "id, passwort_salt, passwort_neu_angefordert";
+			$wherePart = "UPPER(email) = '%s' AND status = 1";
+			$result = $this->_db->querySelect($columns, $fromTable, $wherePart, strtoupper($email));
+			$userdata = $result->fetch_array();
+			$result->free();
+			
+			if (!isset($userdata["id"])) {
+				return;
+			}
+			
+			$now = $this->_websoccer->getNowAsTimestamp();
+			$timeBoundary = $now - 24 * 3600;
+			if ($userdata["passwort_neu_angefordert"] > $timeBoundary) {
+				return;
+			}
+			
+			$salt = $userdata["passwort_salt"];
+			if (!strlen($salt)) {
+				$salt = SecurityUtil::generatePasswordSalt();
+			}
+			$password = SecurityUtil::generatePassword();
+			$hashedPassword = SecurityUtil::hashPassword($password, $salt);
+			
+			$updateColumns = array("passwort_salt" => $salt,
+					"passwort_neu_angefordert" => $now, "passwort_neu" => $hashedPassword);
+			$this->_db->queryUpdate($updateColumns, $fromTable, "id = %d", $userdata["id"]);
+			
+			$tplparameters["newpassword"] = $password;
+			EmailHelper::sendSystemEmailFromTemplate($this->_websoccer, $this->_i18n,
+				strtolower($email),
+				$this->_i18n->getMessage("sendpassword_email_subject"),
+				"sendpassword",
+				$tplparameters);
+		} catch (Exception $e) {
+			// Ignore any failure (e.g. no mail server). The user still sees
+			// the standard registration success state.
+		}
 	}
 	
 	private function _createUser($parameters, $fromTable) {

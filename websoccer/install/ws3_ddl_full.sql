@@ -19,7 +19,10 @@ CREATE TABLE ws3_admin (
   r_kalender ENUM('1','0') NOT NULL DEFAULT '0',
   r_seiten ENUM('1','0') NOT NULL DEFAULT '0',
   r_design ENUM('1','0') NOT NULL DEFAULT '0',
-  r_demo ENUM('1','0') NOT NULL DEFAULT '0'
+  r_demo ENUM('1','0') NOT NULL DEFAULT '0',
+  verification_code VARCHAR(6) NULL,
+  login_attempts INT(11) NOT NULL DEFAULT 0,
+  blocked_until INT(11) NOT NULL DEFAULT 0
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_user (

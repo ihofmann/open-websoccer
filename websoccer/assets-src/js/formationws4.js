@@ -60,10 +60,10 @@
     return parseFloat(el.dataset[key]) || 0;
   }
   function hide(el) {
-    if (el) el.style.display = "none";
+    if (el) el.classList.add("ws-hidden");
   }
   function show(el) {
-    if (el) el.style.display = "";
+    if (el) el.classList.remove("ws-hidden");
   }
   function escapeHtml(s) {
     return String(s)
@@ -157,18 +157,18 @@
       if (playerStrength > 80) progress_status = "success";
       else if (playerStrength > 50) progress_status = "info";
       else if (playerStrength > 30) progress_status = "warning";
-      targetPosition.insertAdjacentHTML(
-        "beforeend",
-        '<div class="progress ' +
-          CSS_CONFIG.PITCH_PLAYER_STRENGTHBAR +
-          '"><div class="progress-bar bg-' +
-          progress_status +
-          '" style="width: ' +
-          playerStrength +
-          '%">' +
-          playerStrength +
-          "%</div></div>"
-      );
+
+      /* Build the progress bar via the CSSOM (el.style.width) instead of an
+         inline style="width: X%" attribute, so that a strict CSP without
+         'unsafe-inline' in style-src does not block it. */
+      var progressDiv = document.createElement("div");
+      progressDiv.className = "progress " + CSS_CONFIG.PITCH_PLAYER_STRENGTHBAR;
+      var progressBar = document.createElement("div");
+      progressBar.className = "progress-bar bg-" + progress_status;
+      progressBar.style.width = playerStrength + "%";
+      progressBar.textContent = playerStrength + "%";
+      progressDiv.appendChild(progressBar);
+      targetPosition.appendChild(progressDiv);
     }
 
     /* add picture */
@@ -207,7 +207,7 @@
 
     /* hide and show action links */
     qsa("." + CSS_CONFIG.ACTIONLINK_REMOVE, player).forEach(function (el) {
-      el.style.display = "inline-block";
+      el.classList.remove("ws-hidden");
     });
     hide(qs("." + CSS_CONFIG.ACTIONLINK_ADD_TO_PITCH, player));
     hide(qs("." + CSS_CONFIG.ACTIONLINK_ADD_TO_BENCH, player));
@@ -370,7 +370,7 @@
     }
 
     qsa("." + CSS_CONFIG.ACTIONLINK_REMOVE, player).forEach(function (el) {
-      el.style.display = "inline-block";
+      el.classList.remove("ws-hidden");
     });
     hide(qs("." + CSS_CONFIG.ACTIONLINK_ADD_TO_PITCH, player));
     hide(qs("." + CSS_CONFIG.ACTIONLINK_ADD_TO_BENCH, player));

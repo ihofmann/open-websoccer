@@ -3,7 +3,7 @@
 	<div class="col-md-6 text-center">
 		{% if homeUser != null %}
 			{% if homeUser.picture|length > 0 %}
-				<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}"><img src="{{ homeUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
+				<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}"><img src="{{ homeUser.picture }}" class="img-rounded ws-logo-max-120"/></a></p>
 			{% endif %}
 			<p><a href="{{ env.getInternalUrl("user", "id=" ~ homeUser.user_id) }}">{{ homeUser.nick }}</a></p>
 		{% else %}
@@ -13,7 +13,7 @@
 	<div class="col-md-6">
 		{% if guestUser != null %}
 			{% if guestUser.picture|length > 0 %}
-				<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}"><img src="{{ guestUser.picture }}" class="img-rounded" style="max-width:120px;max-height:120px"/></a></p>
+				<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}"><img src="{{ guestUser.picture }}" class="img-rounded ws-logo-max-120"/></a></p>
 			{% endif %}
 			<p><a href="{{ env.getInternalUrl("user", "id=" ~ guestUser.user_id) }}">{{ guestUser.nick }}</a></p>
 		{% else %}
@@ -27,7 +27,7 @@
 <div class="row">
 	<div class="col-md-6">
 		{% if latestMatchesHome|length > 0 %}
-			{% if match.match_home_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
+			{% if match.match_home_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_home_picture }}" class="ws-logo-max-120"/></p>{% endif %}
 			<table class="table table-striped">
 			{% for previousMatch in latestMatchesHome %}
 				<tr>
@@ -43,7 +43,7 @@
 	</div>
 	<div class="col-md-6">
 		{% if latestMatchesGuest|length > 0 %}
-			{% if match.match_guest_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" style="max-height: 120px; max-width: 120px"/></p>{% endif %}
+			{% if match.match_guest_picture|length %}<p class="text-center"><img src="{{ env.getConfig("context_root") }}/uploads/club/{{ match.match_guest_picture }}" class="ws-logo-max-120"/></p>{% endif %}
 			<table class="table table-striped">
 			{% for previousMatch in latestMatchesGuest %}
 				<tr>

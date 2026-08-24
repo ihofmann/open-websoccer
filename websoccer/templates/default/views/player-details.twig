@@ -9,7 +9,7 @@
 {% block page_content %}
 
 {% if player.player_picture|length > 0 %}
-<div style="text-align: center; margin-bottom: 10px;">
+<div class="text-center mb-2">
 <img src="{{ env.getConfig("context_root") }}/uploads/player/{{ player.player_picture }}" class="img-rounded">
 </div>
 {% endif %}
@@ -236,7 +236,7 @@
   			{% if grades|length == 1 %}
   				<p><strong>{{ i18n.getMessage("player_details_grade_last_match") }}:</strong> {{ grades[0] }}</p>
   			{% else %}
-  				<div id="grades" style="width: 600px; height: 300px; margin-left: 30px; margin-bottom: 30px"
+  				<div id="grades" class="ws-chart-grades"
   					data-series="[{% for grade in grades %}{% if loop.index > 1 %}, {% endif %}[{{ loop.index }}, {{ grade }}]{% endfor %}]"></div>
   			{% endif %}
   			

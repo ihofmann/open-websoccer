@@ -32,7 +32,7 @@
 				<td>
 					{% if request.user_picture|length > 0 %}
 						<a href="{{ env.getInternalUrl("user", "id=" ~ request.user_id) }}" 
-						title="{{ i18n.getMessage("user_navlabel") }}"><img src="{{ request.user_picture }}" alt="{{ request.user_nick }}" style="width: 40px; height: 40px"/></a>
+						title="{{ i18n.getMessage("user_navlabel") }}"><img src="{{ request.user_picture }}" alt="{{ request.user_nick }}" class="ws-avatar-40"/></a>
 					{% endif %}
 					<a href="{{ env.getInternalUrl("user", "id=" ~ request.user_id) }}" 
 						title="{{ i18n.getMessage("user_navlabel") }}">{{ request.user_nick }}</a>

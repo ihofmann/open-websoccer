@@ -11,7 +11,7 @@
 </div>
 
 <div class="d-flex gap-2 justify-content-center p-3">
-	<form method="post" style="display: inline">
+	<form method="post" class="d-inline">
 		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
 			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">
 		{% endfor %}
@@ -21,7 +21,7 @@
 		<button type="submit" class="btn btn-success">{{ i18n.getMessage("premium-confirm-action_confirm") }}</button>
 	</form>
 	
-	<form method="post" style="display: inline">
+	<form method="post" class="d-inline">
 		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
 			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">
 		{% endfor %}

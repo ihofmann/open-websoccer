@@ -100,6 +100,13 @@ The MySQL database is created with these defaults (override them with environmen
 | `MYSQL_PASSWORD`      | `websoccer`      |
 | `MYSQL_ROOT_PASSWORD` | `websoccer_root` |
 
+The web container runs with debug mode enabled by default through `DEBUG=true`.
+Override it when starting the stack to disable debug mode:
+
+```bash
+DEBUG=false docker compose up -d
+```
+
 When both containers are running, open the installer:
 
 ```

@@ -144,7 +144,7 @@ if (!$show) {
 					</tbody>
 				</table>
 				
-				<p><div class='form-check'><input class='form-check-input' type='checkbox' name='selAll' value='1' id='selAll' onClick='selectAll()'><label class='form-check-label' for='selAll'><?php echo $i18n->getMessage('manage_select_all_label'); ?></label></div></p>
+				<p><div class='form-check'><input class='form-check-input' type='checkbox' name='selAll' value='1' id='selAll'><label class='form-check-label' for='selAll'><?php echo $i18n->getMessage('manage_select_all_label'); ?></label></div></p>
 			
 				<p><input type='submit' class='btn btn-primary' accesskey='l' title='Alt + l' value='<?php echo $i18n->getMessage('firemanagers_dismiss_button'); ?>'></p>
 			</form>

@@ -66,6 +66,19 @@
     
     <message id="login_link_forgotpassword">Passwort vergessen?</message>    
     
+    <message id="login_2fa_title">Bestätigungscode</message>
+    <message id="login_2fa_email_sent_title">Bestätigungscode versendet</message>
+    <message id="login_2fa_email_sent">Ein Bestätigungscode wurde an deine E-Mail-Adresse gesendet. Bitte überprüfe deine E-Mails und gib den Code unten ein.</message>
+    <message id="login_2fa_email_not_sent_title">E-Mail konnte nicht gesendet werden</message>
+    <message id="login_2fa_email_not_sent">E-Mail konnte nicht gesendet werden. Hier ist der Bestätigungscode: %s</message>
+    <message id="login_2fa_label_code">Bestätigungscode</message>
+    <message id="login_2fa_button_verify">Bestätigen</message>
+    <message id="login_2fa_link_back">Zurück zur Anmeldung</message>
+    <message id="login_2fa_error_nocode">Es wurde kein Bestätigungscode angegeben.</message>
+    <message id="login_2fa_error_wrong_code">Falscher Bestätigungscode.</message>
+    <message id="login_2fa_error_blocked">Zu viele fehlgeschlagene Versuche. Du kannst es in 5 Minuten erneut versuchen.</message>
+    <message id="login_2fa_email_subject">%s Bestätigungscode: %s</message>
+    
     <message id="admincenter_brand">AdminCenter</message>
     <message id="admincenter_homelink_tooltip">Zur AdminCenter Startseite</message>
     <message id="admincenter_loggedin_as">Angemeldet als</message>
@@ -129,6 +142,7 @@
 	<message id="settings_tab_offlinemode">Offline-Modus</message> 
 	<message id="settings_tab_game">Spiel</message> 
 	<message id="settings_tab_social">Soziale Netzwerke</message> 
+	<message id="settings_tab_security">Sicherheit</message> 
 	
 	<message id="settings_label_context_root">Relativer Pfad auf Server (Context Root)</message> 
 	<message id="settings_label_context_root_help">Ohne "/" am Ende.</message> 
@@ -170,6 +184,9 @@
 	
 	<message id="settings_label_offline_times">Regelmäßiges Abschalten</message>
 	<message id="settings_label_offline_times_help">Kommagetrennte Zeiträume im 24-Stunden-Format, in denen die Webseite täglich in den Offline-Modus wechseln soll. Beispiel: 09:00-12:00, 13:00-17:00</message>
+	
+	<message id="settings_label_csp_header">Content-Security-Policy-Header</message>
+	<message id="settings_label_csp_header_help">CSP-Header, der bei jeder Frontend-Seitenantwort gesendet wird. Der Platzhalter ${NONCE} wird durch einen eindeutigen Nonce pro Anfrage ersetzt, der in JavaScript als <em>window.wsNonce</em> und in Templates als <em>nonce</em> verfügbar ist. Halte die Richtlinie so streng wie möglich. Google reCAPTCHA und Gravatar.com sind standardmäßig freigegeben.</message>
 	
 	<message id="settings_saved_note_restartjobs">Starte die Jobs neu!</message>
 	<message id="settings_saved_note_restartjobs_details">Änderungen, die Jobs betreffen, werden erst nach deren Neustart wirksam.</message>
@@ -220,10 +237,7 @@
 	<message id="sendpassword_admin_email_introduction">dies ist dein neues Passwort, das du über das AdminCenter angefordert hast und in deinem Profil ändern kannst und solltest:</message>
 	<message id="sendpassword_admin_email_newpassword_label">dein neues Passwort:</message>
 	<message id="sendpassword_admin_email_ending">Beachte, dass dein neues Passwort erst aktiv wird, sobald du dich zum ersten Mal damit anmeldest.</message>
-	
-	<message id="sendpassword_admin_usernotfound">Benutzer nicht bekannt.</message>
-	<message id="sendpassword_admin_alreadysent">Du hast erst kürzlich ein Passwort angefordert. Probier es später noch einmal.</message>
-	
+
 	<message id="sendpassword_admin_title">Passwort anfordern</message>
 	<message id="sendpassword_admin_intro">Du hast dein Passwort vergessen? Gib einfach deine E-Mail-Adresse an und wir senden dir ein neues Passwort zu.</message>
 	<message id="sendpassword_admin_label_email">E-Mail</message>

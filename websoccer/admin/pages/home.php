@@ -30,7 +30,7 @@ if (!$show) {
 
   <h3><?php echo $i18n->getMessage('home_softwareinfo_title'); ?></h3>
   
- <table class='table table-bordered' style='width: 500px;'>
+ <table class='table table-bordered home-info-table'>
   <tr>
 	<td><b><?php echo $i18n->getMessage('home_softwareinfo_name'); ?></b></td>
 	<td>OpenWebSoccer-Sim</td>
@@ -43,7 +43,7 @@ if (!$show) {
 
   <h3><?php echo $i18n->getMessage('home_projectinfo_title'); ?></h3>
 
-        <table class='table table-bordered' style='width: 500px;'>
+        <table class='table table-bordered home-info-table'>
           <tr>
             <td><b><?php echo $i18n->getMessage('home_projectinfo_name'); ?></b></td>
             <td><?php echo escapeOutput($website->getConfig('projectname')) ?></td>

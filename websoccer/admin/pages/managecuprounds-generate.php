@@ -87,10 +87,10 @@ if ($action == "generate" && isset($_POST["teams"]) && is_array($_POST["teams"])
 // ****** Display selection form ***********
 ?>
 
-	<div id="noCupPossibleAlert" class="alert" style="display: none;">
+	<div id="noCupPossibleAlert" class="alert ws-hidden">
 		<h5><?php echo $i18n->getMessage("managecuprounds_generate_noroundspossible"); ?></h5>
 	</div>
-	<div id="possibleCupRoundsAlert" class="alert alert-info" style="display: none;">
+	<div id="possibleCupRoundsAlert" class="alert alert-info ws-hidden">
 		<h5><?php echo $i18n->getMessage("managecuprounds_generate_possiblerounds"); ?>: <span id="roundsNo">0</span></h5>
 	</div>
 
@@ -102,10 +102,10 @@ if ($action == "generate" && isset($_POST["teams"]) && is_array($_POST["teams"])
 	<fieldset>
     	<legend><?php echo $i18n->getMessage("managecuprounds_generate_formlabel"); ?> (<span id="numberOfTeamsSelected">0</span>)</legend>
     
-		<div style="width: 600px; height: 300px; overflow: auto; border: 1px solid #cccccc;">
+		<div class="cup-team-box">
 			<table class="table table-striped table-hover">
 				<colgroup>
-					<col style="width: 30px">
+					<col class="col-w-30">
 					<col>
 					<col>
 				</colgroup>

@@ -102,11 +102,11 @@
 						{% endif %}
 						<a href="{{ env.getInternalUrl("player", "id=" ~ player.player_id) }}" title="{{ i18n.getMessage("player_navlabel") }}">
 							{% if player.picture|length > 0 %}
-								<img src="{{ env.getConfig("context_root") }}/uploads/player/{{ player.picture }}" style="max-width: 90px; max-height: 60px;">
+								<img src="{{ env.getConfig("context_root") }}/uploads/player/{{ player.picture }}" class="ws-photo-max-90-60">
 							{% elseif player.team_picture|length > 0 %}
-								<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" style="max-width: 90px; max-height: 60px;">
+								<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ player.team_picture }}" class="ws-photo-max-90-60">
 							{% else %}
-								<i class="bi bi-person" style="font-size: 60px; color: white;"></i>
+								<i class="bi bi-person ws-fs-60 text-white"></i>
 							{% endif %}
 						</a>
 						{% if player.grade is defined %}

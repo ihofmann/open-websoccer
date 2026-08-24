@@ -18,7 +18,7 @@
 		player.transfer_fee|number_format(0, ',', ' ') ~ " " ~ env.getConfig("game_currency")) }}
 {% endif %}
 
-<p style="margin-top: 10px"><a href="#playerstatistics" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"><i class="bi bi-zoom-in"></i> {{ i18n.getMessage("youthteam_showstatistics_tooltip") }}</a></p>
+<p class="mt-2"><a href="#playerstatistics" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse"><i class="bi bi-zoom-in"></i> {{ i18n.getMessage("youthteam_showstatistics_tooltip") }}</a></p>
 <div id="playerstatistics" class="collapse">
 {{ profile.infofield(i18n.getMessage("entity_youthplayer_st_matches"), player.st_matches) }}
 

@@ -41,7 +41,7 @@
 						<tr>
 							<td>
 								{% if club.team_picture|length %}
-									<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ club.team_picture }}" style="max-width: 40px"/>
+									<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ club.team_picture }}" class="ws-logo-max-40"/>
 								{% endif %}
 								<a href="{{ env.getInternalUrl("team", "id=" ~ club.team_id ) }}">{{ club.team_name }}</a>
 							</td>
