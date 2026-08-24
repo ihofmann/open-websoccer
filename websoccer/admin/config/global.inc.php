@@ -20,7 +20,7 @@
 
 ******************************************************/
 
-define('DEBUG', TRUE);
+define('DEBUG', filter_var(getenv('DEBUG'), FILTER_VALIDATE_BOOLEAN));
 
 if (DEBUG) {
 	error_reporting(E_ALL);

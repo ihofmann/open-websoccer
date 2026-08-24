@@ -37,6 +37,8 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
+    environment:
+      DEBUG: ${DEBUG:-true}
     depends_on:
       db:
         condition: service_healthy
