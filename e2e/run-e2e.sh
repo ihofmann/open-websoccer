@@ -7,15 +7,18 @@
 #   ./e2e/run-e2e.sh            # build, run tests, tear down
 #   ./e2e/run-e2e.sh --keep     # keep the stack running afterwards
 #   ./e2e/run-e2e.sh --no-build-assets   # skip the frontend asset build
+#   ./e2e/run-e2e.sh --setup-only       # start the stack and skip Playwright
 #
 set -euo pipefail
 
 KEEP=0
 NO_BUILD_ASSETS=0
+SETUP_ONLY=0
 for arg in "$@"; do
   case "$arg" in
     --keep) KEEP=1 ;;
     --no-build-assets) NO_BUILD_ASSETS=1 ;;
+    --setup-only) SETUP_ONLY=1 ;;
     *) echo "Unknown argument: $arg" >&2; exit 2 ;;
   esac
 done
@@ -51,6 +54,14 @@ cp -f "$E2E_DIR/docker/config.template.inc.php" \
 echo '==> Building and starting the E2E stack'
 compose up -d --build
 
+# Copy the prepared config into the image-owned named volume. A host bind mount
+# would make the generated/ directory owned by the CI user instead of www-data,
+# preventing the application from writing admin logs and runtime config.
+echo '==> Installing the application config in the web container'
+compose cp "$E2E_DIR/docker/generated/config.inc.php" web:/tmp/config.inc.php
+compose exec -T web sh -c \
+  'install -o www-data -g www-data -m 664 /tmp/config.inc.php /var/www/html/generated/config.inc.php && rm /tmp/config.inc.php'
+
 # The MySQL entrypoint reports "healthy" while it is still importing the init
 # scripts, and the application answers with HTTP 200 even when it cannot reach
 # the database. So wait for the seed itself to be complete.
@@ -84,6 +95,11 @@ if [ "$ready" -ne 1 ]; then
   exit 1
 fi
 echo '    Web container is ready.'
+
+if [ "$SETUP_ONLY" -eq 1 ]; then
+  echo '==> E2E stack setup complete (--setup-only)'
+  exit 0
+fi
 
 echo '==> Installing Playwright dependencies'
 ( cd "$E2E_DIR" && npm install && npx playwright install chromium )

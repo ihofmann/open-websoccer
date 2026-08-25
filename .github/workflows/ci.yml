@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Lint, build, and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          extensions: mysqli
+          tools: composer
+
+      - name: Lint PHP
+        shell: bash
+        run: |
+          find websoccer -type f -name '*.php' \
+            -not -path 'websoccer/vendor/*' \
+            -print0 | xargs -0 -n1 php -l
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist --working-dir=websoccer
+
+      - name: Run PHP unit tests
+        run: websoccer/vendor/bin/phpunit --configuration websoccer/phpunit.xml
+
+      - name: Start E2E stack
+        run: bash e2e/run-e2e.sh --no-build-assets --setup-only
+
+      - name: Verify web container database connection
+        shell: bash
+        run: |
+          docker compose -f e2e/docker-compose.e2e.yml exec -T web \
+            php -r '$m = new mysqli("db", "websoccer", "websoccer", "websoccer"); if ($m->connect_error) { fwrite(STDERR, $m->connect_error . PHP_EOL); exit(1); } echo "Database connection succeeded from web container." . PHP_EOL;'
+
+      - name: Install E2E dependencies
+        working-directory: e2e
+        run: |
+          npm ci
+          npx playwright install chromium
+
+      - name: Run Playwright tests
+        working-directory: e2e
+        run: npx playwright test
+
+      # - name: Collect E2E diagnostics
+      #   if: failure()
+      #   shell: bash
+      #   run: |
+      #     docker compose -f e2e/docker-compose.e2e.yml ps || true
+      #     docker compose -f e2e/docker-compose.e2e.yml logs --no-color --timestamps web db || true
+      #     echo '==> HTTP response headers'
+      #     curl -sS --max-time 10 -D - -o /dev/null 'http://localhost:8081/?page=login' || true
+
+      # - name: Upload Playwright artifacts
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: playwright-artifacts
+      #     path: |
+      #       e2e/playwright-report
+      #       e2e/test-results
+      #     if-no-files-found: ignore
+
+      - name: Tear down E2E stack
+        if: always()
+        shell: bash
+        run: docker compose -f e2e/docker-compose.e2e.yml down -v --remove-orphans

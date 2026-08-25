@@ -1,6 +1,5 @@
 .git
 .gitignore
-build.gradle
 LICENSE
 README.md
 Dockerfile
