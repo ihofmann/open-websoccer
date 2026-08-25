@@ -31,7 +31,6 @@ Bugs and feature ideas: [Issue Tracker](https://github.com/ihofmann/open-websocc
 - [Docker](https://docs.docker.com/get-docker/) 20.10 or newer, with [Docker Compose](https://docs.docker.com/compose/install/) v2 (the `docker compose` plugin is bundled with current Docker Desktop)
 - [Node.js](https://nodejs.org/) 18 or newer (npm is included) — for building browser assets
 - [PHP](https://www.php.net/) 8.1 or newer and [Composer](https://getcomposer.org/) — for PHP dependencies, if you are not using Docker
-- [Gradle](https://gradle.org/) — optional; used only to assemble a release archive (`gradle build`)
 
 ### Build
 
@@ -68,10 +67,10 @@ npm run build:watch
 To assemble a full release archive, run:
 
 ```bash
-gradle build
+npm run release
 ```
 
-This runs `composer install` and the asset build, then packages the application. `composer` must be on your `PATH` (or run the Gradle build in an environment that provides it). The Docker image built from `Dockerfile` installs PHP dependencies during the image build, so you do not need to run Composer yourself for the Docker workflow below.
+This clears the `release/` directory, runs the asset build and `composer install --no-dev --optimize-autoloader`, then creates both `release/OpenWebSoccer-VERSION/` and `release/OpenWebSoccer-VERSION.zip`. The package is assembled from an application whitelist; upload directories are included but emptied. The version is read from `websoccer/admin/config/version.txt`; set `RELEASE_VERSION` to override it. `composer` must be on your `PATH` (or run the build in an environment that provides it). The Docker image built from `Dockerfile` installs PHP dependencies during the image build, so you do not need to run Composer yourself for the Docker workflow below.
 
 ### Run locally
 

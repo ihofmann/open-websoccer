@@ -1,14 +1,16 @@
 {
-  "name": "open-websoccer-assets",
+  "name": "open-websoccer",
   "private": true,
   "description": "OpenWebSoccer-Sim browser assets",
   "scripts": {
     "build": "npm run build:admincenter && npm run build:default",
+    "release": "node scripts/release.js",
     "build:admincenter": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/admincenter.js",
     "build:default": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/default.js",
     "build:watch": "esbuild --bundle --sourcemap --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets --watch websoccer/assets-src/admincenter.js websoccer/assets-src/default.js"
   },
   "devDependencies": {
+    "archiver": "^7.0.1",
     "esbuild": "^0.25.0"
   },
   "dependencies": {
