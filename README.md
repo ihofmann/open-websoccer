@@ -1,5 +1,7 @@
 # OpenWebSoccer-Sim — Start your own online football manager
 
+[![CI](https://github.com/ihofmann/open-websoccer/actions/workflows/ci.yml/badge.svg)](https://github.com/ihofmann/open-websoccer/actions/workflows/ci.yml)
+
 OpenWebSoccer-Sim is a PHP-based web application that lets visitors manage a virtual football (soccer) team and compete against other players.
 
 Managers set tactics for the next match, trade players, train their squad, scout talent in the youth academy, and expand their stadium. Matches are simulated automatically in real time, with match reports and a live ticker similar to those on major sports news sites.

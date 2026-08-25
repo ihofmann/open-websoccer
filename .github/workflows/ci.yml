@@ -19,7 +19,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.4'
+          php-version: "8.4"
           extensions: mysqli
           tools: composer
 
@@ -67,24 +67,24 @@ jobs:
         working-directory: e2e
         run: npx playwright test
 
-      - name: Collect E2E diagnostics
-        if: failure()
-        shell: bash
-        run: |
-          docker compose -f e2e/docker-compose.e2e.yml ps || true
-          docker compose -f e2e/docker-compose.e2e.yml logs --no-color --timestamps web db || true
-          echo '==> HTTP response headers'
-          curl -sS --max-time 10 -D - -o /dev/null 'http://localhost:8081/?page=login' || true
+      # - name: Collect E2E diagnostics
+      #   if: failure()
+      #   shell: bash
+      #   run: |
+      #     docker compose -f e2e/docker-compose.e2e.yml ps || true
+      #     docker compose -f e2e/docker-compose.e2e.yml logs --no-color --timestamps web db || true
+      #     echo '==> HTTP response headers'
+      #     curl -sS --max-time 10 -D - -o /dev/null 'http://localhost:8081/?page=login' || true
 
-      - name: Upload Playwright artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-artifacts
-          path: |
-            e2e/playwright-report
-            e2e/test-results
-          if-no-files-found: ignore
+      # - name: Upload Playwright artifacts
+      #   if: always()
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: playwright-artifacts
+      #     path: |
+      #       e2e/playwright-report
+      #       e2e/test-results
+      #     if-no-files-found: ignore
 
       - name: Tear down E2E stack
         if: always()
