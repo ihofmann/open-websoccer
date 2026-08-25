@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Lint, build, and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mysqli
+          tools: composer
+
+      - name: Lint PHP
+        shell: bash
+        run: |
+          find websoccer -type f -name '*.php' \
+            -not -path 'websoccer/vendor/*' \
+            -print0 | xargs -0 -n1 php -l
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Install PHP dependencies
+        run: composer install --no-interaction --prefer-dist --working-dir=websoccer
+
+      - name: Run PHP unit tests
+        run: websoccer/vendor/bin/phpunit --configuration websoccer/phpunit.xml
+
+      - name: Run E2E tests
+        run: bash e2e/run-e2e.sh --no-build-assets
