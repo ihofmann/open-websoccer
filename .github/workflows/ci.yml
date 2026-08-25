@@ -48,8 +48,24 @@ jobs:
       - name: Run PHP unit tests
         run: websoccer/vendor/bin/phpunit --configuration websoccer/phpunit.xml
 
-      - name: Run E2E tests
-        run: bash e2e/run-e2e.sh --no-build-assets --keep
+      - name: Start E2E stack
+        run: bash e2e/run-e2e.sh --no-build-assets --setup-only
+
+      - name: Verify web container database connection
+        shell: bash
+        run: |
+          docker compose -f e2e/docker-compose.e2e.yml exec -T web \
+            php -r '$m = new mysqli("db", "websoccer", "websoccer", "websoccer"); if ($m->connect_error) { fwrite(STDERR, $m->connect_error . PHP_EOL); exit(1); } echo "Database connection succeeded from web container." . PHP_EOL;'
+
+      - name: Install E2E dependencies
+        working-directory: e2e
+        run: |
+          npm ci
+          npx playwright install chromium
+
+      - name: Run Playwright tests
+        working-directory: e2e
+        run: npx playwright test
 
       - name: Collect E2E diagnostics
         if: failure()

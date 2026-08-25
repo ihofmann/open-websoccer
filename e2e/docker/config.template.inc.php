@@ -3,13 +3,13 @@
  * Template for the E2E application configuration.
  *
  * The run scripts (run-e2e.ps1 / run-e2e.sh) copy this file to
- * e2e/docker/generated/config.inc.php, which is bind-mounted into the web
- * container as /var/www/html/generated/config.inc.php. That way the
- * interactive installer does NOT need to be run before the tests.
+ * e2e/docker/generated/config.inc.php, which is copied into the web
+ * container's named volume as /var/www/html/generated/config.inc.php. That
+ * way the interactive installer does NOT need to be run before the tests.
  *
  * The copy is intentional and must not be skipped: on its first request the
  * application appends the default value of every module setting to this file,
- * so the mounted copy is modified at runtime. e2e/docker/generated/ is
+ * so the copied file is modified at runtime. e2e/docker/generated/ is
  * therefore git-ignored while this template stays pristine.
  *
  * It points the application at the `db` service of docker-compose.e2e.yml and

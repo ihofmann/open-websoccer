@@ -3,7 +3,7 @@
 # It starts a fresh MySQL 8.0 database that is pre-populated on first
 # start (see docker/initdb/init-db.sh) and the OpenWebSoccer web container
 # built from the repository Dockerfile, but with a pre-built config file
-# bind-mounted in so the interactive installer is skipped.
+# copied into a named volume so the interactive installer is skipped.
 #
 # The host ports (8081 / 3308) differ from docker-compose.yml (8080 / 3307)
 # so the E2E stack can run alongside the development stack.
@@ -62,14 +62,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    # Mount the pre-built generated/ folder (config.inc.php) so the installer
-    # never runs. The folder is writable because the application appends the
-    # default value of every module setting to config.inc.php on its first
-    # request. It is created by the run scripts, which copy
-    # docker/config.template.inc.php into it - run those (or perform the copy
-    # manually, see e2e/README.md) before `docker compose up`.
+    # Use a named volume so the generated/ directory keeps the www-data
+    # ownership from the image. The run scripts copy config.inc.php into this
+    # volume after the container starts.
     volumes:
-      - ./docker/generated:/var/www/html/generated
+      - e2e_generated_data:/var/www/html/generated
 
 volumes:
   e2e_db_data:
+  e2e_generated_data:

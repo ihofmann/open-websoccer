@@ -95,8 +95,8 @@ order:
 
 The run scripts copy
 [`docker/config.template.inc.php`](docker/config.template.inc.php) to
-`docker/generated/config.inc.php`, which is bind-mounted into the web container
-as `/var/www/html/generated/config.inc.php`. The interactive installer at
+`docker/generated/config.inc.php`, which is copied into the web container's
+named volume as `/var/www/html/generated/config.inc.php`. The interactive installer at
 `/install/` is therefore never needed. The config points the app at the `db`
 service and sets `login_type = username`, so the seeded users can log in with
 their nickname.
@@ -144,14 +144,20 @@ clean, freshly seeded state.
 # 1. Build the frontend assets (only needed once / after asset changes)
 npm install && npm run build
 
-# 1b. Put a pristine application config in place (required before every run)
+# 1b. Put a pristine application config in place (the runner installs it in the container)
 mkdir -p e2e/docker/generated
 cp -f e2e/docker/config.template.inc.php e2e/docker/generated/config.inc.php
 
 # 2. Start the E2E stack (the DB seed takes a few seconds on first start)
 docker compose -f e2e/docker-compose.e2e.yml up -d --build
 
-# 2b. Verify the seed finished (must print 960)
+# 2a. Install the application config in the web container
+docker compose -f e2e/docker-compose.e2e.yml cp \
+    e2e/docker/generated/config.inc.php web:/tmp/config.inc.php
+docker compose -f e2e/docker-compose.e2e.yml exec -T web sh -c \
+    'install -o www-data -g www-data -m 664 /tmp/config.inc.php /var/www/html/generated/config.inc.php && rm /tmp/config.inc.php'
+
+# 2b. Verify the seed finished (must print 972)
 docker compose -f e2e/docker-compose.e2e.yml exec -T db \
     mysql -uwebsoccer -pwebsoccer websoccer -N -B -e 'SELECT COUNT(*) FROM ws3_spieler'
 
