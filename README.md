@@ -7,7 +7,7 @@ Managers set tactics for the next match, trade players, train their squad, scout
 Use it to run your own online football game — whether to attract website visitors, offer premium features, or play against colleagues on a company intranet.
 
 > [!WARNING]
-> The current release has severe security vulnerabilities and does not run on modern web servers. With the help of GenAI, a new release will be published soon. It will run on PHP 8.3 and use updated libraries.
+> The current release has severe security vulnerabilities and does not run on modern web servers. With the help of GenAI, a new release will be published soon. It will run on PHP 8.4+ and use updated libraries.
 
 **[Download now!](https://github.com/ihofmann/open-websoccer/releases)**
 
@@ -30,7 +30,7 @@ Bugs and feature ideas: [Issue Tracker](https://github.com/ihofmann/open-websocc
 - [Git](https://git-scm.com/)
 - [Docker](https://docs.docker.com/get-docker/) 20.10 or newer, with [Docker Compose](https://docs.docker.com/compose/install/) v2 (the `docker compose` plugin is bundled with current Docker Desktop)
 - [Node.js](https://nodejs.org/) 18 or newer (npm is included) — for building browser assets
-- [PHP](https://www.php.net/) 8.1 or newer and [Composer](https://getcomposer.org/) — for PHP dependencies, if you are not using Docker
+- [PHP](https://www.php.net/) 8.4 or newer and [Composer](https://getcomposer.org/) — for PHP dependencies, if you are not using Docker
 
 ### Build
 
