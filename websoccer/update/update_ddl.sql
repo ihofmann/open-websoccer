@@ -132,3 +132,9 @@ VALUES
   ('usractv', 'Compute and update user inactivity', 'Benutzerinaktivität berechnen und aktualisieren', 'UserInactivityCheckJob', 20, 0, 1, '', 0),
   ('stats', 'Compute and update league statistics', 'Ligastatistiken berechnen und aktualisieren', 'UpdateStatisticsJob', 30, 0, 1, '', 0),
   ('stadium', 'Accept stadium construction works and training camp bookings', 'Fällige Stadionerweiterungen und Trainingslager ausführen', 'AcceptStadiumConstructionWorkJob', 30, 0, 1, '', 0);
+
+-- Ensure user_inactivity timestamp columns have defaults so new rows can be
+-- inserted without specifying every NOT NULL column.
+ALTER TABLE ws3_user_inactivity MODIFY login_last INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_user_inactivity MODIFY login_check INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_user_inactivity MODIFY transfer_check INT(11) NOT NULL DEFAULT 0;

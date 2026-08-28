@@ -158,11 +158,11 @@ CREATE TABLE ws3_user_inactivity (
   id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT(10) NOT NULL,
   login TINYINT(3) NOT NULL DEFAULT '0',
-  login_last INT(11) NOT NULL,
-  login_check INT(11) NOT NULL,
+  login_last INT(11) NOT NULL DEFAULT 0,
+  login_check INT(11) NOT NULL DEFAULT 0,
   aufstellung TINYINT(3) NOT NULL DEFAULT '0',
   transfer TINYINT(3) NOT NULL DEFAULT '0',
-  transfer_check INT(11) NOT NULL,
+  transfer_check INT(11) NOT NULL DEFAULT 0,
   vertragsauslauf TINYINT(3) NOT NULL DEFAULT '0'
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 

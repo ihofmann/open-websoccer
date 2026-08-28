@@ -516,6 +516,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 ALTER TABLE ws3_user ENGINE=InnoDB;
 
 ALTER TABLE ws3_user_inactivity ENGINE=InnoDB;
+ALTER TABLE ws3_user_inactivity MODIFY login_last INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_user_inactivity MODIFY login_check INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE ws3_user_inactivity MODIFY transfer_check INT(11) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_user_inactivity ADD CONSTRAINT user_inactivity_user_id_fk FOREIGN KEY (user_id) REFERENCES ws3_user(id) ON DELETE CASCADE;
 
 ALTER TABLE ws3_briefe ENGINE=InnoDB;

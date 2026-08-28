@@ -57,9 +57,12 @@ test.describe("AdminCenter Jobs", () => {
       await row.getByRole("link", { name: "Execute now" }).click();
 
       // The success alert must appear (execution happened in the same request,
-      // before the table is re-rendered).
+      // before the table is re-rendered). Some server-side jobs can take
+      // significantly longer than the default 15s expect timeout, so allow up
+      // to 90s just for these job-execution assertions.
       await expect(page.locator(".alert-success")).toContainText(
         "Successfully executed.",
+        { timeout: 90_000 },
       );
     });
   }
