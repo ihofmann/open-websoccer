@@ -278,7 +278,7 @@ class UsersDataService {
 	 */
 	public static function getUserProfilePicture(WebSoccer $websoccer, $fileName, $email, $size = 40) {
 	
-		if (strlen($fileName)) {
+		if (strlen($fileName ?? '')) {
 			return $websoccer->getConfig("context_root") . "/uploads/users/" . $fileName;
 		}
 		
@@ -296,7 +296,7 @@ class UsersDataService {
 	public static function getGravatarUserProfilePicture(WebSoccer $websoccer, $email, $size = 40) {
 		
 		// use gravatar
-		if (strlen($email) && $websoccer->getConfig("gravatar_enable")) {
+		if (strlen($email ?? '') && $websoccer->getConfig("gravatar_enable")) {
 			
 			// Always use HTTPS so that a strict CSP (allowing only https://
 			// gravatar sources) can be enforced even when the page itself is

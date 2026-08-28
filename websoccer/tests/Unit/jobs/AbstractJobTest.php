@@ -2,10 +2,6 @@
 use OpenWebSoccer\Tests\TestCaseBase;
 use OpenWebSoccer\Tests\JobTestHelper;
 
-if (!defined('JOBS_CONFIG_FILE')) {
-	define('JOBS_CONFIG_FILE', sys_get_temp_dir() . '/ows_jobs_test.xml');
-}
-
 /**
  * Concrete subclass of AbstractJob for testing.
  */
@@ -24,18 +20,13 @@ final class AbstractJobTest extends TestCaseBase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->writeJobConfig(0);
-	}
-
-	protected function tearDown(): void {
-		// Ensure temp XML exists for any destructor that fires after tearDown.
-		@file_put_contents(JOBS_CONFIG_FILE, $this->jobXml(0));
-		parent::tearDown();
 	}
 
 	public function testConstructorStoresWebsoccer(): void {
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);
@@ -47,6 +38,7 @@ final class AbstractJobTest extends TestCaseBase {
 	public function testConstructorStoresDb(): void {
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);
@@ -58,6 +50,7 @@ final class AbstractJobTest extends TestCaseBase {
 	public function testConstructorStoresI18n(): void {
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);
@@ -69,6 +62,7 @@ final class AbstractJobTest extends TestCaseBase {
 	public function testConstructorStoresJobId(): void {
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);
@@ -80,9 +74,10 @@ final class AbstractJobTest extends TestCaseBase {
 	public function testConstructorComputesIntervalFromXml(): void {
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
-		// testjob has interval=5 in the XML, so _interval should be 5*60=300.
+		// testjob has interval=5 in the database, so _interval should be 5*60=300.
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);
 
 		$ref = new \ReflectionProperty(AbstractJob::class, '_interval');
@@ -92,6 +87,7 @@ final class AbstractJobTest extends TestCaseBase {
 	public function testExecuteIsCallableOnConcreteSubclass(): void {
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);
@@ -102,10 +98,9 @@ final class AbstractJobTest extends TestCaseBase {
 
 	public function testConstructorSucceedsWithErrorOnAlreadyRunningWhenNoRecentInstance(): void {
 		// inittime=0 means no recent instance, so no exception.
-		$this->writeJobConfig(0);
-
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob')]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', true);
@@ -114,10 +109,9 @@ final class AbstractJobTest extends TestCaseBase {
 
 	public function testConstructorThrowsWhenAnotherInstanceIsRunning(): void {
 		// Set inittime to now so it appears an instance is already running.
-		$this->writeJobConfig(time());
-
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob', time())]));
 		$i18n = $this->mockI18n();
 
 		$this->expectException(\Exception::class);
@@ -127,10 +121,9 @@ final class AbstractJobTest extends TestCaseBase {
 
 	public function testConstructorDoesNotThrowWhenErrorOnAlreadyRunningIsFalse(): void {
 		// Even with a recent inittime, errorOnAlreadyRunning=false skips the check.
-		$this->writeJobConfig(time());
-
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('testjob', time())]));
 		$i18n = $this->mockI18n();
 
 		$job = new TestConcreteJob($ws, $db, $i18n, 'testjob', false);

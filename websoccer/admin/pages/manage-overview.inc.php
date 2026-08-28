@@ -130,7 +130,7 @@ if ($deleteEnabled && $action == "delete") {
 }
 
 // custom action
-if (strlen($action) && !in_array($action, array("save", "delete")) 
+if (strlen($action ?? '') && !in_array($action, array("save", "delete"))
 		&& file_exists(__DIR__ . "/../actions/" . $action . ".inc.php")) {
 	include(__DIR__ . "/../actions/" . $action . ".inc.php");
 }

@@ -3,10 +3,6 @@ use OpenWebSoccer\Tests\TestCaseBase;
 use OpenWebSoccer\Tests\JobTestHelper;
 use OpenWebSoccer\Tests\MockDbResult;
 
-if (!defined('JOBS_CONFIG_FILE')) {
-	define('JOBS_CONFIG_FILE', sys_get_temp_dir() . '/ows_jobs_test.xml');
-}
-
 /**
  * Unit tests for UserInactivityCheckJob.
  */
@@ -15,12 +11,6 @@ final class UserInactivityCheckJobTest extends TestCaseBase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->writeJobConfig(0);
-	}
-
-	protected function tearDown(): void {
-		@file_put_contents(JOBS_CONFIG_FILE, $this->jobXml(0));
-		parent::tearDown();
 	}
 
 	/**
@@ -36,14 +26,24 @@ final class UserInactivityCheckJobTest extends TestCaseBase {
 
 	public function testExecuteWithNoUsersDoesNotCallQueryUpdate(): void {
 		$db = $this->createMock(\DbConnection::class);
-		$db->method('querySelect')->willReturn(new MockDbResult([]));
-		$db->expects($this->never())->method('queryUpdate');
-
+		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('usractv')]);
+			}
+			return new MockDbResult([]);
+		});
+		$businessUpdates = 0;
+		$db->method('queryUpdate')->willReturnCallback(function ($columns, $fromTable) use (&$businessUpdates) {
+			if (strpos($fromTable, '_jobs') === false) {
+				$businessUpdates++;
+			}
+		});
 		$ws = $this->mockWebsoccer($this->inactivityConfig());
 		$i18n = $this->mockI18n();
 
 		$job = new UserInactivityCheckJob($ws, $db, $i18n, 'usractv', false);
 		$job->execute();
+		$this->assertSame(0, $businessUpdates);
 	}
 
 	public function testExecuteDelegatesToUsersDataService(): void {
@@ -52,6 +52,9 @@ final class UserInactivityCheckJobTest extends TestCaseBase {
 		$selectCalled = false;
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use (&$selectCalled) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('usractv')]);
+			}
 			if (strpos($fromTable, '_user') !== false) {
 				$selectCalled = true;
 			}
@@ -84,6 +87,9 @@ final class UserInactivityCheckJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($users, $inactivityRow, $userRow) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('usractv')]);
+			}
 			if (strpos($fromTable, '_user AS U') !== false) {
 				return new MockDbResult($users);
 			}

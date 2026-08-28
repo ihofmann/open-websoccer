@@ -105,11 +105,8 @@
 	
 	<message id="all_logging_title">Anmeldeprotokoll</message>
 	<message id="all_logging_intro">Hier werden die letzten Anmeldungen im AdminCenter aufgeführt.</message>
-	<message id="all_logging_filesize"><strong>Größe der Protokolldatei:</strong> %s KBytes</message>
-	<message id="all_logging_button_empty_file">Datei leeren</message>
-	<message id="all_logging_filenotfound">Die Protokolldatei wurde nicht gefunden.</message>
-	<message id="all_logging_alert_logfile_truncated">Die Protokolldatei wurde erfolgreich geleert.</message>
-	<message id="all_logging_error_not_truncated">Die Protokolldatei konnte nicht geleert werden. Hat die Datei Schreibrechte?</message>
+	<message id="all_logging_button_clear_old">Protokolle löschen, die älter als 6 Monate sind</message>
+	<message id="all_logging_alert_logs_deleted">Protokolle, die älter als 6 Monate sind, wurden gelöscht.</message>
 	<message id="all_logging_only_last_entries_shown">Es werden nur die letzten 50 Einträge angezeigt.</message>
 	
 	<message id="all_logging_label_no">Nr</message>
@@ -188,8 +185,8 @@
 	<message id="settings_label_csp_header">Content-Security-Policy-Header</message>
 	<message id="settings_label_csp_header_help">CSP-Header, der bei jeder Frontend-Seitenantwort gesendet wird. Der Platzhalter ${NONCE} wird durch einen eindeutigen Nonce pro Anfrage ersetzt, der in JavaScript als <em>window.wsNonce</em> und in Templates als <em>nonce</em> verfügbar ist. Halte die Richtlinie so streng wie möglich. Google reCAPTCHA und Gravatar.com sind standardmäßig freigegeben.</message>
 	
-	<message id="settings_saved_note_restartjobs">Starte die Jobs neu!</message>
-	<message id="settings_saved_note_restartjobs_details">Änderungen, die Jobs betreffen, werden erst nach deren Neustart wirksam.</message>
+	<message id="settings_saved_note_restartjobs">Änderungen werden bei der nächsten Job-Ausführung wirksam.</message>
+	<message id="settings_saved_note_restartjobs_details">Jobs werden über CronJobs oder manuelle Ausführung gestartet, sodass Änderungen beim nächsten Lauf automatisch übernommen werden.</message>
 	
 	<message id="manage_add">Neuen Eintrag erstellen</message>
 	<message id="manage_edit">Bearbeiten</message>
@@ -215,22 +212,20 @@
 	<message id="manage_select_placeholder">Kein</message>
 	
 	<message id="jobs_navlabel">Jobs</message>
-	<message id="jobs_introduction">Jobs sind Prozesse, die regelmäßig im Hintergrund ablaufen, wie zum Beispiel die automatische Spielberechnung. Diese müssen immer manuell gestartet werden, wenn der Server einen Neustart hatte oder
-	    sonst ein Fehler aufgetreten ist.</message>
-	 <message id="jobs_warning">Überprüfe regelmäßig (mindestens täglich), ob die Jobs noch laufen!</message>  
-	
+	<message id="jobs_introduction">Jobs sind Aufgaben, die regelmäßig im Hintergrund ablaufen, wie zum Beispiel die automatische Spielberechnung. Richte CronJobs für die automatische Ausführung ein oder klicke auf "Jetzt ausführen", um einen Job manuell zu starten.</message>
+
 	<message id="jobs_head_name">Bezeichnung</message>
-	<message id="jobs_head_status">Status</message>
-	<message id="jobs_head_startstop">Start/Stop</message> 
-	<message id="jobs_head_class">Klasse</message> 
-	<message id="jobs_head_last_execution">Letzte Ausführung</message> 
-	<message id="jobs_head_interval">Intervall</message> 
-	<message id="jobs_status_running">Läuft</message> 
-	<message id="jobs_status_notrunning">Läuft nicht</message> 
-	<message id="jobs_button_stop">Anhalten</message>
-	<message id="jobs_button_start">Starten</message>
-	<message id="jobs_button_execute_once">Einmalig ausführen</message>
+	<message id="jobs_head_id">ID</message>
+	<message id="jobs_head_execute">Ausführen</message>
+	<message id="jobs_head_last_execution">Letzte Ausführung</message>
+	<message id="jobs_button_execute_now">Jetzt ausführen</message>
 	<message id="jobs_executed">Erfolgreich ausgeführt.</message>
+	<message id="jobs_cronjobs_title">CronJobs einrichten</message>
+	<message id="jobs_cronjobs_intro">Jobs laufen nicht als dauerhafte Prozesse. Stattdessen richtest du CronJobs auf deinem Server ein, die das PHP-Skript webservices/executeJob.php in regelmäßigen Abständen aufrufen. Das Skript akzeptiert die Argumente "sectoken" (dein Sicherheitsschlüssel) und "jobid" (eine einzelne Job-ID oder eine kommagetrennte Liste von Job-IDs).</message>
+	<message id="jobs_cronjobs_recommended_title">Empfohlene Einrichtung (zwei CronJobs)</message>
+	<message id="jobs_cronjobs_recommended_text">Richte mindestens zwei CronJobs ein: einen, der jede Minute läuft und den Job für die Spielberechnung ausführt, und einen weiteren, der alle 15 Minuten läuft und alle anderen Jobs über eine kommagetrennte Liste von Job-IDs aufruft.</message>
+	<message id="jobs_cronjobs_per_job_title">Separater CronJob pro Job</message>
+	<message id="jobs_cronjobs_per_job_text">Alternativ kannst du für jeden Job einen separaten CronJob einrichten. Der Zeitplan unten basiert auf dem für jeden Job konfigurierten Intervall.</message>
 	
 	<message id="sendpassword_admin_email_subject">dein neues Passwort zum AdminCenter</message>
 	<message id="sendpassword_admin_email_greeting">Guten Tag,</message>

@@ -39,6 +39,11 @@ services:
       - "8080:80"
     environment:
       DEBUG: ${DEBUG:-true}
+      # Enable the built-in cron daemon (set to "0" to disable).
+      WEBSOCCER_CRON_ENABLED: ${WEBSOCCER_CRON_ENABLED:-1}
+      # Security key for cron job execution. Must match the "webjobexecution_key"
+      # setting configured in the AdminCenter. Defaults to "-".
+      WEBSOCCER_JOB_SECTOKEN: ${WEBSOCCER_JOB_SECTOKEN:--}
     depends_on:
       db:
         condition: service_healthy

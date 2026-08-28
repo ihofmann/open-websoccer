@@ -59,6 +59,9 @@ services:
     restart: "no"
     ports:
       - "8081:80"
+    environment:
+      # Disable cron jobs so they don't interfere with E2E tests.
+      WEBSOCCER_CRON_ENABLED: "0"
     depends_on:
       db:
         condition: service_healthy

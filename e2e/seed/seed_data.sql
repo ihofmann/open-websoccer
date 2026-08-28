@@ -34,6 +34,11 @@ VALUES
      '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0');
 
 -- Second admin used exclusively by the 2FA lockout E2E test.
+-- One old login proves the AdminCenter retention action only removes records
+-- older than six months.
+INSERT INTO ws3_adminlog (admin_name, ip, created_date)
+VALUES ('oldadmin', '192.0.2.1', UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 7 MONTH)));
+
 -- It is intentionally NOT used by any other test so that locking it
 -- does not interfere with the rest of the suite.
 INSERT INTO ws3_admin

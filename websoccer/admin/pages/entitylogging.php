@@ -39,11 +39,9 @@ if (!$show) {
 
   <?php
 
-  $datei = '../generated/entitylog.php';
+  $logs = EntityLogDataService::getLatest($website, $db, 50);
 
-  $datei_gr = filesize($datei);
-
-  if (!$datei_gr) echo '<p>'. $i18n->getMessage('empty_list') . '</p>';
+  if (!count($logs)) echo '<p>'. $i18n->getMessage('empty_list') . '</p>';
   else {
 
     ?>
@@ -58,33 +56,26 @@ if (!$show) {
             </tr>
             <?php
 
-            $file = file($datei);
-            $lines = count($file);
-            $min = $lines - 50;
-            if ($min < 0) $min = 0;
-
-            for ($i = $lines-1; $i >= $min; $i--) {
-      $line = $file[$i];
-
-              $row = explode(';', $line);
-      
-      $n = $i + 1;
+            foreach ($logs as $i => $log) {
               echo '<tr>
-                <td><b>'. $n .'</b></td>
-                <td>'. $row[0] .'</td>
-                <td>'. escapeOutput($row[1]) .' ('. escapeOutput($row[2]) . ')</td>
+                <td><b>'. ($i + 1) .'</b></td>
+                <td>'. escapeOutput($website->getFormattedDatetime($log['created_date'])) .'</td>
+                <td>'. escapeOutput($log['username']) .' ('. escapeOutput($log['ip']) . ')</td>
                 <td>'; 
                 
-                  if ($row[3] == LOG_TYPE_EDIT) {
+                  if ($log['type'] == LOG_TYPE_EDIT) {
           echo '<span class=\'badge bg-info\'><i class=\'bi bi-pencil\'></i> '. $i18n->getMessage('entitylogging_action_edit') . '</span>';
-        } elseif ($row[3] == LOG_TYPE_DELETE) {
+        } elseif ($log['type'] == LOG_TYPE_DELETE) {
           echo '<span class=\'badge bg-danger\'><i class=\'bi bi-trash\'></i> '. $i18n->getMessage('entitylogging_action_delete') . '</span>';
         } else {
-          echo $row[3];
+          echo escapeOutput($log['type']);
         }
                 echo '</td>
-        <td>'. $i18n->getMessage('entity_' . $row[4]) .': { ';
-                  $itemFields = json_decode($row[5], TRUE);
+        <td>'. $i18n->getMessage('entity_' . $log['entity']) .': { ';
+                  $itemFields = json_decode($log['entity_value'], TRUE);
+                  if (!is_array($itemFields)) {
+                    $itemFields = array();
+                  }
                   $firstField = TRUE;
                   foreach ($itemFields as $fieldKey => $fieldValue) {
           if ($firstField) {

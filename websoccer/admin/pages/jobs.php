@@ -34,85 +34,68 @@ if (!$show) {
 
   <p><?php echo $i18n->getMessage("jobs_introduction"); ?></p>
   
-  <div class="alert alert-info">
-  <?php echo $i18n->getMessage("jobs_warning"); ?>
-  </div>
-  
   <?php 
   	if ($action == "execute" && !$admin["r_demo"]) {
 		$jobId = $_REQUEST["id"];
 
-		$xml = simplexml_load_file(JOBS_CONFIG_FILE);
-		$jobConfig = $xml->xpath("//job[@id = '". $jobId . "']");
-		if (!$jobConfig) {
-			throw new Exception("Job config not found.");
+		try {
+			$jobConfig = JobDataService::getJob($website, $db, $jobId);
+			if (!$jobConfig) {
+				throw new Exception("Job config not found.");
+			}
+			
+			$jobClass = $jobConfig['class'];
+			if (class_exists($jobClass)) {
+				$job = new $jobClass($website, $db, $i18n, $jobId);
+			} else {
+				throw new Exception("class not found: " . $jobClass);
+			}
+			
+			$job->execute();
+			// Destroy the job object so that AbstractJob::__destruct() runs
+			// immediately, updating last_ping before the table is rendered.
+			unset($job);
+
+			echo createSuccessMessage($i18n->getMessage("jobs_executed"), "");
+		} catch (Exception $e) {
+			echo createErrorMessage($i18n->getMessage("subpage_error_title"), $e->getMessage());
 		}
-		
-		$jobClass = (string) $jobConfig[0]->attributes()->class;
-		if (class_exists($jobClass)) {
-			$job = new $jobClass($website, $db, $i18n, $jobId);
-		} else {
-			throw new Exception("class not found: " . $jobClass);
-		}
-		
-		$job->execute();
-		
-		echo createSuccessMessage($i18n->getMessage("jobs_executed"), "");
 	}
   ?>
   
   <table class="table table-striped">
   	<thead>
   		<tr>
+  			<th><?php echo $i18n->getMessage("jobs_head_id"); ?></th>
   			<th><?php echo $i18n->getMessage("jobs_head_name"); ?></th>
   			<th><?php echo $i18n->getMessage("jobs_head_last_execution"); ?></th>
-  			<th><?php echo $i18n->getMessage("jobs_head_interval"); ?></th>
-  			<th><?php echo $i18n->getMessage("jobs_head_status"); ?></th>
-  			<th><?php echo $i18n->getMessage("jobs_head_startstop"); ?></th>
+  			<th><?php echo $i18n->getMessage("jobs_head_execute"); ?></th>
   		</tr>
   	</thead>
   	<tbody>
   	<?php 
-  		$doc = new DOMDocument();
-		$loaded = @$doc->load(JOBS_CONFIG_FILE);
-		if (!$loaded) {
-			throw new Exception("Could not load XML config file: " + JOBS_CONFIG_FILE);
-		}
+		$allJobIds = array();
 		
-		$items = $doc->getElementsByTagName("job");
-		
-		$now = $website->getNowAsTimestamp();
-		
-		foreach ($items as $item) {
+		foreach (JobDataService::getJobs($website, $db) as $item) {
 			echo "<tr>";
 			
-			$jobid = (string) $item->getAttribute("id");
+			$jobid = $item['id'];
+			$allJobIds[] = $jobid;
 			
 			$i18nJobNameAttr = "name_" . $i18n->getCurrentLanguage();
-			if ($item->hasAttribute($i18nJobNameAttr)) {
-				$name = (string) $item->getAttribute($i18nJobNameAttr);
+			if (isset($item[$i18nJobNameAttr]) && strlen($item[$i18nJobNameAttr])) {
+				$name = $item[$i18nJobNameAttr];
 			} else {
-				$name = (string) $item->getAttribute("name");
+				$name = $item['name'];
 			}
 			
-			$class = (string) $item->getAttribute("class");
-			$interval = (string) $item->getAttribute("interval");
-			$lastPing = (int) $item->getAttribute("last_ping");
-			$error = (string) $item->getAttribute("error");
-			$stop = (string) $item->getAttribute("stop");
+			$lastPing = (int) $item['last_ping'];
+			$error = (string) $item['error'];
 			
-			$minPing = $now - $interval * 60 - 5;
-			$running = ($stop == 0 && $lastPing > $minPing);
-			
-			if ($running) {
-				$status = "<span class=\"badge bg-success\">". $i18n->getMessage("jobs_status_running") ."</span>";
-			} else {
-				$status = "<span class=\"badge bg-danger\">". $i18n->getMessage("jobs_status_notrunning") ."</span>";
-			}
-			
-			echo "<td>" . $name;
+			echo "<td><code>" . escapeOutput($jobid) . "</code></td>";
+			echo "<td>" . escapeOutput($name);
 			if (strlen($error)) {
-				echo createErrorMessage($i18n->getMessage("subpage_error_title"), $error);
+				echo createErrorMessage($i18n->getMessage("subpage_error_title"), escapeOutput($error));
 			}
 			echo "</td>";
 			echo "<td>";
@@ -122,15 +105,8 @@ if (!$show) {
 				echo "-";
 			}
 			echo "</td>";
-			echo "<td>" . $interval . " ". $i18n->getMessage("unit_minutes") ."</td>";
-			echo "<td>" . $status . "</td>";
 			echo "<td>";
-			if ($running) {
-				echo "<a href=\"job.php?action=stop&id=". $jobid . "\" class=\"btn btn-outline-primary startStopJobLink\">". $i18n->getMessage("jobs_button_stop") ."</a>";
-			} else {
-				echo "<a href=\"job.php?action=start&id=". $jobid . "\" class=\"btn btn-primary startStopJobLink\">". $i18n->getMessage("jobs_button_start") ."</a>";
-				echo " <a href=\"?site=". $site . "&action=execute&id=". $jobid . "\" class=\"btn btn-secondary\">". $i18n->getMessage("jobs_button_execute_once") ."</a>";
-			}
+			echo "<a href=\"?site=". $site . "&amp;action=execute&amp;id=". urlencode($jobid) . "\" class=\"btn btn-primary\">". $i18n->getMessage("jobs_button_execute_now") ."</a>";
 			echo "</td>";
 			
 			echo "</tr>";
@@ -139,6 +115,44 @@ if (!$show) {
 	?>
   	</tbody>
   </table>
+  
+  <?php
+  // Build cronjob examples
+  $executeJobPath = realpath(BASE_FOLDER . '/webservices/executeJob.php');
+  $securityKey = $website->getConfig('webjobexecution_key');
+  
+  // Job IDs for the "all other jobs" cronjob (every job except 'sim')
+  $otherJobIds = array_diff($allJobIds, array('sim'));
+  $otherJobIdsParam = implode(',', $otherJobIds);
+  
+  $simCronLine = '* * * * * php ' . $executeJobPath . ' sectoken=' . $securityKey . ' jobid=sim';
+  $othersCronLine = '*/15 * * * * php ' . $executeJobPath . ' sectoken=' . $securityKey . ' jobid=' . $otherJobIdsParam;
+  
+  // Per-job cron lines
+  $perJobCronLines = '';
+  foreach (JobDataService::getJobs($website, $db) as $item) {
+	  $jid = $item['id'];
+	  $interval = (int) $item['interval'];
+	  if ($interval > 1) {
+		  $cronSchedule = '*/' . $interval . ' * * * *';
+	  } else {
+		  $cronSchedule = '* * * * *';
+	  }
+	  $perJobCronLines .= $cronSchedule . ' php ' . $executeJobPath . ' sectoken=' . $securityKey . ' jobid=' . $jid . "\n";
+  }
+  ?>
+  
+  <h2><?php echo $i18n->getMessage("jobs_cronjobs_title"); ?></h2>
+  
+  <p><?php echo $i18n->getMessage("jobs_cronjobs_intro"); ?></p>
+  
+  <h3><?php echo $i18n->getMessage("jobs_cronjobs_recommended_title"); ?></h3>
+  <p><?php echo $i18n->getMessage("jobs_cronjobs_recommended_text"); ?></p>
+  <pre><code><?php echo escapeOutput($simCronLine . "\n" . $othersCronLine); ?></code></pre>
+  
+  <h3><?php echo $i18n->getMessage("jobs_cronjobs_per_job_title"); ?></h3>
+  <p><?php echo $i18n->getMessage("jobs_cronjobs_per_job_text"); ?></p>
+  <pre><code><?php echo escapeOutput(trim($perJobCronLines)); ?></code></pre>
   
   <?php
 

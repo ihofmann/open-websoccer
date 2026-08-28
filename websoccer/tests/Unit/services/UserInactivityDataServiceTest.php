@@ -35,7 +35,10 @@ final class UserInactivityDataServiceTest extends TestCaseBase {
 		);
 		$db->expects($this->once())->method('queryInsert')
 			->with($this->callback(function ($cols) {
-				return isset($cols['user_id']) && $cols['user_id'] == 5;
+				return isset($cols['user_id']) && $cols['user_id'] == 5
+					&& isset($cols['login_last']) && $cols['login_last'] === 0
+					&& isset($cols['login_check']) && $cols['login_check'] === 0
+					&& isset($cols['transfer_check']) && $cols['transfer_check'] === 0;
 			}), $this->anything());
 		$this->assertSame($row, UserInactivityDataService::getUserInactivity($this->ws, $db, 5));
 	}

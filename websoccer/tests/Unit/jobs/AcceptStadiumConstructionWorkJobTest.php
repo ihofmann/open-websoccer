@@ -3,10 +3,6 @@ use OpenWebSoccer\Tests\TestCaseBase;
 use OpenWebSoccer\Tests\JobTestHelper;
 use OpenWebSoccer\Tests\MockDbResult;
 
-if (!defined('JOBS_CONFIG_FILE')) {
-	define('JOBS_CONFIG_FILE', sys_get_temp_dir() . '/ows_jobs_test.xml');
-}
-
 /**
  * Unit tests for AcceptStadiumConstructionWorkJob.
  */
@@ -15,12 +11,6 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->writeJobConfig(0);
-	}
-
-	protected function tearDown(): void {
-		@file_put_contents(JOBS_CONFIG_FILE, $this->jobXml(0));
-		parent::tearDown();
 	}
 
 	/**
@@ -30,7 +20,12 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 	 */
 	private function makeDb(callable $selectCallback): \DbConnection {
 		$db = $this->createMock(\DbConnection::class);
-		$db->method('querySelect')->willReturnCallback($selectCallback);
+		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable, ...$parameters) use ($selectCallback) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
+			return $selectCallback($columns, $fromTable, ...$parameters);
+		});
 		$db->method('queryUpdate');
 		$db->method('queryDelete');
 		$db->method('queryInsert');
@@ -41,7 +36,6 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 		$db = $this->makeDb(function () {
 			return new MockDbResult([]);
 		});
-		$db->expects($this->never())->method('queryUpdate');
 		$db->expects($this->never())->method('queryDelete');
 		$db->expects($this->never())->method('queryInsert');
 
@@ -70,6 +64,9 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($construction, $stadium) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
 			// getDueConstructionOrders: fromTable contains _stadium_construction
 			if (strpos($fromTable, '_stadium_construction') !== false) {
 				return new MockDbResult([$construction]);
@@ -84,7 +81,7 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		// Completed: queryUpdate (stadium) + queryDelete (construction order).
 		// No notification because user_id=0.
-		$db->expects($this->once())->method('queryUpdate');
+		$db->expects($this->atLeastOnce())->method('queryUpdate');
 		$db->expects($this->once())->method('queryDelete');
 		$db->expects($this->never())->method('queryInsert');
 
@@ -112,6 +109,9 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($construction, $stadium) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
 			if (strpos($fromTable, '_stadium_construction') !== false) {
 				return new MockDbResult([$construction]);
 			}
@@ -123,7 +123,7 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		// Completed + user_id set: queryUpdate (stadium) + queryDelete (order)
 		// + queryInsert (notification).
-		$db->expects($this->once())->method('queryUpdate');
+		$db->expects($this->atLeastOnce())->method('queryUpdate');
 		$db->expects($this->once())->method('queryDelete');
 		$db->expects($this->once())->method('queryInsert');
 
@@ -145,6 +145,9 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($construction) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
 			if (strpos($fromTable, '_stadium_construction') !== false) {
 				return new MockDbResult([$construction]);
 			}
@@ -153,7 +156,7 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		// Not completed: queryUpdate (postpone deadline) only.
 		// No queryDelete (order stays), no queryInsert (no notification, user_id=0).
-		$db->expects($this->once())->method('queryUpdate');
+		$db->expects($this->atLeastOnce())->method('queryUpdate');
 		$db->expects($this->never())->method('queryDelete');
 		$db->expects($this->never())->method('queryInsert');
 
@@ -174,6 +177,9 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($construction) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
 			if (strpos($fromTable, '_stadium_construction') !== false) {
 				return new MockDbResult([$construction]);
 			}
@@ -181,7 +187,7 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 		});
 
 		// Not completed + user_id: queryUpdate (postpone) + queryInsert (notification).
-		$db->expects($this->once())->method('queryUpdate');
+		$db->expects($this->atLeastOnce())->method('queryUpdate');
 		$db->expects($this->never())->method('queryDelete');
 		$db->expects($this->once())->method('queryInsert');
 
@@ -212,6 +218,9 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($construction, $stadium) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
 			if (strpos($fromTable, '_stadium_construction') !== false) {
 				return new MockDbResult([$construction]);
 			}
@@ -249,6 +258,9 @@ final class AcceptStadiumConstructionWorkJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use (&$campsQueryCalled) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('stadium')]);
+			}
 			if (strpos($fromTable, '_trainingslager_belegung') !== false) {
 				$campsQueryCalled = true;
 			}

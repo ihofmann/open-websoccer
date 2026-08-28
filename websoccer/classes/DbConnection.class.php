@@ -253,7 +253,9 @@ class DbConnection {
 				$firstColumn = FALSE;
 			}
 			
-			if ($value !== null && $value !== '') {
+			if (is_bool($value)) {
+				$columnValue = $value ? '1' : '0';
+			} elseif ($value !== null && $value !== '') {
 				$columnValue = '\'' . $this->connection->real_escape_string($value) .'\'';
 			} else {
 				$columnValue = 'DEFAULT';

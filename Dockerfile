@@ -16,10 +16,12 @@ LABEL org.opencontainers.image.description="Slim Apache + PHP 8.5 image for Open
 LABEL org.opencontainers.image.source="https://github.com/ihofmann/open-websoccer"
 
 # System libraries required by the GD extension (JPEG, PNG, FreeType)
+# and the cron daemon for scheduled job execution.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libpng-dev \
         libjpeg-dev \
         libfreetype6-dev \
+        cron \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure and install PHP extensions that are NOT already compiled into
@@ -55,7 +57,13 @@ RUN mkdir -p /var/www/html/generated \
              /var/www/html/uploads/stadiumbuilding \
              /var/www/html/uploads/users \
     && chown -R www-data:www-data /var/www/html/generated /var/www/html/cache /var/www/html/uploads \
-    && chown www-data:www-data /var/www/html/admin/config/jobs.xml /var/www/html/admin/config/termsandconditions.xml \
-    && chmod -R 775 /var/www/html/generated /var/www/html/cache /var/www/html/uploads /var/www/html/admin/config/jobs.xml /var/www/html/admin/config/termsandconditions.xml
+    && chmod -R 775 /var/www/html/generated /var/www/html/cache /var/www/html/uploads
+
+# Entrypoint script that starts the cron daemon (with the recommended job
+# schedules) and then launches Apache in the foreground.
+COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 80
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

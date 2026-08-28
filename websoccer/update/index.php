@@ -179,6 +179,136 @@ function executeUpdateDdl(DbConnection $db, $prefix) {
 	}
 }
 
+function getLegacyTimestamp($value) {
+	$value = trim($value);
+	$formats = array('d.m.y - H:i:s', 'd.m.Y, H:i', 'd.m.Y - H:i:s', 'Y-m-d H:i:s');
+	foreach ($formats as $format) {
+		$date = DateTime::createFromFormat($format, $value);
+		if ($date !== false) {
+			return $date->getTimestamp();
+		}
+	}
+
+	$timestamp = strtotime($value);
+	return ($timestamp === false) ? time() : $timestamp;
+}
+
+function migrateLegacyAdminLogs(DbConnection $db, $prefix, $file) {
+	if (!file_exists($file)) {
+		return;
+	}
+
+	$table = $prefix . '_adminlog';
+	foreach (file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+		$parts = explode(', ', trim($line), 3);
+		if (count($parts) !== 3 || strpos($parts[0], 'Truncated by ') === 0) {
+			continue;
+		}
+
+		$db->queryInsert(array(
+			'admin_name' => $parts[0],
+			'ip' => $parts[1],
+			'created_date' => getLegacyTimestamp($parts[2])
+		), $table);
+	}
+}
+
+function migrateLegacyEntityLogs(DbConnection $db, $prefix, $file) {
+	if (!file_exists($file)) {
+		return;
+	}
+
+	$table = $prefix . '_entitylog';
+	foreach (file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+		$parts = explode(';', trim($line), 6);
+		if (count($parts) !== 6) {
+			continue;
+		}
+
+		$db->queryInsert(array(
+			'created_date' => getLegacyTimestamp($parts[0]),
+			'username' => $parts[1],
+			'ip' => $parts[2],
+			'type' => $parts[3],
+			'entity' => $parts[4],
+			'entity_value' => $parts[5]
+		), $table);
+	}
+}
+
+function migrateLegacyPages(DbConnection $db, $prefix, $file) {
+	if (!file_exists($file)) {
+		return;
+	}
+
+	$xml = simplexml_load_file($file);
+	if ($xml === false) {
+		throw new Exception('Could not load legacy terms and conditions file.');
+	}
+
+	$table = $prefix . '_pages';
+	foreach ($xml->xpath('//pagecontent') as $pageContent) {
+		$language = (string) $pageContent['lang'];
+		if (!strlen($language)) {
+			continue;
+		}
+
+		$result = $db->querySelect('id', $table,
+			'type = \'termsandconditions\' AND language = \'%s\'', $language, 1);
+		$existingPage = $result->fetch_array();
+		$result->free();
+
+		$columns = array('content' => (string) $pageContent);
+		if ($existingPage) {
+			$db->queryUpdate($columns, $table, 'id = %d', $existingPage['id']);
+		} else {
+			$db->queryInsert(array(
+				'type' => 'termsandconditions',
+				'language' => $language,
+				'content' => (string) $pageContent
+			), $table);
+		}
+	}
+}
+
+function migrateLegacyJobs(DbConnection $db, $prefix, $file) {
+	if (!file_exists($file)) {
+		return;
+	}
+
+	$xml = simplexml_load_file($file);
+	if ($xml === false) {
+		throw new Exception('Could not load legacy jobs file.');
+	}
+
+	$table = $prefix . '_jobs';
+	foreach ($xml->xpath('//job') as $job) {
+		$attributes = $job->attributes();
+		$columns = array(
+			'name' => (string) $attributes['name'],
+			'name_de' => (string) $attributes['name_de'],
+			'class' => (string) $attributes['class'],
+			'interval' => (int) $attributes['interval'],
+			'last_ping' => (int) $attributes['last_ping'],
+			'stop' => (int) $attributes['stop'],
+			'error' => (string) $attributes['error'],
+			'inittime' => (int) $attributes['inittime']
+		);
+		$jobId = (string) $attributes['id'];
+
+		$result = $db->querySelect('id', $table, 'id = \'%s\'', $jobId, 1);
+		$existingJob = $result->fetch_array();
+		$result->free();
+
+		if ($existingJob) {
+			$db->queryUpdate($columns, $table, 'id = \'%s\'', $jobId);
+		} else {
+			$columns['id'] = $jobId;
+			$db->queryInsert($columns, $table);
+		}
+	}
+}
+
 function actionMoveFiles() {
 
 	include(CONFIGFILE);
@@ -198,6 +328,12 @@ function actionMoveFiles() {
 
 	try {
 		executeUpdateDdl($db, $conf["db_prefix"]);
+		migrateLegacyAdminLogs($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/adminlog.php");
+		migrateLegacyAdminLogs($db, $conf["db_prefix"], BASE_FOLDER . "/generated/adminlog.php");
+		migrateLegacyEntityLogs($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/entitylog.php");
+		migrateLegacyEntityLogs($db, $conf["db_prefix"], BASE_FOLDER . "/generated/entitylog.php");
+		migrateLegacyPages($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/termsandconditions.xml");
+		migrateLegacyJobs($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/jobs.xml");
 	} catch (Exception $e) {
 		$db->close();
 		throw $e;
@@ -205,13 +341,30 @@ function actionMoveFiles() {
 
 	$db->close();
 
-	$fileNames = array("config.inc.php", "adminlog.php", "imprint.php", "entitylog.php");
+	$fileNames = array("config.inc.php", "imprint.php");
 	$oldDir = BASE_FOLDER . "/admin/config/";
 	$newDir = BASE_FOLDER . "/generated/";
 	
 	foreach ($fileNames as $fileName) {
 		if (file_exists($oldDir . $fileName)) {
 			rename($oldDir . $fileName, $newDir . $fileName);
+		}
+	}
+
+	$legacyFiles = array(
+		$oldDir . "adminlog.php",
+		$oldDir . "entitylog.php",
+		$oldDir . "termsandconditions.xml",
+		$oldDir . "jobs.xml",
+		$oldDir . "termsandconditions.dtd",
+		$oldDir . "jobs.dtd",
+		$oldDir . "lockfile.txt",
+		BASE_FOLDER . "/generated/adminlog.php",
+		BASE_FOLDER . "/generated/entitylog.php"
+	);
+	foreach ($legacyFiles as $legacyFile) {
+		if (file_exists($legacyFile)) {
+			@unlink($legacyFile);
 		}
 	}
 

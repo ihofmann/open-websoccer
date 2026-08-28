@@ -26,19 +26,17 @@ if (!$admin["r_admin"] && !$admin["r_demo"] && !$admin[$page["permissionrole"]])
 	throw new Exception($i18n->getMessage("error_access_denied"));
 }
 
-// get XML config
+// get page for selected language
 $selectedLang = (isset($_POST["lang"])) ? $_POST["lang"] : $i18n->getCurrentLanguage();
 
-$termsFile = BASE_FOLDER . "/admin/config/termsandconditions.xml";
-if (!file_exists($termsFile)) {
-	throw new Exception("File does not exist: " . $termsFile);
-}
-
-$xml = simplexml_load_file($termsFile);
-
-$termsConfig = $xml->xpath("//pagecontent[@lang = '". $selectedLang . "'][1]");
-if (!$termsConfig) {
-	throw new Exception("No terms and conditions available for this language. Create manually a new entry at " . $termsFile);
+$termsPage = PageDataService::getByTypeAndLanguage(
+	$website,
+	$db,
+	PageDataService::TERMS_AND_CONDITIONS_TYPE,
+	$selectedLang
+);
+if (!$termsPage) {
+	throw new Exception("No terms and conditions available for this language.");
 }
 
 //********** form **********
@@ -74,7 +72,7 @@ if (!$show) {
 	<?php 
 	$formFields = array();
 	
-	$terms = (string) $termsConfig[0];
+	$terms = $termsPage["content"];
 	
 	$formFields["content"] = array("type" => "html", "value" => $terms, "required" => "true");
 	foreach ($formFields as $fieldId => $fieldInfo) {
@@ -96,7 +94,6 @@ if (!$show) {
 elseif ($show == "save") {
 
   if (!isset($_POST['content']) || !strlen($_POST['content'])) $err[] = $i18n->getMessage("imprint_validationerror_content");
-  if (!is_writable($termsFile)) $err[] = $i18n->getMessage("termsandconditions_err_filenotwritable", $termsFile);
   if ($admin['r_demo']) $err[] = $i18n->getMessage("validationerror_no_changes_as_demo");
 
   if (isset($err)) {
@@ -108,22 +105,13 @@ elseif ($show == "save") {
 
     echo "<h1>". $mainTitle ." &raquo; ". $i18n->getMessage("subpage_save_title") . "</h1>";
 
-    $termsContent = stripslashes($_POST['content']);
-	    
-    // replace CDATA. Well, not easy with nice PHP, so this trick does it somehow...
-    $node= dom_import_simplexml($termsConfig[0]); 
-	$no = $node->ownerDocument; 
-	   
-	// remove existing CDATA
-	foreach($node->childNodes as $child) {
-	   	if ($child->nodeType == XML_CDATA_SECTION_NODE) {
-	   		$node->removeChild($child);
-	   	}
-	}
-	// add new CDATA
-	$node->appendChild($no->createCDATASection($termsContent)); 
-	   
-	$xml->asXML($termsFile);
+    PageDataService::save(
+		$website,
+		$db,
+		PageDataService::TERMS_AND_CONDITIONS_TYPE,
+		$selectedLang,
+		stripslashes($_POST['content'])
+	);
     
 	echo createSuccessMessage($i18n->getMessage("alert_save_success"), "");
 

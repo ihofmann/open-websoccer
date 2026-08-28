@@ -39,6 +39,7 @@ class FormBuilder {
 	 */
 	public static function createFormGroup($i18n, $fieldId, $fieldInfo, $fieldValue, $labelKeyPrefix) {
 		$type = $fieldInfo['type'];
+		$fieldValue = $fieldValue ?? '';
 
 		// convert date
 		if ($type == 'timestamp' && isset($fieldInfo['readonly']) && $fieldInfo['readonly']) {
@@ -201,6 +202,7 @@ class FormBuilder {
 	 * @throws Exception if validation failed.
 	 */
 	public static function validateField($i18n, $fieldId, $fieldInfo, $fieldValue, $labelKeyPrefix) {
+		$fieldValue = $fieldValue ?? '';
 		$textLength = strlen(trim($fieldValue));
 		$isEmpty = !$textLength;
 		if ($fieldInfo['type'] != 'boolean' && $fieldInfo['required'] && $isEmpty) {
