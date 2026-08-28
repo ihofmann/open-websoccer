@@ -42,13 +42,12 @@ if (!$show) {
   	if ($action == "execute" && !$admin["r_demo"]) {
 		$jobId = $_REQUEST["id"];
 
-		$xml = simplexml_load_file(JOBS_CONFIG_FILE);
-		$jobConfig = $xml->xpath("//job[@id = '". $jobId . "']");
+		$jobConfig = JobDataService::getJob($website, $db, $jobId);
 		if (!$jobConfig) {
 			throw new Exception("Job config not found.");
 		}
 		
-		$jobClass = (string) $jobConfig[0]->attributes()->class;
+		$jobClass = $jobConfig['class'];
 		if (class_exists($jobClass)) {
 			$job = new $jobClass($website, $db, $i18n, $jobId);
 		} else {
@@ -73,33 +72,24 @@ if (!$show) {
   	</thead>
   	<tbody>
   	<?php 
-  		$doc = new DOMDocument();
-		$loaded = @$doc->load(JOBS_CONFIG_FILE);
-		if (!$loaded) {
-			throw new Exception("Could not load XML config file: " + JOBS_CONFIG_FILE);
-		}
-		
-		$items = $doc->getElementsByTagName("job");
-		
 		$now = $website->getNowAsTimestamp();
 		
-		foreach ($items as $item) {
+		foreach (JobDataService::getJobs($website, $db) as $item) {
 			echo "<tr>";
 			
-			$jobid = (string) $item->getAttribute("id");
+			$jobid = $item['id'];
 			
 			$i18nJobNameAttr = "name_" . $i18n->getCurrentLanguage();
-			if ($item->hasAttribute($i18nJobNameAttr)) {
-				$name = (string) $item->getAttribute($i18nJobNameAttr);
+			if (isset($item[$i18nJobNameAttr]) && strlen($item[$i18nJobNameAttr])) {
+				$name = $item[$i18nJobNameAttr];
 			} else {
-				$name = (string) $item->getAttribute("name");
+				$name = $item['name'];
 			}
 			
-			$class = (string) $item->getAttribute("class");
-			$interval = (string) $item->getAttribute("interval");
-			$lastPing = (int) $item->getAttribute("last_ping");
-			$error = (string) $item->getAttribute("error");
-			$stop = (string) $item->getAttribute("stop");
+			$interval = (int) $item['interval'];
+			$lastPing = (int) $item['last_ping'];
+			$error = (string) $item['error'];
+			$stop = (int) $item['stop'];
 			
 			$minPing = $now - $interval * 60 - 5;
 			$running = ($stop == 0 && $lastPing > $minPing);

@@ -74,7 +74,7 @@ Invoke-Compose @('up', '-d', '--build')
 
 # Copy the prepared config into the image-owned named volume. A host bind mount
 # would make the generated/ directory owned by the CI user instead of www-data,
-# preventing the application from writing admin logs and runtime config.
+# preventing the application from writing runtime config.
 Write-Host '==> Installing the application config in the web container' -ForegroundColor Cyan
 & docker compose -f $compose cp (Join-Path $generatedDir 'config.inc.php') 'web:/tmp/config.inc.php'
 if ($LASTEXITCODE -ne 0) { throw 'docker compose cp config.inc.php failed' }

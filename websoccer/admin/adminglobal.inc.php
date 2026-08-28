@@ -22,7 +22,6 @@
 ******************************************************/
 
 define('OVERVIEW_SITE_SUFFIX', '_overview');
-define('JOBS_CONFIG_FILE', BASE_FOLDER . '/admin/config/jobs.xml');
 define('LOG_TYPE_EDIT', 'edit');
 define('LOG_TYPE_DELETE', 'delete');
 

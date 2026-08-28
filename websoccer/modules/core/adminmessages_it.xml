@@ -90,11 +90,8 @@
   <message id="profile_label_language">Lingua</message>
   <message id="all_logging_title">Registro amministratore</message>
   <message id="all_logging_intro">Questo elenco mostra gli ultimi accessi ad AdminCenter degli amministratori.</message>
-  <message id="all_logging_filesize"><b>Dimensione file di registro:</b> %s KByte</message>
-  <message id="all_logging_button_empty_file">File Vuoto</message>
-  <message id="all_logging_filenotfound">Il file di registro non esiste.</message>
-  <message id="all_logging_alert_logfile_truncated">Il file di registro è stato troncato correttamente.</message>
-  <message id="all_logging_error_not_truncated">Il file di registro non può essere troncato. Il file è scrivibile?</message>
+  <message id="all_logging_button_clear_old">Elimina i registri più vecchi di 6 mesi</message>
+  <message id="all_logging_alert_logs_deleted">I registri più vecchi di 6 mesi sono stati eliminati.</message>
   <message id="all_logging_only_last_entries_shown">Verranno mostrate solo le ultime 50 voci.</message>
   <message id="all_logging_label_no">No</message>
   <message id="all_logging_label_user">Utente</message>

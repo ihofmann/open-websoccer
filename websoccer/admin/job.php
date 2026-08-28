@@ -22,7 +22,7 @@
 ******************************************************/
 
 /*
- * Starts or stops a job from config/jobs.xml.
+ * Starts or stops a job.
  * Request parameters:
  * 		id: Job-ID
  * 		action: start|stop
@@ -38,13 +38,12 @@ if ($admin['r_demo']) {
 
 $jobId = $_REQUEST['id'];
 
-$xml = simplexml_load_file(JOBS_CONFIG_FILE);
-$jobConfig = $xml->xpath('//job[@id = \''. $jobId . '\']');
+$jobConfig = JobDataService::getJob($website, $db, $jobId);
 if (!$jobConfig) {
 	throw new Exception('Job config not found.');
 }
 
-$jobClass = (string) $jobConfig[0]->attributes()->class;
+$jobClass = $jobConfig['class'];
 if (class_exists($jobClass)) {
 	$job = new $jobClass($website, $db, $i18n, $jobId, $action !== 'stop');
 } else {

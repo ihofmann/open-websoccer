@@ -3,10 +3,6 @@ use OpenWebSoccer\Tests\TestCaseBase;
 use OpenWebSoccer\Tests\JobTestHelper;
 use OpenWebSoccer\Tests\MockDbResult;
 
-if (!defined('JOBS_CONFIG_FILE')) {
-	define('JOBS_CONFIG_FILE', sys_get_temp_dir() . '/ows_jobs_test.xml');
-}
-
 /**
  * Unit tests for ExecuteTransfersJob.
  */
@@ -15,24 +11,28 @@ final class ExecuteTransfersJobTest extends TestCaseBase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->writeJobConfig(0);
-	}
-
-	protected function tearDown(): void {
-		@file_put_contents(JOBS_CONFIG_FILE, $this->jobXml(0));
-		parent::tearDown();
 	}
 
 	public function testExecuteWithNoOpenTransfersDoesNotCallQueryUpdate(): void {
 		$db = $this->createMock(\DbConnection::class);
-		$db->method('querySelect')->willReturn(new MockDbResult([]));
-		$db->expects($this->never())->method('queryUpdate');
-
+		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('extransf')]);
+			}
+			return new MockDbResult([]);
+		});
+		$businessUpdates = 0;
+		$db->method('queryUpdate')->willReturnCallback(function ($columns, $fromTable) use (&$businessUpdates) {
+			if (strpos($fromTable, '_jobs') === false) {
+				$businessUpdates++;
+			}
+		});
 		$ws = $this->mockWebsoccer($this->jobConfig());
 		$i18n = $this->mockI18n();
 
 		$job = new ExecuteTransfersJob($ws, $db, $i18n, 'extransf', false);
 		$job->execute();
+		$this->assertSame(0, $businessUpdates);
 	}
 
 	public function testExecuteDelegatesToTransfermarketDataService(): void {
@@ -41,6 +41,9 @@ final class ExecuteTransfersJobTest extends TestCaseBase {
 		$selectCalled = false;
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use (&$selectCalled) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('extransf')]);
+			}
 			if (strpos($fromTable, '_spieler') !== false) {
 				$selectCalled = true;
 			}
@@ -67,6 +70,9 @@ final class ExecuteTransfersJobTest extends TestCaseBase {
 
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturnCallback(function ($columns, $fromTable) use ($playerRow) {
+			if (strpos($fromTable, '_jobs') !== false) {
+				return new MockDbResult([$this->jobRow('extransf')]);
+			}
 			if (strpos($fromTable, '_spieler AS P') !== false) {
 				return new MockDbResult([$playerRow]);
 			}

@@ -55,7 +55,6 @@ RUN mkdir -p /var/www/html/generated \
              /var/www/html/uploads/stadiumbuilding \
              /var/www/html/uploads/users \
     && chown -R www-data:www-data /var/www/html/generated /var/www/html/cache /var/www/html/uploads \
-    && chown www-data:www-data /var/www/html/admin/config/jobs.xml /var/www/html/admin/config/termsandconditions.xml \
-    && chmod -R 775 /var/www/html/generated /var/www/html/cache /var/www/html/uploads /var/www/html/admin/config/jobs.xml /var/www/html/admin/config/termsandconditions.xml
+    && chmod -R 775 /var/www/html/generated /var/www/html/cache /var/www/html/uploads
 
 EXPOSE 80

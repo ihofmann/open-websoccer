@@ -2,10 +2,6 @@
 use OpenWebSoccer\Tests\TestCaseBase;
 use OpenWebSoccer\Tests\JobTestHelper;
 
-if (!defined('JOBS_CONFIG_FILE')) {
-	define('JOBS_CONFIG_FILE', sys_get_temp_dir() . '/ows_jobs_test.xml');
-}
-
 /**
  * Unit tests for UpdateStatisticsJob.
  */
@@ -14,18 +10,13 @@ final class UpdateStatisticsJobTest extends TestCaseBase {
 
 	protected function setUp(): void {
 		parent::setUp();
-		$this->writeJobConfig(0);
-	}
-
-	protected function tearDown(): void {
-		@file_put_contents(JOBS_CONFIG_FILE, $this->jobXml(0));
-		parent::tearDown();
 	}
 
 	public function testExecuteCallsExecuteQueryTwice(): void {
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('stats')]));
 		// execute() runs two executeQuery calls: the statistics REPLACE INTO
-		// and the team strength UPDATE.
+		// and the team strength UPDATE. Job state uses queryUpdate.
 		$db->expects($this->exactly(2))->method('executeQuery');
 
 		$ws = $this->mockWebsoccer($this->jobConfig());
@@ -39,6 +30,7 @@ final class UpdateStatisticsJobTest extends TestCaseBase {
 		$executedQueries = [];
 
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('stats')]));
 		$db->method('executeQuery')->willReturnCallback(function ($query) use (&$executedQueries) {
 			$executedQueries[] = $query;
 		});
@@ -63,6 +55,7 @@ final class UpdateStatisticsJobTest extends TestCaseBase {
 		$executedQueries = [];
 
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('stats')]));
 		$db->method('executeQuery')->willReturnCallback(function ($query) use (&$executedQueries) {
 			$executedQueries[] = $query;
 		});
@@ -81,6 +74,7 @@ final class UpdateStatisticsJobTest extends TestCaseBase {
 		$executedQueries = [];
 
 		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([$this->jobRow('stats')]));
 		$db->method('executeQuery')->willReturnCallback(function ($query) use (&$executedQueries) {
 			$executedQueries[] = $query;
 		});

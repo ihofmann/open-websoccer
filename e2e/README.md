@@ -183,6 +183,9 @@ While the stack is up you can also browse it manually:
 | `tests/admin-news.spec.ts`         | `admin` signs in at the AdminCenter, publishes a news article, edits it and deletes it. |
 | `tests/admincenter/login-2fa.spec.ts` | `admin` completes the e-mail second factor after credentials (code shown on page because there is no mail server in the E2E stack). Also verifies that a wrong code shows an error. |
 | `tests/admincenter/login-2fa-lockout.spec.ts` | `locktest` admin enters three wrong verification codes and is blocked for 5 minutes; correct credentials and codes are also rejected while blocked. Uses a dedicated admin user so other tests are not affected. |
+| `tests/admincenter/login-logs.spec.ts` | `admin` views database-backed login records and removes records older than six months without removing recent records. |
+| `tests/admincenter/terms-and-conditions.spec.ts` | `admin` edits the English database-backed terms page and verifies the public page reflects the change. |
+| `tests/admincenter/jobs.spec.ts` | `admin` views database-backed job definitions and executes a configured job once. |
 | `tests/my-team.spec.ts`            | `user1` logs in to the frontend, opens **My Team** and verifies that his 24 players are listed. |
 | `tests/league-table.spec.ts`       | Guest opens the **Leagues** page, verifies the league selector, the 20-team standings with correct stats, table markers, and league switching. |
 | `tests/results.spec.ts`            | Guest opens **Results and Schedules**, verifies the Leagues/Cups/Latest-Results tabs, matchday results, and future match schedules. |

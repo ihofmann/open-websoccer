@@ -127,21 +127,7 @@ if ($inputVerificationCode !== FALSE) {
 			// write log
 			if ($admin['name']) {
 				$ip = getenv('REMOTE_ADDR');
-				$content = $admin['name'] .', '. $ip .', '. date('d.m.y - H:i:s');
-				$content .= "\n";
-
-				$datei = '../generated/adminlog.php';
-				$fp = fopen($datei, 'a+');
-
-				if (filesize($datei)) {
-					$inhalt = fread($fp, filesize($datei));
-				} else {
-					$inhalt = '';
-				}
-
-				$inhalt .= $content;
-				fwrite($fp, $content);
-				fclose($fp);
+				AdminLogDataService::create($website, $db, $admin['name'], $ip, $now);
 			}
 
 			header('location: index.php');

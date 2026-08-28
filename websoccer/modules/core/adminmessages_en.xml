@@ -112,11 +112,8 @@
 	
 	<message id="all_logging_title">Admin Log</message>
 	<message id="all_logging_intro">List of recent AdminCenter logins by administrators.</message>
-	<message id="all_logging_filesize"><b>Log File Size:</b> %s KBytes</message>
-	<message id="all_logging_button_empty_file">Empty File</message>
-	<message id="all_logging_filenotfound">The log file does not exist.</message>
-	<message id="all_logging_alert_logfile_truncated">The log file has been truncated successfully.</message>
-	<message id="all_logging_error_not_truncated">The log file could not be truncated. Is the file writable?</message>
+	<message id="all_logging_button_clear_old">Clear logs older than 6 months</message>
+	<message id="all_logging_alert_logs_deleted">Logs older than 6 months have been deleted.</message>
 	<message id="all_logging_only_last_entries_shown">Only the last 50 entries will be shown.</message>
 	
 	<message id="all_logging_label_no">No</message>

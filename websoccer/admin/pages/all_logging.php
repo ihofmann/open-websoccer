@@ -37,40 +37,24 @@ if (!$show) {
 
   <?php
 
-  $datei = '../generated/adminlog.php';
-
-  if (!file_exists($datei)) echo createErrorMessage($i18n->getMessage('alert_error_title'), $i18n->getMessage('all_logging_filenotfound'));
-  elseif ($admin['r_demo']) echo createErrorMessage($i18n->getMessage('error_access_denied'), '');
+  if ($admin['r_demo']) echo createErrorMessage($i18n->getMessage('error_access_denied'), '');
   else {
-
-    if ($action == 'leeren') {
-
-      $fp = fopen($datei, 'w+');
-      $ip = getenv('REMOTE_ADDR');
-      $content = 'Truncated by '. $admin['name'] .' (id: '. $admin['id'] . '), '. $ip .', '. date('d.m.y - H:i:s');
-      fwrite($fp, $content);
-      fclose($fp);
-
-      if ($fp) echo createSuccessMessage($i18n->getMessage('all_logging_alert_logfile_truncated'), '');
-      else echo createErrorMessage($i18n->getMessage('alert_error_title'), $i18n->getMessage('all_logging_error_not_truncated'));
-
+    if ($action == 'clear_old') {
+      $threshold = strtotime('-6 months', $website->getNowAsTimestamp());
+      AdminLogDataService::deleteOlderThan($website, $db, $threshold);
+      echo createSuccessMessage($i18n->getMessage('all_logging_alert_logs_deleted'), '');
     }
 
-    $datei_gr = filesize($datei);
-    $gr_kb = round($datei_gr / 1024);
-    if ($datei_gr && !$gr_kb) $gr_kb = 1;
-
-    echo '<div class=\'card card-body mb-3\'>'. sprintf($i18n->getMessage('all_logging_filesize'), number_format($gr_kb, 0, ' ', ',')) .'</div>';
-
-    if (!$datei_gr) echo '<p>'. $i18n->getMessage('empty_list') . '</p>';
+    $logs = AdminLogDataService::getLatest($website, $db, 50);
+    if (!count($logs)) echo '<p>'. $i18n->getMessage('empty_list') . '</p>';
     else {
 
       ?>
 
       <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post'>
-        <input type='hidden' name='action' value='leeren'>
+        <input type='hidden' name='action' value='clear_old'>
 		<input type='hidden' name='site' value='<?php echo $site; ?>'>
-        <p><input type='submit' class='btn btn-outline-primary' value='<?php echo $i18n->getMessage('all_logging_button_empty_file'); ?>'></p>
+        <p><input type='submit' class='btn btn-outline-primary' value='<?php echo $i18n->getMessage('all_logging_button_clear_old'); ?>'></p>
         
       </form>
 
@@ -85,22 +69,12 @@ if (!$show) {
               </tr>
               <?php
 
-              $file = file($datei);
-              $lines = count($file);
-              $min = $lines - 50;
-              if ($min < 0) $min = 0;
-
-              for ($i = $lines-1; $i >= $min; $i--) {
-				$line = $file[$i];
-
-                $row = explode(', ', $line);
-				
-				$n = $i + 1;
+              foreach ($logs as $i => $log) {
                 echo '<tr>
-                  <td><b>'. $n .'</b></td>
-                  <td>'. escapeOutput($row[0]) .'</td>
-                  <td>'. escapeOutput($row[1]) .'</td>
-                  <td>'. escapeOutput($row[2]) .'</td>
+                  <td><b>'. ($i + 1) .'</b></td>
+                  <td>'. escapeOutput($log['user_name']) .'</td>
+                  <td>'. escapeOutput($log['ip']) .'</td>
+                  <td>'. escapeOutput($website->getFormattedDatetime($log['created_date'])) .'</td>
                 </tr>';
               }
 

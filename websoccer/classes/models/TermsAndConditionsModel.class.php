@@ -21,7 +21,7 @@
 ******************************************************/
 
 /**
- * Reads XML file containing the terms and conditions for current language.
+ * Reads the terms and conditions page for the current language.
  */
 class TermsAndConditionsModel implements IModel {
 	private $_db;
@@ -39,20 +39,17 @@ class TermsAndConditionsModel implements IModel {
 	}
 	
 	public function getTemplateParameters() {
-		$termsFile = BASE_FOLDER . "/admin/config/termsandconditions.xml";
-		if (!file_exists($termsFile)) {
-			throw new Exception("File does not exist: " . $termsFile);
-		}
-		
-		$xml = simplexml_load_file($termsFile);
-		$termsConfig = $xml->xpath("//pagecontent[@lang = '". $this->_i18n->getCurrentLanguage() . "'][1]");
-		if (!$termsConfig) {
+		$page = PageDataService::getByTypeAndLanguage(
+			$this->_websoccer,
+			$this->_db,
+			PageDataService::TERMS_AND_CONDITIONS_TYPE,
+			$this->_i18n->getCurrentLanguage()
+		);
+		if (!$page) {
 			throw new Exception($this->_i18n->getMessage("termsandconditions_err_notavilable"));
 		}
 		
-		$terms = (string) $termsConfig[0];
-		
-		return array("terms" => nl2br($terms));
+		return array("terms" => nl2br($page['content']));
 	}
 	
 }

@@ -158,22 +158,17 @@ function createMessage($severity, $title, $message) {
 }
 
 /**
- * Writes a log statement into the entity log file.
- * 
+ * Writes an entity change log record to the database.
+ *
  * @param WebSoccer $websoccer application context.
  * @param string $type edit|delete
  * @param string $username name of admin who executed an action.
- * @param string $entity name of affacted entity.
+ * @param string $entity name of affected entity.
  * @param string $entityValue string value which identifies the entity item.
  */
 function logAdminAction(WebSoccer $websoccer, $type, $username, $entity, $entityValue) {
-	$userIp = getenv('REMOTE_ADDR');
-	$message = $websoccer->getFormattedDatetime($websoccer->getNowAsTimestamp()) . ';' . $username . ';' . $userIp . ';' . $type . ';' . $entity . ';' . $entityValue;
-	$file = BASE_FOLDER . '/generated/entitylog.php';
-	
-	$fw = new FileWriter($file, FALSE);
-	$fw->writeLine($message);
-	$fw->close();
+	global $db;
+	EntityLogDataService::create($websoccer, $db, $type, $username, $entity, $entityValue);
 }
 
 ?>

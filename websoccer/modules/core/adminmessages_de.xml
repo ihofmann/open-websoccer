@@ -105,11 +105,8 @@
 	
 	<message id="all_logging_title">Anmeldeprotokoll</message>
 	<message id="all_logging_intro">Hier werden die letzten Anmeldungen im AdminCenter aufgeführt.</message>
-	<message id="all_logging_filesize"><strong>Größe der Protokolldatei:</strong> %s KBytes</message>
-	<message id="all_logging_button_empty_file">Datei leeren</message>
-	<message id="all_logging_filenotfound">Die Protokolldatei wurde nicht gefunden.</message>
-	<message id="all_logging_alert_logfile_truncated">Die Protokolldatei wurde erfolgreich geleert.</message>
-	<message id="all_logging_error_not_truncated">Die Protokolldatei konnte nicht geleert werden. Hat die Datei Schreibrechte?</message>
+	<message id="all_logging_button_clear_old">Protokolle löschen, die älter als 6 Monate sind</message>
+	<message id="all_logging_alert_logs_deleted">Protokolle, die älter als 6 Monate sind, wurden gelöscht.</message>
 	<message id="all_logging_only_last_entries_shown">Es werden nur die letzten 50 Einträge angezeigt.</message>
 	
 	<message id="all_logging_label_no">Nr</message>

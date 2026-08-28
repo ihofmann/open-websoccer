@@ -25,7 +25,14 @@ final class TermsAndConditionsModelTest extends TestCaseBase {
 		$ws = $this->mockWebsoccer(['db_prefix' => 'ws']);
 		$i18n = $this->mockI18n();
 		$i18n->method('getCurrentLanguage')->willReturn('en');
-		$model = new TermsAndConditionsModel($this->mockDb(), $i18n, $ws);
+		$db = $this->createMock(\DbConnection::class);
+		$db->method('querySelect')->willReturn($this->dbResult([[
+			'id' => 1,
+			'type' => 'termsandconditions',
+			'language' => 'en',
+			'content' => '<h2>Game Membership</h2>',
+		]]));
+		$model = new TermsAndConditionsModel($db, $i18n, $ws);
 		$params = $model->getTemplateParameters();
 		$this->assertStringContainsString('Game Membership', $params['terms']);
 	}

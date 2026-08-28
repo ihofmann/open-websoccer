@@ -23,8 +23,6 @@
 define('BASE_FOLDER', __DIR__ .'/..');
 include(BASE_FOLDER . '/admin/config/global.inc.php');
 
-define('JOBS_CONFIG_FILE', BASE_FOLDER . '/admin/config/jobs.xml');
-
 // execution enabled?
 if (!$website->getConfig('webjobexecution_enabled')) {
 	die('External job execution disabled');
@@ -51,14 +49,13 @@ if ($website->getConfig('webjobexecution_key') !== $securityToken) {
 }
 
 // get job
-$xml = simplexml_load_file(JOBS_CONFIG_FILE);
-$jobConfig = $xml->xpath('//job[@id = \''. $jobId . '\']');
+$jobConfig = JobDataService::getJob($website, $db, $jobId);
 if (!$jobConfig) {
 	die('Job config not found.');
 }
 
 // execute
-$jobClass = (string) $jobConfig[0]->attributes()->class;
+$jobClass = $jobConfig['class'];
 if (class_exists($jobClass)) {
 	
 	$i18n = I18n::getInstance($website->getConfig('supported_languages'));

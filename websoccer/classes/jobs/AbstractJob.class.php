@@ -39,7 +39,7 @@ abstract class AbstractJob {
 	 * @param WebSoccer $websoccer request context.
 	 * @param DbConnection $db database connection-
 	 * @param I18n $i18n messages context.
-	 * @param string $jobId Job ID as defined at jobs.xml.
+	 * @param string $jobId Job ID as defined in the jobs database table.
 	 * @param $errorOnAlreadyRunning boolean TRUE if error shall occur on init time when an instance of this job is already running.
 	 */
 	function __construct(WebSoccer $websoccer, DbConnection $db, I18n $i18n, $jobId, $errorOnAlreadyRunning = TRUE) {
@@ -49,11 +49,11 @@ abstract class AbstractJob {
 		
 		$this->_id = $jobId;
 		
-		$xmlConfig = $this->getXmlConfig();
+		$jobConfig = $this->getJobConfig();
 		
 		// check if another instance is running (consider timeout of 5 minutes)
 		if ($errorOnAlreadyRunning) {
-			$initTime = (int) $xmlConfig->attributes()->inittime;
+			$initTime = (int) $jobConfig['inittime'];
 			$now = $websoccer->getNowAsTimestamp();
 			$timeoutTime = $now - 5 * 60;
 			if ($initTime > $timeoutTime) {
@@ -62,7 +62,7 @@ abstract class AbstractJob {
 			$this->replaceAttribute('inittime', $now);
 		}
 		
-		$interval = (int) $xmlConfig->attributes()->interval;
+		$interval = (int) $jobConfig['interval'];
 		$this->_interval = $interval * 60;
 		
 		ignore_user_abort(TRUE);
@@ -97,8 +97,8 @@ abstract class AbstractJob {
 		
 		do {
 			
-			$xmlConfig = $this->getXmlConfig();
-			$stop = (int) $xmlConfig->attributes()->stop;
+			$jobConfig = $this->getJobConfig();
+			$stop = (int) $jobConfig['stop'];
 			if ($stop === 1) {
 				$this->stop();
 			}
@@ -106,7 +106,7 @@ abstract class AbstractJob {
 			$now = $this->_websoccer->getNowAsTimestamp();
 			
 			// check if lastping has been set by another job. then this job became obsolete
-			$lastPing = (int) $xmlConfig->attributes()->last_ping;
+			$lastPing = (int) $jobConfig['last_ping'];
 			if ($lastPing > 0) {
 				$myOwnLastPing = $now - $this->_interval + 5; //plus tolerance
 				if ($lastPing > $myOwnLastPing) {
@@ -152,41 +152,17 @@ abstract class AbstractJob {
 		$this->replaceAttribute('last_ping', $time);
 	}
 	
-	private function getXmlConfig() {
-		$xml = simplexml_load_file(JOBS_CONFIG_FILE);
-		$xmlConfig = $xml->xpath('//job[@id = \''. $this->_id . '\']');
-		if (!$xmlConfig) {
+	private function getJobConfig() {
+		$jobConfig = JobDataService::getJob($this->_websoccer, $this->_db, $this->_id);
+		if (!$jobConfig) {
 			throw new Exception('Job config not found.');
 		}
 		
-		return $xmlConfig[0];
+		return $jobConfig;
 	}
 	
 	private function replaceAttribute($name, $value) {
-		
-		// lock file for this transaction
-		$fp = fopen(BASE_FOLDER . '/admin/config/lockfile.txt', 'r');
-		flock($fp, LOCK_EX);
-		
-		$xml = simplexml_load_file(JOBS_CONFIG_FILE);
-		if ($xml === FALSE) {
-			
-			$errorMessages = '';
-			$errors = libxml_get_errors();
-			foreach ($errors as $error) {
-				$errorMessages = $errorMessages . "\n" . $error;
-			}
-			throw new Exception('Job with ID \'' . $this->_id . '\': Could not update attribute \'' . $name . '\' with value \'' . $value . '\'. Errors: ' . $errorMessages);
-		}
-		$xmlConfig = $xml->xpath('//job[@id = \''. $this->_id . '\']');
-		$xmlConfig[0][$name] = $value;
-		$successfulWritten = $xml->asXML(JOBS_CONFIG_FILE);
-		if (!$successfulWritten) {
-			throw new Exception('Job with ID \'' . $this->_id . '\': Could not save updated attribute \'' . $name . '\' with value \'' . $value . '\'.');
-		}
-		
-		// unlock
-		flock($fp, LOCK_UN);
+		JobDataService::updateJob($this->_websoccer, $this->_db, $this->_id, array($name => $value));
 	}
 	
 	/**
