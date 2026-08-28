@@ -86,6 +86,28 @@ final class SimulationFormationHelperTest extends TestCaseBase {
 		$this->assertSame('John Doe', $goaly->name);
 	}
 
+	public function testGenerateNewFormationFallsBackToFullNameForNullPseudonym(): void {
+		$playerRows = [
+			[
+				'id' => 1, 'position' => PLAYER_POSITION_GOALY, 'mainPosition' => 'T',
+				'firstName' => 'John', 'lastName' => 'Doe', 'pseudonym' => null,
+				'strength' => 80, 'technique' => 70, 'stamina' => 60,
+				'freshness' => 90, 'satisfaction' => 85, 'age' => 25,
+			],
+		];
+
+		$db = $this->makeDbWithPlayers($playerRows);
+		$ws = $this->mockWebsoccer(['db_prefix' => 'ws', 'players_aging' => 'season']);
+
+		$team = $this->makeTeam(1);
+		$match = new SimulationMatch(1, $team, $this->makeTeam(2), 0);
+
+		SimulationFormationHelper::generateNewFormationForTeam($ws, $db, $team, 1);
+
+		$goaly = $team->positionsAndPlayers[PLAYER_POSITION_GOALY][0];
+		$this->assertSame('John Doe', $goaly->name);
+	}
+
 	public function testGenerateNewFormationUsesPseudonymWhenAvailable(): void {
 		$playerRows = [
 			[

@@ -31,6 +31,7 @@ final class SimulationTeamTest extends TestCaseBase {
 		$team = new SimulationTeam(1);
 		$this->assertSame(0, $team->getGoals());
 		$this->assertSame(0, $team->morale);
+		$this->assertSame([], $team->substitutions);
 		$this->assertFalse($team->noFormationSet);
 		$this->assertFalse($team->longPasses);
 		$this->assertFalse($team->counterattacks);

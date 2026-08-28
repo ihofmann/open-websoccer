@@ -156,6 +156,10 @@ final class UsersDataServiceTest extends TestCaseBase {
 		$this->assertNull(UsersDataService::getUserProfilePicture($this->ws, '', 'a@b.com'));
 	}
 
+	public function testGetUserProfilePictureAcceptsNullFileNameAndEmail(): void {
+		$this->assertNull(UsersDataService::getUserProfilePicture($this->ws, null, null));
+	}
+
 	public function testGetGravatarUserProfilePictureReturnsUrlWhenEnabled(): void {
 		$ws = $this->mockWebsoccer(['gravatar_enable' => 1]);
 		$url = UsersDataService::getGravatarUserProfilePicture($ws, 'A@B.com', 40);

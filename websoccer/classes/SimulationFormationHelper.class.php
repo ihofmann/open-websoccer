@@ -178,7 +178,7 @@ class SimulationFormationHelper {
 					3.0, $playerinfo['age'], $playerinfo['strength'], $playerinfo['technique'], $playerinfo['stamina'],
 					$playerinfo['freshness'], $playerinfo['satisfaction']);
 			
-			if (strlen($playerinfo['pseudonym'])) {
+			if (strlen((string) ($playerinfo['pseudonym'] ?? ''))) {
 				$player->name = $playerinfo['pseudonym'];
 			} else {
 				$player->name = $playerinfo['firstName'] . ' ' . $playerinfo['lastName'];

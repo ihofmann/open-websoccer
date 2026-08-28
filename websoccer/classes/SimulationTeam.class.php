@@ -123,6 +123,7 @@ class SimulationTeam {
 
     	$this->goals = 0;
     	$this->morale = 0;
+    	$this->substitutions = array();
     	
     	$this->noFormationSet = FALSE;
     	$this->longPasses = FALSE;

@@ -23,6 +23,19 @@
 define('BASE_FOLDER', __DIR__ .'/..');
 include(BASE_FOLDER . '/admin/config/global.inc.php');
 
+// When invoked from the command line (e.g. via CronJob), parse the
+// key=value arguments into $_REQUEST so the rest of the script works
+// the same way as a web request.
+if (php_sapi_name() === 'cli' && isset($argv)) {
+	for ($i = 1; $i < count($argv); $i++) {
+		$parts = explode('=', $argv[$i], 2);
+		if (count($parts) === 2) {
+			$_REQUEST[$parts[0]] = $parts[1];
+			$_GET[$parts[0]] = $parts[1];
+		}
+	}
+}
+
 // execution enabled?
 if (!$website->getConfig('webjobexecution_enabled')) {
 	die('External job execution disabled');
@@ -41,29 +54,39 @@ if (!isset($_REQUEST['jobid'])) {
 }
 
 $securityToken = $_REQUEST['sectoken'];
-$jobId = $_REQUEST['jobid'];
+$jobIdParam = $_REQUEST['jobid'];
 
 // check security token
 if ($website->getConfig('webjobexecution_key') !== $securityToken) {
 	die('invalid security token');
 }
 
-// get job
-$jobConfig = JobDataService::getJob($website, $db, $jobId);
-if (!$jobConfig) {
-	die('Job config not found.');
-}
+// accept a single job ID or a comma-separated list of job IDs
+$jobIds = array_map('trim', explode(',', $jobIdParam));
 
-// execute
-$jobClass = $jobConfig['class'];
-if (class_exists($jobClass)) {
-	
-	$i18n = I18n::getInstance($website->getConfig('supported_languages'));
-	$job = new $jobClass($website, $db, $i18n, $jobId);
-	
-} else {
-	die('class not found: ' . $jobClass);
-}
+$i18n = I18n::getInstance($website->getConfig('supported_languages'));
 
-$job->execute();
+foreach ($jobIds as $jobId) {
+	if (strlen($jobId) === 0) {
+		continue;
+	}
+
+	// get job
+	$jobConfig = JobDataService::getJob($website, $db, $jobId);
+	if (!$jobConfig) {
+		echo 'Job config not found: ' . $jobId . "\n";
+		continue;
+	}
+
+	// execute
+	$jobClass = $jobConfig['class'];
+	if (class_exists($jobClass)) {
+		$job = new $jobClass($website, $db, $i18n, $jobId);
+	} else {
+		echo 'class not found: ' . $jobClass . "\n";
+		continue;
+	}
+
+	$job->execute();
+}
 ?>

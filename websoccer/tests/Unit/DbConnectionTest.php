@@ -127,6 +127,12 @@ final class DbConnectionTest extends TestCaseBase {
 		$this->assertSame('INSERT mytable SET col=DEFAULT', $this->capturedSql);
 	}
 
+	public function testQueryInsertSerializesBooleanValuesAsIntegers(): void {
+		$db = $this->makeDb($this->makeFakeConnection());
+		$db->queryInsert(['active_home' => false, 'featured' => true], 'mytable');
+		$this->assertSame('INSERT mytable SET active_home=0, featured=1', $this->capturedSql);
+	}
+
 	public function testQueryDeleteBuildsSql(): void {
 		$db = $this->makeDb($this->makeFakeConnection());
 		$db->queryDelete('mytable', 'id = %d', 5);

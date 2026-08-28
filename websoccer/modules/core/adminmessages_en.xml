@@ -144,8 +144,8 @@
 	<message id="settings_tab_social">Social Networks</message> 
 	<message id="settings_tab_security">Security</message> 
 	
-	<message id="settings_saved_note_restartjobs">Restart your jobs!</message>
-	<message id="settings_saved_note_restartjobs_details">Changes which affect any job require its restart.</message>
+	<message id="settings_saved_note_restartjobs">Changes take effect on next job execution.</message>
+	<message id="settings_saved_note_restartjobs_details">Jobs are executed via CronJobs or manual execution, so changes will be picked up automatically on the next run.</message>
 	
 	<message id="settings_label_context_root">Relative Server Path (Context Root)</message> 
 	<message id="settings_label_context_root_help">Without trailing "/".</message> 
@@ -215,20 +215,19 @@
 	<message id="manage_select_placeholder">None</message>
 	
 	<message id="jobs_navlabel">Jobs</message>
-	<message id="jobs_introduction">Jobs are background processes that run periodically, such as the match simulation. They must be started manually after every server reboot or error.</message>
-	<message id="jobs_warning">Check regularly (at least daily) if the jobs still run!</message>  
+	<message id="jobs_introduction">Jobs are background tasks that run periodically, such as the match simulation. Set up CronJobs for automatic execution or click "Execute now" to run a job manually.</message>
 	<message id="jobs_head_name">Name</message>
-	<message id="jobs_head_status">Status</message>
-	<message id="jobs_head_startstop">Start/Stop</message> 
-	<message id="jobs_head_class">Class</message> 
-	<message id="jobs_head_last_execution">Last Execution</message> 
-	<message id="jobs_head_interval">Interval</message> 
-	<message id="jobs_status_running">Running</message> 
-	<message id="jobs_status_notrunning">Not Running</message> 
-	<message id="jobs_button_stop">Stop</message>
-	<message id="jobs_button_start">Start</message>
-	<message id="jobs_button_execute_once">Execute once</message>
+	<message id="jobs_head_id">ID</message>
+	<message id="jobs_head_execute">Execute</message>
+	<message id="jobs_head_last_execution">Last Execution</message>
+	<message id="jobs_button_execute_now">Execute now</message>
 	<message id="jobs_executed">Successfully executed.</message>
+	<message id="jobs_cronjobs_title">Setting up CronJobs</message>
+	<message id="jobs_cronjobs_intro">Jobs are not running as permanent processes. Instead, set up CronJobs on your server that call the PHP script webservices/executeJob.php at regular intervals. The script accepts the arguments "sectoken" (your security key) and "jobid" (a single job ID or a comma-separated list of job IDs).</message>
+	<message id="jobs_cronjobs_recommended_title">Recommended setup (two CronJobs)</message>
+	<message id="jobs_cronjobs_recommended_text">Set up at least two CronJobs: one that runs every minute and executes the job for simulating matches, and another one that runs every 15 minutes and calls all other jobs by passing a comma-separated list of job IDs.</message>
+	<message id="jobs_cronjobs_per_job_title">Separate CronJob per job</message>
+	<message id="jobs_cronjobs_per_job_text">Alternatively, you can set up a separate CronJob for every job. The schedule below is based on the interval configured for each job.</message>
 	
 	<message id="sendpassword_admin_email_subject">Your new Password to the AdminCenter</message>
 	<message id="sendpassword_admin_email_greeting">Hello,</message>
