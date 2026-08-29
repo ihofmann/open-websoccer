@@ -1,105 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ i18n.getCurrentLanguage() }}">
 	<head>
 		<title>{% block browser_title %}{{ block("page_title") }} - {{ env.getConfig("projectname") }}{% endblock %}</title>
-		
+
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
+
 		<script nonce="{{ nonce }}">window.wsNonce = "{{ nonce }}";</script>
-		
+
 		{% if env.getRequestParameter("id") != null %}
 			{% set url = env.getInternalUrl(null, "id=" ~ env.getRequestParameter("id"), TRUE) %}
 		{% else %}
 			{% set url = env.getInternalUrl(null, null, TRUE) %}
 		{% endif %}
 		<link rel="canonical" href="{{ url }}"/>
-		
+
 		{% for cssSource in skin.getCssSources() %}
 		<link href="{{ cssSource }}" media="all" rel="stylesheet" type="text/css" />
 		{% endfor %}
-		
+
 		<link rel="shortcut icon" type="image/x-icon" href="{{ env.getConfig("context_root") }}/favicon.ico" />
-		
+
 		{{ env.getConfig("head_code")|raw }}
 	</head>
 	<body>
-	
+
 		{% block navigation %}
 		{% include 'navigationbar.twig' %}
 		{% endblock %}
-	
-		<div class="container mt-3">	
-		
-			{% block page_header %}
-			{% endblock %}
-		
-			{% block page_columns %}
-			<div class="row">
-				<div class="col-md-8" id="contentArea">
-					<div class="box">
-					
-						{% include 'breadcrumb.twig' %}
-					
-						<div class="page-header mb-3">
-						<h1>{{ block("page_title") }}</h1>
+
+		{# Sidebar page IDs — team management items shown to logged-in users #}
+		{% set sidebar_pages = ['office', 'nationalteam'] %}
+
+		<div class="ws-app container{% if env.user.id is not null %} ws-app-with-sidebar{% endif %}">
+
+			{% if env.user.id is not null %}
+
+			{# ---- Left sidebar (offcanvas on mobile, normal flow on desktop) ---- #}
+			<aside class="offcanvas-lg offcanvas-start ws-sidebar" id="wsSidebar" tabindex="-1"
+			       aria-labelledby="wsSidebarLabel">
+
+				{# Mobile offcanvas header #}
+				<div class="offcanvas-header d-lg-none">
+					<h5 class="offcanvas-title ws-navbar-brand" id="wsSidebarLabel">{{ env.getConfig("projectname") }}</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+
+				{# Desktop collapse toggle #}
+				<button class="btn btn-sm btn-outline-secondary ws-sidebar-desktop-toggle d-none d-lg-flex align-items-center justify-content-center"
+				        type="button" data-bs-toggle="collapse" data-bs-target="#wsSidebarContent"
+				        aria-expanded="true" aria-controls="wsSidebarContent">
+					<i class="bi bi-chevron-left"></i>
+				</button>
+
+				{# ---- User profile at top ---- #}
+				<a class="ws-sidebar-user" href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}">
+					{% if env.user.profilepicture|length > 0 %}
+					<img src="{{ env.user.profilepicture }}" class="ws-avatar-40 rounded-circle" alt="{{ env.user.username }}">
+					{% else %}
+					<span class="ws-avatar-40 rounded-circle ws-avatar-placeholder d-flex align-items-center justify-content-center">
+						<i class="bi bi-person-fill"></i>
+					</span>
+					{% endif %}
+					<span>
+						<span class="ws-sidebar-user-name d-block">{{ env.user.username }}</span>
+						<span class="ws-sidebar-user-sub d-block">{{ i18n.getMessage('userprofile_block_link_profile') }}</span>
+					</span>
+				</a>
+
+				<div class="offcanvas-body ws-sidebar-body">
+					<div class="collapse collapse-horizontal show ws-sidebar-content" id="wsSidebarContent">
+
+						<nav class="ws-sidebar-nav">
+							{% for navItem in navItems %}
+								{% if navItem.pageId in sidebar_pages %}
+
+									{# Section header (parent item) #}
+									<div class="ws-sidebar-section">{{ navItem.label }}</div>
+
+									{# Parent link #}
+									<a class="ws-sidebar-link{% if navItem.isActive %} active{% endif %}"
+									   href="{{ env.getInternalUrl(navItem.pageId) }}">
+										{{ navItem.label }}
+									</a>
+
+									{# Children #}
+									{% for navChild in navItem.children %}
+									<a class="ws-sidebar-link ws-sidebar-child{% if navChild.isActive %} active{% endif %}"
+									   href="{{ env.getInternalUrl(navChild.pageId) }}">
+										{{ navChild.label }}
+									</a>
+									{% endfor %}
+
+								{% endif %}
+							{% endfor %}
+						</nav>
+
+					</div>{# /.ws-sidebar-content #}
+				</div>{# /.offcanvas-body #}
+			</aside>
+
+			{% endif %}
+
+			{# ---- Main content ---- #}
+			<main class="ws-main">
+
+				{% block page_header %}
+				{% endblock %}
+
+				{% block page_columns %}
+				<div class="row">
+					<div class="col-md-8" id="contentArea">
+						<div class="box">
+
+							{% include 'breadcrumb.twig' %}
+
+							<div class="ws-page-header page-header mb-3">
+							<h1>{{ block("page_title") }}</h1>
+							</div>
+
+							<div id="messages">
+							{% block messages_block %}
+							{{ viewHandler.renderBlock("messagesblock")|raw }}
+							{% endblock %}
+							</div>
+
+							<div id="pagecontent">
+							{% if blocks.content_top is defined %}
+								{% for uiBlock in blocks.content_top %}
+									<div id="{{ uiBlock.id }}_block">
+									{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+									</div>
+								{% endfor %}
+							{% endif %}
+
+
+							{{ block("page_content") }}
+
+							{% if blocks.content_bottom is defined %}
+								{% for uiBlock in blocks.content_bottom %}
+									<div id="{{ uiBlock.id }}_block">
+									{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
+									</div>
+								{% endfor %}
+							{% endif %}
+							</div>
+
 						</div>
-						
-						<div id="messages">
-						{% block messages_block %}
-						{{ viewHandler.renderBlock("messagesblock")|raw }}
-						{% endblock %}
-						</div>
-						
-						<div id="pagecontent">
-						{% if blocks.content_top is defined %}
-							{% for uiBlock in blocks.content_top %}
+					</div>
+					<div class="col-md-4">
+
+						{% if blocks.sidebar is defined %}
+							{% for uiBlock in blocks.sidebar %}
 								<div id="{{ uiBlock.id }}_block">
 								{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
 								</div>
 							{% endfor %}
 						{% endif %}
-				
-						
-						{{ block("page_content") }}
-						
-						{% if blocks.content_bottom is defined %}
-							{% for uiBlock in blocks.content_bottom %}
-								<div id="{{ uiBlock.id }}_block">
-								{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
-								</div>
-							{% endfor %}
-						{% endif %}
-						</div>
-					
 					</div>
 				</div>
-				<div class="col-md-4">
-				
-					{% if blocks.sidebar is defined %}
-						{% for uiBlock in blocks.sidebar %}
-							<div id="{{ uiBlock.id }}_block">
-							{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
-							</div>
-						{% endfor %}
+				{% endblock %}
+
+			</main>
+
+		</div>{# /.ws-app #}
+
+		{# ---- Footer ---- #}
+		<footer class="ws-footer">
+			<div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
+				<span class="ws-footer-brand">{{ env.getConfig("projectname") }}</span>
+				<div class="ws-footer-links">
+					<a href="{{ env.getInternalUrl("imprint") }}">{{ i18n.getMessage("imprint_navlabel") }}</a>
+					{% if env.getConfig("privacypolicy_url")|length > 0 %}
+					<a href="{{ env.getConfig("privacypolicy_url") }}">{{ i18n.getMessage("privacypolicy_navlabel") }}</a>
 					{% endif %}
+					<a href="{{ env.getInternalUrl("termsandconditions") }}">{{ i18n.getMessage("termsandconditions_navlabel") }}</a>
+					<span>Powered by <a href="https://github.com/ihofmann/open-websoccer" target="_blank" rel="noopener">OpenWebsoccer-Sim</a></span>
 				</div>
 			</div>
-			{% endblock %}
-			
-			<hr/>
-			<footer>
-	        	<p><a href="{{ env.getInternalUrl("termsandconditions") }}">{{ i18n.getMessage("termsandconditions_navlabel") }}</a> 
-	        	{% if env.getConfig("privacypolicy_url")|length > 0 %}| <a href="{{ env.getConfig("privacypolicy_url") }}">{{ i18n.getMessage("privacypolicy_navlabel") }}</a>{% endif %}
-	        	| <a href="{{ env.getInternalUrl("imprint") }}">{{ i18n.getMessage("imprint_navlabel") }}</a> 
-	        	| Powered by <a href="http://www.websoccer-sim.com" target="_blank">OpenWebSoccer-Sim</a>
-	        	</p>
-			</footer>
-			
-		</div>
-		
+		</footer>
+
 		<div id="ajaxLoaderPage"></div>
-		
+
 		{% for jsSource in skin.getJavaScriptSources() %}
 		<script src="{{ jsSource }}" ></script>
 		{% endfor %}

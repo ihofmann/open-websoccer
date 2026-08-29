@@ -84,7 +84,7 @@ class FormLoginController implements IActionController {
 			$saltinfo = $result->fetch_array();
 			$result->free();
 			
-			$salt = $saltinfo["passwort_salt"];
+			$salt = $saltinfo["passwort_salt"] ?? '';
 			if (!strlen($salt)) {
 				$salt = SecurityUtil::generatePasswordSalt();
 			}

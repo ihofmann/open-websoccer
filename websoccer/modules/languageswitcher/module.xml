@@ -8,7 +8,7 @@
             id="language-switcher"
             template="language-switcher"
             model="LanguageSwitcherModel"
-            includepages="all"
+            includepages="none"
             area="sidebar"
             weight="10"
             role="guest,user" />

@@ -5,19 +5,19 @@
 	<div class="row">
 		<div class="col-md-12" id="contentArea">
 			<div class="box">
-			
+
 				{% include 'breadcrumb.twig' %}
-			
-				<div class="page-header mb-3">
+
+				<div class="ws-page-header page-header mb-3">
 				<h1>{{ block("page_title") }}</h1>
 				</div>
-				
+
 				<div id="messages">
 				{% block messages_block %}
 				{{ viewHandler.renderBlock("messagesblock")|raw }}
 				{% endblock %}
 				</div>
-				
+
 				<div id="pagecontent">
 				{% if blocks.content_top is defined %}
 					{% for uiBlock in blocks.content_top %}
@@ -26,10 +26,10 @@
 						</div>
 					{% endfor %}
 				{% endif %}
-		
-				
+
+
 				{{ block("page_content") }}
-				
+
 				{% if blocks.content_bottom is defined %}
 					{% for uiBlock in blocks.content_bottom %}
 						<div id="{{ uiBlock.id }}_block">
@@ -38,7 +38,7 @@
 					{% endfor %}
 				{% endif %}
 				</div>
-			
+
 			</div>
 		</div>
 	</div>

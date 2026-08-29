@@ -1,36 +1,124 @@
+{# Top navigation bar — Bootstrap 5 navbar with brand, public menu items,
+   language switch dropdown, and Login / Sign-out button.
+   On mobile the menu collapses into a burger menu (offcanvas).
+   No inline styles or JavaScript — pure Bootstrap data attributes. #}
 
 {% import "macros/navitem.twig" as navitemTemplate %}
 
-<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+{# Page IDs that appear in the top bar (visible to guests and users) #}
+{% set topbar_pages = ['news', 'leagues', 'freeclubs', 'highscore'] %}
+
+<nav class="navbar navbar-expand-lg fixed-top">
 	<div class="container">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wsNavbar" aria-controls="wsNavbar" aria-expanded="false" aria-label="Toggle navigation">
+
+		{# Sidebar toggle (mobile only, visible when logged in) #}
+		{% if env.user.id is not null %}
+		<button class="btn btn-sm btn-outline-secondary d-lg-none me-2" type="button"
+		        data-bs-toggle="offcanvas" data-bs-target="#wsSidebar" aria-controls="wsSidebar">
+			<i class="bi bi-layout-sidebar-inset"></i>
+		</button>
+		{% endif %}
+
+		{# Brand #}
+		<a class="ws-navbar-brand navbar-brand me-auto"
+		   href="{{ env.getInternalUrl("home") }}"
+		   title="{{ i18n.getNavigationLabel("home") }}">
+			{{ env.getConfig("projectname") }}
+		</a>
+
+		{# Burger toggle — top right on mobile #}
+		<button class="navbar-toggler border-0" type="button"
+		        data-bs-toggle="offcanvas" data-bs-target="#wsNavOffcanvas"
+		        aria-controls="wsNavOffcanvas" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="{{ env.getInternalUrl("home") }}" title="{{ i18n.getNavigationLabel("home") }}">{{ env.getConfig("projectname") }}</a>
 
-		<div class="collapse navbar-collapse" id="wsNavbar">
-			<ul class="navbar-nav">
-				{% for navItem in navItems %}
+		<div class="offcanvas offcanvas-end" id="wsNavOffcanvas" tabindex="-1">
+			<div class="offcanvas-header d-lg-none">
+				<h5 class="offcanvas-title ws-navbar-brand">{{ env.getConfig("projectname") }}</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
 
-				{% if navItem.children|length > 0 %}
-				<li class="nav-item dropdown{% if navItem.isActive %} active{% endif %}">
-					<button class="nav-link dropdown-toggle" id="label{{ navItem.pageId }}" type="button"
-						data-bs-toggle="dropdown" aria-expanded="false">
-						{{ navItem.label }}
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="label{{ navItem.pageId }}">
-						<li><a class="dropdown-item" href="{{ env.getInternalUrl(navItem.pageId) }}">{{ navItem.label }}</a></li>
-						{% for navChild in navItem.children %}
-						<li><a class="dropdown-item{% if navChild.isActive %} active{% endif %}" href="{{ env.getInternalUrl(navChild.pageId) }}">{{ navChild.label }}</a></li>
-						{% endfor %}
-					</ul>
-				</li>
-				{% else %}
-				{{ navitemTemplate.item(navItem.pageId, navItem.label, navItem.isActive) }}
-				{% endif %}
+			<div class="offcanvas-body d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-lg-2">
 
-				{% endfor %}
-			</ul>
-		</div>
+				{# ---- Public menu items ---- #}
+				<ul class="navbar-nav flex-column flex-lg-row gap-lg-1">
+					{% for navItem in navItems %}
+						{% if navItem.pageId in topbar_pages %}
+
+							{% if navItem.children|length > 0 %}
+							<li class="nav-item dropdown">
+								<button class="nav-link dropdown-toggle" type="button"
+								        id="dd_{{ navItem.pageId }}"
+								        data-bs-toggle="dropdown" aria-expanded="false">
+									{{ navItem.label }}
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dd_{{ navItem.pageId }}">
+									<li>
+										<a class="dropdown-item{% if navItem.isActive %} active{% endif %}"
+										   href="{{ env.getInternalUrl(navItem.pageId) }}">{{ navItem.label }}</a>
+									</li>
+									{% if navItem.children|length > 0 %}
+									<li><hr class="dropdown-divider"></li>
+									{% endif %}
+									{% for navChild in navItem.children %}
+									<li>
+										<a class="dropdown-item{% if navChild.isActive %} active{% endif %}"
+										   href="{{ env.getInternalUrl(navChild.pageId) }}">{{ navChild.label }}</a>
+									</li>
+									{% endfor %}
+								</ul>
+							</li>
+							{% else %}
+							{{ navitemTemplate.item(navItem.pageId, navItem.label, navItem.isActive) }}
+							{% endif %}
+
+						{% endif %}
+					{% endfor %}
+				</ul>
+
+				{# ---- Right-aligned controls ---- #}
+				<div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-lg-2 ms-lg-auto">
+
+					{# Language switch — shows current language flag #}
+					{% if i18n.supportedLanguages|length > 1 %}
+					<div class="dropdown ws-lang-switch">
+						<button class="btn btn-sm btn-outline-secondary dropdown-toggle ws-lang-btn" type="button"
+						        id="wsLangSwitch" data-bs-toggle="dropdown" aria-expanded="false">
+							<img src="{{ skin.getImage("flags/" ~ i18n.getCurrentLanguage() ~ ".png") }}" alt="{{ i18n.getMessage('lang_label_' ~ i18n.getCurrentLanguage()) }}" width="20" height="20" class="ws-lang-flag">
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wsLangSwitch">
+							{% for language in i18n.supportedLanguages %}
+							<li>
+								<a class="dropdown-item d-flex align-items-center gap-2{% if language == i18n.getCurrentLanguage() %} active{% endif %}"
+								   href="{{ env.getInternalActionUrl("switch-language", "lang=" ~ language ~ "&id=" ~ env.getRequestParameter("id")) }}">
+									<img src="{{ skin.getImage("flags/" ~ language ~ ".png") }}" alt="" width="20" height="20">
+									{{ i18n.getMessage('lang_label_' ~ language) }}
+								</a>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					{% endif %}
+
+					{# Login / Sign out #}
+					{% if env.user.id is not null %}
+					<a href="{{ env.getInternalActionUrl("logout") }}"
+					   class="btn btn-sm btn-outline-primary ws-btn-auth">
+						<i class="bi bi-box-arrow-right"></i>
+						{{ i18n.getMessage('userprofile_block_link_logout') }}
+					</a>
+					{% else %}
+					<a href="{{ env.getInternalUrl("login") }}"
+					   class="btn btn-sm btn-primary ws-btn-auth">
+						<i class="bi bi-box-arrow-in-right"></i>
+						{{ i18n.getMessage('formlogin_submit_button') }}
+					</a>
+					{% endif %}
+				</div>
+
+			</div>{# /.offcanvas-body #}
+		</div>{# /.offcanvas #}
+
 	</div>
 </nav>

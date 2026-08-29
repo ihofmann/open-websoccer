@@ -7,7 +7,12 @@
 {% endblock %}
 
 {% block page_content %}
-<form class="row" method="post">
+<div class="ws-login-card">
+  <div class="box">
+    <div class="ws-page-header page-header mb-3">
+      <h1>{{ i18n.getMessage('login_title') }}</h1>
+    </div>
+    <form method="post">
 
 
 	{%  if env.getConfig("login_type") == "email" %}
@@ -25,13 +30,15 @@
 	</div>
 	<input type="hidden" name="page" value="login"/>
 	<input type="hidden" name="action" value="login"/>
-</form>
+    </form>
 
-{% if env.getConfig("allow_userregistration") %}
+    {% if env.getConfig("allow_userregistration") %}
 	<p><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("register") }}">{{ i18n.getMessage('formlogin_link_register') }}</a></p>
-{% endif %}
+    {% endif %}
 
-{% if env.getConfig("login_allow_sendingpassword") %}
+    {% if env.getConfig("login_allow_sendingpassword") %}
 	<p><i class="bi bi-arrow-right"></i> <a href="{{ env.getInternalUrl("forgot-password") }}">{{ i18n.getMessage('formlogin_link_forgot_password') }}</a></p>
-{% endif %}
+    {% endif %}
+  </div>
+</div>
 {% endblock %}

@@ -144,4 +144,25 @@ final class FormLoginControllerTest extends TestCaseBase {
 			'loginstr' => 'manager', 'loginpassword' => 'secret',
 		]));
 	}
+
+	public function testRememberMeGeneratesSaltWhenDatabaseSaltIsNull(): void {
+		\FakeFormLoginMethod::$userId = 5;
+
+		$i18n = $this->mockI18n([]);
+		$user = $this->makeUser([]);
+		$ws = $this->makeWs($this->config(), $user);
+
+		$userRow = ['id' => 5, 'nick' => 'manager', 'email' => 'manager@example.com',
+			'lang' => 'en', 'premium_balance' => 0, 'picture' => '',
+			'passwort_salt' => null];
+		$db = $this->makeDbWithUser($userRow);
+
+		\DbConnection::setInstanceForTesting($db);
+		\I18n::setInstanceForTesting($i18n);
+
+		$controller = new FormLoginController($i18n, $ws, $db);
+		$this->assertSame('office', $controller->executeAction([
+			'loginstr' => 'manager', 'loginpassword' => 'secret', 'rememberme' => 1,
+		]));
+	}
 }

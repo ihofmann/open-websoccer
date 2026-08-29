@@ -1,26 +1,775 @@
+/* ================================================================== */
+/* OpenWebSoccer-Sim — Default Skin (Bootstrap 5 redesign)            */
+/*                                                                    */
+/* Dark green primary, system-driven dark/light mode, WCAG-AA contrast.*/
+/* No inline styles or JavaScript — pure CSS + Bootstrap data API.    */
+/* ================================================================== */
+
+/* ------------------------------------------------------------------ */
+/* 1. Theme tokens (CSS custom properties)                             */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* Brand / primary — dark green (light mode) */
+  --ws-primary: #1b5e20;
+  --ws-primary-rgb: 27, 94, 32;
+  --ws-primary-hover: #164a1a;
+  --ws-primary-active: #0f3a13;
+  --ws-primary-subtle: #e8f5e9;
+  --ws-primary-subtle-rgb: 232, 245, 233;
+  --ws-primary-text: #1b5e20;
+
+  /* Surfaces */
+  --ws-body-bg: #f5f7f6;
+  --ws-body-color: #1a1d1a;
+  --ws-card-bg: #ffffff;
+  --ws-card-border: #e0e3e0;
+  --ws-navbar-bg: #ffffff;
+  --ws-sidebar-bg: #ffffff;
+  --ws-sidebar-border: #e0e3e0;
+  --ws-footer-bg: #ffffff;
+  --ws-footer-border: #e0e3e0;
+
+  /* Secondary surfaces */
+  --ws-muted-bg: #f0f2f1;
+  --ws-muted-color: #6c757d;
+  --ws-input-bg: #ffffff;
+
+  /* Border + shadow */
+  --ws-border-color: #d0d4d1;
+  --ws-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --ws-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --ws-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Layout */
+  --ws-navbar-height: 60px;
+  --ws-sidebar-width: 260px;
+  --ws-sidebar-collapsed-width: 48px;
+  --ws-footer-height: 52px;
+
+  /* Bootstrap overrides — map our tokens onto BS5 variables */
+  --bs-primary: var(--ws-primary);
+  --bs-primary-rgb: var(--ws-primary-rgb);
+  --bs-emphasis-color: var(--ws-body-color);
+  --bs-body-bg: var(--ws-body-bg);
+  --bs-body-color: var(--ws-body-color);
+  --bs-border-color: var(--ws-border-color);
+  --bs-secondary-color: var(--ws-muted-color);
+  --bs-link-color: var(--ws-primary);
+  --bs-link-hover-color: var(--ws-primary-hover);
+  --bs-navbar-color: var(--ws-body-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* Dark mode — driven by system preference                            */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ws-primary: #43a047;
+    --ws-primary-rgb: 67, 160, 71;
+    --ws-primary-hover: #2e7d32;
+    --ws-primary-active: #1b5e20;
+    --ws-primary-subtle: #1b2e1c;
+    --ws-primary-subtle-rgb: 27, 46, 28;
+    --ws-primary-text: #6fcf73;
+
+    --ws-body-bg: #0f1410;
+    --ws-body-color: #d8ded8;
+    --ws-card-bg: #1a201b;
+    --ws-card-border: #2a312b;
+    --ws-navbar-bg: #161c17;
+    --ws-sidebar-bg: #161c17;
+    --ws-sidebar-border: #2a312b;
+    --ws-footer-bg: #161c17;
+    --ws-footer-border: #2a312b;
+
+    --ws-muted-bg: #1e2520;
+    --ws-muted-color: #9aa39c;
+    --ws-input-bg: #0b0f0c;
+
+    --ws-border-color: #2a312b;
+    --ws-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --ws-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --ws-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+    --bs-link-color: var(--ws-primary-text);
+    --bs-link-hover-color: #8dd991;
+    --bs-emphasis-color: #ffffff;
+    --bs-secondary-color: var(--ws-muted-color);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 2. Bootstrap component overrides                                    */
+/* ------------------------------------------------------------------ */
+
+/* Buttons */
+.btn-primary {
+  --bs-btn-bg: var(--ws-primary);
+  --bs-btn-border-color: var(--ws-primary);
+  --bs-btn-hover-bg: var(--ws-primary-hover);
+  --bs-btn-hover-border-color: var(--ws-primary-hover);
+  --bs-btn-active-bg: var(--ws-primary-active);
+  --bs-btn-active-border-color: var(--ws-primary-active);
+  --bs-btn-disabled-bg: var(--ws-primary);
+  --bs-btn-disabled-border-color: var(--ws-primary);
+  color: #fff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--ws-primary);
+  --bs-btn-border-color: var(--ws-primary);
+  --bs-btn-hover-bg: var(--ws-primary);
+  --bs-btn-hover-border-color: var(--ws-primary);
+  --bs-btn-active-bg: var(--ws-primary);
+  --bs-btn-active-border-color: var(--ws-primary);
+  --bs-btn-hover-color: #fff;
+}
+
+/* Links */
+a {
+  color: var(--bs-link-color);
+}
+a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+/* Nav links — use higher specificity to override Bootstrap navbar-light defaults */
+.navbar .nav-link {
+  color: var(--ws-body-color);
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--ws-primary-text);
+}
+.navbar .nav-link.active,
+.navbar .nav-link.show {
+  color: var(--ws-primary-text);
+  font-weight: 600;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--ws-navbar-bg) !important;
+  border-bottom: 1px solid var(--ws-border-color);
+  box-shadow: var(--ws-shadow-sm);
+  min-height: var(--ws-navbar-height);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ws-primary);
+}
+.navbar-brand:hover {
+  color: var(--ws-primary-hover);
+}
+
+/* Dropdown menus */
+.dropdown-menu {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+  box-shadow: var(--ws-shadow);
+}
+.dropdown-item {
+  color: var(--ws-body-color);
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--ws-primary-subtle);
+  color: var(--ws-primary-text);
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--ws-primary);
+  color: #fff;
+}
+.dropdown-divider {
+  border-color: var(--ws-border-color);
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+  background-color: var(--ws-input-bg);
+  border-color: var(--ws-border-color);
+  color: var(--ws-body-color);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ws-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ws-primary-rgb), 0.25);
+  background-color: var(--ws-input-bg);
+  color: var(--ws-body-color);
+}
+.form-control::placeholder {
+  color: var(--ws-muted-color);
+}
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: var(--ws-muted-bg);
+}
+.form-label,
+.col-form-label {
+  color: var(--ws-body-color);
+}
+.form-check-label {
+  color: var(--ws-body-color);
+}
+.form-text {
+  color: var(--ws-muted-color);
+}
+.form-control-plaintext {
+  color: var(--ws-body-color);
+}
+
+/* Ensure Bootstrap's internal form variables also use the input background */
+:root {
+  --bs-form-control-bg: var(--ws-input-bg);
+  --bs-form-select-bg: var(--ws-input-bg);
+}
+
+/* Cards (replaces .box) */
+.box {
+  background-color: var(--ws-card-bg);
+  border: 1px solid var(--ws-card-border);
+  border-radius: 0.5rem;
+  box-shadow: var(--ws-shadow-sm);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.box > h4 {
+  border-bottom: 1px solid var(--ws-border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ws-body-color);
+}
+.box table {
+  margin-bottom: 0.75rem;
+}
+
+/* Heading scale — modern web app best practice (smaller than Bootstrap defaults) */
+h1,
+.h1 {
+  font-size: 1.5rem;
+}
+h2,
+.h2 {
+  font-size: 1.3rem;
+}
+h3,
+.h3 {
+  font-size: 1.15rem;
+}
+h4,
+.h4 {
+  font-size: 1rem;
+}
+h5,
+.h5 {
+  font-size: 0.9rem;
+}
+h6,
+.h6 {
+  font-size: 0.8rem;
+}
+
+/* Tables */
+.table {
+  color: var(--ws-body-color);
+}
+.table > :not(caption) > * > * {
+  background-color: transparent;
+  border-color: var(--ws-border-color);
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: var(--ws-muted-bg);
+}
+.table-hover > tbody > tr:hover > * {
+  background-color: rgba(var(--ws-primary-rgb), 0.07);
+}
+.table-dark {
+  background-color: var(--ws-card-bg);
+  color: var(--ws-body-color);
+}
+
+/* Alerts */
+.alert {
+  border-color: var(--ws-border-color);
+}
+
+/* Badges */
+.badge {
+  font-weight: 600;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.breadcrumb-item a {
+  color: var(--ws-primary);
+}
+.breadcrumb-item.active {
+  color: var(--ws-muted-color);
+}
+
+/* Pagination */
+.page-link {
+  color: var(--ws-primary);
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+}
+.page-link:hover {
+  color: var(--ws-primary-hover);
+  background-color: var(--ws-primary-subtle);
+  border-color: var(--ws-primary);
+}
+.page-item.active .page-link {
+  background-color: var(--ws-primary);
+  border-color: var(--ws-primary);
+  color: #fff;
+}
+.page-item.disabled .page-link {
+  background-color: var(--ws-muted-bg);
+  border-color: var(--ws-border-color);
+  color: var(--ws-muted-color);
+}
+
+/* Modals */
+.modal-content {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+  color: var(--ws-body-color);
+}
+.modal-header,
+.modal-footer {
+  border-color: var(--ws-border-color);
+}
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.5;
+}
+
+/* Accordion */
+.accordion-button {
+  color: var(--ws-body-color);
+  background-color: var(--ws-card-bg);
+}
+.accordion-button:not(.collapsed) {
+  color: var(--ws-primary);
+  background-color: var(--ws-primary-subtle);
+}
+.accordion-button:focus {
+  border-color: var(--ws-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ws-primary-rgb), 0.25);
+}
+.accordion-item {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+  color: var(--ws-body-color);
+  border-color: var(--ws-border-color);
+}
+.nav-tabs .nav-link:hover {
+  color: var(--ws-primary);
+}
+.nav-tabs .nav-link.active {
+  color: var(--ws-primary);
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+  border-bottom-color: var(--ws-card-bg);
+  font-weight: 600;
+}
+
+/* Progress bars */
+.progress {
+  background-color: var(--ws-muted-bg);
+}
+.progress-bar {
+  background-color: var(--ws-primary);
+}
+
+/* List groups */
+.list-group {
+  border-color: var(--ws-border-color);
+}
+.list-group-item {
+  background-color: var(--ws-card-bg);
+  color: var(--ws-body-color);
+  border-color: var(--ws-border-color);
+}
+.list-group-item:hover {
+  background-color: var(--ws-primary-subtle);
+}
+
+/* Close button */
+.btn-close {
+  filter: invert(0) grayscale(100%) brightness(1);
+}
+@media (prefers-color-scheme: dark) {
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(2);
+  }
+}
+
+/* Popover / Tooltip */
+.popover,
+.tooltip-inner {
+  background-color: var(--ws-card-bg);
+  color: var(--ws-body-color);
+  border-color: var(--ws-border-color);
+}
+.popover-header,
+.tooltip-arrow::before {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+}
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-end .tooltip-arrow::before {
+  border-top-color: var(--ws-card-bg);
+}
+
+/* ------------------------------------------------------------------ */
+/* 3. Page layout                                                      */
+/* ------------------------------------------------------------------ */
+
 body {
-  padding-top: 60px;
-  padding-bottom: 40px;
+  background-color: var(--ws-body-bg);
+  color: var(--ws-body-color);
+  padding-top: var(--ws-navbar-height);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main wrapper — flexbox with sidebar, constrained by Bootstrap container */
+.ws-app {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  padding-top: 0;
+}
+
+/* Sidebar */
+.ws-sidebar {
+  width: var(--ws-sidebar-width);
+  flex-shrink: 0;
+  background-color: var(--ws-sidebar-bg);
+  border-right: 1px solid var(--ws-sidebar-border);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--ws-navbar-height));
+  transition: width 0.35s ease;
+}
+
+.ws-sidebar-body {
+  overflow: visible;
+  padding: 0;
+}
+
+.ws-sidebar-content {
+  width: 100%;
+}
+
+.ws-sidebar-nav {
+  width: 100%;
+  padding: 0.75rem 0 0.75rem;
+}
+
+.ws-sidebar-section {
+  padding: 0.25rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ws-muted-color);
+}
+
+.ws-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  color: var(--ws-body-color);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+.ws-sidebar-link:hover,
+.ws-sidebar-link:focus {
+  background-color: var(--ws-primary-subtle);
+  color: var(--ws-primary-text);
+  border-left-color: var(--ws-primary);
+}
+.ws-sidebar-link.active {
+  background-color: var(--ws-primary-subtle);
+  color: var(--ws-primary-text);
+  border-left-color: var(--ws-primary);
+  font-weight: 600;
+}
+
+.ws-sidebar-user {
+  border-bottom: 1px solid var(--ws-sidebar-border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--ws-body-color);
+}
+.ws-sidebar-user:hover,
+.ws-sidebar-user:focus {
+  background-color: var(--ws-primary-subtle);
+  color: var(--ws-primary-text);
+}
+.ws-sidebar-user .ws-sidebar-user-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+.ws-sidebar-user .ws-sidebar-user-sub {
+  font-size: 0.75rem;
+  color: var(--ws-muted-color);
+}
+
+/* Sidebar child links (indented) */
+.ws-sidebar-child {
+  padding-left: 2.25rem;
+  font-size: 0.9rem;
+}
+
+/* Avatar placeholder (when no profile picture) */
+.ws-avatar-placeholder {
+  background-color: var(--ws-primary);
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+/* Main content area */
+.ws-main {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------------------------------------------ */
+/* 4. Responsive sidebar (offcanvas on mobile)                         */
+/* ------------------------------------------------------------------ */
+
+/* On desktop (lg+), offcanvas-lg makes the element static.
+   Bootstrap sets background-color: transparent !important on .offcanvas-lg at lg+,
+   so we need !important to restore our sidebar background. */
+@media (min-width: 992px) {
+  .ws-sidebar {
+    width: var(--ws-sidebar-width);
+    flex-shrink: 0;
+    background-color: var(--ws-sidebar-bg) !important;
+    border-right: 1px solid var(--ws-sidebar-border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ws-app-with-sidebar .ws-main {
+    margin-left: 1.5rem;
+  }
+
+  /* Desktop collapse toggle button */
+  .ws-sidebar-desktop-toggle {
+    align-self: flex-end;
+    margin: 0 0 0 0.75rem;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 0.375rem;
+  }
+
+  /* Collapse the panel horizontally with the Bootstrap collapse state */
+  .ws-sidebar:has(.ws-sidebar-desktop-toggle[aria-expanded="false"]) {
+    width: var(--ws-sidebar-collapsed-width);
+  }
+  .ws-sidebar:has(.ws-sidebar-desktop-toggle[aria-expanded="false"])
+    .ws-sidebar-desktop-toggle {
+    transform: rotate(180deg);
+  }
+  .ws-sidebar:has(.ws-sidebar-desktop-toggle[aria-expanded="false"])
+    .ws-sidebar-user {
+    justify-content: center;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  .ws-sidebar:has(.ws-sidebar-desktop-toggle[aria-expanded="false"])
+    .ws-sidebar-user
+    > span:last-child {
+    display: none;
+  }
+
+  /* Hide offcanvas-specific elements on desktop */
+  .ws-sidebar .offcanvas-header {
+    display: none;
+  }
+}
+
+/* On mobile (below lg), offcanvas-lg makes it an offcanvas.
+   Override offcanvas background to match theme. */
+@media (max-width: 991.98px) {
+  .ws-sidebar {
+    background-color: var(--ws-sidebar-bg) !important;
+  }
+  .ws-sidebar .offcanvas-body {
+    padding: 0;
+  }
+  .ws-sidebar-desktop-toggle {
+    display: none !important;
+  }
+  .ws-app-with-sidebar .ws-main {
+    margin-left: 0;
+  }
+  .ws-main {
+    width: 100%;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* 5. Navbar (top bar)                                                 */
+/* ------------------------------------------------------------------ */
+
+.ws-navbar-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--ws-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ws-navbar-brand:hover {
+  color: var(--ws-primary-hover);
+}
+
+/* Prominent login / sign-out button */
+.ws-btn-auth {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Language switcher in navbar */
+.ws-lang-switch .dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.5rem;
+}
+.ws-lang-flag {
+  display: block;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* 6. Footer                                                           */
+/* ------------------------------------------------------------------ */
+
+.ws-footer {
+  background-color: var(--ws-footer-bg);
+  border-top: 1px solid var(--ws-footer-border);
+  padding: 1rem 0;
+  font-size: 0.85rem;
+  color: var(--ws-muted-color);
+}
+.ws-footer a {
+  color: var(--ws-primary);
+  text-decoration: none;
+}
+.ws-footer a:hover {
+  text-decoration: underline;
+}
+.ws-footer-brand {
+  font-weight: 700;
+  color: var(--ws-body-color);
+}
+.ws-footer-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------------ */
+/* 7. Page header (title area)                                        */
+/* ------------------------------------------------------------------ */
+
+.ws-page-header {
+  margin-bottom: 1.25rem;
+}
+.ws-page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: var(--ws-body-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* 8. Login page                                                       */
+/* ------------------------------------------------------------------ */
+
+.ws-login-card {
+  max-width: 420px;
+  margin: 2rem auto;
+}
+.ws-login-card .box {
+  padding: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* 9. Home page hero                                                   */
+/* ------------------------------------------------------------------ */
+
+.ws-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--ws-primary-rgb), 0.12),
+    rgba(var(--ws-primary-rgb), 0.04)
+  );
+  border: 1px solid var(--ws-card-border);
+  border-radius: 0.75rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ws-hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ws-primary);
+  margin-bottom: 0.75rem;
+}
+.ws-hero p {
+  font-size: 1.05rem;
+  color: var(--ws-body-color);
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* 10. Utility — keep existing ws-* classes working                    */
+/* ------------------------------------------------------------------ */
+
+/* The body padding is handled above; keep this for backwards compat */
+body {
+  padding-bottom: 0;
 }
 
 .sidebar-nav {
-  padding: 9px 0;
-}
-
-.box {
-  padding: 8px 10px;
-  background: #fdfdfd;
-  border: 1px solid #eeeeee;
-  border-bottom: 3px solid #eee;
-  border-radius: 6px;
-  margin-bottom: 30px;
-}
-
-.box table {
-  margin-bottom: 10px;
-}
-
-.box > h4 {
-  border-bottom: 1px solid #eeeeee;
-  padding-bottom: 7px;
+  padding: 0;
 }

@@ -108,7 +108,7 @@ class UploadProfilePictureController implements IActionController {
 		$userinfo = $result->fetch_array();
 		$result->free();
 		
-		if (strlen($userinfo["picture"]) && file_exists(PROFPIC_UPLOADFOLDER . "/" . $userinfo["picture"])) {
+		if (!empty($userinfo["picture"]) && file_exists(PROFPIC_UPLOADFOLDER . "/" . $userinfo["picture"])) {
 			unlink(PROFPIC_UPLOADFOLDER . "/" . $userinfo["picture"]);
 		}
 		
