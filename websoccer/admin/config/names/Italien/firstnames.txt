@@ -483,3 +483,243 @@ Agenore
 Oderico
 Albrico
 Ulstano
+Amato
+Albino Maria
+Achille Maria
+Anselmo Maria
+Ariosto Maria
+Alamanno Maria
+Alceste Maria
+Attilio Maria
+Aresio Maria
+Aldobrando Maria
+Bacco
+Baldassarre
+Balderico
+Baldo
+Baldomero
+Baldovino
+Barbarigo
+Bardo
+Bardomiano
+Barnaba
+Caino
+Caio
+Calanico
+Calcedonio
+Callisto
+Calogero
+Camillo
+Candido
+Cantidio
+Canziano
+Dagoberto Maria
+Daniele Maria
+Duilio Maria
+Dario Maria
+Deodato Maria
+Dione Maria
+Didimo Maria
+Dionisio Maria
+Diocleziano Maria
+Demetrio Maria
+Eberardo
+Ecclesio
+Edgardo
+Edilberto
+Edmondo
+Edoardo
+Efisio
+Efrem
+Egeo
+Egidio
+Fabiano
+Fabio
+Fabrizio
+Famiano
+Fausto
+Fazio
+Fedele
+Federico
+Fedro
+Felice
+Gabino
+Gabriele
+Gaetano
+Gaglioffo
+Gaio
+Galdino
+Galeazzo
+Galileo
+Gallicano
+Gandolfo
+Hugo
+Henry
+Hamed
+Hamza
+Hassan
+Hussein
+Harald
+Hektor
+Herman
+Humberto
+Iacopo
+Iacopone
+Iago
+Icaro
+Icilio
+Ido
+Iginio
+Igino
+Ignazio
+Igor
+Jann
+Jago
+Jari
+Juri
+Joel
+Jonathan
+Jordan
+Joseph
+Joshua
+Julien
+Karim
+Kevin
+Kaled
+Kenan
+Kristian
+Kiro
+Klaus
+Kamil
+Kian
+Khaled
+Ladislao
+Lamberto
+Lancilotto
+Landolfo
+Lanfranco
+Lapo
+Laurentino
+Lauriano
+Lautone
+Lavinio
+Macario
+Maccabeo
+Maffeo
+Maggiorino
+Magno
+Maiorico
+Malco
+Mamante
+Mancio
+Manetto
+Neri
+Nicolò
+Nino Maria
+Nicola Maria
+Norberto Maria
+Nazzareno Maria
+Nicodemo Maria
+Namazio Maria
+Nazario Maria
+Nicezio Maria
+Osvaldo Maria
+Odorico Maria
+Ortensio Maria
+Ottone Maria
+Osmondo Maria
+Orlando Maria
+Ovidio Maria
+Orfeo Maria
+Onesto Maria
+Orsino Maria
+Pierangelo
+Piergiorgio
+Privato
+Piero Maria
+Pammachio Maria
+Pantaleo Maria
+Publio Maria
+Perseo Maria
+Postumio Maria
+Panfilo Maria
+Radolfo
+Raffaele
+Raide
+Raimondo
+Rainaldo
+Ramiro
+Raniero
+Ranolfo
+Reginaldo
+Regolo
+Sabato
+Sabazio
+Sabele
+Sabino
+Saffiro
+Saffo
+Saladino
+Salomone
+Salomè
+Salustio
+Tirone Maria
+Tarcisio Maria
+Tarso Maria
+Tobia Maria
+Teodoro Maria
+Taddeo Maria
+Teodoto Maria
+Teogene Maria
+Tolomeo Maria
+Tito Maria
+Uberto Maria
+Uranio Maria
+Ursicio Maria
+Umile Maria
+Ulrico Maria
+Ursino Maria
+Ultimo Maria
+Umberto Maria
+Ulberto Maria
+Ubaldo Maria
+Viscardo
+Vittoriano
+Vindonio Maria
+Valter Maria
+Vittorio Maria
+Venerio Maria
+Valfrido Maria
+Vodingo Maria
+Venceslao Maria
+Virginio Maria
+Walter Maria
+William
+Werner
+Wilmer
+Wesley
+Wladimiro
+Walfredo
+Witalis
+Wenzel
+Wolfgang
+Yari
+Yuri
+Youssef
+Yusuf
+Yassin
+Yvan
+Yago
+Yordan
+Younes
+Yacine
+Zenebio Maria
+Zabedeo Maria
+Zenone Maria
+Zefiro Maria
+Zaccaria Maria
+Zeno Maria
+Zefirino
+Zosimo Maria
+Zaccheo Maria
+Zoilo Maria
