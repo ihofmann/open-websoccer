@@ -41,7 +41,7 @@
       <setting id="session_lifetime" category="general" type="number" default="7200" />
       <setting id="time_zone" category="general" type="text" default="Europe/Berlin" />
       <setting id="time_offset" category="general" type="number" default="0" />
-      <setting id="supported_languages" category="general" type="tags" default="de,en" />
+      <setting id="supported_languages" category="general" type="tags" default="de,en,es,it" />
       <setting id="date_format" category="general" type="text" default="d.m.Y" />
       <setting id="datetime_format" category="general" type="text" default="d.m.Y, H:i" />
       <setting id="time_format" category="general" type="text" default="H:i" />

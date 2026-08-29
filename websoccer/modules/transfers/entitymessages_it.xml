@@ -8,4 +8,8 @@
   <message id="entity_transfers_buyer_club_id">Acquirente</message>
   <message id="entity_transfers_bid_amount">Trasferimento di denaro (asta)</message>
   <message id="entity_transfers_directtransfer_amount">Trasferimento di denaro (diretto)</message>
+  <message id="entity_transfers_seller_user_id">Utente venditore</message>
+  <message id="entity_transfers_buyer_user_id">Utente acquirente</message>
+  <message id="entity_transfers_directtransfer_player1">Giocatore di scambio 1</message>
+  <message id="entity_transfers_directtransfer_player2">Giocatore di scambio 2</message>
 </messages>

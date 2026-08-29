@@ -10,5 +10,5 @@
   <message id="entity_cup_winner_award">Premio vincitore</message>
   <message id="entity_cup_second_award">Premio per il secondo</message>
   <message id="entity_cup_perround_award">Premio per round</message>
-  <message id="entity_cup_archiviato">archiviato</message>
+  <message id="entity_cup_archived">archiviato</message>
 </messages>

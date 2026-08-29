@@ -3,7 +3,7 @@
 <messages>
   <message id="entity_admin">Utenti amministratori</message>
   <message id="entity_admin_name">Nome utente</message>
-  <message id="entity_admin_passwort">Parola d'ordine</message>
+  <message id="entity_admin_password">Password</message>
   <message id="entity_admin_email">E-Mail</message>
   <message id="entity_admin_r_admin">È amministratore</message>
   <message id="entity_admin_r_adminuser">Diritti: può gestire gli utenti amministratori</message>

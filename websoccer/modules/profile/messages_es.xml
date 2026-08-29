@@ -7,7 +7,7 @@
   <message id="userprofile_block_link_profile">Editar perfil</message>
   <message id="userprofile_block_popularity">Popularidad entre los fanáticos</message>
   <message id="userprofile_block_highscore">Puntuación más alta</message>
-  <message id="userprofile_block_link_table">Mesa</message>
+  <message id="userprofile_block_link_table">Tabla</message>
   <message id="userprofile_block_tooltip_popularity">Depende de tu éxito e influye en la venta de entradas.</message>
   <message id="profile_navlabel">Perfil del usuario</message>
   <message id="profile_title">Editar perfil</message>
@@ -18,7 +18,7 @@
   <message id="activation_changedemail_subject">Reactivando tu cuenta de usuario</message>
   <message id="activation_changedemail_greeting">Hola,</message>
   <message id="activation_changedemail_introduction">Visite la siguiente dirección de Internet para reactivar su cuenta de usuario:</message>
-  <message id="activation_changedemail_ending">Si no se registró en nuestro sitio web y asume algún tipo de abuso, por favor responda a este correo electrónico.</message>
+  <message id="activation_changedemail_ending">Si no se registró en nuestro sitio web y sospecha algún tipo de abuso, por favor responda a este correo electrónico.</message>
   <message id="sendpassword_email_subject">Tu nueva contraseña</message>
   <message id="sendpassword_email_greeting">Hola,</message>
   <message id="sendpassword_email_introduction">Encuentre a continuación su nueva contraseña que ha solicitado a través de nuestro sitio web y que puede y debe cambiar en nuestro sitio web:</message>

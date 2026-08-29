@@ -4,115 +4,115 @@
   <message id="help_button">Ayuda</message>
   <message id="help_dialog_title">Información sobre el uso</message>
   <message id="help_formation">
-    <p>Set your tactics for the next match here.</p>
+    <p>Configura aquí tus tácticas para el próximo partido.</p>
     <p>
-      <strong>Choosing the right tactic</strong>
+      <strong>Elegir la táctica adecuada</strong>
     </p>
-    <p>Both the formation and the value of "Playing offensive" will influence how offensive and risky your team will play. You should decide for each match individually since the results depend on the opponent team.</p>
+    <p>Tanto la formación como el valor de &quot;Jugar ofensivo&quot; influirán en lo ofensivo y arriesgado que jugará tu equipo. Deberías decidirlo para cada partido individualmente, ya que los resultados dependen del equipo contrario.</p>
     <p>
-      <strong>Set players</strong>
+      <strong>Alinear jugadores</strong>
     </p>
-    <p>You can drag players onto the pitch with your mouse. Or you simply tap on the appropriate buttons or doubleclick on the player rows. Note that doubleclick only works when the player has an assigned main position and this main position is not occupied yet.</p>
+    <p>Puedes arrastrar jugadores al campo con el ratón. O simplemente pulsar en los botones correspondientes o hacer doble clic en las filas de los jugadores. Ten en cuenta que el doble clic solo funciona cuando el jugador tiene asignada una posición principal y esta posición principal aún no está ocupada.</p>
     <p>
-      <strong>Substitution players</strong>
+      <strong>Jugadores suplentes</strong>
     </p>
-    <p>Add players to the bench by clicking on the appropriate button at the players selection. Players on the bench can substitute players during the match, e.g. when a player is injured or due to tactical reasons.</p>
+    <p>Añade jugadores al banquillo haciendo clic en el botón correspondiente en la selección de jugadores. Los jugadores en el banquillo pueden sustituir a otros jugadores durante el partido, por ejemplo, cuando un jugador está lesionado o por razones tácticas.</p>
   </message>
   <message id="help_training">
-    <p>Train your team regularly in order to improve stamina, technique and freshness of your players.</p>
-    <p>How you train your team:</p>
+    <p>Entrena a tu equipo regularmente para mejorar la resistencia, la técnica y la frescura de tus jugadores.</p>
+    <p>Cómo entrenar a tu equipo:</p>
     <ul>
-      <li>Choose a trainer and hire him for a number of training units.</li>
-      <li>If you have hired a trainer, you can determine the intensity and training focus.</li>
-      <li>Click on button "Execute training". The players will be trained immediately under the supervision of the trainer, considering your preferences.</li>
+      <li>Elige un entrenador y contrátalo para un número de unidades de entrenamiento.</li>
+      <li>Si has contratado a un entrenador, puedes determinar la intensidad y el enfoque de entrenamiento.</li>
+      <li>Haz clic en el botón &quot;Ejecutar entrenamiento&quot;. Los jugadores serán entrenados inmediatamente bajo la supervisión del entrenador, teniendo en cuenta tus preferencias.</li>
     </ul>
-    <p>You cannot execute trainings during a match.</p>
+    <p>No puedes ejecutar entrenamientos durante un partido.</p>
     <p>
-      <strong>Choosing a trainer</strong>
+      <strong>Elegir un entrenador</strong>
     </p>
-    <p>The figures for "Effectivity" indicate how successful the trainer can train your team. 50% means, for instance, that players will be improved during a training session by a chance of 50%.</p>
-    <p>Note that the trainer's fee will be debitted immediately after you have hired him.</p>
+    <p>Las cifras de &quot;Efectividad&quot; indican el éxito con el que el entrenador puede entrenar a tu equipo. El 50% significa, por ejemplo, que los jugadores mejorarán durante una sesión de entrenamiento con una probabilidad del 50%.</p>
+    <p>Ten en cuenta que los honorarios del entrenador se debitarán inmediatamente después de haberlo contratado.</p>
     <p>
-      <strong>Execute training</strong>
+      <strong>Ejecutar entrenamiento</strong>
     </p>
-    <p>If you execute a training session, the players' strengths will be improved according to the trainer's effectivity and configured intensitiy. The higher the intensity is, the more freshness your players will loose, but the higher is the chance of improvements.</p>
-    <p>Injured players cannot train, but regenerate during training sessions.</p>
+    <p>Si ejecutas una sesión de entrenamiento, las fortalezas de los jugadores mejorarán de acuerdo con la efectividad del entrenador y la intensidad configurada. Cuanto mayor sea la intensidad, más frescura perderán tus jugadores, pero mayor será la probabilidad de mejoras.</p>
+    <p>Los jugadores lesionados no pueden entrenar, pero se regeneran durante las sesiones de entrenamiento.</p>
   </message>
   <message id="help_sponsor">
-    <p>Choose a sponsor company which pays you a premium for each mandatory match.</p>
-    <p>The selection of sponsors depend on your current success. You can wait with accepting a sponsor if you expect that you will win the next matches and hence get even better offers in future. Or you choose a sponsor now in order to start getting premium payments.</p>
-    <p>A valid contract with a sponsor cannot be cancelled before the contract ends.</p>
+    <p>Elige una empresa patrocinadora que te pague una prima por cada partido obligatorio.</p>
+    <p>La selección de patrocinadores depende de tu éxito actual. Puedes esperar a aceptar un patrocinador si esperas ganar los próximos partidos y, por lo tanto, obtener mejores ofertas en el futuro. O puedes elegir un patrocinador ahora para empezar a recibir pagos de primas.</p>
+    <p>Un contrato válido con un patrocinador no puede cancelarse antes de que finalice el contrato.</p>
   </message>
   <message id="help_tickets">
-    <p>Set the ticket prices for home matches here. In order to support your decision making, it is indicated how many visitors attended your last match.</p>
-    <p>The number of sold tickets depends on the following factors:</p>
+    <p>Configura aquí los precios de las entradas para los partidos en casa. Para apoyar tu toma de decisiones, se indica cuántos visitantes asistieron a tu último partido.</p>
+    <p>El número de entradas vendidas depende de los siguientes factores:</p>
     <ul>
-      <li>The ticket prices. These should not be considerably higher than the league average (initial value).</li>
-      <li>Popularity with fans. It depends on your current success.</li>
-      <li>The attractiveness of the match. E.g., if you play against a "table neighbour" you can try increasing the prices and decrease afterwards again.</li>
+      <li>Los precios de las entradas. Estos no deberían ser considerablemente más altos que la media de la liga (valor inicial).</li>
+      <li>La popularidad entre los aficionados. Depende de tu éxito actual.</li>
+      <li>El atractivo del partido. Por ejemplo, si juegas contra un &quot;vecino de la tabla&quot; puedes intentar aumentar los precios y bajarlos de nuevo después.</li>
     </ul>
   </message>
   <message id="help_stadium">
-    <p>You will find the current size and seats distribution of your stadium on this site.</p>
-    <p>The gray area behind the seats indicate the theoretical maximum size to which you may extend the stadium.</p>
-    <p>Fill the form below the stadium image in order to extend it by new seats. After submitting the form, you will get offers from builder companies, containing total costs and an estimated completion time. Once you select one of the offers, the total costs will be debitted from your account immediately and the constructions will start.</p>
-    <p>You need to manually accept the construction work once the completion time is up. Note that very cheap builders might give wrong estimations about the deadline.</p>
-    <p>It is not possible to shrink your stadium.</p>
+    <p>En esta página encontrarás el tamaño actual y la distribución de asientos de tu estadio.</p>
+    <p>El área gris detrás de los asientos indica el tamaño máximo teórico al que puedes ampliar el estadio.</p>
+    <p>Rellena el formulario debajo de la imagen del estadio para ampliarlo con nuevos asientos. Tras enviar el formulario, recibirás ofertas de empresas constructoras, que incluyen los costes totales y un tiempo estimado de finalización. Una vez que selecciones una de las ofertas, los costes totales se debitarán de tu cuenta inmediatamente y comenzarán las obras.</p>
+    <p>Necesitas aceptar manualmente las obras de construcción una vez que se cumpla el tiempo de finalización. Ten en cuenta que los constructores muy económicos pueden dar estimaciones erróneas sobre la fecha límite.</p>
+    <p>No es posible reducir tu estadio.</p>
   </message>
   <message id="help_myteam">
-    <p>Here you find an overview of all your players. You should check this site regularly in order to prevent the unwanted loss of players due to ended contracts.</p>
+    <p>Aquí encontrarás una visión general de todos tus jugadores. Deberías revisar esta página regularmente para evitar la pérdida no deseada de jugadores debido a contratos finalizados.</p>
     <p>
-      <strong>Sell players</strong>
+      <strong>Vender jugadores</strong>
     </p>
-    <p>You can sell players to any time by clicking on the button "Sell" next to the appropriate player. Afterwards you will enter a minimum bid. The player will be moved to the transfer market and other users can bid for him. As long as the player is not sold, he will remain in your team.</p>
-    <p>Note that you cannot remove a player from the transfer market once you have added him.</p>
+    <p>Puedes vender jugadores en cualquier momento haciendo clic en el botón &quot;Vender&quot; junto al jugador correspondiente. Después introducirás una oferta mínima. El jugador será trasladado al mercado de fichajes y otros usuarios podrán pujar por él. Mientras el jugador no se venda, permanecerá en tu equipo.</p>
+    <p>Ten en cuenta que no puedes retirar a un jugador del mercado de fichajes una vez que lo hayas añadido.</p>
     <p>
-      <strong>Extend contracts</strong>
+      <strong>Renovar contratos</strong>
     </p>
-    <p>Players whose contract is about to end and can be extended, will be marked red and with a danger sign in the overview. It also appears a button "Extend Contract". On click on this button you will be forwarded to a contract extension negotiation page.</p>
-    <p>If you do not extend an ending contract, the player will be moved automatically to the transfer market and does not belong to your team anymore.</p>
+    <p>Los jugadores cuyo contrato está a punto de terminar y puede renovarse, se marcarán en rojo y con un signo de peligro en la visión general. También aparecerá un botón &quot;Renovar contrato&quot;. Al hacer clic en este botón, serás redirigido a una página de negociación de renovación de contrato.</p>
+    <p>Si no renuevas un contrato a punto de finalizar, el jugador será trasladado automáticamente al mercado de fichajes y ya no pertenecerá a tu equipo.</p>
     <p>
-      <strong>Nominate a team captain</strong>
+      <strong>Nombrar un capitán de equipo</strong>
     </p>
-    <p>The captain can improve the team morale when your team is in deficit during a match. The more experience a player has, the more respekt he gets from other players.</p>
-    <p>Be careful if you want to change the captain. Your current captain might become mad with you.</p>
+    <p>El capitán puede mejorar la moral del equipo cuando tu equipo va perdiendo durante un partido. Cuanta más experiencia tenga un jugador, más respeto recibirá de los demás jugadores.</p>
+    <p>Ten cuidado si quieres cambiar el capitán. Tu capitán actual podría enfadarse contigo.</p>
   </message>
   <message id="help_trainingcamp">
-    <p>If there is a time without matches, you can send your team to a training camp.</p>
-    <p>You do not need to hire a trainer for that since the training camp will provide one for you. They take care that all your players will be trained by the specified attributes on a daily basis.</p>
-    <p>The total costs of a training camp booking will be debitted immediately after booking.</p>
-    <p>You can book only one training camp at the same time. Only after returning from one camp, you can book the next camp.</p>
+    <p>Si hay un período sin partidos, puedes enviar a tu equipo a un campo de entrenamiento.</p>
+    <p>No necesitas contratar a un entrenador para eso, ya que el campo de entrenamiento proporcionará uno para ti. Se encargan de que todos tus jugadores sean entrenados según los atributos especificados a diario.</p>
+    <p>Los costes totales de la reserva de un campo de entrenamiento se debitarán inmediatamente después de la reserva.</p>
+    <p>Solo puedes reservar un campo de entrenamiento a la vez. Solo después de regresar de un campo, puedes reservar el siguiente.</p>
   </message>
   <message id="help_transfermarket">
-    <p>Buy new players or see if anyone has set a bit on one of your players.</p>
+    <p>Compra nuevos jugadores o comprueba si alguien ha hecho una oferta por uno de tus jugadores.</p>
     <p>
-      <strong>Buy players</strong>
+      <strong>Comprar jugadores</strong>
     </p>
-    <p>The transfer market is the only place where you can buy new players. They will be sold through auctions, even when players are not assigned to a team anymore. For such players, the best salary offer including hand money counts.</p>
-    <p>In order to bid on a player, or simply to get information about the current maximum bid, you can click on the button "bid" next to the appropriate player.</p>
-    <p>By the way, the number of permitted transactions between the same user is limit. Hence, avoid bidding on several players of the same team.</p>
+    <p>El mercado de fichajes es el único lugar donde puedes comprar nuevos jugadores. Se venderán mediante subastas, incluso cuando los jugadores ya no pertenezcan a ningún equipo. Para estos jugadores, cuenta la mejor oferta de salario incluyendo la prima de fichaje.</p>
+    <p>Para pujar por un jugador, o simplemente para obtener información sobre la oferta máxima actual, puedes hacer clic en el botón &quot;Ofertar&quot; junto al jugador correspondiente.</p>
+    <p>Por cierto, el número de transacciones permitidas entre el mismo usuario está limitado. Por lo tanto, evita pujar por varios jugadores del mismo equipo.</p>
     <p>
-      <strong>Sell players</strong>
+      <strong>Vender jugadores</strong>
     </p>
-    <p>You can sell your own players by going to "My Team" in the navigation bar.</p>
+    <p>Puedes vender a tus propios jugadores yendo a &quot;Mi equipo&quot; en la barra de navegación.</p>
   </message>
   <message id="help_transfer-bid">
-    <p>Get information about the current maximum bid of a player or set a bid by yourself.</p>
+    <p>Obtén información sobre la oferta máxima actual de un jugador o establece una oferta tú mismo.</p>
     <p>
-      <strong>Bidding on players of a different team</strong>
+      <strong>Pujar por jugadores de otro equipo</strong>
     </p>
-    <p>The highest fee wins. The salary should just be accepted by the player, but does not need to be higher than the one from other bids.</p>
+    <p>Gana la oferta más alta. El salario solo debe ser aceptado por el jugador, pero no necesita ser más alto que el de otras ofertas.</p>
     <p>
-      <strong>Players without fee</strong>
+      <strong>Jugadores sin equipo</strong>
     </p>
-    <p>Players without currently having a team will be given to the team which offers the best contract to the player. It is considered as best according to the total income for the player, including awards and hand money. The goal bonus is irrelevant for goalkeepers and defense players.</p>
-    <p>"Hand money" is money which you would pay to the player, independent on the contract length.</p>
+    <p>Los jugadores que actualmente no tienen equipo serán asignados al equipo que ofrezca el mejor contrato al jugador. Se considera el mejor según los ingresos totales para el jugador, incluyendo primas y prima de fichaje. La prima por goles es irrelevante para los porteros y los defensas.</p>
+    <p>La &quot;Prima de fichaje&quot; es dinero que pagarías al jugador, independientemente de la duración del contrato.</p>
   </message>
   <message id="help_messages">
-    <p>Send short messages to other users here.</p>
-    <p>Due to security reasons you need to know the user name of the recipient. Copy his or her name to the recipient field or just enter the first two or three characters and click on one of the from the system suggested users.</p>
-    <p>Note that sending advertisement is prohibitted.</p>
-    <p>Also note that the messages are stored in our database without any encryption. Hence, do not send intimate or sensitive data.</p>
-    <p>HTML is not supported.</p>
+    <p>Envía mensajes breves a otros usuarios aquí.</p>
+    <p>Por razones de seguridad, necesitas conocer el nombre de usuario del destinatario. Copia su nombre al campo de destinatario o simplemente introduce los dos o tres primeros caracteres y haz clic en uno de los usuarios sugeridos por el sistema.</p>
+    <p>Ten en cuenta que el envío de publicidad está prohibido.</p>
+    <p>Ten en cuenta también que los mensajes se almacenan en nuestra base de datos sin ningún tipo de cifrado. Por lo tanto, no envíes datos íntimos ni sensibles.</p>
+    <p>No se admite HTML.</p>
   </message>
 </messages>

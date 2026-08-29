@@ -3,7 +3,7 @@
 <messages>
   <message id="transferoffer_button">Offerta di acquisto</message>
   <message id="transferoffer_modal_title">Offerta di trasferimento</message>
-  <message id="transferoffer_label_amount">Quantità</message>
+  <message id="transferoffer_label_amount">Importo</message>
   <message id="transferoffer_label_comment">Commento</message>
   <message id="transferoffer_label_fieldset_playerexchange">Scambio giocatori (facoltativo)</message>
   <message id="transferoffer_label_exchangeplayer1">Giocatore</message>
@@ -11,7 +11,7 @@
   <message id="transferoffer_label_fieldset_contract">Termini contrattuali</message>
   <message id="transferoffer_err_ownplayer">Il giocatore è già nella tua squadra.</message>
   <message id="transferoffer_err_nomanager">La squadra del giocatore non ha attualmente un allenatore. Pertanto, le offerte di acquisto non possono essere elaborate.</message>
-  <message id="transferoffer_err_unsellable">Il giocatore è stato contrassegnato come incedibile o è sul mercato dei trasferimenti.</message>
+  <message id="transferoffer_err_unsellable">Il giocatore è stato contrassegnato come invendibile o è sul mercato dei trasferimenti.</message>
   <message id="transferoffer_err_open_offers_exist">L'allenatore del giocatore ha ancora offerte aperte da parte tua. Puoi avere una sola offerta alla volta con lo stesso gestore. Attendi finché l'altro utente non ha elaborato l'altra tua offerta o annullala.</message>
   <message id="transferoffer_err_noalternative_allowed">Il manager del giocatore non vuole nessuna nuova offerta da te per questo giocatore.</message>
   <message id="transferoffer_err_transferstop">Il giocatore non deve cambiare squadra a causa di una sospensione del trasferimento di %d giorni.</message>
@@ -31,7 +31,7 @@
   <message id="transferoffers_offer_reaction_accept">Accettare</message>
   <message id="transferoffers_offer_reaction_reject">Rifiutare</message>
   <message id="transferoffers_offer_status_adminapprovalpending">In attesa di approvazione</message>
-  <message id="transferoffers_offer_status_respinto">respinto</message>
+  <message id="transferoffers_offer_status_rejected">Respinto</message>
   <message id="transferoffers_offer_showcomment">Mostra commento</message>
   <message id="transferoffers_offer_comment_title">%s ha scritto:</message>
   <message id="transferoffer_accepted_title">L'offerta è accettata!</message>

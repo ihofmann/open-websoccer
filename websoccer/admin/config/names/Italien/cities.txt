@@ -138,3 +138,203 @@ Giugliano
 Pordenone
 Arezzo
 Manfredonia
+Ruma
+Molano
+Nepoli
+Turino
+Pelermo
+Ginova
+Bulogna
+Forenze
+Beri
+Cetania
+Vinezia
+Virona
+Missina
+Pedova
+Troeste
+Teranto
+Preto
+Perma
+Mudena
+Riggio Calabria
+Pirugia
+Revenna
+Lovorno
+Cegliari
+Fuggia
+Romini
+Selerno
+Firrara
+Sessari
+Letina
+Munza
+Soracusa
+Piscara
+Birgamo
+Furlì
+Trinto
+Vocenza
+Tirni
+Bulzano
+Nuvara
+Poacenza
+Encona
+Endria
+Erezzo
+Adine
+Cisena
+Licce
+Pisaro
+Berletta
+Elessandria
+Le Spezia
+Posa
+Postoia
+Lacca
+Brondisi
+Triviso
+Verese
+Sisto San Giovanni
+Puzzuoli
+Gila
+Gaidonia Montecelio
+Tovoli
+Voterbo
+Esti
+Ceserta
+Pumezia
+Regusa
+Crimona
+Cerpi
+Omola
+Mersala
+Eltamura
+Bosceglie
+Botonto
+Cirignola
+Menfredonia
+Treni
+Mulfetta
+Curato
+Grevina in Puglia
+Metera
+Putenza
+Cusenza
+Lemezia Terme
+Cetanzaro
+Crutone
+Vobo Valentia
+Pelmi
+Eversa
+Efragola
+Cesoria
+Turre del Greco
+Cestellammare di Stabia
+Ircolano
+Binevento
+Evellino
+Bettipaglia
+Iboli
+Nucera Inferiore
+Scefati
+Purtici
+Gougliano in Campania
+Merano di Napoli
+Surrento
+Roeti
+Frusinone
+Cessino
+Covitavecchia
+Villetri
+Enzio
+Elbano Laziale
+Frescati
+Nittuno
+Choavari
+Repallo
+Sevona
+Omperia
+Senremo
+Vintimiglia
+Elbenga
+Cerrara
+Messa
+Voareggio
+Poetrasanta
+Puntedera
+Impoli
+Soena
+Grusseto
+Poombino
+Urvieto
+Spuleto
+Fuligno
+Gabbio
+Tudi
+Feno
+Arbino
+Sinigallia
+Jisi
+Febriano
+Escoli Piceno
+Firmo
+Mecerata
+Covitanova Marche
+Sen Benedetto del Tronto
+Ruvereto
+Mirano
+Brissanone
+Branico
+Bessano del Grappa
+Schoo
+Thoene
+Ruvigo
+Chooggia
+Cunegliano
+Vottorio Veneto
+Purdenone
+Gurizia
+Munfalcone
+Mistre
+Sundrio
+Licco
+Cumo
+Vogevano
+Lignano
+Basto Arsizio
+Gellarate
+Rhu
+Ludi
+Crima
+Mentova
+Disenzano del Garda
+Siregno
+Irba
+Caneo
+Elba
+Bre
+Eosta
+Boella
+Virbania
+Vircelli
+Choeri
+Ovrea
+Ponerolo
+Rome
+Mileno
+Napuli
+Torono
+Palirmo
+Genuva
+Bolugna
+Firinze
+Baro
+Catenia
+Venizia
+Veruna
+Messona
+Paduva
+Triiste
+Tarento
+Pratu

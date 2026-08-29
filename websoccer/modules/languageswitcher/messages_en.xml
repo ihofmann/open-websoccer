@@ -5,4 +5,6 @@
     <message id="langswitcher_block_title">Choose Language</message>
     <message id="lang_label_de">Deutsch</message>
     <message id="lang_label_en">English</message>
+    <message id="lang_label_es">Español</message>
+    <message id="lang_label_it">Italiano</message>
 </messages>

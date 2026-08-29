@@ -3,7 +3,7 @@
 <messages>
   <message id="entity_admin">Usuarios administradores</message>
   <message id="entity_admin_name">Nombre de usuario</message>
-  <message id="entity_admin_passwort">Clave</message>
+  <message id="entity_admin_password">Contraseña</message>
   <message id="entity_admin_email">Correo electrónico</message>
   <message id="entity_admin_r_admin">es administrador</message>
   <message id="entity_admin_r_adminuser">Derechos: puede administrar usuarios administradores</message>

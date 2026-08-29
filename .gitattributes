@@ -1,0 +1,7 @@
+# Normalize line endings on commit and let Git decide on checkout.
+* text=auto
+
+# Shell scripts are executed inside Linux containers. A CRLF checkout (the
+# default on Windows) makes the kernel look for the interpreter "/bin/bash\r",
+# which fails with "no such file or directory".
+*.sh text eol=lf

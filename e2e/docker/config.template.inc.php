@@ -23,7 +23,7 @@ $conf['db_passwort'] = "websoccer";
 $conf['db_name'] = "websoccer";
 $conf['db_prefix'] = "ws3";
 
-$conf['supported_languages'] = "de,en";
+$conf['supported_languages'] = "de,en,es,it";
 $conf['homepage'] = "http://localhost:8081";
 $conf['context_root'] = "";
 $conf['projectname'] = "OpenWebSoccer E2E";

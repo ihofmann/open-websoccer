@@ -19,5 +19,5 @@
   <message id="activation_email_subject">Completando su Registro de Usuario</message>
   <message id="activation_email_greeting">Hola,</message>
   <message id="activation_email_introduction">Visite la siguiente dirección de Internet para completar su registro de usuario:</message>
-  <message id="activation_email_ending">Si no se registró en nuestro sitio web y asume algún tipo de abuso, por favor responda a este correo electrónico.</message>
+  <message id="activation_email_ending">Si no se registró en nuestro sitio web y sospecha algún tipo de abuso, por favor responda a este correo electrónico.</message>
 </messages>

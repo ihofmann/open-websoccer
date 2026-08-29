@@ -8,4 +8,8 @@
   <message id="entity_transfers_buyer_club_id">Comprador</message>
   <message id="entity_transfers_bid_amount">Transferir dinero (Subasta)</message>
   <message id="entity_transfers_directtransfer_amount">Transferir dinero (directo)</message>
+  <message id="entity_transfers_seller_user_id">Usuario vendedor</message>
+  <message id="entity_transfers_buyer_user_id">Usuario comprador</message>
+  <message id="entity_transfers_directtransfer_player1">Jugador de intercambio 1</message>
+  <message id="entity_transfers_directtransfer_player2">Jugador de intercambio 2</message>
 </messages>
