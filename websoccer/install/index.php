@@ -25,7 +25,7 @@ define("BASE_FOLDER", __DIR__ ."/..");
 // Suppress the PHP version disclosure header.
 @header_remove('X-Powered-By');
 
-define("PHP_MIN_VERSION", "8.3.0");
+define("PHP_MIN_VERSION", "8.4.0");
 define("WRITABLE_FOLDERS", "generated/,uploads/club/,uploads/cup/,uploads/player/,uploads/sponsor/,uploads/stadium/,uploads/stadiumbuilder/,uploads/stadiumbuilding/,uploads/users/");
 define("DEFAULT_DB_PREFIX", "ws3");
 define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
