@@ -7,9 +7,10 @@ import { expect, test } from '@playwright/test';
  * Italian and Spanish (in that order) and verifies that the news box title
  * is translated correctly for each language.
  *
- * The news block is rendered on the home page in the first content column
- * via `viewHandler.renderBlock('news')`. Its title comes from the i18n key
- * `news_block_title`.
+ * The news block is rendered on the home page via
+ * `viewHandler.renderBlock('news')`. Its title comes from the i18n key
+ * `news_block_title`. The block carries a `data-testid="news-box"` attribute
+ * (set in topnews.twig) so the locator is robust against layout changes.
  *
  * No login is required – guests can view the home page and switch languages.
  *
@@ -36,8 +37,10 @@ test.describe('language switching on start page', () => {
     // is rendered in that language.
     await page.goto(`/?page=home&action=switch-language&lang=${lang}`);
 
-    // The news block is the first .box in the first content column.
-    const newsBoxTitle = page.locator('.col-md-4 .box h4').first();
+    // The news block has a data-testid="news-box" attribute (set in topnews.twig
+    // via the box_testid block in box.twig) so the locator is independent of
+    // column layout classes.
+    const newsBoxTitle = page.getByTestId('news-box').locator('h4');
     await expect(newsBoxTitle).toHaveText(expected);
   }
 

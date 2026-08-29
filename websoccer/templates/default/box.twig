@@ -1,4 +1,5 @@
-<div class="box">
+{% set box_testid = block('box_testid')|trim %}
+<div class="box"{% if box_testid %} data-testid="{{ box_testid }}"{% endif %}>
 	<h4>{{ block("box_title") }}</h4>
 	{{ block("box_content") }}
 </div>
