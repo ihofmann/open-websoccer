@@ -35,9 +35,6 @@ $termsPage = PageDataService::getByTypeAndLanguage(
 	PageDataService::TERMS_AND_CONDITIONS_TYPE,
 	$selectedLang
 );
-if (!$termsPage) {
-	throw new Exception("No terms and conditions available for this language.");
-}
 
 //********** form **********
 if (!$show) {
@@ -72,7 +69,7 @@ if (!$show) {
 	<?php 
 	$formFields = array();
 	
-	$terms = $termsPage["content"];
+	$terms = ($termsPage) ? $termsPage["content"] : '';
 	
 	$formFields["content"] = array("type" => "html", "value" => $terms, "required" => "true");
 	foreach ($formFields as $fieldId => $fieldInfo) {

@@ -113,6 +113,55 @@ E-Mail: [E-Mail-Adresse]</p>
 <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
 [Name, Anschrift]</p>
     '),
+('termsandconditions', 'it', '<h2>Partecipazione al gioco</h2>
+<i class="bi bi-chevron-right"></i> È consentito un solo account utente per partecipante.
+
+<i class="bi bi-chevron-right"></i> L''account utente non deve essere condiviso con terzi. Eventuali sospetti di abuso del proprio account devono essere segnalati immediatamente.
+
+<i class="bi bi-chevron-right"></i> Il nome utente scelto non deve violare i diritti di terzi. In particolare, non è consentito utilizzare nomi di club o giocatori del mondo del calcio reale.
+
+<i class="bi bi-chevron-right"></i> La membership può essere disdetta da entrambe le parti in qualsiasi momento e senza preavviso.
+
+<i class="bi bi-chevron-right"></i> Il gestore si riserva il diritto di modificare o integrare in qualsiasi momento i presenti termini e condizioni.
+
+<h2>Protezione dei dati</h2>
+<i class="bi bi-chevron-right"></i> Il gestore memorizza i dati personali solo nei limiti consentiti dalla legge e necessari per il funzionamento del gioco. Ciò include, tra l''altro, l''indirizzo IP e l''indirizzo e-mail dell''utente.
+
+<i class="bi bi-chevron-right"></i> L''utente ha in qualsiasi momento il diritto di richiedere gratuitamente al gestore informazioni sul tipo e sull''entità dei propri dati memorizzati.
+
+<i class="bi bi-chevron-right"></i> Per il funzionamento del sito web è necessario memorizzare i cosiddetti "cookie" sul dispositivo. Si tratta di piccoli file di testo che contengono informazioni per il riconoscimento del sistema.
+
+    '),
+('termsandconditions', 'es', '<h2>Participación en el juego</h2>
+<i class="bi bi-chevron-right"></i> Solo se permite una cuenta de usuario por participante.
+
+<i class="bi bi-chevron-right"></i> La cuenta de usuario no debe compartirse con terceros. Cualquier sospecha de abuso de la propia cuenta debe comunicarse inmediatamente.
+
+<i class="bi bi-chevron-right"></i> El nombre de usuario elegido no debe violar los derechos de terceros. En particular, no se permiten nombres de clubes o jugadores del mundo del fútbol real.
+
+<i class="bi bi-chevron-right"></i> La membresía puede cancelarse por ambas partes en cualquier momento y sin previo aviso.
+
+<i class="bi bi-chevron-right"></i> El operador se reserva el derecho de modificar o ampliar estos términos y condiciones en cualquier momento.
+
+<h2>Protección de datos</h2>
+<i class="bi bi-chevron-right"></i> El operador almacena datos personales solo en la medida permitida por la ley y necesaria para el funcionamiento del juego. Esto incluye, entre otros, la dirección IP y la dirección de correo electrónico del usuario.
+
+<i class="bi bi-chevron-right"></i> El usuario tiene derecho en cualquier momento a solicitar gratuitamente al operador información sobre el tipo y la cantidad de sus datos almacenados.
+
+<i class="bi bi-chevron-right"></i> Para el funcionamiento del sitio web es necesario almacenar las llamadas "cookies" en el dispositivo. Se trata de pequeños archivos de texto que contienen información para el reconocimiento del sistema.
+
+    '),
+('imprint', 'de', '<h2>Impressum</h2>
+<p>Angaben gemäß § 5 TMG</p>
+<p>[Name des Betreibers]<br>
+[Straße, Hausnummer]<br>
+[PLZ, Ort]</p>
+<p>Kontakt:<br>
+Telefon: [Telefonnummer]<br>
+E-Mail: [E-Mail-Adresse]</p>
+<p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+[Name, Anschrift]</p>
+    '),
 ('imprint', 'en', '<h2>Imprint</h2>
 <p>Information according to § 5 TMG</p>
 <p>[Operator name]<br>
@@ -123,6 +172,28 @@ Phone: [phone number]<br>
 Email: [email address]</p>
 <p>Responsible for the content according to § 55 Abs. 2 RStV:<br>
 [Name, address]</p>
+    '),
+('imprint', 'it', '<h2>Note legali</h2>
+<p>Informazioni ai sensi dell''art. 5 TMG</p>
+<p>[Nome del gestore]<br>
+[Via, numero civico]<br>
+[Codice postale, città]</p>
+<p>Contatto:<br>
+Telefono: [numero di telefono]<br>
+E-mail: [indirizzo e-mail]</p>
+<p>Responsabile dei contenuti ai sensi dell''art. 55 comma 2 RStV:<br>
+[Nome, indirizzo]</p>
+    '),
+('imprint', 'es', '<h2>Aviso legal</h2>
+<p>Información conforme al § 5 TMG</p>
+<p>[Nombre del operador]<br>
+[Calle, número]<br>
+[Código postal, ciudad]</p>
+<p>Contacto:<br>
+Teléfono: [número de teléfono]<br>
+Correo electrónico: [dirección de correo electrónico]</p>
+<p>Responsable del contenido conforme al § 55 párr. 2 RStV:<br>
+[Nombre, dirección]</p>
     ');
 
 INSERT INTO ws3_jobs
