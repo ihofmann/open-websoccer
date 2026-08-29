@@ -133,17 +133,6 @@ E-Mail: [E-Mail-Adresse]</p>
 <i class="bi bi-chevron-right"></i> Para el funcionamiento del sitio web es necesario almacenar las llamadas "cookies" en el dispositivo. Se trata de pequeños archivos de texto que contienen información para el reconocimiento del sistema.
 
     '),
-('imprint', 'de', '<h2>Impressum</h2>
-<p>Angaben gemäß § 5 TMG</p>
-<p>[Name des Betreibers]<br>
-[Straße, Hausnummer]<br>
-[PLZ, Ort]</p>
-<p>Kontakt:<br>
-Telefon: [Telefonnummer]<br>
-E-Mail: [E-Mail-Adresse]</p>
-<p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
-[Name, Anschrift]</p>
-    '),
 ('imprint', 'en', '<h2>Imprint</h2>
 <p>Information according to § 5 TMG</p>
 <p>[Operator name]<br>
