@@ -61,8 +61,17 @@ test.describe('language switching on start page', () => {
   });
 
   test('all four languages in sequence in a single session', async ({ page }) => {
+    // The application rejects the same action id twice within
+    // DOUBLE_SUBMIT_CHECK_SECONDS (3 s, compared on whole-second timestamps)
+    // with a "double submit" error, so consecutive switches must be spaced out.
+    const doubleSubmitWaitMs = 3_100;
+
     // Switch through all languages in order and verify each one.
-    for (const lang of ['de', 'en', 'it', 'es']) {
+    const languages = ['de', 'en', 'it', 'es'];
+    for (const [index, lang] of languages.entries()) {
+      if (index > 0) {
+        await page.waitForTimeout(doubleSubmitWaitMs);
+      }
       await switchLanguageAndAssert(page, lang);
     }
   });
