@@ -21,12 +21,16 @@
 ******************************************************/
 
 /**
- * @author Ingo Hofmann
+ * Reads the imprint page for the current language from the database.
  */
 class ImprintModel implements IModel {
+	private $_db;
+	private $_i18n;
 	private $_websoccer;
 	
 	public function __construct($db, $i18n, $websoccer) {
+		$this->_db = $db;
+		$this->_i18n = $i18n;
 		$this->_websoccer = $websoccer;
 	}
 	
@@ -35,13 +39,19 @@ class ImprintModel implements IModel {
 	}
 	
 	public function getTemplateParameters() {
+		$page = PageDataService::getByTypeAndLanguage(
+			$this->_websoccer,
+			$this->_db,
+			PageDataService::IMPRINT_TYPE,
+			$this->_i18n->getCurrentLanguage()
+		);
 		
-		$filecontent = "";
-		if (file_exists(IMPRINT_FILE)) {
-			$filecontent = file_get_contents(IMPRINT_FILE);
+		$content = '';
+		if ($page) {
+			$content = $page['content'];
 		}
 		
-		return array("imprint_content" => $filecontent);
+		return array('imprint_content' => $content);
 	}
 	
 }

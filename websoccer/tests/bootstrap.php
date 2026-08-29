@@ -37,7 +37,6 @@ define('CONFIGCACHE_ENTITYMESSAGES', BASE_FOLDER . '/cache/entitymessages_%s.inc
 define('CONFIGCACHE_SETTINGS', BASE_FOLDER . '/cache/settingsconfig.inc.php');
 define('CONFIGCACHE_EVENTS', BASE_FOLDER . '/cache/eventsconfig.inc.php');
 define('UPLOAD_FOLDER', BASE_FOLDER . '/uploads/');
-define('IMPRINT_FILE', BASE_FOLDER . '/generated/imprint.php');
 define('TEMPLATES_FOLDER', BASE_FOLDER . '/templates');
 define('PROFPIC_UPLOADFOLDER', UPLOAD_FOLDER . 'users');
 

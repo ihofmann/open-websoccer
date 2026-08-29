@@ -5,6 +5,7 @@
  */
 class PageDataService {
 	const TERMS_AND_CONDITIONS_TYPE = 'termsandconditions';
+	const IMPRINT_TYPE = 'imprint';
 
 	public static function getByTypeAndLanguage(WebSoccer $websoccer, DbConnection $db, $type, $language) {
 		$result = $db->querySelect(

@@ -236,6 +236,36 @@ function migrateLegacyEntityLogs(DbConnection $db, $prefix, $file) {
 	}
 }
 
+function migrateLegacyImprint(DbConnection $db, $prefix, $file) {
+	if (!file_exists($file)) {
+		return;
+	}
+
+	$content = trim(file_get_contents($file));
+	if (!strlen($content)) {
+		return;
+	}
+
+	$table = $prefix . '_pages';
+	foreach (array('de', 'en') as $language) {
+		$result = $db->querySelect('id', $table,
+			'type = \'imprint\' AND language = \'%s\'', $language, 1);
+		$existingPage = $result->fetch_array();
+		$result->free();
+
+		$columns = array('content' => $content);
+		if ($existingPage) {
+			$db->queryUpdate($columns, $table, 'id = %d', $existingPage['id']);
+		} else {
+			$db->queryInsert(array(
+				'type' => 'imprint',
+				'language' => $language,
+				'content' => $content
+			), $table);
+		}
+	}
+}
+
 function migrateLegacyPages(DbConnection $db, $prefix, $file) {
 	if (!file_exists($file)) {
 		return;
@@ -332,6 +362,8 @@ function actionMoveFiles() {
 		migrateLegacyAdminLogs($db, $conf["db_prefix"], BASE_FOLDER . "/generated/adminlog.php");
 		migrateLegacyEntityLogs($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/entitylog.php");
 		migrateLegacyEntityLogs($db, $conf["db_prefix"], BASE_FOLDER . "/generated/entitylog.php");
+		migrateLegacyImprint($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/imprint.php");
+		migrateLegacyImprint($db, $conf["db_prefix"], BASE_FOLDER . "/generated/imprint.php");
 		migrateLegacyPages($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/termsandconditions.xml");
 		migrateLegacyJobs($db, $conf["db_prefix"], BASE_FOLDER . "/admin/config/jobs.xml");
 	} catch (Exception $e) {
@@ -341,7 +373,7 @@ function actionMoveFiles() {
 
 	$db->close();
 
-	$fileNames = array("config.inc.php", "imprint.php");
+	$fileNames = array("config.inc.php");
 	$oldDir = BASE_FOLDER . "/admin/config/";
 	$newDir = BASE_FOLDER . "/generated/";
 	
@@ -354,13 +386,15 @@ function actionMoveFiles() {
 	$legacyFiles = array(
 		$oldDir . "adminlog.php",
 		$oldDir . "entitylog.php",
+		$oldDir . "imprint.php",
 		$oldDir . "termsandconditions.xml",
 		$oldDir . "jobs.xml",
 		$oldDir . "termsandconditions.dtd",
 		$oldDir . "jobs.dtd",
 		$oldDir . "lockfile.txt",
 		BASE_FOLDER . "/generated/adminlog.php",
-		BASE_FOLDER . "/generated/entitylog.php"
+		BASE_FOLDER . "/generated/entitylog.php",
+		BASE_FOLDER . "/generated/imprint.php"
 	);
 	foreach ($legacyFiles as $legacyFile) {
 		if (file_exists($legacyFile)) {
