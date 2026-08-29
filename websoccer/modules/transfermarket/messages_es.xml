@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE messages SYSTEM "../messages.dtd">
 <messages>
-  <message id="transfermarket_navlabel">Mercado de transferencia</message>
-  <message id="transfermarket_title">Mercado de transferencia</message>
+  <message id="transfermarket_navlabel">Mercado de fichajes</message>
+  <message id="transfermarket_title">Mercado de fichajes</message>
   <message id="sell-player_navlabel">Vender jugador</message>
   <message id="sell_player_title">Vender %s</message>
   <message id="sell_player_put_on_list_title">Poner en la lista de transferencia</message>
@@ -19,22 +19,22 @@
   <message id="transfermarket_tab_mytransfers">Mis transferencias</message>
   <message id="transfermarket_tab_lasttransfers">Transferencias más recientes</message>
   <message id="transfermarket_head_deadline">Plazo</message>
-  <message id="transfermarket_head_highestbid">Apuesta más alta</message>
-  <message id="transfermarket_bid">Licitación</message>
+  <message id="transfermarket_head_highestbid">Oferta más alta</message>
+  <message id="transfermarket_bid">Oferta</message>
   <message id="transfermarket_without_team">sin equipo</message>
-  <message id="transfer-bid_navlabel">Licitación</message>
+  <message id="transfer-bid_navlabel">Oferta</message>
   <message id="transfer_bid_title">Oferta por %s</message>
   <message id="transfer_bid_playerinfo">Resumen del jugador</message>
   <message id="transfer_bid_existing_max_bid">Oferta más alta existente</message>
   <message id="transfer_bid_no_existing_max_bid">¡Aún no hay ofertas disponibles para este jugador!</message>
   <message id="transfer_bid_yourbid">Tu oferta</message>
   <message id="transfer_bid_amount">Monto</message>
-  <message id="transfer_bid_handmoney">dinero de mano</message>
+  <message id="transfer_bid_handmoney">Dinero en mano</message>
   <message id="transfer_bid_date">Fecha</message>
-  <message id="transfer_bid_withoutfee">sin cargo</message>
+  <message id="transfer_bid_withoutfee">Libre</message>
   <message id="transfer_bid_on_own_player">No puede ofertar por su propio jugador.</message>
   <message id="transfer_bid_auction_ended">La subasta ya ha terminado.</message>
-  <message id="transfer_bid_player_not_on_list">El jugador no está en la lista de transferencias (más).</message>
+  <message id="transfer_bid_player_not_on_list">El jugador ya no está en la lista de transferencias.</message>
   <message id="transfer_bid_salary_too_less">El jugador no quiere pasar a su equipo por este sueldo.</message>
   <message id="transfer_bid_goalbonus_too_less">El jugador quiere una bonificación por objetivo más alta.</message>
   <message id="transfer_bid_too_many_transactions_with_user">En los últimos 30 días ya ha realizado %d intercambios con el usuario oponente. No se permiten transacciones adicionales en este momento.</message>
@@ -48,7 +48,7 @@
   <message id="transfermarket_countdown_days">Días</message>
   <message id="transfer_bids_nobids">No hay ofertas disponibles.</message>
   <message id="transfer_bids_ishighest">Actualmente es la oferta más alta</message>
-  <message id="transfer_bids_overbidden">ha sido sobrepujado</message>
+  <message id="transfer_bids_overbidden">ha sido superada</message>
   <message id="transfers_no_transfers">No hay transferencias disponibles.</message>
   <message id="transfer_date">Fecha</message>
   <message id="transfer_from">De</message>

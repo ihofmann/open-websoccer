@@ -8,8 +8,8 @@
   <message id="stadium_extend_button">Construir</message>
   <message id="stadium_extend_cost_help">Costos por asiento:</message>
   <message id="stadium_extend_err_too_expensive">No puede permitirse los costos de construcción en este momento.</message>
-  <message id="stadium_extend_err_exceed_max_side">Los lados no deben exceder %d lugares en total.</message>
-  <message id="stadium_extend_err_exceed_max_grand">La tribuna no debe exceder %d lugares en total.</message>
+  <message id="stadium_extend_err_exceed_max_side">Los lados no deben exceder %d asientos en total.</message>
+  <message id="stadium_extend_err_exceed_max_grand">La tribuna no debe exceder %d asientos en total.</message>
   <message id="stadium_extend_err_exceed_max_vip">El estadio no debe tener más de %d salas VIP.</message>
   <message id="stadium_extend_err_constructionongoing">Ya hay una construcción en curso. Espere hasta que el trabajo se haya completado.</message>
   <message id="stadium_extend_transaction_subject">Ampliación del estadio</message>
@@ -20,7 +20,7 @@
   <message id="stadium_extend_limitation_intro">Puede ampliar su estadio con el siguiente número máximo de asientos nuevos</message>
   <message id="stadium_extend_limitation_side">Lados</message>
   <message id="stadium_extend_limitation_grand">Tribuna</message>
-  <message id="stadium_extend_limitation_vip">Estocadas VIP</message>
+  <message id="stadium_extend_limitation_vip">Salas VIP</message>
   <message id="stadium_extend_limitation_instruction">Para ampliar su estadio, ingrese el número deseado de nuevos asientos a continuación y seleccione una empresa constructora en la página siguiente.</message>
   <message id="stadium_extend_impossible">Ya no puedes ampliar tu estadio porque ha superado el aforo máximo.</message>
   <message id="stadium_extend_nobuilders">Actualmente no hay ninguna empresa constructora que muestre interés en este pedido.</message>
@@ -46,7 +46,7 @@
   <message id="stadium_maintenance_seatsquality_tooltip">Influye en la venta de boletos de asiento.</message>
   <message id="stadium_maintenance_vipquality_tooltip">Influye en la venta de entradas VIP.</message>
   <message id="stadium_upgrade_err_not_upgradable">El nivel de calidad ya no se puede actualizar.</message>
-  <message id="stadium_upgrade_transaction_subject">mantenimiento del estadio</message>
+  <message id="stadium_upgrade_transaction_subject">Mantenimiento del estadio</message>
   <message id="stadium_upgrade_success">¡El trabajo de mantenimiento se ha completado con éxito!</message>
   <message id="stadium_upgrade_success_details">Tenga en cuenta que la calidad puede disminuir con el tiempo. Por lo tanto, verifique el estado de vez en cuando.</message>
 </messages>

@@ -3,7 +3,7 @@
 <messages>
   <message id="youth-team_navlabel">Equipo juvenil</message>
   <message id="youth-scouting_navlabel">Exploración</message>
-  <message id="youth-matchrequests_navlabel">Solicitudes de coincidencia</message>
+  <message id="youth-matchrequests_navlabel">Solicitudes de partido</message>
   <message id="youth-matches_navlabel">Partidos</message>
   <message id="youth-marketplace_navlabel">Mercado</message>
   <message id="youthteam_title">mi equipo juvenil</message>
@@ -29,7 +29,7 @@
   <message id="youthplayer-fire_confirmationmsg">¿De verdad quieres despedir a este jugador? Esto no se puede deshacer más tarde.</message>
   <message id="youthplayer-buy_navlabel">comprar jugador juvenil</message>
   <message id="youthplayer-buy_formlabel">Contrata a este jugador</message>
-  <message id="youthplayer-buy_confirmationmsg">¿De verdad quieres comprar este reproductor? Será transferido inmediatamente a su equipo por la tarifa de transferencia mencionada anteriormente.</message>
+  <message id="youthplayer-buy_confirmationmsg">¿De verdad quieres comprar este jugador? Será transferido inmediatamente a su equipo por la tarifa de transferencia mencionada anteriormente.</message>
   <message id="youthteam_buy_err_ownplayer">El jugador ya pertenece a tu equipo.</message>
   <message id="youthteam_buy_err_ownplayer_otherteam">No puedes comprar jugadores de uno de tus otros equipos.</message>
   <message id="youthteam_buy_err_notenoughbudget">No puede pagar la tarifa de transferencia en este momento.</message>
@@ -56,22 +56,22 @@
   <message id="youthteam_scouting_err_notenoughbudget">No puede pagar la tarifa del explorador en este momento.</message>
   <message id="youthteam_scouting_fee_subject">Tarifa para la búsqueda de jugadores juveniles</message>
   <message id="youthteam_scouting_failure">Desafortunadamente, el ojeador no ha encontrado ningún jugador talentoso durante su viaje.</message>
-  <message id="youthteam_scouting_success">¡Felicidades! El cazatalentos podría encontrar un nuevo talento.</message>
+  <message id="youthteam_scouting_success">¡Felicidades! El cazatalentos ha encontrado un nuevo talento.</message>
   <message id="youthteam_scouting_success_details">¡Dale la bienvenida a %s a tu equipo juvenil!</message>
   <message id="youthteam_matchrequest_createnew">Publicar nueva solicitud</message>
-  <message id="youthteam_matchrequest_none_available">No hay solicitudes de coincidencia abiertas en este momento.</message>
+  <message id="youthteam_matchrequest_none_available">No hay solicitudes de partido abiertas en este momento.</message>
   <message id="youthteam_matchrequest_accept">Aceptar</message>
   <message id="youthteam_matchrequest_cancel">Cancelar</message>
   <message id="youth-matchrequests-create_navlabel">Publicar una nueva solicitud de partido juvenil</message>
   <message id="youthteam_matchrequest_create_date">Fecha y hora</message>
   <message id="youthteam_matchrequest_reward">Premio</message>
   <message id="youthteam_matchrequest_create_err_invaliddate">La fecha ingresada no es válida. Si ha utilizado el formulario correctamente, póngase en contacto con un administrador, por favor.</message>
-  <message id="youthteam_matchrequest_create_err_too_many_open_requests">Solo puede tener hasta %d solicitudes de coincidencia abiertas. Cancele sus otras solicitudes o espere hasta que caduquen.</message>
+  <message id="youthteam_matchrequest_create_err_too_many_open_requests">Solo puede tener hasta %d solicitudes de partido abiertas. Cancele sus otras solicitudes o espere hasta que caduquen.</message>
   <message id="youthteam_matchrequest_create_err_budgetnotenough">No puede pagar la recompensa ingresada en este momento.</message>
   <message id="youthteam_matchrequest_create_err_notenoughplayers">No tienes suficientes jugadores juveniles para asistir a los partidos.</message>
-  <message id="youthteam_matchrequest_create_success">Su solicitud de coincidencia ha sido publicada con éxito.</message>
-  <message id="youthteam_matchrequest_cancel_err_notfound">La solicitud de coincidencia no existe (ya no existe). Podría haber sido aceptado ya.</message>
-  <message id="youthteam_matchrequest_cancel_success">La solicitud de coincidencia ha sido cancelada con éxito.</message>
+  <message id="youthteam_matchrequest_create_success">Su solicitud de partido ha sido publicada con éxito.</message>
+  <message id="youthteam_matchrequest_cancel_err_notfound">La solicitud de partido no existe (ya no existe). Podría haber sido aceptado ya.</message>
+  <message id="youthteam_matchrequest_cancel_success">La solicitud de partido ha sido cancelada con éxito.</message>
   <message id="youthteam_matchrequest_accept_err_ownrequest">No puedes jugar contra ti mismo.</message>
   <message id="youthteam_matchrequest_err_maxperday_violated">Solo puede tener %d partido(s) juvenil(es) por día.</message>
   <message id="youthteam_matchrequest_accept_success">¡El partido ha sido creado con éxito!</message>
@@ -87,19 +87,19 @@
   <message id="youth-match_navlabel">Partido juvenil</message>
   <message id="youthmatch_statistic_avg_strength">Fuerza promedio</message>
   <message id="ymreport_goal">
-    <strong>Goal by {scorer}!</strong>
+    <strong>¡Gol de {scorer}!</strong>
   </message>
   <message id="ymreport_attempt">{goleador} lanza un tiro al arco.</message>
   <message id="ymreport_tackle">Placaje entre {ganador} y {perdedor}. ¡{ganador} gana!</message>
   <message id="ymreport_injury">{player} está lesionado y debe abandonar el terreno de juego.</message>
-  <message id="ymreport_card_yellowred">{jugador} recibe la tarjeta amarilla-roja.</message>
-  <message id="ymreport_card_yellow">{jugador} recibe una tarjeta amarilla.</message>
+  <message id="ymreport_card_yellowred">{player} recibe la tarjeta amarilla-roja.</message>
+  <message id="ymreport_card_yellow">{player} recibe una tarjeta amarilla.</message>
   <message id="ymreport_card_red">{player} recibe una tarjeta roja y debe abandonar el terreno de juego.</message>
   <message id="ymreport_penalty_success">
-    <strong>{player} converts a penalty kick!</strong>
+    <strong>¡{player} transforma el penalti!</strong>
   </message>
   <message id="ymreport_penalty_failure">
-    <em>{player} misses a penalty!</em>
+    <em>¡{player} falla el penalti!</em>
   </message>
   <message id="ymreport_substitution">¡Sustitución! <strong>{in}</strong> reemplaza <strong>a {out}</strong> .</message>
 </messages>

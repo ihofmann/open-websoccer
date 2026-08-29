@@ -20,9 +20,9 @@
   <message id="entity_stadiumbuilder_cost_per_seat">Costi per posto</message>
   <message id="entity_stadiumbuilder_cost_per_seat_help">Verranno aggiunti ai costi configurati nella pagina "impostazioni". Può essere anche negativo.</message>
   <message id="entity_stadiumbuilder_construction_time_days">Tempo di costruzione per 5000 posti</message>
-  <message id="entity_stadiumbuilder_construction_time_giorni_help">giorni</message>
+  <message id="entity_stadiumbuilder_construction_time_days_help">giorni</message>
   <message id="entity_stadiumbuilder_construction_time_days_min">Tempo minimo di costruzione</message>
-  <message id="entity_stadiumbuilder_construction_time_giorni_min_help">giorni</message>
+  <message id="entity_stadiumbuilder_construction_time_days_min_help">giorni</message>
   <message id="entity_stadiumbuilder_min_stadium_size">Dimensioni minime dello stadio</message>
   <message id="entity_stadiumbuilder_min_stadium_size_help">Quanti posti deve già avere uno stadio per attirare l'attenzione del costruttore. Consente l'estensione graduale degli stadi.</message>
   <message id="entity_stadiumbuilder_max_stadium_size">Dimensione massima dello stadio</message>

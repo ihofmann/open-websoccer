@@ -2,7 +2,7 @@
 <!DOCTYPE messages SYSTEM "../messages.dtd">
 <messages>
   <message id="main_title">WebSoccer AdminCenter</message>
-  <message id="error_page_not_found">La pagina richiesta non esiste (più). Hai inserito l'indirizzo corretto?</message>
+  <message id="error_page_not_found">La pagina richiesta non esiste. Hai inserito l'indirizzo corretto?</message>
   <message id="error_access_denied">Accesso negato.</message>
   <message id="validationerror_no_changes_as_demo">L'utente demo non può apportare modifiche.</message>
   <message id="validationerror_email">L'indirizzo e-mail inserito non è valido.</message>
@@ -18,21 +18,21 @@
   <message id="subpage_error_title">Errore</message>
   <message id="subpage_error_alertbox_title">Si sono verificati i seguenti errori:</message>
   <message id="alert_save_success">Dati salvati con successo.</message>
-  <message id="back_label">Di ritorno</message>
+  <message id="back_label">Indietro</message>
   <message id="button_save">Salva</message>
   <message id="button_reset">Ripristina</message>
   <message id="button_delete">Elimina</message>
-  <message id="button_close">Chiudere</message>
-  <message id="button_search">Ricerca</message>
+  <message id="button_close">Chiudi</message>
+  <message id="button_search">Cerca</message>
   <message id="button_cancel">Annulla</message>
-  <message id="button_display">Schermo</message>
-  <message id="option_yes">sì</message>
+  <message id="button_display">Mostra</message>
+  <message id="option_yes">Sì</message>
   <message id="option_no">No</message>
-  <message id="unit_giorni">giorni</message>
-  <message id="unit_minuti">minuti</message>
-  <message id="unit_ore">ore</message>
-  <message id="unit_partite">partite</message>
-  <message id="unit_sedili">sedili</message>
+  <message id="unit_days">giorni</message>
+  <message id="unit_minutes">minuti</message>
+  <message id="unit_hours">ore</message>
+  <message id="unit_matches">partite</message>
+  <message id="unit_seats">sedili</message>
   <message id="empty_list">Nessuna voce trovata.</message>
   <message id="alert_error_title">Errore.</message>
   <message id="internetexplorer_warning_title">Meglio usare un browser web diverso!</message>
@@ -110,11 +110,6 @@
   <message id="home_projectinfo_title">Informazioni di progetto</message>
   <message id="home_projectinfo_name">Nome</message>
   <message id="home_projectinfo_adminemail">E-mail amministratore</message>
-  <message id="home_serverinfo_title">Informazioni sul server</message>
-  <message id="home_serverinfo_php_version">Versione PHP</message>
-  <message id="home_serverinfo_php_ram">Memoria PHP</message>
-  <message id="home_serverinfo_apache">Versione Apache</message>
-  <message id="home_serverinfo_mysql">Versione MySQL</message>
   <message id="all_settings_title">Impostazioni di sistema</message>
   <message id="settings_tab_general">Generale</message>
   <message id="settings_tab_offlinemode">Modalità offline</message>

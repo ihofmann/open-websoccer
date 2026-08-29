@@ -31,7 +31,7 @@
   <message id="transferoffers_offer_reaction_accept">Aceptar</message>
   <message id="transferoffers_offer_reaction_reject">Rechazar</message>
   <message id="transferoffers_offer_status_adminapprovalpending">Aprobación pendiente</message>
-  <message id="transferoffers_offer_status_rechazado">rechazado</message>
+  <message id="transferoffers_offer_status_rejected">Rechazado</message>
   <message id="transferoffers_offer_showcomment">Mostrar comentario</message>
   <message id="transferoffers_offer_comment_title">%s escribió:</message>
   <message id="transferoffer_accepted_title">¡Se acepta la oferta!</message>

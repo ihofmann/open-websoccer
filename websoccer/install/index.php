@@ -39,7 +39,7 @@ session_set_cookie_params(array(
 	'samesite' => 'Lax'
 ));
 session_start();
-$supportedLanguages = array("de" => "Deutsch", "en" => "English");
+$supportedLanguages = array("de" => "Deutsch", "en" => "English", "es" => "Español", "it" => "Italiano");
 
 ignore_user_abort(TRUE);
 set_time_limit(0);
@@ -345,7 +345,7 @@ function actionSaveConfig() {
 	$filecontent .= "\$conf['db_passwort'] = \"". $_POST["db_password"] . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['db_name'] = \"". $_POST["db_name"] . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['db_prefix'] = \"". $prefix . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['supported_languages'] = \"de,en\";" . PHP_EOL;
+	$filecontent .= "\$conf['supported_languages'] = \"de,en,es,it\";" . PHP_EOL;
 	$filecontent .= "\$conf['homepage'] = \"". $_POST["url"] . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['context_root'] = \"". $_POST["context_root"] . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['projectname'] = \"". $_POST["projectname"] . "\";" . PHP_EOL;

@@ -12,8 +12,8 @@
   <message id="registration_repeated_email_notmatching">L'indirizzo e-mail ripetuto non corrisponde all'indirizzo inserito in precedenza.</message>
   <message id="registration_user_exists">Il nome utente o l'indirizzo e-mail è già in uso.</message>
   <message id="registration_max_number_users_exceeded">Attualmente non è possibile registrarsi.</message>
-  <message id="register-success_navlabel">Iscrizione inoltrata</message>
-  <message id="register-success_message_title">Iscrizione inoltrata - Controlla le tue e-mail</message>
+  <message id="register-success_navlabel">Registrazione inviata</message>
+  <message id="register-success_message_title">Registrazione inviata - Controlla le tue e-mail</message>
   <message id="register-success_message_content">Per verificare l'indirizzo e-mail specificato, il sistema ti ha inviato automaticamente un'e-mail con un link di attivazione.</message>
   <message id="register-success_nextstep">Per favore controlla la tua e-mail ora e segui le istruzioni all'interno. Potrebbero essere necessari alcuni istanti prima che questa e-mail ti raggiunga.</message>
   <message id="activation_email_subject">Completamento della registrazione dell'utente</message>

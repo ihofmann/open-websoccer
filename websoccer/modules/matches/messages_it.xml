@@ -4,13 +4,13 @@
   <message id="results_navlabel">Risultati e orari</message>
   <message id="match_navlabel">Partita Dettagli</message>
   <message id="matchtype_league">Lega</message>
-  <message id="matchtype_cup">Tazza</message>
+  <message id="matchtype_cup">Coppa</message>
   <message id="matchtype_friendly">Incontro amichevole</message>
   <message id="last_match_block_title">La mia ultima partita</message>
   <message id="last_match_block_no_lastmatch">La tua squadra non ha ancora giocato nessuna partita.</message>
   <message id="match_details_date">Data</message>
   <message id="match_details_type">Tipo</message>
-  <message id="match_details_stadium">stadio</message>
+  <message id="match_details_stadium">Stadio</message>
   <message id="match_details_matchday">giornata %d</message>
   <message id="match_details_audience">Pubblico</message>
   <message id="match_details_noformation">%s non ha inviato alcuna formazione.</message>
@@ -20,73 +20,73 @@
   <message id="match_details_comments_title">Live-Commenti</message>
   <message id="match_details_players_title">Giocatori</message>
   <message id="match_details_statistic_title">Statistiche</message>
-  <message id="match_details_commenttitle_penalty">Pena</message>
-  <message id="match_details_commenttitle_goal">Obiettivo!</message>
+  <message id="match_details_commenttitle_penalty">Rigore</message>
+  <message id="match_details_commenttitle_goal">Gol!</message>
   <message id="match_details_nostatistics_available">Non ci sono statistiche disponibili per questa partita. Si prega di dare un'occhiata al resoconto della partita.</message>
   <message id="match_details_noplayersset">Nessun giocatore impostato.</message>
   <message id="match_details_no_players_on_bench">Non ci sono giocatori in panchina.</message>
   <message id="match_details_players_name">Nome</message>
-  <message id="match_details_players_grade">Grado</message>
+  <message id="match_details_players_grade">Voto</message>
   <message id="match_details_players_grade_helptext">Voto compreso tra 1.00 (molto buono) e 6.00 (molto scarso)</message>
-  <message id="match_details_statistic_shoots">Colpi</message>
+  <message id="match_details_statistic_shoots">Tiri</message>
   <message id="match_details_statistic_tackles">Contrasti</message>
-  <message id="match_details_statistic_ballcontacts">Possesso palla</message>
+  <message id="match_details_statistic_ballcontacts">Tocchi palla</message>
   <message id="match_details_statistic_successfulpasses">Passaggi riusciti</message>
   <message id="results_tab_leagues">Leghe</message>
-  <message id="results_tab_cups">Tazze</message>
+  <message id="results_tab_cups">Coppe</message>
   <message id="results_tab_latest_results">Ultimi risultati</message>
   <message id="results_no_matches_found">Nessun risultato trovato.</message>
   <message id="match_result">Risultato</message>
   <message id="match_report_minute">Minuto %d</message>
-  <message id="player_yellowcard">Ho un cartellino giallo</message>
-  <message id="player_yellowredcard">Ho un cartellino giallo-rosso</message>
-  <message id="player_redcard">Ho un cartellino rosso</message>
+  <message id="player_yellowcard">riceve un cartellino giallo</message>
+  <message id="player_yellowredcard">riceve un cartellino giallo-rosso</message>
+  <message id="player_redcard">riceve un cartellino rosso</message>
   <message id="player_goalscorer">È il capocannoniere</message>
-  <message id="player_assists">Assistere</message>
+  <message id="player_assists">assist</message>
   <message id="player_injured">Mi sono infortunato</message>
   <message id="player_substitute_out">Ho dovuto lasciare il campo</message>
-  <message id="player_substitute_in">Sostituito in</message>
+  <message id="player_substitute_in">Entra</message>
   <message id="match_salarypayment_sender">Contabilità</message>
   <message id="match_salarypayment_subject">Stipendio del giocatore</message>
-  <message id="match_ticketrevenue_sender">I saldi</message>
+  <message id="match_ticketrevenue_sender">Biglietteria</message>
   <message id="match_ticketrevenue_subject">Vendita biglietti</message>
   <message id="match_sponsorpayment_subject">Premio sponsor</message>
-  <message id="match_details_button_changes">Atto</message>
+  <message id="match_details_button_changes">Cambi</message>
   <message id="match-live-changes_navlabel">Cambiamenti tattici in tempo reale</message>
   <message id="match_details_changes_max_help">Può essere cambiato %d volte per partita.</message>
   <message id="match_details_changes_too_late">Le sostituzioni devono essere effettuate almeno %d minuti prima dell'esecuzione.</message>
-  <message id="match_details_changes_too_late_altered">La sostituzione n. %d viene spostato al successivo momento possibile.</message>
+  <message id="match_details_changes_too_late_altered">La sostituzione n. %d viene spostata al successivo momento possibile.</message>
   <message id="match_details_changes_too_often">Puoi cambiare tattica solo %d volte per partita.</message>
   <message id="match_livematch_title">Guarda ora!</message>
-  <message id="match_live_label">Abitare</message>
+  <message id="match_live_label">In diretta</message>
   <message id="todaysmatches_navlabel">Partite di oggi</message>
-  <message id="match_details_report_halftime">Pausa a metà tempo! Punteggio: %s</message>
-  <message id="match_details_report_extension">Tempo extra! Punteggio: %s</message>
-  <message id="match_details_report_penaltyshooting">Tiro di rigore! Punteggio: %s</message>
+  <message id="match_details_report_halftime">Intervallo! Risultato: %s</message>
+  <message id="match_details_report_extension">Tempi supplementari! Risultato: %s</message>
+  <message id="match_details_report_penaltyshooting">Calci di rigore! Risultato: %s</message>
   <message id="match_details_statistic_ballcontacts_player">Tocchi di palla</message>
   <message id="match_details_statistic_tackles_player">Contrasti vinti</message>
   <message id="match_details_players_age">Età</message>
-  <message id="myschedule_navlabel">Programma</message>
+  <message id="myschedule_navlabel">Calendario</message>
   <message id="matchpreview_last_matches">Ultime partite in competizione</message>
   <message id="matchpreview_nolastmatches">%s non ha ancora partecipato a questa competizione.</message>
   <message id="matchpreview_nouser">%s non ha attualmente un manager.</message>
   <message id="Tor von {sp1}!">
-    <b>Goal by {sp1}!</b>
+    <b>Gol di {sp1}!</b>
   </message>
   <message id="{sp1} schießt..... TOR!">
-    <b>{sp1} shoots..... GOAL!</b>
+    <b>{sp1} tira..... GOL!</b>
   </message>
   <message id="{sp1} kommt zum Kopfball... und da flattert der Ball im Netz!">
-    <b>Header by {sp1}..... and the ball is in the net!</b>
+    <b>Colpo di testa di {sp1}..... e la palla è in rete!</b>
   </message>
   <message id="TOR - wunderschön gemacht von {sp1}">
-    <b>GOAL - what a trick by {sp1}!</b>
+    <b>GOL - che giocata di {sp1}!</b>
   </message>
   <message id="{sp1} schießt auf das Tor... und der Ball ist drin!">
-    <b>{sp1} shootstowards the goal... and the ball is in!</b>
+    <b>{sp1} tira verso la porta... e la palla entra!</b>
   </message>
   <message id="{sp1} kommt für {sp2}.">
-    <em>{sp1} substitutes {sp2}.</em>
+    <em>{sp1} sostituisce {sp2}.</em>
   </message>
   <message id="{sp1} geht auf seinen Gegenspieler zu und gewinnt den Zweikampf!">{sp1} corre verso il suo avversario e vince il contrasto!</message>
   <message id="{sp1} in einem Zweikampf.... gewonnen!">{sp1} in un contrasto... e vince!</message>
@@ -96,7 +96,7 @@
   <message id="{sp1} in einem Zweikampf.... und verliert ihn.">{sp1} in un contrasto... e lo perde!</message>
   <message id="{sp1} geht mit dem Ball am Fuß auf seinen Gegenspieler zu... und verliert ihn.">{sp1} ha la palla e vede il suo avversario davanti a sé... e perde il contrasto.</message>
   <message id="{sp1} sieht seinen Gegenspieler gegenüber und lässt sich den Ball abnehmen.">{sp1} lascia portare via la palla.</message>
-  <message id="Flanke von {sp1}... in die Wolken!">Attraversa {sp1}... tra le nuvole!</message>
+  <message id="Flanke von {sp1}... in die Wolken!">Cross di {sp1}... tra le nuvole!</message>
   <message id="{sp1} passt den Ball in die Mitte... genau auf die Füße des Gegners.">{sp1} passa la palla verso il centro... ma l'avversario la prende.</message>
   <message id="{sp1} passt den Ball steil nach vorne... Abschlag!">{sp1} cerca di passare la palla agli attaccanti... ma manca!</message>
   <message id="Pass von {sp1}... ins Seitenaus.">{sp1} passa la palla... e la palla è fuori.</message>
@@ -105,37 +105,37 @@
   <message id="{sp1} schießt auf das Tor... aber genau auf den Torwart.">{sp1} tira in porta... ma tra le braccia del portiere!</message>
   <message id="Kopfball {sp1}... daneben.">Colpo di testa di {sp1}... ma mancato.</message>
   <message id="{sp1} haut mit aller Kraft auf den Ball... Abschlag.">{sp1} ci prova con un tiro forte... ma fallisce.</message>
-  <message id="{sp1} schießt..... in die Wolken.">{sp1} spara... nel cielo.</message>
+  <message id="{sp1} schießt..... in die Wolken.">{sp1} tira... nel cielo.</message>
   <message id="{sp1} schießt..... Glanzparade des Torwarts!">{sp1} tira... ma il portiere riesce in qualche modo a prenderlo.</message>
   <message id="{sp1} schießt auf das Tor... aber der Torwart macht einen Hechtsprung und hat den Ball.">{sp1} tira... ma il portiere si tuffa per prendere la palla.</message>
   <message id="{sp1} hat freie Bahn und schießt... aber der Torwart kann den Ball gerade noch so um den Pfosten drehen.">{sp1} tira... ma il portiere può girare la palla intorno al palo.</message>
-  <message id="{sp1} kommt zum Kopfball... ganz knapp daneben.">Intestazione di {sp1}... che era vicino.</message>
+  <message id="{sp1} kommt zum Kopfball... ganz knapp daneben.">Colpo di testa di {sp1}... che era vicino.</message>
   <message id="{sp1} bekommt nach einem Foul die gelbe Karte.">{sp1} ottiene il cartellino giallo dopo un fallo.</message>
   <message id="{sp1} sieht die gelbe Karte.">{sp1} riceve il cartellino giallo.</message>
   <message id="{sp1} haut seinen Gegenspieler um und bekommt dafür die gelbe Karte.">{sp1} colpisce il suo avversario e riceve il cartellino giallo per questo.</message>
   <message id="{sp1} springt von hinten in die Beine seines Gegenspielers und sieht sofort die Rote Karte.">
-    <i>{sp1} jumps from the back on his opponent's legs and geths the red card for that.</i>
+    <i>{sp1} salta da dietro sulle gambe dell'avversario e vede subito il cartellino rosso.</i>
   </message>
   <message id="{sp1} haut seinen Gegenspieler um und sieht dafür die Rote Karte.">
-    <i>{sp1} hits his opponent and gets the red card for that.</i>
+    <i>{sp1} abbatte l'avversario e vede il cartellino rosso per questo.</i>
   </message>
   <message id="{sp1} bekommt die Rote Karte wegen Prügelei.">
-    <i>{sp1} gets the redcard because he started a punch-up.</i>
+    <i>{sp1} riceve il cartellino rosso per rissa.</i>
   </message>
   <message id="{sp1} sieht die Gelb-Rote Karte und muss vom Platz.">
-    <i>{sp1} sees the yellow-red card and must leave the pitch.</i>
+    <i>{sp1} vede il cartellino giallo-rosso e deve lasciare il campo.</i>
   </message>
   <message id="{sp1} haut seinen Gegenspieler um und bekommt dafür die Gelb-Rote Karte.">
-    <i>{sp1} hits his opponent and gets the yellow-red card for that.</i>
+    <i>{sp1} abbatte l'avversario e riceve il cartellino giallo-rosso per questo.</i>
   </message>
   <message id="{sp1} sieht nach einem bösen Foul die Rote Karte und muss vom Platz.">
-    <i>{sp1} gets the red card after a very brutal foul.</i>
+    <i>{sp1} riceve il cartellino rosso dopo un fallo molto brutale e deve lasciare il campo.</i>
   </message>
   <message id="{sp1} ist verletzt und muss vom Spielfeld getragen werden.">
-    <i>{sp1} is injured and must leave the pitch.</i>
+    <i>{sp1} è infortunato e deve essere portato fuori dal campo.</i>
   </message>
   <message id="{sp1} hat sich verletzt und kann nicht mehr weiterspielen.">
-    <i>{sp1} has an injury and cannot continue playing anymore.</i>
+    <i>{sp1} si è infortunato e non può continuare a giocare.</i>
   </message>
   <message id="{sp1} tritt an: Und trifft!">{sp1} ci sta provando: E segna!</message>
   <message id="{sp1} tritt an: Aber {sp2} hält den Ball!!">{sp1} ci sta provando: ma {sp2} prende la palla!!</message>
@@ -176,7 +176,7 @@
 	<message id="{sp2} wird ausgewechselt, {sp1} kommt rein."><em>{sp2} viene sostituito, entra {sp1}.</em></message>
 	<message id="{sp2} wird ausgewechselt, für ihn kommt {sp1}."><em>{sp2} viene sostituito, al suo posto entra {sp1}.</em></message>
 	<message id="{sp1} kommt ins Spiel für {sp2}."><em>{sp1} entra in campo per {sp2}.</em></message>
-	<message id="{sp1} wird für den müden {sp2} eingewechselt."><em>{sp1} entra per il stanco {sp2}.</em></message>
+	<message id="{sp1} wird für den müden {sp2} eingewechselt."><em>{sp1} entra per lo stanco {sp2}.</em></message>
 	<message id="{sp1} wird für {sp2} eingewechselt."><em>{sp1} entra al posto di {sp2}.</em></message>
 	<message id="{sp1} kommt ins Spiel, {sp2} geht raus."><em>{sp1} entra in campo, {sp2} esce.</em></message>
 	<message id="Für {sp2} kommt {sp1}."><em>Per {sp2} entra {sp1}.</em></message>
@@ -289,17 +289,17 @@
 	<message id="{sp1} zieht ab, der Torwart pariert.">{sp1} tira, il portiere para.</message>
 	<message id="{sp1} zielt aufs linke Eck, der Torwart hält.">{sp1} mira all'angolo sinistro, il portiere para.</message>
 	<message id="{sp1} sieht Gelb wegen eines taktischen Fouls.">{sp1} vede giallo per un fallo tattico.</message>
-	<message id="{sp1} foult {sp2} - Gelbe Karte.">{sp1} fallisce {sp2} - cartellino giallo.</message>
+	<message id="{sp1} foult {sp2} - Gelbe Karte.">{sp1} fa fallo su {sp2} - cartellino giallo.</message>
 	<message id="{sp1} hält {sp2} fest und wird verwarnt.">{sp1} trattiene {sp2} e viene ammonito.</message>
 	<message id="{sp1} wird nach einem Foul an {sp2} mit Gelb verwarnt.">{sp1} viene ammonito con giallo dopo un fallo su {sp2}.</message>
-	<message id="{sp1} foult {sp2} und sieht Gelb.">{sp1} fallisce {sp2} e vede giallo.</message>
+	<message id="{sp1} foult {sp2} und sieht Gelb.">{sp1} fa fallo su {sp2} e vede giallo.</message>
 	<message id="{sp1} bekommt die gelbe Karte für ein Foul.">{sp1} riceve il cartellino giallo per un fallo.</message>
 	<message id="{sp1} kriegt für das Foul die gelbe Karte.">{sp1} riceve il cartellino giallo per il fallo.</message>
 	<message id="{sp1} bekommt die gelbe Karte nach einem Foul.">{sp1} riceve il cartellino giallo dopo un fallo.</message>
 	<message id="{sp1} sieht Gelb für ein Foul.">{sp1} vede giallo per un fallo.</message>
 	<message id="{sp1} sieht nach einem Foul an {sp2} Gelb.">{sp1} vede giallo dopo un fallo su {sp2}.</message>
-	<message id="{sp1} foult {sp2} und erhält die gelbe Karte.">{sp1} fallisce {sp2} e riceve il cartellino giallo.</message>
-	<message id="{sp1} foult {sp2} und bekommt die gelbe Karte.">{sp1} fallisce {sp2} e riceve il cartellino giallo.</message>
+	<message id="{sp1} foult {sp2} und erhält die gelbe Karte.">{sp1} fa fallo su {sp2} e riceve il cartellino giallo.</message>
+	<message id="{sp1} foult {sp2} und bekommt die gelbe Karte.">{sp1} fa fallo su {sp2} e riceve il cartellino giallo.</message>
 	<message id="{sp1} wird nach einem Foul an {sp2} verwarnt.">{sp1} viene ammonito dopo un fallo su {sp2}.</message>
 	<message id="{sp1} sieht nach einem taktischen Foul Gelb.">{sp1} vede giallo dopo un fallo tattico.</message>
 	<message id="{sp1} kassiert für das Foul die gelbe Karte.">{sp1} becca il cartellino giallo per il fallo.</message>
@@ -313,13 +313,13 @@
 	<message id="{sp1} wird nach einem brutalen Foul des Feldes verwiesen."><i>{sp1} viene espulso per un fallo brutale.</i></message>
 	<message id="{sp1} bekommt nach dem Foul an {sp2} die rote Karte."><i>{sp1} riceve il cartellino rosso dopo il fallo su {sp2}.</i></message>
 	<message id="{sp1} sieht nach einem schlimmen Foul die rote Karte."><i>{sp1} vede il cartellino rosso dopo un fallo brutto.</i></message>
-	<message id="{sp1} foult {sp2} und fliegt vom Feld."><i>{sp1} fallisce {sp2} e viene espulso.</i></message>
+	<message id="{sp1} foult {sp2} und fliegt vom Feld."><i>{sp1} fa fallo su {sp2} e viene espulso.</i></message>
 	<message id="{sp1} fliegt wegen eines brutalen Fouls vom Platz."><i>{sp1} viene espulso per un fallo brutale.</i></message>
 	<message id="{sp1} bekommt die rote Karte für eine Notbremse."><i>{sp1} riceve il cartellino rosso per un fallo da ultima risorsa.</i></message>
 	<message id="{sp1} bekommt nach einer groben Unsportlichkeit Rot."><i>{sp1} riceve rosso per una grave condotta antisportiva.</i></message>
 	<message id="{sp1} foult {sp2} grob und sieht Rot."><i>{sp1} fallisce gravemente {sp2} e vede rosso.</i></message>
 	<message id="{sp1} muss nach einem schweren Foul vom Platz."><i>{sp1} deve lasciare il campo dopo un fallo grave.</i></message>
-	<message id="{sp1} foult {sp2} übel und sieht die rote Karte."><i>{sp1} fallisce {sp2} duramente e vede il cartellino rosso.</i></message>
+	<message id="{sp1} foult {sp2} übel und sieht die rote Karte."><i>{sp1} fa fallo su {sp2} duramente e vede il cartellino rosso.</i></message>
 	<message id="{sp1} muss nach einer Tätlichkeit vom Feld."><i>{sp1} deve lasciare il campo dopo una condotta violenta.</i></message>
 	<message id="{sp1} sieht die rote Karte für ein schweres Foul."><i>{sp1} vede il cartellino rosso per un fallo grave.</i></message>
 	<message id="{sp1} sieht die rote Karte nach einem Foul an {sp2}."><i>{sp1} vede il cartellino rosso dopo un fallo su {sp2}.</i></message>
@@ -345,7 +345,7 @@
 	<message id="{sp1} bekommt die zweite gelbe Karte und muss vom Platz."><i>{sp1} riceve il secondo giallo e deve lasciare il campo.</i></message>
 	<message id="{sp1} kassiert Gelb-Rot für ein taktisches Foul."><i>{sp1} becca giallo-rosso per un fallo tattico.</i></message>
 	<message id="{sp1} bekommt nach einem erneuten Foul die Gelb-Rote Karte."><i>{sp1} riceve il cartellino giallo-rosso dopo un altro fallo.</i></message>
-	<message id="{sp1} foult {sp2} und fliegt mit Gelb-Rot vom Platz."><i>{sp1} fallisce {sp2} e viene espulso con giallo-rosso.</i></message>
+	<message id="{sp1} foult {sp2} und fliegt mit Gelb-Rot vom Platz."><i>{sp1} fa fallo su {sp2} e viene espulso con giallo-rosso.</i></message>
 	<message id="{sp1} sieht nach der zweiten Verwarnung Rot."><i>{sp1} vede rosso dopo il secondo ammonimento.</i></message>
 	<message id="{sp1} muss nach Gelb-Rot vom Platz."><i>{sp1} deve lasciare il campo dopo giallo-rosso.</i></message>
 	<message id="{sp1} zieht sich eine Verletzung zu und muss raus."><i>{sp1} subisce un infortunio e deve uscire.</i></message>
