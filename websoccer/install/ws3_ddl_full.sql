@@ -101,6 +101,28 @@ INSERT INTO ws3_pages (type, language, content) VALUES
 
 <i class="bi bi-chevron-right"></i> This website requires cookies to function properly. Cookies are small text files that help the system identify your account.
 
+    '),
+('imprint', 'de', '<h2>Impressum</h2>
+<p>Angaben gemäß § 5 TMG</p>
+<p>[Name des Betreibers]<br>
+[Straße, Hausnummer]<br>
+[PLZ, Ort]</p>
+<p>Kontakt:<br>
+Telefon: [Telefonnummer]<br>
+E-Mail: [E-Mail-Adresse]</p>
+<p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+[Name, Anschrift]</p>
+    '),
+('imprint', 'en', '<h2>Imprint</h2>
+<p>Information according to § 5 TMG</p>
+<p>[Operator name]<br>
+[Street, number]<br>
+[Postal code, city]</p>
+<p>Contact:<br>
+Phone: [phone number]<br>
+Email: [email address]</p>
+<p>Responsible for the content according to § 55 Abs. 2 RStV:<br>
+[Name, address]</p>
     ');
 
 INSERT INTO ws3_jobs
