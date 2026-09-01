@@ -36,14 +36,15 @@
 
 			{% if env.user.id is not null %}
 
-			{# ---- Left sidebar (offcanvas on mobile, normal flow on desktop) ---- #}
+			{# ---- Left sidebar (offcanvas on mobile, fixed rail on desktop) ---- #}
 			<aside class="offcanvas-lg offcanvas-start ws-sidebar" id="wsSidebar" tabindex="-1"
 			       aria-labelledby="wsSidebarLabel">
 
 				{# Mobile offcanvas header #}
 				<div class="offcanvas-header d-lg-none">
 					<h5 class="offcanvas-title ws-navbar-brand" id="wsSidebarLabel">{{ env.getConfig("projectname") }}</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+					        data-bs-target="#wsSidebar" aria-label="Close"></button>
 				</div>
 
 				{# Desktop collapse toggle #}
@@ -103,7 +104,7 @@
 			{% endif %}
 
 			{# ---- Main content ---- #}
-			<main class="ws-main">
+			<main class="ws-main{% if env.user.id is not null %} container{% endif %}">
 
 				{% block page_header %}
 				{% endblock %}
@@ -166,7 +167,7 @@
 		</div>{# /.ws-app #}
 
 		{# ---- Footer ---- #}
-		<footer class="ws-footer">
+		<footer class="ws-footer{% if env.user.id is not null %} ws-footer-with-sidebar{% endif %}">
 			<div class="container d-flex flex-wrap align-items-center justify-content-between gap-2">
 				<span class="ws-footer-brand">{{ env.getConfig("projectname") }}</span>
 				<div class="ws-footer-links">
