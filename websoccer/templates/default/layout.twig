@@ -72,7 +72,7 @@
 				<div class="offcanvas-body ws-sidebar-body">
 					<div class="collapse collapse-horizontal show ws-sidebar-content" id="wsSidebarContent">
 
-						<nav class="ws-sidebar-nav">
+						<nav class="ws-sidebar-nav" data-testid="sidebar-nav">
 							{% for navItem in navItems %}
 								{% if navItem.pageId in sidebar_pages %}
 
@@ -117,7 +117,7 @@
 							{% include 'breadcrumb.twig' %}
 
 							<div class="ws-page-header page-header mb-3">
-							<h1>{{ block("page_title") }}</h1>
+							<h1 data-testid="page-title">{{ block("page_title") }}</h1>
 							</div>
 
 							<div id="messages">

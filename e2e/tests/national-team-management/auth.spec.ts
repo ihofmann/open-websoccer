@@ -25,7 +25,7 @@ for (const nationalPage of [
 ]) {
   test(`${nationalPage} page requires a login`, async ({ page }) => {
     await page.goto(`/?page=${nationalPage}`);
-    await expect(page.locator('h1')).toHaveText('Log In');
+    await expect(page.getByTestId('page-title')).toHaveText('Log In');
   });
 }
 

@@ -84,14 +84,16 @@
 					{% if i18n.supportedLanguages|length > 1 %}
 					<div class="dropdown ws-lang-switch">
 						<button class="btn btn-sm btn-outline-secondary dropdown-toggle ws-lang-btn" type="button"
-						        id="wsLangSwitch" data-bs-toggle="dropdown" aria-expanded="false">
+						        id="wsLangSwitch" data-bs-toggle="dropdown" aria-expanded="false"
+					        data-testid="lang-switch">
 							<img src="{{ skin.getImage("flags/" ~ i18n.getCurrentLanguage() ~ ".png") }}" alt="{{ i18n.getMessage('lang_label_' ~ i18n.getCurrentLanguage()) }}" width="20" height="20" class="ws-lang-flag">
 						</button>
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wsLangSwitch">
 							{% for language in i18n.supportedLanguages %}
 							<li>
 								<a class="dropdown-item d-flex align-items-center gap-2{% if language == i18n.getCurrentLanguage() %} active{% endif %}"
-								   href="{{ env.getInternalActionUrl("switch-language", "lang=" ~ language ~ "&id=" ~ env.getRequestParameter("id")) }}">
+								   href="{{ env.getInternalActionUrl("switch-language", "lang=" ~ language ~ "&id=" ~ env.getRequestParameter("id")) }}"
+							   data-testid="lang-option-{{ language }}">
 									<img src="{{ skin.getImage("flags/" ~ language ~ ".png") }}" alt="" width="20" height="20">
 									{{ i18n.getMessage('lang_label_' ~ language) }}
 								</a>

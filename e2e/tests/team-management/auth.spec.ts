@@ -18,6 +18,6 @@ for (const teamPage of [
 ]) {
   test(`${teamPage} page requires a login`, async ({ page }) => {
     await page.goto(`/?page=${teamPage}`);
-    await expect(page.locator('h1')).toHaveText('Log In');
+    await expect(page.getByTestId('page-title')).toHaveText('Log In');
   });
 }

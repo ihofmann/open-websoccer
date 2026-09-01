@@ -23,14 +23,14 @@ test.describe('Office page (logged in as user1)', () => {
   test('navigation menu links to the team management pages', async ({ page }) => {
     await loginAsUser1(page);
 
-    const menu = page.locator('ul[aria-labelledby="labeloffice"]');
-    await page.locator('#labeloffice').click();
+    // The sidebar is always visible (no collapsible section to expand).
+    const menu = page.getByTestId('sidebar-nav');
     await expect(menu).toBeVisible();
     for (const label of ['My Team', 'Finances', 'Tickets', 'Sponsor']) {
       await expect(menuItem(menu, label)).toBeVisible();
     }
 
     await menuItem(menu, 'My Team').click();
-    await expect(page.locator('h1')).toHaveText('My Players');
+    await expect(page.getByTestId('page-title')).toHaveText('My Players');
   });
 });
