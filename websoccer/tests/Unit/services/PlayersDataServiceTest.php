@@ -191,6 +191,35 @@ final class PlayersDataServiceTest extends TestCaseBase {
 		$this->assertSame(0, $player['player_assists']);
 	}
 
+	public function testGetPlayerByIdHandlesNullMatchesInfo(): void {
+		$ws = $this->makeWebsoccer();
+		$db = $this->createMock(\DbConnection::class);
+		$db->method('queryCachedSelect')->willReturn([[
+			'player_id' => '1', 'player_firstname' => 'Joe', 'player_lastname' => 'X', 'player_pseudonym' => '',
+			'player_position' => 'Sturm', 'player_position_main' => 'MS', 'player_position_second' => '',
+			'player_birthday' => '2000-01-01', 'player_nationality' => 'Deutschland', 'player_picture' => '',
+			'player_age' => '25', 'player_matches_injured' => '0', 'player_matches_blocked' => '0',
+			'player_matches_blocked_cups' => '0', 'player_matches_blocked_nationalteam' => '0',
+			'player_contract_salary' => '1000', 'player_contract_matches' => '30', 'player_contract_goalbonus' => '100',
+			'player_strength' => '80', 'player_strength_technique' => '70', 'player_strength_stamina' => '60',
+			'player_strength_freshness' => '50', 'player_strength_satisfaction' => '40',
+			'player_season_goals' => '0', 'player_season_assists' => '0', 'player_season_matches' => '0',
+			'player_season_yellow' => '0', 'player_season_yellow_red' => '0', 'player_season_red' => '0',
+			'player_total_goals' => '0', 'player_total_assists' => '0', 'player_total_matches' => '0',
+			'player_total_yellow' => '0', 'player_total_yellow_red' => '0', 'player_total_red' => '0',
+			'player_transfermarket' => '0', 'player_marketvalue' => '5000', 'transfer_start' => '0', 'transfer_end' => '0',
+			'transfer_min_bid' => '0', 'player_history' => '', 'player_unsellable' => '0',
+			'lending_owner_id' => '', 'lending_owner_name' => null, 'lending_fee' => '0', 'lending_matches' => '0',
+			'team_id' => '5', 'team_name' => 'FC Test', 'team_budget' => '1000000', 'team_user_id' => '7',
+			'matches_info' => null,
+		]]);
+
+		$player = PlayersDataService::getPlayerById($ws, $db, 1);
+
+		$this->assertSame(0, $player['player_avg_grade']);
+		$this->assertSame(0, $player['player_assists']);
+	}
+
 	public function testGetTopStrikersReturnsPlayers(): void {
 		$ws = $this->makeWebsoccer();
 		$db = $this->dbSelect($this->dbResult([

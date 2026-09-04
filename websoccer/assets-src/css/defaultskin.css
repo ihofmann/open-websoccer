@@ -837,3 +837,13 @@ body {
 .sidebar-nav {
   padding: 0;
 }
+
+#contentArea {
+  position: relative;
+}
+
+.help-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.75rem;
+}
