@@ -1,5 +1,4 @@
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as msgbox %}
 {% import "macros/premium.twig" as premium %}
 
 {% block page_title %}
@@ -9,7 +8,7 @@
 {% block page_content %}
 
 	{% if offers|length == 0 %}
-		{{ msgbox.box(i18n.getMessage("stadium_extend_nobuilders"), "", "info") }}
+		<p>{{ i18n.getMessage("stadium_extend_nobuilders") }}</p>
 	{% else %}
 		<div class="card card-body">
 			<p>{{ i18n.getMessage("stadium_extend_builders_intro")|raw }}</p>

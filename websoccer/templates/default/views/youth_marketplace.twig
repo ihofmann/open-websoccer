@@ -1,5 +1,4 @@
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/statisticelements.twig" as statisticelements %}
 {% import "macros/paginator.twig" as pagination %}
 
@@ -127,7 +126,7 @@
 	{{ pagination.paginator(paginator) }}
 	
 {% else %}
-	{{ messagebox.box(i18n.getMessage("youthmarketplace_no_players"), "", "info") }}
+	<p>{{ i18n.getMessage("youthmarketplace_no_players") }}</p>
 {% endif %}
 
 {% endblock %}

@@ -1,6 +1,5 @@
 
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as messagebox %}
 
 {% block page_title %}
 {{ i18n.getMessage("topscorers_navlabel") }}
@@ -60,7 +59,7 @@
 	</table>
 
 {% else %}
-	{{ messagebox.box(i18n.getMessage("no_players_found"), "", "info") }}
+	<p>{{ i18n.getMessage("no_players_found") }}</p>
 {% endif %}
 
 {% endblock %}

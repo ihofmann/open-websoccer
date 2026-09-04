@@ -1,4 +1,3 @@
-{% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/paginator.twig" as pagination %}
 {% import "macros/playerlists.twig" as playerlists %}
 
@@ -74,5 +73,5 @@
 	{{ pagination.paginator(paginator, "playerssearch-results_block") }}
 
 {% else %}
-	{{ messagebox.box(i18n.getMessage("no_players_found"), "", "info") }}
+	<p>{{ i18n.getMessage("no_players_found") }}</p>
 {% endif %}

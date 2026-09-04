@@ -32,7 +32,7 @@
 
 {% if match.match_simulated == 0 and match.match_minutes < 1 %}
 	<hr/>
-	{{ msgbox.box("", i18n.getMessage("match_details_notyetsimulated"), "info") }}
+	<p>{{ i18n.getMessage("match_details_notyetsimulated") }}</p>
 {% else %}
 
 	<h3>{{ i18n.getMessage("match_details_report_title") }}</h3>

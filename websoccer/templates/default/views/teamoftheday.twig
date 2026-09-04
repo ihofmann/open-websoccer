@@ -126,7 +126,7 @@
 		{% endif %}
 		
 	{% elseif seasonId > 0 %}
-		{{ messagebox.box("", i18n.getMessage("teamoftheday_no_matches_in_season"), "info") }}
+		<p>{{ i18n.getMessage("teamoftheday_no_matches_in_season") }}</p>
 	{% endif %}
 {% endif %}
 

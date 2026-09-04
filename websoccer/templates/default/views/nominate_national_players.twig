@@ -1,5 +1,4 @@
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/formelements.twig" as formelements %}
 {% import "macros/paginator.twig" as pagination %}
 {% import "macros/playerlists.twig" as playerlists %}
@@ -127,7 +126,7 @@
 			{{ pagination.paginator(paginator) }}
 			
 		{% else %}
-			{{ messagebox.box(i18n.getMessage("no_players_found"), "", "info", "nt-search-no-results") }}
+			<p data-testid="nt-search-no-results">{{ i18n.getMessage("no_players_found") }}</p>
 		{% endif %}
 	{% endif %}
 

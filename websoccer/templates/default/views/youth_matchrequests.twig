@@ -1,6 +1,5 @@
 {% extends "base.twig" %}
 {% import "macros/paginator.twig" as pagination %}
-{% import "macros/messagebox.twig" as messagebox %}
 
 {% block page_title %}
 {{ i18n.getMessage("youth-matchrequests_navlabel") }}
@@ -10,7 +9,7 @@
 <p><a href="{{ env.getInternalUrl("youth-matchrequests-create") }}" class="btn btn-outline-primary" data-testid="matchrequest-create-button"><i class="bi bi-megaphone"></i> {{ i18n.getMessage("youthteam_matchrequest_createnew") }}</a></p>
 
 {% if requests|length == 0 %}
-	{{ messagebox.box(i18n.getMessage("youthteam_matchrequest_none_available"), "", "info") }}
+	<p>{{ i18n.getMessage("youthteam_matchrequest_none_available") }}</p>
 {% else %}
 
 	<table class="table table-striped">

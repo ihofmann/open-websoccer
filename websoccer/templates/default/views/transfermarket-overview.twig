@@ -2,7 +2,6 @@
 
 {% import "macros/paginator.twig" as pagination %}
 {% import "macros/playerlists.twig" as playerlists %}
-{% import "macros/messagebox.twig" as messagebox %}
 
 {% block page_title %}
 {{ i18n.getMessage("transfermarket_title") }}
@@ -121,7 +120,7 @@
 	{{ pagination.paginator(paginator) }}
 	
   {% else %}
-  	{{ messagebox.box(i18n.getMessage("transfermarket_no_players"), "", "info") }}
+   <p>{{ i18n.getMessage("transfermarket_no_players") }}</p>
   {% endif %}
   </div>
   
