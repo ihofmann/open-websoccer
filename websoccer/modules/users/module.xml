@@ -65,6 +65,7 @@
             model="HighscoreModel"
             navitem="true"
             navweight="3"
+            navmenukey="top"
             template="users-highscore"
             role="guest,user">
 	        <page

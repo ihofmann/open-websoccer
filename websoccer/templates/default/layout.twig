@@ -29,9 +29,6 @@
 		{% include 'navigationbar.twig' %}
 		{% endblock %}
 
-		{# Sidebar page IDs — team management items shown to logged-in users #}
-		{% set sidebar_pages = ['office', 'nationalteam'] %}
-
 		<div class="ws-app container{% if env.user.id is not null %} ws-app-with-sidebar{% endif %}">
 
 			{% if env.user.id is not null %}
@@ -74,7 +71,7 @@
 
 						<nav class="ws-sidebar-nav" data-testid="sidebar-nav">
 							{% for navItem in navItems %}
-								{% if navItem.pageId in sidebar_pages %}
+								{% if navItem.navMenuKey == 'sidebar' %}
 
 									{# Section header (parent item) #}
 									<div class="ws-sidebar-section">{{ navItem.label }}</div>

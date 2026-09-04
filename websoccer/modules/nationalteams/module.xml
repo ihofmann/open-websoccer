@@ -18,6 +18,7 @@
             role="user"
             navitem="true"
             navweight="3"
+            navmenukey="sidebar"
             navitemOnlyForConfigEnabled="nationalteams_enabled">
             <page
 	            id="nominate-national-players"

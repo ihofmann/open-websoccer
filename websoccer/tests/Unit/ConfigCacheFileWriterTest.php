@@ -31,10 +31,13 @@ final class ConfigCacheFileWriterTest extends TestCaseBase {
 		$el = $doc->createElement('page');
 		$el->setAttribute('id', 'home');
 		$el->setAttribute('template', 'home');
+		$el->setAttribute('navmenukey', 'top');
 		$doc->appendChild($el);
 
 		$line = $this->invokePrivate('_buildConfigLine', ['page', 'id', $el, 'core']);
 		$this->assertStringStartsWith('$page[\'home\']', $line);
+		$this->assertStringContainsString('navmenukey', $line);
+		$this->assertStringContainsString('top', $line);
 		$this->assertStringContainsString('module', $line);
 		$this->assertStringEndsWith(';', $line);
 	}
