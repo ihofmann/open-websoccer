@@ -141,4 +141,18 @@ final class FormationDataServiceTest extends TestCaseBase {
 		$this->assertContains('3', $ids);
 		$this->assertNotContains('2', $ids);
 	}
+
+	public function testGetFormationProposalHandlesNullPositionFields(): void {
+		$ws = $this->makeWebsoccer();
+		$db = $this->dbSelect($this->dbResult([
+			$this->playerRow(1, 'Torwart', null, null),
+			$this->playerRow(2, 'Abwehr', 'IV', null),
+		]));
+
+		$players = FormationDataService::getFormationProposalForTeamId($ws, $db, 5, 0, 0, 0, 0, 0, 0, 'w_staerke', 'DESC');
+
+		$this->assertSame([
+			['id' => '1', 'position' => 'T'],
+		], $players);
+	}
 }

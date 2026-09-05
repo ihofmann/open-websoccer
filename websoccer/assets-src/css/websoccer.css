@@ -223,7 +223,7 @@
 }
 
 #notificationspopup {
-  width: 350px;
+  width: min(350px, calc(100vw - 2rem));
 }
 
 /* Ajax loader */

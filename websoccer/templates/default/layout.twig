@@ -51,22 +51,10 @@
 					<i class="bi bi-chevron-left"></i>
 				</button>
 
-				{# ---- User profile at top ---- #}
-				<a class="ws-sidebar-user" href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}">
-					{% if env.user.profilepicture|length > 0 %}
-					<img src="{{ env.user.profilepicture }}" class="ws-avatar-40 rounded-circle" alt="{{ env.user.username }}">
-					{% else %}
-					<span class="ws-avatar-40 rounded-circle ws-avatar-placeholder d-flex align-items-center justify-content-center">
-						<i class="bi bi-person-fill"></i>
-					</span>
-					{% endif %}
-					<span>
-						<span class="ws-sidebar-user-name d-block">{{ env.user.username }}</span>
-						<span class="ws-sidebar-user-sub d-block">{{ i18n.getMessage('userprofile_block_link_profile') }}</span>
-					</span>
-				</a>
-
 				<div class="offcanvas-body ws-sidebar-body">
+				{# ---- User and team summary ---- #}
+				{{ viewHandler.renderBlock("sidebar-user")|raw }}
+
 					<div class="collapse collapse-horizontal show ws-sidebar-content" id="wsSidebarContent">
 
 						<nav class="ws-sidebar-nav" data-testid="sidebar-nav">
@@ -107,8 +95,11 @@
 				{% endblock %}
 
 				{% block page_columns %}
+				{% set sidebarContent %}
+					{% include 'sidebarblocks.twig' %}
+				{% endset %}
 				<div class="row">
-					<div class="col-md-8" id="contentArea">
+					<div class="{% if sidebarContent|trim|length > 0 %}col-lg-8{% else %}col-12{% endif %}" id="contentArea">
 						<div class="box">
 
 							{% include 'breadcrumb.twig' %}
@@ -146,16 +137,11 @@
 
 						</div>
 					</div>
-					<div class="col-md-4">
-
-						{% if blocks.sidebar is defined %}
-							{% for uiBlock in blocks.sidebar %}
-								<div id="{{ uiBlock.id }}_block">
-								{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
-								</div>
-							{% endfor %}
-						{% endif %}
+					{% if sidebarContent|trim|length > 0 %}
+					<div class="col-lg-4">
+						{{ sidebarContent|raw }}
 					</div>
+					{% endif %}
 				</div>
 				{% endblock %}
 
