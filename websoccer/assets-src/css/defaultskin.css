@@ -1018,6 +1018,7 @@ body {
 }
 .ws-footer-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: center;
 }

@@ -19,7 +19,9 @@
 
 #pitch {
   width: 450px;
-  height: 680px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 450 / 680;
   border: 1px solid var(--ws-border-color);
   background-color: #177a35;
   position: relative;
@@ -29,6 +31,7 @@
   background-image: url("../../img/formation_pitch_bg.png");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100% 100%;
 }
 
 .playersColumn {
@@ -36,7 +39,7 @@
 }
 
 .pitchColumn {
-  width: 470px;
+  width: min(470px, 100%);
 }
 
 @media (max-width: 979px) and (min-width: 768px) {
@@ -62,14 +65,17 @@
 }
 
 .playerinfoBar {
-  height: 24px;
+  min-height: 24px;
   font-size: 12px;
 }
 
 .playerinfoIcons {
-  position: absolute;
-  right: 5px;
-  padding-top: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 2px 0;
 }
 
 .playerBlockedLabel {
@@ -120,13 +126,13 @@
 
 .position {
   position: absolute;
-  width: 90px;
-  height: 60px;
+  width: 20%;
+  height: 8.823529%;
 }
 
 .positionLabel {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 22.222222%;
   font-size: 0.9em;
   font-weight: bold;
   color: var(--ws-pitch-label-color);
@@ -144,7 +150,7 @@
   width: 100%;
   text-align: center;
   position: absolute;
-  top: 60px;
+  top: 100%;
   left: -1px;
   word-wrap: break-word;
   border-radius: 3px;
@@ -153,7 +159,7 @@
 
 .position > .playerinfoStrength {
   position: absolute;
-  top: -18px;
+  top: -30%;
   width: 100%;
 }
 
@@ -170,126 +176,126 @@
 }
 
 .position.T {
-  bottom: 50px;
-  left: 180px;
+  bottom: 7.352941%;
+  left: 40%;
 }
 
 .position.LV,
 .position.IV.leftWing {
-  bottom: 160px;
-  left: 18px;
+  bottom: 23.529412%;
+  left: 4%;
 }
 
 .position.LV.goalyRow,
 .position.RV.goalyRow {
-  bottom: 50px;
+  bottom: 7.352941%;
 }
 
 .position.IV {
-  bottom: 160px;
-  left: 180px;
+  bottom: 23.529412%;
+  left: 40%;
 }
 
 .position.IV.leftPos {
-  left: 126px;
+  left: 28%;
 }
 
 .position.IV.rightPos {
-  left: 234px;
+  left: 52%;
 }
 
 .position.RV,
 .position.IV.rightWing {
-  bottom: 160px;
-  left: 342px;
+  bottom: 23.529412%;
+  left: 76%;
 }
 
 .position.DM {
-  bottom: 270px;
-  left: 180px;
+  bottom: 39.705882%;
+  left: 40%;
 }
 
 .position.DM.leftPos {
-  left: 126px;
+  left: 28%;
 }
 
 .position.DM.rightPos {
-  left: 234px;
+  left: 52%;
 }
 
 .position.DM.leftOuterPos {
-  left: 18px;
+  left: 4%;
 }
 
 .position.DM.rightOuterPos {
-  left: 342px;
+  left: 76%;
 }
 
 .position.LM {
-  bottom: 380px;
-  left: 18px;
+  bottom: 55.882353%;
+  left: 4%;
 }
 
 .position.ZM {
-  bottom: 380px;
-  left: 180px;
+  bottom: 55.882353%;
+  left: 40%;
 }
 
 .position.ZM.leftPos {
-  left: 126px;
+  left: 28%;
 }
 
 .position.ZM.rightPos {
-  left: 234px;
+  left: 52%;
 }
 
 .position.RM {
-  bottom: 380px;
-  left: 342px;
+  bottom: 55.882353%;
+  left: 76%;
 }
 
 .position.OM {
-  bottom: 490px;
-  left: 180px;
+  bottom: 72.058824%;
+  left: 40%;
 }
 
 .position.OM.leftPos {
-  left: 126px;
+  left: 28%;
 }
 
 .position.OM.rightPos {
-  left: 234px;
+  left: 52%;
 }
 
 .position.OM.leftOuterPos {
-  left: 18px;
+  left: 4%;
 }
 
 .position.OM.rightOuterPos {
-  left: 342px;
+  left: 76%;
 }
 
 .position.LS {
-  bottom: 600px;
-  left: 18px;
+  bottom: 88.235294%;
+  left: 4%;
 }
 
 .position.MS {
-  bottom: 600px;
-  left: 180px;
+  bottom: 88.235294%;
+  left: 40%;
 }
 
 .position.MS.leftPos {
-  left: 126px;
+  left: 28%;
 }
 
 .position.MS.rightPos {
-  left: 234px;
+  left: 52%;
 }
 
 .position.RS {
-  bottom: 600px;
-  left: 342px;
+  bottom: 88.235294%;
+  left: 76%;
 }
 
 .freePosition {
@@ -310,6 +316,12 @@
 .ws-formation-table > :not(caption) > * > * {
   color: var(--ws-body-color);
   background-color: var(--ws-card-bg);
+}
+
+@media (max-width: 767.98px) {
+  .pitchColumn {
+    width: 100%;
+  }
 }
 
 .ws-formation-table .benchposition.freePosition > td {
@@ -335,26 +347,38 @@
 }
 
 .formationPlayerPicture > img {
-  max-width: 90px;
-  max-height: 60px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .positionStatePrimary.jersey {
   background-image: url("../../img/shirts_sprite.png");
   background-repeat: no-repeat;
   background-position: 0px -60px;
+
+  @media (max-width: 767.98px) {
+    background-position-x: -10px;
+  }
 }
 
 .positionStateSecondary.jersey {
   background-image: url("../../img/shirts_sprite.png");
   background-repeat: no-repeat;
   background-position: -90px -60px;
+
+  @media (max-width: 767.98px) {
+    background-position-x: -100px;
+  }
 }
 
 .positionStateWrong.jersey {
   background-image: url("../../img/shirts_sprite.png");
   background-repeat: no-repeat;
   background-position: 0px 0px;
+
+  @media (max-width: 767.98px) {
+    background-position-x: -10px;
+  }
 }
 
 .positionStateSecondary {

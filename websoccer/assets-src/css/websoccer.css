@@ -121,6 +121,7 @@
 /* Formation-specific */
 .ws-formation-table {
   width: 450px;
+  max-width: 100%;
 }
 .ws-formation-player-img {
   margin: 5px 5px 0 2px;

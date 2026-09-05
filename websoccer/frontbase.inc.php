@@ -25,7 +25,7 @@ define('PARAM_PAGE', 'page');
 define('PARAM_BLOCK', 'block');
 define('PARAM_PAGENUMBER', 'pageno');
 define('MSG_KEY_ERROR_PAGENOTFOUND', 'error_page_not_found');
-define('ASSETS_VERSION', 'av1788620590');
+define('ASSETS_VERSION', 'av1788638016');
 
 require(BASE_FOLDER . '/admin/config/global.inc.php');
 
