@@ -178,6 +178,26 @@ import { Tooltip, Popover } from "bootstrap";
   }
 
   /* ------------------------------------------------------------------ */
+  /* Range input values                                                  */
+  /* ------------------------------------------------------------------ */
+  function initRangeInputs() {
+    document.querySelectorAll('input[type="range"][aria-describedby]').forEach(function (input) {
+      const output = document.getElementById(input.getAttribute("aria-describedby"));
+      if (!output || output.dataset.wsRangeInit) return;
+      output.dataset.wsRangeInit = "1";
+
+      function update() {
+        const unit = output.dataset.unit || "";
+        output.textContent = input.value + (unit ? " " + unit : "");
+      }
+
+      input.addEventListener("input", update);
+      input.addEventListener("change", update);
+      update();
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Countdown (vanilla)                                                */
   /* ------------------------------------------------------------------ */
   function initCountdowns() {
@@ -462,6 +482,7 @@ import { Tooltip, Popover } from "bootstrap";
     initTooltips();
     initPopovers();
     initAutoComplete();
+    initRangeInputs();
     initCountdowns();
     initDirectTransferOfferSuccess();
     initDynamicStyles();

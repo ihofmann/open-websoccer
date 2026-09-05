@@ -27,7 +27,7 @@ final class DataGeneratorServiceTest extends TestCaseBase {
 		$this->expectExceptionMessage('illegal team ID');
 		DataGeneratorService::generatePlayers($ws, $db, 999, 25, 2, 5000, 30,
 			['strength' => 80, 'technique' => 70, 'stamina' => 60, 'freshness' => 50, 'satisfaction' => 40],
-			['T' => 1], 5, '');
+			['T' => 1], 5, null);
 	}
 
 	public function testGeneratePlayersThrowsWhenNameFileDoesNotExist(): void {

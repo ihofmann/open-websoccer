@@ -1,4 +1,4 @@
-{% if breadcrumbItems is defined %}
+{% if breadcrumbItems is defined and breadcrumbItems|length > 1 %}
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
 	{% for breadcrumbItemKey,breadcrumbItemLabel in breadcrumbItems %}

@@ -96,7 +96,7 @@ class DataGeneratorService {
 	 */
 	public static function generatePlayers(WebSoccer $websoccer, DbConnection $db, $teamId, $age, $ageDeviation, $salary, $contractDuration, $strengths, $positions, $maxDeviation, $nationality = NULL) {
 		
-		if (strlen($nationality)) {
+		if ($nationality !== null && strlen($nationality)) {
 			$country = $nationality;
 		} else {
 			// get country from team

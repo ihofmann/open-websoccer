@@ -83,8 +83,10 @@
 {% endmacro %}
 
 {% macro slider(fieldId, value) %}
-  <input type="range" id="{{ fieldId }}" name="{{ fieldId }}" class="form-range" min="1" max="100" step="1" value="{{ value }}">
-  <span>{{ i18n.getMessage("unit_percent") }}</span>
+  <div class="ws-slider">
+    <input type="range" id="{{ fieldId }}" name="{{ fieldId }}" class="form-range" min="1" max="100" step="1" value="{{ value }}" aria-describedby="{{ fieldId }}Value">
+    <output id="{{ fieldId }}Value" class="ws-slider-value" for="{{ fieldId }}" data-unit="{{ i18n.getMessage("unit_percent") }}">{{ value }} {{ i18n.getMessage("unit_percent") }}</output>
+  </div>
 {% endmacro %}
 
 {% macro teamPlayerSelection(fieldId, label, selectedPlayer = null, positionsAndPlayers) %}

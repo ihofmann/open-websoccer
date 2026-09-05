@@ -6,20 +6,25 @@
 }
 
 .playerIsOnPitch {
-  background-color: #bdefbd;
+  background-color: var(--ws-selection-bg);
+  border-left: 3px solid var(--ws-selection-border);
+  color: var(--ws-body-color);
 }
 
 .playerIsOnBench {
-  background-color: #ebffad;
+  background-color: var(--ws-muted-bg);
+  border-left: 3px solid var(--ws-primary);
+  color: var(--ws-body-color);
 }
 
 #pitch {
   width: 450px;
   height: 680px;
-  border: 1px solid black;
-  background-color: green;
+  border: 1px solid var(--ws-border-color);
+  background-color: #177a35;
   position: relative;
   margin-bottom: 10px;
+  box-shadow: var(--ws-shadow);
 
   background-image: url("../../img/formation_pitch_bg.png");
   background-repeat: no-repeat;
@@ -45,10 +50,11 @@
 }
 
 .playerinfo {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--ws-border-color);
   padding: 0 4px;
   position: relative;
   cursor: default;
+  color: var(--ws-body-color);
 }
 
 .playerBlocked {
@@ -105,11 +111,11 @@
 }
 
 .mainposition {
-  color: #0044cc;
+  color: var(--ws-primary-text);
 }
 
 .secondposition {
-  color: #2f96b4;
+  color: var(--ws-primary-hover);
 }
 
 .position {
@@ -123,14 +129,17 @@
   margin-top: 20px;
   font-size: 0.9em;
   font-weight: bold;
+  color: var(--ws-pitch-label-color);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75);
   cursor: default;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .positionPlayer {
-  background-color: white;
-  border: 1px solid black;
+  background-color: var(--ws-card-bg);
+  border: 1px solid var(--ws-border-color);
+  color: var(--ws-body-color);
   font-size: 9px;
   width: 100%;
   text-align: center;
@@ -284,14 +293,35 @@
 }
 
 .freePosition {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.75);
   border-radius: 6px;
   opacity: 0.7;
 }
 
 .playerDropHover {
-  background-color: #cccccc;
+  background-color: var(--ws-primary-subtle);
   opacity: 1;
+}
+
+.ws-formation-table {
+  --bs-table-bg: var(--ws-card-bg);
+}
+
+.ws-formation-table > :not(caption) > * > * {
+  color: var(--ws-body-color);
+  background-color: var(--ws-card-bg);
+}
+
+.ws-formation-table .benchposition.freePosition > td {
+  background-color: var(--ws-muted-bg);
+}
+
+.benchPlayerSubInfo {
+  color: var(--ws-body-color);
+}
+
+.benchPlayerSubInfo strong {
+  color: var(--ws-primary-text);
 }
 
 /* playerRemoveLink visibility is toggled via the ws-hidden class
@@ -328,7 +358,7 @@
 }
 
 .positionStateSecondary {
-  color: blue;
+  color: var(--ws-primary-hover);
 }
 
 .positionStateWrong {

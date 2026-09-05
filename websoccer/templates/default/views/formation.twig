@@ -19,7 +19,7 @@
 		<button type="submit" class="btn btn-secondary">{{ i18n.getMessage("button_choose") }}</button>
 	</form>
 
-	<div class="row">
+	<div class="row g-4">
 		<div class="col-md-4">
 			<p><em>{{ env.getFormattedDatetime(next_match.match_date) }} | {{ i18n.getMessage("matchtype_" ~ next_match.match_type) }}</em></p>
 			<p><strong><a href="{{ env.getInternalUrl("team", "id=" ~ next_match.match_home_id) }}">{{ next_match.match_home_name }}</a> - <a href="{{ env.getInternalUrl("team", "id=" ~ next_match.match_guest_id) }}">{{ next_match.match_guest_name }}</a></strong></p>
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 
-	<form method="post" class="d-flex flex-wrap gap-2 align-items-center">
+	<form method="post" class="d-flex flex-wrap gap-2 align-items-center mb-4">
 		<input type="hidden" name="page" value="formation" />
 		<input type="hidden" id="preselect" name="preselect" value="" />
 		<input type="hidden" name="nationalteam" value="{{ env.getRequestParameter("nationalteam") }}" />

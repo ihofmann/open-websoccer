@@ -18,6 +18,12 @@
   --ws-primary-subtle: #e8f5e9;
   --ws-primary-subtle-rgb: 232, 245, 233;
   --ws-primary-text: #1b5e20;
+  --ws-disabled-bg: #6b9f6e;
+  --ws-disabled-border: #5d8f60;
+  --ws-disabled-color: #ffffff;
+  --ws-selection-bg: #e8f5e9;
+  --ws-selection-border: #81c784;
+  --ws-pitch-label-color: #12351b;
 
   /* Surfaces */
   --ws-body-bg: #f5f7f6;
@@ -74,6 +80,12 @@
     --ws-primary-subtle: #1b2e1c;
     --ws-primary-subtle-rgb: 27, 46, 28;
     --ws-primary-text: #6fcf73;
+    --ws-disabled-bg: #2f6f35;
+    --ws-disabled-border: #3d8544;
+    --ws-disabled-color: #e8f5e9;
+    --ws-selection-bg: #1b3a20;
+    --ws-selection-border: #43a047;
+    --ws-pitch-label-color: #12351b;
 
     --ws-body-bg: #0f1410;
     --ws-body-color: #d8ded8;
@@ -113,8 +125,9 @@
   --bs-btn-hover-border-color: var(--ws-primary-hover);
   --bs-btn-active-bg: var(--ws-primary-active);
   --bs-btn-active-border-color: var(--ws-primary-active);
-  --bs-btn-disabled-bg: var(--ws-primary);
-  --bs-btn-disabled-border-color: var(--ws-primary);
+  --bs-btn-disabled-color: var(--ws-disabled-color);
+  --bs-btn-disabled-bg: var(--ws-disabled-bg);
+  --bs-btn-disabled-border-color: var(--ws-disabled-border);
   color: #fff;
 }
 
@@ -126,6 +139,21 @@
   --bs-btn-active-bg: var(--ws-primary);
   --bs-btn-active-border-color: var(--ws-primary);
   --bs-btn-hover-color: #fff;
+  --bs-btn-disabled-color: var(--ws-disabled-color);
+  --bs-btn-disabled-bg: var(--ws-disabled-bg);
+  --bs-btn-disabled-border-color: var(--ws-disabled-border);
+}
+
+.btn-primary:disabled,
+.btn-primary.disabled,
+fieldset:disabled .btn-primary,
+.btn-outline-primary:disabled,
+.btn-outline-primary.disabled,
+fieldset:disabled .btn-outline-primary {
+  color: var(--ws-disabled-color);
+  background-color: var(--ws-disabled-bg);
+  border-color: var(--ws-disabled-border);
+  opacity: 1;
 }
 
 /* Links */
@@ -226,6 +254,24 @@ a:hover {
 }
 .form-control-plaintext {
   color: var(--ws-body-color);
+}
+
+.ws-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+.ws-slider .form-range {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.ws-slider-value {
+  min-width: 5.5rem;
+  color: var(--ws-primary-text);
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
 }
 
 /* Ensure Bootstrap's internal form variables also use the input background */
@@ -363,6 +409,14 @@ h6,
 .accordion-button {
   color: var(--ws-body-color);
   background-color: var(--ws-card-bg);
+}
+.accordion-button::after {
+  background-color: var(--ws-primary);
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='m2 5 6 6 6-6' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3e%3c/svg%3e")
+    center / 1rem auto no-repeat;
+  mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='m2 5 6 6 6-6' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3e%3c/svg%3e")
+    center / 1rem auto no-repeat;
 }
 .accordion-button:not(.collapsed) {
   color: var(--ws-primary);
@@ -569,9 +623,36 @@ body {
 .ws-main {
   flex: 1 1 0;
   min-width: 0;
-  padding: 1.5rem 0;
+  padding: 1.5rem clamp(0.75rem, 2vw, 1.5rem) 2rem;
   display: flex;
   flex-direction: column;
+}
+
+/* Keep vertical rhythm consistent when pages combine forms, tables, and
+   content blocks instead of relying on ad-hoc paragraph margins. */
+.ws-page-header {
+  margin-bottom: 1.5rem;
+}
+
+#pagecontent > form:not(:last-child),
+#pagecontent > .row:not(:last-child),
+#pagecontent > h4:not(:first-child) {
+  margin-bottom: 1.5rem;
+}
+
+#pagecontent > form + .row,
+#pagecontent > form + form,
+#pagecontent > .row + form {
+  margin-top: 1.5rem;
+}
+
+.box > .breadcrumb {
+  margin-bottom: 1.25rem;
+}
+
+.box > :last-child,
+#pagecontent > :last-child {
+  margin-bottom: 0;
 }
 
 /* ------------------------------------------------------------------ */
