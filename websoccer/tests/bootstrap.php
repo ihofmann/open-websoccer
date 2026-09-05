@@ -45,6 +45,7 @@ define('PARAM_PAGE', 'page');
 define('PARAM_BLOCK', 'block');
 define('PARAM_PAGENUMBER', 'pageno');
 define('MSG_KEY_ERROR_PAGENOTFOUND', 'error_page_not_found');
+define('ASSETS_VERSION', 'av123');
 
 // Message type constants (mirrors FrontMessage.class.php).
 define('MESSAGE_TYPE_INFO', 'info');

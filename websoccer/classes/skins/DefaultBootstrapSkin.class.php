@@ -47,14 +47,14 @@ class DefaultBootstrapSkin implements ISkin {
 	 * @see ISkin::getCssSources()
 	 */
 	public function getCssSources() {
-		return array($this->_websoccer->getConfig('context_root') . '/assets/default.css');
+		return array($this->_websoccer->getConfig('context_root') . '/assets/default.css?v=' . ASSETS_VERSION);
 	}
 	
 	/**
 	 * @see ISkin::getJavaScriptSources()
 	 */
 	public function getJavaScriptSources() {
-		return array($this->_websoccer->getConfig('context_root') . '/assets/default.js');
+		return array($this->_websoccer->getConfig('context_root') . '/assets/default.js?v=' . ASSETS_VERSION);
 	}
 	
 	/**

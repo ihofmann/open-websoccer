@@ -14,14 +14,14 @@ final class DefaultBootstrapSkinTest extends TestCaseBase {
 		$skin = new DefaultBootstrapSkin($this->mockWebsoccer(['context_root' => '/ws']));
 		$css = $skin->getCssSources();
 		$this->assertIsArray($css);
-		$this->assertContains('/ws/assets/default.css', $css);
+		$this->assertContains('/ws/assets/default.css?v=' . ASSETS_VERSION, $css);
 	}
 
 	public function testGetJavaScriptSourcesReturnsArrayWithContextRoot(): void {
 		$skin = new DefaultBootstrapSkin($this->mockWebsoccer(['context_root' => '/ws']));
 		$js = $skin->getJavaScriptSources();
 		$this->assertIsArray($js);
-		$this->assertContains('/ws/assets/default.js', $js);
+		$this->assertContains('/ws/assets/default.js?v=' . ASSETS_VERSION, $js);
 	}
 
 	public function testGetTemplateAppendsTwigExtension(): void {
