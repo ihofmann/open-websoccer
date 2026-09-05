@@ -650,6 +650,21 @@ VALUES
     (971, 'German', 'Striker2',   2, 'Sturm',      'LS', '1997-10-14', 'Deutschland', 76, 73, 79, 63, 55, 50000, 30, 1000,  950000, 23, '1'),
     (972, 'German', 'Striker3',   2, 'Sturm',      'RS', '1996-12-01', 'Deutschland', 74, 70, 78, 62, 54, 50000, 30, 1000,  900000, 24, '1');
 
+-- Free agent on the transfer market (no club, so bids use hand money instead
+-- of a transfer fee). Used by the transfer-bid E2E spec. A midfielder so it
+-- never shows up in the goalkeeper / striker position filters of the
+-- transfer-market spec; nation is not England/Deutschland so it cannot be
+-- nominated for a national team.
+INSERT INTO ws3_spieler
+    (id, vorname, nachname, verein_id, position, position_main, geburtstag,
+     nation, w_staerke, w_technik, w_kondition, w_frische, w_zufriedenheit,
+     vertrag_gehalt, vertrag_spiele, vertrag_torpraemie, marktwert, age, status,
+     transfermarkt, transfer_start, transfer_ende, transfer_mindestgebot)
+VALUES
+    (973, 'Free', 'Agent', NULL, 'Mittelfeld', 'ZM', '1995-01-01', 'Spain',
+     75, 70, 80, 65, 60, 50000, 30, 1000, 1000000, 25, '1',
+     '1', UNIX_TIMESTAMP() - 86400, UNIX_TIMESTAMP() + 604800, 0);
+
 -- Pre-nominate 5 English players to Team 41 ("England"), covering all 4
 -- position groups, so the nationalteam page renders populated tables.
 --   Player  1: Player1_T1  (Torwart,     T)   – Team 1

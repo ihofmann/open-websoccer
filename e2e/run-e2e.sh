@@ -29,8 +29,9 @@ COMPOSE="$E2E_DIR/docker-compose.e2e.yml"
 BASE_URL='http://localhost:8081'
 
 # Number of players the seed creates: 40 teams x 12 position_main x 2
-# plus 12 additional German players for national team tests.
-EXPECTED_PLAYERS=972
+# plus 12 additional German players for national team tests
+# plus 1 free agent on the transfer market for the transfer-bid spec.
+EXPECTED_PLAYERS=973
 
 compose() { docker compose -f "$COMPOSE" "$@"; }
 
