@@ -17,14 +17,13 @@ test.describe('Transfer market page (logged in as user1)', () => {
     await expect(page.locator('#transferTable')).toContainText('Player1_RS1 Lastname121');
 
     // The listed player is a forward, so filtering for goalkeepers finds nothing.
+    // The selection applies immediately on change (no "Display" button anymore).
     await page.selectOption('#position', 'goaly');
-    await page.getByRole('button', { name: 'Display' }).click();
     await expect(page.locator('#pagecontent')).toContainText(
       'Could not find any players on the transfer market.',
     );
 
     await page.selectOption('#position', 'striker');
-    await page.getByRole('button', { name: 'Display' }).click();
     await expect(page.locator('#transferTable')).toContainText('Player1_RS1 Lastname121');
 
     await page.getByRole('link', { name: 'Reset' }).click();

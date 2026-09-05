@@ -9,15 +9,12 @@
 <form class="d-flex flex-wrap gap-2 align-items-center mb-3" method="post">
 
 	<label class="form-label mb-0" for="id">{{ i18n.getMessage("entity_league") }}</label> 
-	<select id="id" name="id" class="form-select col-md-3">
+	<select id="id" name="id" class="form-select col-md-3 select-form-submit">
 		<option></option>
 	{% for leagueItem in leagues %}
 		<option value="{{ leagueItem.league_id }}"{% if league.league_id is defined and league.league_id == leagueItem.league_id or env.getRequestParameter("id") == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>
 	{% endfor %}
 	</select>
-
-	<button type="submit" class="btn btn-primary ajaxSubmit" 
-		data-ajaxtarget="alltimetable-table_block" data-ajaxblock="alltimetable-table">{{ i18n.getMessage('button_display') }}</button>
 
 	<input type="hidden" name="page" value="alltimetable" />
 </form>

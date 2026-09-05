@@ -22,7 +22,7 @@
 				{{ i18n.getMessage("entity_player_position") }}
 			</label>
 			<div class="">
-		  		<select name="position" id="position" class="form-select" data-testid="nt-search-position">
+		  		<select name="position" id="position" class="form-select select-form-submit" data-testid="nt-search-position">
 		  			<option></option>
 		  			<option value="Torwart"{% if env.getRequestParameter("position") == "Torwart" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
 		  			<option value="Abwehr"{% if env.getRequestParameter("position") == "Abwehr" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
@@ -37,7 +37,7 @@
 				{{ i18n.getMessage("entity_player_position_main") }}
 			</label>
 			<div class="">
-		  		<select name="position_main" id="position_main" class="form-select" data-testid="nt-search-position-main">
+		  		<select name="position_main" id="position_main" class="form-select select-form-submit" data-testid="nt-search-position-main">
 		  			<option></option>
 		  			<option value="T"{% if env.getRequestParameter("position_main") == "T" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
 		  			<option value="LV"{% if env.getRequestParameter("position_main") == "LV" %} selected{% endif %}>{{ i18n.getMessage("option_LV") }}</option>

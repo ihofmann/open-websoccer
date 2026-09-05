@@ -4,7 +4,7 @@
 	<div class="mb-3">
   		<label class="form-label" for="seasonid">{{ i18n.getMessage("entity_season") }}</label>
   		<div>
-	  		<select name="seasonid" id="seasonid" required class="form-select">
+	  		<select name="seasonid" id="seasonid" required class="form-select select-form-submit">
 	  			<option></option>
 	  			{% for season in seasons %}
 	  				<option value="{{ season.id }}"{% if env.getRequestParameter("seasonid") == season.id %} selected{% endif %}>{{ season.name }}</option>

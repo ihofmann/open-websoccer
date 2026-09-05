@@ -56,9 +56,9 @@ test.describe('Youth marketplace page (logged in as user1)', () => {
     // No filter: both Mittelfeld and Torwart players visible.
     await expect(table.getByTestId('youth-marketplace-row')).toHaveCount(2);
 
-    // Filter by Torwart → only Market Keeper.
+    // Filter by Torwart → only Market Keeper. The selection applies
+    // immediately on change (no "Display" button anymore).
     await page.getByTestId('youth-marketplace-position').selectOption('Torwart');
-    await page.getByTestId('youth-marketplace-filter-submit').click();
     await expect(table.getByTestId('youth-marketplace-row')).toHaveCount(1);
     await expect(table).toContainText('Market Keeper');
     await expect(table).not.toContainText('Market Midfielder');
@@ -74,7 +74,6 @@ test.describe('Youth marketplace page (logged in as user1)', () => {
 
     // Buyable Youth (Sturm) has been bought by the earlier buy spec.
     await page.getByTestId('youth-marketplace-position').selectOption('Sturm');
-    await page.getByTestId('youth-marketplace-filter-submit').click();
 
     await expect(page.locator('#pagecontent')).toContainText(
       'No youth players are for sale at the moment.',

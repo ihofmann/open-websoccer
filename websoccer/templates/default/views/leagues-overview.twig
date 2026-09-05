@@ -9,15 +9,12 @@
 <form class="d-flex flex-wrap gap-2 align-items-center mb-3" method="post">
 
 	<label class="form-label" for="country">{{ i18n.getMessage("entity_league_land") }}</label> 
-	<select id="country" name="country" class="form-select">
+	<select id="country" name="country" class="form-select select-form-submit">
 		<option></option>
 	{% for country in countries %}
 		<option value="{{ country.name }}">{{ country.name }} ({{ country.noOfLeagues }})</option>
 	{% endfor %}
 	</select>
-
-	<button type="submit" class="btn btn-primary ajaxSubmit" 
-		data-ajaxtarget="leagues-selection" data-ajaxblock="leagues-selection">{{ i18n.getMessage('button_display') }}</button>
 
 	<input type="hidden" name="page" value="leagues" />
 </form>

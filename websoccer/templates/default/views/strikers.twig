@@ -10,15 +10,12 @@
 <form class="d-flex flex-wrap gap-2 align-items-center mb-3" method="post">
 
 	<label class="form-label mb-0" for="leagueid">{{ i18n.getMessage("entity_league") }}</label> 
-	<select id="leagueid" name="leagueid" class="form-select">
+	<select id="leagueid" name="leagueid" class="form-select select-form-submit">
 		<option></option>
 	{% for leagueItem in leagues %}
 		<option value="{{ leagueItem.league_id }}"{% if env.getRequestParameter("leagueid") == leagueItem.league_id %} selected{% endif %}>{{ leagueItem.league_country }} - {{ leagueItem.league_name }}</option>
 	{% endfor %}
 	</select>
-
-	<button type="submit" class="btn btn-primary ajaxSubmit" 
-		data-ajaxtarget="pagecontent">{{ i18n.getMessage('button_display') }}</button>
 
 	<input type="hidden" name="page" value="topstrikers" />
 </form>

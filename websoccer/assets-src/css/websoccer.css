@@ -12,6 +12,14 @@
   cursor: default;
 }
 
+/* View-update selects (auto-submit on change): take only half the width
+   on large screens instead of the full form width. */
+@media (min-width: 992px) {
+  select.select-form-submit {
+    width: 50%;
+  }
+}
+
 /* Fixed-size avatars / player pictures */
 .ws-avatar-20 {
   width: 20px;

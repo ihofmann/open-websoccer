@@ -24,14 +24,13 @@
   
     <form class="d-flex flex-wrap gap-2 align-items-center">
   		<label for="position">{{ i18n.getMessage("transfermarket_filter_by_position") }}</label>
-  		<select name="position" id="position" class="form-select">
+  		<select name="position" id="position" class="form-select select-form-submit">
   			<option></option>
   			<option value="goaly"{% if env.getRequestParameter("position") == "goaly" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
   			<option value="defense"{% if env.getRequestParameter("position") == "defense" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
   			<option value="midfield"{% if env.getRequestParameter("position") == "midfield" %} selected{% endif %}>{{ i18n.getMessage("option_Mittelfeld") }}</option>
   			<option value="striker"{% if env.getRequestParameter("position") == "striker" %} selected{% endif %}>{{ i18n.getMessage("option_Sturm") }}</option>
   		</select>
-	  	<button type="submit" class="btn btn-primary">{{ i18n.getMessage("button_display") }}</button>
 	  	<a href="{{ env.getInternalUrl("transfermarket") }}" class="btn btn-secondary">{{ i18n.getMessage("button_reset") }}</a>
 	  	
 	  	<input type="hidden" name="page" value="transfermarket" />

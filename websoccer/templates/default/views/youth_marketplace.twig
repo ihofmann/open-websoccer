@@ -10,14 +10,13 @@
 
     <form class="d-flex flex-wrap gap-2 align-items-center" data-testid="youth-marketplace-filter">
   		<label for="position">{{ i18n.getMessage("transfermarket_filter_by_position") }}</label>
-  		<select name="position" id="position" class="form-select" data-testid="youth-marketplace-position">
+  		<select name="position" id="position" class="form-select select-form-submit" data-testid="youth-marketplace-position">
   			<option></option>
   			<option value="Torwart"{% if env.getRequestParameter("position") == "Torwart" %} selected{% endif %}>{{ i18n.getMessage("option_Torwart") }}</option>
   			<option value="Abwehr"{% if env.getRequestParameter("position") == "Abwehr" %} selected{% endif %}>{{ i18n.getMessage("option_Abwehr") }}</option>
   			<option value="Mittelfeld"{% if env.getRequestParameter("position") == "Mittelfeld" %} selected{% endif %}>{{ i18n.getMessage("option_Mittelfeld") }}</option>
   			<option value="Sturm"{% if env.getRequestParameter("position") == "Sturm" %} selected{% endif %}>{{ i18n.getMessage("option_Sturm") }}</option>
   		</select>
-	  	<button type="submit" class="btn btn-primary" data-testid="youth-marketplace-filter-submit">{{ i18n.getMessage("button_display") }}</button>
 	  	<a href="{{ env.getInternalUrl("youth-marketplace") }}" class="btn btn-secondary" data-testid="youth-marketplace-filter-reset">{{ i18n.getMessage("button_reset") }}</a>
 	  	
 	  	<input type="hidden" name="page" value="youth-marketplace" />

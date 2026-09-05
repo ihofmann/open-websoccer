@@ -10,13 +10,11 @@
 		<input type="hidden" name="templateid" value="" />
 		<input type="hidden" name="nationalteam" value="{{ env.getRequestParameter("nationalteam") }}" />
 
-		<select class="form-select" name="id">
+		<select class="form-select select-form-submit" name="id">
 			{% for nextMatch in nextMatches %}
 				<option value="{{ nextMatch.match_id }}"{% if env.getRequestParameter("id") == nextMatch.match_id %} selected{% endif %}>({{ env.getFormattedDatetime(nextMatch.match_date) }}) {{ nextMatch.match_home_name }} - {{ nextMatch.match_guest_name }}</option>
 			{% endfor %}
 		</select>
-
-		<button type="submit" class="btn btn-secondary">{{ i18n.getMessage("button_choose") }}</button>
 	</form>
 
 	<div class="row g-4">
