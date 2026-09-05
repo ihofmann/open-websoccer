@@ -36,14 +36,18 @@ final class NewsDetailsModelTest extends TestCaseBase {
 			'id' => 7, 'titel' => 'My News', 'nachricht' => 'Hello', 'datum' => 1000,
 			'c_br' => 0, 'c_links' => 0, 'author_name' => 'Admin',
 			'linktext1' => 'Link1', 'linkurl1' => 'http://example.com',
-			'linktext2' => '', 'linkurl2' => '',
-			'linktext3' => '', 'linkurl3' => ''
+			'linktext2' => 'Link2', 'linkurl2' => 'http://example.com',
+			'linktext3' => 'Link3', 'linkurl3' => 'https://example.org'
 		];
 		$model = new NewsDetailsModel($this->dbWithRows([$row]), $this->mockI18n(), $ws);
 		$params = $model->getTemplateParameters();
 		$this->assertSame(7, $params['article']['id']);
 		$this->assertSame('My News', $params['article']['title']);
 		$this->assertSame('Admin', $params['article']['author_name']);
-		$this->assertSame(['http://example.com' => 'Link1'], $params['relatedLinks']);
+		$this->assertSame([
+			['url' => 'http://example.com', 'label' => 'Link1'],
+			['url' => 'http://example.com', 'label' => 'Link2'],
+			['url' => 'https://example.org', 'label' => 'Link3']
+		], $params['relatedLinks']);
 	}
 }

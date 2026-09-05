@@ -600,8 +600,15 @@ VALUES (1, 2, 2, 1, 1, UNIX_TIMESTAMP(), 1000000);
 -- One sample news article (autor_id references the admin created above).
 -- The E2E admin test additionally creates, edits and deletes its own article.
 -- -----------------------------------------------------------------------------
-INSERT INTO ws3_news (datum, autor_id, titel, nachricht, status)
-VALUES (UNIX_TIMESTAMP(), 1, 'Welcome to OpenWebSoccer', 'This is a sample news entry.', '1');
+INSERT INTO ws3_news
+    (datum, autor_id, titel, nachricht, linktext1, linkurl1, linktext2, linkurl2,
+     linktext3, linkurl3, status)
+VALUES
+    (UNIX_TIMESTAMP(), 1, 'Welcome to OpenWebSoccer', 'This is a sample news entry.',
+     'OpenWebSoccer project', 'https://github.com/OpenWebSoccer',
+     'OpenWebSoccer documentation', 'https://docs.openwebsoccer.org',
+     'OpenWebSoccer license', 'https://github.com/OpenWebSoccer/OpenWebSoccer-Sim/blob/master/LICENSE',
+     '1');
 
 -- -----------------------------------------------------------------------------
 -- National teams module

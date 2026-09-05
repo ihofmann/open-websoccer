@@ -66,13 +66,13 @@ class NewsDetailsModel implements IModel {
 		$relatedLinks = array();
 		
 		if ($item["linktext1"] && $item["linkurl1"]) {
-			$relatedLinks[$item["linkurl1"]] = $item["linktext1"];
+			$relatedLinks[] = array("url" => $item["linkurl1"], "label" => $item["linktext1"]);
 		}
 		if ($item["linktext2"] && $item["linkurl2"]) {
-			$relatedLinks[$item["linkurl2"]] = $item["linktext2"];
+			$relatedLinks[] = array("url" => $item["linkurl2"], "label" => $item["linktext2"]);
 		}
 		if ($item["linktext3"] && $item["linkurl3"]) {
-			$relatedLinks[$item["linkurl3"]] = $item["linktext3"];
+			$relatedLinks[] = array("url" => $item["linkurl3"], "label" => $item["linktext3"]);
 		}
 		
 		$article = array("id" => $item["id"],
