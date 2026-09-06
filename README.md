@@ -60,6 +60,14 @@ npm run build
 
 The output is written to `websoccer/assets/` (ignored by Git). It contains one shared `admincenter` bundle, reused by the admin, install, and update pages, plus one JavaScript/CSS bundle for the bundled `default` skin.
 
+The build also copies the country flags of the [flag-icons](https://github.com/lipis/flag-icons) package into `websoccer/img/flags/` (ignored by Git as well), together with the package license and a copyright note:
+
+```bash
+npm run build:flags
+```
+
+Flags are SVGs, one per supported UI language and one per supported nationality. Add or remove countries in `scripts/copy-flags.js`.
+
 Rebuild automatically while editing frontend files:
 
 ```bash

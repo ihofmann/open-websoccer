@@ -4,6 +4,7 @@
    No inline styles or JavaScript — pure Bootstrap data attributes. #}
 
 {% import "macros/navitem.twig" as navitemTemplate %}
+{% import "macros/flags.twig" as flags %}
 
 <nav class="navbar navbar-expand-lg fixed-top{% if env.user.id is not null %} ws-navbar-with-sidebar{% endif %}">
 	<div class="container">
@@ -83,7 +84,7 @@
 						<button class="btn btn-sm btn-outline-secondary dropdown-toggle ws-lang-btn" type="button"
 						        id="wsLangSwitch" data-bs-toggle="dropdown" aria-expanded="false"
 					        data-testid="lang-switch">
-							<img src="{{ skin.getImage("flags/" ~ i18n.getCurrentLanguage() ~ ".png") }}" alt="{{ i18n.getMessage('lang_label_' ~ i18n.getCurrentLanguage()) }}" width="20" height="20" class="ws-lang-flag">
+							{{ flags.language(i18n.getCurrentLanguage()) }}
 						</button>
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="wsLangSwitch">
 							{% for language in i18n.supportedLanguages %}
@@ -91,8 +92,7 @@
 								<a class="dropdown-item d-flex align-items-center gap-2{% if language == i18n.getCurrentLanguage() %} active{% endif %}"
 								   href="{{ env.getInternalActionUrl("switch-language", "lang=" ~ language ~ "&id=" ~ env.getRequestParameter("id")) }}"
 							   data-testid="lang-option-{{ language }}">
-									<img src="{{ skin.getImage("flags/" ~ language ~ ".png") }}" alt="" width="20" height="20">
-									{{ i18n.getMessage('lang_label_' ~ language) }}
+									{{ flags.language(language, withLabel = true) }}
 								</a>
 							</li>
 							{% endfor %}

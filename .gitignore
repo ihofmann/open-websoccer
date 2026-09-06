@@ -3,5 +3,6 @@
 websoccer/vendor/
 node_modules/
 websoccer/assets/
+websoccer/img/flags/
 composer.phar
 websoccer/tests/.phpunit.cache

@@ -3,8 +3,9 @@
   "private": true,
   "description": "OpenWebSoccer-Sim browser assets",
   "scripts": {
-    "build": "npm run build:admincenter && npm run build:default && node scripts/update-assets-version.js",
+    "build": "npm run build:flags && npm run build:admincenter && npm run build:default && node scripts/update-assets-version.js",
     "release": "node scripts/release.js",
+    "build:flags": "node scripts/copy-flags.js",
     "build:admincenter": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/admincenter.js",
     "build:default": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/default.js",
     "build:watch": "esbuild --bundle --sourcemap --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets --watch websoccer/assets-src/admincenter.js websoccer/assets-src/default.js"
@@ -17,6 +18,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
-    "chart.js": "^4.4.3"
+    "chart.js": "^4.4.3",
+    "flag-icons": "^7.5.0"
   }
 }

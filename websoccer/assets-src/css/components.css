@@ -102,6 +102,22 @@
   background-color: var(--ws-primary-subtle);
 }
 
+/* Country and language flags (scalable SVGs, see scripts/copy-flags.js).
+   Sized in em so a flag matches the text it accompanies. */
+.ws-flag {
+  display: inline-block;
+  width: 1.5em;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  vertical-align: -0.15em;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--ws-border-color);
+}
+
+.ws-flag-label {
+  margin-left: 0.4em;
+}
+
 /* language switcher */
 .languageswitcher {
   list-style-type: none;
@@ -112,6 +128,9 @@
 .languageswitcher li {
   display: inline;
   padding-right: 20px;
+}
+.languageswitcher .ws-flag {
+  width: 2em;
 }
 
 /* strengt indicators */

@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 {% import "macros/statisticelements.twig" as statisticelements %}
 {% import "macros/paginator.twig" as pagination %}
+{% import "macros/flags.twig" as flags %}
 
 {% block page_title %}
 {{ i18n.getMessage("youth-marketplace_navlabel") }}
@@ -64,8 +65,7 @@
 				</td>
 				<td><p>{{ player.firstname }} {{ player.lastname }} ({{ player.age }})
 					{% if player.nation_flagfile|length > 0 %}
-						{% set nationImg = skin.getImage("flags/players/" ~ player.nation_flagfile ~ ".png") %}
-						{% if nationImg %}<img src="{{ nationImg }}" title="{{ countryLabel }}" alt="{{ countryLabel}}" />{% else %}({{ countryLabel }}){% endif %}
+						{{ flags.country(player.nation_flagfile, countryLabel) }}
 					{% endif %}
 					{% if env.user.clubId == player.team_id %}
 						<a href="{{ env.getInternalActionUrl("remove-youthplayer-from-market", "id=" ~ player.player_id) }}"
