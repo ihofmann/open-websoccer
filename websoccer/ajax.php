@@ -71,7 +71,7 @@ if ($website->getConfig('offline') !== 'offline') {
 		
 		// get and render target block
 		$blockId = $website->getRequestParameter(PARAM_BLOCK);
-		if (strlen($blockId) && isset($block[$blockId])) {
+		if ($blockId !== null && strlen($blockId) && isset($block[$blockId])) {
 			$output['content'] = $viewHandler->renderBlock($blockId, json_decode($block[$blockId], TRUE), $parameters);
 		} else {
 			// get and render page

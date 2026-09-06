@@ -1,0 +1,109 @@
+/* ================================================================== */
+/* Theme tokens (CSS custom properties)                                 */
+/*                                                                    */
+/* Dark green primary, system-driven dark/light mode, WCAG-AA contrast.*/
+/* ================================================================== */
+
+:root {
+  /* Brand / primary — dark green (light mode) */
+  --ws-primary: #1b5e20;
+  --ws-primary-rgb: 27, 94, 32;
+  --ws-primary-hover: #164a1a;
+  --ws-primary-active: #0f3a13;
+  --ws-primary-subtle: #e8f5e9;
+  --ws-primary-subtle-rgb: 232, 245, 233;
+  --ws-primary-text: #1b5e20;
+  --ws-disabled-bg: #6b9f6e;
+  --ws-disabled-border: #5d8f60;
+  --ws-disabled-color: #ffffff;
+  --ws-selection-bg: #e8f5e9;
+  --ws-selection-border: #81c784;
+  --ws-pitch-label-color: #12351b;
+
+  /* Surfaces */
+  --ws-body-bg: #f5f7f6;
+  --ws-body-color: #1a1d1a;
+  --ws-card-bg: #ffffff;
+  --ws-card-border: #e0e3e0;
+  --ws-navbar-bg: #ffffff;
+  --ws-sidebar-bg: #ffffff;
+  --ws-sidebar-border: #e0e3e0;
+  --ws-footer-bg: #ffffff;
+  --ws-footer-border: #e0e3e0;
+
+  /* Secondary surfaces */
+  --ws-muted-bg: #f0f2f1;
+  --ws-muted-color: #6c757d;
+  --ws-input-bg: #ffffff;
+
+  /* Border + shadow */
+  --ws-border-color: #d0d4d1;
+  --ws-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --ws-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --ws-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Layout */
+  --ws-navbar-height: 60px;
+  --ws-sidebar-width: 260px;
+  --ws-sidebar-collapsed-width: 48px;
+  --ws-sidebar-current-width: var(--ws-sidebar-width);
+  --ws-footer-height: 52px;
+
+  /* Bootstrap overrides — map our tokens onto BS5 variables */
+  --bs-primary: var(--ws-primary);
+  --bs-primary-rgb: var(--ws-primary-rgb);
+  --bs-emphasis-color: var(--ws-body-color);
+  --bs-body-bg: var(--ws-body-bg);
+  --bs-body-color: var(--ws-body-color);
+  --bs-border-color: var(--ws-border-color);
+  --bs-secondary-color: var(--ws-muted-color);
+  --bs-link-color: var(--ws-primary);
+  --bs-link-hover-color: var(--ws-primary-hover);
+  --bs-navbar-color: var(--ws-body-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* Dark mode — driven by system preference                            */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ws-primary: #43a047;
+    --ws-primary-rgb: 67, 160, 71;
+    --ws-primary-hover: #2e7d32;
+    --ws-primary-active: #1b5e20;
+    --ws-primary-subtle: #1b2e1c;
+    --ws-primary-subtle-rgb: 27, 46, 28;
+    --ws-primary-text: #6fcf73;
+    --ws-disabled-bg: #2f6f35;
+    --ws-disabled-border: #3d8544;
+    --ws-disabled-color: #e8f5e9;
+    --ws-selection-bg: #1b3a20;
+    --ws-selection-border: #43a047;
+    --ws-pitch-label-color: #12351b;
+
+    --ws-body-bg: #0f1410;
+    --ws-body-color: #d8ded8;
+    --ws-card-bg: #1a201b;
+    --ws-card-border: #2a312b;
+    --ws-navbar-bg: #161c17;
+    --ws-sidebar-bg: #161c17;
+    --ws-sidebar-border: #2a312b;
+    --ws-footer-bg: #161c17;
+    --ws-footer-border: #2a312b;
+
+    --ws-muted-bg: #1e2520;
+    --ws-muted-color: #9aa39c;
+    --ws-input-bg: #0b0f0c;
+
+    --ws-border-color: #2a312b;
+    --ws-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --ws-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --ws-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.45);
+
+    --bs-link-color: var(--ws-primary-text);
+    --bs-link-hover-color: #8dd991;
+    --bs-emphasis-color: #ffffff;
+    --bs-secondary-color: var(--ws-muted-color);
+  }
+}

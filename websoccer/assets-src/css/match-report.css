@@ -1,0 +1,142 @@
+/* ================================================================== */
+/* Match report                                                        */
+/* ================================================================== */
+
+#report_result {
+  border-top: 1px solid var(--ws-border-color);
+  border-bottom: 1px solid var(--ws-border-color);
+  text-align: center;
+}
+
+#report_goals_home,
+#report_goals_separator,
+#report_goals_guest {
+  padding: 30px;
+  display: inline-block;
+  font-size: 36px;
+  font-weight: bold;
+}
+#report_goals_home {
+  padding-left: 0;
+}
+#report_goals_guest {
+  padding-right: 0;
+}
+
+#reportarea {
+  border: 1px solid var(--ws-border-color);
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.report_minute {
+  font-weight: bold;
+  color: var(--ws-body-color);
+}
+.report_comment {
+  color: var(--ws-muted-color);
+}
+
+.report_team_home {
+  color: var(--ws-primary);
+}
+
+.report_team_guest {
+  color: #e67e22;
+}
+
+#reporttable {
+  table-layout: fixed;
+}
+#reporttable td {
+  padding-top: 10px;
+}
+
+.minutesPlayed {
+  font-weight: bold;
+  font-size: 80%;
+  cursor: default;
+}
+
+.youthmatchreporticon {
+  max-height: 14px;
+}
+
+/* WS icons */
+.websoccericon-goal {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -95px -32px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-yellowcard {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -223px -96px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-redcard {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -160px -96px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-substitution {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -223px -163px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-injury {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -222px -224px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-shoot {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -95px -225px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-attempt {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -31px -225px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-penalty {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -160px -224px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-matchcompleted {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -159px -30px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-corner {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -31px -160px;
+  width: 34px;
+  height: 32px;
+  display: inline-block;
+}
+
+.websoccericon-tacticschange {
+  background: url("../../img/icons-websoccer-32.png") no-repeat -95px -160px;
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+}

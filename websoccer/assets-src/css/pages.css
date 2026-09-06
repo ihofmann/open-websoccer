@@ -1,0 +1,66 @@
+/* ================================================================== */
+/* Page-specific styles: login, home hero and backwards compat         */
+/* ================================================================== */
+
+/* ------------------------------------------------------------------ */
+/* Login page                                                          */
+/* ------------------------------------------------------------------ */
+
+.ws-login-card {
+  max-width: 420px;
+  margin: 2rem auto;
+}
+.ws-login-card .box {
+  padding: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Home page hero                                                      */
+/* ------------------------------------------------------------------ */
+
+.ws-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--ws-primary-rgb), 0.12),
+    rgba(var(--ws-primary-rgb), 0.04)
+  );
+  border: 1px solid var(--ws-card-border);
+  border-radius: 0.75rem;
+  padding: 2.5rem 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.ws-hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ws-primary);
+  margin-bottom: 0.75rem;
+}
+.ws-hero p {
+  font-size: 1.05rem;
+  color: var(--ws-body-color);
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Utility — keep existing ws-* classes working                        */
+/* ------------------------------------------------------------------ */
+
+/* The body padding is handled in layout.css; keep this for backwards compat */
+body {
+  padding-bottom: 0;
+}
+
+.sidebar-nav {
+  padding: 0;
+}
+
+#contentArea {
+  position: relative;
+}
+
+.help-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.75rem;
+}
