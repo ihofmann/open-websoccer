@@ -22,5 +22,5 @@
     echo "<h1>". $mainTitle ." &raquo; ". $i18n->getMessage("subpage_save_title") . "</h1>";
 
     echo createSuccessMessage($i18n->getMessage("alert_save_success"), "");
-    echo "<p>&raquo; <a href=\"". $_SERVER['PHP_SELF'] ."?site=".$site ."\">". $i18n->getMessage("back_label") . "</a></p>\n";
+    echo "<p>&raquo; <a href=\"". htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') ."?site=".$site ."\">". $i18n->getMessage("back_label") . "</a></p>\n";
 ?>

@@ -34,7 +34,7 @@
 		<div id="collapseOne" class="accordion-collapse collapse <?php if ($openSearchForm) echo "show"?>">
 			<div class="accordion-body">
 				<form class="row" name="frmSearch"
-					action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
+					action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="get">
 					<input type="hidden" name="site" value="<?php echo $site; ?>">
 					<input type="hidden" name="entity" value="<?php echo $entity; ?>">
 

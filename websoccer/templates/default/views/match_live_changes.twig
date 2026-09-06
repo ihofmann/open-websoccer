@@ -8,6 +8,7 @@
 
 {% block page_content %}
 <form id="formationForm" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 	<h3>{{ i18n.getMessage("match_report_minute", minute) }} (<a href="{{ env.getInternalUrl("match", "id=" ~ env.getRequestParameter("id")) }}">{{ i18n.getMessage("match_navlabel") }}</a>)</h3>
 
 	<table class="table table-striped">

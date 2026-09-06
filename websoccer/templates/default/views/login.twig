@@ -10,6 +10,7 @@
 <div class="ws-login-card">
   <div class="box">
     <form method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 
 	{%  if env.getConfig("login_type") == "email" %}

@@ -6,6 +6,7 @@
 
 {% block formation_setup %}
 	<form method="post" class="d-flex flex-wrap gap-2 align-items-center">
+	{{ formelements.csrfField(csrfToken) }}
 		<input type="hidden" name="page" value="formation" />
 		<input type="hidden" name="templateid" value="" />
 		<input type="hidden" name="nationalteam" value="{{ env.getRequestParameter("nationalteam") }}" />
@@ -40,6 +41,7 @@
 	</div>
 
 	<form method="post" class="d-flex flex-wrap gap-2 align-items-center mb-4">
+	{{ formelements.csrfField(csrfToken) }}
 		<input type="hidden" name="page" value="formation" />
 		<input type="hidden" id="preselect" name="preselect" value="" />
 		<input type="hidden" name="nationalteam" value="{{ env.getRequestParameter("nationalteam") }}" />

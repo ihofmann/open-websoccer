@@ -15,6 +15,15 @@ final class ActionHandlerTest extends TestCaseBase {
 		// ActionHandler.class.php; ensure the class is loaded before tests
 		// reference those constants.
 		class_exists(\ActionHandler::class, true);
+		// Set up a valid CSRF token so handleAction() doesn't reject.
+		$_SESSION['frontend_csrf_token'] = 'test-csrf-token';
+		$_REQUEST['csrf_token'] = 'test-csrf-token';
+	}
+
+	protected function tearDown(): void {
+		unset($_SESSION['frontend_csrf_token']);
+		unset($_REQUEST['csrf_token']);
+		parent::tearDown();
 	}
 
 	public function testHandleActionReturnsNullForNullActionId(): void {

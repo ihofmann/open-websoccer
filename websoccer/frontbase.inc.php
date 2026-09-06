@@ -25,7 +25,7 @@ define('PARAM_PAGE', 'page');
 define('PARAM_BLOCK', 'block');
 define('PARAM_PAGENUMBER', 'pageno');
 define('MSG_KEY_ERROR_PAGENOTFOUND', 'error_page_not_found');
-define('ASSETS_VERSION', 'av1788703913');
+define('ASSETS_VERSION', 'av1788722240');
 
 require(BASE_FOLDER . '/admin/config/global.inc.php');
 
@@ -54,6 +54,18 @@ if ($website->getUser()->language != null) {
 }
 include(sprintf(CONFIGCACHE_MESSAGES, $i18n->getCurrentLanguage()));
 include(sprintf(CONFIGCACHE_ENTITYMESSAGES, $i18n->getCurrentLanguage()));
+
+/**
+ * Returns the per-session CSRF token used by frontend actions.
+ *
+ * @return string 64-character hex token.
+ */
+function getFrontendCsrfToken() {
+	if (!isset($_SESSION['frontend_csrf_token'])) {
+		$_SESSION['frontend_csrf_token'] = bin2hex(random_bytes(32));
+	}
+	return $_SESSION['frontend_csrf_token'];
+}
 
 /**
  * Returns an error message that is safe to display in the frontend.

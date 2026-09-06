@@ -148,6 +148,7 @@
 	{{ profile.infofield(i18n.getMessage("entity_trainer_p_stamina"), bar_stamina|raw, true) }}
 	
 	<form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 		<fieldset>
 	    	<legend>{{ i18n.getMessage('training_execute_training_title') }}</legend>
 		

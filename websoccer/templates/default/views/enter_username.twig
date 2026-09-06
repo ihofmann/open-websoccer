@@ -10,6 +10,7 @@
 <p>{{ i18n.getMessage("enter-username_intro") }}</p>
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	{{ formelements.textfield('nick', i18n.getMessage('entity_users_nick'), env.getRequestParameter('nick'), true, validationMsg, 'text') }}
 	

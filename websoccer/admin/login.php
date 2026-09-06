@@ -98,9 +98,9 @@ if ($inputVerificationCode !== FALSE) {
 		$showVerificationForm = TRUE;
 	} else {
 		// compare code
-		if ($inputVerificationCode === $admin['verification_code']) {
+		if (hash_equals($admin['verification_code'] ?? '', $inputVerificationCode)) {
 			// correct code - complete login
-			$hashedPw = (isset($_SESSION['pending_2fa_hashed_pw'])) ? $_SESSION['pending_2fa_hashed_pw'] : '';
+			$matchedNewPw = (isset($_SESSION['pending_2fa_matched_new_pw'])) ? $_SESSION['pending_2fa_matched_new_pw'] : FALSE;
 
 			if (version_compare(PHP_VERSION, '7.0.0') >= 0) {
 				session_destroy();
@@ -117,8 +117,8 @@ if ($inputVerificationCode !== FALSE) {
 				'login_attempts' => 0,
 				'blocked_until' => 0
 			);
-			if ($admin['passwort_neu'] && $admin['passwort_neu'] == $hashedPw) {
-				$updateColumns['passwort'] = $hashedPw;
+			if ($matchedNewPw && $admin['passwort_neu']) {
+				$updateColumns['passwort'] = $admin['passwort_neu'];
 				$updateColumns['passwort_neu_angefordert'] = 0;
 				$updateColumns['passwort_neu'] = '';
 			}
@@ -183,8 +183,10 @@ if (($inputUser or $inputPassword) && $inputVerificationCode === FALSE) {
 		} else {
 			$admin = $result->fetch_array();
 			
-			$hashedPw = SecurityUtil::hashPassword($inputPassword, $admin['passwort_salt']);
-			if ($admin['passwort'] == $hashedPw || $admin['passwort_neu'] == $hashedPw) {
+			$matchesMain = SecurityUtil::verifyPassword($inputPassword, $admin['passwort_salt'], $admin['passwort']);
+			$matchesNew = strlen($admin['passwort_neu'] ?? '') > 0
+				&& SecurityUtil::verifyPassword($inputPassword, $admin['passwort_salt'], $admin['passwort_neu']);
+			if ($matchesMain || $matchesNew) {
 
 				// check if account is blocked
 				if ($admin['blocked_until'] > $now) {
@@ -215,9 +217,9 @@ if (($inputUser or $inputPassword) && $inputVerificationCode === FALSE) {
 						$displayedCode = $verificationCode;
 					}
 
-					// store pending admin ID and hashed password in session for step 2
+					// store pending admin ID and flag whether the new password was used
 					$_SESSION['pending_2fa_admin_id'] = $admin['id'];
-					$_SESSION['pending_2fa_hashed_pw'] = $hashedPw;
+					$_SESSION['pending_2fa_matched_new_pw'] = $matchesNew;
 
 					$showVerificationForm = TRUE;
 				}

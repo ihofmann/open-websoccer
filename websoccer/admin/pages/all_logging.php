@@ -51,7 +51,7 @@ if (!$show) {
 
       ?>
 
-      <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post'>
+      <form action='<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>' method='post'>
         <input type='hidden' name='action' value='clear_old'>
 		<input type='hidden' name='site' value='<?php echo $site; ?>'>
         <p><input type='submit' class='btn btn-outline-primary' value='<?php echo $i18n->getMessage('all_logging_button_clear_old'); ?>'></p>

@@ -47,7 +47,14 @@ class ActionHandler {
 		if ($actionId == NULL) {
 			return;
 		}
-		
+
+		// validate CSRF token for all state-changing actions
+		$sessionToken = isset($_SESSION['frontend_csrf_token']) ? $_SESSION['frontend_csrf_token'] : '';
+		$submittedToken = isset($_REQUEST['csrf_token']) ? $_REQUEST['csrf_token'] : '';
+		if (!is_string($submittedToken) || !$sessionToken || !hash_equals($sessionToken, $submittedToken)) {
+			throw new Exception($i18n->getMessage('error_access_denied'));
+		}
+
 		// check double-submit
 		if (isset($_SESSION[DOUBLE_SUBMIT_CHECK_SESSIONKEY_ACTIONID]) 
 				&& $_SESSION[DOUBLE_SUBMIT_CHECK_SESSIONKEY_ACTIONID] == $actionId 

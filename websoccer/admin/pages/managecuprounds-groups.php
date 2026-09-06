@@ -268,7 +268,7 @@ if (count($groups)) {
 			if ($showEditForm && $_REQUEST["group"] == $groupName) {
 				$nameValue = (isset($_REQUEST["groupname"])) ? $_REQUEST["groupname"] : $groupName;
 				?>
-				<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="d-flex flex-wrap gap-2 align-items-center">
+				<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" class="d-flex flex-wrap gap-2 align-items-center">
 					<input type="hidden" name="action" value="editsave">
 					<input type="hidden" name="site" value="<?php echo $site; ?>">
 					<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -293,7 +293,7 @@ if (count($groups)) {
 			echo "</ul>\n";
 			
 			?>
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="d-flex flex-wrap gap-2 align-items-center">
+			<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" class="d-flex flex-wrap gap-2 align-items-center">
 				<input type="hidden" name="action" value="addteam">
 				<input type="hidden" name="site" value="<?php echo $site; ?>">
 				<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -311,7 +311,7 @@ if (count($groups)) {
 			echo "<td>";
 			
 			?>
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="d-flex flex-wrap gap-2 align-items-center">
+			<form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" class="d-flex flex-wrap gap-2 align-items-center">
 				<input type="hidden" name="action" value="saveranks">
 				<input type="hidden" name="site" value="<?php echo $site; ?>">
 				<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -439,7 +439,7 @@ if (count($groups)) {
 		<p><a href="#generateModal" role="button" class="btn btn-outline-primary" data-bs-toggle="modal"><?php echo $i18n->getMessage("managecuprounds_groups_open_generate_matches_popup"); ?></a></p>
 	</div>
 	
-	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+	<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
 	    <input type="hidden" name="action" value="generateschedule">
 		<input type="hidden" name="site" value="<?php echo $site; ?>">
 		<input type="hidden" name="round" value="<?php echo $roundid; ?>">
@@ -475,7 +475,7 @@ if (count($groups)) {
 // Create form
 ?>
 
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
     <input type="hidden" name="action" value="create">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="round" value="<?php echo $roundid; ?>">

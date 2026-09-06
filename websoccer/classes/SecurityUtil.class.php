@@ -28,14 +28,53 @@
 class SecurityUtil {
 	
 	/**
-	 * Hashes a password.
-	 * 
+	 * Hashes a password using bcrypt (PHP password_hash).
+	 *
+	 * The salt parameter is retained for backward compatibility with existing
+	 * call sites but is no longer used for new hashes — bcrypt generates its
+	 * own internal salt.
+	 *
 	 * @param string $password unhashed password string.
-	 * @param string $salt Salt to add to the password.
-	 * @return string hashed password, including salt.
+	 * @param string $salt Salt (ignored for new bcrypt hashes).
+	 * @return string bcrypt hash string.
 	 */
-	public static function hashPassword($password, $salt) {
-		return hash('sha256', $salt . hash('sha256', $password));
+	public static function hashPassword($password, $salt = '') {
+		return password_hash($password, PASSWORD_BCRYPT);
+	}
+	
+	/**
+	 * Verifies a password against a stored hash, supporting both the legacy
+	 * SHA-256 format and modern bcrypt hashes.
+	 *
+	 * @param string $password the plain-text password to check.
+	 * @param string $salt the legacy salt (only used for legacy hashes).
+	 * @param string $storedHash the hash stored in the database.
+	 * @return bool TRUE if the password matches.
+	 */
+	public static function verifyPassword($password, $salt, $storedHash) {
+		if (!is_string($storedHash) || $storedHash === '') {
+			return FALSE;
+		}
+		// Modern bcrypt hash (starts with '$')
+		if ($storedHash[0] === '$') {
+			return password_verify($password, $storedHash);
+		}
+		// Legacy SHA-256 hash — use timing-safe comparison
+		return hash_equals($storedHash, hash('sha256', $salt . hash('sha256', $password)));
+	}
+	
+	/**
+	 * Checks whether a stored hash should be rehashed to the modern format.
+	 *
+	 * @param string $storedHash the hash stored in the database.
+	 * @return bool TRUE if the hash is in the legacy SHA-256 format.
+	 */
+	public static function needsRehash($storedHash) {
+		if (!is_string($storedHash) || strlen($storedHash) === 0) {
+			return TRUE;
+		}
+		// Legacy SHA-256 hashes are 64 hex chars and don't start with '$'
+		return $storedHash[0] !== '$' || password_needs_rehash($storedHash, PASSWORD_BCRYPT);
 	}
 	
 	/**
@@ -45,13 +84,14 @@ class SecurityUtil {
 	 */
 	public static function isAdminLoggedIn() {
 		// prevent session hijacking
+		$userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
 		if (isset($_SESSION['HTTP_USER_AGENT'])) {
-			if ($_SESSION['HTTP_USER_AGENT'] != md5($_SERVER['HTTP_USER_AGENT'])) {
+			if (!hash_equals($_SESSION['HTTP_USER_AGENT'], hash('sha256', $userAgent))) {
 				self::logoutAdmin();
 				return FALSE;
 			}
 		} else {
-			$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+			$_SESSION['HTTP_USER_AGENT'] = hash('sha256', $userAgent);
 		}
 	
 	    return (isset($_SESSION['valid']) && $_SESSION['valid']);
@@ -66,36 +106,48 @@ class SecurityUtil {
 	}
 	
 	/**
-	 * Generates a random password.
+	 * Generates a random password using a cryptographically secure RNG.
 	 * 
-	 * @return string generated (unhashed) password of length 8.
+	 * @return string generated (unhashed) password of length 12.
 	 */
 	public static function generatePassword() {
-		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%!=?';
-		return substr(str_shuffle($chars), 0, 8);
+		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$length = 12;
+		$result = '';
+		for ($i = 0; $i < $length; $i++) {
+			$result .= $chars[random_int(0, strlen($chars) - 1)];
+		}
+		return $result;
 	}
 	
 	/**
-	 * Generates a random salting string.
-	 * 
-	 * @return string salt string of length 4.
+	 * Generates a random salting string using a cryptographically secure RNG.
+	 *
+	 * The salt is 5 characters to fit the existing VARCHAR(5) database column.
+	 * With bcrypt the external salt is no longer used — it is only kept for
+	 * backward-compatible verification of legacy SHA-256 hashes.
+	 *
+	 * @return string salt string of length 5.
 	 */
 	public static function generatePasswordSalt() {
-		return substr(self::generatePassword(), 0, 4);
+		$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$result = '';
+		for ($i = 0; $i < 5; $i++) {
+			$result .= $chars[random_int(0, strlen($chars) - 1)];
+		}
+		return $result;
 	}	
 	
 	/**
-	 * Generates a token that can be stored in the session or cookie in order to identify a user.
+	 * Generates a cryptographically random token for identifying a user
+	 * across sessions (e.g. "remember me" cookie).
 	 * 
-	 * @param int $userId User ID
-	 * @param string $salt password salt.
-	 * @return string generated session token.
+	 * @param int $userId User ID (ignored — token is fully random).
+	 * @param string $salt password salt (ignored — token is fully random).
+	 * @return string 64-character hex token.
 	 */
 	public static function generateSessionToken($userId, $salt) {
-		
-		$useragent = (isset($_SESSION['HTTP_USER_AGENT'])) ? $_SESSION['HTTP_USER_AGENT'] : 'n.a.';
-		
-		return md5($salt . $useragent . $userId);
+		return bin2hex(random_bytes(32));
 	}
 	
 	/**

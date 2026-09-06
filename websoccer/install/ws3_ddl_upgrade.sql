@@ -1,7 +1,7 @@
-  
-ALTER TABLE ws3_admin ADD passwort_salt VARCHAR(5);
-ALTER TABLE ws3_admin MODIFY passwort VARCHAR(64);
-ALTER TABLE ws3_admin MODIFY passwort_neu VARCHAR(64);
+
+ALTER TABLE ws3_admin ADD passwort_salt VARCHAR(32);
+ALTER TABLE ws3_admin MODIFY passwort VARCHAR(255);
+ALTER TABLE ws3_admin MODIFY passwort_neu VARCHAR(255);
 ALTER TABLE ws3_admin ADD lang VARCHAR(2);
 ALTER TABLE ws3_admin ADD verification_code VARCHAR(6);
 ALTER TABLE ws3_admin ADD login_attempts INT(11) NOT NULL DEFAULT 0;
@@ -177,11 +177,12 @@ VALUES
   ('stats', 'Compute and update league statistics', 'Ligastatistiken berechnen und aktualisieren', 'UpdateStatisticsJob', 30, 0, 1, '', 0),
   ('stadium', 'Accept stadium construction works and training camp bookings', 'Fällige Stadionerweiterungen und Trainingslager ausführen', 'AcceptStadiumConstructionWorkJob', 30, 0, 1, '', 0);
 
-ALTER TABLE ws3_user ADD passwort_salt VARCHAR(5);
+ALTER TABLE ws3_user ADD passwort_salt VARCHAR(32);
 ALTER TABLE ws3_user ADD tokenid VARCHAR(255);
 ALTER TABLE ws3_user ADD lang VARCHAR(2) DEFAULT 'de';
-ALTER TABLE ws3_user MODIFY passwort VARCHAR(64);
-ALTER TABLE ws3_user MODIFY passwort_neu VARCHAR(64);
+ALTER TABLE ws3_user MODIFY passwort VARCHAR(255);
+ALTER TABLE ws3_user MODIFY passwort_neu VARCHAR(255);
+ALTER TABLE ws3_user MODIFY schluessel VARCHAR(32);
 ALTER TABLE ws3_user ADD c_hideinonlinelist ENUM('1','0') NOT NULL DEFAULT '0';
 ALTER TABLE ws3_user ADD premium_balance INT(6) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_user ADD picture VARCHAR(255) NULL;

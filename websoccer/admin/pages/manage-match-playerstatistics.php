@@ -191,7 +191,7 @@ if (!count($match)) {
 $positions = array('T','LV','IV', 'RV', 'LM', 'DM', 'ZM', 'OM', 'RM', 'LS', 'MS', 'RS');
 
 // ******** form for adding players
-echo "<form action=\"". $_SERVER['PHP_SELF'] . "\" class=\"row\" method=\"post\">";
+echo "<form action=\"". htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') . "\" class=\"row\" method=\"post\">";
 echo "<input type=\"hidden\" name=\"action\" value=\"create\">";
 echo "<input type=\"hidden\" name=\"site\" value=\"$site\">";
 echo "<input type=\"hidden\" name=\"match\" value=\"$matchId\">";
@@ -232,7 +232,7 @@ echo "</div></form>";
 
 // ******** list players and enable editing
 
-echo "<form action=\"". $_SERVER['PHP_SELF'] . "\" method=\"post\">";
+echo "<form action=\"". htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') . "\" method=\"post\">";
 echo "<input type=\"hidden\" name=\"site\" value=\"$site\"/>";
 echo "<input type=\"hidden\" name=\"action\" value=\"update\"/>";
 echo "<input type=\"hidden\" name=\"match\" value=\"$matchId\"/>";

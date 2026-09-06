@@ -44,7 +44,7 @@ if (!$show) {
 
   <p><?php echo $i18n->getMessage("termsandconditions_introduction"); ?></p>
   
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="d-flex flex-wrap gap-2 align-items-center mb-3">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="d-flex flex-wrap gap-2 align-items-center mb-3">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	
 	<label for="lang"><?php echo $i18n->getMessage("termsandconditions_label_language"); ?></label>
@@ -60,7 +60,7 @@ if (!$show) {
 	<button type="submit" class="btn btn-outline-primary"><?php echo $i18n->getMessage("button_display"); ?></button>
   </form>
   
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
     <input type="hidden" name="show" value="save">
     <input type="hidden" name="lang" value="<?php echo escapeOutput($selectedLang); ?>">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">

@@ -26,6 +26,7 @@
 	<p class="mt-2 mb-3"><i class="bi bi-exclamation-triangle"></i> {{ i18n.getMessage('trainingcamp_delete_note') }}</p>
 	
 	<form method="post">
+	{{ formelements.csrfField(csrfToken) }}
 		<div class="d-flex gap-2 justify-content-center p-3">
 			<button type="submit" class="btn btn-outline-primary"><i class="bi bi-x-circle"></i> {{ i18n.getMessage('trainingcamp_delete') }}</button>
 		</div>

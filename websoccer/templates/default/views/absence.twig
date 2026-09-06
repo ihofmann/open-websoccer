@@ -18,6 +18,7 @@
 	{% else %}
 		
 		<form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 		
 			{{ formelements.textfield('days', i18n.getMessage('absence_label_days'), env.getRequestParameter("days"), true, validationMsg, 'number', i18n.getMessage('absence_label_days_help')) }}
 		

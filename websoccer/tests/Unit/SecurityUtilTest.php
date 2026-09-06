@@ -11,10 +11,9 @@ final class SecurityUtilTest extends TestCaseBase {
 		$_SERVER['HTTP_USER_AGENT'] = 'PHPUnit-Test-Agent/1.0';
 	}
 
-	public function testHashPasswordIsDeterministic(): void {
-		$a = SecurityUtil::hashPassword('secret', 'salt');
-		$b = SecurityUtil::hashPassword('secret', 'salt');
-		$this->assertSame($a, $b);
+	public function testHashPasswordProducesBcryptHash(): void {
+		$hash = SecurityUtil::hashPassword('secret', 'salt');
+		$this->assertStringStartsWith('$2y$', $hash);
 	}
 
 	public function testHashPasswordDiffersForDifferentPasswords(): void {
@@ -29,17 +28,42 @@ final class SecurityUtilTest extends TestCaseBase {
 		$this->assertNotSame($a, $b);
 	}
 
-	public function testHashPasswordMatchesExpectedSha256Value(): void {
-		$expected = hash('sha256', 'salt' . hash('sha256', 'password'));
-		$this->assertSame($expected, SecurityUtil::hashPassword('password', 'salt'));
+	public function testVerifyPasswordAcceptsCorrectPassword(): void {
+		$hash = SecurityUtil::hashPassword('password', 'salt');
+		$this->assertTrue(SecurityUtil::verifyPassword('password', 'salt', $hash));
 	}
 
-	public function testGeneratePasswordReturnsStringOfLength8(): void {
-		$this->assertSame(8, strlen(SecurityUtil::generatePassword()));
+	public function testVerifyPasswordRejectsWrongPassword(): void {
+		$hash = SecurityUtil::hashPassword('password', 'salt');
+		$this->assertFalse(SecurityUtil::verifyPassword('wrong', 'salt', $hash));
+	}
+
+	public function testVerifyPasswordAcceptsLegacySha256Hash(): void {
+		$legacyHash = hash('sha256', 'salt' . hash('sha256', 'password'));
+		$this->assertTrue(SecurityUtil::verifyPassword('password', 'salt', $legacyHash));
+	}
+
+	public function testVerifyPasswordRejectsWrongPasswordForLegacyHash(): void {
+		$legacyHash = hash('sha256', 'salt' . hash('sha256', 'password'));
+		$this->assertFalse(SecurityUtil::verifyPassword('wrong', 'salt', $legacyHash));
+	}
+
+	public function testNeedsRehashReturnsTrueForLegacyHash(): void {
+		$legacyHash = hash('sha256', 'salt' . hash('sha256', 'password'));
+		$this->assertTrue(SecurityUtil::needsRehash($legacyHash));
+	}
+
+	public function testNeedsRehashReturnsFalseForFreshBcryptHash(): void {
+		$hash = SecurityUtil::hashPassword('password', 'salt');
+		$this->assertFalse(SecurityUtil::needsRehash($hash));
+	}
+
+	public function testGeneratePasswordReturnsStringOfLength12(): void {
+		$this->assertSame(12, strlen(SecurityUtil::generatePassword()));
 	}
 
 	public function testGeneratePasswordUsesCharsetCharactersOnly(): void {
-		$charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%!=?';
+		$charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$allowed = str_split($charset);
 		// Generate several passwords to increase confidence.
 		for ($i = 0; $i < 20; $i++) {
@@ -50,15 +74,15 @@ final class SecurityUtilTest extends TestCaseBase {
 		}
 	}
 
-	public function testGeneratePasswordSaltReturnsStringOfLength4(): void {
-		$this->assertSame(4, strlen(SecurityUtil::generatePasswordSalt()));
+	public function testGeneratePasswordSaltReturnsStringOfLength5(): void {
+		$salt = SecurityUtil::generatePasswordSalt();
+		$this->assertSame(5, strlen($salt));
 	}
 
-	public function testGenerateSessionTokenIsDeterministicForSameInputs(): void {
-		$_SESSION['HTTP_USER_AGENT'] = 'agent-hash';
-		$a = SecurityUtil::generateSessionToken(42, 'salt');
-		$b = SecurityUtil::generateSessionToken(42, 'salt');
-		$this->assertSame($a, $b);
+	public function testGenerateSessionTokenReturns64CharHex(): void {
+		$token = SecurityUtil::generateSessionToken(42, 'salt');
+		$this->assertSame(64, strlen($token));
+		$this->assertMatchesRegularExpression('/^[0-9a-f]+$/', $token);
 	}
 
 	public function testGenerateSessionTokenDiffersForDifferentUserIds(): void {
@@ -75,10 +99,11 @@ final class SecurityUtilTest extends TestCaseBase {
 		$this->assertNotSame($a, $b);
 	}
 
-	public function testGenerateSessionTokenUsesNaWhenNoUserAgentInSession(): void {
-		unset($_SESSION['HTTP_USER_AGENT']);
-		$expected = md5('salt' . 'n.a.' . 1);
-		$this->assertSame($expected, SecurityUtil::generateSessionToken(1, 'salt'));
+	public function testGenerateSessionTokenDiffersOnRepeatedCalls(): void {
+		$_SESSION['HTTP_USER_AGENT'] = 'agent-hash';
+		$a = SecurityUtil::generateSessionToken(1, 'salt');
+		$b = SecurityUtil::generateSessionToken(1, 'salt');
+		$this->assertNotSame($a, $b);
 	}
 
 	public function testIsAdminLoggedInReturnsFalseWhenNoValidSessionSet(): void {
@@ -88,19 +113,19 @@ final class SecurityUtilTest extends TestCaseBase {
 	}
 
 	public function testIsAdminLoggedInReturnsTrueWhenValidSessionSet(): void {
-		$_SESSION['HTTP_USER_AGENT'] = md5('PHPUnit-Test-Agent/1.0');
+		$_SESSION['HTTP_USER_AGENT'] = hash('sha256', 'PHPUnit-Test-Agent/1.0');
 		$_SESSION['valid'] = true;
 		$this->assertTrue(SecurityUtil::isAdminLoggedIn());
 	}
 
 	public function testIsAdminLoggedInReturnsFalseWhenValidIsFalse(): void {
-		$_SESSION['HTTP_USER_AGENT'] = md5('PHPUnit-Test-Agent/1.0');
+		$_SESSION['HTTP_USER_AGENT'] = hash('sha256', 'PHPUnit-Test-Agent/1.0');
 		$_SESSION['valid'] = false;
 		$this->assertFalse(SecurityUtil::isAdminLoggedIn());
 	}
 
 	public function testIsAdminLoggedInLogsOutOnUserAgentMismatch(): void {
-		$_SESSION['HTTP_USER_AGENT'] = md5('different-agent');
+		$_SESSION['HTTP_USER_AGENT'] = hash('sha256', 'different-agent');
 		$_SESSION['valid'] = true;
 		$_SESSION['some_data'] = 'data';
 
@@ -118,7 +143,7 @@ final class SecurityUtilTest extends TestCaseBase {
 	public function testIsAdminLoggedInSetsUserAgentHashOnFirstCall(): void {
 		$this->assertFalse(isset($_SESSION['HTTP_USER_AGENT']));
 		SecurityUtil::isAdminLoggedIn();
-		$this->assertSame(md5('PHPUnit-Test-Agent/1.0'), $_SESSION['HTTP_USER_AGENT']);
+		$this->assertSame(hash('sha256', 'PHPUnit-Test-Agent/1.0'), $_SESSION['HTTP_USER_AGENT']);
 	}
 
 	public function testLogoutAdminClearsSession(): void {

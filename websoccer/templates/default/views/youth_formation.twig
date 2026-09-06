@@ -8,6 +8,7 @@
 		- <a href="{{ env.getInternalUrl("team", "id=" ~ matchinfo.guest_team_id) }}">{{ matchinfo.guest_team_name }}</a></p>
 
 	<form method="post" class="d-flex flex-wrap gap-2 align-items-center" data-testid="youth-formation-setup-form">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 		<input type="hidden" name="page" value="youth-formation" />
 		<input type="hidden" name="matchid" value="{{ env.getRequestParameter("matchid") }}" />
 		

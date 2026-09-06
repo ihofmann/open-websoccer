@@ -12,6 +12,7 @@
 	<h3 data-testid="nt-search-team-name">{{ team_name }}</h3>
 	
 	<form class="row" method="post" data-testid="nt-search-form">
+	{{ formelements.csrfField(csrfToken) }}
 	
 		{{ formelements.textfield('fname', i18n.getMessage('entity_player_vorname'), env.getRequestParameter('fname'), false, validationMsg, 'text', null, false, 'nt-search-fname') }}
 		

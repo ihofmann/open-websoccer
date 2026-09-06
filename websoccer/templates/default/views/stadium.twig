@@ -91,6 +91,7 @@
 		
 		{% if maxSide > 0 or maxGrand > 0 or maxVip > 0 %}
 			<form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 				<fieldset>
 			    	<legend>{{ i18n.getMessage('stadium_extend_title') }}</legend>
 			    	

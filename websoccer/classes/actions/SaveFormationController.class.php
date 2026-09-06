@@ -201,7 +201,7 @@ class SaveFormationController implements IActionController {
 		}
 		
 		// save as template
-		if (strlen($parameters['templatename'])) {
+		if (strlen($parameters['templatename'] ?? '')) {
 			
 			// count existing templates in order to stay below boundary
 			$result = $this->_db->querySelect('COUNT(*) AS templates', $fromTable, 'verein_id = %d AND templatename IS NOT NULL', $teamId);

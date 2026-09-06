@@ -74,18 +74,26 @@ class DefaultUserLoginMethod implements IUserLoginMethod {
 			return FALSE;
 		}
 		
-		// check password
-		$inputPassword = SecurityUtil::hashPassword($password, $userdata['passwort_salt']);
-		if ($inputPassword != $userdata['passwort'] && $inputPassword != $userdata['passwort_neu']) {
+		// check password against main password and new-password (reset)
+		$matchesMain = SecurityUtil::verifyPassword($password, $userdata['passwort_salt'], $userdata['passwort']);
+		$matchesNew = strlen($userdata['passwort_neu'] ?? '') > 0
+			&& SecurityUtil::verifyPassword($password, $userdata['passwort_salt'], $userdata['passwort_neu']);
+		if (!$matchesMain && !$matchesNew) {
 			return FALSE;
 		}
 		
 		// update password after a generated one
-		if ($userdata['passwort_neu'] == $inputPassword) {
-			$columns = array('passwort' => $inputPassword, 'passwort_neu_angefordert' => 0, 'passwort_neu' => '');
+		if ($matchesNew) {
+			$columns = array('passwort' => $userdata['passwort_neu'], 'passwort_neu_angefordert' => 0, 'passwort_neu' => '');
 			$whereCondition = 'id = %d';
 			$parameter = $userdata['id'];
 			$this->_db->queryUpdate($columns, $fromTable, $whereCondition, $parameter);
+		}
+		
+		// rehash to bcrypt if still using legacy SHA-256
+		if ($matchesMain && SecurityUtil::needsRehash($userdata['passwort'])) {
+			$newHash = SecurityUtil::hashPassword($password);
+			$this->_db->queryUpdate(array('passwort' => $newHash), $fromTable, 'id = %d', $userdata['id']);
 		}
 		
 		return $userdata['id'];

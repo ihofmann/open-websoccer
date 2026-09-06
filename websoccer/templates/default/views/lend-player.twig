@@ -31,6 +31,7 @@
 <p>{{ i18n.getMessage("lend-player_intro", env.getConfig("lending_matches_max"))|raw }}</p>
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	{{ formelements.textfield('fee', i18n.getMessage('entity_player_lending_fee'), env.getRequestParameter('fee'), true, validationMsg, 'number') }}
 	
