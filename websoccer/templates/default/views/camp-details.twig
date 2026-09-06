@@ -18,6 +18,7 @@
 {{ profile.infofield(i18n.getMessage("entity_trainingcamp_p_zufriedenheit"), camp.effect_strength_satisfaction) }}
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 	<fieldset>
     	<legend>{{ i18n.getMessage('camp-detail_form_title') }}</legend>
 		{{ formelements.textfield('start_date', i18n.getMessage('camp-detail_start_date'), (env.getRequestParameter("start_date")) ? env.getRequestParameter("start_date") : env.getFormattedDate(defaultDate), true, validationMsg) }}

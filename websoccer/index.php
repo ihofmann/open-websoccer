@@ -32,8 +32,15 @@ $cspHeader = $website->getConfig('csp_header');
 $cspHeader = str_replace('${NONCE}', $cspNonce, $cspHeader);
 header('Content-Security-Policy: ' . $cspHeader);
 
+// Additional security headers for the frontend (the admin panel sets its own
+// via sendAdminSecurityHeaders()).
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+
 $parameters = array();
 $parameters['nonce'] = $cspNonce;
+$parameters['csrfToken'] = getFrontendCsrfToken();
 
 // offline mode
 $isOffline = FALSE;

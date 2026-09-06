@@ -218,7 +218,7 @@ function renderRound($roundNode) {
 	if($showEditForm) {
 		?>
 		
-		  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+		  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
 	    <input type="hidden" name="action" value="edit-save">
 		<input type="hidden" name="site" value="<?php echo $site; ?>">
 		<input type="hidden" name="cup" value="<?php echo $cupid; ?>">
@@ -311,7 +311,7 @@ function renderRound($roundNode) {
 
 // Create new round
 ?>
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
     <input type="hidden" name="action" value="create">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="cup" value="<?php echo $cupid; ?>">

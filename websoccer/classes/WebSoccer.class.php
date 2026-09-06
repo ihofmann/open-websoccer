@@ -205,12 +205,17 @@ class WebSoccer {
 	 */
 	public function getRequestParameter($name) {
 		if (isset($_REQUEST[$name])) {
-			$value = trim($_REQUEST[$name]);
+			$value = $_REQUEST[$name];
+			// Reject array inputs to prevent type errors and information disclosure
+			if (!is_string($value)) {
+				return NULL;
+			}
+			$value = trim($value);
 			if (strlen($value)) {
 				return $value;
 			}
 		}
-		
+
 		return NULL;
 	}
 	
@@ -261,18 +266,26 @@ class WebSoccer {
 		if ($pageId == null) {
 			$pageId = $this->getRequestParameter('page');
 		}
-		
+
 		if (is_scalar($queryString) && strlen((string) $queryString)) {
 			$queryString = '&' . $queryString;
 		} else {
 			$queryString = '';
 		}
-		
-		$url = $this->getConfig('context_root') . '/?page=' . $pageId . $queryString .'&action=' . $actionId;
+
+		// Append CSRF token to all action URLs so that GET-based actions
+		// are protected against CSRF. The token is validated by
+		// ActionHandler::handleAction().
+		$csrfToken = '';
+		if (isset($_SESSION['frontend_csrf_token'])) {
+			$csrfToken = '&csrf_token=' . $_SESSION['frontend_csrf_token'];
+		}
+
+		$url = $this->getConfig('context_root') . '/?page=' . $pageId . $queryString .'&action=' . $actionId . $csrfToken;
 		if ($fullUrl) {
 			$url = $this->getConfig('homepage') . $url;
 		}
-		
+
 		return $url;
 	}
 	

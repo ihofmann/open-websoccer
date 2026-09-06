@@ -14,6 +14,7 @@
 {% endblock %}
 
 <form id="formationForm" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 	{% for playerNo in 1..11 %}
 		<input type="hidden" id="player{{ playerNo }}" name="player{{ playerNo }}" class="playerField" value="{{ formation['player' ~ playerNo] }}">
 		<input type="hidden" id="player{{ playerNo }}_pos" name="player{{ playerNo }}_pos"  value="{{ formation['player' ~ playerNo ~ '_pos'] }}">

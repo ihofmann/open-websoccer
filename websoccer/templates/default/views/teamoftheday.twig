@@ -9,6 +9,7 @@
 
 <h4>{{ i18n.getMessage("entity_league") }}</h4>
 <form class="d-flex flex-wrap gap-2 align-items-center mb-3" method="post">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 
 	<select id="leagueid" name="leagueid" class="col-md-3 form-select select-form-submit">
 		<option></option>

@@ -36,9 +36,27 @@ define("DDL_INDEX", "ws3_ddl_index.sql");
 session_set_cookie_params(array(
 	'lifetime' => 0,
 	'path' => '/',
-	'samesite' => 'Lax'
+	'samesite' => 'Lax',
+	'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+		|| (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'),
+	'httponly' => TRUE
 ));
 session_start();
+
+// Block the installer if the application is already installed. An attacker
+// could otherwise re-run the wizard to overwrite the configuration or probe
+// the system. The check can be bypassed by deleting the config file.
+if (file_exists(CONFIGFILE)) {
+	// Allow re-install only if explicitly requested via ?force=1 and the
+	// config is corrupt (no $conf array).
+	include(CONFIGFILE);
+	if (isset($conf) && is_array($conf) && count($conf) > 0
+			&& (!isset($_GET['force']) || $_GET['force'] != '1')) {
+		header('HTTP/1.0 403 Forbidden');
+		echo '<h1>Already installed</h1><p>The application is already installed. Remove the configuration file to reinstall.</p>';
+		exit;
+	}
+}
 $supportedLanguages = array("de" => "Deutsch", "en" => "English", "es" => "Español", "it" => "Italiano");
 
 ignore_user_abort(TRUE);
@@ -339,17 +357,20 @@ function actionSaveConfig() {
 	
 	$prefix = isset($_POST["db_prefix"]) ? $_POST["db_prefix"] : DEFAULT_DB_PREFIX;
 	
+	// Escape values to prevent PHP code injection into the config file.
+	$esc = function($v) { return str_replace(['\\', '"', '<?', '?>'], ['\\\\', '\\"', '<\\?', '?\\>'], $v); };
+
 	$filecontent = "<?php" . PHP_EOL;
-	$filecontent .= "\$conf['db_host'] = \"". $_POST["db_host"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['db_user'] = \"". $_POST["db_user"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['db_passwort'] = \"". $_POST["db_password"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['db_name'] = \"". $_POST["db_name"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['db_prefix'] = \"". $prefix . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['db_host'] = \"". $esc($_POST["db_host"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['db_user'] = \"". $esc($_POST["db_user"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['db_passwort'] = \"". $esc($_POST["db_password"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['db_name'] = \"". $esc($_POST["db_name"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['db_prefix'] = \"". $esc($prefix) . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['supported_languages'] = \"de,en,es,it\";" . PHP_EOL;
-	$filecontent .= "\$conf['homepage'] = \"". $_POST["url"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['context_root'] = \"". $_POST["context_root"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['projectname'] = \"". $_POST["projectname"] . "\";" . PHP_EOL;
-	$filecontent .= "\$conf['systememail'] = \"". $_POST["systememail"] . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['homepage'] = \"". $esc($_POST["url"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['context_root'] = \"". $esc($_POST["context_root"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['projectname'] = \"". $esc($_POST["projectname"]) . "\";" . PHP_EOL;
+	$filecontent .= "\$conf['systememail'] = \"". $esc($_POST["systememail"]) . "\";" . PHP_EOL;
 	$filecontent .= "\$conf['session_lifetime'] = \"7200\";" . PHP_EOL;
 	$filecontent .= "?>" . PHP_EOL;
 	

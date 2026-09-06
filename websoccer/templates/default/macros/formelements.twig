@@ -1,3 +1,7 @@
+{% macro csrfField(csrfToken) %}
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
+{% endmacro %}
+
 {% macro textfield(fieldId, label, value, required = false, errormsg = null, type = 'text', helptext = null, disabled = false, testId = null) %}
 
 {% if errormsg[fieldId] is defined %}

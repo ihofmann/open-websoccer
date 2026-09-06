@@ -115,7 +115,7 @@ if (!$show) {
 elseif ($show == "generateform") {
 	?>
 	
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
     <input type="hidden" name="show" value="generate">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	<input type="hidden" name="teamid" value="<?php echo $teamid; ?>">

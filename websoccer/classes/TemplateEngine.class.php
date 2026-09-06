@@ -50,6 +50,11 @@ class TemplateEngine {
 		$this->_environment->addGlobal(ENVIRONMENT_GLOBAL_NAME, $env);
 		$this->_environment->addGlobal(SKIN_GLOBAL_NAME, $this->_skin);
 		$this->_environment->addGlobal(VIEWHANDLER_GLOBAL_NAME, $viewHandler);
+
+		// Make the CSRF token available in all templates and blocks (including
+		// those rendered via viewHandler.renderBlock() which do not receive
+		// page-level parameters).
+		$this->_environment->addGlobal('csrfToken', $_SESSION['frontend_csrf_token'] ?? '');
 	}
 	
 	/**

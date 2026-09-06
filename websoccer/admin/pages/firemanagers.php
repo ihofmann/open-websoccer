@@ -36,7 +36,7 @@ if (!$show) {
 
   <p><?php echo $i18n->getMessage('firemanagers_introduction'); ?></p>
   
-  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row">
+  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row">
 	<input type="hidden" name="site" value="<?php echo $site; ?>">
 	
 	<fieldset>
@@ -114,7 +114,7 @@ if (!$show) {
 		} else {
 
 			?>
-			<form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='row' id='frmMain' name='frmMain'>
+			<form action='<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>' method='post' class='row' id='frmMain' name='frmMain'>
 				<input type='hidden' name='site' value='<?php echo $site; ?>'>
 				<input type='hidden' name='show' value='selectoptions'>
 				<table class='table table-striped table-hover'>
@@ -165,7 +165,7 @@ elseif ($show == 'selectoptions') {
 	} else {
 ?>
 
-  <form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='row'>
+  <form action='<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>' method='post' class='row'>
 	<input type='hidden' name='site' value='<?php echo $site; ?>'>
 	<input type='hidden' name='show' value='dismiss'>
 	<input type='hidden' name='teamids' value='<?php echo implode(',', array_map('escapeOutput', $_POST['selectedteams'])) ?>'>

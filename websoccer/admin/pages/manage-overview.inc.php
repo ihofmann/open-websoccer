@@ -131,6 +131,7 @@ if ($deleteEnabled && $action == "delete") {
 
 // custom action
 if (strlen($action ?? '') && !in_array($action, array("save", "delete"))
+		&& preg_match('#^[a-z0-9_-]+$#i', $action)
 		&& file_exists(__DIR__ . "/../actions/" . $action . ".inc.php")) {
 	include(__DIR__ . "/../actions/" . $action . ".inc.php");
 }
@@ -177,7 +178,7 @@ if (!$rows['hits']) {
 	echo "<p>". sprintf($i18n->getMessage("manage_number_of_records"), $rows['hits'], $firstNo, $lastNo) ."</p>";
 	
 	// ordering
-	if ($sortColumn) {
+	if ($sortColumn && isset($outputColumns[$sortColumn])) {
 		$wherePart .= " ORDER BY ". $db->connection->real_escape_string($sortColumn);
 		$wherePart .= ($sortAscending) ? " ASC" : " DESC";
 	}
@@ -187,7 +188,7 @@ if (!$rows['hits']) {
 	$result = $db->querySelect($fields, $fromTable, $wherePart, $parameters, $limit);
 	
 	//output
-	echo "<form name=\"frmMain\" action=\"". $_SERVER['PHP_SELF'] ."\" method=\"post\">";
+	echo "<form name=\"frmMain\" action=\"". htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') ."\" method=\"post\">";
 	echo "<input type=\"hidden\" name=\"site\" value=\"". $site ."\">";
 	echo "<input type=\"hidden\" name=\"entity\" value=\"". $entity ."\">";
 	echo "<input type=\"hidden\" name=\"action\" value=\"delete\">";

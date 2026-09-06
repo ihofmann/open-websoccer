@@ -10,6 +10,7 @@
 	
 	{% if env.getConfig("user_picture_upload_enabled") %}
 		<form class="row" method="post" enctype="multipart/form-data">
+	{{ formelements.csrfField(csrfToken) }}
 			<input type="hidden" name="MAX_FILE_SIZE" value="{{ env.getConfig("user_picture_upload_maxsize_kb") * 1024 }}" />
 			
 			{{ formelements.textfield('picture', i18n.getMessage('entity_users_picture'), env.getRequestParameter('picture'), true, validationMsg, 'file') }}

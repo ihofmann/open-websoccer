@@ -141,7 +141,10 @@ register_shutdown_function('session_write_close');
 session_set_cookie_params(array(
 	'lifetime' => 0,
 	'path' => '/',
-	'samesite' => 'Lax'
+	'samesite' => 'Lax',
+	'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+		|| (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https'),
+	'httponly' => TRUE
 ));
 session_start();
 

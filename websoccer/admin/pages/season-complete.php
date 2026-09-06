@@ -92,7 +92,7 @@ elseif ($show == 'select') {
 	$result->free();
 
 	?>
-	<form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post' class='row'>
+	<form action='<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>' method='post' class='row'>
 	<input type='hidden' name='show' value='complete'>
 	<input type='hidden' name='id' value='<?php echo $id; ?>'>
 	<input type='hidden' name='site' value='<?php echo $site; ?>'>

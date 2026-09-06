@@ -32,6 +32,7 @@
 <p>{{ i18n.getMessage("borrow-player_intro") }}</p>
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	<div class="mb-3">
 		<label class="form-label">

@@ -22,7 +22,7 @@
 
 if (!$showOverview) {
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="row"<?php 
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8'); ?>" method="post" class="row"<?php 
 	if ($enableFileUpload) echo " enctype=\"multipart/form-data\""; 
 ?>>
 	<input type="hidden" name="show" value="<?php echo $show; ?>">

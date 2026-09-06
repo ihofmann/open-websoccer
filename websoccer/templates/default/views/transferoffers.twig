@@ -68,6 +68,7 @@
 							<p><a href="#rejectModal{{ offer.offer_id }}" role="button" data-bs-toggle="modal" data-testid="reject-offer" class="btn btn-danger btn-sm btn-block">{{ i18n.getMessage("transferoffers_offer_reaction_reject") }}</a></p>
 							
 							<form method="post" class="row">
+	{{ formelements.csrfField(csrfToken) }}
 								<div id="rejectModal{{ offer.offer_id }}" class="modal fade" data-testid="reject-offer-modal" tabindex="-1" role="dialog" 
 									aria-labelledby="rejectModalLabel{{ offer.offer_id }}" aria-hidden="true">
 								  <div class="modal-dialog">

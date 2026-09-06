@@ -15,6 +15,7 @@
 <h4>{{ i18n.getMessage("entity_users_premium_balance") }}: {{ env.user.premiumBalance|number_format(0, ',', ' ') }} {{ env.getConfig("premium_credit_unit") }}</h4>
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	{{ formelements.textfield('amount', i18n.getMessage('premium-exchange_amount_label'), env.getRequestParameter('amount'), true, validationMsg, 'number', env.getConfig("premium_credit_unit")) }}
 	

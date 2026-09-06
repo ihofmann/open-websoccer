@@ -62,15 +62,31 @@ function getAdminCsrfToken() {
  * Rejects forged state-changing AdminCenter requests.
  */
 function validateAdminCsrfToken() {
-	if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		$submittedToken = isset($_POST['admin_csrf_token']) ? $_POST['admin_csrf_token'] : '';
+		$sessionToken = isset($_SESSION['admin_csrf_token']) ? $_SESSION['admin_csrf_token'] : '';
+		if (!is_string($submittedToken) || !$sessionToken || !$submittedToken || !hash_equals($sessionToken, $submittedToken)) {
+			http_response_code(403);
+			die('Invalid CSRF token.');
+		}
 		return;
 	}
 
-	$submittedToken = isset($_POST['admin_csrf_token']) ? $_POST['admin_csrf_token'] : '';
-	$sessionToken = isset($_SESSION['admin_csrf_token']) ? $_SESSION['admin_csrf_token'] : '';
-	if (!is_string($submittedToken) || !$sessionToken || !$submittedToken || !hash_equals($sessionToken, $submittedToken)) {
-		http_response_code(403);
-		die('Invalid CSRF token.');
+	// For GET-based state-changing actions (e.g. ?action=delete&id=42),
+	// validate the Origin or Referer header to prevent CSRF. If neither
+	// header is present or they don't match the site origin, reject.
+	$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : '';
+	if (is_string($action) && strlen($action)) {
+		$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+		$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+		$expectedHost = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+		$expectedOrigin = ($expectedHost !== '') ? 'http' . (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 's' : '') . '://' . $expectedHost : '';
+
+		$source = $origin !== '' ? $origin : $referer;
+		if ($source === '' || ($expectedOrigin !== '' && strpos($source, $expectedOrigin) !== 0)) {
+			http_response_code(403);
+			die('Invalid CSRF origin.');
+		}
 	}
 }
 

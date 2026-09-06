@@ -58,20 +58,12 @@ class SessionBasedUserAuthentication implements IUserAuthentication {
 				$result->free();
 				
 				if (isset($rememberedUser['id'])) {
-					
-					$currentToken = SecurityUtil::generateSessionToken($rememberedUser['id'], $rememberedUser['passwort_salt']);
-					if ($currentToken === $rememberMe) {
-						$this->_login($rememberedUser, $db, $fromTable, $currentUser);
-						return;
-					} else {
-						CookieHelper::destroyCookie('user');
-						
-						// invalid old token since most probably user agent changed
-						$columns = array('tokenid' => '');
-						$whereCondition = 'id = %d';
-						$parameter = $rememberedUser['id'];
-						$db->queryUpdate($columns, $fromTable, $whereCondition, $parameter);
-					}
+					// The DB lookup by token already proves the cookie is valid.
+					// With random tokens (generateSessionToken), no additional
+					// regeneration check is needed. For backward compatibility,
+					// legacy MD5 tokens (32 chars) are also accepted via DB lookup.
+					$this->_login($rememberedUser, $db, $fromTable, $currentUser);
+					return;
 					
 				} else {
 					CookieHelper::destroyCookie('user');

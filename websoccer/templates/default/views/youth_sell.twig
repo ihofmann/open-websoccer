@@ -7,6 +7,7 @@
 
 {% block page_content %}
 <form class="row" method="post" data-testid="youth-sell-form">
+	{{ formelements.csrfField(csrfToken) }}
 
 	<fieldset>
 		<legend>{{ i18n.getMessage("youthplayer-sell_formlabel") }}</legend>

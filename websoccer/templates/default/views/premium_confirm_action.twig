@@ -12,6 +12,7 @@
 
 <div class="d-flex gap-2 justify-content-center p-3">
 	<form method="post" class="d-inline">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
 			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">
 		{% endfor %}
@@ -22,6 +23,7 @@
 	</form>
 	
 	<form method="post" class="d-inline">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 		{% for actionParamKey,actionParamValue in env.getContextParameters()["actionparameters"]  %}
 			<input type="hidden" name="{{ actionParamKey }}" value="{{ actionParamValue }}">
 		{% endfor %}

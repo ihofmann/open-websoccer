@@ -160,3 +160,14 @@ VALUES
 ALTER TABLE ws3_user_inactivity MODIFY login_last INT(11) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_user_inactivity MODIFY login_check INT(11) NOT NULL DEFAULT 0;
 ALTER TABLE ws3_user_inactivity MODIFY transfer_check INT(11) NOT NULL DEFAULT 0;
+
+-- Widen password and salt columns to accommodate bcrypt hashes (60 chars)
+-- and longer generated salts/activation keys. These MODIFY COLUMN statements
+-- are idempotent.
+ALTER TABLE ws3_admin MODIFY passwort VARCHAR(255) NULL;
+ALTER TABLE ws3_admin MODIFY passwort_neu VARCHAR(255) NULL;
+ALTER TABLE ws3_admin MODIFY passwort_salt VARCHAR(32) NULL;
+ALTER TABLE ws3_user MODIFY passwort VARCHAR(255) NULL;
+ALTER TABLE ws3_user MODIFY passwort_neu VARCHAR(255) NULL;
+ALTER TABLE ws3_user MODIFY passwort_salt VARCHAR(32) NULL;
+ALTER TABLE ws3_user MODIFY schluessel VARCHAR(32) NULL;

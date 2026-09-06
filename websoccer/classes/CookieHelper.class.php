@@ -38,11 +38,15 @@ class CookieHelper {
 	 */
 	public static function createCookie($name, $value, $lifetimeInDays = null) {
 		$expiry = ($lifetimeInDays != null) ? time() + 86400 * $lifetimeInDays : 0;
-		
+		$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+			|| (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+
 		setcookie(COOKIE_PREFIX . $name, $value, array(
 			'expires' => $expiry,
 			'path' => '/',
-			'samesite' => 'Lax'
+			'samesite' => 'Lax',
+			'secure' => $isHttps,
+			'httponly' => TRUE
 		));
 	}
 	

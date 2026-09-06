@@ -96,14 +96,13 @@ final class SessionBasedUserAuthenticationTest extends TestCaseBase {
 	}
 
 	public function testRememberMeWithValidTokenLogsIn(): void {
-		$salt = 'mysalt';
 		$userId = 7;
-		// Compute the expected token (useragent is 'n.a.' since session is fresh).
-		$token = md5($salt . 'n.a.' . $userId);
+		// With random tokens, the DB lookup by token is sufficient.
+		$token = 'a-valid-random-token-stored-in-db';
 
 		$userRow = [
 			'id' => $userId,
-			'passwort_salt' => $salt,
+			'passwort_salt' => 'mysalt',
 			'nick' => 'remembered',
 			'email' => 'rem@test.local',
 			'lang' => 'en',
@@ -127,30 +126,19 @@ final class SessionBasedUserAuthenticationTest extends TestCaseBase {
 	}
 
 	public function testRememberMeWithInvalidTokenDestroysCookie(): void {
-		$userRow = [
-			'id' => 7,
-			'passwort_salt' => 'mysalt',
-			'nick' => 'remembered',
-			'email' => 'rem@test.local',
-			'lang' => 'en',
-		];
-		$updateCalled = false;
-		$db = $this->createMock(\DbConnection::class);
-		$db->method('querySelect')->willReturn(new MockDbResult([$userRow]));
-		$db->method('queryUpdate')->willReturnCallback(function () use (&$updateCalled) {
-			$updateCalled = true;
+		// When no user is found by the token, the cookie should be destroyed.
+		$db = $this->mockDbWithCallback(function () {
+			return new MockDbResult([]);
 		});
 		\DbConnection::setInstanceForTesting($db);
 
-		$_COOKIE[COOKIE_PREFIX . 'user'] = 'invalid_token';
+		$_COOKIE[COOKIE_PREFIX . 'user'] = 'invalid_token_not_in_db';
 		$user = new \User();
 		$auth = new SessionBasedUserAuthentication($this->ws);
 		$auth->verifyAndUpdateCurrentUser($user);
 
 		// User should not be logged in.
 		$this->assertNull($user->id);
-		// Token should have been cleared via queryUpdate.
-		$this->assertTrue($updateCalled);
 	}
 
 	public function testRememberMeWithNoUserFoundDestroysCookie(): void {

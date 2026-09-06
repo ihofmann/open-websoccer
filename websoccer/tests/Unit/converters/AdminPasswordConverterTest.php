@@ -19,8 +19,8 @@ final class AdminPasswordConverterTest extends TestCaseBase {
 	public function testToDbValueHashesPasswordWithoutPostId(): void {
 		$_POST = [];
 		$c = new AdminPasswordConverter($this->mockI18n(), $this->mockWebsoccer());
-		$expected = SecurityUtil::hashPassword('mypassword', '');
-		$this->assertSame($expected, $c->toDbValue('mypassword'));
+		$hash = $c->toDbValue('mypassword');
+		$this->assertTrue(SecurityUtil::verifyPassword('mypassword', '', $hash));
 	}
 
 	public function testToDbValueHashesPasswordWithSaltWhenUpdating(): void {
@@ -32,8 +32,8 @@ final class AdminPasswordConverterTest extends TestCaseBase {
 		);
 		\DbConnection::setInstanceForTesting($db);
 		$c = new AdminPasswordConverter($this->mockI18n(), $this->mockWebsoccer(['db_prefix' => 'ws']));
-		$expected = SecurityUtil::hashPassword('newpass', $salt);
-		$this->assertSame($expected, $c->toDbValue('newpass'));
+		$hash = $c->toDbValue('newpass');
+		$this->assertTrue(SecurityUtil::verifyPassword('newpass', $salt, $hash));
 	}
 
 	public function testToDbValueKeepsExistingPasswordWhenValueIsEmpty(): void {

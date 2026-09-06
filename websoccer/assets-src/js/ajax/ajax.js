@@ -37,8 +37,15 @@ export function ajaxHandler(
   ignoreemptymessages
 ) {
   if (!blockId) blockId = "";
+
+  // Append the CSRF token to every AJAX request so that state-changing
+  // actions are protected against CSRF. The token is set by the layout
+  // template (window.wsCsrfToken) and validated server-side.
+  const csrfToken = window.wsCsrfToken || "";
+  const csrfParam = csrfToken ? "&csrf_token=" + encodeURIComponent(csrfToken) : "";
+
   const requestUrl =
-    WSCONFIG.AJAX_URL + "?block=" + encodeURIComponent(blockId) + "&" + queryString;
+    WSCONFIG.AJAX_URL + "?block=" + encodeURIComponent(blockId) + "&" + queryString + csrfParam;
   const ajaxLoader = document.getElementById("ajaxLoaderPage");
 
   if (ajaxLoader) ajaxLoader.style.display = "block";

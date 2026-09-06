@@ -26,6 +26,7 @@
 </div>
 {% if env.user.id and (hidesubmit is not defined or not hidesubmit) %}
 <form class="form d-flex flex-wrap gap-2 align-items-center" method="post">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 	<input type="hidden" name="action" value="send-shoutbox-msg"/>
 	<input type="hidden" name="block" value="shoutbox"/>
 	<input type="hidden" name="id" value="{{ env.getRequestParameter("id") }}"/>

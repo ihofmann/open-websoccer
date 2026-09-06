@@ -8,6 +8,7 @@
 {% block page_content %}
 
 <form class="row" method="post" data-testid="matchrequest-create-form">
+	{{ formelements.csrfField(csrfToken) }}
 		
 	<div class="mb-3{% if validationMsg['matchdate'] is defined %} error{% endif %}">
 		<label class="form-label" for="matchdate">

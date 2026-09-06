@@ -9,6 +9,7 @@
 
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	{{ formelements.textfield('fname', i18n.getMessage('entity_player_vorname'), env.getRequestParameter('fname'), false, validationMsg, 'text') }}
 	

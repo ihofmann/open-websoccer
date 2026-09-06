@@ -2,6 +2,7 @@
 	data-ajaxtarget="offerFormBlock" data-ajaxblock="directtransfer-offer-form" data-ajaxquerystr="id={{ env.getRequestParameter("id") }}&loadformdata=1"><i class="bi bi-cart"></i> {{ i18n.getMessage("transferoffer_button") }}</a></p>
 
 <form method="post" class="row">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 	<div id="offerModal" class="modal fade" tabindex="-1" role="dialog"
 		aria-labelledby="offerModalLabel" aria-hidden="true">
 	  <div class="modal-dialog"><div class="modal-content">

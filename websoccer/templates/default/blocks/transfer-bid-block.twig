@@ -45,6 +45,7 @@
 <h3>{{ i18n.getMessage("transfer_bid_yourbid") }}</h3>
 
 <form class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	{% if player.team_id > 0 %}
 	{{ formelements.textfield('amount', i18n.getMessage('transfer_bid_amount'), env.getRequestParameter('amount'), true, validationMsg, 'number') }}

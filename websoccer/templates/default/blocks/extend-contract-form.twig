@@ -11,6 +11,7 @@
 <h3>{{ i18n.getMessage("extend-contract_offer_title") }}</h3>
 
 <form id="extendContractForm" class="row" method="post">
+	{{ formelements.csrfField(csrfToken) }}
 
 	{{ formelements.textfield('salary', i18n.getMessage('entity_player_vertrag_gehalt'), env.getRequestParameter('salary'), true, validationMsg, 'number') }}
 	

@@ -11,6 +11,7 @@
 	<p>{{ i18n.getMessage("upload-clublogo_intro", env.getConfig("upload_clublogo_max_size"))|raw }}</p>
 	
 	<form class="row" method="post" enctype="multipart/form-data">
+	{{ formelements.csrfField(csrfToken) }}
 		<input type="hidden" name="MAX_FILE_SIZE" value="{{ env.getConfig("upload_clublogo_max_size") * 1024 }}" />
 		
 		{{ formelements.textfield('picture', i18n.getMessage('entity_club_bild'), env.getRequestParameter('picture'), true, validationMsg, 'file') }}

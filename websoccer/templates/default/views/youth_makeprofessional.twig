@@ -6,6 +6,7 @@
 
 {% block page_content %}
 <form class="row" method="post" data-testid="youth-makeprofessional-form">
+	<input type="hidden" name="csrf_token" value="{{ csrfToken }}"/>
 
 	<fieldset>
 		<legend>{{ i18n.getMessage("youthplayer-makeprofessional_formlabel") }}</legend>

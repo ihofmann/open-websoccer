@@ -144,7 +144,7 @@ echo "<h3><a href=\"". $website->getInternalUrl("team", "id=" . $match["match_ho
 
 echo "<div class=\"card card-body\">". $i18n->getMessage("match_manage_complete_intro") . "</div>";
 
-echo "<form action=\"". $_SERVER['PHP_SELF'] . "\" method=\"post\" class=\"row\">";
+echo "<form action=\"". htmlspecialchars($_SERVER['PHP_SELF'], ENT_QUOTES, 'UTF-8') . "\" method=\"post\" class=\"row\">";
 echo "<input type=\"hidden\" name=\"site\" value=\"$site\"/>";
 echo "<input type=\"hidden\" name=\"action\" value=\"complete\"/>";
 echo "<input type=\"hidden\" name=\"match\" value=\"$matchId\"/>";
