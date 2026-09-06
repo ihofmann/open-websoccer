@@ -1,0 +1,383 @@
+/* ================================================================== */
+/* Bootstrap component overrides                                       */
+/* ================================================================== */
+
+/* Buttons */
+.btn-primary {
+  --bs-btn-bg: var(--ws-primary);
+  --bs-btn-border-color: var(--ws-primary);
+  --bs-btn-hover-bg: var(--ws-primary-hover);
+  --bs-btn-hover-border-color: var(--ws-primary-hover);
+  --bs-btn-active-bg: var(--ws-primary-active);
+  --bs-btn-active-border-color: var(--ws-primary-active);
+  --bs-btn-disabled-color: var(--ws-disabled-color);
+  --bs-btn-disabled-bg: var(--ws-disabled-bg);
+  --bs-btn-disabled-border-color: var(--ws-disabled-border);
+  color: #fff;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--ws-primary);
+  --bs-btn-border-color: var(--ws-primary);
+  --bs-btn-hover-bg: var(--ws-primary);
+  --bs-btn-hover-border-color: var(--ws-primary);
+  --bs-btn-active-bg: var(--ws-primary);
+  --bs-btn-active-border-color: var(--ws-primary);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-disabled-color: var(--ws-disabled-color);
+  --bs-btn-disabled-bg: var(--ws-disabled-bg);
+  --bs-btn-disabled-border-color: var(--ws-disabled-border);
+}
+
+.btn-primary:disabled,
+.btn-primary.disabled,
+fieldset:disabled .btn-primary,
+.btn-outline-primary:disabled,
+.btn-outline-primary.disabled,
+fieldset:disabled .btn-outline-primary {
+  color: var(--ws-disabled-color);
+  background-color: var(--ws-disabled-bg);
+  border-color: var(--ws-disabled-border);
+  opacity: 1;
+}
+
+/* Links */
+a {
+  color: var(--bs-link-color);
+}
+a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+/* Nav links — use higher specificity to override Bootstrap navbar-light defaults */
+.navbar .nav-link {
+  color: var(--ws-body-color);
+}
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: var(--ws-primary-text);
+}
+.navbar .nav-link.active,
+.navbar .nav-link.show {
+  color: var(--ws-primary-text);
+  font-weight: 600;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--ws-navbar-bg) !important;
+  border-bottom: 1px solid var(--ws-border-color);
+  box-shadow: var(--ws-shadow-sm);
+  min-height: var(--ws-navbar-height);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ws-primary);
+}
+.navbar-brand:hover {
+  color: var(--ws-primary-hover);
+}
+
+/* Dropdown menus */
+.dropdown-menu {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+  box-shadow: var(--ws-shadow);
+}
+.dropdown-item {
+  color: var(--ws-body-color);
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--ws-primary-subtle);
+  color: var(--ws-primary-text);
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--ws-primary);
+  color: #fff;
+}
+.dropdown-divider {
+  border-color: var(--ws-border-color);
+}
+.dropdown-toggle::after {
+  vertical-align: middle;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+  background-color: var(--ws-input-bg);
+  border-color: var(--ws-border-color);
+  color: var(--ws-body-color);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ws-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ws-primary-rgb), 0.25);
+  background-color: var(--ws-input-bg);
+  color: var(--ws-body-color);
+}
+.form-control::placeholder {
+  color: var(--ws-muted-color);
+}
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: var(--ws-muted-bg);
+}
+.form-label,
+.col-form-label {
+  color: var(--ws-body-color);
+}
+.form-check-label {
+  color: var(--ws-body-color);
+}
+.form-text {
+  color: var(--ws-muted-color);
+}
+.form-control-plaintext {
+  color: var(--ws-body-color);
+}
+
+.ws-slider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+.ws-slider .form-range {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.ws-slider-value {
+  min-width: 5.5rem;
+  color: var(--ws-primary-text);
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Ensure Bootstrap's internal form variables also use the input background */
+:root {
+  --bs-form-control-bg: var(--ws-input-bg);
+  --bs-form-select-bg: var(--ws-input-bg);
+}
+
+/* Cards (replaces .box) */
+.box {
+  background-color: var(--ws-card-bg);
+  border: 1px solid var(--ws-card-border);
+  border-radius: 0.5rem;
+  box-shadow: var(--ws-shadow-sm);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.box > h4 {
+  border-bottom: 1px solid var(--ws-border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ws-body-color);
+}
+.box table {
+  margin-bottom: 0.75rem;
+}
+
+/* Heading scale — modern web app best practice (smaller than Bootstrap defaults) */
+h1,
+.h1 {
+  font-size: 1.5rem;
+}
+h2,
+.h2 {
+  font-size: 1.3rem;
+}
+h3,
+.h3 {
+  font-size: 1.15rem;
+}
+h4,
+.h4 {
+  font-size: 1rem;
+}
+h5,
+.h5 {
+  font-size: 0.9rem;
+}
+h6,
+.h6 {
+  font-size: 0.8rem;
+}
+
+/* Tables */
+.table {
+  color: var(--ws-body-color);
+}
+.table > :not(caption) > * > * {
+  background-color: transparent;
+  border-color: var(--ws-border-color);
+}
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: var(--ws-muted-bg);
+}
+.table-hover > tbody > tr:hover > * {
+  background-color: rgba(var(--ws-primary-rgb), 0.07);
+}
+.table-dark {
+  background-color: var(--ws-card-bg);
+  color: var(--ws-body-color);
+}
+
+/* Alerts */
+.alert {
+  border-color: var(--ws-border-color);
+}
+
+/* Badges */
+.badge {
+  font-weight: 600;
+}
+
+/* Breadcrumbs */
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+.breadcrumb-item a {
+  color: var(--ws-primary);
+}
+.breadcrumb-item.active {
+  color: var(--ws-muted-color);
+}
+
+/* Pagination */
+.page-link {
+  color: var(--ws-primary);
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+}
+.page-link:hover {
+  color: var(--ws-primary-hover);
+  background-color: var(--ws-primary-subtle);
+  border-color: var(--ws-primary);
+}
+.page-item.active .page-link {
+  background-color: var(--ws-primary);
+  border-color: var(--ws-primary);
+  color: #fff;
+}
+.page-item.disabled .page-link {
+  background-color: var(--ws-muted-bg);
+  border-color: var(--ws-border-color);
+  color: var(--ws-muted-color);
+}
+
+/* Modals */
+.modal-content {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+  color: var(--ws-body-color);
+}
+.modal-header,
+.modal-footer {
+  border-color: var(--ws-border-color);
+}
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.5;
+}
+
+/* Accordion */
+.accordion-button {
+  color: var(--ws-body-color);
+  background-color: var(--ws-card-bg);
+}
+.accordion-button::after {
+  background-color: var(--ws-primary);
+  background-image: none;
+  -webkit-mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='m2 5 6 6 6-6' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3e%3c/svg%3e")
+    center / 1rem auto no-repeat;
+  mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='m2 5 6 6 6-6' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5'/%3e%3c/svg%3e")
+    center / 1rem auto no-repeat;
+}
+.accordion-button:not(.collapsed) {
+  color: var(--ws-primary);
+  background-color: var(--ws-primary-subtle);
+}
+.accordion-button:focus {
+  border-color: var(--ws-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--ws-primary-rgb), 0.25);
+}
+.accordion-item {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+}
+
+/* Tabs */
+.nav-tabs .nav-link {
+  color: var(--ws-body-color);
+  border-color: var(--ws-border-color);
+}
+.nav-tabs .nav-link:hover {
+  color: var(--ws-primary);
+}
+.nav-tabs .nav-link.active {
+  color: var(--ws-primary);
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+  border-bottom-color: var(--ws-card-bg);
+  font-weight: 600;
+}
+
+/* Progress bars */
+.progress {
+  background-color: var(--ws-muted-bg);
+}
+.progress-bar {
+  background-color: var(--ws-primary);
+}
+
+/* List groups */
+.list-group {
+  border-color: var(--ws-border-color);
+}
+.list-group-item {
+  background-color: var(--ws-card-bg);
+  color: var(--ws-body-color);
+  border-color: var(--ws-border-color);
+}
+.list-group-item:hover {
+  background-color: var(--ws-primary-subtle);
+}
+
+/* Close button */
+.btn-close {
+  filter: invert(0) grayscale(100%) brightness(1);
+}
+@media (prefers-color-scheme: dark) {
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(2);
+  }
+}
+
+/* Popover / Tooltip */
+.popover,
+.tooltip-inner {
+  background-color: var(--ws-card-bg);
+  color: var(--ws-body-color);
+  border-color: var(--ws-border-color);
+}
+.popover-header,
+.tooltip-arrow::before {
+  background-color: var(--ws-card-bg);
+  border-color: var(--ws-border-color);
+}
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-end .tooltip-arrow::before {
+  border-top-color: var(--ws-card-bg);
+}

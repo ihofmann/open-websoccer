@@ -1,6 +1,6 @@
 import "./default.css";
 import "bootstrap";
-import "./js/formationws4.js";
-import "./js/stadium.js";
-import "./js/charts.js";
-import "./js/wsbase.js";
+import "./js/pages/formation.js";
+import "./js/pages/stadium.js";
+import "./js/pages/charts.js";
+import "./js/index.js";

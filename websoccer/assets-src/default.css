@@ -1,5 +1,11 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import "bootstrap-icons/font/bootstrap-icons.css";
-@import "./css/defaultskin.css";
-@import "./css/websoccer.css";
+@import "./css/tokens.css";
+@import "./css/bootstrap-overrides.css";
+@import "./css/layout.css";
+@import "./css/pages.css";
+@import "./css/utilities.css";
+@import "./css/components.css";
+@import "./css/legacy.css";
+@import "./css/match-report.css";
 @import "./css/formation.css";

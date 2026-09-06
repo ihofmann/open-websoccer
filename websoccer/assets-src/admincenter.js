@@ -1,3 +1,3 @@
 import "./admincenter.css";
 import "bootstrap";
-import "../admin/js/admincenter.js";
+import "./js/admin/admincenter.js";
