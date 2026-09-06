@@ -2,6 +2,7 @@
 {% import "macros/profileelements.twig" as profile %}
 {% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/statisticelements.twig" as statisticelements %}
+{% import "macros/flags.twig" as flags %}
 
 {% block page_title %}
 {{ i18n.getMessage("youth-scouting_navlabel") }}
@@ -61,13 +62,7 @@
 			<h3>{{ i18n.getMessage("youthteam_scouting_schoosecountry") }}</h3>
 		
 			{% for country in countries %}
-				{% set nationImg = skin.getImage("flags/players/" ~ country ~ ".png") %}
-				{% if i18n.hasMessage("option_" ~ country) %}
-					{% set countryLabel = i18n.getMessage("option_" ~ country) %}
-				{% else %}
-					{% set countryLabel = country %}
-				{% endif %}
-				<a href="{{ env.getInternalActionUrl("scout-youthplayer", "scoutid=" ~ env.getRequestParameter("scoutid") ~ "&country=" ~ country) }}" class="btn btn-lg btn-block btn-outline-primary" data-testid="scout-country" data-country="{{ country }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %}{{ countryLabel }}</a>
+				<a href="{{ env.getInternalActionUrl("scout-youthplayer", "scoutid=" ~ env.getRequestParameter("scoutid") ~ "&country=" ~ country) }}" class="btn btn-lg btn-block btn-outline-primary" data-testid="scout-country" data-country="{{ country }}">{{ flags.country(country, withLabel = true) }}</a>
 			{% endfor %}
 			
 			<p class="mt-2"><a href="{{ env.getInternalUrl("youth-scouting") }}" class="btn btn-outline-primary">{{ i18n.getMessage("button_cancel") }}</a></p>

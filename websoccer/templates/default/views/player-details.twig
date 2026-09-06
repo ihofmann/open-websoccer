@@ -1,6 +1,7 @@
 {% extends "base.twig" %}
 
 {% import "macros/statisticelements.twig" as statisticelements %}
+{% import "macros/flags.twig" as flags %}
 
 {% block page_title %}
 {{ player.player_firstname }} {% if player.player_pseudonym|length > 0 %}"{{ player.player_pseudonym }}" {% endif %}{{ player.player_lastname }}
@@ -71,13 +72,7 @@
 				  {% endif %}
 				  
 				  <dt>{{ i18n.getMessage("entity_player_nation") }}</dt>
-				  {% set nationImg = skin.getImage("flags/players/" ~ player.player_nationality_filename ~ ".png") %}
-				  	{% if i18n.hasMessage("option_" ~ player.player_nationality_filename) %}
-						{% set countryLabel = i18n.getMessage("option_" ~ player.player_nationality_filename) %}
-					{% else %}
-						{% set countryLabel = player.player_nationality_filename %}
-					{% endif %}
-				  <dd>{% if nationImg %}<img src="{{ nationImg }}" title="{{ countryLabel }}" alt="{{ countryLabel }}" />{% else %}{{ countryLabel }}{% endif %}</dd>
+				  <dd data-testid="player-nationality">{{ flags.country(player.player_nationality_filename) }}</dd>
 				  
 				  <dt>{{ i18n.getMessage("entity_player_verletzt") }}</dt>
 				  <dd>{{ player.player_matches_injured  }} {{ i18n.getMessage("player_details_unit_matches") }}</dd>

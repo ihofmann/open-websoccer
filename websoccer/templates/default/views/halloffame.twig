@@ -1,5 +1,7 @@
 {% extends "base.twig" %}
 
+{% import "macros/flags.twig" as flags %}
+
 {% block page_title %}
 {{ i18n.getMessage("halloffame_navlabel") }}
 {% endblock %}
@@ -12,16 +14,10 @@
 	<div class="accordion" id="leagues">
 		{% for league,seasons in leagues %}
 			{% set country = seasons[0].league_country %}
-			{% set nationImg = skin.getImage("flags/players/" ~ country ~ ".png") %}
-			{% if i18n.hasMessage("option_" ~ country) %}
-				{% set countryLabel = i18n.getMessage("option_" ~ country) %}
-			{% else %}
-				{% set countryLabel = country %}
-			{% endif %}
 		<div class="accordion-item">
 			<h2 class="accordion-header">
 				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-					data-bs-target="#collapse{{ loop.index }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %} {{ countryLabel }} - {{ league }}</button>
+					data-bs-target="#collapse{{ loop.index }}">{{ flags.country(country, withLabel = true) }} - {{ league }}</button>
 			</h2>
 			<div id="collapse{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#leagues">
 				<div class="accordion-body">

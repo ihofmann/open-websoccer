@@ -490,9 +490,8 @@ body {
   gap: 0.35rem;
   padding: 0.25rem 0.5rem;
 }
-.ws-lang-flag {
-  display: block;
-  border-radius: 2px;
+.ws-lang-switch .ws-flag {
+  width: 1.75em;
 }
 
 /* ------------------------------------------------------------------ */

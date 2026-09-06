@@ -1,6 +1,8 @@
 
 {% extends "base.twig" %}
 
+{% import "macros/flags.twig" as flags %}
+
 {% block page_title %}
 {{ i18n.getMessage("freeclubs_title") }}
 {% endblock %}
@@ -11,17 +13,11 @@
 
 <div class="accordion" id="countries">
 	{% for country,clubs in countries %}
-		{% set nationImg = skin.getImage("flags/players/" ~ country ~ ".png") %}
-		{% if i18n.hasMessage("option_" ~ country) %}
-			{% set countryLabel = i18n.getMessage("option_" ~ country) %}
-		{% else %}
-			{% set countryLabel = country %}
-		{% endif %}
 	<div class="accordion-item">
 		<h2 class="accordion-header" id="heading{{ loop.index }}">
 			<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
 				data-bs-target="#collapse{{ loop.index }}"
-				aria-expanded="false" aria-controls="collapse{{ loop.index }}">{% if nationImg %}<img src="{{ nationImg }}" alt="{{ countryLabel }}" /> {% endif %} {{ countryLabel }} ({{ clubs|length }})</button>
+				aria-expanded="false" aria-controls="collapse{{ loop.index }}">{{ flags.country(country, withLabel = true) }} ({{ clubs|length }})</button>
 		</h2>
 		<div id="collapse{{ loop.index }}" class="accordion-collapse collapse" data-bs-parent="#countries" aria-labelledby="heading{{ loop.index }}">
 			<div class="accordion-body">
