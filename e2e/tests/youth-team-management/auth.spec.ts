@@ -28,7 +28,7 @@ for (const youthPage of [
       ['youthplayer-sell', 'youthplayer-fire', 'youthplayer-buy', 'youthplayer-makeprofessional'].includes(youthPage)
         ? '&id=1' : '';
     await page.goto(`/?page=${youthPage}${params}`);
-    await expect(page.locator('h1')).toHaveText('Log In');
+    await expect(page.getByTestId('page-title')).toHaveText('Log In');
   });
 }
 
@@ -36,5 +36,5 @@ test('youth-match page is accessible to guests', async ({ page }) => {
   // The youth-match (report) page has role "user,guest" so it does NOT
   // require a login.
   await page.goto('/?page=youth-match&id=1');
-  await expect(page.locator('h1')).not.toHaveText('Log In');
+  await expect(page.getByTestId('page-title')).not.toHaveText('Log In');
 });

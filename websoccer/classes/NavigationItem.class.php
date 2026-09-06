@@ -53,19 +53,26 @@ class NavigationItem {
 	public $weight;
 	
 	/**
+	 * @var string|null key of the menu this item belongs to.
+	 */
+	public $navMenuKey;
+
+	/**
 	 * 
 	 * @param string $pageId target page ID
 	 * @param string $label Translated label
 	 * @param array $children Array of NavigationItems which are the item's children
 	 * @param boolean $isActive TRUE if navigation item is marked as active.
 	 * @param int $weight weight which determines the position of this item within the navigation bar.
+	 * @param string|null $navMenuKey key of the menu this item belongs to.
 	 */
-	function __construct($pageId, $label, $children, $isActive, $weight) {
+	function __construct($pageId, $label, $children, $isActive, $weight, $navMenuKey = null) {
 		$this->pageId = $pageId;
 		$this->label = $label;
 		$this->children = $children;
 		$this->isActive = $isActive;
 		$this->weight = $weight;
+		$this->navMenuKey = $navMenuKey;
 	}
 }
 

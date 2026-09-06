@@ -1,7 +1,6 @@
 {% extends "base.twig" %}
 {% import "macros/formelements.twig" as formelements %}
 {% import "macros/paginator.twig" as pagination %}
-{% import "macros/messagebox.twig" as messagebox %}
 
 {% block page_title %}
 {{ i18n.getMessage("transferoffers_navlabel") }}
@@ -104,7 +103,7 @@
 	
 		{{ pagination.paginator(paginator) }}
 	{% else %}
-		{{ messagebox.box(i18n.getMessage("transferoffers_no_received_offers"), "", "info") }}
+		<p>{{ i18n.getMessage("transferoffers_no_received_offers") }}</p>
 	{% endif %}
 	</div>
 	<div class="tab-pane" id="sent">

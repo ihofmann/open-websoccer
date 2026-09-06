@@ -86,9 +86,9 @@ test.describe.serial('Nominate Players page (logged in as user1)', () => {
     // "Player1" matches teams 1, 10-19 (11 teams × 24 players = 264,
     // minus 5 nominated = 259).  Adding position "Torwart" narrows to
     // only goalkeepers from those teams (11 × 2 = 22, minus 1 nominated = 21).
+    // Changing the position dropdown applies the search immediately.
     await page.getByTestId('nt-search-fname').fill('Player1');
     await page.getByTestId('nt-search-position').selectOption('Torwart');
-    await page.getByTestId('nt-search-submit').click();
 
     const table = page.getByTestId('nt-search-results-table');
     await expect(table).toBeVisible();
@@ -109,7 +109,6 @@ test.describe.serial('Nominate Players page (logged in as user1)', () => {
     // 40 × 6 = 240.  Player 19 was removed from the national team by
     // national-team.spec.ts, so all 240 are eligible.
     await page.getByTestId('nt-search-position').selectOption('Sturm');
-    await page.getByTestId('nt-search-submit').click();
 
     const table = page.getByTestId('nt-search-results-table');
     await expect(table).toBeVisible();
@@ -130,7 +129,6 @@ test.describe.serial('Nominate Players page (logged in as user1)', () => {
     // position_main = "T" (IDs 1, 2).  Player 1 is nominated → 1 result.
     await page.getByTestId('nt-search-fname').fill('Player1_T');
     await page.getByTestId('nt-search-position-main').selectOption('T');
-    await page.getByTestId('nt-search-submit').click();
 
     const table = page.getByTestId('nt-search-results-table');
     await expect(table).toBeVisible();

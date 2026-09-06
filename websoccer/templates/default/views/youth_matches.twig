@@ -1,5 +1,4 @@
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/paginator.twig" as pagination %}
 
 {% block page_title %}
@@ -68,7 +67,7 @@
 	{{ pagination.paginator(paginator) }}
 
 {% else %}
-	{{ messagebox.box(i18n.getMessage("youthmatches_no_matches"), "", "info") }}
+	<p>{{ i18n.getMessage("youthmatches_no_matches") }}</p>
 {% endif %}
 
 {% endblock %}

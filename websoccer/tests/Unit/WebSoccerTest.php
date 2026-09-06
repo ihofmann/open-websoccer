@@ -117,6 +117,12 @@ final class WebSoccerTest extends TestCaseBase {
 		$this->assertSame('/ws/?page=home&action=doit', $ws->getInternalActionUrl('doit'));
 	}
 
+	public function testGetInternalActionUrlAcceptsNullQueryString(): void {
+		$GLOBALS['conf']['context_root'] = '/ws';
+		$ws = \WebSoccer::getInstance();
+		$this->assertSame('/ws/?page=home&action=doit', $ws->getInternalActionUrl('doit', null, 'home'));
+	}
+
 	public function testGetInternalActionUrlWithQueryAndPage(): void {
 		$GLOBALS['conf']['context_root'] = '/ws';
 		$ws = \WebSoccer::getInstance();

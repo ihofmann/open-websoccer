@@ -38,6 +38,7 @@
             model="NewsListModel"
             navitem="true"
             navweight="1"
+            navmenukey="top"
             template="news-overview"
             role="guest,user">
 	        <page

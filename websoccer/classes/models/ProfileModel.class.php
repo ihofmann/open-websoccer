@@ -67,10 +67,11 @@ class ProfileModel implements IModel {
 		$userinfo = $result->fetch_array();
 		$result->free();
 		
-		if (!strlen($userinfo["birthday"]) || substr($userinfo["birthday"], 0, 4) == "0000") {
+		$birthday = $userinfo["birthday"] ?? "";
+		if (!strlen($birthday) || substr($birthday, 0, 4) == "0000") {
 			$userinfo["birthday"] = "";
 		} else {
-			$userinfo["birthday"] = DateTime::createFromFormat("Y-m-d", $userinfo["birthday"])->format($this->_websoccer->getConfig("date_format"));
+			$userinfo["birthday"] = DateTime::createFromFormat("Y-m-d", $birthday)->format($this->_websoccer->getConfig("date_format"));
 		}
 		
 		foreach ($columns as $dbColumn) {

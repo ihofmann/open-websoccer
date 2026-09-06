@@ -10,18 +10,18 @@
 {% block page_header %}
 
 {% if env.user.id == null %}
-<div class="py-4 px-3 mb-4 bg-primary-subtle rounded-3">
+<div class="ws-hero">
   <h1>{{ block("browser_title") }}</h1>
   <p>{{ i18n.getMessage("home_teaser") }}</p>
-  
+
   	{% if env.getConfig("allow_userregistration") or env.getConfig("registration_url")|length > 0 %}
 		{% set registerUrl = env.getInternalUrl("register") %}
 		{% if env.getConfig("registration_url")|length > 0 %}
 			{% set registerUrl = env.getConfig("registration_url") %}
 		{% endif %}
-		<div class="text-center"><a href="{{ registerUrl }}" class="btn btn-primary">{{ i18n.getMessage("home_teaser_link_register") }}</a></div>
-	{% endif %} 
-  
+		<a href="{{ registerUrl }}" class="btn btn-primary btn-lg">{{ i18n.getMessage("home_teaser_link_register") }}</a>
+	{% endif %}
+
 </div>
 {% endif %}
 
@@ -41,15 +41,19 @@
 {% endif %}
 </div>
 
+{% set sidebarContent %}
+	{% include 'sidebarblocks.twig' %}
+{% endset %}
+
 <div class="row">
-	<div class="col-md-4">
+	<div class="{% if sidebarContent|trim|length > 0 %}col-lg-4{% else %}col-md-6{% endif %}">
 		{{ viewHandler.renderBlock('news')|raw }}
 		
 		<div class="ajaxLoadedBlock" id="projectStatisticsBlock" 
 			data-ajaxblock="projectstatistics" data-ignoreemptymessages="true">
 		</div>
 	</div>
-	<div class="col-md-4">
+	<div class="{% if sidebarContent|trim|length > 0 %}col-lg-4{% else %}col-md-6{% endif %}">
 		
 		<div class="ajaxLoadedBlock" id="latestResultsBlock" 
 				data-ajaxblock="latest-results-summary" data-ignoreemptymessages="true"></div>
@@ -57,14 +61,12 @@
 			<div class="ajaxLoadedBlock" id="latestActivitiesBlock" 
 				data-ajaxblock="user-activities-all" data-ignoreemptymessages="true" data-refreshperiod="10"></div>
 	</div>
-		
-	<div class="col-md-4">
-		{% if blocks.sidebar is defined %}
-			{% for uiBlock in blocks.sidebar %}
-				{{ viewHandler.renderBlock(uiBlock.id, uiBlock)|raw }}
-			{% endfor %}
-		{% endif %}
+
+	{% if sidebarContent|trim|length > 0 %}
+	<div class="col-lg-4">
+		{{ sidebarContent|raw }}
 	</div>
+	{% endif %}
 </div>
 
 {% if blocks.content_bottom is defined %}

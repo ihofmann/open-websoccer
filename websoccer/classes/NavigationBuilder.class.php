@@ -94,8 +94,9 @@ class NavigationBuilder {
 		}
 		
 		$itemWeight = (isset($pageConfig['navweight']) && strlen($pageConfig['navweight'])) ? $pageConfig['navweight'] : 0;
+		$navMenuKey = (isset($pageConfig['navmenukey']) && strlen($pageConfig['navmenukey'])) ? $pageConfig['navmenukey'] : null;
 			
-		$item = new NavigationItem($pageId, $i18n->getNavigationLabel($pageId), array(), $isActive, $itemWeight);
+		$item = new NavigationItem($pageId, $i18n->getNavigationLabel($pageId), array(), $isActive, $itemWeight, $navMenuKey);
 			
 		$itemParent = (isset($pageConfig['parentItem']) && strlen($pageConfig['parentItem'])) ? $pageConfig['parentItem'] : null;
 			

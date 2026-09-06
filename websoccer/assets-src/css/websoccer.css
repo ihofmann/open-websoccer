@@ -12,6 +12,14 @@
   cursor: default;
 }
 
+/* View-update selects (auto-submit on change): take only half the width
+   on large screens instead of the full form width. */
+@media (min-width: 992px) {
+  select.select-form-submit {
+    width: 50%;
+  }
+}
+
 /* Fixed-size avatars / player pictures */
 .ws-avatar-20 {
   width: 20px;
@@ -121,6 +129,7 @@
 /* Formation-specific */
 .ws-formation-table {
   width: 450px;
+  max-width: 100%;
 }
 .ws-formation-player-img {
   margin: 5px 5px 0 2px;
@@ -139,7 +148,7 @@
   padding: 0 50px;
 }
 .ws-border-end-grey {
-  border-right: 1px solid grey;
+  border-right: 1px solid var(--ws-border-color);
 }
 .ws-match-goals-row {
   margin: -10px 0 10px 0;
@@ -177,7 +186,7 @@
 
 .infolabel {
   font-weight: bold;
-  background: #f5f5f5;
+  background: var(--ws-muted-bg);
   padding: 8px;
   border-radius: 4px;
 }
@@ -191,12 +200,12 @@
 }
 
 .darkIcon {
-  color: black;
+  color: var(--ws-body-color);
 }
 
 .darkIcon:hover,
 .darkIcon:active {
-  color: #444444;
+  color: var(--ws-muted-color);
   text-decoration: none;
 }
 
@@ -223,7 +232,7 @@
 }
 
 #notificationspopup {
-  width: 350px;
+  width: min(350px, calc(100vw - 2rem));
 }
 
 /* Ajax loader */
@@ -267,7 +276,7 @@
 
 .ws-autocomplete-list .list-group-item:hover,
 .pkpicker-list .list-group-item:hover {
-  background-color: #f8f9fa;
+  background-color: var(--ws-primary-subtle);
 }
 
 /* ------------------------------------------------------------------ */
@@ -303,8 +312,8 @@ ul.inline > li,
 
 .img-polaroid {
   padding: 4px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: var(--ws-card-bg);
+  border: 1px solid var(--ws-border-color);
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
@@ -366,8 +375,8 @@ ul.inline > li,
 
 /* match report */
 #report_result {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid var(--ws-border-color);
+  border-bottom: 1px solid var(--ws-border-color);
   text-align: center;
 }
 
@@ -387,31 +396,26 @@ ul.inline > li,
 }
 
 #reportarea {
-  border: 1px solid black;
+  border: 1px solid var(--ws-border-color);
   padding: 5px;
-  border: 1px solid #dde2e4;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .report_minute {
   font-weight: bold;
-  color: black;
+  color: var(--ws-body-color);
 }
 .report_comment {
-  color: #666666;
+  color: var(--ws-muted-color);
 }
 
 .report_team_home {
-  color: #006699;
+  color: var(--ws-primary);
 }
 
 .report_team_guest {
-  color: #ff6600;
+  color: #e67e22;
 }
 
 #reporttable {
@@ -515,13 +519,9 @@ ul.inline > li,
   overflow-y: scroll;
   padding: 10px 5px;
   margin-bottom: 5px;
-  background-color: #f9f9f9;
-  border: 1px solid #dde2e4;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
+  background-color: var(--ws-muted-bg);
+  border: 1px solid var(--ws-border-color);
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 

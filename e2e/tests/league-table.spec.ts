@@ -170,9 +170,8 @@ test.describe('Leagues page – league table', () => {
   test('switching to League 2 renders its teams', async ({ page }) => {
     await page.goto(LEAGUE_URL);
 
-    // Select "Demo Bundesliga" (value 2) and submit.
+    // Selecting a league applies immediately (no "Display" button anymore).
     await page.selectOption('#id', '2');
-    await page.locator('#pagecontent button[type=submit]').click();
 
     // The table reloads via AJAX into #leaguetable_block.
     const table = leagueTable(page);

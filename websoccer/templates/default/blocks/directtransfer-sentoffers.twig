@@ -1,5 +1,4 @@
 {% import "macros/paginator.twig" as pagination %}
-{% import "macros/messagebox.twig" as messagebox %}
 
 {% if offers|length > 0 %}
 
@@ -67,5 +66,5 @@
 
 	{{ pagination.paginator(paginator, "sent") }}
 {% else %}
-	{{ messagebox.box(i18n.getMessage("transferoffers_no_sent_offers"), "", "info") }}
+	<p>{{ i18n.getMessage("transferoffers_no_sent_offers") }}</p>
 {% endif %}

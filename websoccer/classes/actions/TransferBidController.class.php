@@ -44,6 +44,13 @@ class TransferBidController implements IActionController {
 			return;
 		}
 		
+		// The bid form only submits one of the two money fields, depending on
+		// whether the player has a club (transfer fee) or not (hand money).
+		// Default the other one to 0 so the INSERT never writes DEFAULT into a
+		// NOT NULL column without a default value (e.g. abloese).
+		$parameters['amount'] = isset($parameters['amount']) ? $parameters['amount'] : 0;
+		$parameters['handmoney'] = isset($parameters['handmoney']) ? $parameters['handmoney'] : 0;
+		
 		$user = $this->_websoccer->getUser();
 		
 		$clubId = $user->getClubId($this->_websoccer, $this->_db);

@@ -178,6 +178,26 @@ import { Tooltip, Popover } from "bootstrap";
   }
 
   /* ------------------------------------------------------------------ */
+  /* Range input values                                                  */
+  /* ------------------------------------------------------------------ */
+  function initRangeInputs() {
+    document.querySelectorAll('input[type="range"][aria-describedby]').forEach(function (input) {
+      const output = document.getElementById(input.getAttribute("aria-describedby"));
+      if (!output || output.dataset.wsRangeInit) return;
+      output.dataset.wsRangeInit = "1";
+
+      function update() {
+        const unit = output.dataset.unit || "";
+        output.textContent = input.value + (unit ? " " + unit : "");
+      }
+
+      input.addEventListener("input", update);
+      input.addEventListener("change", update);
+      update();
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Countdown (vanilla)                                                */
   /* ------------------------------------------------------------------ */
   function initCountdowns() {
@@ -456,15 +476,41 @@ import { Tooltip, Popover } from "bootstrap";
   }
 
   /* ------------------------------------------------------------------ */
+  /* Auto-submit forms when a view-update select changes                */
+  /* (selects with class "select-form-submit" apply their selection     */
+  /* immediately instead of requiring an "apply" button click)          */
+  /* ------------------------------------------------------------------ */
+  function initSelectFormSubmit() {
+    document.querySelectorAll("select.select-form-submit").forEach(function (select) {
+      if (select.dataset.wsSelectSubmitInit) return;
+      select.dataset.wsSelectSubmitInit = "1";
+      select.addEventListener("change", function () {
+        const form = select.closest("form");
+        if (!form) return;
+        /* Reuse the existing AJAX submit handler for AJAXified forms,
+           otherwise submit the form natively. */
+        const ajaxBtn = form.querySelector(".ajaxSubmit");
+        if (ajaxBtn) {
+          ajaxBtn.click();
+        } else {
+          form.submit();
+        }
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------ */
   /* Init components (also re-run after AJAX updates)                   */
   /* ------------------------------------------------------------------ */
   function initComponents() {
     initTooltips();
     initPopovers();
     initAutoComplete();
+    initRangeInputs();
     initCountdowns();
     initDirectTransferOfferSuccess();
     initDynamicStyles();
+    initSelectFormSubmit();
   }
 
   document.addEventListener("DOMContentLoaded", function () {

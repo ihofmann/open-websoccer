@@ -33,7 +33,7 @@ final class DefaultUserLoginMethodTest extends TestCaseBase {
 	public function testAuthenticateWithUsernameReturnsFalseForUnknownUser(): void {
 		$db = $this->createMock(\DbConnection::class);
 		$db->method('querySelect')->willReturn(
-			$this->dbResult([['id' => null, 'passwort' => '', 'passwort_neu' => '', 'passwort_salt' => '']])
+			$this->dbResult([])
 		);
 
 		$method = $this->makeMethod($db);

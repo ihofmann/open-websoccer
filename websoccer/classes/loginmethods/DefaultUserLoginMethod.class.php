@@ -70,7 +70,7 @@ class DefaultUserLoginMethod implements IUserLoginMethod {
 		$result->free();
 		
 		// user does not exist
-		if (!$userdata['id']) {
+		if (!$userdata || !$userdata['id']) {
 			return FALSE;
 		}
 		

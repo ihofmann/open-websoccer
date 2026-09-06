@@ -1,5 +1,4 @@
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/playerlists.twig" as playerlists %}
 
 {% block page_title %}
@@ -13,7 +12,7 @@
 	<p><a class="btn btn-sm btn-outline-primary" href="{{ env.getInternalUrl("nominate-national-players") }}" data-testid="nt-nominate-link"><i class="bi bi-telephone"></i> {{ i18n.getMessage("nominate-national-players_navlabel") }}</a></p>
 	
 	{% if players|length == 0 %}
-		{{ messagebox.box("", i18n.getMessage("nationalteams_no_players"), "info", "nt-no-players") }}
+		<p data-testid="nt-no-players">{{ i18n.getMessage("nationalteams_no_players") }}</p>
 	{% else %}
 		{% for playerPosition, positionPlayers in players %}
 			<h4 data-testid="nt-position-section">{{ i18n.getMessage("player_position_" ~ playerPosition) }} ({{ positionPlayers|length }})</h4>

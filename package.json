@@ -3,7 +3,7 @@
   "private": true,
   "description": "OpenWebSoccer-Sim browser assets",
   "scripts": {
-    "build": "npm run build:admincenter && npm run build:default",
+    "build": "npm run build:admincenter && npm run build:default && node scripts/update-assets-version.js",
     "release": "node scripts/release.js",
     "build:admincenter": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/admincenter.js",
     "build:default": "esbuild --bundle --minify --entry-names=[name] --loader:.png=file --loader:.gif=file --loader:.jpg=file --loader:.woff=file --loader:.woff2=file --asset-names=images/[name]-[hash] --outdir=websoccer/assets websoccer/assets-src/default.js",

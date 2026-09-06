@@ -19,7 +19,8 @@
             model="FreeClubsModel"
             role="user,guest"
             navitem="true"
-            navweight="4"/>
+            navweight="4"
+            navmenukey="top"/>
 
     </pages> 
     

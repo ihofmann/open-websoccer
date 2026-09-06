@@ -127,14 +127,12 @@ test.describe.serial('My Youth Team page (logged in as user1)', () => {
     await expect(row).toContainText('15 *');
   });
 
-  test('empty youth team shows an info message', async ({ page }) => {
+  test('empty youth team shows an empty-state message', async ({ page }) => {
     // user4 manages Team 4 which has no youth players.
     await loginAs(page, 'user4', 'user4');
     await page.goto('/?page=youth-team');
     await expect(page.locator('h1')).toHaveText('My Youth Team');
     await expect(page.getByTestId('youth-players-table')).toHaveCount(0);
-    await expect(page.locator('.alert-info')).toContainText(
-      'There are currently no players in your youth team.',
-    );
+    await expect(page.getByText('There are currently no players in your youth team.')).toBeVisible();
   });
 });

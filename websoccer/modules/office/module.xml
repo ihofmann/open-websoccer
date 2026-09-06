@@ -17,6 +17,7 @@
             model="OfficeModel"
             navitem="true"
             navweight="2"
+            navmenukey="sidebar"
             role="user">
             
 	        <page

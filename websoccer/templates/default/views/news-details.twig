@@ -10,10 +10,10 @@
 {{ article.message|raw }}
 
 {% if relatedLinks|length > 0 %}
-<h5>{{ i18n.getMessage('news_related_links') }}</h5>
+<h5 class="mt-4">{{ i18n.getMessage('news_related_links') }}</h5>
 <ul>
-{% for linkUrl,linkLabel in relatedLinks %}
-<li><a href="{{ linkUrl }}"{% if linkUrl[:env.getConfig('homepage')|length] != env.getConfig('homepage') %} target="_blank"{% endif %}>{{ linkLabel }}</a></li>
+{% for link in relatedLinks %}
+<li><a href="{{ link.url }}"{% if link.url[:env.getConfig('homepage')|length] != env.getConfig('homepage') %} target="_blank"{% endif %}>{{ link.label }}</a></li>
 {% endfor %}
 </ul>
 {% endif %}

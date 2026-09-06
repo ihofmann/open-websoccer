@@ -1,5 +1,4 @@
 {% extends "base.twig" %}
-{% import "macros/messagebox.twig" as messagebox %}
 {% import "macros/statisticelements.twig" as statisticelements %}
 
 {% block page_title %}
@@ -123,7 +122,7 @@
 	<p>* <em>{{ i18n.getMessage("youthteam_min_age_info", env.getConfig("youth_min_age_professional")) }}</em></p>
 
 {% else %}
-	{{ messagebox.box(i18n.getMessage("youthteam_no_players"), "", "info") }}
+	<p>{{ i18n.getMessage("youthteam_no_players") }}</p>
 {% endif %}
 
 {% endblock %}

@@ -190,7 +190,7 @@ class FormationDataService {
 			$added = FALSE;
 			
 			// handle players without main position (all-rounder)
-			if (!strlen($player['position_main'])) {
+			if (!strlen($player['position_main'] ?? '')) {
 				
 				if ($player['position'] == 'Torwart') {
 					$possiblePositions = array('T');
@@ -212,14 +212,14 @@ class FormationDataService {
 				}
 				
 				// add at main position
-			} elseif (strlen($player['position_main']) && isset($openPositions[$player['position_main']]) && $openPositions[$player['position_main']]) {
+			} elseif (strlen($player['position_main'] ?? '') && isset($openPositions[$player['position_main']]) && $openPositions[$player['position_main']]) {
 				$openPositions[$player['position_main']] = $openPositions[$player['position_main']] - 1;
 				$players[] = array('id' => $player['id'], 'position' => $player['position_main']);
 				$added = TRUE;
 			}
 			
 			// remember player for later if no space on his main position. Might be used with his secondary position, if he has any.
-			if (!$added && strlen($player['position_second'])) {
+			if (!$added && strlen($player['position_second'] ?? '')) {
 				$unusedPlayers[] = $player;
 			}
 			

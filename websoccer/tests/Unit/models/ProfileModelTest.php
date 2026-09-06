@@ -31,4 +31,14 @@ final class ProfileModelTest extends TestCaseBase {
 		$this->assertSame('John', $params['user']['realname']);
 		$this->assertSame('', $params['user']['birthday']);
 	}
+
+	public function testGetTemplateParametersClearsBirthdayWhenNull(): void {
+		$ws = $this->mockWebsoccer(['db_prefix' => 'ws', 'date_format' => 'Y-m-d']);
+		$ws->method('getUser')->willReturn($this->makeUser(['id' => 1]));
+		$row = ['realname' => 'John', 'place' => 'NY', 'country' => 'US', 'birthday' => null,
+			'occupation' => '', 'interests' => '', 'favorite_club' => '', 'homepage' => '', 'c_hideinonlinelist' => '0'];
+		$model = new ProfileModel($this->dbWithRows([$row]), $this->mockI18n(), $ws);
+		$params = $model->getTemplateParameters();
+		$this->assertSame('', $params['user']['birthday']);
+	}
 }

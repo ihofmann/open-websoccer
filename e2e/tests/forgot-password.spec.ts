@@ -44,7 +44,7 @@ test.describe('Frontend forgot-password', () => {
     // The controller returns "login" so the login page is rendered, but the
     // framework does an internal forward (not an HTTP redirect), so the URL
     // stays on the forgot-password page.
-    await expect(page.locator('h1')).toHaveText('Log In');
+    await expect(page.getByTestId('page-title')).toHaveText('Log In');
     await expect(page.locator('.alert-success')).toContainText(FRONTEND_SUCCESS_TITLE);
     await expect(page.locator('.alert-danger')).toHaveCount(0);
   });

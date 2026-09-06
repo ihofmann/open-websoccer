@@ -86,4 +86,48 @@ final class TransferBidControllerTest extends TestCaseBase {
 		$controller = new TransferBidController($i18n, $ws, $db);
 		$controller->executeAction(['id' => 7]);
 	}
+
+	public function testBidOnFreeAgentWithoutAmountInsertsZeroAbloese(): void {
+		$i18n = $this->mockI18n(['transfer_bid_success' => 'saved']);
+		$ws = $this->mockWebsoccerAt(2000000, $this->config());
+		$ws->method('getUser')->willReturn($this->makeLoggedUser(1, 1));
+		// Free agent: no club, on the transfer list, auction still open. The
+		// bid form only submits hand money (no transfer fee), so 'amount' is
+		// absent from the parameters.
+		$db = $this->makeDb(
+			[
+				'_spieler AS P' => [$this->playerRow([
+					'team_id' => 0, 'team_user_id' => null, 'player_transfermarket' => 1,
+					'transfer_start' => 1000000, 'transfer_end' => 3000000,
+					'player_position' => 'Mittelfeld',
+				])],
+				'_verein AS C' => [$this->teamRow(['team_budget' => 5000000])],
+			],
+			[
+				'_spieler' => [['salary_sum' => 0]],
+				'_transfer_angebot' => [],
+			]
+		);
+
+		$inserted = null;
+		$db->method('queryInsert')->willReturnCallback(
+			function ($columns, $table) use (&$inserted) { $inserted = [$columns, $table]; }
+		);
+
+		$controller = new TransferBidController($i18n, $ws, $db);
+		$result = $controller->executeAction([
+			'id' => 973,
+			'handmoney' => '100000',
+			'contract_salary' => '60000',
+			'contract_goal_bonus' => '2000',
+			'contract_matches' => '30',
+		]);
+
+		$this->assertNull($result);
+		$this->assertNotNull($inserted);
+		// The missing fee must be stored as 0, never as DEFAULT.
+		$this->assertSame(0, $inserted[0]['abloese']);
+		$this->assertSame('100000', $inserted[0]['handgeld']);
+		$this->assertSame(973, $inserted[0]['spieler_id']);
+	}
 }

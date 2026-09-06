@@ -1,0 +1,10 @@
+{% if blocks.sidebar is defined %}
+	{% for uiBlock in blocks.sidebar %}
+		{% set renderedBlock = viewHandler.renderBlock(uiBlock.id, uiBlock) %}
+		{% if renderedBlock|trim|length > 0 %}
+		<div id="{{ uiBlock.id }}_block">
+			{{ renderedBlock|raw }}
+		</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}

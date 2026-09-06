@@ -364,7 +364,7 @@ class PlayersDataService {
 			$player['player_marketvalue'] = self::getMarketValue($websoccer, $player);
 			$player['player_nationality_filename'] = self::getFlagFilename($player['player_nationality']);
 			
-			$matchesInfo = explode(';', $player['matches_info']);
+			$matchesInfo = explode(';', $player['matches_info'] ?? '');
 			$player['player_avg_grade'] = (strlen($matchesInfo[0]) > 0) ? round((float) $matchesInfo[0], 2) : 0;
 			if (isset($matchesInfo[1]) && strlen($matchesInfo[1]) > 0) {
 				$player['player_assists'] = $matchesInfo[1];

@@ -262,8 +262,10 @@ class WebSoccer {
 			$pageId = $this->getRequestParameter('page');
 		}
 		
-		if (strlen($queryString)) {
+		if (is_scalar($queryString) && strlen((string) $queryString)) {
 			$queryString = '&' . $queryString;
+		} else {
+			$queryString = '';
 		}
 		
 		$url = $this->getConfig('context_root') . '/?page=' . $pageId . $queryString .'&action=' . $actionId;

@@ -218,7 +218,8 @@
             navitem="true"
             navweight="2"
             role="user"
-            navitemOnlyForConfigEnabled="youth_enabled">
+            navitemOnlyForConfigEnabled="youth_enabled"
+			parentItem="office">
             
             <page
 	            id="youthplayer-sell"

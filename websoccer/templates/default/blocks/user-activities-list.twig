@@ -1,5 +1,3 @@
-{% import "macros/messagebox.twig" as messagebox %}
-
 {% if activities is defined and activities|length > 0 %}
 	
 	<table class="table table-striped">
@@ -12,5 +10,5 @@
 	</table>
 	
 {% else %}
-	{{ messagebox.box(i18n.getMessage("activities_none_available_for_user"), "", "info") }}
+	<p>{{ i18n.getMessage("activities_none_available_for_user") }}</p>
 {% endif %}

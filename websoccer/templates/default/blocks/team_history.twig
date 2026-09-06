@@ -1,8 +1,6 @@
 
-{% import "macros/messagebox.twig" as messagebox %}
-
 {% if leagues|length == 0 and cups|length == 0 %}
-	{{ messagebox.box("", i18n.getMessage("team_details_noleaguevictories"), "info") }}
+	<p>{{ i18n.getMessage("team_details_noleaguevictories") }}</p>
 {% else %}
 
 	{% for leagueName,seasons in leagues %}

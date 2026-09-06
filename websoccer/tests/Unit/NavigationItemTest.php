@@ -14,6 +14,12 @@ final class NavigationItemTest extends TestCaseBase {
 		$this->assertSame($child, $item->children[0]);
 		$this->assertTrue($item->isActive);
 		$this->assertSame(5, $item->weight);
+		$this->assertNull($item->navMenuKey);
+	}
+
+	public function testConstructorSetsMenuKey(): void {
+		$item = new NavigationItem('home', 'Home', [], false, 0, 'top');
+		$this->assertSame('top', $item->navMenuKey);
 	}
 
 	public function testConstructorAcceptsEmptyChildrenArray(): void {

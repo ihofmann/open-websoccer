@@ -28,14 +28,14 @@
     <blocks>
 
         <block
-            id="userprofile"
-            template="userprofile"
-            model="ProfileBlockModel"
-            includepages="all"
-            area="sidebar"
+            id="sidebar-user"
+            template="sidebar_user"
+            model="SidebarUserModel"
+            includepages="none"
+            area="custom"
             weight="0"
             role="user" />
-        
+
         <block
             id="user-clubs-selection"
             template="user_clubs_selection"

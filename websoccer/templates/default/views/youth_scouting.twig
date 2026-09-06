@@ -14,7 +14,9 @@
 	{% else %}
 		{% set lastScouting = env.getFormattedDatetime(lastExecutionTimestamp) %}
 	{% endif %}
-	{{ profile.infofield(i18n.getMessage("youthteam_scouting_lastexecution"), lastScouting) }}
+	<div class="mb-3">
+		{{ profile.infofield(i18n.getMessage("youthteam_scouting_lastexecution"), lastScouting) }}
+	</div>
 	
 	{% if not scoutingPossible %}
 		<hr>

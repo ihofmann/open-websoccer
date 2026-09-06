@@ -29,7 +29,7 @@ final class NavigationBuilderTest extends TestCaseBase {
 		return $ws;
 	}
 
-	private function navPage(string $role, bool $navitem = true, ?string $parent = null, int $weight = 0, ?string $configDep = null): string {
+	private function navPage(string $role, bool $navitem = true, ?string $parent = null, int $weight = 0, ?string $configDep = null, ?string $navMenuKey = null): string {
 		$config = [
 			'role' => $role,
 			'navitem' => $navitem ? 'true' : 'false',
@@ -42,6 +42,9 @@ final class NavigationBuilderTest extends TestCaseBase {
 		}
 		if ($configDep !== null) {
 			$config['navitemOnlyForConfigEnabled'] = $configDep;
+		}
+		if ($navMenuKey !== null) {
+			$config['navmenukey'] = $navMenuKey;
 		}
 		return json_encode($config);
 	}
@@ -63,6 +66,17 @@ final class NavigationBuilderTest extends TestCaseBase {
 		$this->assertSame('home', $items[0]->pageId);
 		$this->assertSame('Home', $items[0]->label);
 		$this->assertTrue($items[0]->isActive);
+		$this->assertNull($items[0]->navMenuKey);
+	}
+
+	public function testIncludesConfiguredMenuKey(): void {
+		$pages = [
+			'home' => $this->navPage('guest', true, null, 0, null, 'top'),
+		];
+		$ws = $this->mockWebsoccerWithRole(ROLE_GUEST);
+		$i18n = $this->mockI18nWithLabels(['home' => 'Home']);
+		$items = NavigationBuilder::getNavigationItems($ws, $i18n, $pages, 'home');
+		$this->assertSame('top', $items[0]->navMenuKey);
 	}
 
 	public function testSkipsItemForNonMatchingRole(): void {

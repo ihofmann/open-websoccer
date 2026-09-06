@@ -1,5 +1,3 @@
-{% import "macros/messagebox.twig" as messagebox %}
-
 {% block table_header %}
 {% endblock %}
 
@@ -110,5 +108,5 @@
 	{% endif %}
 	
 {% else %}
-	{{ messagebox.box(i18n.getMessage("leaguetable_block_noteamsavailable"), "", "info") }}
+	<p>{{ i18n.getMessage("leaguetable_block_noteamsavailable") }}</p>
 {% endif %}

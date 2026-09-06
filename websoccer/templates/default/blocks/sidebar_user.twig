@@ -1,0 +1,97 @@
+<section class="ws-sidebar-usercard" aria-label="{{ env.user.username }}">
+	<div class="ws-sidebar-usercard-header">
+		<a class="ws-sidebar-avatar" href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}"
+		   title="{{ env.user.username }}">
+			{% if env.user.profilepicture|length > 0 %}
+			<img src="{{ env.user.profilepicture }}" class="ws-avatar-40 rounded-circle" alt="">
+			{% else %}
+			<span class="ws-avatar-40 rounded-circle ws-avatar-placeholder d-flex align-items-center justify-content-center">
+				<i class="bi bi-person-fill"></i>
+			</span>
+			{% endif %}
+		</a>
+
+		<div class="ws-sidebar-usercard-identity">
+			<a class="ws-sidebar-user-name" href="{{ env.getInternalUrl("user", "id=" ~ env.user.id) }}">
+				{{ env.user.username }}
+			</a>
+
+			{% if sidebarUserteam %}
+				{% set teamPicture %}
+					{% if sidebarUserteam.team_picture|length %}
+					<img src="{{ env.getConfig("context_root") }}/uploads/club/{{ sidebarUserteam.team_picture }}"
+					     class="ws-avatar-20" alt="">
+					{% endif %}
+				{% endset %}
+				{% if env.getConfig("max_number_teams_per_user") > 1 %}
+				<div class="dropdown">
+					<button class="ws-sidebar-team dropdown-toggle ajaxLink" type="button"
+					        data-bs-toggle="dropdown" data-ajaxblock="user-clubs-selection"
+					        data-ajaxtarget="clubsSelectionList" aria-expanded="false">
+						{{ teamPicture|raw }}
+						<span>{{ sidebarUserteam.team_name }}</span>
+					</button>
+					<ul class="dropdown-menu" id="clubsSelectionList"></ul>
+				</div>
+				{% else %}
+				<a class="ws-sidebar-team" href="{{ env.getInternalUrl("team", "id=" ~ sidebarUserteam.team_id) }}">
+					{{ teamPicture|raw }}
+					<span>{{ sidebarUserteam.team_name }}</span>
+				</a>
+				{% endif %}
+			{% else %}
+			<a class="ws-sidebar-team" href="{{ env.getInternalUrl("profile") }}">
+				{{ i18n.getMessage('profile_navlabel') }}
+			</a>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="ws-sidebar-usercard-details">
+		{% if sidebarUserteam %}
+		<a class="ws-sidebar-account-row" href="{{ env.getInternalUrl("finances") }}">
+			<i class="bi bi-wallet2" aria-hidden="true"></i>
+			<span>
+				<small>{{ i18n.getMessage('entity_club_finanz_budget') }}</small>
+				<strong>{{ sidebarUserteam.team_budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</strong>
+			</span>
+		</a>
+		{% endif %}
+
+		{% if env.getConfig("premium_enabled") %}
+		<a class="ws-sidebar-account-row" href="{{ env.getInternalUrl("premiumaccount") }}">
+			<i class="bi bi-star" aria-hidden="true"></i>
+			<span>
+				<small>{{ i18n.getMessage('entity_users_premium_balance') }}</small>
+				<strong>{{ env.user.premiumBalance|number_format(0, ',', ' ') }} {{ env.getConfig("premium_credit_unit") }}</strong>
+			</span>
+		</a>
+		{% endif %}
+
+		<div class="ws-sidebar-inbox">
+			<a class="ws-sidebar-inbox-link" href="{{ env.getInternalUrl("messages") }}"
+			   title="{{ i18n.getMessage('messages_navlabel') }}">
+				<i class="bi bi-envelope" aria-hidden="true"></i>
+				<span>{{ i18n.getMessage('messages_navlabel') }}</span>
+				{% if sidebarUnseenMessages > 0 %}
+				<span class="badge bg-danger">{{ sidebarUnseenMessages }}</span>
+				{% endif %}
+			</a>
+			<button id="notificationsLink" class="ws-sidebar-inbox-link ajaxLink" type="button"
+			        data-ajaxtarget="notificationspopup" data-ajaxblock="notifications"
+			        title="{{ i18n.getMessage('userprofile_block_notifications') }}">
+				<i class="bi bi-bell" aria-hidden="true"></i>
+				<span>{{ i18n.getMessage('userprofile_block_notifications') }}</span>
+				{% if sidebarUnseenNotifications > 0 %}
+				<span class="badge bg-danger">{{ sidebarUnseenNotifications }}</span>
+				{% endif %}
+			</button>
+		</div>
+
+		<a class="ws-sidebar-profile-link" href="{{ env.getInternalUrl("profile") }}">
+			<i class="bi bi-person-gear" aria-hidden="true"></i>
+			{{ i18n.getMessage('profile_navlabel') }}
+		</a>
+	</div>
+</section>
+<div id="notificationspopupwrapper" class="ws-hidden"><div id="notificationspopup">...</div></div>
