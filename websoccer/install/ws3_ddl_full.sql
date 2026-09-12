@@ -233,7 +233,9 @@ CREATE TABLE ws3_user (
   c_hideinonlinelist ENUM('1','0') NOT NULL DEFAULT '0',
   premium_balance INT(6) NOT NULL DEFAULT 0,
   picture VARCHAR(255) NULL,
-  status ENUM('1','2','0') NOT NULL DEFAULT '0'
+  status ENUM('1','2','0') NOT NULL DEFAULT '0',
+  INDEX user_lastonline (lastonline),
+  INDEX user_nick (nick)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_user_inactivity (
@@ -257,7 +259,8 @@ CREATE TABLE ws3_briefe (
   betreff VARCHAR(50) NULL,
   nachricht TEXT NULL,
   gelesen ENUM('1','0') NOT NULL DEFAULT '0',
-  typ ENUM('eingang','ausgang') NOT NULL DEFAULT 'eingang'
+  typ ENUM('eingang','ausgang') NOT NULL DEFAULT 'eingang',
+  INDEX briefe_empfaenger_typ_gelesen (empfaenger_id, typ, gelesen)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_news (
@@ -312,7 +315,8 @@ CREATE TABLE ws3_saison (
   platz_3_id INT(10) NOT NULL DEFAULT 0,
   platz_4_id INT(10) NOT NULL DEFAULT 0,
   platz_5_id INT(10) NOT NULL DEFAULT 0,
-  beendet ENUM('1','0') NOT NULL DEFAULT '0'
+  beendet ENUM('1','0') NOT NULL DEFAULT '0',
+  INDEX saison_liga_beendet (liga_id, beendet)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_verein (
@@ -414,7 +418,8 @@ CREATE TABLE ws3_spieler (
   lending_matches TINYINT NOT NULL DEFAULT 0,
   lending_owner_id INT(10) NULL,
   age TINYINT(3) NULL,
-  status ENUM('1','0') NOT NULL DEFAULT '0'
+  status ENUM('1','0') NOT NULL DEFAULT '0',
+  INDEX spieler_transfermarkt_ende (transfermarkt, transfer_ende)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_transfer_angebot (
@@ -428,7 +433,8 @@ CREATE TABLE ws3_transfer_angebot (
   vertrag_spiele SMALLINT(5) NOT NULL,
   vertrag_gehalt INT(7) NOT NULL,
   vertrag_torpraemie SMALLINT(5) NOT NULL DEFAULT 0,
-  ishighest ENUM('1','0') NOT NULL DEFAULT '0'
+  ishighest ENUM('1','0') NOT NULL DEFAULT '0',
+  INDEX transfer_angebot_spieler_datum (spieler_id, datum)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_stadion (
@@ -458,7 +464,8 @@ CREATE TABLE ws3_konto (
   absender VARCHAR(150) NULL,
   betrag INT(10) NOT NULL,
   datum INT(11) NOT NULL,
-  verwendung VARCHAR(200) NULL
+  verwendung VARCHAR(200) NULL,
+  INDEX konto_verein_datum (verein_id, datum)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_sponsor (
@@ -608,7 +615,10 @@ CREATE TABLE ws3_spiel (
   gast_w1_position VARCHAR(4) NULL,
   gast_w2_position VARCHAR(4) NULL,
   gast_w3_position VARCHAR(4) NULL,
-  blocked ENUM('1', '0') NOT NULL DEFAULT '0'
+  blocked ENUM('1', '0') NOT NULL DEFAULT '0',
+  INDEX spiel_berechnet_datum (berechnet, datum),
+  INDEX spiel_datum (datum),
+  INDEX spiel_pokalname_runde (pokalname, pokalrunde)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_aufstellung (
@@ -694,7 +704,8 @@ CREATE TABLE ws3_spiel_berechnung (
   passes_failed TINYINT(3) NULL,
   assists TINYINT(3) NULL,
   name VARCHAR(128) NULL,
-  losttackles TINYINT(3) NULL
+  losttackles TINYINT(3) NULL,
+  INDEX berechnung_spieler_spiel (spieler_id, spiel_id)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_spiel_text (
@@ -714,13 +725,15 @@ CREATE TABLE ws3_transfer (
   bid_id INT(11) NOT NULL DEFAULT 0,
   directtransfer_amount INT(10) NOT NULL,
   directtransfer_player1 INT(10) NOT NULL DEFAULT 0,
-  directtransfer_player2 INT(10) NOT NULL DEFAULT 0
+  directtransfer_player2 INT(10) NOT NULL DEFAULT 0,
+  INDEX transfer_datum (datum)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_session (
   session_id CHAR(32) NOT NULL PRIMARY KEY,
   session_data TEXT NOT NULL,
-  expires INT(11) NOT NULL
+  expires INT(11) NOT NULL,
+  INDEX session_expires (expires)
 )  DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_matchreport (
@@ -842,7 +855,9 @@ CREATE TABLE ws3_transfer_offer (
   rejected_date INT(11) NOT NULL DEFAULT 0,
   rejected_message VARCHAR(255) NULL,
   rejected_allow_alternative ENUM('1','0') NOT NULL DEFAULT '0',
-  admin_approval_pending ENUM('1','0') NOT NULL DEFAULT '0'
+  admin_approval_pending ENUM('1','0') NOT NULL DEFAULT '0',
+  INDEX transfer_offer_receiver_submitted (receiver_club_id, submitted_date),
+  INDEX transfer_offer_sender_submitted (sender_club_id, sender_user_id, submitted_date)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_notification (
@@ -855,7 +870,8 @@ CREATE TABLE ws3_notification (
   target_pageid VARCHAR(128) NULL,
   target_querystr VARCHAR(255) NULL,
   seen ENUM('1','0') NOT NULL DEFAULT '0',
-  team_id INT(10) NULL REFERENCES ws3_verein(id) ON DELETE CASCADE
+  team_id INT(10) NULL REFERENCES ws3_verein(id) ON DELETE CASCADE,
+  INDEX notification_user_seen_eventdate (user_id, seen, eventdate)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_youthplayer (
@@ -931,7 +947,8 @@ CREATE TABLE ws3_youthmatch (
   guest_s3_position VARCHAR(4) NULL,
   home_goals TINYINT(2) NULL,
   guest_goals TINYINT(2) NULL,
-  simulated ENUM('1','0') NOT NULL DEFAULT '0'
+  simulated ENUM('1','0') NOT NULL DEFAULT '0',
+  INDEX youthmatch_simulated_matchdate (simulated, matchdate)
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 
 CREATE TABLE ws3_youthmatch_player (
@@ -1033,6 +1050,7 @@ CREATE TABLE ws3_useractionlog (
   user_id INT(10) NOT NULL,
   action_id VARCHAR(255) NULL,
   created_date INT(11) NOT NULL,
+  INDEX useractionlog_user_created (user_id, created_date),
   FOREIGN KEY (user_id) REFERENCES ws3_user(id) ON DELETE CASCADE
 ) DEFAULT CHARSET=utf8, ENGINE=InnoDB;
 

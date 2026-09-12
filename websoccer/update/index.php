@@ -170,6 +170,12 @@ function executeUpdateDdl(DbConnection $db, $prefix) {
 		$script = str_replace(DEFAULT_DB_PREFIX . "_", $prefix . "_", $script);
 	}
 
+	// Make ADD INDEX / DROP INDEX and ADD/DROP COLUMN statements idempotent:
+	// the update wizard can be re-run when a later step failed, and MySQL
+	// provides no IF [NOT] EXISTS clause for them.
+	$script = filterSchemaStatements($script,
+		getExistingIndexNames($db), getExistingColumnNames($db));
+
 	$queryResult = $db->connection->multi_query($script);
 	if (!$queryResult) {
 		throw new Exception("Database Query Error: " . $db->connection->error);
@@ -180,6 +186,94 @@ function executeUpdateDdl(DbConnection $db, $prefix) {
 			throw new Exception("Database Query Error: " . $db->connection->error);
 		}
 	}
+}
+
+/**
+ * @return array map with "table_name.index_name" keys (lower case) of all
+ * indexes existing in the current database.
+ */
+function getExistingIndexNames(DbConnection $db) {
+	$indexes = array();
+
+	$result = $db->connection->query(
+		"SELECT TABLE_NAME, INDEX_NAME FROM information_schema.STATISTICS WHERE TABLE_SCHEMA = DATABASE()");
+	if (!$result) {
+		throw new Exception("Database Query Error: " . $db->connection->error);
+	}
+
+	while ($row = $result->fetch_assoc()) {
+		$indexes[strtolower($row["TABLE_NAME"] . "." . $row["INDEX_NAME"])] = TRUE;
+	}
+	$result->free();
+
+	return $indexes;
+}
+
+/**
+ * @return array map with "table_name.column_name" keys (lower case) of all
+ * columns existing in the current database.
+ */
+function getExistingColumnNames(DbConnection $db) {
+	$columns = array();
+
+	$result = $db->connection->query(
+		"SELECT TABLE_NAME, COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE()");
+	if (!$result) {
+		throw new Exception("Database Query Error: " . $db->connection->error);
+	}
+
+	while ($row = $result->fetch_assoc()) {
+		$columns[strtolower($row["TABLE_NAME"] . "." . $row["COLUMN_NAME"])] = TRUE;
+	}
+	$result->free();
+
+	return $columns;
+}
+
+/**
+ * Removes single-line ALTER TABLE statements that the database already satisfies,
+ * so that the DDL script can be executed repeatedly without errors:
+ * - "ADD INDEX" statements whose index already exists
+ * - "DROP INDEX" statements whose index does not exist
+ * - "ADD [COLUMN]" statements whose column already exists
+ * - "DROP [COLUMN]" statements whose column does not exist
+ *
+ * MODIFY COLUMN statements are always idempotent and pass through.
+ *
+ * @param string $script DDL script (with the actual table prefix applied).
+ * @param array $existingIndexes index keys as returned by getExistingIndexNames().
+ * @param array $existingColumns column keys as returned by getExistingColumnNames().
+ * @return string filtered script.
+ */
+function filterSchemaStatements($script, $existingIndexes, $existingColumns) {
+	$filteredLines = array();
+	foreach (explode("\n", $script) as $line) {
+		$trimmedLine = trim($line);
+
+		if (preg_match("/^ALTER TABLE (\w+) ADD INDEX (\w+)/i", $trimmedLine, $matches)
+			&& isset($existingIndexes[strtolower($matches[1] . "." . $matches[2])])) {
+			continue;
+		}
+
+		if (preg_match("/^ALTER TABLE (\w+) DROP INDEX (\w+)/i", $trimmedLine, $matches)
+			&& !isset($existingIndexes[strtolower($matches[1] . "." . $matches[2])])) {
+			continue;
+		}
+
+		if (preg_match("/^ALTER TABLE (\w+) ADD (?!INDEX|KEY|CONSTRAINT|PRIMARY|UNIQUE|FOREIGN)(?:COLUMN )?(\w+)/i", $trimmedLine, $matches)
+			&& isset($existingColumns[strtolower($matches[1] . "." . $matches[2])])) {
+			continue;
+		}
+
+		if (preg_match("/^ALTER TABLE (\w+) DROP (?!INDEX|PRIMARY|FOREIGN|KEY)(?:COLUMN )?(\w+)/i", $trimmedLine, $matches)
+			&& !isset($existingColumns[strtolower($matches[1] . "." . $matches[2])])) {
+			continue;
+		}
+
+		$filteredLines[] = $line;
+	}
+
+	return implode("\n", $filteredLines);
 }
 
 function getLegacyTimestamp($value) {
