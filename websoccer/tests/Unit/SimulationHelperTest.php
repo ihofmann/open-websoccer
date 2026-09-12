@@ -398,6 +398,86 @@ final class SimulationHelperTest extends TestCaseBase {
 	 *
 	 * @see https://github.com/ihofmann/open-websoccer/issues/7
 	 */
+	/**
+	 * Issue #7, exactly as reported by the user: a player with a (single) yellow card was not
+	 * substituted although a substitution was planned for him; the slot remained marked as used.
+	 *
+	 * This test documents that the yellow card itself never prevents the substitution (see also
+	 * testSingleYellowCardDoesNotPreventPlannedSubstitution). The real-world trigger for the reported
+	 * symptom is that the planned bench player is no longer available at the planned minute, e.g.
+	 * because he entered the pitch through an earlier injury substitution. In that case the skipped
+	 * substitution must free its slot (minute 999), so that the manager can still plan and execute
+	 * a new substitution for the booked player.
+	 *
+	 * @see https://github.com/ihofmann/open-websoccer/issues/7
+	 */
+	public function testBookedPlayerIsSubstitutedAfterSlotIsFreedWhenBenchPlayerWasConsumedByInjurySub(): void {
+		\WebSoccer::setInstanceForTesting($this->mockWebsoccer([
+			'sim_strength_reduction_wrongposition' => 10,
+			'sim_strength_reduction_secondary' => 5,
+		]));
+
+		$home = new SimulationTeam(1, 50);
+		$guest = new SimulationTeam(2, 50);
+		$match = new SimulationMatch(1, $home, $guest, 50);
+
+		// booked player (single yellow card) whom the manager wants to substitute in order to
+		// protect him from a yellow-red card.
+		$booked = $this->makePlayer(1, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$booked->yellowCards = 1;
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $booked;
+
+		// another midfielder on the pitch who will get injured.
+		$c = $this->makePlayer(3, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $c;
+
+		// bench players: B is the planned player to come in, E remains available.
+		$b = new SimulationPlayer(2, $home, PLAYER_POSITION_MIDFIELD, 'ZM', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[2] = $b;
+		$e = new SimulationPlayer(8, $home, PLAYER_POSITION_MIDFIELD, 'ZM', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[8] = $e;
+
+		// planned substitution for the booked player at minute 60.
+		$plannedSub = new SimulationSubstitution(60, $b, $booked);
+		$home->substitutions = [$plannedSub];
+
+		$observer = new DefaultSimulationObserver();
+
+		// minute 50: teammate C gets injured. The injury substitution automatically consumes
+		// bench player B (first midfielder on the bench) for minute 51.
+		$observer->onInjury($match, $c, 2);
+		$this->assertCount(2, $home->substitutions);
+		$this->assertSame(51, $home->substitutions[1]->minute);
+
+		// minute 51: the injury substitution is executed; B is now on the pitch.
+		$match->minute = 51;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+		$this->assertTrue(isset($home->removedPlayers[3]));
+		$this->assertFalse(isset($home->playersOnBench[2]));
+
+		// minute 60: the planned substitution for the booked player cannot be executed anymore,
+		// because B is not on the bench. The booked player himself is still on the pitch
+		// (a single yellow card never prevents a substitution).
+		$match->minute = 60;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+		$this->assertFalse(isset($home->removedPlayers[1]));
+
+		// the slot is freed, so the manager can plan a new substitution (here: E comes in).
+		$this->assertSame(999, $plannedSub->minute);
+
+		// the manager plans a new substitution for the booked player, as the live match changes
+		// page allows after the slot has been freed.
+		$newSub = new SimulationSubstitution(70, $e, $booked);
+		$home->substitutions = [$newSub];
+
+		// minute 70: the booked player is finally substituted.
+		$match->minute = 70;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+		$this->assertTrue(isset($home->removedPlayers[1]));
+		$this->assertFalse(isset($home->playersOnBench[8]));
+		$this->assertContains($e, $home->positionsAndPlayers[$e->position]);
+	}
+
 	public function testUnplannedSubstitutionReplacesUnreachablePlannedSubstitutionBeforeValidOnes(): void {
 		$home = new SimulationTeam(1, 50);
 		$guest = new SimulationTeam(2, 50);
