@@ -120,6 +120,50 @@ final class DefaultSimulationStrategyTest extends TestCaseBase {
 		$this->assertSame('passBall', $strategy->nextAction($match));
 	}
 
+	/**
+	 * A player who has just received the ball directly from his own goaly must not
+	 * shoot immediately, so that goalies do not get unrealistic goal assists (issue #22).
+	 */
+	public function testNextActionForcesPassAfterBallReceivedFromOwnGoaly(): void {
+		$ws = $this->mockWebsoccer($this->simConfig());
+		\WebSoccer::setInstanceForTesting($ws);
+		$strategy = new DefaultSimulationStrategy($ws);
+		$match = $this->makeFullMatch();
+
+		// goaly passes the ball directly to a striker
+		$goaly = $match->homeTeam->positionsAndPlayers[PLAYER_POSITION_GOALY][0];
+		$match->setPlayerWithBall($goaly);
+		$striker = $match->homeTeam->positionsAndPlayers[PLAYER_POSITION_STRIKER][0];
+		$match->setPlayerWithBall($striker);
+
+		$this->assertSame('passBall', $strategy->nextAction($match));
+	}
+
+	/**
+	 * Receiving the ball from the opponent's goaly (e.g. after intercepting a failed
+	 * clearance) shall not restrict the player's actions.
+	 */
+	public function testNextActionDoesNotForcePassAfterBallReceivedFromOpponentGoaly(): void {
+		$ws = $this->mockWebsoccer($this->simConfig());
+		\WebSoccer::setInstanceForTesting($ws);
+		$strategy = new DefaultSimulationStrategy($ws);
+		$match = $this->makeFullMatch();
+
+		// opponent goaly's failed clearance goes to a striker of the other team
+		$opponentGoaly = $match->guestTeam->positionsAndPlayers[PLAYER_POSITION_GOALY][0];
+		$match->setPlayerWithBall($opponentGoaly);
+		$striker = $match->homeTeam->positionsAndPlayers[PLAYER_POSITION_STRIKER][0];
+		$match->setPlayerWithBall($striker);
+
+		// tackle or shoot must still be possible actions
+		$actions = [];
+		for ($i = 0; $i < 200; $i++) {
+			$actions[$strategy->nextAction($match)] = TRUE;
+		}
+		$this->assertArrayHasKey('tackle', $actions);
+		$this->assertArrayHasKey('shoot', $actions);
+	}
+
 	public function testPassBallReturnsBoolean(): void {
 		$ws = $this->mockWebsoccer($this->simConfig());
 		\WebSoccer::setInstanceForTesting($ws);
