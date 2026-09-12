@@ -83,6 +83,14 @@ class DefaultSimulationStrategy implements ISimulationStrategy {
 			return 'passBall';
 		}
 		
+		// player who has just received the ball from his own goaly shall not immediately shoot at the goal.
+		// Otherwise goalkeepers would get unrealistic goal assists (see issue #22).
+		$previousPlayer = $match->getPreviousPlayerWithBall();
+		if ($previousPlayer !== NULL && $previousPlayer->position == PLAYER_POSITION_GOALY
+				&& $previousPlayer->team->id == $player->team->id) {
+			return 'passBall';
+		}
+		
 		// Probability of attack depends on opponent's formation
 		$opponentTeam = SimulationHelper::getOpponentTeam($player, $match);
 		$opponentPosition = $this->_opponentPositions[$player->position];
