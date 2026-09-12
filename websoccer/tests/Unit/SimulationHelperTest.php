@@ -233,6 +233,9 @@ final class SimulationHelperTest extends TestCaseBase {
 		$observer->expects($this->never())->method('onSubstitution');
 
 		SimulationHelper::checkAndExecuteSubstitutions($match, $home, [$observer]);
+
+		// the substitution slot must be freed, since the substitution will never be executed (see issue #7).
+		$this->assertSame(999, $sub->minute);
 	}
 
 	public function testCheckAndExecuteSubstitutionsSkipsWhenPlayerNotOnBench(): void {
@@ -252,6 +255,202 @@ final class SimulationHelperTest extends TestCaseBase {
 		$observer->expects($this->never())->method('onSubstitution');
 
 		SimulationHelper::checkAndExecuteSubstitutions($match, $home, [$observer]);
+
+		// the substitution slot must be freed, since the substitution will never be executed (see issue #7).
+		$this->assertSame(999, $sub->minute);
+	}
+
+	/**
+	 * Issue #7: a player who got sent off the pitch after his second yellow card cannot be
+	 * substituted anymore. The planned substitution must not be executed, but its slot must be
+	 * freed (marked as unreachable) so that the manager can still plan another substitution.
+	 *
+	 * @see https://github.com/ihofmann/open-websoccer/issues/7
+	 */
+	public function testSubstitutionForPlayerSentOffAfterSecondYellowCardIsNotExecutedAndSlotIsFreed(): void {
+		$home = new SimulationTeam(1, 50);
+		$guest = new SimulationTeam(2, 50);
+		$match = new SimulationMatch(1, $home, $guest, 55);
+
+		// player on the pitch for whom a substitution is planned at minute 60.
+		$out = $this->makePlayer(1, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $out;
+
+		// player on the bench who is supposed to come in.
+		$in = new SimulationPlayer(2, $home, PLAYER_POSITION_MIDFIELD, 'ZM', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[2] = $in;
+
+		$sub = new SimulationSubstitution(60, $in, $out);
+		$home->substitutions = [$sub];
+
+		$observer = new DefaultSimulationObserver();
+
+		// first yellow card: the player may stay on the pitch, so the substitution is still possible.
+		$observer->onYellowCard($match, $out);
+		$this->assertSame(1, $out->yellowCards);
+		$this->assertFalse(isset($home->removedPlayers[1]));
+
+		// second yellow card: the player is sent off, so his planned substitution can never be executed.
+		$observer->onYellowCard($match, $out);
+		$this->assertSame(2, $out->yellowCards);
+		$this->assertTrue(isset($home->removedPlayers[1]));
+
+		$observerMock = $this->createMock(\ISimulatorObserver::class);
+		$observerMock->expects($this->never())->method('onSubstitution');
+
+		// the planned substitution minute is reached.
+		$match->minute = 60;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, [$observerMock]);
+
+		// the substitution must not be executed.
+		$this->assertTrue(isset($home->playersOnBench[2]));
+
+		// but it must be marked as unreachable, so that the slot does not remain blocked forever.
+		$this->assertSame(999, $sub->minute);
+	}
+
+	/**
+	 * A single yellow card does not send a player off, so a planned substitution
+	 * for him must be executed as usual (see issue #7).
+	 */
+	public function testSingleYellowCardDoesNotPreventPlannedSubstitution(): void {
+		\WebSoccer::setInstanceForTesting($this->mockWebsoccer([
+			'sim_strength_reduction_wrongposition' => 10,
+			'sim_strength_reduction_secondary' => 5,
+		]));
+
+		$home = new SimulationTeam(1, 50);
+		$guest = new SimulationTeam(2, 50);
+		$match = new SimulationMatch(1, $home, $guest, 59);
+
+		$out = $this->makePlayer(1, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $out;
+
+		$in = new SimulationPlayer(2, $home, PLAYER_POSITION_MIDFIELD, 'ZM', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[2] = $in;
+
+		$sub = new SimulationSubstitution(60, $in, $out);
+		$home->substitutions = [$sub];
+
+		// first yellow card only: the player stays on the pitch.
+		(new DefaultSimulationObserver())->onYellowCard($match, $out);
+
+		$match->minute = 60;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+
+		// the substitution is executed as planned.
+		$this->assertTrue(isset($home->removedPlayers[1]));
+		$this->assertFalse(isset($home->playersOnBench[2]));
+		$this->assertContains($in, $home->positionsAndPlayers[$in->position]);
+		$this->assertSame(60, $sub->minute);
+	}
+
+	/**
+	 * Issue #7: if the player who is supposed to come in is not on the bench anymore
+	 * (e.g. because he entered the pitch through an earlier substitution), the planned
+	 * substitution must not be executed, but its slot must be freed.
+	 *
+	 * @see https://github.com/ihofmann/open-websoccer/issues/7
+	 */
+	public function testSubstitutionWithPlayerInNotOnBenchAnymoreIsNotExecutedAndSlotIsFreed(): void {
+		\WebSoccer::setInstanceForTesting($this->mockWebsoccer([
+			'sim_strength_reduction_wrongposition' => 10,
+			'sim_strength_reduction_secondary' => 5,
+		]));
+
+		$home = new SimulationTeam(1, 50);
+		$guest = new SimulationTeam(2, 50);
+		$match = new SimulationMatch(1, $home, $guest, 30);
+
+		$a = $this->makePlayer(1, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $a;
+		$c = $this->makePlayer(3, PLAYER_POSITION_DEFENCE, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_DEFENCE][] = $c;
+
+		$b = new SimulationPlayer(2, $home, PLAYER_POSITION_MIDFIELD, 'ZM', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[2] = $b;
+
+		// valid substitution at minute 30: A goes out, B comes in.
+		$firstSub = new SimulationSubstitution(30, $b, $a);
+		// invalid substitution at minute 60: B is already on the pitch since minute 30.
+		$secondSub = new SimulationSubstitution(60, $b, $c);
+		$home->substitutions = [$firstSub, $secondSub];
+
+		// minute 30: the first substitution is executed.
+		$match->minute = 30;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+		$this->assertTrue(isset($home->removedPlayers[1]));
+		$this->assertFalse(isset($home->playersOnBench[2]));
+
+		// minute 60: the second substitution cannot be executed anymore.
+		$match->minute = 60;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+		$this->assertFalse(isset($home->removedPlayers[3]));
+
+		// but it must be marked as unreachable, so that the slot does not remain blocked forever.
+		$this->assertSame(999, $secondSub->minute);
+	}
+
+	/**
+	 * Issue #7: a planned substitution which became unreachable (because its player was sent off
+	 * after a yellow-red card) must be the first one to be replaced by an unplanned substitution
+	 * (e.g. after an injury), rather than destroying a still valid planned substitution.
+	 *
+	 * @see https://github.com/ihofmann/open-websoccer/issues/7
+	 */
+	public function testUnplannedSubstitutionReplacesUnreachablePlannedSubstitutionBeforeValidOnes(): void {
+		$home = new SimulationTeam(1, 50);
+		$guest = new SimulationTeam(2, 50);
+		$match = new SimulationMatch(1, $home, $guest, 55);
+
+		// player who will be sent off after his second yellow card, with a planned substitution at minute 60.
+		$out = $this->makePlayer(1, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $out;
+		$benchPlayer = new SimulationPlayer(2, $home, PLAYER_POSITION_STRIKER, 'MS', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[2] = $benchPlayer;
+		$deadSub = new SimulationSubstitution(60, $benchPlayer, $out);
+
+		// two more, still valid planned substitutions in the future.
+		$x = $this->makePlayer(3, PLAYER_POSITION_DEFENCE, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_DEFENCE][] = $x;
+		$y = $this->makePlayer(4, PLAYER_POSITION_DEFENCE, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_DEFENCE][] = $y;
+		$benchC = new SimulationPlayer(5, $home, PLAYER_POSITION_STRIKER, 'MS', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[5] = $benchC;
+		$benchD = new SimulationPlayer(6, $home, PLAYER_POSITION_STRIKER, 'MS', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[6] = $benchD;
+		$validSub1 = new SimulationSubstitution(75, $benchC, $x);
+		$validSub2 = new SimulationSubstitution(80, $benchD, $y);
+
+		$home->substitutions = [$deadSub, $validSub1, $validSub2];
+
+		// the player is sent off after his second yellow card.
+		$observer = new DefaultSimulationObserver();
+		$observer->onYellowCard($match, $out);
+		$observer->onYellowCard($match, $out);
+
+		// at minute 60, his planned substitution is skipped and thus becomes unreachable.
+		$match->minute = 60;
+		SimulationHelper::checkAndExecuteSubstitutions($match, $home, []);
+		$this->assertSame(999, $deadSub->minute);
+
+		// at minute 65, another player gets injured and needs to be substituted.
+		$match->minute = 65;
+		$injured = $this->makePlayer(7, PLAYER_POSITION_MIDFIELD, 80, $home);
+		$home->positionsAndPlayers[PLAYER_POSITION_MIDFIELD][] = $injured;
+		$benchE = new SimulationPlayer(8, $home, PLAYER_POSITION_MIDFIELD, 'ZM', 3.0, 25, 75, 70, 60, 90, 85);
+		$home->playersOnBench[8] = $benchE;
+
+		$result = SimulationHelper::createUnplannedSubstitutionForPlayer(66, $injured);
+		$this->assertTrue($result);
+
+		// the unplanned substitution replaces the unreachable one...
+		$this->assertSame($benchE, $home->substitutions[0]->playerIn);
+		$this->assertSame($injured, $home->substitutions[0]->playerOut);
+		$this->assertSame(66, $home->substitutions[0]->minute);
+		// ...while the still valid planned substitutions remain untouched.
+		$this->assertSame($validSub1, $home->substitutions[1]);
+		$this->assertSame($validSub2, $home->substitutions[2]);
 	}
 
 	public function testCreateUnplannedSubstitutionReturnsFalseWithEmptyBench(): void {

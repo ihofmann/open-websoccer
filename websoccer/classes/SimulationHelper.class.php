@@ -155,64 +155,81 @@ class SimulationHelper {
 		}
 		
 		foreach ($substitutions as $substitution) {
-			if ($substitution->minute == $match->minute 
-					&& !isset($team->removedPlayers[$substitution->playerOut->id])
-					&& isset($team->playersOnBench[$substitution->playerIn->id])) {
+			if ($substitution->minute != $match->minute) {
+				continue;
+			}
+
+			// the substitution can never be executed if the player to substitute is not on the pitch anymore,
+			// e.g. because he has been sent off after his second yellow card (see issue #7) or has already
+			// been substituted by an unplanned substitution.
+			// Mark the minute as unreachable, so that the manager can plan a new substitution for this slot
+			// and so that it can be replaced by an unplanned substitution.
+			// Do not simply remove it, because it might become out of sync with DB table entry on state saving.
+			if (isset($team->removedPlayers[$substitution->playerOut->id])) {
+				$substitution->minute = 999;
+				continue;
+			}
+
+			// the substitution can also never be executed if the player to come in is not on the bench anymore,
+			// e.g. because he has already entered the pitch through an earlier substitution.
+			if (!isset($team->playersOnBench[$substitution->playerIn->id])) {
+				$substitution->minute = 999;
+				continue;
+			}
+
+			// check condition
+			if ($substitution->condition == SUB_CONDITION_TIE && $match->homeTeam->getGoals() != $match->guestTeam->getGoals()
+					|| $substitution->condition == SUB_CONDITION_LEADING && $team->getGoals() <= self::getOpponentTeamOfTeam($team, $match)->getGoals()
+					|| $substitution->condition == SUB_CONDITION_DEFICIT && $team->getGoals() >= self::getOpponentTeamOfTeam($team, $match)->getGoals()) {
+				// set minute as unreachable, so that it could be replaced by an unplanned substitution.
+				// do not simply remove it, because it might become out of sync with DB table entry on state saving.
+				$substitution->minute = 999;
+				continue;
+			}
 				
-				// check condition
-				if ($substitution->condition == SUB_CONDITION_TIE && $match->homeTeam->getGoals() != $match->guestTeam->getGoals()
-						|| $substitution->condition == SUB_CONDITION_LEADING && $team->getGoals() <= self::getOpponentTeamOfTeam($team, $match)->getGoals()
-						|| $substitution->condition == SUB_CONDITION_DEFICIT && $team->getGoals() >= self::getOpponentTeamOfTeam($team, $match)->getGoals()) {
-					// set minute as unreachable, so that it could be replaced by an unplanned substitution.
-					// do not simply remove it, because it might become out of sync with DB table entry on state saving.
-					$substitution->minute = 999;
-					continue;
-				}
-				
-				$team->removePlayer($substitution->playerOut);
-				
-				// determine main position.
-				// first: is it specified at substition config?
-				// second: has the player a main position? Note that youth players have main position "-"
-				// third: add player to his general position, without any main position
-				if (strlen($substitution->position)) {
-					$mainPosition = $substitution->position;
-				} else if (strlen($substitution->playerIn->mainPosition) && $substitution->playerIn->mainPosition != "-") {
-					$mainPosition = $substitution->playerIn->mainPosition;
-				} else {
-					$mainPosition = NULL;
-				}
-				
-				// determine general position
-				if ($mainPosition == NULL) {
-					$position = $substitution->playerIn->position;
-				} else {
-					$positionMapping = self::getPositionsMapping();
-					$position = $positionMapping[$mainPosition];
-				}
-				
-				// strength deduction needed?
-				$strength = $substitution->playerIn->strength;
-				if ($position != $substitution->playerIn->position) {
-					$strength = round($strength * (1 - WebSoccer::getInstance()->getConfig("sim_strength_reduction_wrongposition") / 100));
-				} else if ($mainPosition != NULL && $mainPosition != $substitution->playerIn->mainPosition) {
-					$strength = round($strength * (1 - WebSoccer::getInstance()->getConfig("sim_strength_reduction_secondary") / 100));
-				}
-				
-				// updates values
-				$substitution->playerIn->position = $position;
-				$substitution->playerIn->strength = $strength;
-				$substitution->playerIn->mainPosition = $mainPosition;
-				
-				// add to playground
-				$team->positionsAndPlayers[$substitution->playerIn->position][] = $substitution->playerIn;
-				
-				// remove from bench
-				unset($team->playersOnBench[$substitution->playerIn->id]);
-				
-				foreach ($observers as $observer) {
-					$observer->onSubstitution($match, $substitution);
-				}
+			$team->removePlayer($substitution->playerOut);
+
+			// determine main position.
+			// first: is it specified at substition config?
+			// second: has the player a main position? Note that youth players have main position "-"
+			// third: add player to his general position, without any main position
+			if ($substitution->position != NULL && strlen($substitution->position)) {
+				$mainPosition = $substitution->position;
+			} else if (strlen($substitution->playerIn->mainPosition) && $substitution->playerIn->mainPosition != "-") {
+				$mainPosition = $substitution->playerIn->mainPosition;
+			} else {
+				$mainPosition = NULL;
+			}
+
+			// determine general position
+			if ($mainPosition == NULL) {
+				$position = $substitution->playerIn->position;
+			} else {
+				$positionMapping = self::getPositionsMapping();
+				$position = $positionMapping[$mainPosition];
+			}
+
+			// strength deduction needed?
+			$strength = $substitution->playerIn->strength;
+			if ($position != $substitution->playerIn->position) {
+				$strength = round($strength * (1 - WebSoccer::getInstance()->getConfig("sim_strength_reduction_wrongposition") / 100));
+			} else if ($mainPosition != NULL && $mainPosition != $substitution->playerIn->mainPosition) {
+				$strength = round($strength * (1 - WebSoccer::getInstance()->getConfig("sim_strength_reduction_secondary") / 100));
+			}
+
+			// updates values
+			$substitution->playerIn->position = $position;
+			$substitution->playerIn->strength = $strength;
+			$substitution->playerIn->mainPosition = $mainPosition;
+
+			// add to playground
+			$team->positionsAndPlayers[$substitution->playerIn->position][] = $substitution->playerIn;
+
+			// remove from bench
+			unset($team->playersOnBench[$substitution->playerIn->id]);
+
+			foreach ($observers as $observer) {
+				$observer->onSubstitution($match, $substitution);
 			}
 		}
 	}
@@ -334,14 +351,26 @@ class SimulationHelper {
 			$index++;
 		}
 		
-		// otherwise replace first sub you can find that has not been executed
+		// otherwise replace an unreachable substitution (minute 999), since it will never be executed
+		// anyway (e.g. because its player has been sent off after a yellow-red card, see issue #7)
+		$index = 0;
+		foreach ($team->substitutions as $existingSub) {
+			if ($existingSub->minute == 999) {
+				$team->substitutions[$index] = $substitution;
+				return TRUE;
+			}
+
+			$index++;
+		}
+
+		// then replace first sub you can find that has not been executed
 		$index = 0;
 		foreach ($team->substitutions as $existingSub) {
 			if ($existingSub->minute > $minute) {
 				$team->substitutions[$index] = $substitution;
 				return TRUE;
 			}
-					
+
 			$index++;
 		}
 		 
