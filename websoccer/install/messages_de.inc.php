@@ -30,7 +30,7 @@ $messages["label_db_name"] = "Datenbank Name";
 $messages["label_db_user"] = "Datenbank Benutzer (User)";
 $messages["label_db_password"] = "Datenbank Passwort";
 $messages["label_db_prefix"] = "Tabellenprefix";
-$messages["label_db_prefix_help"] = "optional; Nur erforderlich, wenn du von einem alten Projekt migrierst.";
+$messages["label_db_prefix_help"] = "optional; leer lassen, um den Standardprefix 'ws3' zu verwenden.";
 
 $messages["label_projectname"] = "Projektname";
 $messages["label_projectname_help"] = "Kann später noch geändert werden.";
@@ -47,10 +47,7 @@ $messages["err_already_installed"] = "Die Installation wurde offensichtlich bere
 
 $messages["invalid_db_credentials"] = "Es konnte keine Verbindung mit der Datenbank aufgebaut werden. Prüfe die eingegebenen Daten.";
 
-$messages["predb_title"] = "Neuinstallation oder Migration?";
-
-$messages["predb_label_new"] = "Software komplett erstmals auf diesem Server installieren.";
-$messages["predb_label_migrate"] = "Bestehende Originadatentabellen der Version <i>H&amp;H WebSoccer 2.91</i> anpassen und weiterverwenden.";
+$messages["predb_title"] = "Datenbanktabellen anlegen?";
 
 $messages["predb_label_warning"] = "Das Laden der nächsten Seite kann einige Sekunden in Anspruch nehmen. Klicke auf keinen Fall ein zweites mal auf den Button, sondern warte bis der Ladevorgang abgeschlossen ist.";
 

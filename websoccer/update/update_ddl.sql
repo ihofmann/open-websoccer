@@ -1,6 +1,9 @@
 -- Schema updates applied by the /update installer for existing databases.
 -- The same changes are part of install/ws3_ddl_full.sql for new installations.
--- Statements are idempotent MODIFY COLUMN operations.
+-- Statements are idempotent MODIFY COLUMN operations. ADD/DROP INDEX and
+-- ADD/DROP COLUMN statements are made idempotent by the installer
+-- (update/index.php), which skips statements that the database already
+-- satisfies.
 
 ALTER TABLE ws3_liga DROP COLUMN admin_id;
 
@@ -171,3 +174,32 @@ ALTER TABLE ws3_user MODIFY passwort VARCHAR(255) NULL;
 ALTER TABLE ws3_user MODIFY passwort_neu VARCHAR(255) NULL;
 ALTER TABLE ws3_user MODIFY passwort_salt VARCHAR(32) NULL;
 ALTER TABLE ws3_user MODIFY schluessel VARCHAR(32) NULL;
+
+-- Secondary indexes for frequent frontend queries (the same indexes are part
+-- of the CREATE TABLE statements in install/ws3_ddl_full.sql for new
+-- installations).
+
+ALTER TABLE ws3_briefe ADD INDEX briefe_empfaenger_typ_gelesen (empfaenger_id, typ, gelesen);
+ALTER TABLE ws3_spiel ADD INDEX spiel_berechnet_datum (berechnet, datum);
+ALTER TABLE ws3_spiel_berechnung ADD INDEX berechnung_spieler_spiel (spieler_id, spiel_id);
+ALTER TABLE ws3_transfer_angebot ADD INDEX transfer_angebot_spieler_datum (spieler_id, datum);
+ALTER TABLE ws3_transfer ADD INDEX transfer_datum (datum);
+ALTER TABLE ws3_konto ADD INDEX konto_verein_datum (verein_id, datum);
+
+ALTER TABLE ws3_spieler ADD INDEX spieler_transfermarkt_ende (transfermarkt, transfer_ende);
+ALTER TABLE ws3_notification ADD INDEX notification_user_seen_eventdate (user_id, seen, eventdate);
+ALTER TABLE ws3_spiel ADD INDEX spiel_datum (datum);
+ALTER TABLE ws3_spiel ADD INDEX spiel_pokalname_runde (pokalname, pokalrunde);
+ALTER TABLE ws3_transfer_offer ADD INDEX transfer_offer_receiver_submitted (receiver_club_id, submitted_date);
+ALTER TABLE ws3_transfer_offer ADD INDEX transfer_offer_sender_submitted (sender_club_id, sender_user_id, submitted_date);
+ALTER TABLE ws3_user ADD INDEX user_lastonline (lastonline);
+ALTER TABLE ws3_user ADD INDEX user_nick (nick);
+ALTER TABLE ws3_saison ADD INDEX saison_liga_beendet (liga_id, beendet);
+ALTER TABLE ws3_useractionlog ADD INDEX useractionlog_user_created (user_id, created_date);
+ALTER TABLE ws3_youthmatch ADD INDEX youthmatch_simulated_matchdate (simulated, matchdate);
+ALTER TABLE ws3_session ADD INDEX session_expires (expires);
+
+-- Note: where a new composite index has the column of a foreign key as its
+-- leading column (e.g. konto_verein_datum starts with verein_id), MySQL
+-- automatically drops the single-column index that was created for the
+-- foreign key and keeps the foreign key with the new index.

@@ -30,8 +30,6 @@ define("WRITABLE_FOLDERS", "generated/,uploads/club/,uploads/cup/,uploads/player
 define("DEFAULT_DB_PREFIX", "ws3");
 define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
 define("DDL_FULL", "ws3_ddl_full.sql");
-define("DDL_MIGRATION", "ws3_ddl_upgrade.sql");
-define("DDL_INDEX", "ws3_ddl_index.sql");
 
 session_set_cookie_params(array(
 	'lifetime' => 0,
@@ -385,7 +383,7 @@ function actionSaveConfig() {
 }
 
 /**
- * Step 4: Select whether migration or new creation
+ * Step 4: Create database
  */
 function printPreDbCreate($messages) {
 
@@ -394,13 +392,6 @@ function printPreDbCreate($messages) {
 	<h2><?php echo $messages["predb_title"]; ?></h2>
 	
 	<form method="post">
-		<label class="form-check form-check-label">
-			<input type="radio" class="form-check-input" name="install" value="new" checked> <?php echo $messages["predb_label_new"]; ?>
-		</label>
-		<label class="form-check form-check-label">
-			<input type="radio" class="form-check-input" name="install" value="migrate"> <?php echo $messages["predb_label_migrate"]; ?>
-		</label>
-		
 		<button type="submit" class="btn btn-primary"><?php echo $messages["button_next"]; ?></button>
 		<input type="hidden" name="action" value="actionCreateDb">
 	</form>
@@ -417,11 +408,7 @@ function actionCreateDb() {
 	$db->connect($conf["db_host"], $conf["db_user"], $conf["db_passwort"], $conf["db_name"]);
 	
 	try {
-		if ($_POST["install"] == "new") {
-			loadAndExecuteDdl(DDL_FULL, $conf["db_prefix"], $db);
-		} else {
-			loadAndExecuteDdl(DDL_MIGRATION, $conf["db_prefix"], $db);
-		}
+		loadAndExecuteDdl(DDL_FULL, $conf["db_prefix"], $db);
 		
 	} catch(Exception $e) {
 		global $errors;
