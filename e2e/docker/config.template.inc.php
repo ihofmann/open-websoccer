@@ -32,4 +32,10 @@ $conf['session_lifetime'] = "7200";
 
 // Log in with nickname (user1..user5) instead of e-mail address.
 $conf['login_type'] = "username";
+
+// Marks the shipped version as installed, so that the /update wizard reports
+// "Update already performed" (verified by tests/update.spec.ts). The value is
+// a snapshot of websoccer/admin/config/version.txt; the run scripts sync it
+// via e2e/scripts/set-installed-version.js before the stack starts.
+$conf['installed_version'] = "6.0.0-SNAPSHOT";
 ?>

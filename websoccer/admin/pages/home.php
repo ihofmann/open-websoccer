@@ -37,7 +37,7 @@ if (!$show) {
   </tr>
   <tr>
 	<td><b><?php echo $i18n->getMessage('home_softwareinfo_version'); ?></b></td>
-	<td><?php readfile('config/version.txt'); ?></td>
+	<td><?php echo escapeOutput($website->getConfig('installed_version')); ?></td>
   </tr>
 </table> 
 

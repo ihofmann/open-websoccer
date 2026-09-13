@@ -105,6 +105,12 @@ The copy is deliberate: on its first request the application appends the default
 value of every module setting to `config.inc.php`. `docker/generated/` is
 git-ignored for that reason, while the template stays pristine.
 
+The run scripts also set `installed_version` to the version shipped in
+`websoccer/admin/config/version.txt` (via
+[`scripts/set-installed-version.js`](scripts/set-installed-version.js)), so the
+`/update` wizard reports "Update already performed" (see
+[`tests/update.spec.ts`](tests/update.spec.ts)).
+
 ## Prerequisites
 
 * **Docker** 20.10+ with the **Docker Compose v2** plugin (`docker compose`).
@@ -148,6 +154,9 @@ npm install && npm run build
 mkdir -p e2e/docker/generated
 cp -f e2e/docker/config.template.inc.php e2e/docker/generated/config.inc.php
 
+# 1c. Mark the shipped version (websoccer/admin/config/version.txt) as installed
+node e2e/scripts/set-installed-version.js
+
 # 2. Start the E2E stack (the DB seed takes a few seconds on first start)
 docker compose -f e2e/docker-compose.e2e.yml up -d --build
 
@@ -181,6 +190,7 @@ While the stack is up you can also browse it manually:
 | File                               | Scenario                                                                          |
 | ---------------------------------- | --------------------------------------------------------------------------------- |
 | `tests/admin-news.spec.ts`         | `admin` signs in at the AdminCenter, publishes a news article, edits it and deletes it. |
+| `tests/update.spec.ts`             | Guest opens `/update` and gets the "Update already performed" notice, because the config marks the shipped version as installed. |
 | `tests/admincenter/login-2fa.spec.ts` | `admin` completes the e-mail second factor after credentials (code shown on page because there is no mail server in the E2E stack). Also verifies that a wrong code shows an error. |
 | `tests/admincenter/login-2fa-lockout.spec.ts` | `locktest` admin enters three wrong verification codes and is blocked for 5 minutes; correct credentials and codes are also rejected while blocked. Uses a dedicated admin user so other tests are not affected. |
 | `tests/admincenter/login-logs.spec.ts` | `admin` views database-backed login records and removes records older than six months without removing recent records. |

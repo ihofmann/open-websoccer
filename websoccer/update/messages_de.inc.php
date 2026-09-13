@@ -22,6 +22,8 @@ $messages["err_already_installed"] = "Die Installation wurde offensichtlich bere
 
 $messages["invalid_db_credentials"] = "Es konnte keine Verbindung mit der Datenbank aufgebaut werden. Prüfe die eingegebenen Daten.";
 
+$messages["update_already_performed"] = "Das Update wurde bereits ausgeführt.";
+
 $messages["final_success_alert"] = "Glückwunsch, das Update wurde erfolgreich installiert!";
 $messages["final_success_note"] = "Lösche nun unbedingt das komplette Verzeichnis <i>/update</i> innerhalb deines Websoccer-Ordners auf diesem Server!";
 $messages["final_link"] = "Als Administrator anmelden";

@@ -31,6 +31,8 @@ define("DEFAULT_DB_PREFIX", "ws3");
 define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
 define("DDL_FULL", "ws3_ddl_full.sql");
 
+define("VERSION_FILE", BASE_FOLDER . "/admin/config/version.txt");
+
 session_set_cookie_params(array(
 	'lifetime' => 0,
 	'path' => '/',
@@ -401,6 +403,52 @@ function printPreDbCreate($messages) {
 	<?php 
 }
 
+/**
+ * @return string version of the installed software package, as contained in
+ * the version file, or an empty string if the file does not exist.
+ */
+function getSoftwareVersion() {
+	if (!file_exists(VERSION_FILE)) {
+		return "";
+	}
+
+	return trim(file_get_contents(VERSION_FILE));
+}
+
+/**
+ * Adds or updates the entry for the installed version in the config file.
+ * Called after the database commands have been applied successfully, so that
+ * the application knows which version the database corresponds to.
+ *
+ * @param string $version installed version to store.
+ * @throws Exception if the config file is missing or could not be written.
+ */
+function saveInstalledVersionToConfig($version) {
+	if (!file_exists(CONFIGFILE)) {
+		throw new Exception("Could not save the installed version: configuration file not found.");
+	}
+
+	$content = file_get_contents(CONFIGFILE);
+
+	// remove an existing entry, in case the routine is re-run
+	$content = preg_replace('/^\$conf\[[\'"]installed_version[\'"]\]\s*=.*;(\r?\n)?/m', "", $content);
+
+	$escapedVersion = addcslashes($version, '\\$"');
+	$entry = "\$conf['installed_version'] = \"" . $escapedVersion . "\";" . PHP_EOL;
+
+	// insert the entry before the PHP closing tag
+	$closingTagPosition = strrpos($content, "?>");
+	if ($closingTagPosition === FALSE) {
+		$content .= $entry;
+	} else {
+		$content = substr($content, 0, $closingTagPosition) . $entry . substr($content, $closingTagPosition);
+	}
+
+	if (@file_put_contents(CONFIGFILE, $content) === FALSE) {
+		throw new Exception("Could not save the installed version: configuration file is not writable.");
+	}
+}
+
 function actionCreateDb() {
 	include(CONFIGFILE);
 	
@@ -410,6 +458,10 @@ function actionCreateDb() {
 	try {
 		loadAndExecuteDdl(DDL_FULL, $conf["db_prefix"], $db);
 		
+		// Database commands have been applied successfully: remember the
+		// installed version in the config file.
+		saveInstalledVersionToConfig(getSoftwareVersion());
+
 	} catch(Exception $e) {
 		global $errors;
 		$errors[] = $e->getMessage();
