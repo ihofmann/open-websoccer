@@ -43,7 +43,7 @@ $messages["label_context_root_help"] = "Pfad zum Websoccer-Ordner auf dem Webser
 $messages["label_systememail"] = "System E-Mail";
 $messages["label_systememail_help"] = "Absenderadresse aller vom System versendeten E-Mails. Kann später noch geändert werden.";
 
-$messages["err_already_installed"] = "Die Installation wurde offensichtlich bereits ausgeführt. Für eine Neuinstallation musst du die Datei /admin/config/config.inc.php leeren.";
+$messages["err_already_installed"] = "Die Installation wurde offensichtlich bereits ausgeführt. Für eine Neuinstallation musst du die Datei /generated/config.inc.php leeren.";
 
 $messages["invalid_db_credentials"] = "Es konnte keine Verbindung mit der Datenbank aufgebaut werden. Prüfe die eingegebenen Daten.";
 

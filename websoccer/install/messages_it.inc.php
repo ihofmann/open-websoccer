@@ -42,7 +42,7 @@ $messages["label_context_root_help"] = "Percorso della cartella Websoccer sul se
 $messages["label_systememail"] = "E-mail di sistema";
 $messages["label_systememail_help"] = "Indirizzo mittente di tutte le e-mail inviate dal sistema. Può essere modificato in seguito.";
 
-$messages["err_already_installed"] = "L'installazione è stata evidentemente già eseguita. Per reinstallare il software, svuota il file /admin/config/config.inc.php.";
+$messages["err_already_installed"] = "L'installazione è stata evidentemente già eseguita. Per reinstallare il software, svuota il file /generated/config.inc.php.";
 
 $messages["invalid_db_credentials"] = "Impossibile connettersi al database. Verifica i dati inseriti.";
 
