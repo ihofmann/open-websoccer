@@ -8,8 +8,7 @@ Managers set tactics for the next match, trade players, train their squad, scout
 
 Use it to run your own online football game — whether to attract website visitors, offer premium features, or play against colleagues on a company intranet.
 
-> [!WARNING]
-> The current release has severe security vulnerabilities and does not run on modern web servers. With the help of GenAI, a new release will be published soon. It will run on PHP 8.4+ and use updated libraries.
+![Websoccer in-game screenshot](screenshot.png)
 
 **[Download now!](https://github.com/ihofmann/open-websoccer/releases)**
 

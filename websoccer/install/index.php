@@ -31,6 +31,8 @@ define("DEFAULT_DB_PREFIX", "ws3");
 define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
 define("DDL_FULL", "ws3_ddl_full.sql");
 
+define("VERSION_FILE", BASE_FOLDER . "/admin/config/version.txt");
+
 session_set_cookie_params(array(
 	'lifetime' => 0,
 	'path' => '/',
@@ -44,11 +46,16 @@ session_start();
 // Block the installer if the application is already installed. An attacker
 // could otherwise re-run the wizard to overwrite the configuration or probe
 // the system. The check can be bypassed by deleting the config file.
+// The application counts as installed only after the installation has been
+// fully completed, which the wizard marks by storing the installed version
+// in the config file (see actionSaveUser()). Until then, the config file
+// already exists because the wizard has created it in an earlier step, but
+// the wizard must still be allowed to continue with the remaining steps.
 if (file_exists(CONFIGFILE)) {
-	// Allow re-install only if explicitly requested via ?force=1 and the
-	// config is corrupt (no $conf array).
+	// Allow re-install only if explicitly requested via ?force=1.
 	include(CONFIGFILE);
-	if (isset($conf) && is_array($conf) && count($conf) > 0
+	if (isset($conf) && is_array($conf) && isset($conf["installed_version"])
+			&& strlen(trim($conf["installed_version"]))
 			&& (!isset($_GET['force']) || $_GET['force'] != '1')) {
 		header('HTTP/1.0 403 Forbidden');
 		echo '<h1>Already installed</h1><p>The application is already installed. Remove the configuration file to reinstall.</p>';
@@ -331,11 +338,14 @@ function actionSaveConfig() {
 		return "printConfigForm";
 	}
 	
-	// check if already installed
+	// check if already installed. The installed version is stored in the
+	// config file only after the installation has been fully completed, so
+	// that an installation which failed before can be resumed with new
+	// settings.
 	if (file_exists(CONFIGFILE)) {
 		include(CONFIGFILE);
 	}
-	if (isset($conf) && count($conf)) {
+	if (isset($conf) && isset($conf["installed_version"]) && strlen(trim($conf["installed_version"]))) {
 		$errors[] = $messages["err_already_installed"];
 	} else {
 	
@@ -401,6 +411,54 @@ function printPreDbCreate($messages) {
 	<?php 
 }
 
+/**
+ * @return string version of the installed software package, as contained in
+ * the version file, or an empty string if the file does not exist.
+ */
+function getSoftwareVersion() {
+	if (!file_exists(VERSION_FILE)) {
+		return "";
+	}
+
+	return trim(file_get_contents(VERSION_FILE));
+}
+
+/**
+ * Adds or updates the entry for the installed version in the config file.
+ * Called after the installation has been completed successfully, so that the
+ * application knows which version the database corresponds to. The installer
+ * entry also marks the application as installed: only after this entry
+ * exists, the installer gets blocked (see the check at the top of this file).
+ *
+ * @param string $version installed version to store.
+ * @throws Exception if the config file is missing or could not be written.
+ */
+function saveInstalledVersionToConfig($version) {
+	if (!file_exists(CONFIGFILE)) {
+		throw new Exception("Could not save the installed version: configuration file not found.");
+	}
+
+	$content = file_get_contents(CONFIGFILE);
+
+	// remove an existing entry, in case the routine is re-run
+	$content = preg_replace('/^\$conf\[[\'"]installed_version[\'"]\]\s*=.*;(\r?\n)?/m', "", $content);
+
+	$escapedVersion = addcslashes($version, '\\$"');
+	$entry = "\$conf['installed_version'] = \"" . $escapedVersion . "\";" . PHP_EOL;
+
+	// insert the entry before the PHP closing tag
+	$closingTagPosition = strrpos($content, "?>");
+	if ($closingTagPosition === FALSE) {
+		$content .= $entry;
+	} else {
+		$content = substr($content, 0, $closingTagPosition) . $entry . substr($content, $closingTagPosition);
+	}
+
+	if (@file_put_contents(CONFIGFILE, $content) === FALSE) {
+		throw new Exception("Could not save the installed version: configuration file is not writable.");
+	}
+}
+
 function actionCreateDb() {
 	include(CONFIGFILE);
 	
@@ -409,7 +467,6 @@ function actionCreateDb() {
 	
 	try {
 		loadAndExecuteDdl(DDL_FULL, $conf["db_prefix"], $db);
-		
 	} catch(Exception $e) {
 		global $errors;
 		$errors[] = $e->getMessage();
@@ -521,9 +578,21 @@ function actionSaveUser() {
 	
 	$db = DbConnection::getInstance();
 	$db->connect($conf["db_host"], $conf["db_user"], $conf["db_passwort"], $conf["db_name"]);
-	
-	$db->queryInsert($columns, $conf["db_prefix"] . "_admin");
-	
+
+	try {
+		$db->queryInsert($columns, $conf["db_prefix"] . "_admin");
+
+		// The installation has now been completed: remember the installed
+		// version in the config file. Only from now on the application counts
+		// as installed, so that the installer still accepts the wizard steps
+		// leading here (the database setup has already modified the config
+		// file's environment, but the wizard is not finished yet).
+		saveInstalledVersionToConfig(getSoftwareVersion());
+	} catch(Exception $e) {
+		$errors[] = $e->getMessage();
+		return "printCreateUserForm";
+	}
+
 	return "printFinalPage";
 }
 

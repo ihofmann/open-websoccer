@@ -42,7 +42,7 @@ $messages["label_context_root_help"] = "Ruta a la carpeta Websoccer en el servid
 $messages["label_systememail"] = "Correo electrónico del sistema";
 $messages["label_systememail_help"] = "Dirección de remitente de todos los correos electrónicos enviados por el sistema. Se puede cambiar más tarde.";
 
-$messages["err_already_installed"] = "Aparentemente, la instalación ya se ha ejecutado. Para reinstalar el software, vacía el archivo /admin/config/config.inc.php.";
+$messages["err_already_installed"] = "Aparentemente, la instalación ya se ha ejecutado. Para reinstalar el software, vacía el archivo /generated/config.inc.php.";
 
 $messages["invalid_db_credentials"] = "No se pudo conectar a la base de datos. Verifica los datos ingresados.";
 

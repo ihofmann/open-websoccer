@@ -33,6 +33,8 @@ define("DEFAULT_DB_PREFIX", "ws3");
 define("CONFIGFILE", BASE_FOLDER . "/generated/config.inc.php");
 define("CONFIGFILE_OLD", BASE_FOLDER . "/admin/config/config.inc.php");
 
+define("VERSION_FILE", BASE_FOLDER . "/admin/config/version.txt");
+
 define("DDL_FILE", "update_ddl.sql");
 
 session_set_cookie_params(array(
@@ -436,6 +438,78 @@ function migrateLegacyJobs(DbConnection $db, $prefix, $file) {
 	}
 }
 
+/**
+ * @return string version of the uploaded software package, as contained in
+ * the version file, or an empty string if the file does not exist.
+ */
+function getSoftwareVersion() {
+	if (!file_exists(VERSION_FILE)) {
+		return "";
+	}
+
+	return trim(file_get_contents(VERSION_FILE));
+}
+
+/**
+ * Checks whether this update has already been performed, by comparing the
+ * version stored in the config file with the version from the version file.
+ *
+ * @return boolean TRUE if both versions match, i.e. the update routine has
+ * already been executed for the uploaded version.
+ */
+function updateAlreadyPerformed() {
+	if (!file_exists(CONFIGFILE)) {
+		return FALSE;
+	}
+
+	include(CONFIGFILE);
+
+	if (!isset($conf["installed_version"]) || !strlen(trim($conf["installed_version"]))) {
+		return FALSE;
+	}
+
+	$version = getSoftwareVersion();
+	if (!strlen($version)) {
+		return FALSE;
+	}
+
+	return (trim($conf["installed_version"]) === $version);
+}
+
+/**
+ * Adds or updates the entry for the installed version in the config file.
+ * Called after the database commands have been applied successfully, so that
+ * the application knows which version the database corresponds to.
+ *
+ * @param string $version installed version to store.
+ * @throws Exception if the config file is missing or could not be written.
+ */
+function saveInstalledVersionToConfig($version) {
+	if (!file_exists(CONFIGFILE)) {
+		throw new Exception("Could not save the installed version: configuration file not found.");
+	}
+
+	$content = file_get_contents(CONFIGFILE);
+
+	// remove an existing entry, in case the routine is re-run
+	$content = preg_replace('/^\$conf\[[\'"]installed_version[\'"]\]\s*=.*;(\r?\n)?/m', "", $content);
+
+	$escapedVersion = addcslashes($version, '\\$"');
+	$entry = "\$conf['installed_version'] = \"" . $escapedVersion . "\";" . PHP_EOL;
+
+	// insert the entry before the PHP closing tag
+	$closingTagPosition = strrpos($content, "?>");
+	if ($closingTagPosition === FALSE) {
+		$content .= $entry;
+	} else {
+		$content = substr($content, 0, $closingTagPosition) . $entry . substr($content, $closingTagPosition);
+	}
+
+	if (@file_put_contents(CONFIGFILE, $content) === FALSE) {
+		throw new Exception("Could not save the installed version: configuration file is not writable.");
+	}
+}
+
 function actionMoveFiles() {
 
 	include(CONFIGFILE);
@@ -499,6 +573,10 @@ function actionMoveFiles() {
 		}
 	}
 
+	// The database commands have been applied successfully: remember the
+	// installed version in the config file.
+	saveInstalledVersionToConfig(getSoftwareVersion());
+
 	return "printFinalPage";
 }
 
@@ -534,39 +612,57 @@ function printFinalPage($messages) {
 		
 		<hr>
 		
-		<?php 
-		
+		<?php
+
 		$errors = array();
-		
+
 		$messagesIncluded = FALSE;
 		if(isset($_SESSION["lang"])) {
 			include("messages_" . $_SESSION["lang"] . ".inc.php");
 			$messagesIncluded = $_SESSION["lang"];
 		}
-		
-		$action = (isset($_REQUEST["action"])) ? $_REQUEST["action"] : "";
-		if (!strlen($action) || substr($action, 0, 6) !== "action") {
-			$view = "printWelcomeScreen";
+
+		// Check initially and globally whether this update has already been
+		// performed: if the version stored in the config file matches the
+		// version from the version file, only the corresponding notice is
+		// displayed. Neither the wizard steps nor any action can be shown or
+		// executed anymore, in order to avoid that someone performs the
+		// update again.
+		$updateAlreadyPerformed = updateAlreadyPerformed();
+		if ($updateAlreadyPerformed && !isset($messages)) {
+			// no language selected yet: fall back to English
+			include("messages_en.inc.php");
+		}
+
+		if ($updateAlreadyPerformed) {
+			echo "<div class=\"alert alert-info\"><strong>" . $messages["update_already_performed"] . "</strong></div>";
 		} else {
-			$view = $action();
-		}
-		
-		if(isset($_SESSION["lang"]) && $_SESSION["lang"] !== $messagesIncluded) {
-			include("messages_" . $_SESSION["lang"] . ".inc.php");
-		}
-		
-		if (count($errors)) {
-			foreach($errors as $error) {
-				echo "<div class=\"alert alert-danger\">$error</div>";
+
+			$action = (isset($_REQUEST["action"])) ? $_REQUEST["action"] : "";
+			if (!strlen($action) || substr($action, 0, 6) !== "action") {
+				$view = "printWelcomeScreen";
+			} else {
+				$view = $action();
 			}
+
+			if(isset($_SESSION["lang"]) && $_SESSION["lang"] !== $messagesIncluded) {
+				include("messages_" . $_SESSION["lang"] . ".inc.php");
+			}
+
+			if (count($errors)) {
+				foreach($errors as $error) {
+					echo "<div class=\"alert alert-danger\">$error</div>";
+				}
+			}
+
+			if (isset($messages)) {
+				$view($messages);
+			} else {
+				$view();
+			}
+
 		}
-		
-		if (isset($messages)) {
-			$view($messages);
-		} else {
-			$view();
-		}
-		
+
 		?>
 	  
       <hr>

@@ -52,6 +52,11 @@ mkdir -p "$E2E_DIR/docker/generated"
 cp -f "$E2E_DIR/docker/config.template.inc.php" \
       "$E2E_DIR/docker/generated/config.inc.php"
 
+# Mark the shipped version (websoccer/admin/config/version.txt) as installed,
+# so the /update wizard reports "Update already performed"
+# (verified by tests/update.spec.ts).
+node "$E2E_DIR/scripts/set-installed-version.js"
+
 echo '==> Building and starting the E2E stack'
 compose up -d --build
 

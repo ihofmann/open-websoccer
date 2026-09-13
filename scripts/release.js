@@ -114,6 +114,10 @@ function copyApplication(source, destination) {
   for (const file of applicationFiles) {
     fs.copyFileSync(path.join(source, file), path.join(destination, file));
   }
+  fs.copyFileSync(
+    path.join(rootDir, "LICENSE"),
+    path.join(destination, "LICENSE"),
+  );
   emptyFiles(path.join(destination, "uploads"));
 }
 

@@ -70,6 +70,12 @@ New-Item -ItemType Directory -Force -Path $generatedDir | Out-Null
 Copy-Item -Force (Join-Path $e2eDir 'docker/config.template.inc.php') `
                  (Join-Path $generatedDir 'config.inc.php')
 
+# Mark the shipped version (websoccer/admin/config/version.txt) as installed,
+# so the /update wizard reports "Update already performed"
+# (verified by tests/update.spec.ts).
+& node (Join-Path $e2eDir 'scripts/set-installed-version.js')
+if ($LASTEXITCODE -ne 0) { throw 'setting the installed version in the E2E config failed' }
+
 Write-Host '==> Building and starting the E2E stack' -ForegroundColor Cyan
 Invoke-Compose @('up', '-d', '--build')
 
