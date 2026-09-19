@@ -119,6 +119,14 @@ function copyApplication(source, destination) {
     path.join(destination, "LICENSE"),
   );
   emptyFiles(path.join(destination, "uploads"));
+  // Runtime-writable folders must exist in the package, but must not contain
+  // files from the development environment: cache/ holds the generated
+  // configuration cache and generated/ the local configuration. A missing
+  // cache folder made the application fail with an HTTP 500 error on the
+  // first request after installation (issue #174).
+  for (const folder of ["cache", "generated"]) {
+    fs.mkdirSync(path.join(destination, folder), { recursive: true });
+  }
 }
 
 function createArchive() {

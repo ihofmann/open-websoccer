@@ -39,10 +39,25 @@ class ConfigCacheFileWriter {
 	private $_newSettings;
 	
 	/**
-	 * 
+	 * Creates a folder if it does not exist yet.
+	 * The cache folder is part of the release package, but might be missing in packages of earlier releases or when the
+	 * ZIP archive got extracted without empty folders. Instead of failing with an error page (HTTP 500) on the first
+	 * request, the application then recreates the folder on demand (issue #174).
+	 *
+	 * @param string $folder full path of the folder to create.
+	 */
+	private static function ensureFolder($folder) {
+		if (!is_dir($folder)) {
+			@mkdir($folder, 0775, TRUE);
+		}
+	}
+
+	/**
+	 *
 	 * @param array $supportedLanguages array of supported languages as ISO-formatted strings (e.g. array('de', 'en')).
 	 */
 	function __construct($supportedLanguages) {
+		self::ensureFolder(dirname(CONFIGCACHE_FILE_FRONTEND));
 		$this->_frontCacheFileWriter = new FileWriter(CONFIGCACHE_FILE_FRONTEND);
 		$this->_adminCacheFileWriter = new FileWriter(CONFIGCACHE_FILE_ADMIN);
 		$this->_settingsCacheFileWriter = new FileWriter(CONFIGCACHE_SETTINGS);
