@@ -42,9 +42,13 @@ test("registration date is set when an admin creates a user", async ({
   await row.locator('a[title="Edit"]').click();
   await expect(page.locator("legend")).toHaveText("Edit");
 
-  const regDate = (await page.locator("#datum_anmeldung").textContent()) ?? "";
+  const regField = page.locator("div.mb-3", {
+    has: page.locator("label", { hasText: "Registration Date" }),
+  });
+  const regDate =
+    ((await regField.locator(".form-control-plaintext").textContent()) ?? "").trim();
   // The unix epoch (dated 01.01.1970) must not be displayed.
-  expect(regDate.trim()).not.toContain("1970");
+  expect(regDate).not.toContain("1970");
   // It must be a real date, matching the current year.
-  expect(regDate.trim()).toContain(String(new Date().getFullYear()));
+  expect(regDate).toContain(String(new Date().getFullYear()));
 });
