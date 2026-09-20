@@ -162,6 +162,13 @@ if ($show == "add" || $show == "edit") {
 				// under MySQL strict mode. Omit them so the column default applies.
 				if (!$fieldInfo["required"] && $fieldValue === ""
 						&& in_array($fieldInfo["type"], array("number", "percent", "foreign_key", "date"), true)) {
+					if ($fieldInfo["type"] === "foreign_key") {
+						// An empty optional foreign key explicitly means "no selection"
+						// (e.g. removing the manager from a club). Store the value as
+						// NULL so the previously assigned record is actually cleared
+						// instead of being left unchanged.
+						$dbcolumns[$fieldId] = null;
+					}
 					continue;
 				}
 				
