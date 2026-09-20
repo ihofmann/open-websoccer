@@ -175,4 +175,41 @@ final class NavigationBuilderTest extends TestCaseBase {
 		$this->assertSame(5, NavigationBuilder::sortByWeight($b, $a));
 		$this->assertSame(0, NavigationBuilder::sortByWeight($a, $a));
 	}
+
+	public function testSkipsChildItemWhenParentIsHiddenByConfigDependency(): void {
+		$pages = [
+			'child' => $this->navPage('guest', true, 'parent', 1),
+			'parent' => $this->navPage('guest', true, null, 0, 'feature_x'),
+		];
+		$ws = $this->mockWebsoccerWithRole(ROLE_GUEST, ['feature_x' => '0']);
+		$i18n = $this->mockI18nWithLabels(['child' => 'Child', 'parent' => 'Parent']);
+		// Must not throw "Attempt to modify property 'children' on null".
+		$items = NavigationBuilder::getNavigationItems($ws, $i18n, $pages, 'child');
+		$this->assertSame([], $items);
+	}
+
+	public function testSkipsChildItemWhenParentIsNotANavigationItem(): void {
+		$pages = [
+			'child' => $this->navPage('guest', true, 'parent', 1),
+			'parent' => $this->navPage('guest', false),
+		];
+		$ws = $this->mockWebsoccerWithRole(ROLE_GUEST);
+		$i18n = $this->mockI18nWithLabels(['child' => 'Child', 'parent' => 'Parent']);
+		// Must not throw "Attempt to modify property 'children' on null".
+		$items = NavigationBuilder::getNavigationItems($ws, $i18n, $pages, 'child');
+		$this->assertSame([], $items);
+	}
+
+	public function testKeepsSiblingItemsWhenParentIsHidden(): void {
+		$pages = [
+			'child' => $this->navPage('guest', true, 'parent', 1),
+			'parent' => $this->navPage('guest', true, null, 0, 'feature_x'),
+			'home' => $this->navPage('guest'),
+		];
+		$ws = $this->mockWebsoccerWithRole(ROLE_GUEST, ['feature_x' => '0']);
+		$i18n = $this->mockI18nWithLabels(['child' => 'Child', 'parent' => 'Parent', 'home' => 'Home']);
+		$items = NavigationBuilder::getNavigationItems($ws, $i18n, $pages, 'home');
+		$this->assertCount(1, $items);
+		$this->assertSame('home', $items[0]->pageId);
+	}
 }

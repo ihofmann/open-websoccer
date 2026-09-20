@@ -104,6 +104,16 @@ class NavigationBuilder {
 	}
 	
 	private static function _addToItems(&$items, &$addedItemsCache, $item, $itemWeight, $itemParent) {
+		// The parent item may be missing from the cache although the child was
+		// created, e.g. when the parent is hidden because a feature (such as
+		// "youth_enabled") is disabled, the role does not match, or the parent
+		// is not rendered as a navigation item. Skipping the orphaned child
+		// avoids a fatal error ("Attempt to modify property 'children' on null")
+		// and prevents a menu entry without its menu group.
+		if ($itemParent != null && !isset($addedItemsCache[$itemParent])) {
+			return;
+		}
+		
 		$listToAdd = &$items;
 		if ($itemParent != null) {
 			$listToAdd = &$addedItemsCache[$itemParent]->children;
