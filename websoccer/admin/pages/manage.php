@@ -134,7 +134,16 @@ if ($show == "add" || $show == "edit") {
 			// validate
 			$dbcolumns = array();
 			foreach ($formFields as $fieldId => $fieldInfo) {
-				
+
+				// A read-only timestamp (e.g. the user registration date) is
+				// generated when a new record is created: it is not part of the
+				// submitted form, so set it to "now" before any POST parsing.
+				if ($fieldInfo["readonly"] && $show == "add" && $fieldInfo["type"] == "timestamp") {
+					$dbcolumns[$fieldId] = $website->getNowAsTimestamp();
+					continue;
+				}
+
+				// All other read-only fields are never written.
 				if ($fieldInfo["readonly"]) {
 					continue;
 				}
