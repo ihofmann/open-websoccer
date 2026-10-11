@@ -4,24 +4,56 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}">{{ i18n.getMessage("playertable_head_position_abbr") }}</abbr></th>
-				<th>{{ i18n.getMessage("playertable_head_name") }}</th>
-				<th>{{ i18n.getMessage("playertable_head_age") }}</th>
-				<th>{{ i18n.getMessage("entity_player_verein_id") }}</th>
-				<th>{{ i18n.getMessage("entity_player_lending_matches") }}</th>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_position") }}"><i class="fa fa-spinner fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_name") }}"><i class="fa fa-user fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("playertable_head_age") }}"><i class="fa fa-refresh fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_marktwert") }}"><i class="fa fa-area-chart fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_vertrag_gehalt") }}"><i class="fa fa-eur fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_sa_spiele") }}"><i class="fa fa-street-view fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_sa_tore") }}"><i class="fa fa-futbol-o fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_sa_assists") }}"><i class="fa fa-star fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_note_last") }}"><i class="fa fa-cubes fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_note_schnitt") }}"><i class="fa fa-line-chart fa-lg"></i></abbr></th>				
+				<th><abbr title="{{ i18n.getMessage("entity_player_verein_id") }}"><i class="fa fa-universal-access fa-lg"></i></abbr></th>
+				<th><abbr title="{{ i18n.getMessage("entity_player_lending_matches") }}"><i class="fa fa-street-view fa-lg"></i></abbr></th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for player in lentplayers %}
 			<tr>
-				<td class="text-center"><img src="{{ skin.getImage("icons/playertype_" ~ player.position ~ ".png") }}"
-					alt="{{ i18n.getMessage("player_position_" ~ player.position) }}" title="{{ i18n.getMessage("player_position_" ~ player.position) }}" />
-					{% if (player.position_main|length > 0) %}
-					<p title="{{ i18n.getMessage("option_" ~ player.position_main) }}">{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}</p>
+				<td style="text-align: center">
+					{% set nationImg = skin.getImage("flags/players/" ~ player.player_nationality_filename ~ ".png") %}
+					{% if i18n.hasMessage("option_" ~ player.player_nationality_filename) %}
+						{% set countryLabel = i18n.getMessage("option_" ~ player.player_nationality_filename) %}
 					{% endif %}
+					{% if (player.picture|length > 0) %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/player/{{ player.picture }}" class="img-rounded" width="50px" />
+					{% else %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/player/nobody.png" class="img-rounded" width="50px" />
+					{% endif %}					
+					{% if nationImg %}<br /><img src="{{ nationImg }}" title="{{ countryLabel }}" alt="{{ countryLabel }}" />{% endif %}
+					<p title="{{ i18n.getMessage("option_" ~ player.position_main) }}">
+					{% if (player.position_main|length > 0) %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/positions/{{ i18n.getMessage("player_mainposition_" ~ player.position_main) }}.png" width="25px" />
+					{% endif %}
+					{% if (player.position_second|length > 0) %}
+						<img src="{{ env.getConfig("context_root") }}/uploads/positions/{{ i18n.getMessage("player_secondposition_" ~ player.position_second) }}.png" width="25px" />
+					{% endif %}
+					</p>
 				</td>
 				<td><a href="{{ env.getInternalUrl("player", "id=" ~ player.id) }}">{{ player.firstname }} {% if player.pseudonym|length > 0 %}"{{ player.pseudonym }}" {% endif %}{{ player.lastname }}</a></td>
-				<td>{{ player.age }}</td>
+				<td>{{ player.age }} Jahre</td>
+				<td>{{ player.marketvalue|number_format(0, ',', '.')  }} {{ env.getConfig("game_currency") }}</td>
+				<td>{{ player.contract_salary|number_format(0, ',', '.')  }} {{ env.getConfig("game_currency") }}
+					{% if player.lending_fee > 0 %}
+						<br><small>+ {{ i18n.getMessage("entity_player_lending_fee") }}: {{ player.lending_fee|number_format(0, ',', '.')  }} {{ env.getConfig("game_currency") }}</small> 
+					{% endif %}
+				</td>
+				<td>{{ player.st_matches }}</td>
+				<td>{{ player.st_goals }}</td>
+				<td>{{ player.st_assists }}</td>
+				<td>{{ player.note_last }}</td>
+				<td>{{ player.note_schnitt }}</td>				
 				<td>
 					<a href="{{ env.getInternalUrl("team", "id=" ~ player.team_id) }}">{{ player.team_name }}</a>
 				</td>

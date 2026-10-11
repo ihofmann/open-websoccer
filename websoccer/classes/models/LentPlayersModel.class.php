@@ -58,7 +58,15 @@ class LentPlayersModel implements IModel {
 				"position" => "position",
 				"position_main" => "position_main",
 				"position_second" => "position_second",
+				"marktwert" => "marketvalue",
+				'vertrag_spiele' => 'contract_matches',
+				'vertrag_gehalt' => 'contract_salary',				
 				"nation" => "player_nationality",
+				"P.sa_spiele" => "st_matches",
+				"P.sa_tore" => "st_goals",
+				"P.sa_assists" => "st_assists",
+				"P.note_last" => "note_last",
+				"P.note_schnitt" => "note_schnitt",
 				"lending_matches" => "lending_matches",
 				"lending_fee" => "lending_fee",
 				"C.id" => "team_id",
@@ -83,12 +91,36 @@ class LentPlayersModel implements IModel {
 		$players = array();
 		while ($player = $result->fetch_array()) {
 			$player["position"] = PlayersDataService::_convertPosition($player["position"]);
+			$player['player_nationality_filename'] = self::getFlagFilename($player['player_nationality']);
 			$players[] = $player;
 		}
 		$result->free();
 		
 		return array('lentplayers' => $players);
 	}
+
+	/**
+	 * Provides the correct flag file name for specified nationality.
+	 * Removes umlauts.
+	 * 
+	 * @param string $nationality
+	 * @return string fag file name.
+	 */
+	public static function getFlagFilename($nationality) {
+		if (!strlen($nationality)) {
+			return $nationality;
+		}
+		
+		// remove umlauts
+		$filename = str_replace('??', 'Ae', $nationality);
+		$filename = str_replace('??', 'Oe', $filename);
+		$filename = str_replace('??', 'Ue', $filename);
+		
+		$filename = str_replace('??', 'ae', $filename);
+		$filename = str_replace('??', 'oe', $filename);
+		$filename = str_replace('??', 'ue', $filename);
+		return $filename;
+	}	
 	
 }
 
