@@ -305,7 +305,9 @@ if (!$rows['hits']) {
 				$iconTooltip = ($columnValue) ? $i18n->getMessage("option_yes") : $i18n->getMessage("option_no");
 				echo "<i class=\"". $iconName ."\" title=\"". $iconTooltip . "\"></i>";
 			} elseif ($type == "number") {
-				echo number_format($columnValue, 0, ",", " ");
+				echo number_format($columnValue, 0, ",", ".");
+			} elseif ($type == "number_money") {
+				echo number_format($columnValue, 0, ",", ".")." €";
 			} elseif ($type == "percent") {
 				echo $columnValue . "%";
 			} else {

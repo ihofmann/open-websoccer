@@ -13,7 +13,7 @@
 	<message id="entity_player_geburtstag_help">Must be specified if players age according to their birthday. Check system settings.</message>
 	<message id="entity_player_age">Age</message>
 	<message id="entity_player_age_help">in years. Must be specified if players age at the end of every season.</message>
-	
+	<message id="entity_player_costs">Total Salary</message>
 	
 	<message id="entity_player_position">Position</message>
 	<message id="entity_player_position_main">Main Position</message>

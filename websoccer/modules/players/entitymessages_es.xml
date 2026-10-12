@@ -11,6 +11,7 @@
   <message id="entity_player_geburtstag_help">Debe especificarse si los jugadores envejecen según su cumpleaños. Compruebe la configuración del sistema.</message>
   <message id="entity_player_age">Años</message>
   <message id="entity_player_age_help">en años. Debe especificarse si los jugadores envejecen al final de cada temporada.</message>
+  <message id="entity_player_costs">Salario total</message>
   <message id="entity_player_position">Posición</message>
   <message id="entity_player_position_main">Posición principal</message>
   <message id="entity_player_position_main_help">Si no especifica una posición principal, el jugador es un todoterreno dentro de la posición seleccionada anteriormente.</message>

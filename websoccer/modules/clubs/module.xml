@@ -49,7 +49,12 @@
                     <column
                         id="entity_club_finanz_budget"
                         field="ClubTab.finanz_budget"
-                        type="number"
+                        type="number_money"
+                        sort="true" />
+                    <column
+                        id="entity_player_costs"
+                        field="(SELECT SUM(vertrag_gehalt) FROM {tablePrefix}_spieler AS PlayerTab WHERE PlayerTab.verein_id = ClubTab.id)"
+                        type="number_money"
                         sort="true" />
                     
                     <column

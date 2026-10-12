@@ -12,7 +12,7 @@
 	<message id="entity_player_geburtstag_help">Muss angegeben werden, wenn die Spieler nach Geburtsdatum altern sollen. Siehe Systemeinstellungen.</message>
 	<message id="entity_player_age">Alter</message>
 	<message id="entity_player_age_help">in Jahren. Muss angegeben werden, wenn die Spieler am Ende einer Saison altern sollen, statt an ihrem Geburtstag.</message>
-	
+	<message id="entity_player_costs">Gesamtgehalt</message>
 	
 	<message id="entity_player_position">Spielposition</message>
 	<message id="entity_player_position_main">Hauptposition</message>

@@ -11,6 +11,7 @@
   <message id="entity_player_geburtstag_help">Deve essere specificato se i giocatori invecchiano in base al loro compleanno. Controlla le impostazioni di sistema.</message>
   <message id="entity_player_age">Età</message>
   <message id="entity_player_age_help">in anni. Deve essere specificato se i giocatori invecchiano alla fine di ogni stagione.</message>
+  <message id="entity_player_costs">Stipendio Totale</message>
   <message id="entity_player_position">Posizione</message>
   <message id="entity_player_position_main">Posizione principale</message>
   <message id="entity_player_position_main_help">Se non specifichi una posizione principale, il giocatore è un tuttofare all'interno della posizione sopra selezionata.</message>
