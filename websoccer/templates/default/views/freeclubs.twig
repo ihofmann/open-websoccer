@@ -45,9 +45,12 @@
 							<td>
 								<small>
 									<p><strong>{{ i18n.getMessage("entity_player_w_staerke") }}</strong><br>
-									{% for strengthlevel in 1..5 %}
-										<i class="bi bi-{% if (30 + strengthlevel * 10) > club.team_strength %}star{% else %}star-fill{% endif %}"></i>
-									{% endfor %}</p>
+										<i class="icon-star{% if 50 > club.team_strength %}-empty{% endif %}"></i>	
+										<i class="icon-star{% if 70 > club.team_strength %}-empty{% endif %}"></i>
+										<i class="icon-star{% if 74 > club.team_strength %}-empty{% endif %}"></i>
+										<i class="icon-star{% if 78 > club.team_strength %}-empty{% endif %}"></i>
+										<i class="icon-star{% if 82 > club.team_strength %}-empty{% endif %}"></i>
+									</p>
 								
 									<p><strong>{{ i18n.getMessage("entity_club_finanz_budget") }}</strong><br>
 									{{ club.team_budget|number_format(0, ',', ' ') }} {{ env.getConfig("game_currency") }}</p>
